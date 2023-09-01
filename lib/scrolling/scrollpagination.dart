@@ -209,13 +209,41 @@ class _LeadScrollingState extends State<LeadScrolling> {
         automaticallyImplyLeading: false,
         actions: [
           Builder(builder: (context){
-            return Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
-                onPressed: (){
-                  Scaffold.of(context).openDrawer();
-                },
-              ),
+            return Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
+                    onPressed: (){
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+              ],
             );
           })
         ],
