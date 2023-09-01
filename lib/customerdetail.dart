@@ -516,7 +516,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 10),
                       child: Text("Tax ID",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -526,7 +526,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           taxid!,
                           style: TextStyle(
@@ -539,14 +539,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Job Position",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -556,7 +556,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           jobposition!,
                           style: TextStyle(
@@ -569,14 +569,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Mobile",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -586,7 +586,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           mobile!,
                           style: TextStyle(
@@ -599,14 +599,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Customer Rank",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -616,7 +616,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           customerrank!,
                           style: TextStyle(
@@ -629,14 +629,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Supplier Rank",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -646,7 +646,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           supplierrank!,
                           style: TextStyle(
@@ -659,14 +659,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Email",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -676,7 +676,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           email!,
                           style: TextStyle(
@@ -689,14 +689,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Website",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -706,7 +706,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           website!,
                           style: TextStyle(
@@ -719,14 +719,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Title",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -736,7 +736,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           title!,
                           style: TextStyle(
@@ -749,14 +749,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Tags",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -803,14 +803,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
           ),
                ] ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Salesperson",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -820,7 +820,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           salesperson!,
                           style: TextStyle(
@@ -833,14 +833,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Payment Terms",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -850,7 +850,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           paymentterms!,
                           style: TextStyle(
@@ -863,14 +863,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Fiscal Position",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -880,7 +880,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           "Fiscal Position",
                           style: TextStyle(
@@ -893,14 +893,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Reference",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -910,7 +910,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           reference!,
                           style: TextStyle(
@@ -923,14 +923,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Company",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -940,7 +940,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           company!,
                           style: TextStyle(
@@ -953,14 +953,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                   child: Divider(color: Color(0xFFEBEBEB)),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 20),
+                      padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Internal Notes",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -970,7 +970,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       width: MediaQuery.of(context).size.width / 3.5,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 20),
+                        padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
                           internalnotes!,
                           style: TextStyle(
@@ -995,7 +995,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     height: 39,
                     color: Color(0xFFF5F5F5),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 13,bottom: 10),
+                      padding: const EdgeInsets.only(left: 25, top: 5,bottom: 10),
                       child: Text(
                         "Contacts & Addresses", style: TextStyle(fontSize: 15,
                           fontWeight: FontWeight.w700,

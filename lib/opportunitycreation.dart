@@ -1774,8 +1774,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     padding: const EdgeInsets.only(top: 20, bottom: 30),
                     child: Center(
                       child: SizedBox(
-                        width: 316,
-                        height: 33,
+                        width: 390,
+                        height: 56,
                         child: ElevatedButton(
                             child: Text(
                               "ADD",
