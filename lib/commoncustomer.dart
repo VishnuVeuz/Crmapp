@@ -64,27 +64,28 @@ class _CustomerListState extends State<CustomerList> {
 
                         Padding(
                           padding: const EdgeInsets
-                              .only(left: 10),
+                              .only(left: 15),
                           child: Container(
 
                             height: 100,
                             width:MediaQuery.of(context).size.width/4 ,
 
+
                             decoration: BoxDecoration(
-                            //  color: Colors.red,
+                              //color: Colors.red,
                               border: Border.all(
                               ),
                               borderRadius: BorderRadius
                                   .all(
                                   Radius.circular(
-                                      1)),
+                                      100)),
 
                             ),
                             child: ClipRRect(
 
                               borderRadius:
                               BorderRadius
-                                  .circular(0),
+                                  .circular(100),
                               child:Image.network("${widget.customerimage}?token=${token}"),
 
 
@@ -94,7 +95,7 @@ class _CustomerListState extends State<CustomerList> {
 
                         Padding(
                           padding: const EdgeInsets
-                              .only(left: 10),
+                              .only(left: 15),
                           child: Container(
 
                             height: 100,
@@ -107,14 +108,14 @@ class _CustomerListState extends State<CustomerList> {
                               borderRadius: BorderRadius
                                   .all(
                                   Radius.circular(
-                                      1)),
+                                      100)),
 
                             ),
                             child: ClipRRect(
 
                               borderRadius:
                               BorderRadius
-                                  .circular(0),
+                                  .circular(100),
                               child:Icon(Icons.person,size: 80,),
 
 
@@ -137,7 +138,7 @@ class _CustomerListState extends State<CustomerList> {
                                 child: Text(widget.name,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 15,
+                                      fontSize: 14,
                                       color: Colors.black),
                                 ),
                               ),
@@ -148,9 +149,9 @@ class _CustomerListState extends State<CustomerList> {
                                 width:MediaQuery.of(context).size.width/1.6,
                                 child: Text(widget.jobposition,
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14,
-                                      color: Colors.black),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                      color: Color(0xFF787878)),
                                 ),
                               ),
                             ),
@@ -161,18 +162,18 @@ class _CustomerListState extends State<CustomerList> {
                                   padding: const EdgeInsets.only(left: 15,top: 4),
                                   child: Text(widget.state,
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                        color: Colors.black),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: Color(0xFF787878)),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5,top: 4),
                                   child: Text(widget.country,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                        color: Colors.black),
+                                    style:  TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: Color(0xFF787878)),
                                   ),
                                 ),
                               ],
@@ -181,9 +182,9 @@ class _CustomerListState extends State<CustomerList> {
                               padding: const EdgeInsets.only(left: 15,top: 4),
                               child: Text(widget.email,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: Colors.black),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                    color: Color(0xFF787878)),
                               ),
                             ),
 
@@ -204,6 +205,7 @@ class _CustomerListState extends State<CustomerList> {
                                               widget.meetingcount,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w600,
+
                                                   fontSize: 10,
                                                   color: Color(0xFFED2449)),
                                             ),
