@@ -72,6 +72,8 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController bodyController = TextEditingController();
   TextEditingController phonenumberController = TextEditingController();
   TextEditingController subject2Controller = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+
 
 
 
@@ -4434,7 +4436,25 @@ class _LeadDetailState extends State<LeadDetail> {
                 Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
                 SizedBox(height: 5,),
                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
-                //SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Name',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height:5,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
@@ -4457,19 +4477,27 @@ class _LeadDetailState extends State<LeadDetail> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
-                  child: TextFormField(
-                    style: TextStyle(fontSize: 12),
-                    controller: subject2Controller,
-                    decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 12),
+                        controller: subject2Controller,
+                        decoration: const InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
-                        // border: UnderlineInputBorder(),
-                        labelText: 'Subject',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                            // border: UnderlineInputBorder(),
+                            labelText: 'Subject',
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        ),
+                      ),
                     ),
                   ),),
                 SizedBox(height: 5,),
