@@ -138,7 +138,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         backgroundColor: Theme
             .of(context)
             .primaryColor,
-        elevation: 20,
+        elevation: 0,
         title: Row(
           children: [
             Text("Quotations", style: TextStyle(
@@ -162,13 +162,42 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         automaticallyImplyLeading: false,
         actions: [
           Builder(builder: (context) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-              ),
+            return Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 0),
+                  child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                  ),
+                ),
+
+              ],
             );
           })
         ],
