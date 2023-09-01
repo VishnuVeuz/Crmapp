@@ -40,7 +40,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
     _loading = true;
     _error = false;
     print("sfgdds");
-  //  quotationType = widget.type;
+    //  quotationType = widget.type;
     fetchData();
   }
 
@@ -138,13 +138,13 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         backgroundColor: Theme
             .of(context)
             .primaryColor,
-        elevation: 0,
+        elevation: 20,
         title: Row(
           children: [
             Text("Quotations", style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 15,
-                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 20,
+                color: Color(0xFFFFFFFF),
                 decoration: TextDecoration.none),)
           ],
         ),
@@ -242,4 +242,5 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
 
 
 }
+
 

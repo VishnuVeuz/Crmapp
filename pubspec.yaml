@@ -178,6 +178,9 @@ flutter:
     - images/archive.svg
     - images/won.svg
     - images/duplicate.svg
+    - images/clock.svg
+    - images/clock2.svg
+    - images/searchicon.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

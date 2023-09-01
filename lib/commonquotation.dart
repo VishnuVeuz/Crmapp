@@ -1,5 +1,6 @@
 import 'package:crm_project/quotation_detail.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'leadmainpage.dart';
 import 'opportunity_detail.dart';
@@ -41,21 +42,25 @@ class QuotationList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,top: 15),
-                          child: Text(name,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: Colors.black),
+                          padding: const EdgeInsets.only(left: 15,top: 10),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width/2,
+
+                            child: Text(name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 15,right: 20),
+                          padding: const EdgeInsets.only(top: 10,right: 30),
                           child: Text(amount.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
-                                color: Colors.black),
+                                color: Color(0xFF000000)),
                           ),
                         ),
 
@@ -66,25 +71,33 @@ class QuotationList extends StatelessWidget {
 
                         Container(
                           //width: 230,
-                         // color: Colors.green,
+                          // color: Colors.green,
                           child: Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 15,top: 15),
+                                padding: const EdgeInsets.only(left: 15,top: 0),
                                 child: Text(quotationname,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Colors.black),
+                                      fontSize: 12,
+                                      color: Color(0xFF787878)),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15,top: 15),
+                                padding: const EdgeInsets.only(left: 5,top:0),
                                 child: Text(date,
-                                  style: TextStyle(
+                                  style:TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Colors.black),
+                                      fontSize: 12,
+                                      color: Color(0xFF787878)),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 0),
+                                child: IconButton(icon: SvgPicture.asset("images/clock.svg"),
+                                  onPressed: () {
+
+                                  },
                                 ),
                               ),
 
@@ -92,29 +105,29 @@ class QuotationList extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 80,right: 20),
+                          padding: const EdgeInsets.only(left: 45,right: 20),
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: Color(0xFF3D418E),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              // borderRadius: BorderRadius.all(Radius.circular(15)),
                               color: Color(0xFF3D418E),
                             ),
-                            height: 20,
-                            width: 60,
+                            height: 21,
+                            width: 84,
 
                             child: Center(
                               child: Text(state,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 9,
-                                    color: Colors.white),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize:12.16,
+                                  color: Color(0xFFFFFFFF),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-
+                        )
                       ],
                     )
 
@@ -143,4 +156,5 @@ class QuotationList extends StatelessWidget {
     );
   }
 }
+
 
