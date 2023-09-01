@@ -177,14 +177,42 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(
-                  icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+              return Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -1077,7 +1105,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1107,7 +1135,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1137,7 +1165,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1167,7 +1195,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1253,7 +1281,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1292,7 +1320,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1347,7 +1375,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1407,7 +1435,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1437,7 +1465,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1467,7 +1495,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1497,7 +1525,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1566,6 +1594,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                               },
                               child:  Card(
+                                elevation: 3,
                                 child: Padding(
                                   padding:
                                   const EdgeInsets.only(top: 10),
@@ -1647,9 +1676,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight
-                                                                  .w500,
+                                                                  .w600,
                                                               fontSize:
-                                                              11,
+                                                              12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1660,9 +1689,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight
-                                                                  .w500,
+                                                                  .w600,
                                                               fontSize:
-                                                              11,
+                                                              12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1672,9 +1701,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight
-                                                                  .w500,
+                                                                  .w600,
                                                               fontSize:
-                                                              11,
+                                                              12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1701,9 +1730,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight
-                                                                      .w500,
+                                                                      .w600,
                                                                   fontSize:
-                                                                  11,
+                                                                  12,
                                                                   color: Color(
                                                                       0xFF787878)),
                                                             ),
@@ -1714,9 +1743,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               style: TextStyle(
                                                                   fontWeight:
                                                                   FontWeight
-                                                                      .w500,
+                                                                      .w600,
                                                                   fontSize:
-                                                                  11,
+                                                                  12,
                                                                   color: Color(
                                                                       0xFF787878)),
                                                             ),

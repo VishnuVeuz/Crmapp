@@ -173,7 +173,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   padding: const EdgeInsets.only(right: 0),
                   child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+
                     },
                   ),
                 ),
@@ -181,7 +181,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   padding: const EdgeInsets.only(right: 0),
                   child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+
                     },
                   ),
                 ),
@@ -189,7 +189,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   padding: const EdgeInsets.only(right: 0),
                   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
                     onPressed: () {
-                      Scaffold.of(context).openDrawer();
+
                     },
                   ),
                 ),

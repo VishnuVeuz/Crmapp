@@ -199,14 +199,42 @@ class _LeadDetailState extends State<LeadDetail> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(
-                  icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+              return Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -607,7 +635,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -641,7 +669,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -675,7 +703,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -709,7 +737,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -787,7 +815,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -832,7 +860,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -888,7 +916,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
 
@@ -923,7 +951,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -957,7 +985,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -991,7 +1019,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1025,7 +1053,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Row(
@@ -1060,7 +1088,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
                   Padding(
@@ -1100,7 +1128,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 10, right: 0),
+                            top: 10, bottom: 30, left: 10, right: 0),
                         child: Center(
                           child: Container(
                             width: MediaQuery
@@ -1130,7 +1158,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 10, right: 0),
+                            top: 10, bottom: 30, left: 10, right: 0),
                         child: Center(
                           child: Container(
                             width: MediaQuery
@@ -1160,7 +1188,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 0, right: 10),
+                            top: 10, bottom: 30, left: 10, right: 10),
                         child: Center(
                           child: Container(
                             width: MediaQuery
