@@ -577,7 +577,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       showDialog(
                                                         context: context,
                                                         builder: (BuildContext context) =>
-                                                            _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ),
+                                                            _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition,"" ),
                                                       ).then((value) => setState(() {}));
                                                     },
                                                   ),
@@ -748,18 +748,37 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                             ),
                           ),
-                          Container(
-                            child: Row(
-                              children: [
-                                IconButton(onPressed:(){},
-                                    icon:Icon(Icons.mobile_friendly_rounded,size: 10,)),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: Text("SMS"),
-                                )
-                              ],
-                            ),
+                          InkWell(
+                            onTap: () async{
+                              var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
 
+
+                              var name , phone, smsId;
+                              bool smsCondition;
+                              name = smsResponce['recipient_single_description'];
+                              phone = smsResponce['recipient_single_number_itf'];
+                              smsId =smsResponce['id'];
+                              smsCondition = smsResponce['invalid_tag'];
+
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,"phone"),
+                              ).then((value) => setState(() {}));
+                            },
+                            child: Container(
+                              child: Row(
+                                children: [
+                                 Icon(Icons.mobile_friendly_rounded,size: 10,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text("SMS"),
+                                  )
+                                ],
+                              ),
+
+                            ),
                           ),
 
                         ],
@@ -801,18 +820,39 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                             ),
                           ),
-                          Container(
-                            child: Row(
-                              children: [
-                                IconButton(onPressed:(){},
-                                    icon:Icon(Icons.mobile_friendly_rounded,size: 10,)),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: Text("SMS"),
-                                )
-                              ],
+                          InkWell(
+                            onTap: () async {
+
+                              var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
+
+
+                              var name , phone, smsId;
+                              bool smsCondition;
+                              name = smsResponce['recipient_single_description'];
+                              phone = smsResponce['recipient_single_number_itf'];
+                              smsId =smsResponce['id'];
+                              smsCondition = smsResponce['invalid_tag'];
+
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,""),
+                              ).then((value) => setState(() {}));
+                            },
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.mobile_friendly_rounded,size: 10,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text("SMS"),
+                                  )
+                                ],
+                              ),
+
                             ),
-                            
                           ),
                           
                         ],
@@ -4509,7 +4549,7 @@ class _LeadDetailState extends State<LeadDetail> {
     });
   }
 
-  _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition){
+  _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition,String type){
 
 
     print(context);
@@ -4517,6 +4557,7 @@ class _LeadDetailState extends State<LeadDetail> {
     print(phone);
     print(smsId);
     print(smsCondition);
+    print(type);
 
 
      nameController.text = name;
@@ -4661,7 +4702,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 print(subject2Controller.text);
                                 print(phonenumberController.text);
                                 print(smsId);
-                                await sendSms(subject2Controller.text,phonenumberController.text,smsId);
+                                await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
 
                                 },
                               style: ElevatedButton.styleFrom(

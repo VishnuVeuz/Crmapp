@@ -3362,23 +3362,30 @@ smsDataGet(int resId,String resmodel) async {
   return responseList;
 }
 
-sendSms(String message,var mobileNumber,int smsId) async {
+sendSms(String message,var mobileNumber,int smsId,String numberType) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-
+  final msg;
   print("laakkkkk");
   try {
-    final msg = jsonEncode({
+
+    numberType == "phone" ?
+     msg = jsonEncode({
       "params": {
-
+        "number_field_name":"phone",
         "recipient_single_number_itf":mobileNumber,
-
         "body":message
-
       }
 
-    });
+    }):
+     msg = jsonEncode({
+       "params": {
+         "recipient_single_number_itf":mobileNumber,
+         "body":message
+       }
+
+     });
 
     Response response = await post(
       Uri.parse('${baseUrl}api/sms/${smsId}'),
@@ -3390,6 +3397,7 @@ sendSms(String message,var mobileNumber,int smsId) async {
     );
 
     print(msg);
+    print("final messages");
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
       print(data);
