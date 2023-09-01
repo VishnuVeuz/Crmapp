@@ -70,6 +70,10 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController feedbackController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
+  TextEditingController subject2Controller = TextEditingController();
+
+
 
 
   dynamic templateName,templateId;
@@ -517,7 +521,27 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 ),
                                                 Text("Unarchive")
                                               ],
-                                            )
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  width: 56,
+                                                  height: 56,
+                                                  child: IconButton(
+                                                    icon: SvgPicture.asset(
+                                                        "images/delete.svg"),
+                                                    onPressed: () async {
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) =>
+                                                            _buildSendsmsPopupDialog(context, 0),
+                                                      ).then((value) => setState(() {}));
+                                                    },
+                                                  ),
+                                                ),
+                                                Text("Send SMS")
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       );
@@ -4360,6 +4384,151 @@ class _LeadDetailState extends State<LeadDetail> {
 
                   }, child:Text("Save As New Template",style: TextStyle(color: Colors.black),)),
                 )
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
+
+  _buildSendsmsPopupDialog(BuildContext context,int sendtypeIds){
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Send SMS Text Messages",style: TextStyle(fontSize: 16),),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Text("Invalid phone number",style: TextStyle(color: Colors.black,fontSize: 12),),
+                SizedBox(height: 5,),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+               // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                //SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: phonenumberController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Phone Number',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: subject2Controller,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Subject',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height: 5,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Send SMS",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () {
+                                },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Close",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
 
               ],
             ),
