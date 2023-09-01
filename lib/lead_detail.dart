@@ -666,9 +666,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
+                          padding: const EdgeInsets.only(right:0),
                           child: Text(
                             company!,
                             style: TextStyle(
@@ -700,9 +700,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
+                          padding: const EdgeInsets.only(right: 0),
                           child: Text(
                             email!,
                             style: TextStyle(
@@ -738,7 +738,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 .size
                                 .width / 3,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 65),
+                              padding: const EdgeInsets.only(left: 45),
                               child: Text(
                                 phone!,
                                 style: TextStyle(
@@ -810,7 +810,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 .size
                                 .width / 3,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 65),
+                              padding: const EdgeInsets.only(left:25),
                               child: Text(
                                 mobile!,
                                 style: TextStyle(
