@@ -182,6 +182,7 @@ flutter:
     - images/clock2.svg
     - images/searchicon.svg
     - images/messages.svg
+    - images/trash.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -4,6 +4,8 @@ import 'package:crm_project/opportunity_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
@@ -1861,6 +1863,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 print("orderLineProducts[index];");
                               },
                               child: Card(
+                                elevation: 3,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 10),
                                   child: Container(
@@ -1889,7 +1892,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 10,
+                                                            top: 5,
                                                             left: 25),
                                                         child: Container(
                                                           width: 230,
@@ -1910,17 +1913,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 10,
-                                                            left: 40,
+                                                            top: 5,
+                                                            left: 30,
                                                             right: 25),
                                                         child: Text(
                                                           "sum: ${orderLineProductsData!['price_subtotal']}",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w500,
-                                                              fontSize: 11,
+                                                              FontWeight.w600,
+                                                              fontSize: 12,
                                                               color:
-                                                              Colors.black),
+                                                              Color(0xFF787878)),
                                                         ),
                                                       ),
                                                     ],
@@ -1928,7 +1931,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                   Padding(
                                                     padding:
                                                     const EdgeInsets.only(
-                                                        top: 10, left: 25),
+                                                        top: 5, left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -1937,8 +1940,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                           "Quantity : ",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w500,
-                                                              fontSize: 11,
+                                                              FontWeight.w600,
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1949,8 +1952,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w500,
-                                                              fontSize: 11,
+                                                              FontWeight.w600,
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1962,8 +1965,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w500,
-                                                              fontSize: 11,
+                                                              FontWeight.w600,
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -1978,7 +1981,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 5, left: 25),
+                                                            top: 0, left: 25),
                                                         child: Row(
                                                           mainAxisAlignment:
                                                           MainAxisAlignment
@@ -2015,14 +2018,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                         const EdgeInsets.only(
                                                             left: 200,
                                                             right: 25,
-                                                            bottom: 10),
+                                                            bottom: 0),
                                                         child: Container(
                                                           width: 30,
                                                           height: 30,
                                                           //color: Colors.green,
                                                           child: IconButton(
-                                                            icon: Icon(
-                                                                Icons.delete),
+                                                            icon:SvgPicture.asset("images/trash.svg"),
                                                             onPressed: () async{
                                                               print(index);
 
