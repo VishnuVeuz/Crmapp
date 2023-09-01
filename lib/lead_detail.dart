@@ -75,7 +75,7 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController subject2Controller = TextEditingController();
   TextEditingController nameController = TextEditingController();
 
-
+    bool smsVisible = true;
 
 
 
@@ -562,10 +562,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     icon: SvgPicture.asset(
                                                         "images/delete.svg"),
                                                     onPressed: () async {
+
+                                                   var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
+
+
+                                                   var name , phone, smsId;
+                                                   bool smsCondition;
+                                                   name = smsResponce['recipient_single_description'];
+                                                   phone = smsResponce['recipient_single_number_itf'];
+                                                   smsId =smsResponce['id'];
+                                                   smsCondition = smsResponce['invalid_tag'];
+
+
                                                       showDialog(
                                                         context: context,
                                                         builder: (BuildContext context) =>
-                                                            _buildSendsmsPopupDialog(context, 0),
+                                                            _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ),
                                                       ).then((value) => setState(() {}));
                                                     },
                                                   ),
@@ -4497,9 +4509,28 @@ class _LeadDetailState extends State<LeadDetail> {
     });
   }
 
-  _buildSendsmsPopupDialog(BuildContext context,int sendtypeIds){
+  _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition){
+
+
+    print(context);
+    print(name);
+    print(phone);
+    print(smsId);
+    print(smsCondition);
+
+
+     nameController.text = name;
+      phonenumberController.text = phone;
+      smsVisible = smsCondition;
+
+
+
     return StatefulBuilder(builder:(context,setState){
+      // nameController.text = name;
+      // phonenumberController.text = phone;
+
       return AlertDialog(
+
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
@@ -4533,7 +4564,9 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ],
                 ),
-                Text("Invalid phone number",style: TextStyle(color: Colors.black,fontSize: 12),),
+                Visibility(
+                  visible: smsVisible,
+                    child: Center(child: Text("Invalid phone number",style: TextStyle(color: Colors.red,fontSize: 12),))),
                 SizedBox(height: 5,),
                 Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
                 SizedBox(height: 5,),
@@ -4623,7 +4656,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                       color: Colors.white),
                                 ),
                               ),
-                              onPressed: () {
+                              onPressed: () async{
+
+                                print(subject2Controller.text);
+                                print(phonenumberController.text);
+                                print(smsId);
+                                await sendSms(subject2Controller.text,phonenumberController.text,smsId);
+
                                 },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF04254),

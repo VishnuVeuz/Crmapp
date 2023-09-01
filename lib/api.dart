@@ -3322,6 +3322,97 @@ getattchmentData(int dataId, String activityModel) async {
 }
 
 // send msg create
+
+
+// send text message
+
+smsDataGet(int resId,String resmodel) async {
+  String token = await getUserJwt();
+  var responseList;
+  print(token);
+
+
+  print( "${baseUrl}/api/sms?res_model=${resmodel}&res_id=${resId}");
+  try {
+
+    final response = await get(Uri.parse(
+
+        "${baseUrl}api/sms?res_model=${resmodel}&res_id=${resId}"),
+
+      headers: {
+
+        'Authorization': 'Bearer $token',
+
+      },
+    );
+
+    responseList = jsonDecode(response.body);
+
+    print(responseList);
+    print("responseList");
+
+
+
+
+
+  } catch (e) {
+    print("error --> $e");
+
+  }
+  return responseList;
+}
+
+sendSms(String message,var mobileNumber,int smsId) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+
+  print("laakkkkk");
+  try {
+    final msg = jsonEncode({
+      "params": {
+
+        "recipient_single_number_itf":mobileNumber,
+
+        "body":message
+
+      }
+
+    });
+
+    Response response = await post(
+      Uri.parse('${baseUrl}api/sms/${smsId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      resMessage = data['result']['message'];
+      print(resMessage);
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(resMessageText);
+  return resMessageText;
+}
+
+
+
+
 addMultiCmpnySF(String jsonListmultiCompany) async {
   String jsonListmultiCompanys;
 

@@ -69,10 +69,6 @@ class _SplashPageState extends State<SplashPage> {
     Timer(
         Duration(seconds: 2),
             () =>
-
-
-
-
                 loginnavigates(loginvalue),
     );
 
