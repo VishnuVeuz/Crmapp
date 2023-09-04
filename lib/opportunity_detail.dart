@@ -49,6 +49,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       customername,
       email,
       phone,
+      mobile,
       salesperson,
       salesperImg,
       priority,
@@ -1194,18 +1195,96 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 fontSize: 13,
                                 color: Color(0xFF666666))),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3.5,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            phone!,
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 3,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:25),
+                              child: Text(
+                                phone!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF000000)),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: ()  {},
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.mobile_friendly_rounded,size: 10,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text("SMS"),
+                                  )
+                                ],
+                              ),
+
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Text("Mobile",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13,
-                                color: Color(0xFF000000)),
+                                color: Color(0xFF666666))),
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 3,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:25),
+                              child: Text(
+                                mobile!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF000000)),
+                              ),
+                            ),
                           ),
-                        ),
+                          InkWell(
+                            onTap: ()  {},
+                            child: Container(
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.mobile_friendly_rounded,size: 10,),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10),
+                                    child: Text("SMS"),
+                                  )
+                                ],
+                              ),
+
+                            ),
+                          ),
+
+                        ],
                       ),
                     ],
                   ),
@@ -3510,6 +3589,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       customername = data['partner_id']['display_name'] ?? "";
       email = data['email_from'].toString() ?? "";
       phone = data['phone'].toString() ?? "";
+      mobile = data['mobile'].toString() ?? "";
       salesperson = data['user_id']['name'] ?? "";
       salesperImg = data['image'] ?? "";
       priority = data['priority'].toString() ?? "";
