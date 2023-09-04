@@ -5348,6 +5348,8 @@ class _LeadDetailState extends State<LeadDetail> {
   _buildFollowPopupDialog(BuildContext context, int typeIds) {
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
         title: TextButton(onPressed: ()async {
 
         var responce=  await followerDefaultDataGet(widget.leadId,"lead.lead");
