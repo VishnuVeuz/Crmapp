@@ -3853,7 +3853,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     padding: const EdgeInsets.only(top: 40),
                     child: Center(
                       child: SizedBox(
-                        width: 146,
+                        width: 316,
                         height: 38,
                         child: ElevatedButton(
                             child: Center(
@@ -5378,6 +5378,42 @@ class _LeadDetailState extends State<LeadDetail> {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  salesperImg != ""
+                      ? Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Container(
+                      width: 30,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+
+                      ),
+
+                    ),
+                  )
+                      : Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Container(
+                      width: 30,
+                      height: 25,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                            //  color: Colors.green
+                          ),
+
+                      ),
+                      child: CircleAvatar(
+                        radius: 12,
+                        child: Icon(
+                          Icons.person,
+                          size: 20,
+                          // Adjust the size of the icon as per your requirements
+                          color: Colors
+                              .white, // Adjust the color of the icon as per your requirements
+                        ),
+                      ),
+                    ),
+                  ),
                   Text("Item $i"),
                   Row(
                     children: [

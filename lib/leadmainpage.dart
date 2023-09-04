@@ -57,7 +57,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
           title: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                padding: const EdgeInsets.only(left: 0, right: 10),
                 child: Text(username, style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 18,
