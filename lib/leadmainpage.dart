@@ -92,17 +92,26 @@ class _LeadMainPageState extends State<LeadMainPage> {
               return Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right: 2),
-                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                      onPressed: () async {
-                        Scaffold.of(context).openDrawer();
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                      onPressed: () {
+
                       },
                     ),
-                  ),  Padding(
-                    padding: const EdgeInsets.only(right: 2),
-                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                      onPressed: () async {
-                        Scaffold.of(context).openDrawer();
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                      onPressed: () {
+
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 0),
+                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                      onPressed: () {
+
                       },
                     ),
                   ),

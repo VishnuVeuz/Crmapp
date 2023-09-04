@@ -76,6 +76,7 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController nameController = TextEditingController();
 
     bool smsVisible = true;
+  bool isCheckedEmail = false;
 
 
 
@@ -1255,7 +1256,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           Row(
                             children: [
                               Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                              TextButton(onPressed:(){}, child:Text("Followers",style: TextStyle(color: Colors.green),)),
+                              TextButton(onPressed:(){}, child:Text("Following",style: TextStyle(color: Colors.green),)),
                             ],
                           ),
                           Container(
@@ -1265,6 +1266,11 @@ class _LeadDetailState extends State<LeadDetail> {
                               onPressed: () {
 
 
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      _buildFollowPopupDialog(context, 0),
+                                ).then((value) => setState(() {}));
                               },
                             ),
                           ),
@@ -4580,6 +4586,230 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     });
   }
+  _buildAddfollowersPopupDialog(BuildContext context,int sendtypeIds){
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Invite Follower",style: TextStyle(fontSize: 16),),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          templateName= null;
+                          templateId=null;
+                          recipient!.clear();
+                          bodyController.text = "";
+                          subjectController.text = "";
+                        });
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                // SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: MultiSelectDropDown.network(
+                    hint: 'Add contacts to notify...' ,
+                    selectedOptions: editRecipientName
+                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .toList(),
+                    onOptionSelected: (options) {
+                      print(options);
+                      recipient!.clear();
+                      for (var options in options) {
+
+                        recipient!.add(options.value);
+                        print('Label: ${options.label}');
+                        print('Value: ${options.value}');
+                        print(recipient);
+                        print('-hgvvjb--');
+                      }
+
+                    },
+                    networkConfig: NetworkConfig(
+
+
+                      url: "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                      method: RequestMethod.get,
+                      headers: {
+
+
+                        'Authorization': 'Bearer $token',
+                      },
+                    ),
+                    chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+
+                    responseParser: (response) {
+                      debugPrint('Response: $response');
+
+                      final list = (response['record'] as List<
+                          dynamic>).map((e) {
+                        final item = e as Map<String, dynamic>;
+                        return ValueItem(
+
+                          label: item['display_name'],
+                          value: item['id'].toString(),
+                        );
+                      }).toList();
+
+                      return Future.value(list);
+                    },
+                    responseErrorBuilder: ((context, body) {
+                      print(body);
+                      print(token);
+                      return const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text('Error fetching the data'),
+                      );
+                    }),
+                  ),
+                ),
+                SizedBox(height: 5,),
+                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Checkbox(
+                    value: isCheckedEmail,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isCheckedEmail = value!;
+                      });
+                    },
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //       horizontal: 5, vertical: 5),
+                //   child: TextFormField(
+                //     style: TextStyle(fontSize: 12),
+                //     controller: subjectController,
+                //     decoration: const InputDecoration(
+                //         enabledBorder: UnderlineInputBorder(
+                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                //         ),
+                //         focusedBorder: UnderlineInputBorder(
+                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                //
+                //         // border: UnderlineInputBorder(),
+                //         labelText: 'Subject',
+                //         labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                //     ),
+                //   ),),
+                // SizedBox(height: 5,),
+                Container(
+                  //color: Colors.red,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey)
+                  ),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height/5,
+                  child: TextFormField(
+                    controller: bodyController,
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Add Followers",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () {
+
+                                createSendmessage();
+                                print(recipient);
+                                print("tagattagagaga");
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
 
   _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition,String type){
 
@@ -4927,6 +5157,30 @@ class _LeadDetailState extends State<LeadDetail> {
             ],
           ),
         ],
+      );
+    });
+  }
+
+  _buildFollowPopupDialog(BuildContext context, int typeIds) {
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+        title: TextButton(onPressed: (){
+          showDialog(
+            context: context,
+            builder: (BuildContext context) =>
+                _buildAddfollowersPopupDialog(context, 0),
+          ).then((value) => setState(() {}));
+        },
+        child: Text("Add Follower"),),
+        content:  Container(
+          width: double.maxFinite,
+          height:  MediaQuery.of(context).size.height/10,
+          child: ListView.builder(
+            itemCount: 2,
+            itemBuilder: (_, i) {
+              return Text("Item $i");
+            },
+          ),)
       );
     });
   }
