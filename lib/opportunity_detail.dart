@@ -300,6 +300,40 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             width: 56,
                             height: 56,
                             child: IconButton(
+                              icon: SvgPicture.asset(
+                                  "images/delete.svg"),
+                              onPressed: () async {
+                                print(widget.opportunityId);
+                                var data =
+                                await deleteOpportunityData(
+                                    widget
+                                        .opportunityId);
+
+                                if (data['message'] ==
+                                    "Success") {
+                                  print(data);
+
+                                  print("responcedata");
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            OpportunityMainPage(null,"")
+                                    ),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                          Text("Delete")
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 56,
+                            height: 56,
+                            child: IconButton(
                               icon: SvgPicture.asset("images/more.svg"),
                               onPressed: () {
                                 showModalBottomSheet<void>(
@@ -311,40 +345,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/delete.svg"),
-                                                    onPressed: () async {
-                                                      print(widget.opportunityId);
-                                                      var data =
-                                                      await deleteOpportunityData(
-                                                          widget
-                                                              .opportunityId);
 
-                                                      if (data['message'] ==
-                                                          "Success") {
-                                                        print(data);
-
-                                                        print("responcedata");
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  OpportunityMainPage(null,"")
-                                                          ),
-                                                        );
-                                                      }
-                                                    },
-                                                  ),
-                                                ),
-                                                Text("Delete")
-                                              ],
-                                            ),
                                             Column(
                                               children: [
                                                 SizedBox(
@@ -711,7 +712,21 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   ),),
                                                 Text("Unarchive")
                                               ],
-                                            )
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  width: 56,
+                                                  height: 56,
+                                                  child: IconButton(
+                                                    icon: SvgPicture.asset(
+                                                        "images/delete.svg"),
+                                                    onPressed: () {},
+                                                  ),
+                                                ),
+                                                Text("Send SMS")
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       );
