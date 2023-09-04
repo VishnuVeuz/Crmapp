@@ -4702,9 +4702,28 @@ class _LeadDetailState extends State<LeadDetail> {
                                 print(subject2Controller.text);
                                 print(phonenumberController.text);
                                 print(smsId);
-                                await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
+                                String resMessagee = await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
 
-                                },
+                                if( resMessagee == "success"){
+                                  subject2Controller.clear();
+                                  phonenumberController.clear();
+                                  nameController.clear();
+                                  smsId=0;
+                                  type = "";
+
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LeadDetail(widget.leadId)));
+
+
+
+                                }
+
+
+
+
+                              },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF04254),
                               )),
@@ -5249,6 +5268,7 @@ class _LeadDetailState extends State<LeadDetail> {
         tags = [];
       }
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
+
     });
 
     await getScheduleDetails();

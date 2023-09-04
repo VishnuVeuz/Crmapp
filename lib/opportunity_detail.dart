@@ -86,6 +86,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   TextEditingController feedbackController = TextEditingController();
 
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
+  TextEditingController subject2Controller = TextEditingController();
+
+  bool smsVisible = true;
+
+
+
+
   bool scheduleBtn=true,opencalendarBtn= false,meetingColum=true;
 
   DateTime? _selectedDate;
@@ -722,7 +732,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   child: IconButton(
                                                     icon: SvgPicture.asset(
                                                         "images/delete.svg"),
-                                                    onPressed: () {},
+                                                    onPressed: () async {
+
+                                                      var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
+
+
+                                                      var name , phone, smsId;
+                                                      bool smsCondition;
+                                                      name = smsResponce['recipient_single_description'];
+                                                      phone = smsResponce['recipient_single_number_itf'];
+                                                      smsId =smsResponce['id'];
+                                                      smsCondition = smsResponce['invalid_tag'];
+
+
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (BuildContext context) =>
+                                                            _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition,"" ),
+                                                      ).then((value) => setState(() {}));
+                                                    },
                                                   ),
                                                 ),
                                                 Text("Send SMS")
@@ -1214,7 +1242,24 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                           InkWell(
-                            onTap: ()  {},
+                            onTap: () async{
+                              var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
+
+
+                              var name , phone, smsId;
+                              bool smsCondition;
+                              name = smsResponce['recipient_single_description'];
+                              phone = smsResponce['recipient_single_number_itf'];
+                              smsId =smsResponce['id'];
+                              smsCondition = smsResponce['invalid_tag'];
+
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,"phone"),
+                              ).then((value) => setState(() {}));
+                            },
                             child: Container(
                               child: Row(
                                 children: [
@@ -1268,7 +1313,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                           InkWell(
-                            onTap: ()  {},
+                            onTap: () async {
+
+                              var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
+
+
+                              var name , phone, smsId;
+                              bool smsCondition;
+                              name = smsResponce['recipient_single_description'];
+                              phone = smsResponce['recipient_single_number_itf'];
+                              smsId =smsResponce['id'];
+                              smsCondition = smsResponce['invalid_tag'];
+
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,""),
+                              ).then((value) => setState(() {}));
+                            },
                             child: Container(
                               child: Row(
                                 children: [
@@ -4803,6 +4866,225 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Nothing is selected')));
     }
+  }
+
+  _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition,String type){
+
+
+    print(context);
+    print(name);
+    print(phone);
+    print(smsId);
+    print(smsCondition);
+    print(type);
+
+
+    nameController.text = name;
+    phonenumberController.text = phone;
+    smsVisible = smsCondition;
+
+
+
+    return StatefulBuilder(builder:(context,setState){
+      // nameController.text = name;
+      // phonenumberController.text = phone;
+
+      return AlertDialog(
+
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Send SMS Text Messages",style: TextStyle(fontSize: 16),),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Visibility(
+                    visible: smsVisible,
+                    child: Center(child: Text("Invalid phone number",style: TextStyle(color: Colors.red,fontSize: 12),))),
+                SizedBox(height: 5,),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: nameController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Name',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height:5,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: phonenumberController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Phone Number',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 12),
+                        controller: subject2Controller,
+                        decoration: const InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                            // border: UnderlineInputBorder(),
+                            labelText: 'Subject',
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        ),
+                      ),
+                    ),
+                  ),),
+                SizedBox(height: 5,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Send SMS",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () async{
+
+                                print(subject2Controller.text);
+                                print(phonenumberController.text);
+                                print(nameController.text);
+                                print(smsId);
+                                print(type);
+                              String resMessagee =   await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
+
+
+                              if( resMessagee == "success"){
+                                subject2Controller.clear();
+                                phonenumberController.clear();
+                                nameController.clear();
+                                smsId=0;
+                                type = "";
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OpportunityDetail(widget.opportunityId)));
+
+
+
+                              }
+
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Close",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
   }
 
 
