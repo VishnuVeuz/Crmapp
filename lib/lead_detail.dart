@@ -1442,7 +1442,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                     return Padding(
                                       padding:
-                                      const EdgeInsets.only(left: 0, right: 100),
+                                      const EdgeInsets.only(left: 0, right: 0),
                                       child:
                                           Container(
                                             //color: Colors.green,
@@ -1450,7 +1450,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             width: MediaQuery
                                                 .of(context)
                                                 .size
-                                                .width / 3,
+                                                .width ,
 
                                             child: GridView.builder(
                                               shrinkWrap: true,
@@ -1459,14 +1459,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                               itemCount: attachmentImagesDisplay.length,
                                               gridDelegate:
                                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 1),
+                                                  crossAxisCount: 4),
                                               itemBuilder:
                                                   (BuildContext context, int index) {
                                                 return Center(
                                                   child: Padding(
-                                                    padding: const EdgeInsets.only(left: 65),
+                                                    padding: const EdgeInsets.only(left: 25,right: 10),
                                                     child: Container(
-                                                     // color: Colors.green,
+                                                      //color: Colors.red,
                                                       child: Stack(
                                                         children: [
                                                           ClipRRect(
@@ -1482,8 +1482,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               bottom: 85,
                                                               top: 1,
                                                               child: Container(
-                                                                width: 15,
-                                                                // height: 15,
+                                                                width: 25,
+                                                                 height: 25,
                                                                 color: Colors.grey[200],
                                                                 child: IconButton(
                                                                   icon: Icon(

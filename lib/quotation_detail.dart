@@ -345,7 +345,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -379,7 +379,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -413,7 +413,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -447,7 +447,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -486,7 +486,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -534,7 +534,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     salespersonimg!=""?
                     Padding(
                       padding: const EdgeInsets
-                          .only(left: 80),
+                          .only(left: 110),
                       child: Container(
                         width: 30,
                         height: 30,
@@ -628,7 +628,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -662,7 +662,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -696,7 +696,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -730,7 +730,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3,
+                          .width /  2.4,
                       //height: 50,
                       //color: Colors.pinkAccent,
 
@@ -798,7 +798,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -832,7 +832,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -878,7 +878,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -924,7 +924,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -958,7 +958,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -992,7 +992,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -1026,7 +1026,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -1060,7 +1060,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -1094,7 +1094,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -1128,7 +1128,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width / 2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
@@ -1162,7 +1162,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3.5,
+                          .width /  2.4,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),

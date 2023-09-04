@@ -524,7 +524,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -554,7 +554,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width /2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -584,7 +584,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -614,7 +614,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -644,7 +644,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -674,7 +674,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -704,7 +704,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -734,7 +734,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width /2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -767,7 +767,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
             width: MediaQuery
                 .of(context)
                 .size
-                .width / 3,
+                .width / 2.3,
             //height: 50,
             //color: Colors.pinkAccent,
 
@@ -818,7 +818,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -848,7 +848,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -878,7 +878,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -908,7 +908,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -938,7 +938,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
@@ -968,7 +968,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               color: Color(0xFF666666))),
                     ),
                     Container(
-                      width: MediaQuery.of(context).size.width / 3.5,
+                      width: MediaQuery.of(context).size.width / 2.3,
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10, top: 0),
                         child: Text(
