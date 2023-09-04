@@ -1477,9 +1477,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             ),
                                                           ),
                                                           Positioned(
-                                                              left: 57,
+                                                              left: 37,
                                                               right: 0,
-                                                              bottom: 85,
+                                                              bottom: 70,
                                                               top: 1,
                                                               child: Container(
                                                                 width: 25,
@@ -4739,11 +4739,19 @@ class _LeadDetailState extends State<LeadDetail> {
                       .height/5,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
-                    child: TextFormField(
-                      controller: bodyController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Message',
+                    child: Container(
+                      //color: Colors.red,
+                      //width: MediaQuery.of(context).size.width/4,
+                      child: TextField(
+                        textAlignVertical: TextAlignVertical.top,
+                        expands: true,
+                        maxLines: null,
+                        controller: bodyController,
+
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Message',
+                        ),
                       ),
                     ),
                   ),
