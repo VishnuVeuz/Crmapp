@@ -777,6 +777,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Row(
                                   children: [
                                    Icon(Icons.mobile_friendly_rounded,size: 10,),
+                                    SizedBox(width: 3,),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10),
                                       child: Text("SMS"),
@@ -854,6 +855,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   children: [
                                     Icon(
                                       Icons.mobile_friendly_rounded,size: 10,),
+                                    SizedBox(width: 3,),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10),
                                       child: Text("SMS"),
@@ -1236,7 +1238,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           Container(
                             width: 50,
                             child: IconButton(
-                              icon: Image.asset("images/pin.png"),
+                              icon:SvgPicture.asset("images/user.svg"),
                               onPressed: () {
                                 setState(() {
                                   attachmentVisibility == true

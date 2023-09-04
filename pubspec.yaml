@@ -183,6 +183,7 @@ flutter:
     - images/searchicon.svg
     - images/messages.svg
     - images/trash.svg
+    - images/user.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
