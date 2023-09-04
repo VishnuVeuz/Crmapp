@@ -667,6 +667,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             .of(context)
                             .size
                             .width / 2.3,
+                       // color: Colors.red,
                         child: Padding(
                           padding: const EdgeInsets.only(right:0),
                           child: Text(
@@ -730,58 +731,61 @@ class _LeadDetailState extends State<LeadDetail> {
                                 fontSize: 13,
                                 color: Color(0xFF666666))),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 45),
-                              child: Text(
-                                phone!,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                    color: Color(0xFF000000)),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 36),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width / 3,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 45),
+                                child: Text(
+                                  phone!,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF000000)),
+                                ),
                               ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () async{
-                              var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
+                            InkWell(
+                              onTap: () async{
+                                var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
 
 
-                              var name , phone, smsId;
-                              bool smsCondition;
-                              name = smsResponce['recipient_single_description'];
-                              phone = smsResponce['recipient_single_number_itf'];
-                              smsId =smsResponce['id'];
-                              smsCondition = smsResponce['invalid_tag'];
+                                var name , phone, smsId;
+                                bool smsCondition;
+                                name = smsResponce['recipient_single_description'];
+                                phone = smsResponce['recipient_single_number_itf'];
+                                smsId =smsResponce['id'];
+                                smsCondition = smsResponce['invalid_tag'];
 
 
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,"phone"),
-                              ).then((value) => setState(() {}));
-                            },
-                            child: Container(
-                              child: Row(
-                                children: [
-                                 Icon(Icons.mobile_friendly_rounded,size: 10,),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: Text("SMS"),
-                                  )
-                                ],
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,"phone"),
+                                ).then((value) => setState(() {}));
+                              },
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                   Icon(Icons.mobile_friendly_rounded,size: 10,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Text("SMS"),
+                                    )
+                                  ],
+                                ),
+
                               ),
-
                             ),
-                          ),
 
-                        ],
+                          ],
+                        ),
                       ),
 
                     ],
@@ -802,60 +806,63 @@ class _LeadDetailState extends State<LeadDetail> {
                                 fontSize: 13,
                                 color: Color(0xFF666666))),
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:25),
-                              child: Text(
-                                mobile!,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                    color: Color(0xFF000000)),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 36),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width / 3,
+                              child: Padding(
+                                padding: const EdgeInsets.only(left:45),
+                                child: Text(
+                                  mobile!,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF000000)),
+                                ),
                               ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () async {
+                            InkWell(
+                              onTap: () async {
 
-                              var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
-
-
-                              var name , phone, smsId;
-                              bool smsCondition;
-                              name = smsResponce['recipient_single_description'];
-                              phone = smsResponce['recipient_single_number_itf'];
-                              smsId =smsResponce['id'];
-                              smsCondition = smsResponce['invalid_tag'];
+                                var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
 
 
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,""),
-                              ).then((value) => setState(() {}));
-                            },
-                            child: Container(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.mobile_friendly_rounded,size: 10,),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 10),
-                                    child: Text("SMS"),
-                                  )
-                                ],
+                                var name , phone, smsId;
+                                bool smsCondition;
+                                name = smsResponce['recipient_single_description'];
+                                phone = smsResponce['recipient_single_number_itf'];
+                                smsId =smsResponce['id'];
+                                smsCondition = smsResponce['invalid_tag'];
+
+
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,""),
+                                ).then((value) => setState(() {}));
+                              },
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.mobile_friendly_rounded,size: 10,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: Text("SMS"),
+                                    )
+                                  ],
+                                ),
+
                               ),
-
                             ),
-                          ),
-                          
-                        ],
+
+                          ],
+                        ),
                       ),
 
                     ],
@@ -879,7 +886,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       salesperImg != ""
                           ? Padding(
-                        padding: const EdgeInsets.only(left: 80),
+                        padding: const EdgeInsets.only(left: 110),
                         child: Container(
                           width: 30,
                           height: 30,
@@ -959,7 +966,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           width: MediaQuery
                               .of(context)
                               .size
-                              .width / 3,
+                              .width / 2.3,
                           child: Padding(
                             padding: const EdgeInsets.only(right: 24),
                             child: RatingBar.builder(
@@ -1004,7 +1011,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         //height: 50,
                         //color: Colors.pinkAccent,
 
@@ -1061,7 +1068,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
@@ -1095,7 +1102,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
@@ -1129,7 +1136,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
@@ -1163,7 +1170,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
@@ -1197,7 +1204,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery
                             .of(context)
                             .size
-                            .width / 3,
+                            .width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
