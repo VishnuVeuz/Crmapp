@@ -4737,8 +4737,15 @@ class _LeadDetailState extends State<LeadDetail> {
                       .of(context)
                       .size
                       .height/5,
-                  child: TextFormField(
-                    controller: bodyController,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: TextFormField(
+                      controller: bodyController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Message',
+                      ),
+                    ),
                   ),
                 ),
 
