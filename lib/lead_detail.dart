@@ -1265,13 +1265,15 @@ class _LeadDetailState extends State<LeadDetail> {
                             width: 50,
                             child: IconButton(
                               icon: Image.asset("images/pin.png"),
-                              onPressed: () {
+                              onPressed: () async {
+
+                           List followers = await getFollowers(widget.leadId,"lead.lead");
 
 
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(context, 0),
+                                      _buildFollowPopupDialog(context,followers),
                                 ).then((value) => setState(() {}));
                               },
                             ),
@@ -4787,6 +4789,8 @@ class _LeadDetailState extends State<LeadDetail> {
                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
 
                               if(resmessage == "success"){
+                                bodyController.clear();
+                                followerId=0;
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
@@ -4840,7 +4844,7 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     });
   }
-  _buildEditfollowersPopupDialog(BuildContext context,int sendtypeIds){
+  _buildEditfollowersPopupDialog(BuildContext context,List followerSub,int followerId){
     return StatefulBuilder(builder:(context,setState){
       return AlertDialog(
         shape: RoundedRectangleBorder(
@@ -4877,11 +4881,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       onPressed: () {
                         setState(() {
-                          templateName= null;
-                          templateId=null;
-                          recipient!.clear();
-                          bodyController.text = "";
-                          subjectController.text = "";
+
                         });
 
                         Navigator.pop(context);
@@ -4895,8 +4895,10 @@ class _LeadDetailState extends State<LeadDetail> {
                   width: double.maxFinite,
                   height:  MediaQuery.of(context).size.height/10,
                   child: ListView.builder(
-                    itemCount: 2,
+                    itemCount: followerSub.length,
+
                     itemBuilder: (_, i) {
+                      isCheckedFollowers = followerSub[i]["selected"];
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -4909,11 +4911,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                   onChanged: (bool? value) {
                                     setState(() {
                                       isCheckedFollowers = value!;
+                                      followerSub[i]["selected"]=isCheckedFollowers;
+
                                     });
                                   },
                                 ),
                               ),
-                              Text("Item $i"),
+                              Text(followerSub[i]["name"]),
                             ],
                           ),
 
@@ -4945,12 +4949,27 @@ class _LeadDetailState extends State<LeadDetail> {
                                       color: Colors.white),
                                 ),
                               ),
-                              onPressed: () {
+                              onPressed: () async{
 
-                                createSendmessage();
-                                print(recipient);
-                                print("tagattagagaga");
+                               print(followerSub);
+                               List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
 
+                                List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+
+                                print(selectedIds);
+
+
+
+                              String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
+
+                              if(resMessage == "success"){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LeadDetail(widget.leadId)));
+
+
+                              }
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF04254),
@@ -5345,7 +5364,7 @@ class _LeadDetailState extends State<LeadDetail> {
     });
   }
 
-  _buildFollowPopupDialog(BuildContext context, int typeIds) {
+  _buildFollowPopupDialog(BuildContext context, List followers) {
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
           shape: RoundedRectangleBorder(
@@ -5373,35 +5392,42 @@ class _LeadDetailState extends State<LeadDetail> {
           width: double.maxFinite,
           height:  MediaQuery.of(context).size.height/10,
           child: ListView.builder(
-            itemCount: 2,
+            itemCount: followers.length,
             itemBuilder: (_, i) {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  salesperImg != ""
+                  followers[i]['image'] != ""
                       ? Padding(
-                    padding: const EdgeInsets.only(left: 25),
+                    padding: const EdgeInsets.only(left: 15,right: 10),
                     child: Container(
                       width: 30,
                       height: 25,
-                      decoration: BoxDecoration(
-                        border: Border.all(),
-
+                      // decoration: BoxDecoration(
+                      //   border: Border.all(),
+                      //
+                      // ),
+                      child: CircleAvatar(
+                        radius: 12,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.network(
+                              "${followers[i]['image']}?token=${token}"),
+                        ),
                       ),
-
                     ),
                   )
                       : Padding(
-                    padding: const EdgeInsets.only(left: 25),
+                    padding: const EdgeInsets.only(left: 15,right: 10),
                     child: Container(
                       width: 30,
                       height: 25,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                            //  color: Colors.green
-                          ),
-
-                      ),
+                      // decoration: BoxDecoration(
+                      //     border: Border.all(
+                      //       //  color: Colors.green
+                      //     ),
+                      //
+                      // ),
                       child: CircleAvatar(
                         radius: 12,
                         child: Icon(
@@ -5409,22 +5435,51 @@ class _LeadDetailState extends State<LeadDetail> {
                           size: 20,
                           // Adjust the size of the icon as per your requirements
                           color: Colors
-                              .white, // Adjust the color of the icon as per your requirements
+                              .grey, // Adjust the color of the icon as per your requirements
                         ),
                       ),
                     ),
                   ),
-                  Text("Item $i"),
+                  Text(followers[i]['name']),
                   Row(
                     children: [
-                      IconButton(onPressed: (){
+                      IconButton(onPressed: ()async{
+
+
+                        List followerSub = await followerSubscription(followers[i]['id']);
+
+
+
+
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              _buildEditfollowersPopupDialog(context, 0),
+                              _buildEditfollowersPopupDialog(context, followerSub,followers[i]['id']),
                         ).then((value) => setState(() {}));
                       }, icon:Icon(Icons.edit,size: 18,)),
-                      IconButton(onPressed: (){}, icon:Icon(Icons.close,size: 18,))
+                      IconButton(onPressed: ()async{
+                        print(followers[i]['id']);
+                        print("ghkjdghjh");
+
+                        // "res_model": "lead.lead",
+                        //
+                        // "res_id": 197,
+                        //
+                        // "follower_id": 1822
+
+                      String resMessage = await unFollowing(widget.leadId,followers[i]['id'],"lead.lead");
+
+                      if(resMessage=="success"){
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LeadDetail(widget.leadId)));
+
+
+                      }
+
+
+                      }, icon:Icon(Icons.close,size: 18,))
                     ],
                   ),
 
