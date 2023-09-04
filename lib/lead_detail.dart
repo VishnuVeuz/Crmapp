@@ -77,6 +77,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
     bool smsVisible = true;
   bool isCheckedEmail = false;
+  bool isCheckedFollowers = false;
 
 
 
@@ -326,6 +327,38 @@ class _LeadDetailState extends State<LeadDetail> {
                             width: 56,
                             height: 56,
                             child: IconButton(
+                              icon: SvgPicture.asset(
+                                  "images/delete.svg"),
+                              onPressed: () async {
+                                print(widget.leadId);
+                                var data =
+                                await deleteLeadData(
+                                    widget.leadId);
+
+                                if (data['message'] ==
+                                    "Success") {
+                                  print("responce");
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (
+                                            context) =>
+                                            LeadScrolling(
+                                                "")),
+                                  );
+                                }
+                              },
+                            ),
+                          ),
+                          Text("Delete")
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 56,
+                            height: 56,
+                            child: IconButton(
                               icon: SvgPicture.asset("images/more.svg"),
                               onPressed: () {
                                 showModalBottomSheet<void>(
@@ -337,38 +370,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/delete.svg"),
-                                                    onPressed: () async {
-                                                      print(widget.leadId);
-                                                      var data =
-                                                      await deleteLeadData(
-                                                          widget.leadId);
 
-                                                      if (data['message'] ==
-                                                          "Success") {
-                                                        print("responce");
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (
-                                                                  context) =>
-                                                                  LeadScrolling(
-                                                                      "")),
-                                                        );
-                                                      }
-                                                    },
-                                                  ),
-                                                ),
-                                                Text("Delete")
-                                              ],
-                                            ),
                                             Column(
                                               children: [
                                                 SizedBox(
@@ -4825,6 +4827,160 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     });
   }
+  _buildEditfollowersPopupDialog(BuildContext context,int sendtypeIds){
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          // width: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .width,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Edit Subscription of",style: TextStyle(fontSize: 16),),
+                        SizedBox(width: 5,),
+                        Text(" Follower name",style: TextStyle(fontSize: 16),),
+
+                      ],
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          templateName= null;
+                          templateId=null;
+                          recipient!.clear();
+                          bodyController.text = "";
+                          subjectController.text = "";
+                        });
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Divider(color: Colors.grey,),
+
+           Container(
+                  width: double.maxFinite,
+                  height:  MediaQuery.of(context).size.height/10,
+                  child: ListView.builder(
+                    itemCount: 2,
+                    itemBuilder: (_, i) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Checkbox(
+                                  value: isCheckedFollowers,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isCheckedFollowers = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text("Item $i"),
+                            ],
+                          ),
+
+
+
+                        ],
+                      );
+                    },
+                  ),),
+
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Apply",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () {
+
+                                createSendmessage();
+                                print(recipient);
+                                print("tagattagagaga");
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
 
   _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition,String type){
 
@@ -5193,7 +5349,26 @@ class _LeadDetailState extends State<LeadDetail> {
           child: ListView.builder(
             itemCount: 2,
             itemBuilder: (_, i) {
-              return Text("Item $i");
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Item $i"),
+                  Row(
+                    children: [
+                      IconButton(onPressed: (){
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) =>
+                              _buildEditfollowersPopupDialog(context, 0),
+                        ).then((value) => setState(() {}));
+                      }, icon:Icon(Icons.edit,size: 18,)),
+                      IconButton(onPressed: (){}, icon:Icon(Icons.close,size: 18,))
+                    ],
+                  ),
+
+
+                ],
+              );
             },
           ),)
       );
