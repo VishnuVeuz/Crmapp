@@ -1238,7 +1238,8 @@ class _LeadDetailState extends State<LeadDetail> {
                           Container(
                             width: 50,
                             child: IconButton(
-                              icon:SvgPicture.asset("images/user.svg"),
+                              icon: Image.asset("images/pin.png"),
+
                               onPressed: () {
                                 setState(() {
                                   attachmentVisibility == true
@@ -1266,7 +1267,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           Container(
                             width: 50,
                             child: IconButton(
-                              icon: Image.asset("images/pin.png"),
+                              icon:SvgPicture.asset("images/user.svg"),
                               onPressed: () async {
 
                            List followers = await getFollowers(widget.leadId,"lead.lead");
