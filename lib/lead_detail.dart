@@ -4586,7 +4586,11 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     });
   }
-  _buildAddfollowersPopupDialog(BuildContext context,int sendtypeIds){
+  _buildAddfollowersPopupDialog(BuildContext context,int followerId,String message,bool send_mail){
+
+    isCheckedEmail =  send_mail;
+    bodyController.text = message;
+
     return StatefulBuilder(builder:(context,setState){
       return AlertDialog(
         shape: RoundedRectangleBorder(
@@ -4776,10 +4780,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                       color: Colors.white),
                                 ),
                               ),
-                              onPressed: () {
+                              onPressed: () async{
 
-                                createSendmessage();
-                                print(recipient);
+                           String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+
+                              if(resmessage == "success"){
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LeadDetail(widget.leadId)));
+
+                              }
+
+                                 print(recipient);
                                 print("tagattagagaga");
 
                               },
@@ -5179,11 +5192,22 @@ class _LeadDetailState extends State<LeadDetail> {
   _buildFollowPopupDialog(BuildContext context, int typeIds) {
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
-        title: TextButton(onPressed: (){
+        title: TextButton(onPressed: ()async {
+
+        var responce=  await followerDefaultDataGet(widget.leadId,"lead.lead");
+
+          int followerId;
+          var message;
+          bool send_mail;
+
+          followerId = responce['id'];
+         message = responce['message'];
+          send_mail = responce['send_mail'];
+
           showDialog(
             context: context,
             builder: (BuildContext context) =>
-                _buildAddfollowersPopupDialog(context, 0),
+                _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
           ).then((value) => setState(() {}));
         },
         child: Text("Add Follower"),),

@@ -3419,6 +3419,94 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
 }
 
 
+followerDefaultDataGet(int resId,String resmodel) async {
+  String token = await getUserJwt();
+  var responseList;
+  print(token);
+
+
+  print( "${baseUrl}api/follower?res_model=${resmodel}&res_id=${resId}");
+  try {
+
+    final response = await get(Uri.parse(
+
+        "${baseUrl}api/follower?res_model=${resmodel}&res_id=${resId}"),
+
+      headers: {
+
+        'Authorization': 'Bearer $token',
+
+      },
+    );
+
+    responseList = jsonDecode(response.body);
+
+    print(responseList);
+    print("responseList");
+
+
+
+
+
+  } catch (e) {
+    print("error --> $e");
+
+  }
+  return responseList;
+}
+
+
+
+followerCreate(String message,int wizardId ,recepient,bool send_mail) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+
+  try {
+    final msg = jsonEncode({
+
+      "params": {
+
+        "send_mail":send_mail,
+        "partner_ids": recepient ,
+        "message":message
+
+      }
+
+    }
+    );
+
+    Response response = await post(
+      Uri.parse('${baseUrl}api/follower/${wizardId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      resMessage = data['result']['message'];
+      print(resMessage);
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = "success";
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "error";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(resMessageText);
+  return resMessageText;
+}
+
+
 
 
 addMultiCmpnySF(String jsonListmultiCompany) async {
