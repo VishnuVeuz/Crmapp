@@ -1226,7 +1226,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 10,  left: 260, right: 10),
+                        top: 10,  left: 130, right: 10),
                     child: Center(
                       child: Row(
                         children: [
@@ -1245,9 +1245,34 @@ class _LeadDetailState extends State<LeadDetail> {
                             ),
                           ),
                           Container(
-                            width: 50,
+                            width: 30,
+                            //color: Colors.green,
                             child: Text(
                               attachmentCount!,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.check_sharp,size: 14,color: Colors.green,),
+                              TextButton(onPressed:(){}, child:Text("Followers",style: TextStyle(color: Colors.green),)),
+                            ],
+                          ),
+                          Container(
+                            width: 50,
+                            child: IconButton(
+                              icon: Image.asset("images/pin.png"),
+                              onPressed: () {
+
+
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: 30,
+                            //color: Colors.green,
+                            child: Text(
+                              "2",
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
