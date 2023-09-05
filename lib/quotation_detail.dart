@@ -1842,11 +1842,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                   return Padding(
                                     padding:
-                                    const EdgeInsets.only(left: 0, right: 100),
+                                    const EdgeInsets.only(left: 0, right: 0),
                                     child: Container(
                                       //color: Colors.green,
 
-                                      width: MediaQuery.of(context).size.width / 3,
+                                      width: MediaQuery.of(context).size.width ,
 
                                       child: GridView.builder(
                                         shrinkWrap: true,
@@ -1855,68 +1855,71 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         itemCount: attachmentImagesDisplay.length,
                                         gridDelegate:
                                         const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 1),
+                                            crossAxisCount: 4),
                                         itemBuilder:
                                             (BuildContext context, int index) {
 
 
                                           return Center(
-                                            child: Container(
-                                              child: Stack(
-                                                children: [
-                                                  ClipRRect(
-                                                    child: Image.network(
-                                                      "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                      height: 120,
-                                                      width: 80,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 25,right: 10),
+                                              child: Container(
+                                                child: Stack(
+                                                  children: [
+                                                    ClipRRect(
+                                                      child: Image.network(
+                                                        "${attachmentImagesDisplay[index]['url']}?token=${token}",
+                                                        height: 120,
+                                                        width: 80,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Positioned(
-                                                      left: 57,
-                                                      right: 0,
-                                                      bottom: 85,
-                                                      top: 1,
-                                                      child: Container(
-                                                        width: 15,
-                                                        // height: 15,
-                                                        color: Colors.grey[200],
-                                                        child: IconButton(
-                                                          icon: Icon(
-                                                            Icons
-                                                                .delete_outline_outlined,
-                                                            size: 15.0,
-                                                            color: Colors.grey[800],
-                                                          ),
-                                                          onPressed: () async {
-                                                            print(
-                                                                attachmentImagesDisplay[
-                                                                index]['id']);
-                                                            print("idvaluevalue");
-                                                            // print(
-                                                            //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                            int lodAttachmentId = attachmentImagesDisplay[index]['id'];
-                                                            var data = await deleteLogAttachment(
-                                                                lodAttachmentId);
-
-                                                            if (data['message'] ==
-                                                                "Success") {
+                                                    Positioned(
+                                                        left: 37,
+                                                        right: 0,
+                                                        bottom: 70,
+                                                        top: 1,
+                                                        child: Container(
+                                                          width: 25,
+                                                          height: 25,
+                                                          color: Colors.grey[200],
+                                                          child: IconButton(
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .delete_outline_outlined,
+                                                              size: 15.0,
+                                                              color: Colors.grey[800],
+                                                            ),
+                                                            onPressed: () async {
                                                               print(
-                                                                  "jhbdndsjbv");
-                                                              await getQuotationDetails();
-                                                              setState(() {
-                                                                attachmentImagesDisplay
-                                                                    .clear();
-                                                              });
-                                                            }
+                                                                  attachmentImagesDisplay[
+                                                                  index]['id']);
+                                                              print("idvaluevalue");
+                                                              // print(
+                                                              //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                              int lodAttachmentId = attachmentImagesDisplay[index]['id'];
+                                                              var data = await deleteLogAttachment(
+                                                                  lodAttachmentId);
 
-                                                            // print(
-                                                            //     data);
-                                                            print(
-                                                                "delete testststs");
-                                                          },
-                                                        ),
-                                                      ))
-                                                ],
+                                                              if (data['message'] ==
+                                                                  "Success") {
+                                                                print(
+                                                                    "jhbdndsjbv");
+                                                                await getQuotationDetails();
+                                                                setState(() {
+                                                                  attachmentImagesDisplay
+                                                                      .clear();
+                                                                });
+                                                              }
+
+                                                              // print(
+                                                              //     data);
+                                                              print(
+                                                                  "delete testststs");
+                                                            },
+                                                          ),
+                                                        ))
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
@@ -1934,7 +1937,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       TextButton(onPressed: (){
 
                         myAlert("attachment");
-                      }, child: Text("Select Attachments")),
+                      }, child:  Text("Select Attachments",style: TextStyle(color: Colors.black),)),
 
                     ],
                   ),
