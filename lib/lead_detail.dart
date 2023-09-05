@@ -15,7 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
-import 'activities.dart';
+import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
@@ -252,7 +252,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          Activities()));
+                                          ActivitiesNotification()));
                             },
                           ),
                           Positioned(

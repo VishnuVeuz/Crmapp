@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
 
-import '../activities.dart';
+import '../notificationactivity.dart';
 import '../commonquotation.dart';
 import '../globals.dart' as globals;
 import '../api.dart';
@@ -209,7 +209,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Activities()));
+                                        ActivitiesNotification()));
                           },
                         ),
                         Positioned(

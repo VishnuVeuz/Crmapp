@@ -18,7 +18,7 @@ import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
-import 'activities.dart';
+import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
 import 'lognoteedit.dart';
@@ -248,7 +248,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          Activities()));
+                                          ActivitiesNotification()));
                             },
                           ),
                           Positioned(

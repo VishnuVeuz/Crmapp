@@ -9,7 +9,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'activities.dart';
+import 'notificationactivity.dart';
 import 'api.dart';
 import 'commonleads.dart';
 import 'lead_detail.dart';
@@ -136,7 +136,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          Activities()));
+                                          ActivitiesNotification()));
                             },
                           ),
                           Positioned(

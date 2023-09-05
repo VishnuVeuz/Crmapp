@@ -5,7 +5,7 @@ import 'package:crm_project/scrolling/customerscrolling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'activities.dart';
+import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
@@ -142,7 +142,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          Activities()));
+                                          ActivitiesNotification()));
                             },
                           ),
                           Positioned(

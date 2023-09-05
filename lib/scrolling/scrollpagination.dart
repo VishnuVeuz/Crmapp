@@ -9,7 +9,7 @@ import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../activities.dart';
+import '../notificationactivity.dart';
 import '../api.dart';
 import '../drawer.dart';
 import '../leadmainpage.dart';
@@ -256,7 +256,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Activities()));
+                                        ActivitiesNotification()));
                           },
                         ),
                         Positioned(
