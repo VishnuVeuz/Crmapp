@@ -1232,105 +1232,14 @@ class _LeadDetailState extends State<LeadDetail> {
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(color: Color(0xFFEBEBEB)),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 10,  left: 130, right: 10),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon: Image.asset("images/pin.png"),
 
-                              onPressed: () {
-                                setState(() {
-                                  attachmentVisibility == true
-                                      ? attachmentVisibility = false
-                                      : attachmentVisibility = true;
-                                });
-
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 30,
-                            //color: Colors.green,
-                            child: Text(
-                              attachmentCount!,
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-
-                          followerStatus == false ?
-                          Row(
-                            children: [
-                              Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                              TextButton(onPressed:()async{
-
-                            String resMessage =   await followerFollow(widget.leadId,"lead.lead");
-
-                            if(resMessage == "success"){
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LeadDetail(widget.leadId)));
-                            }
-                              }, child:Text("Following",style: TextStyle(color: Colors.green),)),
-                            ],
-                          ):
-
-                          Row(
-                            children: [
-                              Icon(Icons.close,size: 14,color: Colors.red,),
-                              TextButton(onPressed:()async{
-                                String resMessage =  await followerUnFollow(widget.leadId,"lead.lead");
-
-                                if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LeadDetail(widget.leadId)));
-                                }
-                              }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
-                            ],
-                          ),
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon:SvgPicture.asset("images/user.svg"),
-                              onPressed: () async {
-
-                           List followers = await getFollowers(widget.leadId,"lead.lead");
-
-
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(context,followers),
-                                ).then((value) => setState(() {}));
-                              },
-                            ),
-                          ),
-                          Container(
-                            width: 30,
-                            //color: Colors.green,
-                            child: Text(
-                              followerCount!,
-                              style: TextStyle(fontSize: 15),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 30, left: 10, right: 0),
+                            top: 20, bottom: 10, left: 10, right: 0),
                         child: Center(
                           child: Container(
                             width: MediaQuery
@@ -1360,7 +1269,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 30, left: 10, right: 0),
+                            top: 20, bottom: 10, left: 10, right: 0),
                         child: Center(
                           child: Container(
                             width: MediaQuery
@@ -1390,7 +1299,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 10, bottom: 30, left: 10, right: 10),
+                            top: 20, bottom: 10, left: 10, right: 10),
                         child: Center(
                           child: Container(
                             width: MediaQuery
@@ -1454,6 +1363,104 @@ class _LeadDetailState extends State<LeadDetail> {
                       //   ),
                       // ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 10,  left:25, right: 10),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            child: IconButton(
+                              icon: Image.asset("images/pin.png"),
+
+                              onPressed: () {
+                                setState(() {
+                                  attachmentVisibility == true
+                                      ? attachmentVisibility = false
+                                      : attachmentVisibility = true;
+                                });
+
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: 30,
+                            //color: Colors.green,
+                            child: Text(
+                              attachmentCount!,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+
+                          followerStatus == false ?
+                          Padding(
+                            padding: const EdgeInsets.only(left: 80),
+                            child: Row(
+                              children: [
+                                Icon(Icons.check_sharp,size: 14,color: Colors.green,),
+                                TextButton(onPressed:()async{
+
+                                  String resMessage =   await followerFollow(widget.leadId,"lead.lead");
+
+                                  if(resMessage == "success"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => LeadDetail(widget.leadId)));
+                                  }
+                                }, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                              ],
+                            ),
+                          ):
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 80),
+                            child: Row(
+                              children: [
+                                Icon(Icons.close,size: 14,color: Colors.red,),
+                                TextButton(onPressed:()async{
+                                  String resMessage =  await followerUnFollow(widget.leadId,"lead.lead");
+
+                                  if(resMessage == "success"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => LeadDetail(widget.leadId)));
+                                  }
+                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: 50,
+                            child: IconButton(
+                              icon:SvgPicture.asset("images/user.svg"),
+                              onPressed: () async {
+
+                                List followers = await getFollowers(widget.leadId,"lead.lead");
+
+
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      _buildFollowPopupDialog(context,followers),
+                                ).then((value) => setState(() {}));
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: 30,
+                            //color: Colors.green,
+                            child: Text(
+                              followerCount!,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
 
                   // code for attchments

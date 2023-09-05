@@ -1676,7 +1676,33 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, bottom: 30, left: 10, right: 0),
+                          top: 20, bottom: 10, left: 10, right: 0),
+                      child: Center(
+                        child: Container(
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width / 3.5,
+                          child: ElevatedButton(
+                              child: Text(
+                                "Send Message",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13.57,
+                                    color: Colors.black),
+                              ),
+                              onPressed: () {
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 20, bottom: 10, left: 10, right: 0),
                       child: Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3.5,
@@ -1699,7 +1725,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, bottom: 30, left: 0, right: 10),
+                          top: 20, bottom: 10, left: 0, right: 10),
                       child: Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width / 3.5,
@@ -1728,38 +1754,67 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, bottom: 30, left: 0, right: 10),
-                      child: Center(
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 50,
-                              child: IconButton(
-                                icon: Image.asset("images/pin.png"),
-                                onPressed: () {
-                                  setState(() {
-                                    attachmentVisibility == true
-                                        ? attachmentVisibility = false
-                                        : attachmentVisibility = true;
-                                  });
 
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: 50,
-                              child: Text(
-                                attachmentCount!,
-                                style: TextStyle(fontSize: 15),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 10, bottom: 10, left: 25, right: 10),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          child: IconButton(
+                            icon: Image.asset("images/pin.png"),
+                            onPressed: () {
+                              setState(() {
+                                attachmentVisibility == true
+                                    ? attachmentVisibility = false
+                                    : attachmentVisibility = true;
+                              });
+
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: 50,
+                          child: Text(
+                            attachmentCount!,
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 60),
+                          child: Row(
+                            children: [
+                              Icon(Icons.check_sharp,size: 14,color: Colors.green,),
+                              TextButton(onPressed:(){}, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                              Container(
+                                width: 50,
+                                child: IconButton(
+                                  icon:SvgPicture.asset("images/user.svg"),
+                                  onPressed: ()  {
+
+
+                                  },
+                                ),
+                              ),
+                              Container(
+                                width: 30,
+                                //color: Colors.green,
+                                child: Text(
+                                  "4",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
 
                 // code for attchments
@@ -1787,11 +1842,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                   return Padding(
                                     padding:
-                                    const EdgeInsets.only(left: 0, right: 100),
+                                    const EdgeInsets.only(left: 0, right: 0),
                                     child: Container(
                                       //color: Colors.green,
 
-                                      width: MediaQuery.of(context).size.width / 3,
+                                      width: MediaQuery.of(context).size.width ,
 
                                       child: GridView.builder(
                                         shrinkWrap: true,
@@ -1800,68 +1855,71 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         itemCount: attachmentImagesDisplay.length,
                                         gridDelegate:
                                         const SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: 1),
+                                            crossAxisCount: 4),
                                         itemBuilder:
                                             (BuildContext context, int index) {
 
 
                                           return Center(
-                                            child: Container(
-                                              child: Stack(
-                                                children: [
-                                                  ClipRRect(
-                                                    child: Image.network(
-                                                      "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                      height: 120,
-                                                      width: 80,
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 25,right: 10),
+                                              child: Container(
+                                                child: Stack(
+                                                  children: [
+                                                    ClipRRect(
+                                                      child: Image.network(
+                                                        "${attachmentImagesDisplay[index]['url']}?token=${token}",
+                                                        height: 120,
+                                                        width: 80,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Positioned(
-                                                      left: 57,
-                                                      right: 0,
-                                                      bottom: 85,
-                                                      top: 1,
-                                                      child: Container(
-                                                        width: 15,
-                                                        // height: 15,
-                                                        color: Colors.grey[200],
-                                                        child: IconButton(
-                                                          icon: Icon(
-                                                            Icons
-                                                                .delete_outline_outlined,
-                                                            size: 15.0,
-                                                            color: Colors.grey[800],
-                                                          ),
-                                                          onPressed: () async {
-                                                            print(
-                                                                attachmentImagesDisplay[
-                                                                index]['id']);
-                                                            print("idvaluevalue");
-                                                            // print(
-                                                            //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                            int lodAttachmentId = attachmentImagesDisplay[index]['id'];
-                                                            var data = await deleteLogAttachment(
-                                                                lodAttachmentId);
-
-                                                            if (data['message'] ==
-                                                                "Success") {
+                                                    Positioned(
+                                                        left: 37,
+                                                        right: 0,
+                                                        bottom: 70,
+                                                        top: 1,
+                                                        child: Container(
+                                                          width: 25,
+                                                          height: 25,
+                                                          color: Colors.grey[200],
+                                                          child: IconButton(
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .delete_outline_outlined,
+                                                              size: 15.0,
+                                                              color: Colors.grey[800],
+                                                            ),
+                                                            onPressed: () async {
                                                               print(
-                                                                  "jhbdndsjbv");
-                                                              await getQuotationDetails();
-                                                              setState(() {
-                                                                attachmentImagesDisplay
-                                                                    .clear();
-                                                              });
-                                                            }
+                                                                  attachmentImagesDisplay[
+                                                                  index]['id']);
+                                                              print("idvaluevalue");
+                                                              // print(
+                                                              //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                              int lodAttachmentId = attachmentImagesDisplay[index]['id'];
+                                                              var data = await deleteLogAttachment(
+                                                                  lodAttachmentId);
 
-                                                            // print(
-                                                            //     data);
-                                                            print(
-                                                                "delete testststs");
-                                                          },
-                                                        ),
-                                                      ))
-                                                ],
+                                                              if (data['message'] ==
+                                                                  "Success") {
+                                                                print(
+                                                                    "jhbdndsjbv");
+                                                                await getQuotationDetails();
+                                                                setState(() {
+                                                                  attachmentImagesDisplay
+                                                                      .clear();
+                                                                });
+                                                              }
+
+                                                              // print(
+                                                              //     data);
+                                                              print(
+                                                                  "delete testststs");
+                                                            },
+                                                          ),
+                                                        ))
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           );
@@ -1879,7 +1937,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       TextButton(onPressed: (){
 
                         myAlert("attachment");
-                      }, child: Text("Select Attachments")),
+                      }, child:  Text("Select Attachments",style: TextStyle(color: Colors.black),)),
 
                     ],
                   ),
