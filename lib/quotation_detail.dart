@@ -11,11 +11,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:multi_dropdown/models/value_item.dart';
+import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'lognoteedit.dart';
+import 'globals.dart' as globals;
 
 class QuotationDetail extends StatefulWidget {
   var quotationId;
@@ -29,7 +32,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
   String? quotationname,customername,expiration,pricelist,paymentterms,
       salesperson,salesteam,company,customerreference,tags,shippingpolicy,deliverydate,
       fiscalposition,sourcedocument,campaign,medium,source,createdby,
-      createdon,lastupdatedby,lastupdatedon,salespersonimg, attachmentCount = "0";
+      createdon,lastupdatedby,lastupdatedon,salespersonimg, attachmentCount = "0", followerCount = "0";
+
+  bool followerStatus=false;
+
 
   bool _isInitialized = false;
   bool optvisibility = false,ordervisibility = true;
@@ -49,8 +55,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
   TextEditingController DuedateTime = TextEditingController();
 
   TextEditingController feedbackController = TextEditingController();
-
+  TextEditingController subjectController = TextEditingController();
+  TextEditingController bodyController = TextEditingController();
   bool scheduleBtn=true,opencalendarBtn= false,meetingColum=true;
+  bool isCheckedEmail = false;
+  bool isCheckedFollowers = false;
+
 
   DateTime? _selectedDate;
   var DuedateTimeFinal;
@@ -58,7 +68,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   bool scheduleView=false,scheduleActivityVisibility = true,
       scheduleVisibiltyOverdue=false,scheduleVisibiltyToday=false,
       scheduleVisibiltyPlanned=false, attachmentVisibility = false,
-      lognoteoptions = true, starImage = false;
+      lognoteoptions = true, starImage = false, followersVisibility = false;
 
 
   String? scheduleDays,scheduleactivityType,scheduleSummary,scheduleUser,
@@ -92,6 +102,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
   List logDataTitle=[];
   List ddd2=[];
   List? tagss=[];
+  List? recipient = [];
+  List<ValueItem> editRecipientName = [];
+  List selctedRecipient = [];
+
+  dynamic templateName,templateId;
+
+
 
   bool isLoading = true;
 
@@ -1692,7 +1709,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     color: Colors.black),
                               ),
                               onPressed: () {
-
+                                setState(() {
+                                  followersVisibility == true
+                                      ? followersVisibility = false
+                                      : followersVisibility = true;
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.white,
@@ -1715,7 +1736,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     color: Colors.black),
                               ),
                               onPressed: () {
-                                setState(() {});
+                                setState(() {
+                                  followersVisibility == false
+                                      ? followersVisibility = false
+                                      : followersVisibility = false;
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.white,
@@ -1785,33 +1810,70 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           ),
                         ),
 
+                        followerStatus == false ?
                         Padding(
-                          padding: const EdgeInsets.only(left: 60),
+                          padding: const EdgeInsets.only(left: 80),
                           child: Row(
                             children: [
                               Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                              TextButton(onPressed:(){}, child:Text("Following",style: TextStyle(color: Colors.green),)),
-                              Container(
-                                width: 50,
-                                child: IconButton(
-                                  icon:SvgPicture.asset("images/user.svg"),
-                                  onPressed: ()  {
+                              TextButton(onPressed:()async{
 
+                                String resMessage =   await followerFollow(widget.quotationId,"sale.order");
 
-                                  },
-                                ),
-                              ),
-                              Container(
-                                width: 30,
-                                //color: Colors.green,
-                                child: Text(
-                                  "4",
-                                  style: TextStyle(fontSize: 15),
-                                ),
-                              ),
+                                if(resMessage == "success"){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuotationDetail(widget.quotationId)));
+                                }
+                              }, child:Text("Following",style: TextStyle(color: Colors.green),)),
                             ],
                           ),
-                        )
+                        ):
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 80),
+                          child: Row(
+                            children: [
+                              Icon(Icons.close,size: 14,color: Colors.red,),
+                              TextButton(onPressed:()async{
+                                String resMessage =  await followerUnFollow(widget.quotationId,"sale.order");
+
+                                if(resMessage == "success"){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuotationDetail(widget.quotationId)));
+                                }
+                              }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 50,
+                          child: IconButton(
+                            icon:SvgPicture.asset("images/user.svg"),
+                            onPressed: () async {
+
+                              List followers = await getFollowers(widget.quotationId,"sale.order");
+
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildFollowPopupDialog(context,followers),
+                              ).then((value) => setState(() {}));
+                            },
+                          ),
+                        ),
+                        Container(
+                          width: 30,
+                          //color: Colors.green,
+                          child: Text(
+                            followerCount!,
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -1944,54 +2006,68 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 //
 
-                // code for attchments
 
 
-                // code for lognote
+                // code for send message
 
                 Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
 
                   //height: MediaQuery.of(context).size.height/6,
                   // color: Colors.green,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Visibility(
+                        visible:followersVisibility,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 73),
+                          child: Container(
+                            // color: Colors.red,
+                            child: Row(
+                              children: [
+                                Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11),),
+                                Text(" Followers of",style: TextStyle(color: Colors.grey[700],fontSize: 11),),
+                                SizedBox(width: 5,),
+                                Container(
+                                  //color: Colors.green,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width/2,
+                                    child: Text(quotationname!,style: TextStyle(color: Colors.black,fontSize: 11),)),
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
                       Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-
-                          salespersonimg != "" ?
-                          Padding(
-                            padding: const EdgeInsets
-                                .only(left: 25),
+                          salespersonimg != ""
+                              ? Padding(
+                            padding: const EdgeInsets.only(left: 25),
                             child: Container(
                               width: 30,
                               height: 30,
-
                               decoration: BoxDecoration(
-                                border: Border.all(
-                                ),
-                                borderRadius: BorderRadius
-                                    .all(
-                                    Radius.circular(
-                                        20)),
-
+                                border: Border.all(),
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(20)),
                               ),
                               child: CircleAvatar(
                                 radius: 12,
                                 child: ClipRRect(
-
                                   borderRadius:
-                                  BorderRadius
-                                      .circular(18),
+                                  BorderRadius.circular(18),
                                   child: Image.network(
                                       "${salespersonimg!}?token=${token}"),
-
-
                                 ),
-
-
                               ),
                             ),
                           )
@@ -2015,85 +2091,97 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   color: Colors
                                       .white, // Adjust the color of the icon as per your requirements
                                 ),
-
                               ),
                             ),
                           ),
-
                           Padding(
-                            padding: const EdgeInsets.only(left: 20,right: 20),
+                            padding:
+                            const EdgeInsets.only(left: 20, right: 20),
                             child: Container(
-                              width: MediaQuery.of(context).size.width/1.5,
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width / 1.5,
                               //height: 46,
                               decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: Color(
-                                          0xFFEBEBEB))),
+                                  border:
+                                  Border.all(color: Color(0xFFEBEBEB))),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    width: MediaQuery.of(context).size.width/1.5,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width /
+                                        1.5,
                                     // height: 40,
                                     // color: Colors.red,
-                                    child:Padding(
-                                      padding: const EdgeInsets.only(left: 10),
+                                    child: Padding(
+                                      padding:
+                                      const EdgeInsets.only(left: 10),
                                       child: TextField(
                                           controller: lognoteController,
-                                          decoration:
-                                          const InputDecoration(
-                                              border:
-                                              InputBorder.none,
+                                          decoration: const InputDecoration(
+                                              border: InputBorder.none,
                                               hintText:
                                               "Send a message to followers",
                                               hintStyle: TextStyle(
                                                 //fontFamily: "inter",
-                                                  fontWeight:
-                                                  FontWeight
-                                                      .w400,
-                                                  fontSize: 10,
-                                                  color: Color(
-                                                      0xFFAFAFAF)))),
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 12,
+                                                  color: Color(0xFFAFAFAF)))),
                                     ),
                                   ),
-                                  Divider(color: Colors.grey,),
+                                  Divider(
+                                    color: Colors.grey,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                        icon: Image.asset("images/pin.png"),
+                                        onPressed: () {
+                                          myAlert("lognote");
+                                        },
+                                      ),
+                                      IconButton(onPressed:()async{
 
-                                  IconButton(
-                                    icon: Image.asset(
-                                        "images/pin.png"),
-                                    onPressed: () {
 
-                                      myAlert("lognote");
-                                    },
+                                        recipient!.clear();
+                                        await  defaultSendmsgvalues();
+
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              _buildSendmessagePopupDialog(context, 0),
+                                        ).then((value) => setState(() {}));
+                                      },
+                                          icon:Icon(Icons.arrow_outward_rounded,size: 18,color: Colors.grey[700],))
+                                    ],
                                   ),
                                 ],
                               ),
                             ),
                           )
-
                         ],
                       ),
-
-
-                      selectedImages.isEmpty ?  Padding(
-                        padding: const EdgeInsets.only(left:73),
+                      selectedImages.isEmpty
+                          ? Padding(
+                        padding: const EdgeInsets.only(left: 73),
                         child: Container(
-
-                          width:
-                          MediaQuery
+                          width: MediaQuery
                               .of(context)
                               .size
                               .width,
                           // height: 40,
                         ),
                       )
-                          :
-                      Padding(
-                        padding: const EdgeInsets.only(left:70,right: 50),
+                          : Padding(
+                        padding:
+                        const EdgeInsets.only(left: 70, right: 50),
                         child: Container(
-
-                          width:
-                          MediaQuery
+                          width: MediaQuery
                               .of(context)
                               .size
                               .width,
@@ -2102,44 +2190,38 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             width: 40,
                             //height: 40,
                             child: GridView.builder(
-                              shrinkWrap: true, // Avoid scrolling
+                              shrinkWrap: true,
+                              // Avoid scrolling
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount:
-                              selectedImages.length,
+                              itemCount: selectedImages.length,
                               gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 8),
                               itemBuilder:
-                                  (BuildContext context,
-                                  int index) {
+                                  (BuildContext context, int index) {
                                 return Center(
                                     child: kIsWeb
                                         ? Image.network(
-                                        selectedImages[
-                                        index]
-                                            .path)
+                                        selectedImages[index].path)
                                         : Image.file(
-                                        selectedImages[
-                                        index]));
+                                        selectedImages[index]));
                               },
                             ),
                           ),
                         ),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 20,left: 73,top: 5),
+                            bottom: 20, left: 73, top: 5),
                         child: SizedBox(
-                          width: 56,
+                          width: 60,
                           height: 28,
                           child: ElevatedButton(
                               child: Center(
                                 child: Text(
-                                  "Log",
+                                  "Send",
                                   style: TextStyle(
-                                      fontWeight: FontWeight
-                                          .w700,
+                                      fontWeight: FontWeight.w700,
                                       fontSize: 11,
                                       color: Colors.white),
                                 ),
@@ -2148,12 +2230,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 for (int i = 0;
                                 i < selectedImages.length;
                                 i++) {
-                                  imagepath = selectedImages[i]
-                                      .path
-                                      .toString();
-                                  File imagefile = File(
-                                      imagepath); //convert Path to File
-                                  Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
+                                  imagepath =
+                                      selectedImages[i].path.toString();
+                                  File imagefile =
+                                  File(imagepath); //convert Path to File
+                                  Uint8List imagebytes = await imagefile
+                                      .readAsBytes(); //convert to bytes
                                   base64string = base64.encode(imagebytes);
 
                                   // base64string1.add(
@@ -2161,38 +2243,286 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   //
 
                                   String dataImages =
-                                      '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                      '{"name":"name","type":"binary","datas":"${base64string
+                                      .toString()}"}';
 
-                                  Map<String, dynamic> jsondata = jsonDecode(dataImages);
+                                  Map<String, dynamic> jsondata =
+                                  jsonDecode(dataImages);
                                   myData1.add(jsondata);
-
                                 }
                                 // print(myData1);
                                 // print("final datatata");
-
 
                                 await logNoteData(myData1);
                                 setState(() {
                                   logDataHeader.clear();
                                   logDataTitle.clear();
                                   selectedImagesDisplay.clear();
-                                  lognoteController.text= "";
+                                  lognoteController.text = "";
                                   selectedImages.clear();
                                   myData1.clear();
                                 });
-
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF04254),
                               )),
                         ),
                       ),
+
                     ],
                   ),
-
-
-
                 ),
+                // code for send message
+
+                // code for attchments
+
+
+                // code for lognote
+
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //
+                //   //height: MediaQuery.of(context).size.height/6,
+                //   // color: Colors.green,
+                //   child: Column(
+                //     crossAxisAlignment: CrossAxisAlignment.start,
+                //     children: [
+                //       Row(
+                //         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //         children: [
+                //
+                //           salespersonimg != "" ?
+                //           Padding(
+                //             padding: const EdgeInsets
+                //                 .only(left: 25),
+                //             child: Container(
+                //               width: 30,
+                //               height: 30,
+                //
+                //               decoration: BoxDecoration(
+                //                 border: Border.all(
+                //                 ),
+                //                 borderRadius: BorderRadius
+                //                     .all(
+                //                     Radius.circular(
+                //                         20)),
+                //
+                //               ),
+                //               child: CircleAvatar(
+                //                 radius: 12,
+                //                 child: ClipRRect(
+                //
+                //                   borderRadius:
+                //                   BorderRadius
+                //                       .circular(18),
+                //                   child: Image.network(
+                //                       "${salespersonimg!}?token=${token}"),
+                //
+                //
+                //                 ),
+                //
+                //
+                //               ),
+                //             ),
+                //           )
+                //               : Padding(
+                //             padding: const EdgeInsets.only(left: 25),
+                //             child: Container(
+                //               width: 30,
+                //               height: 30,
+                //               decoration: BoxDecoration(
+                //                   border: Border.all(
+                //                     //  color: Colors.green
+                //                   ),
+                //                   borderRadius: BorderRadius.all(
+                //                       Radius.circular(20))),
+                //               child: CircleAvatar(
+                //                 radius: 12,
+                //                 child: Icon(
+                //                   Icons.person,
+                //                   size: 20,
+                //                   // Adjust the size of the icon as per your requirements
+                //                   color: Colors
+                //                       .white, // Adjust the color of the icon as per your requirements
+                //                 ),
+                //
+                //               ),
+                //             ),
+                //           ),
+                //
+                //           Padding(
+                //             padding: const EdgeInsets.only(left: 20,right: 20),
+                //             child: Container(
+                //               width: MediaQuery.of(context).size.width/1.5,
+                //               //height: 46,
+                //               decoration: BoxDecoration(
+                //                   border: Border.all(
+                //                       color: Color(
+                //                           0xFFEBEBEB))),
+                //               child: Column(
+                //                 crossAxisAlignment: CrossAxisAlignment.start,
+                //                 children: [
+                //                   Container(
+                //                     width: MediaQuery.of(context).size.width/1.5,
+                //                     // height: 40,
+                //                     // color: Colors.red,
+                //                     child:Padding(
+                //                       padding: const EdgeInsets.only(left: 10),
+                //                       child: TextField(
+                //                           controller: lognoteController,
+                //                           decoration:
+                //                           const InputDecoration(
+                //                               border:
+                //                               InputBorder.none,
+                //                               hintText:
+                //                               "Send a message to followers",
+                //                               hintStyle: TextStyle(
+                //                                 //fontFamily: "inter",
+                //                                   fontWeight:
+                //                                   FontWeight
+                //                                       .w400,
+                //                                   fontSize: 10,
+                //                                   color: Color(
+                //                                       0xFFAFAFAF)))),
+                //                     ),
+                //                   ),
+                //                   Divider(color: Colors.grey,),
+                //
+                //                   IconButton(
+                //                     icon: Image.asset(
+                //                         "images/pin.png"),
+                //                     onPressed: () {
+                //
+                //                       myAlert("lognote");
+                //                     },
+                //                   ),
+                //                 ],
+                //               ),
+                //             ),
+                //           )
+                //
+                //         ],
+                //       ),
+                //
+                //
+                //       selectedImages.isEmpty ?  Padding(
+                //         padding: const EdgeInsets.only(left:73),
+                //         child: Container(
+                //
+                //           width:
+                //           MediaQuery
+                //               .of(context)
+                //               .size
+                //               .width,
+                //           // height: 40,
+                //         ),
+                //       )
+                //           :
+                //       Padding(
+                //         padding: const EdgeInsets.only(left:70,right: 50),
+                //         child: Container(
+                //
+                //           width:
+                //           MediaQuery
+                //               .of(context)
+                //               .size
+                //               .width,
+                //           // height: 40,
+                //           child: Container(
+                //             width: 40,
+                //             //height: 40,
+                //             child: GridView.builder(
+                //               shrinkWrap: true, // Avoid scrolling
+                //               physics: NeverScrollableScrollPhysics(),
+                //               itemCount:
+                //               selectedImages.length,
+                //               gridDelegate:
+                //               const SliverGridDelegateWithFixedCrossAxisCount(
+                //                   crossAxisCount: 8),
+                //               itemBuilder:
+                //                   (BuildContext context,
+                //                   int index) {
+                //                 return Center(
+                //                     child: kIsWeb
+                //                         ? Image.network(
+                //                         selectedImages[
+                //                         index]
+                //                             .path)
+                //                         : Image.file(
+                //                         selectedImages[
+                //                         index]));
+                //               },
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //
+                //       Padding(
+                //         padding: const EdgeInsets.only(
+                //             bottom: 20,left: 73,top: 5),
+                //         child: SizedBox(
+                //           width: 56,
+                //           height: 28,
+                //           child: ElevatedButton(
+                //               child: Center(
+                //                 child: Text(
+                //                   "Log",
+                //                   style: TextStyle(
+                //                       fontWeight: FontWeight
+                //                           .w700,
+                //                       fontSize: 11,
+                //                       color: Colors.white),
+                //                 ),
+                //               ),
+                //               onPressed: () async {
+                //                 for (int i = 0;
+                //                 i < selectedImages.length;
+                //                 i++) {
+                //                   imagepath = selectedImages[i]
+                //                       .path
+                //                       .toString();
+                //                   File imagefile = File(
+                //                       imagepath); //convert Path to File
+                //                   Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
+                //                   base64string = base64.encode(imagebytes);
+                //
+                //                   // base64string1.add(
+                //                   //     base64string);
+                //                   //
+                //
+                //                   String dataImages =
+                //                       '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                //
+                //                   Map<String, dynamic> jsondata = jsonDecode(dataImages);
+                //                   myData1.add(jsondata);
+                //
+                //                 }
+                //                 // print(myData1);
+                //                 // print("final datatata");
+                //
+                //
+                //                 await logNoteData(myData1);
+                //                 setState(() {
+                //                   logDataHeader.clear();
+                //                   logDataTitle.clear();
+                //                   selectedImagesDisplay.clear();
+                //                   lognoteController.text= "";
+                //                   selectedImages.clear();
+                //                   myData1.clear();
+                //                 });
+                //
+                //               },
+                //               style: ElevatedButton.styleFrom(
+                //                 primary: Color(0xFFF04254),
+                //               )),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                //
+                //
+                //
+                // ),
 
 
 
@@ -3459,6 +3789,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
       source = data['source_id']['name'] ?? "";
 
+      followerCount = data["followers_count"].toString() ?? "0";
+
+      followerStatus=data["message_is_follower"] ?? false;
+
 
 
       shippingpolicy = data['picking_policy'] ?? "";
@@ -4617,5 +4951,1132 @@ class _QuotationDetailState extends State<QuotationDetail> {
     });
   }
 
+  defaultSendmsgvalues() async {
+    recipient!.clear();
+    token = await getUserJwt();
+    var data = await defaultSendmessageData(widget.quotationId,"sale.order");
+    setState(() {
+      print(data);
+
+      subjectController.text = data['subject'].toString()??"";
+
+      for(int i=0;i<data['partner_ids'].length;i++)
+      {
+        selctedRecipient.add(data['partner_ids'][i]);
+
+      }
+
+      for(int i=0;i<selctedRecipient.length;i++){
+        editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
+
+      }
+
+      recipient = editRecipientName.map((item) => item.value).toList();
+
+
+      _isInitialized = true;
+    });
+
+    print(token);
+  }
+
+  _buildSendmessagePopupDialog(BuildContext context,int sendtypeIds){
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Odoo",style: TextStyle(fontSize: 16),),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          templateName= null;
+                          templateId=null;
+                          recipient!.clear();
+                          bodyController.text = "";
+                          subjectController.text = "";
+                        });
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: MultiSelectDropDown.network(
+                    hint: 'Add contacts to notify...' ,
+                    selectedOptions: editRecipientName
+                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .toList(),
+                    onOptionSelected: (options) {
+                      print(options);
+                      recipient!.clear();
+                      for (var options in options) {
+
+                        recipient!.add(options.value);
+                        print('Label: ${options.label}');
+                        print('Value: ${options.value}');
+                        print(recipient);
+                        print('-hgvvjb--');
+                      }
+
+                    },
+                    networkConfig: NetworkConfig(
+
+
+                      url: "${baseUrl}api/recipients?&model=sale.order&company_ids=${globals.selectedIds}",
+                      method: RequestMethod.get,
+                      headers: {
+
+
+                        'Authorization': 'Bearer $token',
+                      },
+                    ),
+                    chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+
+                    responseParser: (response) {
+                      debugPrint('Response: $response');
+
+                      final list = (response['record'] as List<
+                          dynamic>).map((e) {
+                        final item = e as Map<String, dynamic>;
+                        return ValueItem(
+
+                          label: item['display_name'],
+                          value: item['id'].toString(),
+                        );
+                      }).toList();
+
+                      return Future.value(list);
+                    },
+                    responseErrorBuilder: ((context, body) {
+                      print(body);
+                      print(token);
+                      return const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text('Error fetching the data'),
+                      );
+                    }),
+                  ),
+                ),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 12),
+                    controller: subjectController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Subject',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                    ),
+                  ),),
+                SizedBox(height: 5,),
+                Container(
+                  //color: Colors.red,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey)
+                  ),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height/5,
+                  child: TextFormField(
+                    controller: bodyController,
+                  ),
+                ),
+                InkWell(
+                  onTap: (){
+                    myAlert("lognote");
+                  },
+                  child: Container(
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 50,
+                          child: IconButton(
+                            icon: Image.asset("images/pin.png"),
+                            onPressed: () {
+                            },
+                          ),
+                        ),
+                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12),),
+
+
+                      ],
+                    ),
+                  ),
+                ),
+                selectedImages.isEmpty ?  Padding(
+                  padding: const EdgeInsets.only(left:25),
+                  child: Container(
+
+                    width:
+                    MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    // height: 40,
+                  ),
+                )
+                    :
+                Padding(
+                  padding: const EdgeInsets.only(left:25,right: 50),
+                  child: Container(
+
+                    width:
+                    MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    // height: 40,
+                    child: Container(
+                      width: 40,
+                      //height: 40,
+                      child: GridView.builder(
+                        shrinkWrap: true, // Avoid scrolling
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount:
+                        selectedImages.length,
+                        gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 8),
+                        itemBuilder:
+                            (BuildContext context,
+                            int index) {
+                          return Center(
+                              child: kIsWeb
+                                  ? Image.network(
+                                  selectedImages[
+                                  index]
+                                      .path)
+                                  : Image.file(
+                                  selectedImages[
+                                  index]));
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                // FutureBuilder(
+                //     future: getattchmentData(widget.leadId, "lead.lead"),
+                //     builder: (context, AsyncSnapshot snapshot) {
+                //
+                //       if (snapshot.hasError) {
+                //
+                //       }
+                //       if (snapshot.connectionState == ConnectionState.done) {
+                //         if (snapshot.hasData) {
+                //           if (snapshot.data == null) {
+                //
+                //             return const Center(
+                //                 child: Text('Something went wrong'));
+                //           }
+                //           if (snapshot.data.length != 0) {
+                //             attachmentImagesDisplay = snapshot.data;
+                //
+                //             return Padding(
+                //               padding:
+                //               const EdgeInsets.only(left: 0, right: 100),
+                //               child:
+                //               Container(
+                //                 //color: Colors.green,
+                //
+                //                 width: MediaQuery.of(context).size.width / 3,
+                //
+                //                 child: GridView.builder(
+                //                   shrinkWrap: true,
+                //
+                //                   physics: NeverScrollableScrollPhysics(),
+                //                   itemCount: attachmentImagesDisplay.length,
+                //                   gridDelegate:
+                //                   const SliverGridDelegateWithFixedCrossAxisCount(
+                //                       crossAxisCount: 1),
+                //                   itemBuilder:
+                //                       (BuildContext context, int index) {
+                //
+                //
+                //                     return Center(
+                //                       child: Container(
+                //                         child: Stack(
+                //                           children: [
+                //                             ClipRRect(
+                //                               child: Image.network(
+                //                                 "${attachmentImagesDisplay[index]['url']}?token=${token}",
+                //                                 height: 120,
+                //                                 width: 80,
+                //                               ),
+                //                             ),
+                //                             Positioned(
+                //                                 left: 57,
+                //                                 right: 0,
+                //                                 bottom: 85,
+                //                                 top: 1,
+                //                                 child: Container(
+                //                                   width: 15,
+                //                                   // height: 15,
+                //                                   color: Colors.grey[200],
+                //                                   child: IconButton(
+                //                                     icon: Icon(
+                //                                       Icons
+                //                                           .delete_outline_outlined,
+                //                                       size: 15.0,
+                //                                       color: Colors.grey[800],
+                //                                     ),
+                //                                     onPressed: () async {
+                //                                       print(
+                //                                           attachmentImagesDisplay[
+                //                                           index]['id']);
+                //                                       print("idvaluevalue");
+                //                                       // print(
+                //                                       //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                //                                       int lodAttachmentId = attachmentImagesDisplay[index]['id'];
+                //                                       var data = await deleteLogAttachment(
+                //                                           lodAttachmentId);
+                //
+                //                                       if (data['message'] ==
+                //                                           "Success") {
+                //                                         print(
+                //                                             "jhbdndsjbv");
+                //                                         await getLeadDetails();
+                //                                         setState(() {
+                //                                           attachmentImagesDisplay
+                //                                               .clear();
+                //                                         });
+                //                                       }
+                //
+                //                                       // print(
+                //                                       //     data);
+                //                                       print(
+                //                                           "delete testststs");
+                //                                     },
+                //                                   ),
+                //                                 ))
+                //                           ],
+                //                         ),
+                //                       ),
+                //                     );
+                //                   },
+                //                 ),
+                //               ),
+                //
+                //             );
+                //           } else {
+                //             return Container();
+                //           }
+                //         }
+                //       }
+                //       return Center(child: const CircularProgressIndicator());
+                //     }),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15, vertical: 5),
+                  child: SearchChoices.single(
+                    //items: items,
+
+                    value: templateName,
+                    hint: Text("Use template",
+                      style: TextStyle(fontSize: 10, color: Colors.black),),
+                    searchHint: null,
+                    autofocus: false,
+                    onChanged: (value) async{
+                      setState(() {
+                        print(value['capital']);
+                        print("value");
+                        templateName = value;
+                        templateId = value["id"];
+                      });
+
+                      print(templateId);
+                      print(widget.quotationId);
+                      print("djbfkjnksdnk");
+                      var resultData =  await templateSelectionData(templateId,widget.quotationId,"sale.order");
+
+                      if(resultData!=""){
+                        setState((){
+                          recipient?.clear();
+                          selctedRecipient.clear();
+                          editRecipientName.clear();
+                          subjectController.text = resultData["subject"];
+                          bodyController.text = resultData["body"];
+
+
+
+                          for(int i=0;i<resultData['partner_ids'].length;i++)
+                          {
+
+                            selctedRecipient.add(resultData['partner_ids'][i]);
+
+
+                          }
+
+
+                          for(int i=0;i<selctedRecipient.length;i++){
+                            editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
+
+                          }
+
+                          recipient = editRecipientName.map((item) => item.value).toList();
+
+
+
+
+                        });
+                      }
+
+
+
+                      print(resultData["body"]);
+                      print("dajksfkdmvd ");
+
+                    },
+
+                    dialogBox: false,
+                    isExpanded: true,
+                    menuConstraints: BoxConstraints.tight(
+                        const Size.fromHeight(300)),
+                    itemsPerPage: 10,
+                    currentPage: currentPage,
+                    selectedValueWidgetFn: (item) {
+                      return (Center(
+                          child: Container(
+                            width: 300,
+                            child: Text(item["name"], style: TextStyle(
+                                fontSize: 10, color: Colors.black),),
+                          )));
+                    },
+                    futureSearchFn: (String? keyword, String? orderBy,
+                        bool? orderAsc,
+                        List<Tuple2<String, String>>? filters,
+                        int? pageNb) async {
+                      Response response = await get(Uri.parse(
+                          "${baseUrl}api/message_templates?page_no=${pageNb ??
+                              1}&count=10${keyword == null
+                              ? ""
+                              : "&filter=$keyword"}&model=sale.order"),
+                        headers: {
+
+                          'Authorization': 'Bearer $token',
+
+                        },
+                      )
+                          .timeout(const Duration(
+                        seconds: 10,
+                      ));
+
+
+                      if (response.statusCode != 200) {
+                        throw Exception("failed to get data from internet");
+                      }
+
+                      dynamic data = jsonDecode(response.body);
+
+                      int nbResults = data["length"];
+
+                      List<DropdownMenuItem> results = (data["record"] as List<
+                          dynamic>)
+                          .map<DropdownMenuItem>((item) =>
+                          DropdownMenuItem(
+                            value: item,
+                            child: Card(
+
+                              child: Padding(
+                                padding: const EdgeInsets.all(0),
+                                child: Text(
+                                    "${item["name"]}"),
+
+                              ),
+                            ),
+                          ))
+                          .toList();
+                      return (Tuple2<List<DropdownMenuItem>, int>(
+                          results, nbResults));
+                    },
+
+
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Send",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () {
+
+                                createSendmessage();
+                                print(recipient);
+                                print("tagattagagaga");
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 150),
+                  child: TextButton(onPressed:()async{
+                    await newTemplate();
+
+                  }, child:Text("Save As New Template",style: TextStyle(color: Colors.black),)),
+                )
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
+
+  newTemplate() async {
+    String value = await newTemplateCreate(
+        bodyController.text , "sale.order",subjectController.text, widget.quotationId);
+
+    print(value);
+    print("valuesss");
+    return value;
+  }
+
+  createSendmessage() async {
+    String value = await sendMessageCreate(
+        bodyController.text , "sale.order",subjectController.text, widget.quotationId,recipient,templateId);
+
+    print(value);
+    print("valuesss");
+    return value;
+  }
+
+  _buildFollowPopupDialog(BuildContext context, List followers) {
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          title: TextButton(onPressed: ()async {
+
+            var responce=  await followerDefaultDataGet(widget.quotationId,"sale.order");
+
+            int followerId;
+            var message;
+            bool send_mail;
+
+            followerId = responce['id'];
+            message = responce['message'];
+            send_mail = responce['send_mail'];
+
+            showDialog(
+              context: context,
+              builder: (BuildContext context) =>
+                  _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
+            ).then((value) => setState(() {}));
+          },
+            child: Text("Add Follower"),),
+          content:  Container(
+            width: double.maxFinite,
+            height:  MediaQuery.of(context).size.height/5,
+            child: ListView.builder(
+              itemCount: followers.length,
+              itemBuilder: (_, i) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    followers[i]['image'] != ""
+                        ? Padding(
+                      padding: const EdgeInsets.only(left: 15,right: 10),
+                      child: Container(
+                        width: 30,
+                        height: 25,
+                        //color: Colors.green,
+                        // decoration: BoxDecoration(
+                        //   border: Border.all(),
+                        //
+                        // ),
+                        child: CircleAvatar(
+                          radius: 12,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(18),
+                            child: Image.network(
+                                "${followers[i]['image']}?token=${token}"),
+                          ),
+                        ),
+                      ),
+                    )
+                        : Padding(
+                      padding: const EdgeInsets.only(left: 15,right: 10),
+                      child: Container(
+                        width: 30,
+                        height: 25,
+                        // decoration: BoxDecoration(
+                        //     border: Border.all(
+                        //       //  color: Colors.green
+                        //     ),
+                        //
+                        // ),
+                        child: CircleAvatar(
+                          radius: 12,
+                          child: Icon(
+                            Icons.person,
+                            size: 20,
+                            // Adjust the size of the icon as per your requirements
+                            color: Colors
+                                .grey, // Adjust the color of the icon as per your requirements
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(followers[i]['name']),
+                    Row(
+                      children: [
+                        IconButton(onPressed: ()async{
+
+
+                          List followerSub = await followerSubscription(followers[i]['id']);
+
+
+
+
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) =>
+                                _buildEditfollowersPopupDialog(context, followerSub,followers[i]['id']),
+                          ).then((value) => setState(() {}));
+                        }, icon:Icon(Icons.edit,size: 18,)),
+                        IconButton(onPressed: ()async{
+                          print(followers[i]['id']);
+                          print("ghkjdghjh");
+
+                          // "res_model": "lead.lead",
+                          //
+                          // "res_id": 197,
+                          //
+                          // "follower_id": 1822
+
+                          String resMessage = await unFollowing(widget.quotationId,followers[i]['id'],"sale.order");
+
+                          if(resMessage=="success"){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => QuotationDetail(widget.quotationId)));
+
+
+                          }
+
+
+                        }, icon:Icon(Icons.close,size: 18,))
+                      ],
+                    ),
+
+
+                  ],
+                );
+              },
+            ),)
+      );
+    });
+  }
+
+  _buildAddfollowersPopupDialog(BuildContext context,int followerId,String message,bool send_mail){
+
+    isCheckedEmail =  send_mail;
+    bodyController.text = message;
+
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          width: MediaQuery
+              .of(context)
+              .size
+              .width,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Invite Follower",style: TextStyle(fontSize: 16),),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          templateName= null;
+                          templateId=null;
+                          recipient!.clear();
+                          bodyController.text = "";
+                          subjectController.text = "";
+                        });
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                // SizedBox(height: 10,),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 5, vertical: 5),
+                  child: MultiSelectDropDown.network(
+                    hint: 'Add contacts to notify...' ,
+                    selectedOptions: editRecipientName
+                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .toList(),
+                    onOptionSelected: (options) {
+                      print(options);
+                      recipient!.clear();
+                      for (var options in options) {
+
+                        recipient!.add(options.value);
+                        print('Label: ${options.label}');
+                        print('Value: ${options.value}');
+                        print(recipient);
+                        print('-hgvvjb--');
+                      }
+
+                    },
+                    networkConfig: NetworkConfig(
+
+
+                      url: "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                      method: RequestMethod.get,
+                      headers: {
+
+
+                        'Authorization': 'Bearer $token',
+                      },
+                    ),
+                    chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+
+                    responseParser: (response) {
+                      debugPrint('Response: $response');
+
+                      final list = (response['record'] as List<
+                          dynamic>).map((e) {
+                        final item = e as Map<String, dynamic>;
+                        return ValueItem(
+
+                          label: item['display_name'],
+                          value: item['id'].toString(),
+                        );
+                      }).toList();
+
+                      return Future.value(list);
+                    },
+                    responseErrorBuilder: ((context, body) {
+                      print(body);
+                      print(token);
+                      return const Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text('Error fetching the data'),
+                      );
+                    }),
+                  ),
+                ),
+                SizedBox(height: 5,),
+                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                SizedBox(height: 5,),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Checkbox(
+                    value: isCheckedEmail,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        isCheckedEmail = value!;
+                      });
+                    },
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(
+                //       horizontal: 5, vertical: 5),
+                //   child: TextFormField(
+                //     style: TextStyle(fontSize: 12),
+                //     controller: subjectController,
+                //     decoration: const InputDecoration(
+                //         enabledBorder: UnderlineInputBorder(
+                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                //         ),
+                //         focusedBorder: UnderlineInputBorder(
+                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                //
+                //         // border: UnderlineInputBorder(),
+                //         labelText: 'Subject',
+                //         labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                //     ),
+                //   ),),
+                // SizedBox(height: 5,),
+                Container(
+                  //color: Colors.red,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey)
+                  ),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height/5,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Container(
+                      //color: Colors.red,
+                      //width: MediaQuery.of(context).size.width/4,
+                      child: TextField(
+                        textAlignVertical: TextAlignVertical.top,
+                        expands: true,
+                        maxLines: null,
+                        controller: bodyController,
+
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Message',
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Add Followers",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () async{
+
+                                String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+
+                                if(resmessage == "success"){
+                                  bodyController.clear();
+                                  followerId=0;
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuotationDetail(widget.quotationId)));
+
+                                }
+
+                                print(recipient);
+                                print("tagattagagaga");
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
+  _buildEditfollowersPopupDialog(BuildContext context,List followerSub,int followerId){
+    return StatefulBuilder(builder:(context,setState){
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content:Container(
+          // width: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .width,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
+          child:SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Text("Edit Subscription of",style: TextStyle(fontSize: 16),),
+                        SizedBox(width: 5,),
+                        Text(" Follower name",style: TextStyle(fontSize: 16),),
+
+                      ],
+                    ),
+                    IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+
+                        });
+
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                Divider(color: Colors.grey,),
+
+                Container(
+                  width: double.maxFinite,
+                  height:  MediaQuery.of(context).size.height/2.5,
+                  child: ListView.builder(
+                    itemCount: followerSub.length,
+
+                    itemBuilder: (_, i) {
+                      isCheckedFollowers = followerSub[i]["selected"];
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Checkbox(
+                                  value: isCheckedFollowers,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      isCheckedFollowers = value!;
+                                      followerSub[i]["selected"]=isCheckedFollowers;
+
+                                    });
+                                  },
+                                ),
+                              ),
+                              Text(followerSub[i]["name"]),
+                            ],
+                          ),
+
+
+
+                        ],
+                      );
+                    },
+                  ),),
+
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Apply",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white),
+                                ),
+                              ),
+                              onPressed: () async{
+
+                                print(followerSub);
+                                List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
+
+                                List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+
+                                print(selectedIds);
+
+
+
+                                String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
+
+                                if(resMessage == "success"){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => QuotationDetail(widget.quotationId)));
+
+
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF04254),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 15,),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                              ),
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.white,
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5,),
+
+
+              ],
+            ),
+          ) ,
+        ) ,
+      );
+    });
+  }
 
 }

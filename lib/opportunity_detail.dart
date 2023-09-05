@@ -6473,7 +6473,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           "${baseUrl}api/message_templates?page_no=${pageNb ??
                               1}&count=10${keyword == null
                               ? ""
-                              : "&filter=$keyword"}&model=lead.lead"),
+                              : "&filter=$keyword"}&model=crm.lead"),
                         headers: {
 
                           'Authorization': 'Bearer $token',
