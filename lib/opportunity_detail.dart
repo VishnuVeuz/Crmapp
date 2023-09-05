@@ -1011,6 +1011,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       padding: const EdgeInsets.only(left: 20,right: 20),
                       child: Container(
                         height: 50,
+                        //color: Colors.red,
                         child: ListView.builder(
                           // physics: NeverScrollableScrollPhysics(),
                           //shrinkWrap: true,
@@ -1965,7 +1966,33 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 10, right: 0),
+                            top: 20, bottom: 10, left: 10, right: 0),
+                        child: Center(
+                          child: Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 3.5,
+                            child: ElevatedButton(
+                                child: Text(
+                                  "Send Message",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                                onPressed: () {
+
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                )),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 10, left: 10, right: 0),
                         child: Center(
                           child: Container(
                             width: MediaQuery.of(context).size.width / 3.5,
@@ -1988,7 +2015,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 0, right: 10),
+                            top: 20, bottom: 10, left: 0, right: 10),
                         child: Center(
                           child: Container(
                             width: MediaQuery.of(context).size.width / 3.5,
@@ -2017,40 +2044,68 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 30, left: 0, right: 10),
-                        child: Center(
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 50,
-                                child: IconButton(
-                                  icon: Image.asset("images/pin.png"),
-                                  onPressed: () {
 
-                                    setState(() {
-                                      attachmentVisibility == true
-                                          ? attachmentVisibility = false
-                                          : attachmentVisibility = true;
-                                    });
-
-
-                                  },
-                                ),
-                              ),
-                              Container(
-                                width: 50,
-                                child: Text(
-                                  attachmentCount!,
-                                  style: TextStyle(fontSize: 15),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
                     ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 0, bottom: 10, left:25, right: 10),
+                    child: Center(
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            child: IconButton(
+                              icon: Image.asset("images/pin.png"),
+                              onPressed: () {
+
+                                setState(() {
+                                  attachmentVisibility == true
+                                      ? attachmentVisibility = false
+                                      : attachmentVisibility = true;
+                                });
+
+
+                              },
+                            ),
+                          ),
+                          Container(
+                            width: 50,
+                            child: Text(
+                              attachmentCount!,
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 60),
+                            child: Row(
+                              children: [
+                                Icon(Icons.check_sharp,size: 14,color: Colors.green,),
+                                TextButton(onPressed:(){}, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                                Container(
+                                  width: 50,
+                                  child: IconButton(
+                                    icon:SvgPicture.asset("images/user.svg"),
+                                    onPressed: ()  {
+
+
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  width: 30,
+                                  //color: Colors.green,
+                                  child: Text(
+                                   "4",
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
 
                   // code for attchments

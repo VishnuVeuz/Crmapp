@@ -2608,7 +2608,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 8, left: 12, right: 10),
+                                              top: 0, left: 12, right: 10),
                                           child: Container(
                                             //color: Colors.red,
 
@@ -2637,7 +2637,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                           children: [
                                             Container(
-                                              //color: Colors.red,
+                                             // color: Colors.red,
                                               height: 25,
                                               width: MediaQuery
                                                   .of(context)
@@ -2998,7 +2998,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                top: 10, bottom: 10),
+                                                top: 0, bottom: 0),
                                             child: Center(
                                                 child: Text(
                                                   logDataHeader[indexx],
@@ -3038,7 +3038,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   child: Column(
                                                     children: [
                                                       Container(
-                                                        color: Colors.white70,
+                                                       // color: Colors.green,
                                                         child: Column(
                                                           children: [
                                                             Stack(
@@ -4927,7 +4927,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
            Container(
                   width: double.maxFinite,
-                  height:  MediaQuery.of(context).size.height/10,
+                  height:  MediaQuery.of(context).size.height/2.5,
                   child: ListView.builder(
                     itemCount: followerSub.length,
 
@@ -5424,7 +5424,7 @@ class _LeadDetailState extends State<LeadDetail> {
         child: Text("Add Follower"),),
         content:  Container(
           width: double.maxFinite,
-          height:  MediaQuery.of(context).size.height/10,
+          height:  MediaQuery.of(context).size.height/5,
           child: ListView.builder(
             itemCount: followers.length,
             itemBuilder: (_, i) {
@@ -5437,6 +5437,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Container(
                       width: 30,
                       height: 25,
+                      //color: Colors.green,
                       // decoration: BoxDecoration(
                       //   border: Border.all(),
                       //

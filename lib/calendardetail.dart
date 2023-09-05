@@ -502,7 +502,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                    " reminder!",
+                                     reminder!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -775,7 +775,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
       duration=data['duration'].toString();
       // allday=data['allday']?? false;
       organizer=data['user_id']['name']??"";
-      //reminder
+      reminder =data['alarm_ids']['name'].toString()??"";
       location=data['location'].toString()??"";
       meetingurl=data['videocall_location'].toString()??"";
       //tags
