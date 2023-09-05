@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:crm_project/notification.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
+import 'activities.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
@@ -211,7 +213,11 @@ class _LeadDetailState extends State<LeadDetail> {
                     padding: const EdgeInsets.only(right: 0),
                     child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
                       onPressed: () {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Notifications()));
                       },
                     ),
                   ),
@@ -219,7 +225,11 @@ class _LeadDetailState extends State<LeadDetail> {
                     padding: const EdgeInsets.only(right: 0),
                     child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
                       onPressed: () {
-
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Activities()));
                       },
                     ),
                   ),
