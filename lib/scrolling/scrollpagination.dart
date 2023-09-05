@@ -182,10 +182,10 @@ class _LeadScrollingState extends State<LeadScrolling> {
         title: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10,right: 10),
+              padding: const EdgeInsets.only(left: 0,right: 0),
               child: Text(username,style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  fontSize: 18,
+                  fontSize: 16,
                   color: Colors.white,
                   decoration: TextDecoration.none),),
             )
@@ -195,7 +195,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
           builder: (context)=>Padding(
             padding: const EdgeInsets.only(left:20),
             child: CircleAvatar(
-              radius: 12,
+              radius: 10,
               child: Icon(
                 Icons.person,
                 size: 20,
