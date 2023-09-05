@@ -241,7 +241,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
 
                         validator: (value) {
@@ -268,7 +268,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: probabilityController,
@@ -285,7 +285,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: companynameController,
@@ -306,7 +306,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
 
@@ -392,7 +392,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: contactnameController,
@@ -418,7 +418,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: streetController,
@@ -436,7 +436,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: streettwoController,
@@ -454,7 +454,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: cityController,
@@ -474,7 +474,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: countryName,
@@ -573,7 +573,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
 
                         value: stateName,
@@ -673,7 +673,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         keyboardType: TextInputType.number,
                         style: TextStyle(fontSize: 12),
@@ -696,7 +696,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: websiteController,
@@ -717,7 +717,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: languageName,
@@ -815,7 +815,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: emailController,
@@ -833,7 +833,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: emailccController,
@@ -851,7 +851,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: jobpositionController,
@@ -869,7 +869,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         keyboardType: TextInputType.phone,
@@ -890,7 +890,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       ),),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         keyboardType: TextInputType.phone,
@@ -913,7 +913,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     //company
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: campanyName,
@@ -1010,7 +1010,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: salespersonName,
@@ -1106,7 +1106,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: salesteamName,
@@ -1300,7 +1300,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: campaignName,
@@ -1399,7 +1399,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     //medium
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: mediumName,
@@ -1495,7 +1495,7 @@ class _LeadCreationState extends State<LeadCreation> {
                     //source
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
                         value: sourceName,
@@ -1593,7 +1593,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: refferedbyController,
@@ -1613,7 +1613,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 25, vertical: 5),
+                          horizontal: 25, vertical: 0),
                       child: TextFormField(
                         style: TextStyle(fontSize: 12),
                         controller: internalnotesController,
