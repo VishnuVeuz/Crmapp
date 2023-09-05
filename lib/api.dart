@@ -2825,11 +2825,11 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 
       if (data['result']['message'].toString() == "success") {
         print("121212121212");
-        resMessageText = data['result']['data']['id'].toString();
+        resMessageText = "success";
       }
 
       if (resMessage == "error") {
-        resMessageText = "0";
+        resMessageText = "failed";
       }
     } else {}
   } catch (e) {
@@ -3307,11 +3307,11 @@ getattchmentData(int dataId, String activityModel) async {
       resMessage = data['result']['message'];
       print(resMessage);
       if (data['result']['message'].toString() == "success") {
-        resMessageText = data['result']['data']['id'].toString();
+        resMessageText = "success";
       }
 
       if (resMessage == "error") {
-        resMessageText = "0";
+        resMessageText = "failed";
       }
     } else {}
   } catch (e) {

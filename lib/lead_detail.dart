@@ -1888,18 +1888,26 @@ class _LeadDetailState extends State<LeadDetail> {
                                     jsonDecode(dataImages);
                                     myData1.add(jsondata);
                                   }
-                                  // print(myData1);
-                                  // print("final datatata");
+                                   print(followersVisibility);
+                                   print("final datatata");
 
-                                  await logNoteData(myData1);
-                                  setState(() {
-                                    logDataHeader.clear();
-                                    logDataTitle.clear();
-                                    selectedImagesDisplay.clear();
-                                    lognoteController.text = "";
-                                    selectedImages.clear();
-                                    myData1.clear();
-                                  });
+                                  bodyController.text = lognoteController.text;
+
+                                  String resMessage ;
+                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage();
+
+                                  if(resMessage == "success"){
+                                    setState(() {
+                                      logDataHeader.clear();
+                                      logDataTitle.clear();
+                                      selectedImagesDisplay.clear();
+                                      lognoteController.text = "";
+                                      selectedImages.clear();
+                                      myData1.clear();
+                                    });
+                                  }
+
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFF04254),

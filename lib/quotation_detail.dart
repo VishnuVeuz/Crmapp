@@ -2253,15 +2253,23 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 // print(myData1);
                                 // print("final datatata");
 
-                                await logNoteData(myData1);
-                                setState(() {
-                                  logDataHeader.clear();
-                                  logDataTitle.clear();
-                                  selectedImagesDisplay.clear();
-                                  lognoteController.text = "";
-                                  selectedImages.clear();
-                                  myData1.clear();
-                                });
+                                bodyController.text = lognoteController.text;
+
+                                String resMessage ;
+                                followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage();
+
+                                print(resMessage);
+                                if(resMessage == "success"){
+                                  print("fsdvds");
+                                  setState(() {
+                                    logDataHeader.clear();
+                                    logDataTitle.clear();
+                                    selectedImagesDisplay.clear();
+                                    lognoteController.text = "";
+                                    selectedImages.clear();
+                                    myData1.clear();
+                                  });
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF04254),
