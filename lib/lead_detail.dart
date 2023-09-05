@@ -182,13 +182,20 @@ class _LeadDetailState extends State<LeadDetail> {
           elevation: 0,
           title: Row(
             children: [
-              Text(
-                leadname!,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4,
+               // color: Colors.red,
+                child: Text(
+                  leadname!,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
+                ),
               )
             ],
           ),
@@ -283,7 +290,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
                       icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {
@@ -1655,7 +1662,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         .width,
 
                     //height: MediaQuery.of(context).size.height/6,
-                    // color: Colors.green,
+                     //color: Colors.green,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -1664,7 +1671,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           child: Padding(
                             padding: const EdgeInsets.only(left: 73),
                             child: Container(
-                             // color: Colors.red,
+                              //color: Colors.red,
                               child: Row(
                                 children: [
                                   Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11),),
@@ -1681,6 +1688,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 ],
                               ),
                             ),
+
                           ),
                         ),
 
