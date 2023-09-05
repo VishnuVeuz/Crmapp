@@ -3635,6 +3635,103 @@ unFollowing(int resId,follower_id,String res_model) async {
 }
 
 
+followerUnFollow(int resId,String res_model) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+
+  try {
+    final msg = jsonEncode({
+
+      "params": {
+        "res_model": res_model,
+        "res_id": resId,
+
+      }
+
+    }
+
+    );
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/unfollow'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      resMessage = data['result']['message'];
+      print(resMessage);
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = "success";
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "error";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(resMessageText);
+  return resMessageText;
+}
+
+followerFollow(int resId,String res_model) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+
+  try {
+    final msg = jsonEncode({
+
+      "params": {
+        "res_model": res_model,
+        "res_id": resId,
+
+      }
+
+    }
+
+    );
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/follow'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      resMessage = data['result']['message'];
+      print(resMessage);
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = "success";
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "error";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(resMessageText);
+  return resMessageText;
+}
+
+
 
 followerCreate(String message,int wizardId ,recepient,bool send_mail) async {
   String token = await getUserJwt();

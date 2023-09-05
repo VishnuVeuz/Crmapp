@@ -47,7 +47,10 @@ class _LeadDetailState extends State<LeadDetail> {
       lastupdateby,
       lastupdateon,
       internalnotes,
-      attachmentCount = "0";
+      attachmentCount = "0",
+      followerCount = "0";
+
+    bool followerStatus=false;
 
   bool? leadType;
   List tags = [];
@@ -1258,10 +1261,38 @@ class _LeadDetailState extends State<LeadDetail> {
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
+
+                          followerStatus == false ?
                           Row(
                             children: [
                               Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                              TextButton(onPressed:(){}, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                              TextButton(onPressed:()async{
+
+                            String resMessage =   await followerFollow(widget.leadId,"lead.lead");
+
+                            if(resMessage == "success"){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LeadDetail(widget.leadId)));
+                            }
+                              }, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                            ],
+                          ):
+
+                          Row(
+                            children: [
+                              Icon(Icons.close,size: 14,color: Colors.red,),
+                              TextButton(onPressed:()async{
+                                String resMessage =  await followerUnFollow(widget.leadId,"lead.lead");
+
+                                if(resMessage == "success"){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LeadDetail(widget.leadId)));
+                                }
+                              }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
                             ],
                           ),
                           Container(
@@ -1285,7 +1316,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             width: 30,
                             //color: Colors.green,
                             child: Text(
-                              "2",
+                              followerCount!,
                               style: TextStyle(fontSize: 15),
                             ),
                           ),
@@ -5851,6 +5882,12 @@ class _LeadDetailState extends State<LeadDetail> {
       createdon = data["create_date"].toString() ?? "";
       lastupdateby = data["write_uid"][1].toString() ?? "";
       lastupdateon = data["write_date"].toString() ?? "";
+
+      followerCount = data["followers_count"].toString() ?? "0";
+
+      followerStatus=data["message_is_follower"] ?? false;
+
+
       internalnotes = data['description']
               .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
               .toString() ??
