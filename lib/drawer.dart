@@ -75,6 +75,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 12),
                       child: ExpansionTile(
+                        collapsedIconColor: Colors.white,
                         iconColor: Colors.white,
                         title: Text(
                           'Select Company',
@@ -328,6 +329,111 @@ class _MainDrawerState extends State<MainDrawer> {
 
                   },
                 ),
+
+                Container(
+                  width: MediaQuery.of(context).size.width,
+
+                  //height: 100,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 18),
+                    child: ExpansionTile(
+                      collapsedIconColor: Colors.white,
+                      iconColor: Colors.white,
+                      title: Text(
+                        'Activities',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.84,
+                            color: Colors.white),
+                      ),
+                      children: <Widget>[
+                        // Your ListView.builder goes here
+                        Container(
+                         // height: MediaQuery.of(context).size.height/2.5,
+                         child: Column(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 30,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 31),
+                                  child: Text(
+                                    "Lead",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width,
+                                height: 30,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 31),
+                                  child: Text(
+                                    "Opportunity",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          // child: ListView.builder(
+                          //   shrinkWrap: true,
+                          //   physics: ScrollPhysics(),
+                          //   itemCount:2,
+                          //   itemBuilder: (BuildContext context, int index) {
+                          //     return CheckboxListTile(
+                          //       activeColor: Colors.white,
+                          //       checkColor: Colors.black,
+                          //       title: InkWell(
+                          //         onTap: () {
+                          //           print(
+                          //               "selected company ${companyList![index].name}");
+                          //         },
+                          //         child: Text(
+                          //           companyList![index].name,
+                          //           style: TextStyle(
+                          //               fontWeight: FontWeight.w600,
+                          //               fontSize: 15,
+                          //               color: Colors.white),
+                          //         ),
+                          //       ),
+                          //       value: companyList![index].selected,
+                          //       onChanged: (newValue) {
+                          //         setState(() {
+                          //           companyList![index].selected =
+                          //               newValue ?? false;
+                          //
+                          //
+                          //           companyList![index].selected=newValue!;
+                          //
+                          //           final jsonListmultiCompany = json.encode(companyList);
+                          //           addMultiCmpnySF(jsonListmultiCompany);
+                          //
+                          //           companyData();
+                          //
+                          //           print(jsonListmultiCompany!);
+                          //           print(companyList![1].name);
+                          //           print(companyList![1].selected);
+                          //           print("Demo");
+                          //         });
+                          //       },
+                          //     );
+                          //   },
+                          // ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+
+
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Divider(
