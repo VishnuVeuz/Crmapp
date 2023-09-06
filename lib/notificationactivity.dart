@@ -152,119 +152,120 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
 
           itemBuilder: (_, i) {
             return Card(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          notificationData[i]["icon"] != ""
-                              ? Padding(
-                            padding: const EdgeInsets.only(left: 25),
-                            child: Container(
-                              width: 50,
-                              height: 60,
+                      notificationData[i]["icon"] != ""
+                          ? Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Container(
+                          width: 45,
+                          height: 55,
 
-                              child: CircleAvatar(
-                                radius: 1,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(1),
-                                  child: Image.network(
-                                      notificationData[i]["icon"]),
-                                ),
-                              ),
-
-                            ),
-                          )
-                              : Padding(
-                            padding: const EdgeInsets.only(left: 25),
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                    //  color: Colors.green
-                                  ),
-                                  borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-
+                          child: CircleAvatar(
+                            radius: 1,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(1),
+                              child: Image.network(
+                                  notificationData[i]["icon"]),
                             ),
                           ),
 
-                        ],
+                        ),
+                      )
+                          : Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                //  color: Colors.green
+                              ),
+                              borderRadius:
+                              BorderRadius.all(Radius.circular(20))),
+
+                        ),
                       ),
 
+                    ],
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+
+
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 20),
                             child: Text(notificationData[i]["name"]),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, bottom: 0, left: 0, right: 20),
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/clock.svg"),
-                              onPressed: () {
+                          Column(
+                            children: [
+                              IconButton(
+                                icon: SvgPicture.asset("images/clock.svg"),
+                                onPressed: () {
 
-                              },
-                            ),
+                                },
+                              ),
+
+                            ],
                           ),
                         ],
-                      )
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left:10),
+                            child: TextButton(onPressed: () {},
+                                child: Row(
+                                  children: [
+                                    Text(notificationData[i]["overdue_count"]
+                                        .toString(),
+                                      style: TextStyle(color: Colors.green[800]),),
+                                    SizedBox(width: 5,),
+                                    Text("Late",
+                                        style: TextStyle(color: Colors.green[800])),
+                                  ],
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left:30),
+                            child: TextButton(onPressed: () {},
+                                child: Row(
+                                  children: [
+                                    Text(notificationData[i]["today_count"]
+                                        .toString(),
+                                        style: TextStyle(color: Colors.green[800])),
+                                    SizedBox(width: 5,),
+                                    Text("Today",
+                                        style: TextStyle(color: Colors.green[800])),
+                                  ],
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 30),
+                            child: TextButton(onPressed: () {},
+                                child: Row(
+                                  children: [
+                                    Text(notificationData[i]["planned_count"]
+                                        .toString(),
+                                        style: TextStyle(color: Colors.green[800])),
+                                    SizedBox(width: 5,),
+                                    Text("Future",
+                                        style: TextStyle(color: Colors.green[800])),
+                                  ],
+                                )),
+                          ),
 
+                        ],
+                      )
                     ],
                   ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 65),
-                        child: TextButton(onPressed: () {},
-                            child: Row(
-                              children: [
-                                Text(notificationData[i]["overdue_count"]
-                                    .toString(),
-                                  style: TextStyle(color: Colors.green[800]),),
-                                SizedBox(width: 5,),
-                                Text("Late",
-                                    style: TextStyle(color: Colors.green[800])),
-                              ],
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: TextButton(onPressed: () {},
-                            child: Row(
-                              children: [
-                                Text(notificationData[i]["today_count"]
-                                    .toString(),
-                                    style: TextStyle(color: Colors.green[800])),
-                                SizedBox(width: 5,),
-                                Text("Today",
-                                    style: TextStyle(color: Colors.green[800])),
-                              ],
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 45),
-                        child: TextButton(onPressed: () {},
-                            child: Row(
-                              children: [
-                                Text(notificationData[i]["planned_count"]
-                                    .toString(),
-                                    style: TextStyle(color: Colors.green[800])),
-                                SizedBox(width: 5,),
-                                Text("Future",
-                                    style: TextStyle(color: Colors.green[800])),
-                              ],
-                            )),
-                      ),
-
-                    ],
-                  )
                 ],
               ),
             );
