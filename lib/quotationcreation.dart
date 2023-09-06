@@ -285,7 +285,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       validator: (value) {
@@ -371,14 +371,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: Container(
                       child: Text(dropdownCustomerData!),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -455,7 +455,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: SizedBox(
                       child: InkWell(
                         onTap: () {
@@ -478,7 +478,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       validator: (value) {
@@ -562,7 +562,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -649,7 +649,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salespersonName,
@@ -725,7 +725,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: salesteamName,
                       hint: Text(
@@ -798,7 +798,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       validator: (value) {
                         if(value==null){
@@ -932,7 +932,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: customerreference,
@@ -955,7 +955,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
                       selectedOptions: editTagName
@@ -1018,7 +1018,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       hint: Text(
                         "Shipping policy",
@@ -1044,7 +1044,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: SizedBox(
                       child: InkWell(
                         onTap: () {
@@ -1078,7 +1078,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: fiscalpositionName,
@@ -1165,7 +1165,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: campaignName,
@@ -1242,7 +1242,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: mediumName,
                       hint: Text(
@@ -1312,7 +1312,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: sourceName,
                       hint: Text(
@@ -1393,7 +1393,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: sourcedocument,

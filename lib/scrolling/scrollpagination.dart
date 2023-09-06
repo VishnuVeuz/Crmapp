@@ -9,6 +9,7 @@ import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../leadcreation.dart';
 import '../notificationactivity.dart';
 import '../api.dart';
 import '../drawer.dart';
@@ -316,6 +317,17 @@ class _LeadScrollingState extends State<LeadScrolling> {
       ),
      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => LeadCreation(0)));
+          // Add your onPressed code here!
+        },
+        backgroundColor: Color(0xFF3D418E),
+        child: const Icon(Icons.add),
+      ),
     );
   }
 
