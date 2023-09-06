@@ -286,7 +286,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       validator: (value) {
@@ -310,7 +310,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: expectedrevenueController,
@@ -328,7 +328,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: probabilityController,
@@ -346,7 +346,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       validator: (value) {
                         if(value==null){
@@ -432,7 +432,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: companynameController,
@@ -455,7 +455,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -532,7 +532,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: contactnameController,
@@ -561,7 +561,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: streetController,
@@ -579,7 +579,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: streettwoController,
@@ -597,7 +597,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: cityController,
@@ -617,7 +617,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: countryName,
@@ -707,7 +707,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: stateName,
                       hint: Text(
@@ -794,7 +794,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       style: TextStyle(fontSize: 12),
@@ -816,7 +816,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: websiteController,
@@ -837,7 +837,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: languageName,
@@ -930,7 +930,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       keyboardType: TextInputType.emailAddress,
@@ -951,7 +951,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: emailccController,
@@ -971,7 +971,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: jobpositionController,
@@ -989,7 +989,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: phoneController,
@@ -1010,7 +1010,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: mobileController,
@@ -1121,7 +1121,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   //company
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: campanyName,
@@ -1211,7 +1211,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salespersonName,
@@ -1303,7 +1303,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salesteamName,
@@ -1428,7 +1428,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
                       selectedOptions: editTagName
@@ -1483,7 +1483,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: campaignName,
@@ -1577,7 +1577,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   //medium
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: mediumName,
@@ -1669,7 +1669,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   //source
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: sourceName,
@@ -1759,7 +1759,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: refferedbyController,
@@ -1780,7 +1780,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       style: TextStyle(fontSize: 12),
                       controller: internalnotesController,

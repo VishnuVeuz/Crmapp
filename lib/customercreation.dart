@@ -353,7 +353,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -379,7 +379,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     visible: cmpVisibility,
                     child: Padding(
                       padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                       child: SearchChoices.single(
                         //items: items,
 
@@ -465,7 +465,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                     child: Text(
                       "Address",
                       style: TextStyle(
@@ -476,7 +476,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: streetController,
@@ -495,7 +495,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: streettwoController,
@@ -514,7 +514,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: cityController,
@@ -533,7 +533,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: countryName,
@@ -624,7 +624,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: stateName,
                       hint: Text(
@@ -713,7 +713,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
                       enabled: cmpbasedVisible,
@@ -735,7 +735,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: taxidController,
@@ -754,7 +754,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: customerCampanyName,
@@ -846,7 +846,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: jobpositionController,
                       style: TextStyle(fontSize: 12),
@@ -864,7 +864,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
@@ -885,7 +885,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
@@ -906,7 +906,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: customerrankController,
                       style: TextStyle(fontSize: 12),
@@ -924,7 +924,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: supplierrankController,
                       style: TextStyle(fontSize: 12),
@@ -942,7 +942,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: emailController,
                       style: TextStyle(fontSize: 12),
@@ -960,7 +960,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: websiteController,
                       style: TextStyle(fontSize: 12),
@@ -978,7 +978,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -1059,7 +1059,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -1141,7 +1141,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
                       selectedOptions: editTagName
@@ -1194,7 +1194,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                     child: Text(
                       "Sales",
                       style: TextStyle(
@@ -1205,7 +1205,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salespersonName,
@@ -1294,7 +1294,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -1370,7 +1370,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
@@ -1448,7 +1448,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                     child: Text(
                       "Fiscal Information",
                       style: TextStyle(
@@ -1459,7 +1459,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: fiscalpositionName,
@@ -1539,7 +1539,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                     child: Text(
                       "Misc",
                       style: TextStyle(
@@ -1550,7 +1550,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: referenceController,
                       style: TextStyle(fontSize: 12),
@@ -1568,7 +1568,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: internalnotesController,
                       style: TextStyle(fontSize: 12),

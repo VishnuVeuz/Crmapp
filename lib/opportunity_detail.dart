@@ -1799,9 +1799,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 25, top: 13,bottom: 10),
                         child: Text(
-                          "Optional Products", style: TextStyle(fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
+                          "Optional Products",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 13,
+                              color: Color(0xFF212121)),
                         ),
                       ),
                     ),
@@ -2030,25 +2032,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
 
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 10, right: 0),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3.5,
-                            child: ElevatedButton(
+                  Container(
+                    color: Color(0xFFF6F6F6),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 20, right: 0),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Send Message",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                  style:  TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
 
@@ -2059,24 +2058,21 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 10, right: 0),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 3.5,
-                            child: ElevatedButton(
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 0, right: 0),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Log note",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                  style:  TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -2087,24 +2083,21 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 0, right: 10),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 3.5,
-                            child: ElevatedButton(
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 0, right: 20),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Schedule Activity",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
                                 onPressed: () async {
                                   await defaultScheduleValues();
@@ -2118,13 +2111,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ).then((value) => setState(() {}));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary:Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
 
-                    ],
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(

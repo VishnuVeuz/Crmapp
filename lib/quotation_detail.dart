@@ -1263,22 +1263,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 30,left: 10,right: 0),
-                      child: Center(
+                Container(
+                  color: Color(0xFFF6F6F6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, bottom: 0,left: 20,right: 0),
+                        child: Center(
 
-                        child: Container(
-                          width: MediaQuery.of(context).size.width/2.5,
-                          child: ElevatedButton(
+                          child: TextButton(
                               child: Text(
                                 "Orderlines",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF212121)),
                               ),
                               onPressed: () {
 
@@ -1292,25 +1292,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary:Color(0xFFF6F6F6),
                               )),
                         ),
                       ),
-                    ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 30,left: 0,right: 10),
-                      child: Center(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, bottom: 0,left: 0,right: 50),
+                        child: Center(
 
-                        child: Container(
-                          width: MediaQuery.of(context).size.width/2.5,
-                          child: ElevatedButton(
+                          child: TextButton(
                               child: Text(
                                 "Optional products",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF212121)),
                               ),
                               onPressed: () {
 
@@ -1324,12 +1321,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary: Color(0xFFF6F6F6),
                               )),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
 
 
@@ -1745,25 +1742,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, bottom: 10, left: 10, right: 0),
-                      child: Center(
-                        child: Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width / 3.5,
-                          child: ElevatedButton(
+                Container(
+                  color: Color(0xFFF6F6F6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 10, left: 20, right: 0),
+                        child: Center(
+                          child: TextButton(
                               child: Text(
                                 "Send Message",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
+                                style:  TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF212121)),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -1773,24 +1767,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary:  Color(0xFFF6F6F6),
                               )),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, bottom: 10, left: 10, right: 0),
-                      child: Center(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 3.5,
-                          child: ElevatedButton(
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 10, left: 0, right: 0),
+                        child: Center(
+                          child: TextButton(
                               child: Text(
                                 "Log note",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
+                                style:  TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF212121)),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -1800,24 +1791,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary:  Color(0xFFF6F6F6),
                               )),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, bottom: 10, left: 0, right: 10),
-                      child: Center(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width / 3.5,
-                          child: ElevatedButton(
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, bottom: 10, left: 0, right: 20),
+                        child: Center(
+                          child: TextButton(
                               child: Text(
                                 "Schedule Activity",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 13,
+                                    color: Color(0xFF212121)),
                               ),
                               onPressed: () async {
                                 await defaultScheduleValues();
@@ -1831,13 +1819,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 ).then((value) => setState(() {}));
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary:  Color(0xFFF6F6F6),
                               )),
                         ),
                       ),
-                    ),
 
-                  ],
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
