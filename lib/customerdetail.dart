@@ -847,44 +847,52 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               fontSize: 13,
                               color: Color(0xFF666666))),
                     ),
-          Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width / 2.3,
-            //height: 50,
-            //color: Colors.pinkAccent,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 160,right: 0),
+                      child: Container(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width /2.3,
+                        height: 15,
+                        //color: Colors.pinkAccent,
 
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: tagss!.length ?? 0,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.only(
-                      right: 8.0, top: 4),
-                  child: Container(
-                    width: 40,
-                    height: 15,
-                    child: ElevatedButton(
-                      child: Text(
-                        tagss![index]["name"].toString(),
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 6),
-                      ),
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(
-                            int.parse(tagss![index]["color"])),
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          shrinkWrap: true,
+                          itemCount: tagss!.length ?? 0,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding:
+                              const EdgeInsets.only(right: 8.0, top: 4),
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                                    color:  Color(int.parse(tagss![index]["color"])),),
+
+                                  width: 60,
+                                  height: 15,
+                                  child:
+                                  Center(
+                                    child: Text(
+
+                                      tagss![index]["name"].toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 6),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ),
                ] ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
