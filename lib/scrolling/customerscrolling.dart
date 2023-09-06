@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
-import '../activities.dart';
+import '../notificationactivity.dart';
 import '../commoncustomer.dart';
 import '../customercreation.dart';
 import '../drawer.dart';
@@ -214,7 +214,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Activities()));
+                                        ActivitiesNotification()));
                           },
                         ),
                         Positioned(

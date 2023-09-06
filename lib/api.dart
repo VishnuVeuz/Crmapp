@@ -3784,6 +3784,37 @@ followerCreate(String message,int wizardId ,recepient,bool send_mail) async {
 
 
 
+getNotificationActivity() async {
+  String token = await getUserJwt();
+
+  var data;
+  String? authresponce;
+
+ Response response = await get(
+    Uri.parse("${baseUrl}api/activity_notification"),
+    headers: {
+      'Authorization': 'Bearer $token',
+    },
+  ).timeout(const Duration(
+    seconds: 10,
+  ));
+
+  if (response.statusCode != 200) {
+    throw Exception("failed to get data from internet");
+  } else {
+    data = jsonDecode(response.body);
+
+    // authresponce = data['result'].toString();
+  }
+
+  print(data);
+  print("data");
+
+  return data;
+}
+
+
+
 
 addMultiCmpnySF(String jsonListmultiCompany) async {
   String jsonListmultiCompanys;
