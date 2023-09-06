@@ -413,7 +413,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        OpportunityMainPage(widget.customerId,"")));
+                                        OpportunityMainPage(widget.customerId,"","","")));
                           },
                           child: Container(
                             child: Row(

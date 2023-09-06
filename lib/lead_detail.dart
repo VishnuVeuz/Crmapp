@@ -405,7 +405,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         builder: (
                                             context) =>
                                             LeadScrolling(
-                                                "")),
+                                                "","","")),
                                   );
                                 }
                               },

@@ -16,7 +16,9 @@ import '../quotationcreation.dart';
 
 
 class QuotationScrolling extends StatefulWidget {
-
+  var quotationFrom;
+  var filterItems;
+  QuotationScrolling(this.quotationFrom,this.filterItems);
 
   @override
   State<QuotationScrolling> createState() => _QuotationScrollingState();
@@ -49,14 +51,25 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
 
   Future<void> fetchData() async {
     token = await getUserJwt();
+    String urls;
+
     print(token);
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);
+
+
+    widget.quotationFrom == "notification" ?
+    urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&filters=${widget.filterItems}&key_word=":
+
+    urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=";
+
+
     try {
 
       final response = await get(Uri.parse(
-
-          "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word="),
+          urls
+         // "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word="
+      ),
 
         headers: {
 
@@ -64,9 +77,9 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
 
         },
       );
-      //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
-      //List responseList = json.decode(response.body);
+
       var responseList = jsonDecode(response.body);
+      print(urls);
       print("company_ids");
       print(globals.selectedIds);
       print(responseList['records']);

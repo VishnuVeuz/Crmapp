@@ -303,7 +303,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        OpportunityMainPage(null,"")));
+                        OpportunityMainPage(null,"","","")));
             return true;
           },
           child: Container(
@@ -398,7 +398,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            OpportunityMainPage(null,"")
+                                            OpportunityMainPage(null,"","","")
                                     ),
                                   );
                                 }
@@ -1028,7 +1028,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      OpportunityMainPage(widget.opportunityId,"similar")));
+                                                      OpportunityMainPage(widget.opportunityId,"similar","","")));
                                         }
 
 
@@ -1065,7 +1065,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            OpportunityMainPage(widget.opportunityId,"similar")));
+                                            OpportunityMainPage(widget.opportunityId,"similar","","")));
                               }
                             },
                           )

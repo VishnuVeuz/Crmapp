@@ -340,7 +340,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          QuotationScrolling ()
+                                          QuotationScrolling ("","")
                                   ),
                                 );
                               }

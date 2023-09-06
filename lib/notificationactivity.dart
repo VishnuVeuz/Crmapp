@@ -1,8 +1,11 @@
- import 'package:flutter/material.dart';
+ import 'package:crm_project/scrolling/quotationscrolling.dart';
+import 'package:crm_project/scrolling/scrollpagination.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'opportunitymainpage.dart';
 
 class ActivitiesNotification extends StatefulWidget {
   const ActivitiesNotification({Key? key}) : super(key: key);
@@ -151,135 +154,241 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
           itemCount: notificationData.length,
 
           itemBuilder: (_, i) {
-            return Card(
-              child: Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    children: [
-                      notificationData[i]["icon"] != ""
-                          ? Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Container(
-                          width: 45,
-                          height: 55,
+            return InkWell(
+              onTap: (){
 
-                          child: CircleAvatar(
-                            radius: 1,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(1),
-                              child: Image.network(
-                                  notificationData[i]["icon"]),
-                            ),
-                          ),
+               if(notificationData[i]["model"]=="sale.order"){
+                       Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) =>
+                             QuotationScrolling("notification","[activities_today,activities_overdue,activities_future]")));
 
-                        ),
-                      )
-                          : Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                //  color: Colors.green
+               }
+               if(notificationData[i]["model"]=="lead.lead"){
+                 Navigator.push(context, MaterialPageRoute(
+                     builder: (context) => LeadScrolling('',"notification","[activities_today,activities_overdue,activities_future]")));
+
+               }
+               if(notificationData[i]["model"]=="crm.lead"){
+                 Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) =>
+                             OpportunityMainPage(null,"","notification","[activities_today,activities_overdue,activities_future]")));
+               }
+
+
+
+
+
+              },
+              child: Card(
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      children: [
+                        notificationData[i]["icon"] != ""
+                            ? Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: Container(
+                            width: 45,
+                            height: 55,
+
+                            child: CircleAvatar(
+                              radius: 1,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(1),
+                                child: Image.network(
+                                    notificationData[i]["icon"]),
                               ),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(20))),
+                            ),
 
+                          ),
+                        )
+                            : Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                          child: Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  //  color: Colors.green
+                                ),
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+
+                          ),
                         ),
-                      ),
 
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
 
 
-                      Container(
-                        width: MediaQuery.of(context).size.width/1.4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Container(
+                          width: MediaQuery.of(context).size.width/1.4,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Text(notificationData[i]["name"]),
+                              ),
+                              IconButton(
+
+                                icon: SvgPicture.asset("images/clock.svg"),
+                                onPressed: () {
+
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: Text(notificationData[i]["name"]),
-                            ),
-                            IconButton(
+                              padding: const EdgeInsets.only(left:20,bottom: 20),
+                              child: InkWell(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Text(notificationData[i]["overdue_count"]
+                                          .toString(),
+                                        style: TextStyle(color: Colors.green[800]),),
+                                      SizedBox(width: 5,),
+                                      Text("Late",
+                                          style: TextStyle(color: Colors.green[800])),
+                                    ],
+                                  ),
+                                ),
+                                onTap: (){
 
-                              icon: SvgPicture.asset("images/clock.svg"),
-                              onPressed: () {
+                                  if(notificationData[i]["model"]=="sale.order"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                QuotationScrolling("notification","[activities_overdue]")));
 
-                              },
+                                  }
+                                  if(notificationData[i]["model"]=="lead.lead"){
+
+                               Navigator.push(context,
+                                   MaterialPageRoute(
+                               builder: (context) =>
+                                   LeadScrolling('',"notification","[activities_overdue]")));
+
+
+                                  }
+                                  if(notificationData[i]["model"]=="crm.lead"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OpportunityMainPage(null,"","notification","[activities_overdue]")));
+                                  }
+                                },
+                              ),
                             ),
+                            Padding(
+                              padding: const EdgeInsets.only(left:50,bottom: 20),
+                              child: InkWell(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Text(notificationData[i]["today_count"]
+                                          .toString(),
+                                          style: TextStyle(color: Colors.green[800])),
+                                      SizedBox(width: 5,),
+                                      Text("Today",
+                                          style: TextStyle(color: Colors.green[800])),
+                                    ],
+                                  ),
+                                ),
+                                onTap: (){
+                                  if(notificationData[i]["model"]=="sale.order"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                QuotationScrolling("notification","[activities_today]")));
+
+                                  }
+                                  if(notificationData[i]["model"]=="lead.lead"){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LeadScrolling('',"notification","[activities_today]")));
+
+
+
+                                  }
+                                  if(notificationData[i]["model"]=="crm.lead"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OpportunityMainPage(null,"","notification","[activities_today]")));
+                                  }
+                                },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 50,bottom: 20),
+                              child: InkWell(
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Text(notificationData[i]["planned_count"]
+                                          .toString(),
+                                          style: TextStyle(color: Colors.green[800])),
+                                      SizedBox(width: 5,),
+                                      Text("Future",
+                                          style: TextStyle(color: Colors.green[800])),
+                                    ],
+                                  ),
+                                ),
+                                onTap: (){
+                                  if(notificationData[i]["model"]=="sale.order"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                QuotationScrolling("notification","[activities_future]")));
+
+                                  }
+                                  if(notificationData[i]["model"]=="lead.lead"){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LeadScrolling('',"notification","[activities_future]")));
+
+
+                                  }
+                                  if(notificationData[i]["model"]=="crm.lead"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OpportunityMainPage(null,"","notification","[activities_future]")));
+
+                                  }
+
+
+                                },
+                              ),
+                            ),
+
                           ],
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left:20,bottom: 20),
-                            child: InkWell(
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Text(notificationData[i]["overdue_count"]
-                                        .toString(),
-                                      style: TextStyle(color: Colors.green[800]),),
-                                    SizedBox(width: 5,),
-                                    Text("Late",
-                                        style: TextStyle(color: Colors.green[800])),
-                                  ],
-                                ),
-                              ),
-                              onTap: (){
-
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left:50,bottom: 20),
-                            child: InkWell(
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Text(notificationData[i]["today_count"]
-                                        .toString(),
-                                        style: TextStyle(color: Colors.green[800])),
-                                    SizedBox(width: 5,),
-                                    Text("Today",
-                                        style: TextStyle(color: Colors.green[800])),
-                                  ],
-                                ),
-                              ),
-                              onTap: (){},
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50,bottom: 20),
-                            child: InkWell(
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Text(notificationData[i]["planned_count"]
-                                        .toString(),
-                                        style: TextStyle(color: Colors.green[800])),
-                                    SizedBox(width: 5,),
-                                    Text("Future",
-                                        style: TextStyle(color: Colors.green[800])),
-                                  ],
-                                ),
-                              ),
-                              onTap: (){},
-                            ),
-                          ),
-
-                        ],
-                      )
-                    ],
-                  ),
-                ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
           },

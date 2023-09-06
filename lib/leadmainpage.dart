@@ -256,7 +256,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => LeadScrolling('my')));
+                      builder: (context) => LeadScrolling('my',"","")));
                 },
               ),
               InkWell(
@@ -307,7 +307,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 ),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => LeadScrolling('')));
+                      builder: (context) => LeadScrolling('',"","")));
                 },
               ),
               Padding(

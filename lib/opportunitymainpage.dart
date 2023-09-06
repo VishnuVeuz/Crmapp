@@ -14,7 +14,9 @@ import 'drawer.dart';
 class OpportunityMainPage extends StatefulWidget {
   var opportunityId;
   var similartype;
-  OpportunityMainPage(this.opportunityId,this.similartype);
+  var opportunityFrom;
+  var filterItems;
+  OpportunityMainPage(this.opportunityId,this.similartype,this.opportunityFrom,this.filterItems);
 
 
   @override
@@ -149,7 +151,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
                       children: List.generate(opportunityTypes.length, (index) =>
 
-                          OpportunityScrolling(opportunityTypes[index]['id'],widget.opportunityId,widget.similartype),),
+                          OpportunityScrolling(opportunityTypes[index]['id'],widget.opportunityId,widget.similartype,widget.opportunityFrom,widget.filterItems),),
 
 
 

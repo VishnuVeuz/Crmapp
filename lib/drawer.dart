@@ -209,7 +209,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                OpportunityMainPage(null,"")));
+                                OpportunityMainPage(null,"","","")));
                   },
                 ),
                 InkWell(
@@ -246,7 +246,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                QuotationScrolling()));
+                                QuotationScrolling("","")));
                   },
                 ),
                 InkWell(

@@ -23,7 +23,9 @@ import '../notification.dart';
 
 class LeadScrolling extends StatefulWidget {
   final dynamic type;
-  LeadScrolling(this.type);
+  var quotationFrom;
+  var filterItems;
+  LeadScrolling(this.type,this.quotationFrom,this.filterItems);
 
 
   @override
@@ -80,17 +82,24 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
     print("lead fetch");
     token = await getUserJwt();
+    String urls;
     print(token);
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);
     print("pagenumberrr");
+    widget.quotationFrom == "notification" ?
+    urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}"
+    : urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]";
+
+
     try {
       String base = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]";
-      print(base);
-      print("basetotooooo");
-    final response = await get(Uri.parse(
+      // print(base);
+      // print("basetotooooo");
+    final response = await get(Uri.parse(urls
 
-          "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]"),
+          //"${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]"
+       ),
 
         headers: {
 
@@ -101,6 +110,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
       //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
       //List responseList = json.decode(response.body);
       var responseList = jsonDecode(response.body);
+      print(urls);
       print("company_ids");
       print(globals.selectedIds);
       print(responseList['records']);
