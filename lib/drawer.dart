@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:crm_project/quotationcreation.dart';
 import 'package:crm_project/scrolling/customerscrolling.dart';
 import 'package:crm_project/scrolling/quotationscrolling.dart';
+import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -352,31 +353,53 @@ class _MainDrawerState extends State<MainDrawer> {
                          // height: MediaQuery.of(context).size.height/2.5,
                          child: Column(
                             children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 30,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 31),
-                                  child: Text(
-                                    "Lead",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15,
-                                        color: Colors.white),
+                              InkWell(
+
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 40,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 31),
+                                    child: Text(
+                                      "Lead",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
+                                onTap: (){
+                                  Navigator.push(context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              LeadScrolling(
+                                                  '', "notification",
+                                                  "[assigned_to_me]")));
+                                },
                               ),
-                              Container(
-                                width: MediaQuery.of(context).size.width,
-                                height: 30,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 31),
-                                  child: Text(
-                                    "Opportunity",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15,
-                                        color: Colors.white),
+                              InkWell(
+                                onTap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              OpportunityMainPage(
+                                                  null, "", "notification",
+                                                  "[assigned_to_me]")));
+                                },
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 30,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 31),
+                                    child: Text(
+                                      "Opportunity",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 15,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
