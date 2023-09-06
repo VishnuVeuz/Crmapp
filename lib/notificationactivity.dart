@@ -235,7 +235,9 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                   ],
                                 ),
                               ),
-                              onTap: (){},
+                              onTap: (){
+
+                              },
                             ),
                           ),
                           Padding(
