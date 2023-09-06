@@ -15,12 +15,13 @@ import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
-import 'activities.dart';
+
 import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'lognoteedit.dart';
 import 'globals.dart' as globals;
 import 'notification.dart';
+import 'notificationactivity.dart';
 
 class QuotationDetail extends StatefulWidget {
   var quotationId;
@@ -215,7 +216,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          Activities()));
+                                          ActivitiesNotification()));
                             },
                           ),
                           Positioned(
