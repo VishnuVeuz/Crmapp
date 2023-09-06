@@ -220,8 +220,9 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                       Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left:10),
-                            child: TextButton(onPressed: () {},
+                            padding: const EdgeInsets.only(left:20,bottom: 20),
+                            child: InkWell(
+                              child: Container(
                                 child: Row(
                                   children: [
                                     Text(notificationData[i]["overdue_count"]
@@ -231,11 +232,15 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     Text("Late",
                                         style: TextStyle(color: Colors.green[800])),
                                   ],
-                                )),
+                                ),
+                              ),
+                              onTap: (){},
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:30),
-                            child: TextButton(onPressed: () {},
+                            padding: const EdgeInsets.only(left:50,bottom: 20),
+                            child: InkWell(
+                              child: Container(
                                 child: Row(
                                   children: [
                                     Text(notificationData[i]["today_count"]
@@ -245,11 +250,15 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     Text("Today",
                                         style: TextStyle(color: Colors.green[800])),
                                   ],
-                                )),
+                                ),
+                              ),
+                              onTap: (){},
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 30),
-                            child: TextButton(onPressed: () {},
+                            padding: const EdgeInsets.only(left: 50,bottom: 20),
+                            child: InkWell(
+                              child: Container(
                                 child: Row(
                                   children: [
                                     Text(notificationData[i]["planned_count"]
@@ -259,7 +268,10 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     Text("Future",
                                         style: TextStyle(color: Colors.green[800])),
                                   ],
-                                )),
+                                ),
+                              ),
+                              onTap: (){},
+                            ),
                           ),
 
                         ],
