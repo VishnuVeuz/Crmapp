@@ -197,26 +197,24 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                     children: [
 
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(notificationData[i]["name"]),
-                          ),
-                          Column(
-                            children: [
-                              IconButton(
+                      Container(
+                        width: MediaQuery.of(context).size.width/1.3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(notificationData[i]["name"]),
+                            ),
+                            IconButton(
 
-                                icon: SvgPicture.asset("images/clock.svg"),
-                                onPressed: () {
+                              icon: SvgPicture.asset("images/clock.svg"),
+                              onPressed: () {
 
-                                },
-                              ),
-
-                            ],
-                          ),
-                        ],
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                       Row(
                         children: [
