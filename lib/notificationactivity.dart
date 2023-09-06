@@ -1,4 +1,5 @@
- import 'package:crm_project/scrolling/quotationscrolling.dart';
+ import 'package:crm_project/scrolling/customerscrolling.dart';
+import 'package:crm_project/scrolling/quotationscrolling.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -177,7 +178,14 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                          builder: (context) =>
                              OpportunityMainPage(null,"","notification","[activities_today,activities_overdue,activities_future]")));
                }
+               if(notificationData[i]["model"]=="res.partner"){
+                 Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) =>
+                             CustomerScrolling("notification","[activities_today,activities_overdue,activities_future]")));
 
+               }
 
 
 
@@ -258,39 +266,61 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     children: [
                                       Text(notificationData[i]["overdue_count"]
                                           .toString(),
-                                        style: TextStyle(color: Colors.green[800]),),
+                                        style: TextStyle(color: notificationData[i]["overdue_count"]!=0?Colors.green
+                                            :Colors.grey),),
                                       SizedBox(width: 5,),
                                       Text("Late",
-                                          style: TextStyle(color: Colors.green[800])),
+                                        style: TextStyle(color: notificationData[i]["overdue_count"]!=0?Colors.green
+                                            :Colors.grey),),
                                     ],
                                   ),
                                 ),
                                 onTap: (){
 
-                                  if(notificationData[i]["model"]=="sale.order"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                QuotationScrolling("notification","[activities_overdue]")));
+                                  if(notificationData[i]["overdue_count"]!=0) {
+                                    if (notificationData[i]["model"] ==
+                                        "sale.order") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  QuotationScrolling(
+                                                      "notification",
+                                                      "[activities_overdue]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "lead.lead") {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LeadScrolling(
+                                                      '', "notification",
+                                                      "[activities_overdue]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "crm.lead") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  OpportunityMainPage(
+                                                      null, "", "notification",
+                                                      "[activities_overdue]")));
+                                    }
 
+
+                                    if (notificationData[i]["model"] ==
+                                        "res.partner") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CustomerScrolling(
+                                                      "notification",
+                                                      "[activities_overdue]")));
+                                    }
                                   }
-                                  if(notificationData[i]["model"]=="lead.lead"){
 
-                               Navigator.push(context,
-                                   MaterialPageRoute(
-                               builder: (context) =>
-                                   LeadScrolling('',"notification","[activities_overdue]")));
-
-
-                                  }
-                                  if(notificationData[i]["model"]=="crm.lead"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                OpportunityMainPage(null,"","notification","[activities_overdue]")));
-                                  }
                                 },
                               ),
                             ),
@@ -302,37 +332,58 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     children: [
                                       Text(notificationData[i]["today_count"]
                                           .toString(),
-                                          style: TextStyle(color: Colors.green[800])),
+                                          style: TextStyle(color: notificationData[i]["today_count"]!=0?Colors.green
+                                              :Colors.grey)),
                                       SizedBox(width: 5,),
                                       Text("Today",
-                                          style: TextStyle(color: Colors.green[800])),
+                                          style: TextStyle(color: notificationData[i]["today_count"]!=0?Colors.green
+                                              :Colors.grey)),
                                     ],
                                   ),
                                 ),
                                 onTap: (){
-                                  if(notificationData[i]["model"]=="sale.order"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                QuotationScrolling("notification","[activities_today]")));
 
-                                  }
-                                  if(notificationData[i]["model"]=="lead.lead"){
-                                    Navigator.push(context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LeadScrolling('',"notification","[activities_today]")));
+                                  if(notificationData[i]["today_count"]!=0) {
+                                    if (notificationData[i]["model"] ==
+                                        "sale.order") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  QuotationScrolling(
+                                                      "notification",
+                                                      "[activities_today]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "lead.lead") {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LeadScrolling(
+                                                      '', "notification",
+                                                      "[activities_today]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "crm.lead") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  OpportunityMainPage(
+                                                      null, "", "notification",
+                                                      "[activities_today]")));
+                                    }
 
-
-
-                                  }
-                                  if(notificationData[i]["model"]=="crm.lead"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                OpportunityMainPage(null,"","notification","[activities_today]")));
+                                    if (notificationData[i]["model"] ==
+                                        "res.partner") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CustomerScrolling(
+                                                      "notification",
+                                                      "[activities_today]")));
+                                    }
                                   }
                                 },
                               ),
@@ -345,39 +396,60 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                     children: [
                                       Text(notificationData[i]["planned_count"]
                                           .toString(),
-                                          style: TextStyle(color: Colors.green[800])),
+                                          style: TextStyle(color: notificationData[i]["planned_count"]!=0?Colors.green
+                                              :Colors.grey)),
                                       SizedBox(width: 5,),
                                       Text("Future",
-                                          style: TextStyle(color: Colors.green[800])),
+                                          style: TextStyle(color: notificationData[i]["planned_count"]!=0?Colors.green
+                                              :Colors.grey)),
                                     ],
                                   ),
                                 ),
                                 onTap: (){
-                                  if(notificationData[i]["model"]=="sale.order"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                QuotationScrolling("notification","[activities_future]")));
 
+                                  if(notificationData[i]["planned_count"]!=0) {
+                                    print("not zero");
+
+                                    if (notificationData[i]["model"] ==
+                                        "sale.order") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  QuotationScrolling(
+                                                      "notification",
+                                                      "[activities_future]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "lead.lead") {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LeadScrolling(
+                                                      '', "notification",
+                                                      "[activities_future]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "crm.lead") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  OpportunityMainPage(
+                                                      null, "", "notification",
+                                                      "[activities_future]")));
+                                    }
+                                    if (notificationData[i]["model"] ==
+                                        "res.partner") {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CustomerScrolling(
+                                                      "notification",
+                                                      "[activities_future]")));
+                                    }
                                   }
-                                  if(notificationData[i]["model"]=="lead.lead"){
-                                    Navigator.push(context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LeadScrolling('',"notification","[activities_future]")));
-
-
-                                  }
-                                  if(notificationData[i]["model"]=="crm.lead"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                OpportunityMainPage(null,"","notification","[activities_future]")));
-
-                                  }
-
 
                                 },
                               ),

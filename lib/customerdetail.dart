@@ -256,7 +256,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          CustomerScrolling()),
+                                          CustomerScrolling("","")),
                                 );
                               }
                             },

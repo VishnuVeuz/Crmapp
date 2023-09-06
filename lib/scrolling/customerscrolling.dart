@@ -15,6 +15,9 @@ import '../notification.dart';
 import '../quotationcreation.dart';
 
 class CustomerScrolling extends StatefulWidget {
+  var quotationFrom;
+  var filterItems;
+  CustomerScrolling(this.quotationFrom,this.filterItems);
 
 
   @override
@@ -48,17 +51,22 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
 
   Future<void> fetchData() async {
     token = await getUserJwt();
+    String urls;
     print(token);
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);
 
+    widget.quotationFrom == "notification" ?
+    urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}":
+    urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}";
 
     try {
 
-      final response = await get(Uri.parse(
+      final response = await get(Uri.parse(urls
 
 
-      "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}"),
+     // "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}"
+      ),
 
         headers: {
 
@@ -68,6 +76,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
       );
 
       var responseList = jsonDecode(response.body);
+      print(urls);
       print("company_ids");
       print(globals.selectedIds);
       print(responseList['records']);
