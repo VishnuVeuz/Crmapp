@@ -1292,26 +1292,24 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
 
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 10, right: 0),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3.5,
-                            child: ElevatedButton(
+                  Container(
+                    color: Color(0xFFF6F6F6),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 0, right: 30),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Send Message",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
+
                                 onPressed: () {
                                   setState(() {
                                     followersVisibility == true
@@ -1320,27 +1318,21 @@ class _LeadDetailState extends State<LeadDetail> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 10, right: 0),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3.5,
-                            child: ElevatedButton(
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 0, right: 20),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Log note",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -1350,27 +1342,21 @@ class _LeadDetailState extends State<LeadDetail> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, bottom: 10, left: 10, right: 10),
-                        child: Center(
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width / 3.5,
-                            child: ElevatedButton(
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 20, bottom: 10, left: 10, right: 10),
+                          child: Center(
+                            child: TextButton(
                                 child: Text(
                                   "Schedule Activity",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
+                                  style:TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 13,
+                                      color: Color(0xFF212121)),
                                 ),
                                 onPressed: () async {
                                   await defaultScheduleValues();
@@ -1384,43 +1370,43 @@ class _LeadDetailState extends State<LeadDetail> {
                                   ).then((value) => setState(() {}));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-                      ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(
-                      //       top: 20, bottom: 30, left: 0, right: 10),
-                      //   child: Center(
-                      //     child: Row(
-                      //       children: [
-                      //         Container(
-                      //           width: 50,
-                      //           child: IconButton(
-                      //             icon: Image.asset("images/pin.png"),
-                      //             onPressed: () {
-                      //               setState(() {
-                      //                 attachmentVisibility == true
-                      //                     ? attachmentVisibility = false
-                      //                     : attachmentVisibility = true;
-                      //               });
-                      //
-                      //             },
-                      //           ),
-                      //         ),
-                      //         Container(
-                      //           width: 50,
-                      //           child: Text(
-                      //             attachmentCount!,
-                      //             style: TextStyle(fontSize: 15),
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
+                        // Padding(
+                        //   padding: const EdgeInsets.only(
+                        //       top: 20, bottom: 30, left: 0, right: 10),
+                        //   child: Center(
+                        //     child: Row(
+                        //       children: [
+                        //         Container(
+                        //           width: 50,
+                        //           child: IconButton(
+                        //             icon: Image.asset("images/pin.png"),
+                        //             onPressed: () {
+                        //               setState(() {
+                        //                 attachmentVisibility == true
+                        //                     ? attachmentVisibility = false
+                        //                     : attachmentVisibility = true;
+                        //               });
+                        //
+                        //             },
+                        //           ),
+                        //         ),
+                        //         Container(
+                        //           width: 50,
+                        //           child: Text(
+                        //             attachmentCount!,
+                        //             style: TextStyle(fontSize: 15),
+                        //           ),
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
