@@ -73,13 +73,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
           elevation: 0,
           title: Row(
             children: [
-              Text(
-                customername!,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4,
+                child: Text(
+                  customername!,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
+                ),
               )
             ],
           ),
@@ -172,7 +178,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
                       icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {

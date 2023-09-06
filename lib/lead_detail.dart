@@ -5497,6 +5497,7 @@ class _LeadDetailState extends State<LeadDetail> {
         },
         child: Text("Add Follower"),),
         content:  Container(
+          //color: Colors.red,
           width: double.maxFinite,
           height:  MediaQuery.of(context).size.height/5,
           child: ListView.builder(
@@ -5549,7 +5550,12 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ),
                   ),
-                  Text(followers[i]['name']),
+                  Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width/3.5,
+                      child: Text(followers[i]['name'])),
                   Row(
                     children: [
                       IconButton(onPressed: ()async{

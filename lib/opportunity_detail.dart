@@ -179,13 +179,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           elevation: 0,
           title: Row(
             children: [
-              Text(
-                opportunityname!,
-                style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4,
+                child: Text(
+                  opportunityname!,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
+                ),
               )
             ],
           ),
@@ -278,7 +284,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
                       icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {

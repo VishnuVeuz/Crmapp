@@ -15,10 +15,12 @@ import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
+import 'activities.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'lognoteedit.dart';
 import 'globals.dart' as globals;
+import 'notification.dart';
 
 class QuotationDetail extends StatefulWidget {
   var quotationId;
@@ -141,11 +143,17 @@ class _QuotationDetailState extends State<QuotationDetail> {
           elevation: 0,
           title: Row(
             children: [
-              Text(quotationname!, style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
-                  color: Colors.white,
-                  decoration: TextDecoration.none),)
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4,
+                child: Text(quotationname!, style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),),
+              )
             ],
           ),
           leading: Builder(
@@ -164,20 +172,68 @@ class _QuotationDetailState extends State<QuotationDetail> {
             Builder(builder: (context) {
               return Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
-                      onPressed: () {
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
-                      },
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                      onPressed: () {
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Activities()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
-                      },
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -189,7 +245,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 10),
                     child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();

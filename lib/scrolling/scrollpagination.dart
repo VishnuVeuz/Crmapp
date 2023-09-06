@@ -183,11 +183,17 @@ class _LeadScrollingState extends State<LeadScrolling> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 0,right: 0),
-              child: Text(username,style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 16,
-                  color: Colors.white,
-                  decoration: TextDecoration.none),),
+              child: Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4.5,
+                child: Text(username,style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),),
+              ),
             )
           ],
         ),

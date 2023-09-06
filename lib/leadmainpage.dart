@@ -51,46 +51,47 @@ class _LeadMainPageState extends State<LeadMainPage> {
     else {
       return Scaffold(
         drawer: MainDrawer(),
-        appBar: AppBar(
-          backgroundColor: Theme
-              .of(context)
-              .primaryColor,
+        appBar:  AppBar(
+          backgroundColor: Theme.of(context).primaryColor,
           elevation: 0,
           title: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 0, right: 10),
-                child: Text(username, style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 18,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),),
-              ),
+                padding: const EdgeInsets.only(left: 0,right: 0),
+                child: Container(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width/4.5,
+                  child: Text(username,style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),),
+                ),
+              )
             ],
-
           ),
           leading: Builder(
-            builder: (context) =>
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: CircleAvatar(
-                    radius: 12,
-                    child: Icon(
-                      Icons.person,
-                      size: 20,
-                      // Adjust the size of the icon as per your requirements
-                      color: Colors
-                          .white, // Adjust the color of the icon as per your requirements
-                    ),
-
-                  ),
+            builder: (context)=>Padding(
+              padding: const EdgeInsets.only(left:20),
+              child: CircleAvatar(
+                radius: 10,
+                child: Icon(
+                  Icons.person,
+                  size: 20,
+                  // Adjust the size of the icon as per your requirements
+                  color: Colors
+                      .white, // Adjust the color of the icon as per your requirements
                 ),
-          ),
 
+              ),
+            ),
+          ),
 
           automaticallyImplyLeading: false,
           actions: [
-            Builder(builder: (context) {
+            Builder(builder: (context){
               return Row(
                 children: [
                   Container(
@@ -167,8 +168,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                      onPressed: () async {
+                    child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
+                      onPressed: (){
                         Scaffold.of(context).openDrawer();
                       },
                     ),
@@ -177,7 +178,6 @@ class _LeadMainPageState extends State<LeadMainPage> {
               );
             })
           ],
-
         ),
         body: Container(
           width: MediaQuery
