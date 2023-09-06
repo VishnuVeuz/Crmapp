@@ -2157,37 +2157,43 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                           followerStatus == false ?
-                          Row(
-                            children: [
-                              Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                              TextButton(onPressed:()async{
+                          Padding(
+                            padding: const EdgeInsets.only(left: 80),
+                            child: Row(
+                              children: [
+                                Icon(Icons.check_sharp,size: 14,color: Colors.green,),
+                                TextButton(onPressed:()async{
 
-                                String resMessage =   await followerFollow(widget.opportunityId,"crm.lead");
+                                  String resMessage =   await followerFollow(widget.opportunityId,"crm.lead");
 
-                                if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => OpportunityDetail(widget.opportunityId)));
-                                }
-                              }, child:Text("Following",style: TextStyle(color: Colors.green),)),
-                            ],
+                                  if(resMessage == "success"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                  }
+                                }, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                              ],
+                            ),
                           ):
 
-                          Row(
-                            children: [
-                              Icon(Icons.close,size: 14,color: Colors.red,),
-                              TextButton(onPressed:()async{
-                                String resMessage =  await followerUnFollow(widget.opportunityId,"crm.lead");
+                          Padding(
+                            padding: const EdgeInsets.only(left: 80),
+                            child: Row(
+                              children: [
+                                Icon(Icons.close,size: 14,color: Colors.red,),
+                                TextButton(onPressed:()async{
+                                  String resMessage =  await followerUnFollow(widget.opportunityId,"crm.lead");
 
-                                if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => OpportunityDetail(widget.opportunityId)));
-                                }
-                              }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
-                            ],
+                                  if(resMessage == "success"){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                  }
+                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
+                              ],
+                            ),
                           ),
                           Container(
                             width: 50,
