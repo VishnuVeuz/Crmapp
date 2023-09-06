@@ -198,7 +198,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
 
 
                       Container(
-                        width: MediaQuery.of(context).size.width/1.3,
+                        width: MediaQuery.of(context).size.width/1.4,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
