@@ -230,7 +230,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                         .toString(),
                                       style: TextStyle(color: Colors.green[800]),),
                                     SizedBox(width: 5,),
-                                    Text("Late demo",
+                                    Text("Late",
                                         style: TextStyle(color: Colors.green[800])),
                                   ],
                                 ),
