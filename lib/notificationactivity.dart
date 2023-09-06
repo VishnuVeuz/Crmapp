@@ -207,6 +207,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                           Column(
                             children: [
                               IconButton(
+
                                 icon: SvgPicture.asset("images/clock.svg"),
                                 onPressed: () {
 
