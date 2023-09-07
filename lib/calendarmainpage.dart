@@ -54,6 +54,7 @@ class Calender extends StatelessWidget {
               child: Text(
                 "Calendar",
                 style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
                     color: Colors.white,

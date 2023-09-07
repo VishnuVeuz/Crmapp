@@ -200,6 +200,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     .size
                     .width/4.5,
                 child: Text(username,style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
                     color: Colors.white,

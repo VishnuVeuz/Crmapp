@@ -191,6 +191,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 child: Text(
                   leadname!,
                   style: TextStyle(
+                      fontFamily: 'Mulish',
                       fontWeight: FontWeight.w700,
                       fontSize: 15,
                       color: Colors.white,

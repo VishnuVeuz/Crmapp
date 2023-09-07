@@ -65,7 +65,8 @@ class _LeadConvertState extends State<LeadConvert> {
           title: Padding(
             padding: const EdgeInsets.only(left: 8),
             child: Text("Convert to opportunity",
-              style: TextStyle(fontSize: 20, color: Colors.black),),
+              style: TextStyle(fontSize: 20, color: Colors.black,
+                fontFamily: 'Mulish',),),
           ),
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,

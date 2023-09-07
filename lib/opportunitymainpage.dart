@@ -60,6 +60,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
             children: [
               Text("Opportunity", style: TextStyle(
                   fontWeight: FontWeight.w700,
+                  fontFamily: 'Mulish',
                   fontSize: 15,
                   color: Colors.white,
                   decoration: TextDecoration.none),)
@@ -108,6 +109,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                       unselectedLabelStyle:
                       const TextStyle(color: Color(0XFF3C3F4E)),
                       labelStyle: const TextStyle(
+                          fontFamily: 'Mulish',
                           color: Colors.white, fontWeight: FontWeight.normal),
                       // tabs: const [
                       //   Tab(

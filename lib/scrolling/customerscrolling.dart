@@ -159,6 +159,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
           children: [
             Text("Customers", style: TextStyle(
                 fontWeight: FontWeight.w600,
+                fontFamily: 'Mulish',
                 fontSize: 20,
                 color: Colors.white,
                 decoration: TextDecoration.none),)

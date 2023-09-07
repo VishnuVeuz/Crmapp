@@ -58,6 +58,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                       padding: const EdgeInsets.only(left: 15,top: 8),
                       child: Text(widget.name,
                         style: TextStyle(
+                            fontFamily: 'Mulish',
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             color: Colors.black),
@@ -69,6 +70,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                         padding: const EdgeInsets.only(top: 5,left: 15),
                         child: Text(widget.contactname,
                           style: TextStyle(
+                              fontFamily: 'Mulish',
                               fontWeight: FontWeight.w600,
                               fontSize: 12,
                               color: Color(0xFF787878)),

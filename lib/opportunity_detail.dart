@@ -187,6 +187,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 child: Text(
                   opportunityname!,
                   style: TextStyle(
+                      fontFamily: 'Mulish',
                       fontWeight: FontWeight.w700,
                       fontSize: 15,
                       color: Colors.white,

@@ -64,6 +64,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       .size
                       .width/4.5,
                   child: Text(username,style: TextStyle(
+                      fontFamily: 'Mulish',
                       fontWeight: FontWeight.w700,
                       fontSize: 16,
                       color: Colors.white,
@@ -196,7 +197,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 padding: const EdgeInsets.only(left: 25, top: 5, right: 25),
                 child: Text("Leads",
                   style: TextStyle(fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w600,
                       color: Color(0xFF101010)),
 
                 ),
@@ -230,7 +232,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                               ),
                               Text("My Leads",
                                 style: TextStyle(fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
                                     color: Color(0xFF414141)),
 
                               ),
@@ -281,7 +284,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                               ),
                               Text("All Lists",
                                 style: TextStyle(fontSize: 14,
-                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
                                     color: Color(0xFF414141)),
 
                               ),
@@ -314,7 +318,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 padding: const EdgeInsets.only(left: 25, top: 10, right: 25),
                 child: Text("Recent Leads",
                   style: TextStyle(fontSize: 18,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Mulish',
                       color: Color(0xFF101010)),
 
                 ),

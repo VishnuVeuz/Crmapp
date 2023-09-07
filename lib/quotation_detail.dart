@@ -150,6 +150,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     .size
                     .width/4,
                 child: Text(quotationname!, style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                     color: Colors.white,

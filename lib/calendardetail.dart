@@ -53,6 +53,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
               Text(
                 meetingsub!,
                 style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                     color: Colors.white,

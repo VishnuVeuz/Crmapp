@@ -122,6 +122,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
               Text(
                 "New",
                 style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                     color: Colors.white,

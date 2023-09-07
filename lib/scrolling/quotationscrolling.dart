@@ -157,6 +157,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         title: Row(
           children: [
             Text("Quotations", style: TextStyle(
+                fontFamily: 'Mulish',
                 fontWeight: FontWeight.w600,
                 fontSize: 20,
                 color: Color(0xFFFFFFFF),

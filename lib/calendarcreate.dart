@@ -99,6 +99,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
+                    fontFamily: 'Mulish',
                     color: Colors.white,
                     decoration: TextDecoration.none),
               )

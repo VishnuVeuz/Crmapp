@@ -144,6 +144,7 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
         title: Row(
           children: [
             Text("New", style: TextStyle(
+                fontFamily: 'Mulish',
                 fontWeight: FontWeight.w700,
                 fontSize: 15,
                 color: Colors.white,

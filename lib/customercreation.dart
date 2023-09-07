@@ -136,6 +136,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
               Text(
                 "New",
                 style: TextStyle(
+                    fontFamily: 'Mulish',
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                     color: Colors.white,

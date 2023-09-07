@@ -97,6 +97,7 @@ class _LeadCreationState extends State<LeadCreation> {
           title: Row(
             children: [
               Text("New", style: TextStyle(
+                  fontFamily: 'Mulish',
                   fontWeight: FontWeight.w700,
                   fontSize: 15,
                   color: Colors.white,

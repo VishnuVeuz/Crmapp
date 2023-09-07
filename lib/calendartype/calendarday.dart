@@ -239,6 +239,7 @@ class SecondRoute extends StatelessWidget {
             Text(
               appointment!.eventName,
               style: TextStyle(
+                  fontFamily: 'Mulish',
                   fontWeight: FontWeight.w700,
                   fontSize: 15,
                   color: Colors.white,

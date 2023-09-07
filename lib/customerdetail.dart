@@ -81,6 +81,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 child: Text(
                   customername!,
                   style: TextStyle(
+                      fontFamily: 'Mulish',
                       fontWeight: FontWeight.w700,
                       fontSize: 15,
                       color: Colors.white,
