@@ -67,8 +67,8 @@ class _CustomerListState extends State<CustomerList> {
                               .only(left: 15),
                           child: Container(
 
-                            height: 100,
-                            width:MediaQuery.of(context).size.width/4 ,
+                            height: 80,
+                            width:MediaQuery.of(context).size.width/5 ,
 
 
                             decoration: BoxDecoration(
@@ -78,7 +78,7 @@ class _CustomerListState extends State<CustomerList> {
                               borderRadius: BorderRadius
                                   .all(
                                   Radius.circular(
-                                      100)),
+                                      90)),
 
                             ),
                             child: ClipRRect(
@@ -137,6 +137,7 @@ class _CustomerListState extends State<CustomerList> {
                                 width:MediaQuery.of(context).size.width/1.6,
                                 child: Text(widget.name,
                                   style: TextStyle(
+                                      fontFamily: 'Mulish',
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14,
                                       color: Colors.black),
@@ -149,6 +150,7 @@ class _CustomerListState extends State<CustomerList> {
                                 width:MediaQuery.of(context).size.width/1.6,
                                 child: Text(widget.jobposition,
                                   style: TextStyle(
+                                      fontFamily: 'Mulish',
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
                                       color: Color(0xFF787878)),
@@ -162,6 +164,7 @@ class _CustomerListState extends State<CustomerList> {
                                   padding: const EdgeInsets.only(left: 15,top: 4),
                                   child: Text(widget.state,
                                     style: TextStyle(
+                                        fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12,
                                         color: Color(0xFF787878)),
@@ -171,6 +174,7 @@ class _CustomerListState extends State<CustomerList> {
                                   padding: const EdgeInsets.only(left: 5,top: 4),
                                   child: Text(widget.country,
                                     style:  TextStyle(
+                                        fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 12,
                                         color: Color(0xFF787878)),
@@ -182,7 +186,8 @@ class _CustomerListState extends State<CustomerList> {
                               padding: const EdgeInsets.only(left: 15,top: 4),
                               child: Text(widget.email,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
                                     fontSize: 12,
                                     color: Color(0xFF787878)),
                               ),
@@ -190,49 +195,59 @@ class _CustomerListState extends State<CustomerList> {
 
                             Row(
                               children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Image.asset("images/calendar.png"),
-                                        onPressed: () {},
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 15,top: 8,bottom: 8),
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Image
+                                            .asset(
+                                          "images/calendar.png",
+                                          color: Colors.black,width: 20,),
 
-                                      Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(),
-                                            child: Text(
-                                              widget.meetingcount,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
 
-                                                  fontSize: 10,
-                                                  color: Color(0xFFED2449)),
-                                            ),
-                                          )),
-                                    ],
+                                        Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 5),
+                                              child: Text(
+                                                widget.meetingcount,
+                                                style: TextStyle(
+
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Mulish',
+                                                    fontSize: 10.26,
+                                                    color: Color(0xFF000000)),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      IconButton(
-                                        icon: Image.asset("images/star2.png"),
-                                        onPressed: () {},
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Image
+                                            .asset(
+                                            "images/star2.png",
+                                          color: Colors.black,width: 20,),
 
-                                      Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(),
-                                            child: Text(
-                                              widget.opportunitycount,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 10,
-                                                  color: Color(0xFFED2449)),
-                                            ),
-                                          )),
-                                    ],
+
+                                        Center(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(left: 5),
+                                              child: Text(
+                                                widget.opportunitycount,
+                                                style: TextStyle(
+                                                    fontFamily: 'Mulish',
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 10.26,
+                                                    color: Color(0xFF000000)),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
