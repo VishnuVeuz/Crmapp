@@ -323,75 +323,100 @@ class _LeadDetailState extends State<LeadDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/create.svg"),
-                              onPressed: () {
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => LeadCreation(0)));
+
                               },
+                              child: SvgPicture
+                               .asset(
+                                   "images/create.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Create")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/edit.svg"),
-                              onPressed: () {
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Create", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             LeadCreation(widget.leadId)));
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/edit.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Edit")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/convert.svg"),
-                              onPressed: () async {
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Edit", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+
+
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           LeadConvert(widget.leadId)),
                                 );
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/convert.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Convert")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset(
-                                  "images/delete.svg"),
-                              onPressed: () async {
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Convert", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: ()async{
                                 print(widget.leadId);
                                 var data =
                                 await deleteLeadData(
@@ -409,39 +434,48 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 "","","")),
                                   );
                                 }
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/delete.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Delete")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/more.svg"),
-                              onPressed: () {
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Delete", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+
+                            InkWell(
+                              onTap: ()async{
                                 showModalBottomSheet<void>(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
-                                        height: 130,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                          children: [
+                                        height: 60,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
 
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/create.svg"),
-                                                    onPressed: () async {
+                                              Column(
+                                                children: [
+
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       var data =
                                                       await getLeadData(
                                                           widget.leadId,
@@ -478,89 +512,118 @@ class _LeadDetailState extends State<LeadDetail> {
                                                           );
                                                         }
                                                       }
+
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/create.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Duplicate")
-                                              ],
-                                            ),
-                                            leadType == true
-                                                ? Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                      icon: SvgPicture.asset(
-                                                          "images/lost.svg"),
-                                                      onPressed:
-                                                          () async {
-                                                        String
-                                                        resmessage =
-                                                        await leadLost(
-                                                            false);
-                                                        int resmessagevalue =
-                                                        int.parse(
-                                                            resmessage);
-                                                        if (resmessagevalue !=
-                                                            0) {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (
-                                                                    context) =>
-                                                                    LeadDetail(
-                                                                        resmessagevalue)),
-                                                          );
-                                                        }
-                                                      }),
-                                                ),
-                                                Text("Lost")
-                                              ],
-                                            )
-                                                : Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                      icon: SvgPicture.asset(
-                                                          "images/more.svg"),
-                                                      onPressed:
-                                                          () async {
-                                                        String
-                                                        resmessage =
-                                                        await leadLost(
-                                                            true);
-                                                        int resmessagevalue =
-                                                        int.parse(
-                                                            resmessage);
-                                                        if (resmessagevalue !=
-                                                            0) {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (
-                                                                    context) =>
-                                                                    LeadDetail(
-                                                                        resmessagevalue)),
-                                                          );
-                                                        }
-                                                      }),
-                                                ),
-                                                Text("Restore")
-                                              ],
-                                            ),
-                                            leadType == true
-                                                ? Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/archive.svg"),
-                                                    onPressed: () async {
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Duplicate", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+                                              leadType == true
+                                                  ? Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: ()async{
+                                                      String
+                                                      resmessage =
+                                                      await leadLost(
+                                                          false);
+                                                      int resmessagevalue =
+                                                      int.parse(
+                                                          resmessage);
+                                                      if (resmessagevalue !=
+                                                          0) {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (
+                                                                  context) =>
+                                                                  LeadDetail(
+                                                                      resmessagevalue)),
+                                                        );
+                                                      }
+
+                                                    },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/lost.svg",width: 28,height: 28,),
+                                                  ),
+
+
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Lost", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              )
+                                                  : Column(
+                                                children: [
+
+                                                  InkWell(
+                                                    onTap: ()async{
+                                                      String
+                                                      resmessage =
+                                                      await leadLost(
+                                                          true);
+                                                      int resmessagevalue =
+                                                      int.parse(
+                                                          resmessage);
+                                                      if (resmessagevalue !=
+                                                          0) {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (
+                                                                  context) =>
+                                                                  LeadDetail(
+                                                                      resmessagevalue)),
+                                                        );
+                                                      }
+
+                                                    },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/more.svg",width: 28,height: 28,),
+                                                  ),
+
+
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Restore", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+                                              leadType == true
+                                                  ? Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       String resmessage =
                                                       await leadLost(
                                                           false);
@@ -579,20 +642,28 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         );
                                                       }
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/archive.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Archive")
-                                              ],
-                                            )
-                                                : Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/archive.svg"),
-                                                    onPressed: () async {
+
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Archive", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              )
+                                                  : Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       String resmessage =
                                                       await leadLost(
                                                           true);
@@ -613,30 +684,36 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         );
                                                       }
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/archive.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Unarchive")
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/delete.svg"),
-                                                    onPressed: () async {
 
-                                                   var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Unarchive", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: ()async{
+
+                                                      var smsResponce =    await smsDataGet(widget.leadId,"lead.lead");
 
 
-                                                   var name , phone, smsId;
-                                                   bool smsCondition;
-                                                   name = smsResponce['recipient_single_description'];
-                                                   phone = smsResponce['recipient_single_number_itf'];
-                                                   smsId =smsResponce['id'];
-                                                   smsCondition = smsResponce['invalid_tag'];
+                                                      var name , phone, smsId;
+                                                      bool smsCondition;
+                                                      name = smsResponce['recipient_single_description'];
+                                                      phone = smsResponce['recipient_single_number_itf'];
+                                                      smsId =smsResponce['id'];
+                                                      smsCondition = smsResponce['invalid_tag'];
 
 
                                                       showDialog(
@@ -645,22 +722,49 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition,"" ),
                                                       ).then((value) => setState(() {}));
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/delete.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Send SMS")
-                                              ],
-                                            ),
-                                          ],
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Send SMS", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     });
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/more.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("More")
-                        ],
-                      )
-                    ],
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("More", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
