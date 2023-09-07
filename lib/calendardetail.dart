@@ -210,7 +210,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 25),
                         child: Text(
-                        "partnername!",
+                       " partnername!",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 13,
@@ -503,7 +503,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                     reminder!,
+                                   "  reminder!",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -770,13 +770,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
       //privacy,showas;
 
       meetingsub= data['name'].toString()??"";
-   // partnername= data['partner_ids']['display_name'].toString()??"";
+    //partnername= data['partner_ids']['display_name'].toString()??"";
       startdate= data['start'].toString();
       stopdate= data['stop'].toString();
       duration=data['duration'].toString();
       // allday=data['allday']?? false;
       organizer=data['user_id']['name']??"";
-      reminder =data['alarm_ids']['name'].toString()??"";
+      //reminder =data['alarm_ids']['name'].toString()??"";
       location=data['location'].toString()??"";
       meetingurl=data['videocall_location'].toString()??"";
       //tags
