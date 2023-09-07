@@ -819,7 +819,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -856,7 +856,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -892,7 +892,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -970,7 +970,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1051,7 +1051,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1131,7 +1131,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1177,7 +1177,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -1195,7 +1195,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           .of(context)
                           .size
                           .width/1.1 ,
-                      height: 15,
+                      height: 20,
                       //color: Colors.pinkAccent,
 
                       child: ListView.builder(
@@ -1215,7 +1215,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   color:  Color(int.parse(tags![index]["color"])),),
 
                                 width: 60,
-                                height: 15,
+                                height: 20,
                                 child:
                                 Center(
                                   child: Text(
@@ -1225,7 +1225,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         color: Colors.white,
                                         fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 6),
+                                        fontSize: 8),
                                   ),
                                 ),
                               ),
@@ -1238,7 +1238,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
 
                   Row(
@@ -1275,7 +1275,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1311,7 +1311,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1347,7 +1347,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1383,7 +1383,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1420,7 +1420,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
 
 
@@ -1867,9 +1867,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     color: Color(0xFFAFAFAF)))),
                                       ),
                                     ),
-                                    Divider(
-                                      color: Colors.grey,
-                                    ),
+                                    Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
@@ -5085,7 +5083,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ],
                 ),
-                Divider(color: Colors.grey,),
+                Divider(color: Color(0xFFF4F4F4),thickness: 2,),
 
            Container(
                   width: double.maxFinite,
