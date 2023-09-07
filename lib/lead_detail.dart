@@ -6048,9 +6048,9 @@ class _LeadDetailState extends State<LeadDetail> {
       // tag,
       company = data["partner_name"].toString() ?? "";
       createdby = data["create_uid"][1].toString() ?? "";
-      createdon = data["create_date"].toString() ?? "";
+      createdon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["create_date"]))??"";
       lastupdateby = data["write_uid"][1].toString() ?? "";
-      lastupdateon = data["write_date"].toString() ?? "";
+      lastupdateon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["write_date"]))??"";
 
       followerCount = data["followers_count"].toString() ?? "0";
 

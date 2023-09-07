@@ -4267,9 +4267,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       //tag = data['tags_id']
       company = data["partner_name"].toString() ?? "";
       createdby = data["create_uid"][1].toString() ?? "";
-      createdon = data["create_date"].toString() ?? "";
+      createdon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["create_date"]))??"";
+
       lastupdateby = data["write_uid"][1].toString() ?? "";
-      lastupdateon = data["write_date"][1].toString() ?? "";
+      lastupdateon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["write_date"]))??"";
+
       internalnotes = data['description']
           .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
           .toString() ??
