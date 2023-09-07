@@ -869,7 +869,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         .of(context)
                         .size
                         .width /1.1,
-                    height: 15,
+                    height: 20,
                     //color: Colors.pinkAccent,
 
                     child: ListView.builder(
@@ -889,7 +889,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color:  Color(int.parse(tagss![index]["color"])),),
 
                               width: 60,
-                              height: 15,
+                              height: 20,
                               child:
                               Center(
                                 child: Text(
@@ -899,7 +899,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       color: Colors.white,
                                       fontFamily: 'Mulish',
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 6),
+                                      fontSize: 8),
                                 ),
                               ),
                             ),

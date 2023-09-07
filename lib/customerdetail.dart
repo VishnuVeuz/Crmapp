@@ -932,7 +932,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           .of(context)
                           .size
                           .width /1.1,
-                      height: 15,
+                      height: 20,
                       //color: Colors.pinkAccent,
 
                       child: ListView.builder(
@@ -951,8 +951,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   borderRadius: BorderRadius.all(Radius.circular(30)),
                                   color:  Color(int.parse(tagss![index]["color"])),),
 
-                                width: 60,
-                                height: 15,
+                                width: 70,
+                                height: 20,
                                 child:
                                 Center(
                                   child: Text(
@@ -962,7 +962,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Mulish',
-                                        fontSize: 6),
+                                        fontSize: 7),
                                   ),
                                 ),
                               ),
