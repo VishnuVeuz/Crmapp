@@ -450,7 +450,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -486,7 +486,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -522,7 +522,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -558,7 +558,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -594,13 +594,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -635,7 +632,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
@@ -648,7 +645,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -746,7 +743,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -782,7 +779,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -818,7 +815,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -854,7 +851,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
@@ -914,7 +911,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
 
                 Padding(
@@ -928,7 +925,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -964,7 +961,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1000,7 +997,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
@@ -1013,7 +1010,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1049,7 +1046,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
@@ -1062,7 +1059,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1098,7 +1095,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1134,7 +1131,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1170,7 +1167,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1206,7 +1203,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1242,7 +1239,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1278,7 +1275,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1314,7 +1311,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1350,7 +1347,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                 ),
 
 

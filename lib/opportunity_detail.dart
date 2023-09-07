@@ -1350,7 +1350,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1382,7 +1382,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1414,7 +1414,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1490,7 +1490,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 36),
@@ -1567,7 +1567,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1655,7 +1655,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1695,7 +1695,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -1755,7 +1755,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1787,7 +1787,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1819,7 +1819,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1851,7 +1851,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1883,7 +1883,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1915,7 +1915,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFEBEBEB)),
+                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -2630,10 +2630,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     fontSize: 12,
                                                     color: Color(0xFFAFAFAF)))),
                                       ),
-                                    ),
-                                    Divider(
-                                      color: Colors.grey,
-                                    ),
+                                    ),Divider(color: Color(0xFFF4F4F4),thickness: 2,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
@@ -6128,7 +6125,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ],
                 ),
-                Divider(color: Colors.grey,),
+                Divider(color: Color(0xFFF4F4F4),thickness: 2,),
 
                 Container(
                   width: double.maxFinite,
