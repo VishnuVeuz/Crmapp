@@ -272,37 +272,47 @@ class _QuotationDetailState extends State<QuotationDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
 
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(icon: SvgPicture.asset(
-                              "images/create.svg"),
-                            onPressed: () {
+                          InkWell(
+                            onTap: (){
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => QuotationCreation(0)));
-                            },
-                          ),
-                        ),
-                        Text("Create")
-                      ],
-                    ),
-                    Column(
 
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(icon: SvgPicture.asset(
-                              "images/edit.svg"),
-                            onPressed: () {
+                            },
+                            child: SvgPicture
+                                .asset(
+                              "images/create.svg",width: 28,height: 28,),
+                          ),
+
+
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Create",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+
+                        children: [
+
+                          InkWell(
+                            onTap: (){
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -311,21 +321,32 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               widget.quotationId
 
                                           )));
-                            },
-                          ),
-                        ),
-                        Text("Edit")
-                      ],
-                    ),
-                    Column(
 
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(icon: SvgPicture.asset(
-                              "images/delete.svg"),
-                            onPressed: () async {
+                            },
+                            child: SvgPicture
+                                .asset(
+                              "images/edit.svg",width: 28,height: 28,),
+                          ),
+
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Edit",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+
+                        children: [
+
+                          InkWell(
+                            onTap: ()async{
                               print(widget.quotationId);
                               var data =
                               await deleteQuotationData(
@@ -346,52 +367,78 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 );
                               }
                             },
+                            child: SvgPicture
+                                .asset(
+                              "images/delete.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Delete")
-                      ],
-                    ),
-                    Column(
 
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(icon: SvgPicture.asset(
-                              "images/create.svg"),
-                              onPressed: () async {
-                                var data = await getQuotationData(
-                                    widget.quotationId,
-                                    "duplicate");
-                                String resMessageText;
 
-                                if (data['message']
-                                    .toString() ==
-                                    "success") {
-                                  resMessageText =
-                                      data['data']['id']
-                                          .toString();
-                                  int resmessagevalue =
-                                  int.parse(
-                                      resMessageText);
-                                  if (resmessagevalue !=
-                                      0) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              QuotationCreation(
-                                                  resmessagevalue)),
-                                    );
-                                  }
-                                };
-                              }
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Delete",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+
+                        children: [
+
+                          InkWell(
+                            onTap: ()async{
+                              var data = await getQuotationData(
+                                  widget.quotationId,
+                                  "duplicate");
+                              String resMessageText;
+
+                              if (data['message']
+                                  .toString() ==
+                                  "success") {
+                                resMessageText =
+                                    data['data']['id']
+                                        .toString();
+                                int resmessagevalue =
+                                int.parse(
+                                    resMessageText);
+                                if (resmessagevalue !=
+                                    0) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            QuotationCreation(
+                                                resmessagevalue)),
+                                  );
+                                }
+                              };
+                            },
+                            child: SvgPicture
+                                .asset(
+                              "images/create.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Duplicate")
-                      ],
-                    ),
-                  ],
+
+
+
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Duplicate",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 20, left: 25, right: 25),

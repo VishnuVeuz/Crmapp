@@ -314,79 +314,106 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/create.svg"),
-                              onPressed: () {
+                  Padding(
+                    padding: const EdgeInsets.only(top:10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             OpportunityCreation(0)));
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/create.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Create")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/edit.svg"),
-                              onPressed: () {
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:5),
+                              child: Text("Create", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => OpportunityCreation(
                                             widget.opportunityId)));
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/edit.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Edit")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/convert.svg"),
-                              onPressed: () {
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:5),                              child: Text("Edit", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: (){
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           OpportunityQuotation(widget.opportunityId)
                                   ),
-                                ); },
+                                );
+
+                              },
+                              child: SvgPicture
+                                  .asset(
+                                "images/convert.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Convert")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset(
-                                  "images/delete.svg"),
-                              onPressed: () async {
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:5),
+                              child: Text("Convert", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+
+                            InkWell(
+                              onTap: ()async{
                                 print(widget.opportunityId);
                                 var data =
-                                await deleteOpportunityData(
+                                    await deleteOpportunityData(
                                     widget
                                         .opportunityId);
 
@@ -403,41 +430,48 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     ),
                                   );
                                 }
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/delete.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("Delete")
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 56,
-                            height: 56,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/more.svg"),
-                              onPressed: () {
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top:5),                              child: Text("Delete", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: ()async{
                                 showModalBottomSheet<void>(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
-                                        height: 130,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                          children: [
+                                        height: 70,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 10,bottom: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
 
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/create.svg"),
-                                                    onPressed: () async {
+                                              Column(
+                                                children: [
+
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       var data =
-                                                      await getOpportunityData(
+                                                          await getOpportunityData(
                                                           widget
                                                               .opportunityId,
                                                           "duplicate");
@@ -463,253 +497,284 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           );
                                                         }
                                                       }
+
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/create.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Duplicate")
-                                              ],
-                                            ),
-                                            opportunityType == true
-                                                ? Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/lost.svg"),
-                                                    onPressed: () =>
-                                                        showDialog<String>(
-                                                          context: context,
-                                                          builder: (BuildContext
-                                                          context) =>
-                                                              AlertDialog(
-                                                                title: const Text(
-                                                                    'Lost Reason'),
-                                                                content: Container(
-                                                                  width:
-                                                                  MediaQuery.of(
-                                                                      context)
-                                                                      .size
-                                                                      .width,
-                                                                  height: MediaQuery.of(
-                                                                      context)
-                                                                      .size
-                                                                      .height /
-                                                                      2.8,
-                                                                  //color: Colors.green,
 
-                                                                  child:
-                                                                  SearchChoices
-                                                                      .single(
-                                                                    value:
-                                                                    lostreasonName,
-                                                                    hint: Text(
-                                                                      "Lost Reason",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          10,
-                                                                          color: Colors
-                                                                              .black),
-                                                                    ),
-                                                                    searchHint:
-                                                                    null,
-                                                                    autofocus:
-                                                                    false,
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      setState(() {
-                                                                        lostreasonName =
-                                                                            value;
-                                                                        lostreasonId =
-                                                                        value[
-                                                                        "id"];
-                                                                      });
-                                                                    },
-                                                                    dialogBox:
-                                                                    false,
-                                                                    isExpanded:
-                                                                    true,
-                                                                    menuConstraints:
-                                                                    BoxConstraints.tight(
-                                                                        const Size.fromHeight(
-                                                                            200)),
-                                                                    itemsPerPage:
-                                                                    10,
-                                                                    currentPage:
-                                                                    currentPage,
-                                                                    selectedValueWidgetFn:
-                                                                        (item) {
-                                                                      return (Center(
-                                                                          child:
-                                                                          Container(
-                                                                            width: 300,
-                                                                            child: Text(
-                                                                              item[
-                                                                              "name"],
-                                                                              style: TextStyle(
-                                                                                  fontSize:
-                                                                                  10,
-                                                                                  color:
-                                                                                  Colors.black),
-                                                                            ),
-                                                                          )));
-                                                                    },
-                                                                    futureSearchFn: (String? keyword,
-                                                                        String?
-                                                                        orderBy,
-                                                                        bool?
-                                                                        orderAsc,
-                                                                        List<Tuple2<String, String>>?
-                                                                        filters,
-                                                                        int?
-                                                                        pageNb) async {
-                                                                      token =
-                                                                      await getUserJwt();
-                                                                      Response
-                                                                      response =
-                                                                      await get(
-                                                                        Uri.parse(
-                                                                            "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lost.reason"),
-                                                                        headers: {
-                                                                          'Authorization':
-                                                                          'Bearer $token',
-                                                                        },
-                                                                      ).timeout(
-                                                                          const Duration(
-                                                                            seconds: 10,
-                                                                          ));
 
-                                                                      if (response
-                                                                          .statusCode !=
-                                                                          200) {
-                                                                        throw Exception(
-                                                                            "failed to get data from internet");
-                                                                      }
 
-                                                                      dynamic data =
-                                                                      jsonDecode(
-                                                                          response
-                                                                              .body);
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Duplicate", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+                                              opportunityType == true
+                                                  ? Column(
+                                                children: [
 
-                                                                      int nbResults =
-                                                                      data[
-                                                                      "length"];
+                                                  InkWell(
+                                                    onTap: (){
+                                                      showDialog<String>(
+                                                        context: context,
+                                                        builder: (BuildContext
+                                                        context) =>
+                                                            AlertDialog(
+                                                              title: const Text(
+                                                                  'Lost Reason'),
+                                                              content: Container(
+                                                                width:
+                                                                MediaQuery.of(
+                                                                    context)
+                                                                    .size
+                                                                    .width,
+                                                                height: MediaQuery.of(
+                                                                    context)
+                                                                    .size
+                                                                    .height /
+                                                                    2.8,
+                                                                //color: Colors.green,
 
-                                                                      List<
-                                                                          DropdownMenuItem> results = (data[
-                                                                      "record"]
-                                                                      as List<
-                                                                          dynamic>)
-                                                                          .map<DropdownMenuItem>(
-                                                                              (item) =>
-                                                                              DropdownMenuItem(
-                                                                                value: item,
-                                                                                child: SingleChildScrollView(
-                                                                                  child: Card(
-                                                                                    child: Padding(
-                                                                                      padding: const EdgeInsets.all(0),
-                                                                                      child: Text("${item["name"]}"),
-                                                                                    ),
+                                                                child:
+                                                                SearchChoices
+                                                                    .single(
+                                                                  value:
+                                                                  lostreasonName,
+                                                                  hint: Text(
+                                                                    "Lost Reason",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                        10,
+                                                                        color: Colors
+                                                                            .black),
+                                                                  ),
+                                                                  searchHint:
+                                                                  null,
+                                                                  autofocus:
+                                                                  false,
+                                                                  onChanged:
+                                                                      (value) {
+                                                                    setState(() {
+                                                                      lostreasonName =
+                                                                          value;
+                                                                      lostreasonId =
+                                                                      value[
+                                                                      "id"];
+                                                                    });
+                                                                  },
+                                                                  dialogBox:
+                                                                  false,
+                                                                  isExpanded:
+                                                                  true,
+                                                                  menuConstraints:
+                                                                  BoxConstraints.tight(
+                                                                      const Size.fromHeight(
+                                                                          200)),
+                                                                  itemsPerPage:
+                                                                  10,
+                                                                  currentPage:
+                                                                  currentPage,
+                                                                  selectedValueWidgetFn:
+                                                                      (item) {
+                                                                    return (Center(
+                                                                        child:
+                                                                        Container(
+                                                                          width: 300,
+                                                                          child: Text(
+                                                                            item[
+                                                                            "name"],
+                                                                            style: TextStyle(
+                                                                                fontSize:
+                                                                                10,
+                                                                                color:
+                                                                                Colors.black),
+                                                                          ),
+                                                                        )));
+                                                                  },
+                                                                  futureSearchFn: (String? keyword,
+                                                                      String?
+                                                                      orderBy,
+                                                                      bool?
+                                                                      orderAsc,
+                                                                      List<Tuple2<String, String>>?
+                                                                      filters,
+                                                                      int?
+                                                                      pageNb) async {
+                                                                    token =
+                                                                    await getUserJwt();
+                                                                    Response
+                                                                    response =
+                                                                    await get(
+                                                                      Uri.parse(
+                                                                          "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lost.reason"),
+                                                                      headers: {
+                                                                        'Authorization':
+                                                                        'Bearer $token',
+                                                                      },
+                                                                    ).timeout(
+                                                                        const Duration(
+                                                                          seconds: 10,
+                                                                        ));
+
+                                                                    if (response
+                                                                        .statusCode !=
+                                                                        200) {
+                                                                      throw Exception(
+                                                                          "failed to get data from internet");
+                                                                    }
+
+                                                                    dynamic data =
+                                                                    jsonDecode(
+                                                                        response
+                                                                            .body);
+
+                                                                    int nbResults =
+                                                                    data[
+                                                                    "length"];
+
+                                                                    List<
+                                                                        DropdownMenuItem> results = (data[
+                                                                    "record"]
+                                                                    as List<
+                                                                        dynamic>)
+                                                                        .map<DropdownMenuItem>(
+                                                                            (item) =>
+                                                                            DropdownMenuItem(
+                                                                              value: item,
+                                                                              child: SingleChildScrollView(
+                                                                                child: Card(
+                                                                                  child: Padding(
+                                                                                    padding: const EdgeInsets.all(0),
+                                                                                    child: Text("${item["name"]}"),
                                                                                   ),
                                                                                 ),
-                                                                              ))
-                                                                          .toList();
-                                                                      return (Tuple2<
-                                                                          List<
-                                                                              DropdownMenuItem>,
-                                                                          int>(
-                                                                          results,
-                                                                          nbResults));
-                                                                    },
-                                                                  ),
+                                                                              ),
+                                                                            ))
+                                                                        .toList();
+                                                                    return (Tuple2<
+                                                                        List<
+                                                                            DropdownMenuItem>,
+                                                                        int>(
+                                                                        results,
+                                                                        nbResults));
+                                                                  },
                                                                 ),
-                                                                actions: <Widget>[
-                                                                  TextButton(
-                                                                      child: const Text(
-                                                                          'Submit'),
-                                                                      onPressed:
-                                                                          () async {
-                                                                        String
-                                                                        resmessage =
-                                                                        await opportunityLost(
-                                                                            "lost");
-                                                                        int resmessagevalue =
-                                                                        int.parse(
-                                                                            resmessage);
-                                                                        print(
-                                                                            resmessage);
-                                                                        print(
-                                                                            "lostid");
-                                                                        if (resmessagevalue !=
-                                                                            0) {
-                                                                          Navigator
-                                                                              .push(
-                                                                            context,
-                                                                            MaterialPageRoute(
-                                                                                builder: (context) =>
-                                                                                    OpportunityDetail(resmessagevalue)),
-                                                                          );
-                                                                        }
-                                                                        ;
-                                                                      }),
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            context,
-                                                                            'Cancel'),
-                                                                    child: const Text(
-                                                                        'Cancel'),
-                                                                  ),
-                                                                ],
                                                               ),
-                                                        ),
+                                                              actions: <Widget>[
+                                                                TextButton(
+                                                                    child: const Text(
+                                                                        'Submit'),
+                                                                    onPressed:
+                                                                        () async {
+                                                                      String
+                                                                      resmessage =
+                                                                      await opportunityLost(
+                                                                          "lost");
+                                                                      int resmessagevalue =
+                                                                      int.parse(
+                                                                          resmessage);
+                                                                      print(
+                                                                          resmessage);
+                                                                      print(
+                                                                          "lostid");
+                                                                      if (resmessagevalue !=
+                                                                          0) {
+                                                                        Navigator
+                                                                            .push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (context) =>
+                                                                                  OpportunityDetail(resmessagevalue)),
+                                                                        );
+                                                                      }
+                                                                      ;
+                                                                    }),
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          context,
+                                                                          'Cancel'),
+                                                                  child: const Text(
+                                                                      'Cancel'),
+                                                                ),
+                                                              ],
+                                                            ));
+
+
+                                                    },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/lost.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Lost")
-                                              ],
-                                            )
-                                                : Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                      icon: SvgPicture.asset(
-                                                          "images/more.svg"),
-                                                      onPressed: () async {
-                                                        String resmessage =
-                                                        await opportunityWonRestore(
-                                                            "restore");
-                                                        int resmessagevalue =
-                                                        int.parse(resmessage);
-                                                        if (resmessagevalue != 0) {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    OpportunityDetail(
-                                                                        resmessagevalue)),
-                                                          );
-                                                        }
-                                                      }),
-                                                ),
-                                                Text("Restore")
-                                              ],
-                                            ),
 
 
-                                            Visibility(
-                                              visible: opportunityType!,
-                                              child: Column(
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Lost", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              )
+                                                  : Column(
                                                 children: [
-                                                  SizedBox(
-                                                    width: 56,
-                                                    height: 56,
-                                                    child: IconButton(
-                                                      icon: SvgPicture.asset(
-                                                          "images/won.svg"),
-                                                      onPressed: () async {
+                                                  InkWell(
+                                                    onTap: ()async{
+                                                      String resmessage =
+                                                          await opportunityWonRestore(
+                                                          "restore");
+                                                      int resmessagevalue =
+                                                      int.parse(resmessage);
+                                                      if (resmessagevalue != 0) {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  OpportunityDetail(
+                                                                      resmessagevalue)),
+                                                        );
+                                                      }
+
+                                                    },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/more.svg",width: 28,height: 28,),
+                                                  ),
+
+
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Restore", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              ),
+
+
+                                              Visibility(
+                                                visible: opportunityType!,
+                                                child: Column(
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: ()async{
                                                         String resmessage =
                                                         await opportunityWonRestore(
                                                             "won");
@@ -725,26 +790,35 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           );
                                                         }
 
+
                                                       },
+                                                      child: SvgPicture
+                                                          .asset(
+                                                        "images/won.svg",width: 28,height: 28,),
                                                     ),
-                                                  ),
-                                                  Text("Won")
-                                                ],
+
+
+
+                                                    Padding(
+                                                      padding: const EdgeInsets.only(top: 5),
+                                                      child: Text("Won", style: TextStyle(
+                                                        fontFamily: 'Mulish',
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Color(0xFF212121),
+                                                      )),
+                                                    )
+                                                  ],
+                                                ),
                                               ),
-                                            ),
 
 
-                                            opportunityType == true ?
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/archive.svg"),
-                                                    onPressed: () async {
+                                              opportunityType == true ?
+                                              Column(
+                                                children: [
 
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       String resmessage =
                                                       await opportunityarchive(
                                                           false);
@@ -761,19 +835,29 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       }
 
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/archive.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Archive")
-                                              ],
-                                            )
-                                                :Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child:IconButton(icon:SvgPicture.asset("images/archive.svg"),
-                                                    onPressed: ()async{
 
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Archive", style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w400,
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                    )),
+                                                  )
+                                                ],
+                                              )
+                                                  :Column(
+                                                children: [
+
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       String resmessage =
                                                       await opportunityarchive(
                                                           true);
@@ -790,20 +874,30 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       }
 
                                                     },
-                                                  ),),
-                                                Text("Unarchive")
-                                              ],
-                                            ),
-                                            Column(
-                                              children: [
-                                                SizedBox(
-                                                  width: 56,
-                                                  height: 56,
-                                                  child: IconButton(
-                                                    icon: SvgPicture.asset(
-                                                        "images/delete.svg"),
-                                                    onPressed: () async {
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/archive.svg",width: 28,height: 28,),
+                                                  ),
 
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Unarchive", style: TextStyle(
+
+                                                     fontFamily: 'Mulish',
+                                                       fontWeight: FontWeight.w400,
+                                                       fontSize: 12,
+                                                       color: Color(0xFF212121),
+                                                          ),),
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                children: [
+
+                                                  InkWell(
+                                                    onTap: ()async{
                                                       var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
 
 
@@ -821,22 +915,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition,"" ),
                                                       ).then((value) => setState(() {}));
                                                     },
+                                                    child: SvgPicture
+                                                        .asset(
+                                                      "images/delete.svg",width: 28,height: 28,),
                                                   ),
-                                                ),
-                                                Text("Send SMS")
-                                              ],
-                                            ),
-                                          ],
+
+
+
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Send SMS", style: TextStyle(
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Color(0xFF212121),
+                                      )),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     });
+
                               },
+                              child: SvgPicture
+                                  .asset(
+                                "images/more.svg",width: 28,height: 28,),
                             ),
-                          ),
-                          Text("More")
-                        ],
-                      )
-                    ],
+
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("More", style: TextStyle(
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                              )),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10),

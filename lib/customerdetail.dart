@@ -196,57 +196,76 @@ class _CustomerDetailState extends State<CustomerDetail> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(
-                            icon: SvgPicture.asset("images/create.svg"),
-                            onPressed: () {
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        children: [
+
+                          InkWell(
+                            onTap: (){
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>CustomerCreation(0) ));
+
                             },
+                            child: SvgPicture
+                                .asset(
+                              "images/create.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Create")
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(
-                            icon: SvgPicture.asset("images/edit.svg"),
-                            onPressed: () {
+
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Create",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+
+
+                          InkWell(
+                            onTap: (){
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           CustomerCreation(widget.customerId)));
+
                             },
+                            child: SvgPicture
+                                .asset(
+                              "images/edit.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Edit")
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(
-                            icon: SvgPicture.asset("images/delete.svg"),
-                            onPressed: () async {
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Edit",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          InkWell(
+                            onTap: ()async{
                               print(widget.customerId);
                               var data =
                                   await deleteCustomerData(widget.customerId);
@@ -260,20 +279,30 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           CustomerScrolling("","")),
                                 );
                               }
+
                             },
+                            child: SvgPicture
+                                .asset(
+                              "images/delete.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Delete")
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: IconButton(
-                            icon: SvgPicture.asset("images/create.svg"),
-                            onPressed: () async {
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Delete",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                          )
+                        ],
+                      ),
+                      Column(
+                        children: [
+
+                          InkWell(
+                            onTap: ()async{
                               var data = await getCustomerData(
                                   widget.customerId, "duplicate");
                               String resMessageText;
@@ -291,143 +320,133 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 }
                               }
                             },
+                            child: SvgPicture
+                                .asset(
+                              "images/create.svg",width: 28,height: 28,),
                           ),
-                        ),
-                        Text("Duplicate")
-                      ],
-                    ),
-                    customerType == true
-                        ? Column(
-                            children: [
-                              SizedBox(
-                                width: 56,
-                                height: 56,
-                                child: IconButton(
-                                  icon: SvgPicture.asset("images/archive.svg"),
-                                  onPressed: () async {
-                                    String resmessage =
-                                        await customerArchive(false);
-                                    int resmessagevalue = int.parse(resmessage);
-                                    if (resmessagevalue != 0) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                CustomerDetail(
-                                                    resmessagevalue)),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ),
-                              Text("Archive")
-                            ],
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Text("Duplicate",style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
                           )
-                        : Column(
-                            children: [
-                              SizedBox(
-                                width: 56,
-                                height: 56,
-                                child: IconButton(
-                                  icon: SvgPicture.asset("images/archive.svg"),
-                                  onPressed: () async {
-                                    String resmessage =
-                                        await customerArchive(true);
-                                    int resmessagevalue = int.parse(resmessage);
-                                    if (resmessagevalue != 0) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                CustomerDetail(
-                                                    resmessagevalue)),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ),
-                              Text("Unarchive")
-                            ],
-                          ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 39,
-                    color: Color(0xFFF5F5F5),
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: IconButton(
-                                  icon: Image.asset("images/calendar.png"),
-                                  onPressed: () {
-                                    if(  meetingCount!>0 ){
-                                      print("dkjvbk k ");
-
-                                      Navigator
-                                          .push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (
-                                                  context) =>
-                                                  Calender(null,"",DateTime.now(),null,[])));
-
-
-
-                                    }
-                                  },
-                                ),
-                              ),
-                              Center(
-                                  child: Text(
-                                "Meeting",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 10,
-                                    color: Color(0xFF212121)),
-                              )),
-                              Center(
-                                  child: Padding(
-                                padding: const EdgeInsets.only(left: 2),
-                                child: Text(
-                                 meetingCount.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 10,
-                                      color: Color(0xFFED2449)),
-                                ),
-                              )),
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: (){
-                            print("clicked opportunity");
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        OpportunityMainPage(widget.customerId,"","","")));
-                          },
-                          child: Container(
-                            child: Row(
+                        ],
+                      ),
+                      customerType == true
+                          ? Column(
                               children: [
 
+                                InkWell(
+                                  onTap: ()async{
+                                    String resmessage =
+                                    await customerArchive(false);
+                                    int resmessagevalue = int.parse(resmessage);
+                                    if (resmessagevalue != 0) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CustomerDetail(
+                                                    resmessagevalue)),
+                                      );
+                                    }
+                                  },
+                                  child: SvgPicture
+                                      .asset(
+                                    "images/archive.svg",width: 28,height: 28,),
+                                ),
 
-                                IconButton(
-                                  icon: Image.asset("images/edit.png"),
-                                  onPressed: () {},
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Text("Archive",style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
+                                )
+                              ],
+                            )
+                          : Column(
+                              children: [
+
+                                InkWell(
+                                  onTap: ()async{
+                                    String resmessage =
+                                    await customerArchive(true);
+                                    int resmessagevalue = int.parse(resmessage);
+                                    if (resmessagevalue != 0) {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CustomerDetail(
+                                                    resmessagevalue)),
+                                      );
+                                    }
+                                  },
+                                  child: SvgPicture
+                                      .asset(
+                                    "images/archive.svg",width: 28,height: 28,),
+                                ),
+
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: Text("Unarchive",style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
+                                )
+                              ],
+                            ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 39,
+                      color: Color(0xFFF5F5F5),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: IconButton(
+                                    icon: Image.asset("images/calendar.png"),
+                                    onPressed: () {
+                                      if(  meetingCount!>0 ){
+                                        print("dkjvbk k ");
+
+                                        Navigator
+                                            .push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (
+                                                    context) =>
+                                                    Calender(null,"",DateTime.now(),null,[])));
+
+
+
+                                      }
+                                    },
+                                  ),
                                 ),
                                 Center(
                                     child: Text(
-                                  "Opportunity",
+                                  "Meeting",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 10,
@@ -437,7 +456,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Padding(
                                   padding: const EdgeInsets.only(left: 2),
                                   child: Text(
-                                    opportunityCount.toString(),
+                                   meetingCount.toString(),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 10,
@@ -447,797 +466,838 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               ],
                             ),
                           ),
-                        ),
+                          InkWell(
+                            onTap: (){
+                              print("clicked opportunity");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OpportunityMainPage(widget.customerId,"","","")));
+                            },
+                            child: Container(
+                              child: Row(
+                                children: [
 
-                        customerType == true?
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10,left: 55,right: 25,bottom: 10),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
 
-                            child: Center(child: Text("",
-                              style: TextStyle(
-                                  fontSize: 20, color: Colors.white),)),
-                          ),
-                        )
-                            : Padding(
-                          padding: const EdgeInsets.only(top: 10,left: 55,right: 25,bottom: 10),
-                          child: Container(
-                            width: 90,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(16),
+                                  IconButton(
+                                    icon: Image.asset("images/edit.png"),
+                                    onPressed: () {},
+                                  ),
+                                  Center(
+                                      child: Text(
+                                    "Opportunity",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 10,
+                                        color: Color(0xFF212121)),
+                                  )),
+                                  Center(
+                                      child: Padding(
+                                    padding: const EdgeInsets.only(left: 2),
+                                    child: Text(
+                                      opportunityCount.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10,
+                                          color: Color(0xFFED2449)),
+                                    ),
+                                  )),
+                                ],
+                              ),
                             ),
+                          ),
 
-                            child: Center(child: Text("ARCHIVED",
-                              style: TextStyle(
-                                  fontSize: 12, color: Colors.white),)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Flexible(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          RadioListTile(
-
-                            title: Text(
-                              'Individual',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            value: "person",
-                            groupValue: radioInput,
-                            onChanged: (Object? value) {},
-                          ),
-                          RadioListTile(
-                            title: Text(
-                              'Company',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                            value: "company",
-                            groupValue: radioInput,
-                            onChanged: (Object? value) {},
-                          ),
+                          customerType == true?
                           Padding(
-                            padding: const EdgeInsets.only(top: 5, left: 25),
-                            child: Text(customername!,
+                            padding: const EdgeInsets.only(top: 10,left: 55,right: 25,bottom: 10),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+
+                              child: Center(child: Text("",
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  color: Colors.black,
-                                )),
+                                    fontSize: 20, color: Colors.white),)),
+                            ),
+                          )
+                              : Padding(
+                            padding: const EdgeInsets.only(top: 10,left: 55,right: 25,bottom: 10),
+                            child: Container(
+                              width: 90,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+
+                              child: Center(child: Text("ARCHIVED",
+                                style: TextStyle(
+                                    fontSize: 12, color: Colors.white),)),
+                            ),
                           ),
                         ],
                       ),
                     ),
+                  ),
+                  Row(
+                    children: [
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            RadioListTile(
 
-
-                    customerImage !=""?
-                    Padding(
-                      padding: const EdgeInsets
-                          .only(left: 10,right: 10),
-                      child: Container(
-
-                        height: 100,
-                        width:MediaQuery.of(context).size.width/4 ,
-
-                        decoration: BoxDecoration(
-                          //  color: Colors.red,
-                          border: Border.all(
-                          ),
-                          borderRadius: BorderRadius
-                              .all(
-                              Radius.circular(
-                                  1)),
-
-                        ),
-                        // child: ClipRRect(
-                        //
-                        //   borderRadius:
-                        //   BorderRadius
-                        //       .circular(0),
-                        //   child:Image.network("${customerImage}?token=${token}"),
-                        //
-                        //
-                        // ),
-                        child: ClipRRect(
-
-                          borderRadius:
-                          BorderRadius
-                              .circular(1),
-                          child: Image.memory(
-                            base64Decode(customerImage!),
-                            fit: BoxFit.cover,
-                            width: MediaQuery.of(
-                                context)
-                                .size
-                                .width,
-                            height: 300,
-                          ),
-                        ),
-                      ),
-                    ):
-                    Padding(
-                      padding: const EdgeInsets
-                          .only(left: 10,right: 10),
-                      child: Container(
-
-                        height: 100,
-                        width:MediaQuery.of(context).size.width/4 ,
-
-                        decoration: BoxDecoration(
-                          //  color: Colors.red,
-                          border: Border.all(
-                          ),
-                          borderRadius: BorderRadius
-                              .all(
-                              Radius.circular(
-                                  1)),
-
-                        ),
-                        child: ClipRRect(
-
-                          borderRadius:
-                          BorderRadius
-                              .circular(0),
-                          child:Icon(Icons.person,size: 80,),
-
-
-                        ),
-                      ),
-                    ),
-
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 10),
-                      child: Text("Tax ID",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          taxid!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Job Position",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width /2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          jobposition!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Mobile",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          mobile!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Customer Rank",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          customerrank!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Supplier Rank",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          supplierrank!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Email",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          email!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Website",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          website!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Title",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width /2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          title!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 0),
-                  child: Text("Tags",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: Color(0xFF666666))),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 25,right: 0,top: 5),
-                  child: Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width /1.1,
-                    height: 15,
-                    //color: Colors.pinkAccent,
-
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      itemCount: tagss!.length ?? 0,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding:
-                          const EdgeInsets.only(right: 8.0, top: 4),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(30)),
-                                color:  Color(int.parse(tagss![index]["color"])),),
-
-                              width: 60,
-                              height: 15,
-                              child:
-                              Center(
-                                child: Text(
-
-                                  tagss![index]["name"].toString(),
+                              title: Text(
+                                'Individual',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              value: "person",
+                              groupValue: radioInput,
+                              onChanged: (Object? value) {},
+                            ),
+                            RadioListTile(
+                              title: Text(
+                                'Company',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                              value: "company",
+                              groupValue: radioInput,
+                              onChanged: (Object? value) {},
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5, left: 25),
+                              child: Text(customername!,
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 6),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                  )),
+                            ),
+                          ],
+                        ),
+                      ),
+
+
+                      customerImage !=""?
+                      Padding(
+                        padding: const EdgeInsets
+                            .only(left: 10,right: 10),
+                        child: Container(
+
+                          height: 100,
+                          width:MediaQuery.of(context).size.width/4 ,
+
+                          decoration: BoxDecoration(
+                            //  color: Colors.red,
+                            border: Border.all(
+                            ),
+                            borderRadius: BorderRadius
+                                .all(
+                                Radius.circular(
+                                    1)),
+
+                          ),
+                          // child: ClipRRect(
+                          //
+                          //   borderRadius:
+                          //   BorderRadius
+                          //       .circular(0),
+                          //   child:Image.network("${customerImage}?token=${token}"),
+                          //
+                          //
+                          // ),
+                          child: ClipRRect(
+
+                            borderRadius:
+                            BorderRadius
+                                .circular(1),
+                            child: Image.memory(
+                              base64Decode(customerImage!),
+                              fit: BoxFit.cover,
+                              width: MediaQuery.of(
+                                  context)
+                                  .size
+                                  .width,
+                              height: 300,
+                            ),
+                          ),
+                        ),
+                      ):
+                      Padding(
+                        padding: const EdgeInsets
+                            .only(left: 10,right: 10),
+                        child: Container(
+
+                          height: 100,
+                          width:MediaQuery.of(context).size.width/4 ,
+
+                          decoration: BoxDecoration(
+                            //  color: Colors.red,
+                            border: Border.all(
+                            ),
+                            borderRadius: BorderRadius
+                                .all(
+                                Radius.circular(
+                                    1)),
+
+                          ),
+                          child: ClipRRect(
+
+                            borderRadius:
+                            BorderRadius
+                                .circular(0),
+                            child:Icon(Icons.person,size: 80,),
+
+
+                          ),
+                        ),
+                      ),
+
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 10),
+                        child: Text("Tax ID",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            taxid!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Job Position",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width /2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            jobposition!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Mobile",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            mobile!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Customer Rank",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            customerrank!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Supplier Rank",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            supplierrank!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Email",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            email!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Website",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            website!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Title",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width /2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            title!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25, top: 0),
+                    child: Text("Tags",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                            color: Color(0xFF666666))),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25,right: 0,top: 5),
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width /1.1,
+                      height: 15,
+                      //color: Colors.pinkAccent,
+
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: tagss!.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding:
+                            const EdgeInsets.only(right: 8.0, top: 4),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                  color:  Color(int.parse(tagss![index]["color"])),),
+
+                                width: 60,
+                                height: 15,
+                                child:
+                                Center(
+                                  child: Text(
+
+                                    tagss![index]["name"].toString(),
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 6),
+                                  ),
                                 ),
                               ),
                             ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Salesperson",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            salesperson!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Salesperson",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          salesperson!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Payment Terms",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            paymentterms!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Payment Terms",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          paymentterms!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Fiscal Position",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            "Fiscal Position",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Fiscal Position",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          "Fiscal Position",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Reference",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            reference!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Reference",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          reference!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Company",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            company!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Company",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          company!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 0),
+                        child: Text("Internal Notes",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF666666))),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2.3,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10, top: 0),
+                          child: Text(
+                            internalnotes!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                                color: Color(0xFF000000)),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 0),
-                      child: Text("Internal Notes",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF666666))),
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.3,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 10, top: 0),
-                        child: Text(
-                          internalnotes!,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
-                ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    child: Divider(color: Color(0xFFEBEBEB)),
+                  ),
 
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Container(
-                    width: 450,
-                    height: 39,
-                    color: Color(0xFFF5F5F5),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 25, top: 5,bottom: 10),
-                      child: Text(
-                        "Contacts & Addresses", style: TextStyle(fontSize: 15,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Container(
+                      width: 450,
+                      height: 39,
+                      color: Color(0xFFF5F5F5),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 25, top: 5,bottom: 10),
+                        child: Text(
+                          "Contacts & Addresses", style: TextStyle(fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
+                        ),
                       ),
                     ),
                   ),
-                ),
 
 
 
-                Container(
-                  color: Colors.white70,
-                  //height: MediaQuery.of(context).size.height / 1.8,
-                  child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: addNewCustomer.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        addNewCustomerData = addNewCustomer[index];
+                  Container(
+                    color: Colors.white70,
+                    //height: MediaQuery.of(context).size.height / 1.8,
+                    child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: addNewCustomer.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          addNewCustomerData = addNewCustomer[index];
 
-                        return Card(
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            //height: MediaQuery.of(context).size.height/8.5,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      height: 100,
-                                      width: MediaQuery.of(context)
-                                          .size
-                                          .width /
-                                          4,
-                                      // color: Colors.red,
-                                      child: Icon(
-                                        Icons.person,
-                                        color: Colors.blueGrey,
-                                        size: 80,
+                          return Card(
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              //height: MediaQuery.of(context).size.height/8.5,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        height: 100,
+                                        width: MediaQuery.of(context)
+                                            .size
+                                            .width /
+                                            4,
+                                        // color: Colors.red,
+                                        child: Icon(
+                                          Icons.person,
+                                          color: Colors.blueGrey,
+                                          size: 80,
+                                        ),
                                       ),
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Padding(
-                                              padding:
-                                              const EdgeInsets.only(
-                                                  left: 15),
-                                              child: Container(
-                                                width:
-                                                MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                    2,
-                                                //color: Colors.green,
+                                      Column(
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                const EdgeInsets.only(
+                                                    left: 15),
+                                                child: Container(
+                                                  width:
+                                                  MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                      2,
+                                                  //color: Colors.green,
+                                                  child: Text(
+                                                    addNewCustomerData!['name']??"",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.w600,
+                                                        fontSize: 15,
+                                                        color: Colors.black),
+                                                  ),
+                                                ),
+                                              ),
+
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, top: 4),
+                                            child: Text(
+                                              addNewCustomerData!['email']??"",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                          Row(
+                                            children: [
+                                              Padding(
+                                                padding:
+                                                const EdgeInsets.only(
+                                                    left: 15, top: 4),
                                                 child: Text(
-                                                  addNewCustomerData!['name']??"",
+                                                  addNewCustomerData!['state_id']["name"]??"",
                                                   style: TextStyle(
                                                       fontWeight:
-                                                      FontWeight.w600,
-                                                      fontSize: 15,
+                                                      FontWeight.w400,
+                                                      fontSize: 14,
                                                       color: Colors.black),
                                                 ),
                                               ),
-                                            ),
-
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15, top: 4),
-                                          child: Text(
-                                            addNewCustomerData!['email']??"",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: Colors.black),
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            Padding(
-                                              padding:
-                                              const EdgeInsets.only(
-                                                  left: 15, top: 4),
-                                              child: Text(
-                                                addNewCustomerData!['state_id']["name"]??"",
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                    FontWeight.w400,
-                                                    fontSize: 14,
-                                                    color: Colors.black),
+                                              Padding(
+                                                padding:
+                                                const EdgeInsets.only(
+                                                    left: 5, top: 4),
+                                                child: Text(
+                                                  addNewCustomerData!['country_id']["name"]??"",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontSize: 14,
+                                                      color: Colors.black),
+                                                ),
                                               ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                              const EdgeInsets.only(
-                                                  left: 5, top: 4),
-                                              child: Text(
-                                                addNewCustomerData!['country_id']["name"]??"",
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                    FontWeight.w400,
-                                                    fontSize: 14,
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15, top: 4),
-                                          child: Text(
-                                            addNewCustomerData!['phone']??"",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: Colors.black),
+                                            ],
                                           ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15, top: 4),
-                                          child: Text(
-                                            addNewCustomerData!['mobile']??"",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 14,
-                                                color: Colors.black),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, top: 4),
+                                            child: Text(
+                                              addNewCustomerData!['phone']??"",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, top: 4),
+                                            child: Text(
+                                              addNewCustomerData!['mobile']??"",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      }),
-                ),
+                          );
+                        }),
+                  ),
 
 
 
-              ],
+                ],
+              ),
             ),
           ),
         ),

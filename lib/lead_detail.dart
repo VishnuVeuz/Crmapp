@@ -463,9 +463,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
-                                        height: 60,
+                                        height: 70,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding: const EdgeInsets.only(top: 10,bottom: 10),
                                           child: Row(
                                             mainAxisAlignment:
                                             MainAxisAlignment.spaceEvenly,
