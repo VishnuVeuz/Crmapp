@@ -356,8 +356,10 @@ class _LeadScrollingState extends State<LeadScrolling> {
             initialChildSize: 0.7,
             maxChildSize: 0.95,
 
-            title: Text("Leads Category"),
-            buttonText: Text("Lead Filter"),
+            title: Text("Leads Category",style:
+            TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
+            buttonText: Text("Lead Filter",style:
+            TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
             buttonIcon:  Icon(
               Icons.arrow_drop_down_rounded,
               color: Colors.grey,
@@ -365,6 +367,17 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
             items: _items,
             searchable: true,
+
+
+           // backgroundColor:  Color(0xFFED2449),
+          cancelText: Text("Cancel",style: TextStyle(color: Color(0xFF231F20),
+              fontWeight: FontWeight.w700,fontSize: 13.57,
+              fontFamily: 'Mulish'
+          ),),
+            confirmText: Text("Ok",style: TextStyle(color: Color(0xFF231F20),
+            fontWeight: FontWeight.w700,fontSize: 13.57,
+                fontFamily: 'Mulish'
+            ),),
 
             onConfirm: (values) async{
               setState(() {

@@ -51,27 +51,32 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
             child: Card(
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/8.5,
+               // height: MediaQuery.of(context).size.height/8.5,
 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,top: 15),
+                      padding: const EdgeInsets.only(left: 15,top: 8),
                       child: Text(widget.name,
                         style: TextStyle(
+                            fontFamily: 'Mulish',
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             color: Colors.black),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,left: 15),
-                      child: Text(widget.contactname,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                            color: Color(0xFF787878)),
+                    Visibility(
+                      visible:widget.contactname==""?false:true ,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5,left: 15),
+                        child: Text(widget.contactname,
+                          style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                              color: Color(0xFF787878)),
+                        ),
                       ),
                     ),
 
@@ -102,46 +107,14 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
 
                         widget.leadimg!=""?
-                        // Padding(
-                        //   padding: const EdgeInsets.only(right: 25),
-                        //   child: Container(
-                        //     width:35,
-                        //     height:35,
-                        //     decoration: BoxDecoration(
-                        //         border: Border.all(
-                        //         ),
-                        //         borderRadius: BorderRadius.all(Radius.circular(20))
-                        //     ),
-                        //     child: CircleAvatar(
-                        //       radius: 12,
-                        //       child: ClipRRect(
-                        //
-                        //         borderRadius:
-                        //         BorderRadius
-                        //             .circular(18),
-                        //         child: Image.memory(
-                        //           base64Decode(leadimg),
-                        //           fit: BoxFit.cover,
-                        //           width: MediaQuery.of(
-                        //               context)
-                        //               .size
-                        //               .width,
-                        //           height: 300,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // )
-                        // :
-
 
 
                         Padding(
                           padding: const EdgeInsets
-                              .only(right: 25),
+                              .only(right: 25,bottom: 8),
                           child: Container(
-                            width: 35,
-                            height: 35,
+                            width: 25,
+                            height: 25,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                 ),
@@ -168,10 +141,10 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
 
                         Padding(
-                          padding: const EdgeInsets.only(right: 25),
+                          padding: const EdgeInsets.only(right: 25,bottom: 8),
                           child: Container(
-                            width:35,
-                            height:35,
+                            width:25,
+                            height:25,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                 ),
@@ -195,15 +168,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
 
 
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 10,left: 15),
-                    //   child: Text(contactname,
-                    //     style: TextStyle(
-                    //         fontWeight: FontWeight.w600,
-                    //         fontSize: 12,
-                    //         color: Color(0xFF787878)),
-                    //   ),
-                    // ),
+
                   ],
                 ),
 

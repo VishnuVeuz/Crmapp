@@ -48,221 +48,236 @@ class _CustomerListState extends State<CustomerList> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
-            child: Card(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                //height: MediaQuery.of(context).size.height/8.5,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+            child: Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Card(
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  //height: MediaQuery.of(context).size.height/8.5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
 
 
-                        widget.customerimage !=""?
+                          widget.customerimage !=""?
 
-                        Padding(
-                          padding: const EdgeInsets
-                              .only(left: 15),
-                          child: Container(
+                          Padding(
+                            padding: const EdgeInsets
+                                .only(left: 15),
+                            child: Container(
 
-                            height: 80,
-                            width:MediaQuery.of(context).size.width/5 ,
+                              height: 80,
+                              width:MediaQuery.of(context).size.width/5 ,
 
 
-                            decoration: BoxDecoration(
-                              //color: Colors.red,
-                              border: Border.all(
+                              decoration: BoxDecoration(
+                                //color: Colors.red,
+                                border: Border.all(
+                                ),
+                                borderRadius: BorderRadius
+                                    .all(
+                                    Radius.circular(
+                                        90)),
+
                               ),
-                              borderRadius: BorderRadius
-                                  .all(
-                                  Radius.circular(
-                                      90)),
+                              child: ClipRRect(
 
+                                borderRadius:
+                                BorderRadius
+                                    .circular(100),
+                                child:Image.network("${widget.customerimage}?token=${token}"),
+
+
+                              ),
                             ),
-                            child: ClipRRect(
+                          ):
 
-                              borderRadius:
-                              BorderRadius
-                                  .circular(100),
-                              child:Image.network("${widget.customerimage}?token=${token}"),
+                          Padding(
+                            padding: const EdgeInsets
+                                .only(left: 15),
+                            child: Container(
+
+                              height: 100,
+                              width:MediaQuery.of(context).size.width/4 ,
+
+                              decoration: BoxDecoration(
+                                //  color: Colors.red,
+                                border: Border.all(
+                                ),
+                                borderRadius: BorderRadius
+                                    .all(
+                                    Radius.circular(
+                                        100)),
+
+                              ),
+                              child: ClipRRect(
+
+                                borderRadius:
+                                BorderRadius
+                                    .circular(100),
+                                child:Icon(Icons.person,size: 80,),
 
 
+                              ),
                             ),
                           ),
-                        ):
 
-                        Padding(
-                          padding: const EdgeInsets
-                              .only(left: 15),
-                          child: Container(
-
-                            height: 100,
-                            width:MediaQuery.of(context).size.width/4 ,
-
-                            decoration: BoxDecoration(
-                              //  color: Colors.red,
-                              border: Border.all(
-                              ),
-                              borderRadius: BorderRadius
-                                  .all(
-                                  Radius.circular(
-                                      100)),
-
-                            ),
-                            child: ClipRRect(
-
-                              borderRadius:
-                              BorderRadius
-                                  .circular(100),
-                              child:Icon(Icons.person,size: 80,),
-
-
-                            ),
-                          ),
-                        ),
-
-                        // :Container(
-                        //   height: 100,
-                        //   width:MediaQuery.of(context).size.width/4 ,
-                        //   color: Colors.red,
-                        // ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Container(
-                                width:MediaQuery.of(context).size.width/1.6,
-                                child: Text(widget.name,
-                                  style: TextStyle(
-                                      fontFamily: 'Mulish',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Colors.black),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15,top: 4),
-                              child: Container(
-                                width:MediaQuery.of(context).size.width/1.6,
-                                child: Text(widget.jobposition,
-                                  style: TextStyle(
-                                      fontFamily: 'Mulish',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12,
-                                      color: Color(0xFF787878)),
-                                ),
-                              ),
-                            ),
-
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15,top: 4),
-                                  child: Text(widget.state,
+                          // :Container(
+                          //   height: 100,
+                          //   width:MediaQuery.of(context).size.width/4 ,
+                          //   color: Colors.red,
+                          // ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15),
+                                child: Container(
+                                  width:MediaQuery.of(context).size.width/1.6,
+                                  child: Text(widget.name,
                                     style: TextStyle(
                                         fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 12,
-                                        color: Color(0xFF787878)),
+                                        fontSize: 14,
+                                        color: Colors.black),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 5,top: 4),
-                                  child: Text(widget.country,
-                                    style:  TextStyle(
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 12,
-                                        color: Color(0xFF787878)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 15,top: 4),
-                              child: Text(widget.email,
-                                style: TextStyle(
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 12,
-                                    color: Color(0xFF787878)),
                               ),
-                            ),
-
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15,top: 8,bottom: 8),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15,top: 4),
+                                child: Visibility(
+                                  visible: widget.jobposition==""?false:true,
                                   child: Container(
-                                    child: Row(
-                                      children: [
-                                        Image
-                                            .asset(
-                                          "images/calendar.png",
-                                          color: Colors.black,width: 20,),
-
-
-                                        Center(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(left: 5),
-                                              child: Text(
-                                                widget.meetingcount,
-                                                style: TextStyle(
-
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 10.26,
-                                                    color: Color(0xFF000000)),
-                                              ),
-                                            )),
-                                      ],
+                                    width:MediaQuery.of(context).size.width/1.6,
+                                    child: Text(widget.jobposition,
+                                      style: TextStyle(
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12,
+                                          color: Color(0xFF787878)),
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 5),
-                                  child: Container(
-                                    child: Row(
-                                      children: [
-                                        Image
-                                            .asset(
-                                            "images/star2.png",
-                                          color: Colors.black,width: 20,),
+                              ),
 
-
-                                        Center(
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(left: 5),
-                                              child: Text(
-                                                widget.opportunitycount,
-                                                style: TextStyle(
-                                                    fontFamily: 'Mulish',
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 10.26,
-                                                    color: Color(0xFF000000)),
-                                              ),
-                                            )),
-                                      ],
+                              Row(
+                                children: [
+                                  Visibility(
+                                    visible:widget.state == ""?false:true ,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15,top: 4),
+                                      child: Text(widget.state,
+                                        style: TextStyle(
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12,
+                                            color: Color(0xFF787878)),
+                                      ),
                                     ),
                                   ),
+                                  Visibility(
+                                    visible:widget.country ==""?false:true ,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 15,top: 4),
+                                      child: Text(widget.country,
+                                        style:  TextStyle(
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12,
+                                            color: Color(0xFF787878)),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Visibility(
+                                visible:widget.email==""?false:true ,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15,top: 4),
+                                  child: Text(widget.email,
+                                    style: TextStyle(
+                                        fontFamily: 'Mulish',
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12,
+                                        color: Color(0xFF787878)),
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15,top: 8,bottom: 8),
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Image
+                                              .asset(
+                                            "images/calendar.png",
+                                            color: Colors.black,width: 20,),
 
 
-                      ],
-                    ),
+                                          Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(left: 5),
+                                                child: Text(
+                                                  widget.meetingcount,
+                                                  style: TextStyle(
+
+                                                      fontWeight: FontWeight.w600,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 10.26,
+                                                      color: Color(0xFF000000)),
+                                                ),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 5),
+                                    child: Container(
+                                      child: Row(
+                                        children: [
+                                          Image
+                                              .asset(
+                                              "images/star2.png",
+                                            color: Colors.black,width: 20,),
 
 
-                  ],
+                                          Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(left: 5),
+                                                child: Text(
+                                                  widget.opportunitycount,
+                                                  style: TextStyle(
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w600,
+                                                      fontSize: 10.26,
+                                                      color: Color(0xFF000000)),
+                                                ),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+
+
+                        ],
+                      ),
+
+
+                    ],
+                  ),
+
                 ),
-
               ),
             ),
             onTap: (){

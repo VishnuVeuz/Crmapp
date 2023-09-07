@@ -364,38 +364,43 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                               .of(context)
                                               .size
                                               .width,
-                                          height: 90,
+                                         // height: 90,
                                           child: Column(
                                             crossAxisAlignment: CrossAxisAlignment
                                                 .start,
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(
-                                                    left: 15, top: 15),
+                                                    left: 15, top: 8),
                                                 child: Text(
                                                   snapshot
                                                       .data![index]["name"] ??
                                                       "",
                                                   style: TextStyle(
+                                                      fontFamily: 'Mulish',
                                                       fontWeight: FontWeight
                                                           .w600,
                                                       fontSize: 14,
                                                       color: Colors.black),
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10, left: 15),
-                                                child: Text(snapshot
-                                                    .data![index]["contact_name"] ??
-                                                    "",
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight
-                                                          .w600,
-                                                      fontSize: 12,
-                                                      color: Color(0xFF787878)),
-                                                ),
+                                              Visibility(
+                                                visible: snapshot.data![index]["contact_name"]==""?false:true,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      top: 5, left: 15),
+                                                  child: Text(snapshot
+                                                      .data![index]["contact_name"] ??
+                                                      "",
+                                                    style: TextStyle(
+                                                        fontFamily: 'Mulish',
+                                                        fontWeight: FontWeight
+                                                            .w600,
+                                                        fontSize: 12,
+                                                        color: Color(0xFF787878)),
+                                                  ),
 
+                                                ),
                                               ),
 
                                               Row(
@@ -494,10 +499,10 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                                 Padding(
                                                     padding: const EdgeInsets
-                                                        .only(right: 25),
+                                                        .only(right: 25,bottom: 8),
                                                     child: Container(
-                                                      width: 35,
-                                                      height: 35,
+                                                      width: 25,
+                                                      height: 25,
                                                       decoration: BoxDecoration(
                                                           border: Border.all(
                                                           ),
@@ -525,10 +530,10 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                                   Padding(
                                                     padding: const EdgeInsets
-                                                        .only(right: 25),
+                                                        .only(right: 25,bottom: 8),
                                                     child: Container(
-                                                      width: 35,
-                                                      height: 35,
+                                                      width: 25,
+                                                      height: 25,
                                                       decoration: BoxDecoration(
                                                           border: Border.all(
                                                           ),

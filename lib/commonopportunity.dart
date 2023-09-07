@@ -49,13 +49,13 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
             child: Card(
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height/8.5,
+              //  height: MediaQuery.of(context).size.height/8.5,
 //color: Colors.green,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15,top: 15),
+                      padding: const EdgeInsets.only(left: 15,top: 8),
                       child: Text(widget.name,
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -63,13 +63,16 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                             color: Colors.black),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,left: 15),
-                      child: Text(widget.contactname,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 12,
-                            color: Color(0xFF787878)),
+                    Visibility(
+                      visible: widget.contactname == ""?false:true,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 5,left: 15),
+                        child: Text(widget.contactname,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                              color: Color(0xFF787878)),
+                        ),
                       ),
                     ),
 
@@ -134,10 +137,10 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
 
                         Padding(
                           padding: const EdgeInsets
-                              .only(right: 25),
+                              .only(right: 25,bottom: 8),
                           child: Container(
-                            width: 35,
-                            height: 35,
+                            width: 25,
+                            height: 25,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                 ),
@@ -162,10 +165,10 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                           ),
                         ) :
                         Padding(
-                          padding: const EdgeInsets.only(right: 25),
+                          padding: const EdgeInsets.only(right: 25,bottom: 8),
                           child: Container(
-                            width:35,
-                            height:35,
+                            width:25,
+                            height:25,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                 ),
