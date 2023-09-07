@@ -460,7 +460,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Customer",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -475,7 +476,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           customername!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -494,7 +496,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Quotation Template",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -509,7 +512,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           "Quotation Template",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -528,7 +532,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Expiration",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -543,7 +548,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           expiration!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -562,7 +568,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Pricelist",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -577,7 +584,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           pricelist!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -601,7 +609,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Payment Terms",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -616,7 +625,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           paymentterms!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -632,6 +642,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Text("Sales",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
+                          fontFamily: 'Mulish',
                           fontSize: 14,
                           color: Colors.black)),
                 ),
@@ -645,9 +656,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     Padding(
                       padding: const EdgeInsets.only(left: 25),
                       child: Text("Salesperson",
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
 
@@ -724,7 +736,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           salesperson!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -743,7 +756,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Sales Teams",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -756,9 +770,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           salesteam!,
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -777,7 +792,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Company",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -790,9 +806,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           company!,
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -811,7 +828,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Customer Reference",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -826,7 +844,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           customerreference!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -842,7 +861,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Text("Tags",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 13,
+                          fontFamily: 'Mulish',
+                          fontSize: 12,
                           color: Color(0xFF666666))),
                 ),
                 Padding(
@@ -880,6 +900,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   tagss![index]["name"].toString(),
                                   style: TextStyle(
                                       color: Colors.white,
+                                      fontFamily: 'Mulish',
                                       fontWeight: FontWeight.w600,
                                       fontSize: 6),
                                 ),
@@ -901,6 +922,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Text("Delivery",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
+                          fontFamily: 'Mulish',
                           fontSize: 14,
                           color: Colors.black)),
                 ),
@@ -916,7 +938,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Shipping Policy",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -929,9 +952,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           shippingpolicy!,
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -950,7 +974,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Delivery Date",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -965,7 +990,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           deliverydate!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -981,6 +1007,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Text("Invoicing",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
+                          fontFamily: 'Mulish',
                           fontSize: 14,
                           color: Colors.black)),
                 ),
@@ -996,7 +1023,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Fiscal Position",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1011,7 +1039,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           fiscalposition!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1027,6 +1056,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Text("Tracking",
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
+                          fontFamily: 'Mulish',
                           fontSize: 14,
                           color: Colors.black)),
                 ),
@@ -1042,7 +1072,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Source Document",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1057,7 +1088,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           sourcedocument!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1076,7 +1108,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Campaign",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1089,9 +1122,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           campaign!,
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1110,7 +1144,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Medium",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1125,7 +1160,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           medium!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1144,7 +1180,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Source",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1159,7 +1196,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           source!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1178,7 +1216,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Created by",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1193,7 +1232,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           createdby!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1212,7 +1252,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Created on",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1225,9 +1266,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           createdon!,
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1244,9 +1286,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     Padding(
                       padding: const EdgeInsets.only(left: 25),
                       child: Text("Last Updated by",
-                          style: TextStyle(
+                          style:TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1261,7 +1304,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           lastupdatedby!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),
@@ -1280,7 +1324,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Text("Last Updated on",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
@@ -1295,7 +1340,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           lastupdatedon!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF000000)),
                         ),
                       ),

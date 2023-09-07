@@ -1003,6 +1003,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         "Meeting",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
+                                            fontFamily: 'Mulish',
                                             fontSize: 10,
                                             color: Color(0xFF212121)),
                                       )),
@@ -1085,6 +1086,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         "Quotations",
                                         style: TextStyle(
                                             fontWeight: FontWeight.w600,
+                                            fontFamily: 'Mulish',
                                             fontSize: 10,
                                             color: Color(0xFF212121)),
                                       )),
@@ -1162,8 +1164,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     Center(
                                         child: Text(
                                           "Similar Opportunity",
+
                                           style: TextStyle(
                                               fontWeight: FontWeight.w600,
+                                              fontFamily: 'Mulish',
                                               fontSize: 10,
                                               color: Color(0xFF212121)),
                                         )),
@@ -1231,9 +1235,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   child:
                                                   stageColorIndex == index ?
                                                   Text(opportunityStageTypes[index]['name'], style: TextStyle(
-                                                      color: Colors.white, fontSize: 12),):
+                                                      color: Colors.white, fontSize: 12, fontFamily: 'Mulish',),):
                                                   Text(opportunityStageTypes[index]['name'], style: TextStyle(
-                                                      color: Colors.black, fontSize: 12),) ))
+                                                      color: Colors.black, fontSize: 12, fontFamily: 'Mulish',),) ))
                                         ],
                                       ),
                                     ),
@@ -1280,7 +1284,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text(opportunityname!,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 17,
+                              fontFamily: 'Mulish',
+                              fontSize: 16,
                               color: Colors.black,
                             )),
                       ),
@@ -1302,7 +1307,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Text(
                                 "Won",
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.white, fontFamily: 'Mulish',),
                               )),
                         ),
                       )
@@ -1319,7 +1324,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Text(
                                 "",
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 20, color: Colors.white, fontFamily: 'Mulish',),
                               )),
                         ),
                       )
@@ -1337,7 +1342,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Text(
                                 "Lost",
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.white, fontFamily: 'Mulish',),
                               )),
                         ),
                       ),
@@ -1355,7 +1360,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Customer",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1366,7 +1372,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             customername!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1385,7 +1392,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Email",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1396,7 +1404,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             email!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1415,7 +1424,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Phone",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Padding(
@@ -1433,7 +1443,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   phone!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF000000)),
                                 ),
                               ),
@@ -1491,7 +1502,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           child: Text("Mobile",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 13,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Row(
@@ -1507,7 +1519,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   mobile!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF000000)),
                                 ),
                               ),
@@ -1562,9 +1575,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Salesperson",
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       salesperImg != ""
@@ -1631,7 +1645,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             salesperson!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1650,7 +1665,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Priority",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1684,9 +1700,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Tags",
-                        style: TextStyle(
+                        style:TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 13,
+                            fontFamily: 'Mulish',
+                            fontSize: 12,
                             color: Color(0xFF666666))),
                   ),
                   Padding(
@@ -1724,6 +1741,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     tags![index]["name"].toString(),
                                     style: TextStyle(
                                         color: Colors.white,
+                                        fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 6),
                                   ),
@@ -1747,7 +1765,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Company",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1758,7 +1777,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             company!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1775,9 +1795,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created by",
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1788,7 +1809,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             createdby!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1807,7 +1829,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Created on",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1818,7 +1841,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             createdon!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1837,7 +1861,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Last Updated by",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1846,9 +1871,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             lastupdateby!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1867,7 +1893,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Last Updated on",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1878,7 +1905,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             lastupdateon!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1897,7 +1925,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text("Internal Notes",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1906,9 +1935,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             internalnotes!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),

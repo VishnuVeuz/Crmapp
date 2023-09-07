@@ -775,7 +775,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Text(leadname!,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 17,
+                              fontFamily: 'Mulish',
+                              fontSize: 16,
                               color: Colors.black,
                             )),
                       ),
@@ -792,7 +793,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               child: Text(
                                 "",
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 20, color: Colors.white, fontFamily: 'Mulish',),
                               )),
                         ),
                       )
@@ -809,7 +810,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               child: Text(
                                 "Lost",
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.white),
+                                    fontSize: 16, color: Colors.white, fontFamily: 'Mulish',),
                               )),
                         ),
                       ),
@@ -828,7 +829,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Text("Company",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -843,7 +845,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             company!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -861,9 +864,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Email",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -877,7 +881,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             email!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -895,13 +900,14 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Phone",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 36),
+                        padding: const EdgeInsets.only(right: 34),
                         child: Row(
                           children: [
                             Container(
@@ -915,7 +921,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                   phone!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF000000)),
                                 ),
                               ),
@@ -971,13 +978,14 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Mobile",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 36),
+                        padding: const EdgeInsets.only(right: 34),
                         child: Row(
                           children: [
                             Container(
@@ -991,7 +999,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                   mobile!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF000000)),
                                 ),
                               ),
@@ -1050,9 +1059,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Salesperson",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       salesperImg != ""
@@ -1110,7 +1120,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             salesperson!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1128,9 +1139,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Priority",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1172,7 +1184,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Text("Tags",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 13,
+                            fontFamily: 'Mulish',
+                            fontSize: 12,
                             color: Color(0xFF666666))),
                   ),
                   Padding(
@@ -1210,6 +1223,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                      tags![index]["name"].toString(),
                                     style: TextStyle(
                                         color: Colors.white,
+                                        fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w600,
                                         fontSize: 6),
                                   ),
@@ -1233,9 +1247,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created by",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1249,7 +1264,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             createdby!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1267,9 +1283,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created on",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1283,7 +1300,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             createdon!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1301,9 +1319,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated by",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1315,9 +1334,10 @@ class _LeadDetailState extends State<LeadDetail> {
                           padding: const EdgeInsets.only(right: 25),
                           child: Text(
                             lastupdateby!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1335,9 +1355,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated on",
-                            style: TextStyle(
+                            style:  TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1351,8 +1372,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             lastupdateon!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
-                                color: Color(0xFF000000)),
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
+                                color: Color(0xFF000000))
                           ),
                         ),
                       ),
@@ -1371,7 +1393,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Text("Internal Notes",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1385,8 +1408,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             internalnotes!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
-                                color: Color(0xFF000000)),
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
+                                color: Color(0xFF000000))
                           ),
                         ),
                       ),

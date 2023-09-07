@@ -449,6 +449,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Meeting",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mulish',
                                       fontSize: 10,
                                       color: Color(0xFF212121)),
                                 )),
@@ -489,6 +490,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Opportunity",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
                                         fontSize: 10,
                                         color: Color(0xFF212121)),
                                   )),
@@ -533,7 +535,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                               child: Center(child: Text("ARCHIVED",
                                 style: TextStyle(
-                                    fontSize: 12, color: Colors.white),)),
+                                    fontSize: 12, color: Colors.white,  fontFamily: 'Mulish',),)),
                             ),
                           ),
                         ],
@@ -550,7 +552,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                               title: Text(
                                 'Individual',
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
+
                               ),
                               value: "person",
                               groupValue: radioInput,
@@ -559,7 +562,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             RadioListTile(
                               title: Text(
                                 'Company',
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
                               ),
                               value: "company",
                               groupValue: radioInput,
@@ -570,7 +573,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               child: Text(customername!,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    fontSize: 18,
+                                   fontFamily: 'Mulish',
+                                    fontSize: 16,
                                     color: Colors.black,
                                   )),
                             ),
@@ -664,7 +668,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Tax ID",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -673,9 +678,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(right: 10, top: 0),
                           child: Text(
                             taxid!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -694,7 +700,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Job Position",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -705,7 +712,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             jobposition!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -724,7 +732,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Mobile",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -735,7 +744,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             mobile!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -754,7 +764,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Customer Rank",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -765,7 +776,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             customerrank!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -784,7 +796,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Supplier Rank",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -795,7 +808,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             supplierrank!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -812,9 +826,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25, top: 0),
                         child: Text("Email",
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -825,7 +840,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             email!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -844,7 +860,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Website",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -853,9 +870,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(right: 10, top: 0),
                           child: Text(
                             website!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -874,7 +892,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Title",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -885,7 +904,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             title!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -901,7 +921,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     child: Text("Tags",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 13,
+                            fontFamily: 'Mulish',
+                            fontSize: 12,
                             color: Color(0xFF666666))),
                   ),
                   Padding(
@@ -940,6 +961,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
                                         fontSize: 6),
                                   ),
                                 ),
@@ -962,7 +984,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Salesperson",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -973,7 +996,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             salesperson!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -992,7 +1016,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Payment Terms",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1003,7 +1028,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             paymentterms!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1022,7 +1048,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Fiscal Position",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1033,7 +1060,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             "Fiscal Position",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1050,9 +1078,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25, top: 0),
                         child: Text("Reference",
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1061,9 +1090,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(right: 10, top: 0),
                           child: Text(
                             reference!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1082,7 +1112,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text("Company",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1091,9 +1122,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(right: 10, top: 0),
                           child: Text(
                             company!,
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -1110,9 +1142,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25, top: 0),
                         child: Text("Internal Notes",
-                            style: TextStyle(
+                            style:TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -1123,7 +1156,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             internalnotes!,
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 13,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
                                 color: Color(0xFF000000)),
                           ),
                         ),
