@@ -3926,7 +3926,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       // }
 
       // tags = editTagName.map((item) => item.value).toList();
-      deliverydate = data['commitment_date'].toString();
+      deliverydate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['commitment_date']))??"";
       fiscalposition = data['fiscal_position_id']['name'] ?? "";
       sourcedocument = (data['origin'] ?? "").toString();
 
@@ -3944,9 +3944,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
       shippingpolicy = data['picking_policy'] ?? "";
       createdby = data['create_uid'][1] ?? "";
-      createdon = data['create_date'] ?? "";
+      createdon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['create_date']))??"";
       lastupdatedby= data['write_uid'][1] ?? "";
-      lastupdatedon= data['write_date'] ?? "";
+      lastupdatedon= DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['write_date']))??"";
       salespersonimg = data['image'] ?? "";
 
 
