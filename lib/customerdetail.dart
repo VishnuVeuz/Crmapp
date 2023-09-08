@@ -170,14 +170,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         ]
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                      onPressed: () {
-
-                      },
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 0),
+                  //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(

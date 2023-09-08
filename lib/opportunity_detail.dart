@@ -276,14 +276,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ]
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                      onPressed: () {
-
-                      },
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 0),
+                  //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
@@ -1960,8 +1960,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           "Optional Products",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
+                              fontFamily: 'Mulish',
                               fontSize: 13,
-                              color: Color(0xFF212121)),
+                              color: Color(0xFF212121))
                         ),
                       ),
                     ),
@@ -1990,7 +1991,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 elevation: 3,
                                 child: Padding(
                                   padding:
-                                  const EdgeInsets.only(top: 10),
+                                  const EdgeInsets.only(top: 0),
                                   child: Container(
                                       width: MediaQuery
                                           .of(context)
@@ -2018,7 +2019,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       Padding(
                                                         padding: const EdgeInsets
                                                             .only(
-                                                            top: 10,left: 25),
+                                                            top: 5,left: 25),
                                                         child: Container(
                                                           width: MediaQuery
                                                               .of(context)
@@ -2033,6 +2034,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 fontWeight:
                                                                 FontWeight
                                                                     .w600,
+                                                                fontFamily: 'Mulish',
                                                                 fontSize:
                                                                 14,
                                                                 color: Colors
@@ -2041,13 +2043,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         ),
                                                       ),
                                                       Padding(
-                                                        padding: const EdgeInsets.only(top: 10,left: 40,right: 25),
+                                                        padding: const EdgeInsets.only(top: 5,left: 40,right: 25),
                                                         child: Text(
                                                           "sum: ${ orderLineProductsData![
                                                           'price_subtotal']}",
                                                           style: TextStyle(
                                                               fontWeight: FontWeight.w500,
                                                               fontSize: 11,
+                                                              fontFamily: 'Mulish',
                                                               color: Colors.black),
                                                         ),
                                                       ),
@@ -2057,7 +2060,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     padding:
                                                     const EdgeInsets
                                                         .only(
-                                                        top: 10,
+                                                        top: 5,
                                                         left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
@@ -2070,6 +2073,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               fontWeight:
                                                               FontWeight
                                                                   .w600,
+                                                              fontFamily: 'Mulish',
                                                               fontSize:
                                                               12,
                                                               color: Color(
@@ -2083,6 +2087,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               fontWeight:
                                                               FontWeight
                                                                   .w600,
+                                                              fontFamily: 'Mulish',
                                                               fontSize:
                                                               12,
                                                               color: Color(
@@ -2095,6 +2100,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               fontWeight:
                                                               FontWeight
                                                                   .w600,
+                                                              fontFamily: 'Mulish',
                                                               fontSize:
                                                               12,
                                                               color: Color(
@@ -2124,6 +2130,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w600,
+                                                                  fontFamily: 'Mulish',
                                                                   fontSize:
                                                                   12,
                                                                   color: Color(
@@ -2137,6 +2144,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w600,
+                                                                  fontFamily: 'Mulish',
                                                                   fontSize:
                                                                   12,
                                                                   color: Color(
@@ -2197,13 +2205,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 20, bottom: 10, left: 20, right: 0),
+                              top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
                             child: TextButton(
                                 child: Text(
                                   "Send Message",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
@@ -2222,13 +2231,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 20, bottom: 10, left: 0, right: 0),
+                              top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
                             child: TextButton(
                                 child: Text(
                                   "Log note",
                                   style:  TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
@@ -2247,13 +2257,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 20, bottom: 10, left: 0, right: 20),
+                              top: 5, bottom: 5, left: 20, right: 20),
                           child: Center(
                             child: TextButton(
                                 child: Text(
                                   "Schedule Activity",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
@@ -2279,7 +2290,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 0, bottom: 10, left:25, right: 10),
+                        top: 0,  left:15, right: 10),
                     child: Center(
                       child: Row(
                         children: [
@@ -2300,15 +2311,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                           Container(
-                            width: 50,
+                            width: 30,
                             child: Text(
                               attachmentCount!,
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
                             ),
                           ),
                           followerStatus == false ?
                           Padding(
-                            padding: const EdgeInsets.only(left: 80),
+                            padding: const EdgeInsets.only(left: 100),
                             child: Row(
                               children: [
                                 Icon(Icons.check_sharp,size: 14,color: Colors.green,),
@@ -2322,13 +2333,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         MaterialPageRoute(
                                             builder: (context) => OpportunityDetail(widget.opportunityId)));
                                   }
-                                }, child:Text("Following",style: TextStyle(color: Colors.green),)),
+                                }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish'),)),
                               ],
                             ),
                           ):
 
                           Padding(
-                            padding: const EdgeInsets.only(left: 80),
+                            padding: const EdgeInsets.only(left: 100),
                             child: Row(
                               children: [
                                 Icon(Icons.close,size: 14,color: Colors.red,),
@@ -2341,7 +2352,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         MaterialPageRoute(
                                             builder: (context) => OpportunityDetail(widget.opportunityId)));
                                   }
-                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red),)),
+                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish'),)),
                               ],
                             ),
                           ),
@@ -2369,7 +2380,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             //color: Colors.green,
                             child: Text(
                               followerCount!,
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
                             ),
                           ),
                         ],
@@ -2423,14 +2434,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                 return Center(
                                                   child: Padding(
-                                                    padding: const EdgeInsets.only(left: 25,right: 10),
+                                                    padding: const EdgeInsets.only(left: 15,right: 15),
                                                     child: Container(
                                                       child: Stack(
                                                         children: [
                                                           ClipRRect(
                                                             child: Image.network(
                                                               "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                              height: 120,
+                                                              height: 100,
                                                               width: 80,
                                                             ),
                                                           ),
@@ -2440,16 +2451,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               bottom: 70,
                                                               top: 1,
                                                               child: Container(
-                                                                width: 25,
-                                                                height: 25,
-                                                                color: Colors.grey[200],
+                                                                width: 20,
+                                                                height: 20,
+                                                                decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
+
                                                                 child: IconButton(
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .delete_outline_outlined,
-                                                                    size: 15.0,
-                                                                    color: Colors.grey[800],
-                                                                  ),
+                                                                  icon: SvgPicture.asset("images/trash.svg"),
                                                                   onPressed: () async {
                                                                     print(
                                                                         attachmentImagesDisplay[
@@ -2499,7 +2506,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         TextButton(onPressed: (){
 
                           myAlert("attachment");
-                        }, child: Text("Select Attachments",style: TextStyle(color: Colors.black),)),
+                        }, child: Text("Select Attachments",style: TextStyle(color: Colors.black,fontFamily: 'Mulish'),)),
 
                       ],
                     ),
@@ -2522,13 +2529,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Visibility(
                           visible:followersVisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 73),
+                            padding: const EdgeInsets.only(left: 78),
                             child: Container(
                               // color: Colors.red,
                               child: Row(
                                 children: [
-                                  Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11),),
-                                  Text(" Followers of",style: TextStyle(color: Colors.grey[700],fontSize: 11),),
+                                  Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11,fontFamily: 'Mulish'),),
+                                  Text(" Followers of",style: TextStyle(color: Colors.grey[700],fontSize: 11,fontFamily: 'Mulish'),),
                                   SizedBox(width: 5,),
                                   Container(
                                     //color: Colors.green,
@@ -2536,7 +2543,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           .of(context)
                                           .size
                                           .width/2,
-                                      child: Text(opportunityname!,style: TextStyle(color: Colors.black,fontSize: 11),)),
+                                      child: Text(opportunityname!,style: TextStyle(color: Colors.black,fontSize: 11,fontFamily: 'Mulish'),)),
 
                                 ],
                               ),
@@ -2549,7 +2556,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           children: [
                             salesperImg != ""
                                 ? Padding(
-                              padding: const EdgeInsets.only(left: 25),
+                              padding: const EdgeInsets.only(left: 30),
                               child: Container(
                                 width: 30,
                                 height: 30,
@@ -2570,7 +2577,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               ),
                             )
                                 : Padding(
-                              padding: const EdgeInsets.only(left: 25),
+                              padding: const EdgeInsets.only(left: 30),
                               child: Container(
                                 width: 30,
                                 height: 30,
@@ -2599,9 +2606,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 1.5,
+                                    .width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
+                                    color: Color(0xFFF6F6F6),
                                     border:
                                     Border.all(color: Color(0xFFEBEBEB))),
                                 child: Column(
@@ -2612,25 +2620,30 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           .of(context)
                                           .size
                                           .width /
-                                          1.5,
+                                          1.4,
                                       // height: 40,
                                       // color: Colors.red,
                                       child: Padding(
                                         padding:
                                         const EdgeInsets.only(left: 10),
                                         child: TextField(
+                                            textAlignVertical: TextAlignVertical.top,
+                                            //expands: true,
+                                            maxLines: null,
                                             controller: lognoteController,
                                             decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText:
                                                 "Send a message to followers",
                                                 hintStyle: TextStyle(
+
                                                   //fontFamily: "inter",
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 12,
+                                                    fontFamily: 'Mulish',
                                                     color: Color(0xFFAFAFAF)))),
                                       ),
-                                    ),Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                                    ),Divider(color: Colors.grey[350],thickness: 1,),
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
@@ -2707,17 +2720,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              bottom: 20, left: 73, top: 5),
+                              bottom: 10, left: 80, top: 5),
                           child: SizedBox(
-                            width: 60,
+                            width: 73,
                             height: 28,
                             child: ElevatedButton(
                                 child: Center(
                                   child: Text(
                                     "Send",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 11,
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 10,
                                         color: Colors.white),
                                   ),
                                 ),
@@ -2765,7 +2779,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF04254),
+                                  primary: Color(0xFFFA256A),
                                 )),
                           ),
                         ),
@@ -2774,324 +2788,77 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
 
-                  // code for send message
 
 
+                  Container(
+                    color: Color(0xFFF6F6F6),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton.icon(     // <-- TextButton
+                            onPressed: () {
+                              setState(() {
+                                scheduleActivityVisibility == true ?scheduleActivityVisibility = false :scheduleActivityVisibility = true;
 
-                  // code for lognote
+                              });
 
-                 //  Container(
-                 //    width: MediaQuery.of(context).size.width,
-                 //
-                 //    //height: MediaQuery.of(context).size.height/6,
-                 // // color: Colors.green,
-                 //    child: Column(
-                 //      crossAxisAlignment: CrossAxisAlignment.start,
-                 //      children: [
-                 //        Row(
-                 //          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                 //          children: [
-                 //
-                 //            salesperImg != "" ?
-                 //            Padding(
-                 //              padding: const EdgeInsets
-                 //                  .only(left: 25),
-                 //              child: Container(
-                 //                width: 30,
-                 //                height: 30,
-                 //
-                 //                decoration: BoxDecoration(
-                 //                  border: Border.all(
-                 //                  ),
-                 //                  borderRadius: BorderRadius
-                 //                      .all(
-                 //                      Radius.circular(
-                 //                          20)),
-                 //
-                 //                ),
-                 //                child: CircleAvatar(
-                 //                  radius: 12,
-                 //                  child: ClipRRect(
-                 //
-                 //                    borderRadius:
-                 //                    BorderRadius
-                 //                        .circular(18),
-                 //                    child: Image.network(
-                 //                        "${salesperImg!}?token=${token}"),
-                 //
-                 //
-                 //                  ),
-                 //
-                 //
-                 //                ),
-                 //              ),
-                 //            )
-                 //                : Padding(
-                 //              padding: const EdgeInsets.only(left: 25),
-                 //              child: Container(
-                 //                width: 30,
-                 //                height: 30,
-                 //                decoration: BoxDecoration(
-                 //                    border: Border.all(
-                 //                      //  color: Colors.green
-                 //                    ),
-                 //                    borderRadius: BorderRadius.all(
-                 //                        Radius.circular(20))),
-                 //                child: CircleAvatar(
-                 //                  radius: 12,
-                 //                  child: Icon(
-                 //                    Icons.person,
-                 //                    size: 20,
-                 //                    // Adjust the size of the icon as per your requirements
-                 //                    color: Colors
-                 //                        .white, // Adjust the color of the icon as per your requirements
-                 //                  ),
-                 //
-                 //                ),
-                 //              ),
-                 //            ),
-                 //
-                 //            Padding(
-                 //              padding: const EdgeInsets.only(left: 20,right: 20),
-                 //              child: Container(
-                 //                width: MediaQuery.of(context).size.width/1.5,
-                 //                //height: 46,
-                 //                decoration: BoxDecoration(
-                 //                    border: Border.all(
-                 //                        color: Color(
-                 //                            0xFFEBEBEB))),
-                 //                child: Column(
-                 //                  crossAxisAlignment: CrossAxisAlignment.start,
-                 //                  children: [
-                 //                    Container(
-                 //                      width: MediaQuery.of(context).size.width/1.5,
-                 //                      // height: 40,
-                 //                      // color: Colors.red,
-                 //                      child:Padding(
-                 //                        padding: const EdgeInsets.only(left: 10),
-                 //                        child: TextField(
-                 //                            controller: lognoteController,
-                 //                            decoration:
-                 //                            const InputDecoration(
-                 //                                border:
-                 //                                InputBorder.none,
-                 //                                hintText:
-                 //                                "Send a message to followers",
-                 //                                hintStyle: TextStyle(
-                 //                                  //fontFamily: "inter",
-                 //                                    fontWeight:
-                 //                                    FontWeight
-                 //                                        .w400,
-                 //                                    fontSize: 10,
-                 //                                    color: Color(
-                 //                                        0xFFAFAFAF)))),
-                 //                      ),
-                 //                    ),
-                 //                    Divider(color: Colors.grey,),
-                 //
-                 //                    IconButton(
-                 //                      icon: Image.asset(
-                 //                          "images/pin.png"),
-                 //                      onPressed: () {
-                 //
-                 //                        myAlert("lognote");
-                 //                      },
-                 //                    ),
-                 //                  ],
-                 //                ),
-                 //              ),
-                 //            )
-                 //
-                 //          ],
-                 //        ),
-                 //
-                 //
-                 //        selectedImages.isEmpty ?  Padding(
-                 //          padding: const EdgeInsets.only(left:73),
-                 //          child: Container(
-                 //
-                 //            width:
-                 //            MediaQuery
-                 //                .of(context)
-                 //                .size
-                 //                .width,
-                 //            // height: 40,
-                 //          ),
-                 //        )
-                 //            :
-                 //        Padding(
-                 //          padding: const EdgeInsets.only(left:70,right: 50),
-                 //          child: Container(
-                 //
-                 //            width:
-                 //            MediaQuery
-                 //                .of(context)
-                 //                .size
-                 //                .width,
-                 //            // height: 40,
-                 //            child: Container(
-                 //              width: 40,
-                 //              //height: 40,
-                 //              child: GridView.builder(
-                 //                shrinkWrap: true, // Avoid scrolling
-                 //                physics: NeverScrollableScrollPhysics(),
-                 //                itemCount:
-                 //                selectedImages.length,
-                 //                gridDelegate:
-                 //                const SliverGridDelegateWithFixedCrossAxisCount(
-                 //                    crossAxisCount: 8),
-                 //                itemBuilder:
-                 //                    (BuildContext context,
-                 //                    int index) {
-                 //                  return Center(
-                 //                      child: kIsWeb
-                 //                          ? Image.network(
-                 //                          selectedImages[
-                 //                          index]
-                 //                              .path)
-                 //                          : Image.file(
-                 //                          selectedImages[
-                 //                          index]));
-                 //                },
-                 //              ),
-                 //            ),
-                 //          ),
-                 //        ),
-                 //
-                 //        Padding(
-                 //          padding: const EdgeInsets.only(
-                 //              bottom: 20,left: 73,top: 5),
-                 //          child: SizedBox(
-                 //            width: 56,
-                 //            height: 28,
-                 //            child: ElevatedButton(
-                 //                child: Center(
-                 //                  child: Text(
-                 //                    "Log",
-                 //                    style: TextStyle(
-                 //                        fontWeight: FontWeight
-                 //                            .w700,
-                 //                        fontSize: 11,
-                 //                        color: Colors.white),
-                 //                  ),
-                 //                ),
-                 //                onPressed: () async {
-                 //                  for (int i = 0;
-                 //                  i < selectedImages.length;
-                 //                  i++) {
-                 //                    imagepath = selectedImages[i]
-                 //                        .path
-                 //                        .toString();
-                 //                    File imagefile = File(
-                 //                        imagepath); //convert Path to File
-                 //                    Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
-                 //                    base64string = base64.encode(imagebytes);
-                 //
-                 //                    // base64string1.add(
-                 //                    //     base64string);
-                 //                    //
-                 //
-                 //                    String dataImages =
-                 //                        '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
-                 //
-                 //                    Map<String, dynamic> jsondata = jsonDecode(dataImages);
-                 //                    myData1.add(jsondata);
-                 //
-                 //                  }
-                 //                  // print(myData1);
-                 //                  // print("final datatata");
-                 //
-                 //
-                 //                  await logNoteData(myData1);
-                 //                  setState(() {
-                 //                    logDataHeader.clear();
-                 //                    logDataTitle.clear();
-                 //                    selectedImagesDisplay.clear();
-                 //                    lognoteController.text= "";
-                 //                    selectedImages.clear();
-                 //                    myData1.clear();
-                 //                  });
-                 //
-                 //                },
-                 //                style: ElevatedButton.styleFrom(
-                 //                  primary: Color(0xFFF04254),
-                 //                )),
-                 //          ),
-                 //        ),
-                 //      ],
-                 //    ),
-                 //
-                 //
-                 //
-                 //  ),
-
-
-
-                  // code for lognote
-
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TextButton.icon(     // <-- TextButton
-                          onPressed: () {
-                            setState(() {
-                              scheduleActivityVisibility == true ?scheduleActivityVisibility = false :scheduleActivityVisibility = true;
-
-                            });
-
-                          },
-                          icon: Icon(
-                            Icons.arrow_drop_down_rounded,
-                            size: 30.0,
-                            color: Colors.black54,
-                          ),
-                          label: Text('Planned Activities',style: TextStyle(fontSize: 12,color: Colors.black),),
-                        ),
-
-                        Visibility(
-                          visible: scheduleVisibiltyOverdue,
-                          child: Container(
-                            width: 15,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.red,
+                            },
+                            icon: Icon(
+                              Icons.arrow_drop_down_rounded,
+                              size: 30.0,
+                              color: Colors.black54,
                             ),
-                            child: Center(child: Text(scheduleOverdue.toString(),style: TextStyle(fontSize: 10,
-                                fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
-                          ),
-                        ),
-                        Visibility(
-                          visible: scheduleVisibiltyToday,
-                          child: Container(
-                            width: 15,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.yellow,
+                            label: Text(
+                              'Planned Activities',
+                              style: TextStyle(fontSize: 16, color: Color(0xFF000000),fontWeight: FontWeight.w600,fontFamily: 'Mulish',),
                             ),
-                            child: Center(child: Text(scheduleToday.toString(),style: TextStyle(fontSize: 10,
-                                fontWeight:FontWeight.bold ,color: Colors.black),)),
-
-
                           ),
-                        ),
-                        Visibility(
-                          visible: scheduleVisibiltyPlanned,
-                          child: Container(
-                            width: 15,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.green,
+
+                          Visibility(
+                            visible: scheduleVisibiltyOverdue,
+                            child: Container(
+                              width: 15,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.red,
+                              ),
+                              child: Center(child: Text(scheduleOverdue.toString(),style: TextStyle(fontSize: 10,
+                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
+
+
                             ),
-                            child: Center(child: Text(schedulePlanned.toString(),style: TextStyle(fontSize: 10,
-                                fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
                           ),
-                        ),
-                      ],
+                          Visibility(
+                            visible: scheduleVisibiltyToday,
+                            child: Container(
+                              width: 15,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.yellow,
+                              ),
+                              child: Center(child: Text(scheduleToday.toString(),style: TextStyle(fontSize: 10,
+                                  fontWeight:FontWeight.bold ,color: Colors.black),)),
+
+
+                            ),
+                          ),
+                          Visibility(
+                            visible: scheduleVisibiltyPlanned,
+                            child: Container(
+                              width: 15,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.green,
+                              ),
+                              child: Center(child: Text(schedulePlanned.toString(),style: TextStyle(fontSize: 10,
+                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
+
+
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
 
@@ -3150,7 +2917,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 13.0,right: 15),
+                                            padding: const EdgeInsets.only(left: 25.0,right: 15,top: 5),
                                             child: Container(
 
                                               child: Stack(
@@ -3214,7 +2981,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               // color: Colors.red,
 
                                               child: Text(scheduleData['records'][index]['delay_label'].toString() ?? "",
-                                                style: TextStyle(fontSize: 13,color: Color(int.parse(scheduleData['records'][index]['label_color']))),),
+                                                style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Mulish',color: Color(int.parse(scheduleData['records'][index]['label_color']))),),
                                             ),
                                             SizedBox(width: 5,),
                                             Container(
@@ -3223,7 +2991,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
 
                                               child: Text(scheduleData['records'][index]['activity_type_id'][1].toString() ?? "",
-                                                style: TextStyle(fontSize: 13,color: Colors.black,fontWeight: FontWeight.bold,),),
+                                                style: TextStyle( fontSize: 12,
+                                                  color: Color(0xFF212121),
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight:
+                                                  FontWeight.w600,),),
                                             ),
                                             SizedBox(width: 5,),
                                             Container(
@@ -3231,7 +3003,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               width: MediaQuery.of(context).size.width/4.5,
 
                                               child: Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                style: TextStyle(fontSize: 13,color: Colors.grey),),
+                                                style: TextStyle(fontSize: 12,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontFamily: 'Mulish',
+                                                    color: Color(0xFF212121)),),
                                             ),
 
 
@@ -3270,7 +3045,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 49),
+                                    padding: const EdgeInsets.only(left: 60),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -3279,28 +3054,39 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         Visibility(
                                           visible: scheduleView,
                                           child: Padding(
-                                            padding: const EdgeInsets.only(top: 15,left: 17),
+                                            padding: const EdgeInsets.only(top: 5,left: 17),
                                             child: Column(
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               children: [
                                                 Text("Activity type",
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey,
-                                                    fontWeight: FontWeight.bold,),),
+                                                  style: TextStyle(   fontSize: 12,
+                                                    fontFamily: 'Mulish',
+                                                    color: Colors.grey,
+                                                    fontWeight:
+                                                    FontWeight.w600,),),
 
-                                                SizedBox(height: 5,),
+                                                SizedBox(height: 3,),
                                                 Text(scheduleData['records'][index]['activity_type_id'][1],
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey),),
-                                                SizedBox(height: 5,),
+                                                  style: TextStyle(fontSize: 12,
+                                                      fontFamily: 'Mulish',
+                                                      color: Colors.grey),),
+                                                SizedBox(height: 3,),
                                                 Text("Created",
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey
-                                                    , fontWeight: FontWeight.bold,),),
-                                                SizedBox(height: 5,),
+                                                  style: TextStyle( fontSize: 12,
+                                                      fontFamily: 'Mulish',
+                                                      color: Colors.grey,
+                                                      fontWeight:
+                                                      FontWeight.w600,),),
+                                                SizedBox(height: 3,),
                                                 Row(
                                                   children: [
 
                                                     Text(scheduleData['records'][index]['create_date'].toString() ?? "",
-                                                      style: TextStyle(fontSize: 14,color: Colors.grey),),
+                                                      style: TextStyle(  fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                          Colors.grey),),
 
                                                     SizedBox(width: 5,),
 
@@ -3321,20 +3107,26 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                       ),
                                                     ),
-                                                    SizedBox(width: 5,),
+                                                    SizedBox(width: 3,),
 
                                                     Text(scheduleData['records'][index]['create_uid'][1].toString() ?? "",
-                                                      style: TextStyle(fontSize: 14,color: Colors.grey
-                                                        , fontWeight: FontWeight.bold,),),
+                                                      style: TextStyle( fontSize: 12,
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                        FontWeight.w600,),),
 
 
                                                   ],
                                                 ),
-                                                SizedBox(height: 5,),
+                                                SizedBox(height: 3,),
                                                 Text("Assigned to",
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey
-                                                    , fontWeight: FontWeight.bold,),),
-                                                SizedBox(height: 5,),
+                                                  style: TextStyle(  fontSize: 12,
+                                                    fontFamily: 'Mulish',
+                                                    color: Colors.grey,
+                                                    fontWeight:
+                                                    FontWeight.w600,),),
+                                                SizedBox(height: 3,),
                                                 Row(
                                                   children: [
 
@@ -3357,23 +3149,30 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                       ),
                                                     ),
-                                                    SizedBox(width: 5,),
+                                                    SizedBox(width: 3,),
                                                     Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                      style: TextStyle(fontSize: 14,color: Colors.grey),),
+                                                      style: TextStyle( fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                          Colors.grey),),
 
 
                                                   ],
                                                 ),
 
-                                                SizedBox(height: 5,),
+                                                SizedBox(height: 3,),
                                                 Text("Due on",
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey
-                                                    , fontWeight: FontWeight.bold,),),
-                                                SizedBox(height: 5,),
+                                                  style: TextStyle( fontSize: 12,
+                                                    color: Colors.grey,
+                                                    fontWeight:
+                                                    FontWeight.w600,),),
+                                                SizedBox(height: 3,),
                                                 Text(scheduleData['records'][index]['date_deadline'].toString() ?? "",
-                                                  style: TextStyle(fontSize: 14,color: Colors.grey),),
+                                                  style: TextStyle(fontSize: 12,
+                                                      fontFamily: 'Mulish',
+                                                      color: Colors.grey),),
 
-                                                SizedBox(height: 5,),
+                                                SizedBox(height: 3,),
 
 
 
@@ -3383,200 +3182,219 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         ),
 
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 8,left: 12,right: 10),
+                                          padding: const EdgeInsets.only(top: 0, left: 14, right: 10),
                                           child: Container(
                                             //color: Colors.red,
 
                                             width: MediaQuery.of(context).size.width/1.5,
                                             child:  Text(scheduleData['records'][index]['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
                                                 .toString() ?? "",
-                                              style: TextStyle(fontSize: 14,color: Colors.black
+                                              style: TextStyle(fontSize: 14,color: Colors.black,fontFamily: 'Mulish',
                                               ),),
 
                                           ),
                                         ),
 
 
-                                        Row(
-                                          // mainAxisAlignment: MainAxisAlignment.end,
+                                        Padding(
+                                          padding: const EdgeInsets.only(left:7,),
+                                          child: Row(
+                                            // mainAxisAlignment: MainAxisAlignment.end,
 
-                                          children: [
-                                            Container(
-                                              //color: Colors.red,
-                                              height: 25,
-                                              width: MediaQuery.of(context).size.width/4.3,
-                                              child: TextButton.icon(     // <-- TextButton
-                                                onPressed: ()async {
+                                            children: [
+                                              Container(
+                                                //color: Colors.red,
+                                               // height: 25,
+                                                width: MediaQuery.of(context).size.width/4.3,
+                                                child: TextButton.icon(     // <-- TextButton
+                                                  onPressed: ()async {
 
-                                                  int datasIds = scheduleData['records'][index]['id'];
+                                                    int datasIds = scheduleData['records'][index]['id'];
 
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) =>
-                                                        _buildMarkDoneDialog(
-                                                            context, datasIds
-                                                        ),
-                                                  ).then((value) => setState(() {}));
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext context) =>
+                                                          _buildMarkDoneDialog(
+                                                              context, datasIds
+                                                          ),
+                                                    ).then((value) => setState(() {}));
 
-                                                },
-                                                icon: Icon(
-                                                  Icons.check,
-                                                  size: 13.0,
-                                                  color: Colors.black54,
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.check,
+                                                    size: 13.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                  label: Text(scheduleData['records'][index]['buttons'][0].toString() ?? "",style: TextStyle( fontSize: 10,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w500,
+                                                      color:
+                                                      Color(0xFF717171)),),
                                                 ),
-                                                label: Text(scheduleData['records'][index]['buttons'][0].toString() ?? "",style: TextStyle(fontSize: 10,color: Colors.black54),),
                                               ),
-                                            ),
-                                            SizedBox(width: 10,),
+                                              SizedBox(width: 0,),
 
-                                            scheduleData['records'][index]['buttons'][1] == "Reschedule" ?
-
-
-                                            Container(
-                                              width: MediaQuery.of(context).size.width/4.3,
-                                              child: TextButton.icon(     // <-- TextButton
-                                                onPressed: ()async {
-                                                  //  int idType = scheduleData['records'][index]['id'];
-                                                  //
-                                                  // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-                                                  //
-                                                  //
-                                                  // String textType =  scheduleData['records'][index]['buttons'][1].toString();
-
-                                                  DateTime dateTime =  DateTime.parse(scheduleData['records'][index]['date_deadline']);
+                                              scheduleData['records'][index]['buttons'][1] == "Reschedule" ?
 
 
+                                              Container(
+                                                width: MediaQuery.of(context).size.width/4.3,
+                                                child: TextButton.icon(     // <-- TextButton
+                                                  onPressed: ()async {
+                                                    //  int idType = scheduleData['records'][index]['id'];
+                                                    //
+                                                    // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
+                                                    //
+                                                    //
+                                                    // String textType =  scheduleData['records'][index]['buttons'][1].toString();
 
-                                                  Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (
-                                                              context) =>
-                                                              Calender(null,"",dateTime,null,[])));
+                                                    DateTime dateTime =  DateTime.parse(scheduleData['records'][index]['date_deadline']);
 
 
 
-                                                },
-                                                icon: Icon(
-                                                  Icons.calendar_month,
-                                                  size: 13.0,
-                                                  color: Colors.black54,
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (
+                                                                context) =>
+                                                                Calender(null,"",dateTime,null,[])));
+
+
+
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.calendar_month,
+                                                    size: 13.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(  fontSize: 10,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w500,
+                                                      color:
+                                                      Color(0xFF717171)),),
                                                 ),
-                                                label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,color: Colors.black54),),
-                                              ),
-                                            ):
-                                            Container(
-                                              width: MediaQuery.of(context).size.width/4.3,
-                                              child: TextButton.icon(     // <-- TextButton
-                                                onPressed: ()async {
-                                                  int idType = scheduleData['records'][index]['id'];
+                                              ):
+                                              Container(
+                                                width: MediaQuery.of(context).size.width/4.3,
+                                                child: TextButton.icon(     // <-- TextButton
+                                                  onPressed: ()async {
+                                                    int idType = scheduleData['records'][index]['id'];
 
-                                                  var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
+                                                    var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
 
 
 
 
-                                                  setState(() {
-
-                                                    activityTypeName = data['activity_type_id']??null;
-                                                    activityTypeId = data['activity_type_id']['id']??null;
-                                                    activityTypeNameCategory = data['activity_type_id']['category']??"";
-                                                    assignedToname= data['user_id']??null;
-                                                    assignedToid = data['user_id']['id']??null;
-                                                    DuedateTime.text = data['date_deadline']??"";
-                                                    summaryController.text = data['summary']??"";
-                                                    commandsController.text = data['note']??"";
-                                                    // DuedateTime.text == "default" ?
-                                                    if(activityTypeNameCategory == "default"){
-                                                      scheduleBtn=true;
-                                                      opencalendarBtn= false;
-                                                      btntext = "Schedule";
-                                                      meetingColum = true;
-                                                    }
-                                                    else if(activityTypeNameCategory == "phonecall"){
-                                                      scheduleBtn=true;
-                                                      opencalendarBtn= true;
-                                                      btntext = "Save";
-                                                      meetingColum = true;
-                                                    }
-                                                    else if(activityTypeNameCategory == "meeting"){
-                                                      scheduleBtn=false;
-                                                      opencalendarBtn= true;
-                                                      btntext = "Schedule";
-                                                      meetingColum = false;
-                                                    }
-                                                    else if(activityTypeNameCategory == "upload_file"){
-                                                      scheduleBtn=true;
-                                                      opencalendarBtn= false;
-                                                      btntext = "Schedule";
-                                                      meetingColum = true;
-                                                    }
-
-
-                                                    print(activityTypeNameCategory);
-                                                    print("jhbvjbvsvj");
-                                                  });
-
-
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (BuildContext context) =>
-                                                        _buildOrderPopupDialog(
-                                                            context, idType
-                                                        ),
-                                                  ).then((value) => setState(() {}));
-
-
-
-
-
-
-                                                },
-                                                icon: Icon(
-                                                  Icons.edit,
-                                                  size: 13.0,
-                                                  color: Colors.black54,
-                                                ),
-                                                label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,color: Colors.black54),),
-                                              ),
-                                            ),
-
-
-
-                                            SizedBox(width: 10,),
-                                            Container(
-
-                                              width: MediaQuery.of(context).size.width/5,
-                                              child: TextButton.icon(     // <-- TextButton
-                                                onPressed: () async{
-
-                                                  var data =  await deleteScheduleData(scheduleData['records'][index]['id']);
-
-
-                                                  if(data['message']=="Success") {
-                                                    print("responce");
                                                     setState(() {
-                                                      getScheduleDetails();
+
+                                                      activityTypeName = data['activity_type_id']??null;
+                                                      activityTypeId = data['activity_type_id']['id']??null;
+                                                      activityTypeNameCategory = data['activity_type_id']['category']??"";
+                                                      assignedToname= data['user_id']??null;
+                                                      assignedToid = data['user_id']['id']??null;
+                                                      DuedateTime.text = data['date_deadline']??"";
+                                                      summaryController.text = data['summary']??"";
+                                                      commandsController.text = data['note']??"";
+                                                      // DuedateTime.text == "default" ?
+                                                      if(activityTypeNameCategory == "default"){
+                                                        scheduleBtn=true;
+                                                        opencalendarBtn= false;
+                                                        btntext = "Schedule";
+                                                        meetingColum = true;
+                                                      }
+                                                      else if(activityTypeNameCategory == "phonecall"){
+                                                        scheduleBtn=true;
+                                                        opencalendarBtn= true;
+                                                        btntext = "Save";
+                                                        meetingColum = true;
+                                                      }
+                                                      else if(activityTypeNameCategory == "meeting"){
+                                                        scheduleBtn=false;
+                                                        opencalendarBtn= true;
+                                                        btntext = "Schedule";
+                                                        meetingColum = false;
+                                                      }
+                                                      else if(activityTypeNameCategory == "upload_file"){
+                                                        scheduleBtn=true;
+                                                        opencalendarBtn= false;
+                                                        btntext = "Schedule";
+                                                        meetingColum = true;
+                                                      }
+
+
+                                                      print(activityTypeNameCategory);
+                                                      print("jhbvjbvsvj");
                                                     });
-                                                  }
+
+
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext context) =>
+                                                          _buildOrderPopupDialog(
+                                                              context, idType
+                                                          ),
+                                                    ).then((value) => setState(() {}));
 
 
 
 
 
 
-                                                  print("demo datataaa");
-
-                                                },
-                                                icon: Icon(
-                                                  Icons.cancel_outlined,
-                                                  size: 13.0,
-                                                  color: Colors.black54,
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.edit,
+                                                    size: 13.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w500,
+                                                      color:
+                                                      Color(0xFF717171)),),
                                                 ),
-                                                label: Text(scheduleData['records'][index]['buttons'][2].toString() ?? "",style: TextStyle(fontSize: 10,color: Colors.black54),),
                                               ),
-                                            ),
-                                          ],
+
+
+
+                                              SizedBox(width: 0,),
+                                              Container(
+
+                                                width: MediaQuery.of(context).size.width/5,
+                                                child: TextButton.icon(     // <-- TextButton
+                                                  onPressed: () async{
+
+                                                    var data =  await deleteScheduleData(scheduleData['records'][index]['id']);
+
+
+                                                    if(data['message']=="Success") {
+                                                      print("responce");
+                                                      setState(() {
+                                                        getScheduleDetails();
+                                                      });
+                                                    }
+
+
+
+
+
+
+                                                    print("demo datataaa");
+
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.cancel_outlined,
+                                                    size: 13.0,
+                                                    color: Colors.black54,
+                                                  ),
+                                                  label: Text(scheduleData['records'][index]['buttons'][2].toString() ?? "",style: TextStyle( fontSize: 10,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w500,
+                                                      color:
+                                                      Color(0xFF717171)),),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         )
 
 
@@ -3595,7 +3413,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
 
 
-                  SizedBox(height: 20,),
+                  SizedBox(height: 0,),
 
 
 
@@ -3653,7 +3471,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             child: Center(child: Text(
                                               logDataHeader[indexx],
                                               style: TextStyle(fontSize: 12,
-                                                  color: Colors.black),)),
+                                                  color: Colors.black, fontFamily: 'Mulish',),)),
                                           ),
 
                                           ListView.builder(
@@ -3926,7 +3744,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 Padding(
                                                                                   padding: const EdgeInsets
                                                                                       .only(
-                                                                                      left: 15.0,
+                                                                                      left: 25.0,
                                                                                       right: 15),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
@@ -3985,11 +3803,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     child: Text(
                                                                                         logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                         style: TextStyle(
-                                                                                          fontSize: 13,
+                                                                                          fontSize: 12,
                                                                                           color: Colors
                                                                                               .black,
-                                                                                          fontWeight: FontWeight
-                                                                                              .bold,))),
+                                                                                          fontFamily: 'Mulish',
+                                                                                          fontWeight: FontWeight.w600,))),
                                                                                 Container(
                                                                                   //color: Colors.green,
                                                                                     width: MediaQuery
@@ -4001,7 +3819,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     child: Text(
                                                                                         logDataTitle[indexx][indexs]["period"],
                                                                                         style: TextStyle(
-                                                                                          fontSize: 11,
+                                                                                          fontSize: 12,
+                                                                                          fontFamily: 'Mulish',
                                                                                           color: Colors
                                                                                               .grey[700],)))
                                                                               ],
@@ -4034,7 +3853,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                           ' ') ??
                                                                                           "",
                                                                                       style: TextStyle(
-                                                                                        fontSize: 11,
+                                                                                        fontSize: 12,
+                                                                                        fontFamily: 'Mulish',
                                                                                         color: Colors
                                                                                             .black,))),
 
