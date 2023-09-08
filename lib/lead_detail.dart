@@ -1756,7 +1756,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         Visibility(
                           visible:followersVisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 75),
+                            padding: const EdgeInsets.only(left: 78),
                             child: Container(
                               //color: Colors.red,
                               child: Row(
@@ -3591,7 +3591,7 @@ class _LeadDetailState extends State<LeadDetail> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 250),
+                  padding: const EdgeInsets.only(left: 260,right: 25),
                   child: IconButton(
                     icon: Image.asset(
                       "images/cross.png",
@@ -3606,14 +3606,14 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: activityTypeName,
                     hint: Text(
                       "Activity Type",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 13.6, color: Color(0xFFAFAFAF),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -3666,7 +3666,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: Text(
                               item["name"],
                               style: TextStyle(
-                                  fontSize: 10, color: Colors.black),
+                                fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                             ),
                           )));
                     },
@@ -3716,11 +3716,14 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: TextFormField(
+                    style: TextStyle(fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                     controller: summaryController,
                     decoration: const InputDecoration(
+                      border: InputBorder.none,
                         enabledBorder: UnderlineInputBorder(
+
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         focusedBorder: UnderlineInputBorder(
@@ -3728,7 +3731,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',)),
                   ),
                 ),
                 Visibility(
@@ -3737,36 +3740,34 @@ class _LeadDetailState extends State<LeadDetail> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 5),
+                            horizontal: 25, vertical: 0),
                         child: SizedBox(
                           child: InkWell(
                             onTap: () {
                               _selectDate(context);
                             },
                             child: TextField(
+                              style: TextStyle(fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                      //fontFamily: "inter",
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 10,
-                                        color: Colors.black))),
+                                      fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',))),
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 5),
+                            horizontal: 15, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
 
                           value: assignedToname,
                           hint: Text(
                             "Assigned To",
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 13.6, color: Color(0xFFAFAFAF),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -3793,7 +3794,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 10, color: Colors.black),
+                                      fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                                   ),
                                 )));
                           },
@@ -3848,8 +3849,9 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 5),
+                            horizontal: 25, vertical: 0),
                         child: TextFormField(
+                          style: TextStyle(fontSize: 13.6, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -3862,7 +3864,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(fontSize: 13.6, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',)),
                         ),
                       ),
                     ],
@@ -3883,7 +3885,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.white),
+                                    color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
                             onPressed: () async {
@@ -3912,7 +3914,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary:Color(0xFFF9246A),
                             )),
                       ),
                     ),
@@ -3936,7 +3938,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
-                                        color: Colors.white),
+                                        color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
                                 onPressed: () async {
@@ -3956,7 +3958,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF04254),
+                                  primary: Color(0xFFF9246A),
                                 )),
                           ),
                         ),
@@ -3975,7 +3977,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
-                                        color: Colors.white),
+                                        color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
                                 onPressed: () async {
@@ -3994,7 +3996,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF04254),
+                                  primary:Color(0xFFF9246A),
                                 )),
                           ),
                         ),
@@ -4018,7 +4020,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
-                                      color: Colors.white),
+                                      color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
                               onPressed: () async {
@@ -4041,7 +4043,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
+                                primary: Color(0xFFF9246A),
                               )),
                         ),
                       ),
@@ -4060,7 +4062,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
-                                      color: Colors.white),
+                                      color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
                               onPressed: () async {
@@ -4068,7 +4070,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 setState(() {});
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
+                                primary: Color(0xFFF9246A),
                               )),
                         ),
                       ),
@@ -4104,7 +4106,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Odoo",style: TextStyle(fontSize: 16),),
+                    Text("Odoo",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -4124,15 +4126,16 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',),),
                 SizedBox(height: 5,),
-                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'Mulish',),),
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
+                    hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
                         .toList(),
@@ -4171,6 +4174,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         return ValueItem(
 
                           label: item['display_name'],
+
                           value: item['id'].toString(),
                         );
                       }).toList();
@@ -4192,7 +4196,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
                     controller: subjectController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -4203,10 +4207,10 @@ class _LeadDetailState extends State<LeadDetail> {
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        labelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',)
                     ),
                   ),),
-                SizedBox(height: 5,),
+                SizedBox(height: 2,),
                 Container(
                   //color: Colors.red,
                   decoration: BoxDecoration(
@@ -4221,6 +4225,8 @@ class _LeadDetailState extends State<LeadDetail> {
                       .size
                       .height/5,
                   child: TextFormField(
+                    decoration:InputDecoration( border: InputBorder.none,) ,
+                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
                     controller: bodyController,
                   ),
                 ),
@@ -4239,7 +4245,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               },
                           ),
                         ),
-                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12),),
+                        Text("ATTACH FILE",style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.grey[700],fontFamily: 'Mulish',),),
 
 
                       ],
@@ -4409,13 +4415,13 @@ class _LeadDetailState extends State<LeadDetail> {
                 //     }),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 5),
+                      horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: templateName,
                     hint: Text("Use template",
-                      style: TextStyle(fontSize: 10, color: Colors.black),),
+                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async{
@@ -4481,7 +4487,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           child: Container(
                             width: 300,
                             child: Text(item["name"], style: TextStyle(
-                                fontSize: 10, color: Colors.black),),
+                              fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
                           )));
                     },
                     futureSearchFn: (String? keyword, String? orderBy,
@@ -4539,7 +4545,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4551,7 +4557,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
-                                      color: Colors.white),
+                                      color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
                               onPressed: () {
@@ -4562,14 +4568,14 @@ class _LeadDetailState extends State<LeadDetail> {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
+                                primary: Color(0xFFF9246A),
                               )),
                         ),
                       ),
                     ),
                     SizedBox(width: 15,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4581,7 +4587,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
-                                      color: Colors.black),
+                                      color: Colors.black,fontFamily: 'Mulish'),
                                 ),
                               ),
                               onPressed: () {},
@@ -4593,13 +4599,13 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ],
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 2,),
                 Padding(
                   padding: const EdgeInsets.only(left: 150),
                   child: TextButton(onPressed:()async{
                     await newTemplate();
 
-                  }, child:Text("Save As New Template",style: TextStyle(color: Colors.black),)),
+                  }, child:Text("Save As New Template",style: TextStyle(color: Colors.black,fontFamily: 'Mulish'),)),
                 )
 
               ],
@@ -4635,7 +4641,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Invite Follower",style: TextStyle(fontSize: 16),),
+                    Text("Invite Follower",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -4655,7 +4661,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
                 SizedBox(height: 5,),
                 // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 // SizedBox(height: 10,),
@@ -4664,6 +4670,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
+                    hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
                         .toList(),
@@ -4719,7 +4726,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 ),
                 SizedBox(height: 5,),
-                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
                 SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
@@ -4778,6 +4785,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
+                          hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+
                         ),
                       ),
                     ),
@@ -5406,9 +5415,13 @@ class _LeadDetailState extends State<LeadDetail> {
                 _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
           ).then((value) => setState(() {}));
         },
-        child: Text("Add Follower"),),
+        child: Padding(
+          padding: const EdgeInsets.only(right: 160),
+          child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),),
+        ),),
+
         content:  Container(
-          //color: Colors.red,
+          color: Color(0xFFF6F6F6),
           width: double.maxFinite,
           height:  MediaQuery.of(context).size.height/5,
           child: ListView.builder(
@@ -5466,7 +5479,11 @@ class _LeadDetailState extends State<LeadDetail> {
                           .of(context)
                           .size
                           .width/3.5,
-                      child: Text(followers[i]['name'])),
+                      child: Text(followers[i]['name'],  style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Mulish',
+                          fontSize: 12,
+                          color: Color(0xFF666666)))),
                   Row(
                     children: [
                       IconButton(onPressed: ()async{
