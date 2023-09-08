@@ -174,14 +174,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                      onPressed: () {
-
-                      },
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 0),
+                  //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: IconButton(
