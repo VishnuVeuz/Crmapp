@@ -12,6 +12,8 @@ import 'package:search_choices/search_choices.dart';
 import 'api.dart';
 import 'customerdetail.dart';
 import 'drawer.dart';
+import 'notification.dart';
+import 'notificationactivity.dart';
 
 class CustomerCreation extends StatefulWidget {
   var customnerId;
@@ -160,20 +162,68 @@ class _CustomerCreationState extends State<CustomerCreation> {
             Builder(builder: (context) {
               return Row(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
-                      onPressed: () {
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
-                      },
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 0),
-                    child: IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                      onPressed: () {
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
-                      },
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
                     ),
                   ),
                   Padding(
@@ -210,7 +260,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Colors.white),
+                                color: Colors.white,fontFamily: 'Mulish'),
                           ),
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
@@ -253,7 +303,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF04254),
+                            primary: Color(0xFFF9246A),
                           )),
                     ),
                   ),
@@ -266,7 +316,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             RadioListTile(
                               title: Text(
                                 "Individual",
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                               ),
                               value: "person",
                               groupValue: radioInput,
@@ -280,7 +330,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             RadioListTile(
                               title: Text(
                                 "Company",
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                               ),
                               value: "company",
                               groupValue: radioInput,
@@ -383,7 +433,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         return null;
                       },
                       controller: customerController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -393,7 +443,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Customer Name',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Visibility(
@@ -407,7 +457,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         value: companyName,
                         hint: Text(
                           "Company Name",
-                          style: TextStyle(fontSize: 10, color: Colors.black),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                         ),
                         searchHint: null,
                         autofocus: false,
@@ -438,7 +488,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 width: 300,
                                 child: Text(
                                   item["display_name"],
-                                  style: TextStyle(fontSize: 10, color: Colors.black),
+                                  style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                                 ),
                               )));
                         },
@@ -492,7 +542,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000)),
+                          color: Color(0xFF000000),fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
@@ -501,7 +551,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: streetController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -511,7 +561,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Street',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -520,7 +570,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: streettwoController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -530,7 +580,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Street2',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -539,7 +589,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: cityController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -549,7 +599,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'City',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -560,7 +610,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: countryName,
                       hint: Text(
                         "Country",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -588,7 +638,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -650,7 +700,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: stateName,
                       hint: Text(
                         "State",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -676,7 +726,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -739,7 +789,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       keyboardType: TextInputType.number,
                       enabled: cmpbasedVisible,
                       controller: zipController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       maxLength: 6,
                       decoration: const InputDecoration(
                           counterText: "",
@@ -751,7 +801,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Zip',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -760,7 +810,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     child: TextFormField(
                       enabled: cmpbasedVisible,
                       controller: taxidController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -770,7 +820,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Tax ID',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -781,7 +831,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: customerCampanyName,
                       hint: Text(
                         "Company",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -809,7 +859,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -870,7 +920,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: jobpositionController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -880,7 +930,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Job Position',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -890,7 +940,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
                       controller: phoneController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           counterText: "",
                           enabledBorder: UnderlineInputBorder(
@@ -901,7 +951,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Phone',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -911,7 +961,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
                       controller: mobileController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           counterText: "",
                           enabledBorder: UnderlineInputBorder(
@@ -922,7 +972,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Mobile',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -930,7 +980,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: customerrankController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -940,7 +990,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Customer Rank',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -948,7 +998,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: supplierrankController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -958,7 +1008,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Supplier Rank',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -966,7 +1016,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: emailController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -976,7 +1026,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Email',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -984,7 +1034,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: websiteController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -994,7 +1044,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Website',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -1006,7 +1056,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: languageName,
                       hint: Text(
                         "Language",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1033,7 +1083,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1087,7 +1137,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: titleName,
                       hint: Text(
                         "Title",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1112,7 +1162,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1165,6 +1215,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
+                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       selectedOptions: editTagName
                           .map((tag) =>
                           ValueItem(label: tag.label, value: tag.value))
@@ -1221,7 +1272,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000)),
+                          color: Color(0xFF000000),fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
@@ -1232,7 +1283,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: salespersonName,
                       hint: Text(
                         "Salesperson",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1258,7 +1309,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1322,7 +1373,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: paymenttermsName,
                       hint: Text(
                         "Payment Terms",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1345,7 +1396,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1398,7 +1449,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: pricelistName,
                       hint: Text(
                         "Pricelist",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1421,7 +1472,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1475,7 +1526,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000)),
+                          color: Color(0xFF000000),fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
@@ -1486,7 +1537,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       value: fiscalpositionName,
                       hint: Text(
                         "Fiscal Position",
-                        style: TextStyle(fontSize: 10, color: Colors.black),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1512,7 +1563,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1566,7 +1617,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000)),
+                          color: Color(0xFF000000),fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
@@ -1584,7 +1635,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'reference',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -1592,7 +1643,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: internalnotesController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -1602,14 +1653,14 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                           labelText: 'Internal Notes',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10)),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20, bottom: 30),
                     child: Center(
                       child: SizedBox(
-                        width: 316,
+                        width: 346,
                         height: 33,
                         child: ElevatedButton(
                             child: Text(
@@ -1617,7 +1668,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
                               showDialog(
@@ -1627,7 +1678,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ).then((value) => setState(() {}));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
@@ -1689,173 +1740,176 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          addNewCustomerData!['image_1920']!=""?
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 10),
+                                        child: Row(
+                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            addNewCustomerData!['image_1920']!=""?
 
-                                          Padding(
-                                            padding: const EdgeInsets
-                                                .only(left: 10),
-                                            child: Container(
+                                            Padding(
+                                              padding: const EdgeInsets
+                                                  .only(left: 10),
+                                              child: Container(
 
-                                              height: 100,
-                                              width:MediaQuery.of(context).size.width/4 ,
+                                                height: 100,
+                                                width:MediaQuery.of(context).size.width/4 ,
 
-                                              decoration: BoxDecoration(
-                                                //  color: Colors.red,
-                                                border: Border.all(
-                                                ),
-                                                borderRadius: BorderRadius
-                                                    .all(
-                                                    Radius.circular(
-                                                        1)),
-
-                                              ),
-                                              child: ClipRRect(
-
-                                                borderRadius:
-                                                BorderRadius
-                                                    .circular(0),
-                                                child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
-
-
-                                              ),
-                                            ),
-                                          )
-                                              :
-
-                                          Container(
-                                            height: 100,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width /
-                                                4,
-                                            // color: Colors.red,
-                                            child: Icon(
-                                              Icons.person,
-                                              size: 80,
-                                            ),
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 15),
-                                                    child: Container(
-                                                      width:
-                                                      MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                          2,
-                                                      //color: Colors.green,
-                                                      child: Text(
-                                                        addNewCustomerData!['name']??"",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                            FontWeight.w600,
-                                                            fontSize: 15,
-                                                            color: Colors.black),
-                                                      ),
-                                                    ),
+                                                decoration: BoxDecoration(
+                                                  //  color: Colors.red,
+                                                  border: Border.all(
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 0, right: 20),
-                                                    child: InkWell(
-                                                      onTap: (){
-                                                        addNewCustomer
-                                                            .removeAt(
-                                                            index);
-                                                        setState(() {});
-                                                      },
-                                                      child: Container(
-                                                        width: 30,
-                                                        height: 30,
+                                                  borderRadius: BorderRadius
+                                                      .all(
+                                                      Radius.circular(
+                                                          1)),
 
-                                                        child: Icon(
-                                                          Icons.delete,
-                                                          size: 20,
-                                                          color: Colors.black,
+                                                ),
+                                                child: ClipRRect(
+
+                                                  borderRadius:
+                                                  BorderRadius
+                                                      .circular(0),
+                                                  child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
+
+
+                                                ),
+                                              ),
+                                            )
+                                                :
+
+                                            Container(
+                                              height: 100,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                                  4,
+                                              // color: Colors.red,
+                                              child: Icon(
+                                                Icons.person,
+                                                size: 80,
+                                              ),
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15),
+                                                      child: Container(
+                                                        width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width /
+                                                            2,
+                                                        //color: Colors.green,
+                                                        child: Text(
+                                                          addNewCustomerData!['name']??"",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                              FontWeight.w600,
+                                                              fontSize: 14,
+                                                              color: Colors.black,  fontFamily: 'Mulish'),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15, top: 4),
-                                                child: Text(
-                                                  addNewCustomerData!['email']??"",
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
-                                                ),
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 15, top: 4),
-                                                    child: Text(
-                                                      addNewCustomerData!['state_id'][1]??"",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.w400,
-                                                          fontSize: 14,
-                                                          color: Colors.black),
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets.only(
+                                                          left: 0, right: 20),
+                                                      child: InkWell(
+                                                        onTap: (){
+                                                          addNewCustomer
+                                                              .removeAt(
+                                                              index);
+                                                          setState(() {});
+                                                        },
+                                                        child: Container(
+                                                          width: 30,
+                                                          height: 30,
+
+                                                          child: Icon(
+                                                            Icons.delete,
+                                                            size: 20,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                      ),
                                                     ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 15, top: 4),
+                                                  child: Text(
+                                                    addNewCustomerData!['email']??"",
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 5, top: 4),
-                                                    child: Text(
-                                                      addNewCustomerData!['country_id'][1]??"",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                          FontWeight.w400,
-                                                          fontSize: 14,
-                                                          color: Colors.black),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets.only(
+                                                          left: 15, top: 4),
+                                                      child: Text(
+                                                        addNewCustomerData!['state_id'][1]??"",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                            FontWeight.w400,
+                                                            fontSize: 12,
+                                                            color: Colors.black,  fontFamily: 'Mulish'),
+                                                      ),
                                                     ),
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets.only(
+                                                          left: 5, top: 4),
+                                                      child: Text(
+                                                        addNewCustomerData!['country_id'][1]??"",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                            FontWeight.w400,
+                                                            fontSize: 12,
+                                                            color: Colors.black,  fontFamily: 'Mulish'),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 15, top: 4),
+                                                  child: Text(
+                                                    addNewCustomerData!['phone']??"",
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
                                                   ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15, top: 4),
-                                                child: Text(
-                                                  addNewCustomerData!['phone']??"",
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15, top: 4),
-                                                child: Text(
-                                                  addNewCustomerData!['mobile']??"",
-                                                  style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 15, top: 4),
+                                                  child: Text(
+                                                    addNewCustomerData!['mobile']??"",
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -1893,7 +1947,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           RadioListTile(
                             title: Text(
                               "Contact",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                             ),
                             value: "contact",
                             groupValue: alertradioSelect,
@@ -1957,7 +2011,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 RadioListTile(
                   title: Text(
                     "Other Address",
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                   ),
                   value: "other",
                   groupValue: alertradioSelect,
@@ -1984,7 +2038,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 RadioListTile(
                   title: Text(
                     "Private Address",
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                   ),
                   value: "private",
                   groupValue: alertradioSelect,
@@ -2010,10 +2064,10 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertCompanyNameController,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -2023,7 +2077,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Contact Name',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                   ),
                 ),
                 Visibility(
@@ -2039,15 +2093,15 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF000000)),
+                              color: Color(0xFF000000),fontFamily: 'Mulish'),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                            horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertStreetController,
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2059,15 +2113,15 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Street',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                            horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertStreetTwoController,
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2079,15 +2133,15 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Street2',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                            horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertCityController,
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2099,20 +2153,20 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'City',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                         ),
                       ),
                       //country
 
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 5),
+                            horizontal: 0, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
                           value: alertCountryName,
                           hint: Text(
                             "Country",
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                           ),
 
                           searchHint: null,
@@ -2140,7 +2194,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 10, color: Colors.black),
+                                        fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                                   ),
                                 )));
                           },
@@ -2202,12 +2256,12 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 5),
+                            horizontal: 0, vertical: 0),
                         child: SearchChoices.single(
                           value: alertStateName,
                           hint: Text(
                             "State",
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -2232,7 +2286,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 10, color: Colors.black),
+                                        fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                                   ),
                                 )));
                           },
@@ -2292,12 +2346,12 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 5),
+                            horizontal: 10, vertical: 0),
                         child: TextFormField(
                           keyboardType: TextInputType.number,
                           controller: alertZipController,
                           maxLength: 6,
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           decoration: const InputDecoration(
                               counterText: "",
                               enabledBorder: UnderlineInputBorder(
@@ -2310,7 +2364,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Zip',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                         ),
                       ),
                     ],
@@ -2329,7 +2383,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           value: alerTitleName,
                           hint: Text(
                             "Title",
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -2355,7 +2409,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 10, color: Colors.black),
+                                        fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                                   ),
                                 )));
                           },
@@ -2407,7 +2461,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 10, vertical: 5),
                         child: TextFormField(
                           controller: alertJobController,
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2419,7 +2473,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Job Position',
                               labelStyle:
-                              TextStyle(color: Colors.black, fontSize: 10)),
+                              TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                         ),
                       ),
                     ],
@@ -2427,10 +2481,10 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertEmailController,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -2440,15 +2494,15 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Email',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertPhoneController,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
                     decoration: const InputDecoration(
@@ -2461,17 +2515,17 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Phone',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
                     maxLength: 10,
                     controller: alertMobileController,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     decoration: const InputDecoration(
                         counterText: "",
                         enabledBorder: UnderlineInputBorder(
@@ -2482,15 +2536,15 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Mobile',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertNotesController,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -2500,7 +2554,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Internal Notes',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
                   ),
                 ),
                 // TextButton(
@@ -2569,7 +2623,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       SizedBox(
-                        width: 116,
+                        width: 146,
                         height: 33,
                         child: ElevatedButton(
                             child: Text(
@@ -2577,7 +2631,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
                               String dataone =
@@ -2617,11 +2671,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             },
 
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                       SizedBox(
-                        width: 116,
+                        width: 146,
                         height: 33,
                         child: ElevatedButton(
                             child: Text(
@@ -2629,7 +2683,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
 
@@ -2670,7 +2724,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             },
 
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ],
@@ -2681,7 +2735,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20,bottom: 30),
                     child: SizedBox(
-                      width: 116,
+                      width: 304,
                       height: 33,
                       child: ElevatedButton(
                           child: Text(
@@ -2689,7 +2743,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Color(0xFFF04254)),
+                                color: Color(0xFFF9246A),fontFamily: 'Mulish'),
                           ),
                           onPressed: () {
 

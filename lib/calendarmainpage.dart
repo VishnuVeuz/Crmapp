@@ -130,7 +130,7 @@ class Calender extends StatelessWidget {
 
                       Padding(
                         padding: const EdgeInsets.only(left:34),
-                        child: Text(DateTime.now().toString(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Color(0xFF292929)),),
+                        child: Text(DateTime.now().toString(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Color(0xFF292929),fontFamily: 'Mulish',),),
                       ),
 
 

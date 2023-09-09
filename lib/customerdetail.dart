@@ -542,6 +542,53 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(left: 65),
+                  //   child: Row(
+                  //     children: [
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(left: 0, top: 20, right: 0),
+                  //         child: SizedBox(
+                  //           width: 93,
+                  //           height: 33,
+                  //           child: ElevatedButton(
+                  //               child: Text(
+                  //                 "Save",
+                  //                 style: TextStyle(
+                  //                     fontWeight: FontWeight.w700,
+                  //                     fontSize: 13.57,
+                  //                     color: Colors.white,fontFamily: 'Mulish'),
+                  //               ),
+                  //               onPressed: (){},
+                  //               style: ElevatedButton.styleFrom(
+                  //                 primary: Color(0xFFF9246A),
+                  //               )),
+                  //         ),
+                  //       ),
+                  //       Padding(
+                  //         padding: const EdgeInsets.only(left: 0, top: 20, right: 0),
+                  //         child: SizedBox(
+                  //           width: 93,
+                  //           height: 33,
+                  //           child: ElevatedButton(
+                  //               child: Text(
+                  //                 "Save",
+                  //                 style: TextStyle(
+                  //                     fontWeight: FontWeight.w700,
+                  //                     fontSize: 13.57,
+                  //                     color: Colors.white,fontFamily: 'Mulish'),
+                  //               ),
+                  //               onPressed: (){},
+                  //               style: ElevatedButton.styleFrom(
+                  //                 primary: Color(0xFFF9246A),
+                  //               )),
+                  //         ),
+                  //       ),
+                  //
+                  //
+                  //     ],
+                  //   ),
+                  // ),
                   Row(
                     children: [
                       Flexible(
@@ -1181,7 +1228,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text(
                           "Contacts & Addresses", style: TextStyle(fontSize: 15,
                             fontWeight: FontWeight.w700,
-                            color: Colors.black),
+                            color: Colors.black,  fontFamily: 'Mulish'),
                         ),
                       ),
                     ),
@@ -1246,8 +1293,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                         FontWeight.w600,
-                                                        fontSize: 15,
-                                                        color: Colors.black),
+                                                        fontSize: 14,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
                                                   ),
                                                 ),
                                               ),
@@ -1261,8 +1308,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               addNewCustomerData!['email']??"",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 14,
-                                                  color: Colors.black),
+                                                  fontSize: 12,
+                                                  color: Colors.black,  fontFamily: 'Mulish'),
                                             ),
                                           ),
                                           Row(
@@ -1276,8 +1323,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.w400,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
+                                                      fontSize: 12,
+                                                      color: Colors.black,  fontFamily: 'Mulish'),
                                                 ),
                                               ),
                                               Padding(
@@ -1289,8 +1336,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   style: TextStyle(
                                                       fontWeight:
                                                       FontWeight.w400,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
+                                                      fontSize: 12,
+                                                      color: Colors.black,  fontFamily: 'Mulish'),
                                                 ),
                                               ),
                                             ],
@@ -1302,8 +1349,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               addNewCustomerData!['phone']??"",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 14,
-                                                  color: Colors.black),
+                                                  fontSize: 12,
+                                                  color: Colors.black,  fontFamily: 'Mulish'),
                                             ),
                                           ),
                                           Padding(
@@ -1313,8 +1360,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               addNewCustomerData!['mobile']??"",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 14,
-                                                  color: Colors.black),
+                                                  fontSize: 12,
+                                                  color: Colors.black,  fontFamily: 'Mulish'),
                                             ),
                                           ),
                                         ],

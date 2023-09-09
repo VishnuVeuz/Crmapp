@@ -12,6 +12,8 @@ import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'notification.dart';
+import 'notificationactivity.dart';
 class OpportunityQuotation extends StatefulWidget {
   var opportunityId;
   OpportunityQuotation(this.opportunityId);
@@ -128,7 +130,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
                     color: Colors.white,
-                    decoration: TextDecoration.none),
+                    decoration: TextDecoration.none,fontFamily: 'Mulish'),
               )
             ],
           ),
@@ -146,14 +148,82 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(
-                  icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+              return Row(
+                children: [
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -177,7 +247,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 13.57,
-                              color: Colors.white),
+                              color: Colors.white,fontFamily: 'Mulish'),
                         ),
                         onPressed: () async {
                           String resmessage;
@@ -221,20 +291,20 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF04254),
+                          primary: Color(0xFFF9246A),
                         )),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: customerName,
                     hint: Text(
                       "Customer",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -260,7 +330,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["display_name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -308,21 +378,21 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: Container(
                     child: Text(dropdownCustomerData!),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: quotationtemplateName,
                     hint: Text(
                       "Quotation Template",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -345,7 +415,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -392,7 +462,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: SizedBox(
                     child: InkWell(
                       onTap: () {
@@ -407,21 +477,21 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               hintStyle: TextStyle(
                                 //fontFamily: "inter",
                                   fontWeight: FontWeight.w400,
-                                  fontSize: 10,
-                                  color: Colors.black))),
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'))),
                     ),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: pricelistName,
                     hint: Text(
                       "Pricelist",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -444,7 +514,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -492,14 +562,14 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: paymenttermsName,
                     hint: Text(
                       "Payment Terms",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -522,7 +592,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -574,18 +644,18 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF000000)),
+                        color: Color(0xFF000000),fontFamily: 'Mulish'),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
                     value: salespersonName,
                     hint: Text(
                       "Salesperson",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
 
                     searchHint: null,
@@ -611,7 +681,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -655,12 +725,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     value: salesteamName,
                     hint: Text(
                       "Sales Team",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -684,7 +754,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -728,12 +798,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     value: companyName,
                     hint: Text(
                       "Company",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -757,7 +827,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -808,14 +878,15 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                       child: Text(
                         "Online Signature",
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF000000)),
+                            color: Color(0xFF000000),fontFamily: 'Mulish'),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 25),
                       child: Checkbox(
+                        activeColor:  Color(0xFFF9246A),
                         value: isCheckedSignature,
                         onChanged: (bool? value) {
                           setState(() {
@@ -836,14 +907,15 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                       child: Text(
                         "Online Payment",
                         style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 12,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF000000)),
+                            color: Color(0xFF000000),fontFamily: 'Mulish'),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 25),
                       child: Checkbox(
+                        activeColor:  Color(0xFFF9246A),
                         value: isCheckedPayment,
                         onChanged: (bool? value) {
                           setState(() {
@@ -856,7 +928,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: TextFormField(
                     controller: customerreference,
                     decoration: const InputDecoration(
@@ -870,17 +942,18 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Customer Reference',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 0,
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: MultiSelectDropDown.network(
                     hint: 'Tags',
+                    hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     selectedOptions: editTagName
                         .map((tag) =>
                         ValueItem(label: tag.label, value: tag.value))
@@ -930,29 +1003,29 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                   child: Text(
                     "Delivery",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF000000)),
+                        color: Color(0xFF000000),fontFamily: 'Mulish'),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     hint: Text(
                       "Shipping policy",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     items: list.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(
                           value,
-                          style: TextStyle(fontSize: 10, color: Colors.black),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                         ),
                       );
                     }).toList(),
@@ -967,7 +1040,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: SizedBox(
                     child: InkWell(
                       onTap: () {
@@ -983,30 +1056,30 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                 //fontFamily: "inter",
                                   fontWeight: FontWeight.w400,
                                   fontSize: 10,
-                                  color: Colors.black))),
+                                  color: Colors.black,fontFamily: 'Mulish'))),
                     ),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: Text(
                     "Invoicing",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF000000)),
+                        color: Color(0xFF000000),fontFamily: 'Mulish'),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
                     value: fiscalpositionName,
                     hint: Text(
                       "Fiscal Position",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
 
                     searchHint: null,
@@ -1032,7 +1105,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -1076,24 +1149,24 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: Text(
                     "Tracking",
                     style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF000000)),
+                        color: Color(0xFF000000),fontFamily: 'Mulish'),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
                     value: campaignName,
                     hint: Text(
                       "Campaign",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
 
                     searchHint: null,
@@ -1119,7 +1192,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -1164,12 +1237,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     value: mediumName,
                     hint: Text(
                       "Medium",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -1191,7 +1264,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -1234,12 +1307,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     value: sourceName,
                     hint: Text(
                       "Source",
-                      style: TextStyle(fontSize: 10, color: Colors.black),
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -1261,7 +1334,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             width: 300,
                             child: Text(
                               item["name"],
-                              style: TextStyle(fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           )));
                     },
@@ -1315,8 +1388,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
 
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: TextFormField(
+                    style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                     controller: sourcedocument,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -1329,7 +1403,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Source Document',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                   ),
                 ),
 
@@ -1337,72 +1411,75 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
 
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 30,left: 10,right: 5),
-                      child: Center(
+                Container(
+                  color: Color(0xFFF6F6F6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, bottom: 0,left: 10,right: 5),
+                        child: Center(
 
-                        child: Container(
-                          width: MediaQuery.of(context).size.width/2.5,
-                          child: ElevatedButton(
-                              child: Text(
-                                "Orderlines",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
-                              ),
-                              onPressed: () {
+                          child: Container(
+                            width: MediaQuery.of(context).size.width/2.5,
+                            child: TextButton(
+                                child: Text(
+                                  "Orderlines",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                                onPressed: () {
 
-                                setState(() {
+                                  setState(() {
 
-                                  optvisibility = false;
-                                  ordervisibility = true;
+                                    optvisibility = false;
+                                    ordervisibility = true;
 
-                                });
+                                  });
 
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary:Color(0xFFF6F6F6),
+                                )),
+                          ),
                         ),
                       ),
-                    ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20, bottom: 30,left: 5,right: 10),
-                      child: Center(
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, bottom: 0,left: 5,right: 10),
+                        child: Center(
 
-                        child: Container(
-                          width: MediaQuery.of(context).size.width/2.5,
-                          child: ElevatedButton(
-                              child: Text(
-                                "Optional products",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
-                              ),
-                              onPressed: () {
+                          child: Container(
+                            width: MediaQuery.of(context).size.width/2.5,
+                            child: TextButton(
+                                child: Text(
+                                  "Optional products",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black),
+                                ),
+                                onPressed: () {
 
-                                setState(() {
-                                  productId = null;
-                                  optvisibility = true;
-                                  ordervisibility = false;
-                                });
+                                  setState(() {
+                                    productId = null;
+                                    optvisibility = true;
+                                    ordervisibility = false;
+                                  });
 
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFF6F6F6),
+                                )),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
 
 
@@ -1413,7 +1490,8 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                     padding: const EdgeInsets.only(top: 1, bottom: 30),
                     child: Center(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width/2,
+                        width: 346,
+                        height: 33,
 
                         child: ElevatedButton(
                             child: Text(
@@ -1438,7 +1516,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               ).then((value) => setState(() {}));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
@@ -1532,7 +1610,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 10,
+                                                            top: 0,
                                                             left: 25),
                                                         child: Container(
                                                           width: 230,
@@ -1546,7 +1624,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                     .w600,
                                                                 fontSize: 14,
                                                                 color:
-                                                                Colors.black),
+                                                                Colors.black,fontFamily: 'Mulish'),
                                                           ),
                                                         ),
                                                       ),
@@ -1571,7 +1649,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                   Padding(
                                                     padding:
                                                     const EdgeInsets.only(
-                                                        top: 10, left: 25),
+                                                        top: 0, left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -1581,9 +1659,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                         Text(
                                                           orderLineProductsData![
@@ -1593,9 +1671,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                         Text(
                                                           " " +
@@ -1606,9 +1684,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                       ],
                                                     ),
@@ -1616,7 +1694,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                   Padding(
                                                     padding:
                                                     const EdgeInsets.only(
-                                                        top: 5, left: 25),
+                                                        top: 0, left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                       MainAxisAlignment
@@ -1633,9 +1711,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                     fontWeight:
                                                                     FontWeight
                                                                         .w500,
-                                                                    fontSize: 11,
+                                                                    fontSize: 12,
                                                                     color: Color(
-                                                                        0xFF787878)),
+                                                                        0xFF787878),fontFamily: 'Mulish'),
                                                               ),
                                                               Text(
                                                                 orderLineProductsData![
@@ -1646,9 +1724,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                     fontWeight:
                                                                     FontWeight
                                                                         .w500,
-                                                                    fontSize: 11,
+                                                                    fontSize: 12,
                                                                     color: Color(
-                                                                        0xFF787878)),
+                                                                        0xFF787878),fontFamily: 'Mulish'),
                                                               ),
                                                             ],
                                                           ),
@@ -1662,8 +1740,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                             height: 30,
                                                             //color: Colors.green,
                                                             child: IconButton(
-                                                              icon: Icon(
-                                                                  Icons.delete),
+                                                              icon: SvgPicture.asset("images/trash.svg"),
                                                               onPressed: () async{
                                                                 print(index);
 
@@ -1712,7 +1789,8 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                     padding: const EdgeInsets.only(top: 1, bottom: 30),
                     child: Center(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width/2,
+                        width: 346,
+                        height: 33,
 
                         child: ElevatedButton(
                             child: Text(
@@ -1720,7 +1798,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
 
@@ -1737,7 +1815,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               ).then((value) => setState(() {}));
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
@@ -1831,7 +1909,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 10,
+                                                            top: 0,
                                                             left: 25),
                                                         child: Container(
                                                           width: 230,
@@ -1845,7 +1923,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                     .w600,
                                                                 fontSize: 14,
                                                                 color:
-                                                                Colors.black),
+                                                                Colors.black,fontFamily: 'Mulish'),
                                                           ),
                                                         ),
                                                       ),
@@ -1855,7 +1933,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                   Padding(
                                                     padding:
                                                     const EdgeInsets.only(
-                                                        top: 10, left: 25),
+                                                        top: 0, left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
                                                       MainAxisAlignment.start,
@@ -1865,9 +1943,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                         Text(
                                                           optionalProductsData![
@@ -1877,9 +1955,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                         Text(
                                                           " " +
@@ -1890,9 +1968,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           style: TextStyle(
                                                               fontWeight:
                                                               FontWeight.w500,
-                                                              fontSize: 11,
+                                                              fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),fontFamily: 'Mulish'),
                                                         ),
                                                       ],
                                                     ),
@@ -1905,7 +1983,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                       Padding(
                                                         padding:
                                                         const EdgeInsets.only(
-                                                            top: 5, left: 25),
+                                                            top: 0, left: 25),
                                                         child: Row(
                                                           mainAxisAlignment:
                                                           MainAxisAlignment
@@ -1917,9 +1995,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w500,
-                                                                  fontSize: 11,
+                                                                  fontSize: 12,
                                                                   color: Color(
-                                                                      0xFF787878)),
+                                                                      0xFF787878),fontFamily: 'Mulish'),
                                                             ),
                                                             Text(
                                                               optionalProductsData![
@@ -1930,9 +2008,9 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w500,
-                                                                  fontSize: 11,
+                                                                  fontSize: 12,
                                                                   color: Color(
-                                                                      0xFF787878)),
+                                                                      0xFF787878),fontFamily: 'Mulish'),
                                                             ),
                                                           ],
                                                         ),
@@ -1948,8 +2026,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           height: 30,
                                                           //color: Colors.green,
                                                           child: IconButton(
-                                                            icon: Icon(
-                                                                Icons.delete),
+                                                            icon:SvgPicture.asset("images/trash.svg"),
                                                             onPressed: () {
                                                               print(index);
 
@@ -2271,7 +2348,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 250),
+                padding: const EdgeInsets.only(left: 260),
                 child: IconButton(
                   icon: Image.asset(
                     "images/cross.png",
@@ -2302,14 +2379,14 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                 child: SearchChoices.single(
                   //items: items,
 
                   value: productTiltleName,
                   hint: Text(
                     "Product",
-                    style: TextStyle(fontSize: 10, color: Colors.black),
+                    style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                   ),
                   searchHint: null,
                   autofocus: false,
@@ -2343,7 +2420,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                           width: 300,
                           child: Text(
                             item["display_name"],
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                           ),
                         )));
                   },
@@ -2389,8 +2466,9 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                 child: TextFormField(
+                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                   controller: productQuantity,
                   decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
@@ -2400,13 +2478,14 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                         borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                       ),
                       labelText: 'Quantity',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 10)),
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                 ),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                 child: TextFormField(
+                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                   controller: productUnitPrice,
                   decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
@@ -2416,19 +2495,19 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                         borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                       ),
                       labelText: 'Unit Price',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 10)),
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                 ),
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                 child: SearchChoices.single(
                   //items: items,
 
                   value: productUomName,
                   hint: Text(
                     "Uom",
-                    style: TextStyle(fontSize: 10, color: Colors.black),
+                    style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                   ),
                   searchHint: null,
                   autofocus: false,
@@ -2453,7 +2532,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                           width: 300,
                           child: Text(
                             item["name"],
-                            style: TextStyle(fontSize: 10, color: Colors.black),
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                           ),
                         )));
                   },
@@ -2502,8 +2581,9 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                 visible: tvisibility,
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
+                    style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                     controller: leadtime,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -2513,20 +2593,21 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         labelText: 'Lead Time',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)),
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                   ),
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 0,
               ),
               Visibility(
                 visible: tvisibility,
                 child: Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                   child: MultiSelectDropDown.network(
                      hint: 'Taxes',
+                    hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     selectedOptions: editProductTaxName
                         .map((tag) =>
                         ValueItem(label: tag.label, value: tag.value))
@@ -2589,8 +2670,9 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                 child: TextFormField(
+                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                   controller: productDescription,
                   decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
@@ -2600,14 +2682,14 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                         borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                       ),
                       labelText: 'Description',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 10)),
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 146,
@@ -2619,7 +2701,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.white),
+                                    color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
                             onPressed: () async{
@@ -2748,13 +2830,13 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                               Navigator.pop(context);
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 146,
@@ -2766,7 +2848,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.white),
+                                    color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
                             onPressed: () async{
@@ -2849,7 +2931,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
@@ -2860,7 +2942,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                 padding: const EdgeInsets.only(top: 40,bottom: 10),
                 child: Center(
                   child: SizedBox(
-                    width: 146,
+                    width: 306,
                     height: 38,
                     child: ElevatedButton(
                         child: Center(

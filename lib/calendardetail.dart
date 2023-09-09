@@ -67,7 +67,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                   padding: const EdgeInsets.only(left: 20),
                   child: IconButton(
                     icon: Image.asset("images/back.png"),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
                 ),
           ),
@@ -121,7 +123,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             //             CalendarAdd(widget.calendarId)));
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF04254),
+                            primary: Color(0xFFF9246A),
                           )),
                     ),
                   ),

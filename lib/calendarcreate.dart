@@ -9,6 +9,7 @@ import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
 import 'calendardetail.dart';
+import 'drawer.dart';
 import 'globals.dart';
 
 const List<String> privacylist = <String>[
@@ -87,6 +88,7 @@ class _CalendarAddState extends State<CalendarAdd> {
     }
     else {
       return Scaffold(
+        drawer: MainDrawer(),
         appBar: AppBar(
           backgroundColor: Theme
               .of(context)
@@ -111,7 +113,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                   padding: const EdgeInsets.only(left: 20),
                   child: IconButton(
                     icon: Image.asset("images/back.png"),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
                 ),
           ),
@@ -154,7 +158,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 13.57,
-                              color: Colors.white),
+                              color: Colors.white,fontFamily: 'Mulish'),
                         ),
                         onPressed: () async {
                           String resmessage;
@@ -215,14 +219,15 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       CalencerFullDetail(resmessagevalue)));
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF04254),
+                          primary: Color(0xFFF9246A),
                         )),
                   ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: TextFormField(
+                    style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                     controller: meetingsubjectController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -235,13 +240,13 @@ class _CalendarAddState extends State<CalendarAdd> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Meeting Subject',
                         labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 10)),
+                        TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(height: 0,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 5),
+                      horizontal: 15, vertical: 0),
                   child: MultiSelectDropDown.network(
 
                     selectedOptions: editPartnerName
@@ -317,7 +322,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.black),
+                                    color: Colors.black,fontFamily: 'Mulish'),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -348,7 +353,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.black),
+                                    color: Colors.black,fontFamily: 'Mulish'),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -379,20 +384,20 @@ class _CalendarAddState extends State<CalendarAdd> {
                         children: [
 
                           Padding(
-                            padding: const EdgeInsets.only(top: 20, left: 25),
+                            padding: const EdgeInsets.only(top: 0, left: 25),
                             child: Text(
                               "Starting at",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
-                                  color: Colors.black),
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           ),
                           InkWell(
 
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  top: 10, left: 25, right: 25),
+                                  top: 0, left: 25, right: 25),
                               child: TextFormField(
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -405,6 +410,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 decoration: InputDecoration(
                                   //border: OutlineInputBorder(),
                                   hintText: "choose date & time",
+                                  hintStyle: TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')
                                 ),
                               ),
                             ),
@@ -414,13 +422,13 @@ class _CalendarAddState extends State<CalendarAdd> {
                             },
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 20, left: 25),
+                            padding: const EdgeInsets.only(top: 5, left: 25),
                             child: Text(
                               "Stopping at",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontSize: 12,
-                                  color: Colors.black),
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           ),
                           InkWell(
@@ -440,6 +448,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 decoration: InputDecoration(
                                   //border: OutlineInputBorder(),
                                   hintText: "choose date & time",
+                                  hintStyle: TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')
                                 ),
                               ),
                             ),
@@ -451,8 +462,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
+                                horizontal: 25, vertical: 0),
                             child: TextFormField(
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                               controller: meeting_duration,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -467,7 +481,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Duration',
                                   labelStyle:
-                                  TextStyle(color: Colors.black, fontSize: 10)),
+                                  TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')),
                             ),
                           ),
                           Row(
@@ -479,14 +495,15 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 child: Text(
                                   "All day",
                                   style: TextStyle(
-                                      fontSize: 10,
                                       fontWeight: FontWeight.w400,
-                                      color: Color(0xFF000000)),
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish'),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
+                                  activeColor: Color(0xFFF9246A),
                                   value: isCheckedAllday,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -500,14 +517,16 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                                horizontal: 15, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
                               value: orgnizerName,
                               hint: Text(
                                 "Organizer",
                                 style: TextStyle(
-                                    fontSize: 10, color: Colors.black),
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
                               ),
 
                               searchHint: null,
@@ -535,7 +554,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       child: Text(
                                         item["name"],
                                         style: TextStyle(
-                                            fontSize: 10, color: Colors.black),
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Colors.black,fontFamily: 'Mulish'),
                                       ),
                                     )));
                               },
@@ -587,12 +608,12 @@ class _CalendarAddState extends State<CalendarAdd> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                                horizontal: 15, vertical: 0),
                             child: MultiSelectDropDown.network(
                               selectedOptions: editReminders
                                   .map((tag) =>
@@ -646,8 +667,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
+                                horizontal: 25, vertical: 0),
                             child: TextFormField(
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                               controller: locationController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -662,14 +686,19 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Location',
                                   labelStyle:
-                                  TextStyle(color: Colors.black, fontSize: 10)),
+                                  TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')),
                             ),
                           ),
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
+                                horizontal: 25, vertical: 0),
                             child: TextFormField(
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                               controller: meetingurlController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -684,16 +713,18 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Meeting URL',
                                   labelStyle:
-                                  TextStyle(color: Colors.black, fontSize: 10)),
+                                  TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')),
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                                horizontal: 15, vertical: 0),
                             child: MultiSelectDropDown.network(
                               selectedOptions: editTagName
                                   .map((tag) =>
@@ -746,8 +777,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
+                                horizontal: 25, vertical: 0),
                             child: TextFormField(
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                               controller: meeting_discription,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -762,7 +796,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Description',
                                   labelStyle:
-                                  TextStyle(color: Colors.black, fontSize: 10)),
+                                  TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish')),
                             ),
                           ),
                         ],
@@ -783,12 +819,13 @@ class _CalendarAddState extends State<CalendarAdd> {
                         Padding(
                           padding:
                           const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 5),
+                              horizontal: 15, vertical: 0),
                           child: SearchChoices.single(
                             hint: Text(
                               "Privacy",
-                              style: TextStyle(
-                                  fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                             items: privacylist.map<DropdownMenuItem<String>>((
                                 String value) {
@@ -796,8 +833,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.black),
+                                  style: TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish'),
                                 ),
                               );
                             }).toList(),
@@ -815,12 +853,13 @@ class _CalendarAddState extends State<CalendarAdd> {
                         Padding(
                           padding:
                           const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 5),
+                              horizontal: 15, vertical: 0),
                           child: SearchChoices.single(
                             hint: Text(
                               "Show as",
-                              style: TextStyle(
-                                  fontSize: 10, color: Colors.black),
+                              style: TextStyle(fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                             items: showaslist.map<DropdownMenuItem<String>>((
                                 String value) {
@@ -828,8 +867,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(
-                                      fontSize: 10, color: Colors.black),
+                                  style:TextStyle(fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish'),
                                 ),
                               );
                             }).toList(),
