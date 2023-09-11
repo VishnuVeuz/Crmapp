@@ -88,7 +88,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         children: <Widget>[
                           // Your ListView.builder goes here
                           Container(
-                            height: MediaQuery.of(context).size.height/2.5,
+                           // height: MediaQuery.of(context).size.height/2.5,
 
                             child: ListView.builder(
                               shrinkWrap: true,
@@ -359,7 +359,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   width: MediaQuery.of(context).size.width,
                                   height: 40,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 31),
+                                    padding: const EdgeInsets.only(left: 18),
                                     child: Text(
                                       "Lead",
                                       style: TextStyle(
@@ -392,7 +392,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   width: MediaQuery.of(context).size.width,
                                   height: 30,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 31),
+                                    padding: const EdgeInsets.only(left:18),
                                     child: Text(
                                       "Opportunity",
                                       style: TextStyle(
