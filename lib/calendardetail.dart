@@ -116,11 +116,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 color: Colors.white),
                           ),
                           onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             CalendarAdd(widget.calendarId)));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
+
+
+
+
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -212,7 +216,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 25),
                         child: Text(
-                       " partnername!",
+                          partnername!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 13,
@@ -505,7 +509,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                   "  reminder!",
+                                    "reminder!",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -769,14 +773,21 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
     print("gchgvhj");
     setState(() {
 
-      //privacy,showas;
+     // privacy,showas;
+      print(data['partner_ids'][0]['display_name'].toString());
+      print("demodemo");
 
       meetingsub= data['name'].toString()??"";
-    //partnername= data['partner_ids']['display_name'].toString()??"";
+    partnername= data['partner_ids'][0]['display_name'].toString()??"";
       startdate= data['start'].toString();
       stopdate= data['stop'].toString();
       duration=data['duration'].toString();
       // allday=data['allday']?? false;
+
+      // data['alarm_ids'].length!=0?
+      //   reminder =data['alarm_ids']['name'].toString()??""
+      //     :reminder = "";
+
       organizer=data['user_id']['name']??"";
       //reminder =data['alarm_ids']['name'].toString()??"";
       location=data['location'].toString()??"";

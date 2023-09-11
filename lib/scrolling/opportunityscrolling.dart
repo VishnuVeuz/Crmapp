@@ -15,6 +15,8 @@ class OpportunityScrolling extends StatefulWidget {
   final dynamic type,Id,similartype;
   var quotationFrom;
   var filterItems;
+
+
   OpportunityScrolling(this.type,this.Id,this.similartype,this.quotationFrom,this.filterItems);
 
   @override
@@ -43,6 +45,15 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     _nodata = false;
     _error = false;
     print("sfgdds");
+
+
+    print(widget.type);
+    print(widget.Id);
+    print(widget.similartype);
+    print(widget.quotationFrom);
+    print(widget.filterItems);
+
+    print("sfgdds11");
     opportunityType = widget.type;
     fetchData();
   }
@@ -59,6 +70,11 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
       widget.quotationFrom == "notification" ?
       dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+
+      widget.quotationFrom == "lost" ?
+      dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+
+
 
       widget.similartype=="similar"? dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&opportunity_id=${widget.Id}"
       : dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}${widget.Id==null?"&partner_id=":"&partner_id=${widget.Id}"}";

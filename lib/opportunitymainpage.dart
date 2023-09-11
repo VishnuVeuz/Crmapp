@@ -275,7 +275,18 @@ setState(() {
         ),
                 ),
               ),
-              onTap: (){},
+              onTap: (){
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            OpportunityMainPage(
+                                null, "", "lost",
+                                "[lost]")));
+
+
+              },
             ),
 
 

@@ -77,11 +77,19 @@ class _CalendarDayState extends State<CalendarDay> {
   void calendarTapped(CalendarTapDetails calendarTapDetails) {
     if (calendarTapDetails.targetElement == CalendarElement.appointment) {
       Meeting? appointment = calendarTapDetails.appointments![0];
+      print(calendarTapDetails.appointments![0].id);
       print("demo data pass");
+      // Navigator.push(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => SecondRoute(appointment:appointment)),
+      // );
+
       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SecondRoute(appointment:appointment)),
-      );
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  CalencerFullDetail(calendarTapDetails.appointments![0].id)));
+
     }
   }
 
@@ -171,7 +179,7 @@ class _CalendarDayState extends State<CalendarDay> {
     setState(() {
 
     });
-    print(calendersDetailss);
+    print(calendersDetailss[0]);
     print("calendersDetailss");
 
 
