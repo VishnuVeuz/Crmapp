@@ -2281,6 +2281,8 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
+  print(partnerName);
+  print("partnerName");
   print(token);
 
   try {
@@ -2288,7 +2290,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
       "params": {
         "activity_ids": [activity_ids],
         "res_id": res_id,
-        "res_model_id": res_model_id,
+        "res_model": res_model_id,
         "name":meetingsubject,
         "location": location,
         "videocall_location": meetingurl,

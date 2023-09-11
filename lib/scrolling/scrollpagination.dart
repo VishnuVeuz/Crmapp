@@ -359,10 +359,14 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
             title: Text("Leads Category",style:
             TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
-            buttonText: Text("Lead Filter",style:
+
+            buttonText: Text("Lead Filter",
+
+              style:
             TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
             buttonIcon:  Icon(
-              Icons.arrow_drop_down_rounded,
+            //  Icons.arrow_drop_down_rounded,
+              Icons.filter_list_alt,
               color: Colors.grey,
             ),
 

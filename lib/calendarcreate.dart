@@ -1026,13 +1026,13 @@ class _CalendarAddState extends State<CalendarAdd> {
 
 
 
-      for (int i = 0; i < data['alarm_ids'].length; i++) {
-        selctedPartnerName.add(data['alarm_ids'][i]);
+      for (int i = 0; i < data['partner_ids'].length; i++) {
+        selctedPartnerName.add(data['partner_ids'][i]);
       }
 
       for (int i = 0; i < selctedPartnerName.length; i++) {
         editPartnerName.add(new ValueItem(
-            label: selctedPartnerName[i]['name'],
+            label: selctedPartnerName[i]['display_name'],
             value: selctedPartnerName[i]['id'].toString()));
       }
       partnerName = editPartnerName.map((item) => item.value).toList();

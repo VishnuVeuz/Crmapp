@@ -509,7 +509,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                    "reminder!",
+                                    reminder!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 13,
@@ -708,7 +708,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               child: Padding(
                                 padding: const EdgeInsets.only(right: 25),
                                 child: Text(
-                                  "Privacy",
+                                  privacy!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 13,
@@ -741,7 +741,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               child: Padding(
                                 padding: const EdgeInsets.only(right: 25),
                                 child: Text(
-                                  "Show as",
+                                  showas!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 13,
@@ -784,9 +784,12 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
       duration=data['duration'].toString();
       // allday=data['allday']?? false;
 
-      // data['alarm_ids'].length!=0?
-      //   reminder =data['alarm_ids']['name'].toString()??""
-      //     :reminder = "";
+      privacy = data['privacy']??"";
+      showas = data['show_as']??"";
+
+      data['alarm_ids'].length!=0?
+        reminder =data['alarm_ids'][0]['name'].toString()??""
+          :reminder = "";
 
       organizer=data['user_id']['name']??"";
       //reminder =data['alarm_ids']['name'].toString()??"";
