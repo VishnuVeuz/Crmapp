@@ -138,132 +138,159 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 25,top: 8),
-              //   child: Row(
-              //     //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //     children: [
-              //       Column(
-              //         children: [
-              //
-              //           InkWell(
-              //             // onTap: (){
-              //             //   Navigator.push(
-              //             //       context,
-              //             //       MaterialPageRoute(
-              //             //           builder: (context) => CalendarAdd(0)));
-              //             //
-              //             // },
-              //             child: SvgPicture
-              //                 .asset(
-              //               "images/create.svg",width: 28,height: 28,),
-              //           ),
-              //
-              //
-              //
-              //
-              //           Padding(
-              //             padding: const EdgeInsets.only(top: 5),
-              //             child: Text("Create",style: TextStyle(
-              //               fontFamily: 'Mulish',
-              //               fontWeight: FontWeight.w400,
-              //               fontSize: 12,
-              //               color: Color(0xFF212121),
-              //             )),
-              //           )
-              //         ],
-              //       ),
-              //       SizedBox(width: 20,),
-              //       Column(
-              //
-              //         children: [
-              //
-              //           InkWell(
-              //             onTap: (){
-              //               Navigator.push(
-              //                   context,
-              //                   MaterialPageRoute(
-              //                       builder: (context) =>
-              //                           CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
-              //
-              //             },
-              //             child: SvgPicture
-              //                 .asset(
-              //               "images/edit.svg",width: 28,height: 28,),
-              //           ),
-              //
-              //
-              //
-              //           Padding(
-              //             padding: const EdgeInsets.only(top: 5),
-              //             child: Text("Edit",style: TextStyle(
-              //               fontFamily: 'Mulish',
-              //               fontWeight: FontWeight.w400,
-              //               fontSize: 12,
-              //               color: Color(0xFF212121),
-              //             )),
-              //           )
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20),
-                    child: SizedBox(
-                      width: 93,
-                      height: 33,
-                      child: ElevatedButton(
-                          child: Text(
-                            "Edit",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.white),
-                          ),
-                          onPressed: () {
+
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+
+                        InkWell(
+                          // onTap: (){
+                          //   Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           builder: (context) => CalendarAdd(0)));
+                          //
+                          // },
+                          child: SvgPicture
+                              .asset(
+                            "images/create.svg",width: 28,height: 28,),
+                        ),
+
+
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Create",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                        )
+                      ],
+                    ),
+                   // SizedBox(width: 60,),
+                    Column(
+
+                      children: [
+
+                        InkWell(
+                          onTap: (){
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
 
-
-
-
                           },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                          child: SvgPicture
+                              .asset(
+                            "images/edit.svg",width: 28,height: 28,),
+                        ),
+
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Edit",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
                           )),
+                        )
+                      ],
                     ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(left: 10, top: 20),
-                  //   child: SizedBox(
-                  //     width: 93,
-                  //     height: 33,
-                  //     child: ElevatedButton(
-                  //         child: Text(
-                  //           "Create",
-                  //           style: TextStyle(
-                  //               fontWeight: FontWeight.w700,
-                  //               fontSize: 13.57,
-                  //               color: Colors.black),
-                  //         ),
-                  //         onPressed: () {
-                  //           Navigator.push(
-                  //             context,
-                  //             MaterialPageRoute(builder: (context) => CalendarAdd()),
-                  //           );
-                  //         },
-                  //         style: ElevatedButton.styleFrom(
-                  //           primary: Colors.white,
-                  //         )),
-                  //   ),
-                  // ),
-                ],
+                   // SizedBox(width: 60,),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: (){},
+                          child: SvgPicture
+                              .asset(
+                            "images/delete.svg",width: 28,height: 28,),
+                        ),
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Delete",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              // Row(
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 25, top: 20),
+              //       child: SizedBox(
+              //         width: 93,
+              //         height: 33,
+              //         child: ElevatedButton(
+              //             child: Text(
+              //               "Edit",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.w700,
+              //                   fontSize: 13.57,
+              //                   color: Colors.white),
+              //             ),
+              //             onPressed: () {
+              //               Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                       builder: (context) =>
+              //                           CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
+              //
+              //
+              //
+              //
+              //             },
+              //             style: ElevatedButton.styleFrom(
+              //               primary: Color(0xFFF9246A),
+              //             )),
+              //       ),
+              //     ),
+              //     // Padding(
+              //     //   padding: const EdgeInsets.only(left: 10, top: 20),
+              //     //   child: SizedBox(
+              //     //     width: 93,
+              //     //     height: 33,
+              //     //     child: ElevatedButton(
+              //     //         child: Text(
+              //     //           "Create",
+              //     //           style: TextStyle(
+              //     //               fontWeight: FontWeight.w700,
+              //     //               fontSize: 13.57,
+              //     //               color: Colors.black),
+              //     //         ),
+              //     //         onPressed: () {
+              //     //           Navigator.push(
+              //     //             context,
+              //     //             MaterialPageRoute(builder: (context) => CalendarAdd()),
+              //     //           );
+              //     //         },
+              //     //         style: ElevatedButton.styleFrom(
+              //     //           primary: Colors.white,
+              //     //         )),
+              //     //   ),
+              //     // ),
+              //   ],
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top:0, left: 22, right: 22),
+                child: Divider(color: Color(0xFFEBEBEB)),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 15),
