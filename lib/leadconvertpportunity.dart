@@ -63,10 +63,10 @@ class _LeadConvertState extends State<LeadConvert> {
         appBar: AppBar(
           elevation: 0,
           title: Padding(
-            padding: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 5),
             child: Text("Convert to opportunity",
-              style: TextStyle(fontSize: 20, color: Colors.black,
-                fontFamily: 'Mulish',),),
+              style: TextStyle(fontSize: 19, color: Colors.black,
+                fontFamily: 'Mulish',fontWeight: FontWeight.w600),),
           ),
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
@@ -75,7 +75,7 @@ class _LeadConvertState extends State<LeadConvert> {
             Builder(builder: (context) {
               return Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: IconButton(icon: Image.asset("images/cross.png"),
+                child: IconButton(icon: Image.asset("images/cross.png",color: Colors.black,),
                   onPressed: () {
                     Navigator.pop(context);
                   },),
@@ -106,17 +106,18 @@ class _LeadConvertState extends State<LeadConvert> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
 
-                        Divider(),
+                       // Divider(),
 
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25),
-                          child: Text("Conversion Action",
-                            style: TextStyle(fontSize: 15),),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 25),
+                        //   child: Text("Conversion Action",
+                        //     style: TextStyle(fontSize: 15),),
+                        // ),
 
 
                         SingleChildScrollView(
                           child: Container(
+                          //  color: Colors.red,
                             width: MediaQuery
                                 .of(context)
                                 .size
@@ -126,77 +127,86 @@ class _LeadConvertState extends State<LeadConvert> {
                                 .size
                                 .height / 1.1,
                             //color: Colors.orange,
-                            child: DefaultTabController(
-                              initialIndex: tabIds,
-                              length: 2,
-                              child:
-                              Column(
-                                children: <Widget>[
+                            child: Container(
+                              //color: Colors.red,
+                              child: DefaultTabController(
+                                initialIndex: tabIds,
+                                length: 2,
+                                child:
+                                Column(
+                                  children: <Widget>[
 
-                                  Column(
-                                    children: [
+                                    Column(
+                                      children: [
 
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 18),
-                                        child: ButtonsTabBar(
-
-
-                                          backgroundColor: Color(0xFFF04254),
-
-                                          //elevation: 0,
-
-
-                                          unselectedBackgroundColor: Colors
-                                              .white,
-                                          unselectedLabelStyle: TextStyle(
-                                              color: Color(0xFF212121)),
-                                          labelStyle:
-                                          TextStyle(color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 13,),
-                                          tabs: const [
-                                            Tab(text: "Convert to opportunity"),
-                                            Tab(
-                                              text: "Merge with existing opportunity",),
-                                            //Tab( text: "Schedule Activity",),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Container(
+                                              color: Color(0xFFF5F5F5),
+                                            child: ButtonsTabBar(
 
 
-                                          ],
+                                              backgroundColor: Color(0xFFF5F5F5),
+
+                                              //elevation: 0,
+
+
+                                              unselectedBackgroundColor: Color(0xFFF5F5F5),
+
+                                              unselectedLabelStyle: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 12.7,   fontFamily: 'Mulish'),
+                                              labelStyle:
+                                              TextStyle(
+                                                  color: Color(0xFFFA256B),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 12.7,   fontFamily: 'Mulish'),
+                                              tabs: const [
+                                                Tab(text: "Convert to opportunity",),
+                                                Tab(
+                                                  text: "Merge with existing opportunity",),
+                                                //Tab( text: "Schedule Activity",),
+
+
+                                              ],
+                                            ),
+                                          ),
                                         ),
-                                      ),
-
-
-                                    ],
-                                  ),
-                                  Expanded(
-                                    child: TabBarView(
-
-                                      children: <Widget>[
-                                        Center(
-                                          // child:  ConvertToOpportunity(widget.leadId,conversionType!,custType!),
-                                          child: ConvertToOpportunity(
-                                              widget.leadId),
-                                        ),
-                                        Center(
-                                          //child: MergeOpportunity(widget.leadId,conversionType!,custType!),
-                                          //child: MergeOpportunity(widget.leadId,"",""),
-                                            child: MergeOpportunity(
-                                                widget.leadId),
-
-                                          // child: Container(
-                                          //   child: Text("namesss"),
-                                          // ),
-
-                                        ),
-                                        // Center(
-                                        //   child: ScheduleActivity(),
-                                        // ),
 
 
                                       ],
                                     ),
-                                  ),
-                                ],
+                                    Expanded(
+                                      child: TabBarView(
+
+                                        children: <Widget>[
+                                          Center(
+                                            // child:  ConvertToOpportunity(widget.leadId,conversionType!,custType!),
+                                            child: ConvertToOpportunity(
+                                                widget.leadId),
+                                          ),
+                                          Center(
+                                            //child: MergeOpportunity(widget.leadId,conversionType!,custType!),
+                                            //child: MergeOpportunity(widget.leadId,"",""),
+                                              child: MergeOpportunity(
+                                                  widget.leadId),
+
+                                            // child: Container(
+                                            //   child: Text("namesss"),
+                                            // ),
+
+                                          ),
+                                          // Center(
+                                          //   child: ScheduleActivity(),
+                                          // ),
+
+
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -284,466 +294,511 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 60),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
 
-     // color: Colors.blue,
-      child: Stack(
-          children: [SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 15,left: 25),
-                  child: Text("Assign this opportunity to",style: TextStyle(fontWeight: FontWeight.w500),),
-                ),
-
-
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 10),
-                  child: SearchChoices.single(
-                    //items: items,
-                    value: salespersonName,
-                    hint: Text("Salesperson",
-                      style: TextStyle(fontSize: 10, color: Colors.black),),
-
-                    searchHint: null,
-                    autofocus: false,
-                    onChanged: (value) {
-                      setState(() {
-                        print(value['capital']);
-                        print("value");
-                        salespersonName = value;
-                        salespersonId = value["id"];
-                      });
-                    },
-
-                    dialogBox: false,
-                    isExpanded: true,
-                    menuConstraints: BoxConstraints.tight(
-                        const Size.fromHeight(350)),
-                    itemsPerPage: 10,
-                    currentPage: currentPage,
-                    selectedValueWidgetFn: (item) {
-                      return (Center(
-                          child: Container(
-                            width: 300,
-                            child: Text(item["name"], style: TextStyle(
-                                fontSize: 10, color: Colors.black),),
-                          )));
-                    },
-                    futureSearchFn: (String? keyword, String? orderBy,
-                        bool? orderAsc,
-                        List<Tuple2<String, String>>? filters,
-                        int? pageNb) async {
-                      print(keyword);
-                      print("lalalalalla");
-                      String filtersString = "";
-
-
-                      print(filters);
-                      print(filtersString);
-                      print(keyword);
-                      print("afna");
-                      Response response = await get(Uri.parse(
-                          "${baseUrl}api/salespersons?page_no=${pageNb ??
-                              1}&count=10${keyword == null
-                              ? ""
-                              : "&filter=$keyword"}${companyId == null
-                              ? ""
-                              : "&company_id=$companyId"}"),
-                        headers: {
-
-                          'Authorization': 'Bearer $token',
-                        },
-                      )
-                          .timeout(const Duration(
-                        seconds: 10,
-                      ));
-
-
-                      print(response.toString());
-                      print("datatatapassss");
-                      if (response.statusCode != 200) {
-                        throw Exception("failed to get data from internet");
-                      }
-                      print("fjbnkdttthgfgyv");
-                      dynamic data = jsonDecode(response.body);
-                      print(data);
-                      print("fjbnkdttt");
-                      int nbResults = data["length"];
-                      print("fjbnkd");
-                      List<DropdownMenuItem> results = (data["records"] as List<
-                          dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text(
-                                    " ${item["name"]}"),
-                              ),
-                            ),
-                          ))
-                          .toList();
-                      return (Tuple2<List<DropdownMenuItem>, int>(
-                          results, nbResults));
-                    },
+       //color: Colors.blue,
+        child: Stack(
+            children: [SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0,left: 25),
+                    child: Text("Assign this opportunity to",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 1),
-                  child: SearchChoices.single(
-                    //items: items,
-                    value: salesteamName,
-                    hint: Text("Sales Team",
-                      style: TextStyle(fontSize: 10, color: Colors.black),),
-
-                    searchHint: null,
-                    autofocus: false,
-                    onChanged: (value) {
-                      setState(() {
-                        print(value['capital']);
-                        print("value");
-                        salesteamName = value;
-                        salesteamId = value["id"];
-                      });
-                    },
-
-                    dialogBox: false,
-                    isExpanded: true,
-                    menuConstraints: BoxConstraints.tight(
-                        const Size.fromHeight(350)),
-                    itemsPerPage: 10,
-                    currentPage: currentPage,
-                    selectedValueWidgetFn: (item) {
-                      return (Center(
-                          child: Container(
-                            width: 300,
-                            child: Text(item["name"], style: TextStyle(
-                                fontSize: 10, color: Colors.black),),
-                          )));
-                    },
-                    futureSearchFn: (String? keyword, String? orderBy,
-                        bool? orderAsc,
-                        List<Tuple2<String, String>>? filters,
-                        int? pageNb) async {
-                      print(keyword);
-                      print("lalalalalla");
-                      String filtersString = "";
 
 
-                      print(filters);
-                      print(filtersString);
-                      print(keyword);
-                      print("afna");
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 15,right: 20),
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width/1.1,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFFEBEBEB))
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 0, vertical: 0),
+                        child: SearchChoices.single(
+                          //items: items,
+                          value: salespersonName,
+                          hint: Text("Salesperson",
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
-
-                      Response response = await get(Uri.parse(
-                          "${baseUrl}api/sales_teams?page_no=${pageNb ??
-                              1}&count=10${keyword == null
-                              ? ""
-                              : "&filter=$keyword${companyId == null
-                              ? ""
-                              : "&company_id=$companyId"}"}"),
-                        headers: {
-
-                          'Authorization': 'Bearer $token',
-
-                        },
-                      )
-                          .timeout(const Duration(
-                        seconds: 10,
-                      ));
-
-
-                      print(response.toString());
-                      print("datatatapassss");
-                      if (response.statusCode != 200) {
-                        throw Exception("failed to get data from internet");
-                      }
-                      print("fjbnkdttthgfgyv");
-                      dynamic data = jsonDecode(response.body);
-                      print(data);
-                      print("fjbnkdttt");
-                      int nbResults = data["length"];
-                      print("fjbnkd");
-                      List<DropdownMenuItem> results = (data["records"] as List<
-                          dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text(
-                                    " ${item["name"]}"),
-
-                              ),
-                            ),
-                          ))
-                          .toList();
-                      return (Tuple2<List<DropdownMenuItem>, int>(
-                          results, nbResults));
-                    },
-                  ),
-                ),
-                Divider(),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,left: 25),
-                  child: Text("Customer",style: TextStyle(fontWeight: FontWeight.w500),),
-                ),
-
-
-                RadioListTile(
-                  title: Text("Create a new customer",
-
-                    style: TextStyle(fontSize: 14),),
-                  value: "create",
-                  groupValue: conversioActions,
-                  onChanged: (value){
-                    setState(() {
-                      conversioActions = value.toString();
-                      existing_customer_conmdition = false;
-                      print(conversioActions);
-                      print("drop values");
-                    });
-                  },
-                ),
-
-                RadioListTile(
-                  title: Text("Link to an existing customer"
-                    ,style: TextStyle(fontSize: 14),
-                  ),
-                  value: "exist",
-                  groupValue: conversioActions,
-                  onChanged: (value){
-                    setState(() {
-                      conversioActions = value.toString();
-
-                      existing_customer_conmdition = true;
-                      print(conversioActions);
-                      print("drop values");
-                    });
-                  },
-                ),
-
-                RadioListTile(
-                  title: Text("Do not link to a customer"
-                    ,style: TextStyle(fontSize: 14),
-                  ),
-                  value: "nothing",
-                  groupValue: conversioActions,
-                  onChanged: (value){
-                    setState(() {
-                      conversioActions = value.toString();
-                      existing_customer_conmdition = false;
-                      print(conversioActions);
-                      print("drop values");
-                    });
-                  },
-                ),
-
-
-
-                Visibility(
-                  visible: existing_customer_conmdition,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 5),
-                    child: SearchChoices.single(
-                      //items: items,
-                      label: 'Customer',
-                      value: customerName,
-                      hint: Text("Customer",
-                        style: TextStyle(fontSize: 10, color: Colors.black),),
-
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          print(value);
-                          print("value");
-                          customerName = value;
-                          customerId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints: BoxConstraints.tight(
-                          const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 300,
-                              child: Text(item["display_name"], style: TextStyle(
-                                  fontSize: 10, color: Colors.black),),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword, String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        print(keyword);
-                        print("lalalalalla");
-                        String filtersString = "";
-
-
-                        print(filters);
-                        print(filtersString);
-                        print(keyword);
-                        print("afnademo");
-
-
-                        Response response = await get(Uri.parse(
-                            "${baseUrl}api/customers?count=10${keyword == null? ""
-                                : "&filter=$keyword&page_no=${pageNb ??
-                                1}&model='lead'${companyIdData == null
-                                ? []
-                                : "&company_id=$companyIdData"}"}"),
-                          headers: {
-
-                            'Authorization': 'Bearer $token',
-
+                          searchHint: null,
+                          autofocus: false,
+                          onChanged: (value) {
+                            setState(() {
+                              print(value['capital']);
+                              print("value");
+                              salespersonName = value;
+                              salespersonId = value["id"];
+                            });
                           },
-                        )
-                            .timeout(const Duration(
-                          seconds: 10,
-                        ));
 
-                        String datata =  ("${baseUrl}api/customers?count=10${keyword == null? ""
-                            : "&filter=$keyword&page_no=${pageNb ??
-                            1}&model='lead'${companyIdData == null
-                            ? []
-                            : "&company_id=$companyIdData"}"}");
-
-                        print(datata);
-                        print("dstatata");
-                        print(response.toString());
-                        print("datatatapassss");
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-                        print("fjbnkdttthgfgyv");
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-                        print("fjbnkdttt");
-                        int nbResults = data["length"];
-                        print("fjbnkd");
-                        List<DropdownMenuItem> results = (data["records"] as List<
-                            dynamic>)
-                            .map<DropdownMenuItem>((item) =>
-                            DropdownMenuItem(
-                              value: item,
-                              child: Card(
-
-                                child: Padding(
-                                  padding: const EdgeInsets.all(0),
-                                  child: Text(
-                                      " ${item["display_name"]}"),
-
-                                ),
-                              ),
-                            ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                ),
+                          dialogBox: false,
+                          isExpanded: true,
+                          menuConstraints: BoxConstraints.tight(
+                              const Size.fromHeight(350)),
+                          itemsPerPage: 10,
+                          currentPage: currentPage,
+                          selectedValueWidgetFn: (item) {
+                            return (Center(
+                                child: Container(
+                                  width: 300,
+                                  child: Text(item["name"], style: TextStyle(
+                                      fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                )));
+                          },
+                          futureSearchFn: (String? keyword, String? orderBy,
+                              bool? orderAsc,
+                              List<Tuple2<String, String>>? filters,
+                              int? pageNb) async {
+                            print(keyword);
+                            print("lalalalalla");
+                            String filtersString = "";
 
 
+                            print(filters);
+                            print(filtersString);
+                            print(keyword);
+                            print("afna");
+                            Response response = await get(Uri.parse(
+                                "${baseUrl}api/salespersons?page_no=${pageNb ??
+                                    1}&count=10${keyword == null
+                                    ? ""
+                                    : "&filter=$keyword"}${companyId == null
+                                    ? ""
+                                    : "&company_id=$companyId"}"),
+                              headers: {
 
-                Divider(),
+                                'Authorization': 'Bearer $token',
+                              },
+                            )
+                                .timeout(const Duration(
+                              seconds: 10,
+                            ));
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 13, left: 25),
-                      child: SizedBox(
-                        width: 170,
-                        height: 43,
-                        child: ElevatedButton(
-                            child: Center(
-                              child: Text(
-                                "Create Opportunity",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            onPressed: () async {
-                              String leadconvert = await  leadconvertion(leadconvertId,"convert",salespersonId,salesteamId,conversioActions!,customerId,[]);
 
-                              print(leadconvert);
-                              print("final complete data");
-                              int resmessagevalue = int.parse(leadconvert);
-                               if(leadconvert != "0"){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => OpportunityDetail(resmessagevalue)));
-                              }
+                            print(response.toString());
+                            print("datatatapassss");
+                            if (response.statusCode != 200) {
+                              throw Exception("failed to get data from internet");
+                            }
+                            print("fjbnkdttthgfgyv");
+                            dynamic data = jsonDecode(response.body);
+                            print(data);
+                            print("fjbnkdttt");
+                            int nbResults = data["length"];
+                            print("fjbnkd");
+                            List<DropdownMenuItem> results = (data["records"] as List<
+                                dynamic>)
+                                .map<DropdownMenuItem>((item) =>
+                                DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
 
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF04254),
-                            ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(
+                                          " ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
+                                .toList();
+                            return (Tuple2<List<DropdownMenuItem>, int>(
+                                results, nbResults));
+                          },
                         ),
                       ),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 15,right: 20),
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width/1.1,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Color(0xFFEBEBEB))
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 0, vertical: 0),
+                        child: SearchChoices.single(
+                          //items: items,
+                          value: salesteamName,
+                          hint: Text("Sales Team",
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+
+                          searchHint: null,
+                          autofocus: false,
+                          onChanged: (value) {
+                            setState(() {
+                              print(value['capital']);
+                              print("value");
+                              salesteamName = value;
+                              salesteamId = value["id"];
+                            });
+                          },
+
+                          dialogBox: false,
+                          isExpanded: true,
+                          menuConstraints: BoxConstraints.tight(
+                              const Size.fromHeight(350)),
+                          itemsPerPage: 10,
+                          currentPage: currentPage,
+                          selectedValueWidgetFn: (item) {
+                            return (Center(
+                                child: Container(
+                                  width: 300,
+                                  child: Text(item["name"], style: TextStyle(
+                                      fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                )));
+                          },
+                          futureSearchFn: (String? keyword, String? orderBy,
+                              bool? orderAsc,
+                              List<Tuple2<String, String>>? filters,
+                              int? pageNb) async {
+                            print(keyword);
+                            print("lalalalalla");
+                            String filtersString = "";
 
 
-                    SizedBox(width: 10,),
+                            print(filters);
+                            print(filtersString);
+                            print(keyword);
+                            print("afna");
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 13,right: 25),
-                      child: SizedBox(
-                        width: 160,
-                        height: 43,
-                        child: ElevatedButton(
-                            child: Center(
-                              child: Text(
-                                "Cancel",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black),
-                              ),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFFFFFFF),
-                            )),
+
+                            Response response = await get(Uri.parse(
+                                "${baseUrl}api/sales_teams?page_no=${pageNb ??
+                                    1}&count=10${keyword == null
+                                    ? ""
+                                    : "&filter=$keyword${companyId == null
+                                    ? ""
+                                    : "&company_id=$companyId"}"}"),
+                              headers: {
+
+                                'Authorization': 'Bearer $token',
+
+                              },
+                            )
+                                .timeout(const Duration(
+                              seconds: 10,
+                            ));
+
+
+                            print(response.toString());
+                            print("datatatapassss");
+                            if (response.statusCode != 200) {
+                              throw Exception("failed to get data from internet");
+                            }
+                            print("fjbnkdttthgfgyv");
+                            dynamic data = jsonDecode(response.body);
+                            print(data);
+                            print("fjbnkdttt");
+                            int nbResults = data["length"];
+                            print("fjbnkd");
+                            List<DropdownMenuItem> results = (data["records"] as List<
+                                dynamic>)
+                                .map<DropdownMenuItem>((item) =>
+                                DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(
+                                          " ${item["name"]}"),
+
+                                    ),
+                                  ),
+                                ))
+                                .toList();
+                            return (Tuple2<List<DropdownMenuItem>, int>(
+                                results, nbResults));
+                          },
+                        ),
                       ),
                     ),
+                  ),
+                  //Divider(),
 
-                  ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,left: 25),
+                    child: Text("Customer",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),),
+                  ),
 
-                ),
 
-              ],
-            ),
-          ),
-            if (isLoading)
-              Center(
-                child: CircularProgressIndicator(),
+                  RadioListTile(
+                    activeColor:   Color(0xFFFA256B),
+                    title: Text("Create a new customer",
+
+
+                      style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),),
+                    value: "create",
+                    groupValue: conversioActions,
+                    onChanged: (value){
+                      setState(() {
+                        conversioActions = value.toString();
+                        existing_customer_conmdition = false;
+                        print(conversioActions);
+                        print("drop values");
+                      });
+                    },
+                  ),
+
+                  RadioListTile(
+                    activeColor:   Color(0xFFFA256B),
+                    title: Text("Link to an existing customer"
+                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
+                    ),
+                    value: "exist",
+                    groupValue: conversioActions,
+                    onChanged: (value){
+                      setState(() {
+                        conversioActions = value.toString();
+
+                        existing_customer_conmdition = true;
+                        print(conversioActions);
+                        print("drop values");
+                      });
+                    },
+                  ),
+
+                  RadioListTile(
+                    activeColor:   Color(0xFFFA256B),
+                    title: Text("Do not link to a customer"
+                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
+                    ),
+                    value: "nothing",
+                    groupValue: conversioActions,
+                    onChanged: (value){
+                      setState(() {
+                        conversioActions = value.toString();
+                        existing_customer_conmdition = false;
+                        print(conversioActions);
+                        print("drop values");
+                      });
+                    },
+                  ),
+
+
+
+                  Visibility(
+                    visible: existing_customer_conmdition,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20,top: 15,right: 20),
+                      child: Container(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width/1.1,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xFFEBEBEB))
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical:0),
+                          child: SearchChoices.single(
+
+                            //items: items,
+                            // label: 'Customer',
+                            // style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14,color: Colors.black),
+                            value: customerName,
+                            hint: Text("Customer",
+                              style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14),),
+
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                print(value);
+                                print("value");
+                                customerName = value;
+                                customerId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints: BoxConstraints.tight(
+                                const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 300,
+                                    child: Text(item["display_name"], style: TextStyle(
+                                        fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword, String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              print(keyword);
+                              print("lalalalalla");
+                              String filtersString = "";
+
+
+                              print(filters);
+                              print(filtersString);
+                              print(keyword);
+                              print("afnademo");
+
+
+                              Response response = await get(Uri.parse(
+                                  "${baseUrl}api/customers?count=10${keyword == null? ""
+                                      : "&filter=$keyword&page_no=${pageNb ??
+                                      1}&model='lead'${companyIdData == null
+                                      ? []
+                                      : "&company_id=$companyIdData"}"}"),
+                                headers: {
+
+                                  'Authorization': 'Bearer $token',
+
+                                },
+                              )
+                                  .timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              String datata =  ("${baseUrl}api/customers?count=10${keyword == null? ""
+                                  : "&filter=$keyword&page_no=${pageNb ??
+                                  1}&model='lead'${companyIdData == null
+                                  ? []
+                                  : "&company_id=$companyIdData"}"}");
+
+                              print(datata);
+                              print("dstatata");
+                              print(response.toString());
+                              print("datatatapassss");
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+                              print("fjbnkdttthgfgyv");
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+                              print("fjbnkdttt");
+                              int nbResults = data["length"];
+                              print("fjbnkd");
+                              List<DropdownMenuItem> results = (data["records"] as List<
+                                  dynamic>)
+                                  .map<DropdownMenuItem>((item) =>
+                                  DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text(
+                                            " ${item["display_name"]}"),
+
+                                      ),
+                                    ),
+                                  ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+
+
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 93, left: 25),
+                        child: SizedBox(
+                          width: 170,
+                          height: 43,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Create Opportunity",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white,fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed: () async {
+                                String leadconvert = await  leadconvertion(leadconvertId,"convert",salespersonId,salesteamId,conversioActions!,customerId,[]);
+
+                                print(leadconvert);
+                                print("final complete data");
+                                int resmessagevalue = int.parse(leadconvert);
+                                 if(leadconvert != "0"){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => OpportunityDetail(resmessagevalue)));
+                                }
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF9246A),
+                              ),
+                          ),
+                        ),
+                      ),
+
+
+                      SizedBox(width: 10,),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 93,right: 25),
+                        child: SizedBox(
+                          width: 160,
+                          height: 43,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Cancel",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black,fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFFFFFFF),
+                              )),
+                        ),
+                      ),
+
+                    ],
+
+                  ),
+
+                ],
               ),
-          ]
+            ),
+              if (isLoading)
+                Center(
+                  child: CircularProgressIndicator(),
+                ),
+            ]
+        ),
       ),
     );
 
@@ -842,20 +897,20 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
         cells: <DataCell>[
           DataCell(Container(
               width: 80,
-              child: Text(leadDuplicateIdData[index].createDate.toString()))), //add name of your columns here
-          DataCell(Container(width: 80, child:Text(leadDuplicateIdData[index].opportunityName.toString()))),
+              child: Text(leadDuplicateIdData[index].createDate.toString(),style: TextStyle(fontFamily: 'Mulish'),))), //add name of your columns here
+          DataCell(Container(width: 80, child:Text(leadDuplicateIdData[index].opportunityName.toString(),style: TextStyle(fontFamily: 'Mulish')))),
           DataCell(Container(
               width: 80,
-              child: Text(leadDuplicateIdData[index].leadType.toString()))), //add name of your columns here
-          DataCell(Container(width: 80, child: Text(leadDuplicateIdData[index].contactName.toString()))),
+              child: Text(leadDuplicateIdData[index].leadType.toString(),style: TextStyle(fontFamily: 'Mulish')))), //add name of your columns here
+          DataCell(Container(width: 80, child: Text(leadDuplicateIdData[index].contactName.toString(),style: TextStyle(fontFamily: 'Mulish')))),
           DataCell(Container(
               width: 80,
-              child: Text(leadDuplicateIdData[index].email.toString()))), //add name of your columns here
-          DataCell(Container(width: 80, child: Text(leadDuplicateIdData[index].leadStage.toString()))),
+              child: Text(leadDuplicateIdData[index].email.toString(),style: TextStyle(fontFamily: 'Mulish')))), //add name of your columns here
+          DataCell(Container(width: 80, child: Text(leadDuplicateIdData[index].leadStage.toString(),style: TextStyle(fontFamily: 'Mulish')))),
           DataCell(Container(
               width: 80,
-              child: Text(leadDuplicateIdData[index].salespersonName.toString()))), //add name of your columns here
-          DataCell(Container(width: 80, child:Text(leadDuplicateIdData[index].salesTeamName.toString()))),
+              child: Text(leadDuplicateIdData[index].salespersonName.toString(),style: TextStyle(fontFamily: 'Mulish')))), //add name of your columns here
+          DataCell(Container(width: 80, child:Text(leadDuplicateIdData[index].salesTeamName.toString(),style: TextStyle(fontFamily: 'Mulish')))),
           DataCell(TextButton(
               onPressed: () {
                 print("data deleteddssddddd");
@@ -864,7 +919,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                 });
 
               },
-              child:  IconButton( icon:Image.asset("images/cross.png"), onPressed: () {
+              child:  IconButton( icon:Image.asset("images/cross.png",color: Colors.black,), onPressed: () {
 
                 setState(() {
                   leadDuplicateIdData.removeAt(index);
@@ -900,213 +955,241 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 15, left: 25),
+                padding: const EdgeInsets.only(top: 15, left: 20),
                 child: Text(
                   "Assign this opportunity to",
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                  style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15, vertical: 10),
-                child: SearchChoices.single(
-                  //items: items,
-                  value: salespersonName,
-                  hint: Text("Salesperson",
-                    style: TextStyle(fontSize: 10, color: Colors.black),),
+                padding: const EdgeInsets.only(left: 20,top: 15,right: 20),
+                child: Container(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width/1.1,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFEBEBEB))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 0, vertical: 0),
+                    child: SearchChoices.single(
+                      // searchInputDecoration: InputDecoration(
+                      //   enabledBorder: InputBorder.none,
+                      // ),
 
-                  searchHint: null,
-                  autofocus: false,
-                  onChanged: (value) {
-                    setState(() {
-                      print(value['capital']);
-                      print("value");
-                      salespersonName = value;
-                      salespersonId = value["id"];
-                    });
-                  },
+                      //items: items,
+                      value: salespersonName,
+                      hint: Text("Salesperson",
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
-                  dialogBox: false,
-                  isExpanded: true,
-                  menuConstraints: BoxConstraints.tight(
-                      const Size.fromHeight(350)),
-                  itemsPerPage: 10,
-                  currentPage: currentPage,
-                  selectedValueWidgetFn: (item) {
-                    return (Center(
-                        child: Container(
-                          width: 300,
-                          child: Text(item["name"], style: TextStyle(
-                              fontSize: 10, color: Colors.black),),
-                        )));
-                  },
-                  futureSearchFn: (String? keyword, String? orderBy,
-                      bool? orderAsc,
-                      List<Tuple2<String, String>>? filters,
-                      int? pageNb) async {
-                    print(keyword);
-                    print("lalalalalla");
-                    String filtersString = "";
-
-
-                    print(filters);
-                    print(filtersString);
-                    print(keyword);
-                    print("afna");
-                    Response response = await get(Uri.parse(
-                        "${baseUrl}api/salespersons?page_no=${pageNb ??
-                            1}&count=10${keyword == null
-                            ? ""
-                            : "&filter=$keyword"}${companyId == null
-                            ? ""
-                            : "&company_id=$companyId"}"),
-                      headers: {
-
-                        'Authorization': 'Bearer $token',
+                      searchHint: null,
+                      autofocus: false,
+                      onChanged: (value) {
+                        setState(() {
+                          print(value['capital']);
+                          print("value");
+                          salespersonName = value;
+                          salespersonId = value["id"];
+                        });
                       },
-                    )
-                        .timeout(const Duration(
-                      seconds: 10,
-                    ));
 
-
-                    print(response.toString());
-                    print("datatatapassss");
-                    if (response.statusCode != 200) {
-                      throw Exception("failed to get data from internet");
-                    }
-                    print("fjbnkdttthgfgyv");
-                    dynamic data = jsonDecode(response.body);
-                    print(data);
-                    print("fjbnkdttt");
-                    int nbResults = data["length"];
-                    print("fjbnkd");
-                    List<DropdownMenuItem> results = (data["records"] as List<
-                        dynamic>)
-                        .map<DropdownMenuItem>((item) =>
-                        DropdownMenuItem(
-                          value: item,
-                          child: Card(
-
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(
-                                  " ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                        .toList();
-                    return (Tuple2<List<DropdownMenuItem>, int>(
-                        results, nbResults));
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 15, vertical: 1),
-                child: SearchChoices.single(
-                  //items: items,
-                  value: salesteamName,
-                  hint: Text("Sales Team",
-                    style: TextStyle(fontSize: 10, color: Colors.black),),
-
-                  searchHint: null,
-                  autofocus: false,
-                  onChanged: (value) {
-                    setState(() {
-                      print(value['capital']);
-                      print("value");
-                      salesteamName = value;
-                      salesteamId = value["id"];
-                    });
-                  },
-
-                  dialogBox: false,
-                  isExpanded: true,
-                  menuConstraints: BoxConstraints.tight(
-                      const Size.fromHeight(350)),
-                  itemsPerPage: 10,
-                  currentPage: currentPage,
-                  selectedValueWidgetFn: (item) {
-                    return (Center(
-                        child: Container(
-                          width: 300,
-                          child: Text(item["name"], style: TextStyle(
-                              fontSize: 10, color: Colors.black),),
-                        )));
-                  },
-                  futureSearchFn: (String? keyword, String? orderBy,
-                      bool? orderAsc,
-                      List<Tuple2<String, String>>? filters,
-                      int? pageNb) async {
-                    print(keyword);
-                    print("lalalalalla");
-                    String filtersString = "";
-
-
-                    print(filters);
-                    print(filtersString);
-                    print(keyword);
-                    print("afna");
-
-
-                    Response response = await get(Uri.parse(
-                        "${baseUrl}api/sales_teams?page_no=${pageNb ??
-                            1}&count=10${keyword == null
-                            ? ""
-                            : "&filter=$keyword${companyId == null
-                            ? ""
-                            : "&company_id=$companyId"}"}"),
-                      headers: {
-
-                        'Authorization': 'Bearer $token',
-
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints: BoxConstraints.tight(
+                          const Size.fromHeight(250)),
+                      itemsPerPage: 10,
+                      currentPage: currentPage,
+                      selectedValueWidgetFn: (item) {
+                        return (Center(
+                            child: Container(
+                              width: 300,
+                              child: Text(item["name"], style: TextStyle(
+                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                            )));
                       },
-                    )
-                        .timeout(const Duration(
-                      seconds: 10,
-                    ));
+                      futureSearchFn: (String? keyword, String? orderBy,
+                          bool? orderAsc,
+                          List<Tuple2<String, String>>? filters,
+                          int? pageNb) async {
+                        print(keyword);
+                        print("lalalalalla");
+                        String filtersString = "";
 
 
-                    print(response.toString());
-                    print("datatatapassss");
-                    if (response.statusCode != 200) {
-                      throw Exception("failed to get data from internet");
-                    }
-                    print("fjbnkdttthgfgyv");
-                    dynamic data = jsonDecode(response.body);
-                    print(data);
-                    print("fjbnkdttt");
-                    int nbResults = data["length"];
-                    print("fjbnkd");
-                    List<DropdownMenuItem> results = (data["records"] as List<
-                        dynamic>)
-                        .map<DropdownMenuItem>((item) =>
-                        DropdownMenuItem(
-                          value: item,
-                          child: Card(
+                        print(filters);
+                        print(filtersString);
+                        print(keyword);
+                        print("afna");
+                        Response response = await get(Uri.parse(
+                            "${baseUrl}api/salespersons?page_no=${pageNb ??
+                                1}&count=10${keyword == null
+                                ? ""
+                                : "&filter=$keyword"}${companyId == null
+                                ? ""
+                                : "&company_id=$companyId"}"),
+                          headers: {
 
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(
-                                  " ${item["name"]}"),
+                            'Authorization': 'Bearer $token',
+                          },
+                        )
+                            .timeout(const Duration(
+                          seconds: 10,
+                        ));
 
-                            ),
-                          ),
-                        ))
-                        .toList();
-                    return (Tuple2<List<DropdownMenuItem>, int>(
-                        results, nbResults));
-                  },
+
+                        print(response.toString());
+                        print("datatatapassss");
+                        if (response.statusCode != 200) {
+                          throw Exception("failed to get data from internet");
+                        }
+                        print("fjbnkdttthgfgyv");
+                        dynamic data = jsonDecode(response.body);
+                        print(data);
+                        print("fjbnkdttt");
+                        int nbResults = data["length"];
+                        print("fjbnkd");
+                        List<DropdownMenuItem> results = (data["records"] as List<
+                            dynamic>)
+                            .map<DropdownMenuItem>((item) =>
+                            DropdownMenuItem(
+                              value: item,
+                              child: Card(
+
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0),
+                                  child: Text(
+                                      " ${item["name"]}"),
+                                ),
+                              ),
+                            ))
+                            .toList();
+                        return (Tuple2<List<DropdownMenuItem>, int>(
+                            results, nbResults));
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20,top: 15,right: 20),
+                child: Container(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width/1.1,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFFEBEBEB))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 0, vertical: 0),
+                    child: SearchChoices.single(
+                      //items: items,
+                      value: salesteamName,
+                      hint: Text("Sales Team",
+                        style: TextStyle(fontSize: 12, color: Colors.black ,fontFamily: 'Mulish'),),
+
+                      searchHint: null,
+                      autofocus: false,
+                      onChanged: (value) {
+                        setState(() {
+                          print(value['capital']);
+                          print("value");
+                          salesteamName = value;
+                          salesteamId = value["id"];
+                        });
+                      },
+
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints: BoxConstraints.tight(
+                          const Size.fromHeight(250)),
+                      itemsPerPage: 10,
+                      currentPage: currentPage,
+                      selectedValueWidgetFn: (item) {
+                        return (Center(
+                            child: Container(
+                              width: 300,
+                              child: Text(item["name"], style: TextStyle(
+                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                            )));
+                      },
+                      futureSearchFn: (String? keyword, String? orderBy,
+                          bool? orderAsc,
+                          List<Tuple2<String, String>>? filters,
+                          int? pageNb) async {
+                        print(keyword);
+                        print("lalalalalla");
+                        String filtersString = "";
+
+
+                        print(filters);
+                        print(filtersString);
+                        print(keyword);
+                        print("afna");
+
+
+                        Response response = await get(Uri.parse(
+                            "${baseUrl}api/sales_teams?page_no=${pageNb ??
+                                1}&count=10${keyword == null
+                                ? ""
+                                : "&filter=$keyword${companyId == null
+                                ? ""
+                                : "&company_id=$companyId"}"}"),
+                          headers: {
+
+                            'Authorization': 'Bearer $token',
+
+                          },
+                        )
+                            .timeout(const Duration(
+                          seconds: 10,
+                        ));
+
+
+                        print(response.toString());
+                        print("datatatapassss");
+                        if (response.statusCode != 200) {
+                          throw Exception("failed to get data from internet");
+                        }
+                        print("fjbnkdttthgfgyv");
+                        dynamic data = jsonDecode(response.body);
+                        print(data);
+                        print("fjbnkdttt");
+                        int nbResults = data["length"];
+                        print("fjbnkd");
+                        List<DropdownMenuItem> results = (data["records"] as List<
+                            dynamic>)
+                            .map<DropdownMenuItem>((item) =>
+                            DropdownMenuItem(
+                              value: item,
+                              child: Card(
+
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0),
+                                  child: Text(
+                                      " ${item["name"]}"),
+
+                                ),
+                              ),
+                            ))
+                            .toList();
+                        return (Tuple2<List<DropdownMenuItem>, int>(
+                            results, nbResults));
+                      },
+                    ),
+                  ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.only(top: 25),
+                padding: const EdgeInsets.only(top: 25,left: 20,right: 20),
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
+                    border: Border.all(color: Color(0xFFEBEBEB)),
                   ),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.vertical,
@@ -1119,18 +1202,18 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                         columnSpacing: 40,
                         columns: [
                           DataColumn(
-                              label: Container(width: 40, child: Text('Created on'))),
+                              label: Container(width: 75, child: Text('Created on',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600),))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Opportunity'))),
-                          DataColumn(label: Container(width: 80, child: Text('Type'))),
+                              label: Container(width: 80, child: Text('Opportunity',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Type',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Contact name'))),
-                          DataColumn(label: Container(width: 80, child: Text('Email'))),
-                          DataColumn(label: Container(width: 80, child: Text('Stage'))),
+                              label: Container(width: 90, child: Text('Contact name',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Email',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Stage',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Sales person'))),
+                              label: Container(width: 90, child: Text('Sales person',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Sales team'))),
+                              label: Container(width: 80, child: Text('Sales team',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
                           DataColumn(label: Text("")),
                         ],
                         rows: List.generate(
@@ -1150,7 +1233,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 53, left: 25),
+                    padding: const EdgeInsets.only(top: 143, left: 20),
                     child: SizedBox(
                       width: 170,
                       height: 43,
@@ -1161,7 +1244,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                           ),
                           onPressed: () async {
@@ -1200,13 +1283,13 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
 
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF04254),
+                            primary: Color(0xFFF9246A),
                           )),
                     ),
                   ),
                   SizedBox(width: 10,),
                   Padding(
-                    padding: const EdgeInsets.only(top: 53,),
+                    padding: const EdgeInsets.only(top: 143,right: 15),
                     child: SizedBox(
                       width: 170,
                       height: 43,
@@ -1217,7 +1300,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.black),
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                           ),
                           onPressed: () {

@@ -9,6 +9,8 @@ import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'notification.dart';
+import 'notificationactivity.dart';
 
 
 class OpportunityMainPage extends StatefulWidget {
@@ -80,14 +82,91 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
+              return Row(
+                children: [
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
-                    Scaffold.of(context).openDrawer();
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  IconButton(onPressed:(){
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) =>
+                          _buildFilterPopupDialog(context),
+                    ).then((value) => setState(() {}));
                   },
-                ),
+                      icon:Icon(Icons.filter_alt_outlined,color: Colors.white,)),
+                  //Icon(Icons.filter_alt_outlined,color: Colors.white,),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -180,6 +259,30 @@ setState(() {
 });
 
  }
+  _buildFilterPopupDialog(BuildContext context) {
+    return StatefulBuilder(builder: (context, setState) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 550,left: 50),
+        child: AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+            title: InkWell(
+              child: Container(
+                //width: 40,
+                child: Center(
+                  child: Text(
+                    "Lost",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),
+        ),
+                ),
+              ),
+              onTap: (){},
+            ),
+
+
+        ),
+      );
+    });
+  }
 
 
 }
