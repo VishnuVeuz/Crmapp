@@ -303,6 +303,15 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     },
                   ),
                 ),
+                IconButton(onPressed:(){
+                 // buildLeadModelsView();
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (BuildContext context) =>
+                  //       buildLeadModelsView(),
+                  // ).then((value) => setState(() {}));
+                },
+                    icon:Icon(Icons.filter_alt_outlined,color: Colors.white,)),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
