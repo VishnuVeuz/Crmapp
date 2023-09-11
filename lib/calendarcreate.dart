@@ -246,7 +246,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                 SizedBox(height: 0,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 0),
+                      horizontal: 22, vertical: 5),
                   child: MultiSelectDropDown.network(
 
                     selectedOptions: editPartnerName
@@ -315,7 +315,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                           width: MediaQuery
                               .of(context)
                               .size
-                              .width / 2.5,
+                              .width / 2.2,
                           child: ElevatedButton(
                               child: Text(
                                 "Meeting Details",
@@ -331,12 +331,12 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary: Color(0xFFEBEBEB),
                               )),
                         ),
                       ),
                     ),
-
+                    SizedBox(width: 5,),
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 20, bottom: 20, left: 0, right: 10),
@@ -346,7 +346,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                           width: MediaQuery
                               .of(context)
                               .size
-                              .width / 2.5,
+                              .width / 2.4,
                           child: ElevatedButton(
                               child: Text(
                                 "Options",
@@ -363,7 +363,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
+                                primary:  Color(0xFFEBEBEB),
                               )),
                         ),
                       ),
@@ -613,7 +613,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 22, vertical: 0),
                             child: MultiSelectDropDown.network(
                               selectedOptions: editReminders
                                   .map((tag) =>
@@ -724,7 +724,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 22, vertical: 5),
                             child: MultiSelectDropDown.network(
                               selectedOptions: editTagName
                                   .map((tag) =>
