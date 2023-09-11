@@ -1444,6 +1444,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 ),
 
                                 onPressed: () {
+
                                   setState(() {
                                     followersVisibility == true
                                         ? followersVisibility = false
@@ -1452,6 +1453,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFF6F6F6),
+
                                 )),
                           ),
                         ),
@@ -3606,7 +3608,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
@@ -3716,7 +3718,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(fontSize: 12, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                     controller: summaryController,
@@ -3740,7 +3742,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 0),
+                            horizontal: 15, vertical: 0),
                         child: SizedBox(
                           child: InkWell(
                             onTap: () {
@@ -3760,7 +3762,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 0),
+                            horizontal: 5, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
 
@@ -3849,7 +3851,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 25, vertical: 0),
+                            horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(fontSize: 13.6, color: Color(0xFF000000),fontWeight: FontWeight.w400,fontFamily: 'Mulish',),
                           controller: commandsController,

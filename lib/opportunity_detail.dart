@@ -2118,7 +2118,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         const EdgeInsets
                                                             .only(
                                                             top: 5,
-                                                            left: 25),
+                                                            left: 25,bottom: 5),
                                                         child: Row(
                                                           mainAxisAlignment:
                                                           MainAxisAlignment

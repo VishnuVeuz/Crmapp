@@ -1849,7 +1849,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   Visibility(
                     visible: optvisibility,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 1, bottom: 30),
+                      padding: const EdgeInsets.only(top: 1, bottom: 10),
                       child: Center(
                         child: SizedBox(
                           width: 346,
