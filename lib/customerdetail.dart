@@ -287,6 +287,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
 
 
+
+
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: Text("Delete",style: TextStyle(
