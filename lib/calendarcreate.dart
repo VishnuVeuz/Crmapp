@@ -11,6 +11,7 @@ import 'api.dart';
 import 'calendardetail.dart';
 import 'drawer.dart';
 import 'globals.dart';
+import 'notificationactivity.dart';
 
 const List<String> privacylist = <String>[
   "Public",
@@ -122,14 +123,50 @@ class _CalendarAddState extends State<CalendarAdd> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(
-                  icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+              return Row(
+                children: [
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 15.0,
+                              height: 15.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(
+                      icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -308,7 +345,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, bottom: 20, left: 23, right: 5),
+                          top: 10, bottom: 10, left: 23, right: 5),
                       child: Center(
 
                         child: Container(
@@ -339,7 +376,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                     SizedBox(width: 5,),
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 20, bottom: 20, left: 0, right: 10),
+                          top: 10, bottom: 10, left: 0, right: 10),
                       child: Center(
 
                         child: Container(
