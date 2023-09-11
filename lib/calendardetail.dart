@@ -100,65 +100,142 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20),
-                    child: SizedBox(
-                      width: 93,
-                      height: 33,
-                      child: ElevatedButton(
-                          child: Text(
-                            "Edit",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.white),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
-
-
-
-
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 20),
-                    child: SizedBox(
-                      width: 93,
-                      height: 33,
-                      child: ElevatedButton(
-                          child: Text(
-                            "Create",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.black),
-                          ),
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) => CalendarAdd(0)),
-                            // );
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                          )),
-                    ),
-                  ),
-                ],
-              ),
               Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+
+                        InkWell(
+                          onTap: (){},
+                          child: SvgPicture
+                              .asset(
+                            "images/create.svg",width: 28,height: 28,),
+                        ),
+
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Create",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+
+
+                        InkWell(
+                          onTap: (){},
+                          child: SvgPicture
+                              .asset(
+                            "images/edit.svg",width: 28,height: 28,),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Edit",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        InkWell(
+                          onTap: ()async{},
+                          child: SvgPicture
+                              .asset(
+                            "images/delete.svg",width: 28,height: 28,),
+                        ),
+
+
+
+
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text("Delete",style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                        )
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+              // Row(
+              //   children: [
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 25, top: 20),
+              //       child: SizedBox(
+              //         width: 93,
+              //         height: 33,
+              //         child: ElevatedButton(
+              //             child: Text(
+              //               "Edit",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.w700,
+              //                   fontSize: 13.57,
+              //                   color: Colors.white),
+              //             ),
+              //             onPressed: () {
+              //               Navigator.push(
+              //                   context,
+              //                   MaterialPageRoute(
+              //                       builder: (context) =>
+              //                           CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
+              //
+              //
+              //
+              //
+              //             },
+              //             style: ElevatedButton.styleFrom(
+              //               primary: Color(0xFFF9246A),
+              //             )),
+              //       ),
+              //     ),
+              //     Padding(
+              //       padding: const EdgeInsets.only(left: 10, top: 20),
+              //       child: SizedBox(
+              //         width: 93,
+              //         height: 33,
+              //         child: ElevatedButton(
+              //             child: Text(
+              //               "Create",
+              //               style: TextStyle(
+              //                   fontWeight: FontWeight.w700,
+              //                   fontSize: 13.57,
+              //                   color: Colors.black),
+              //             ),
+              //             onPressed: () {
+              //               // Navigator.push(
+              //               //   context,
+              //               //   MaterialPageRoute(builder: (context) => CalendarAdd(0)),
+              //               // );
+              //             },
+              //             style: ElevatedButton.styleFrom(
+              //               primary: Colors.white,
+              //             )),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -167,23 +244,25 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       child: Text("Meeting subject",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3,
+                          .width / 2.3,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 25),
                         child: Text(
                           meetingsub!,
-                          style: TextStyle(
+                          style:  TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
+                              color: Color(0xFF666666)),
                         ),
                       ),
                     ),
@@ -191,7 +270,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
+                padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                 child: Divider(color: Color(0xFFEBEBEB)),
               ),
               Padding(
@@ -204,14 +283,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       child: Text("Partner Name",
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
                               color: Color(0xFF666666))),
                     ),
                     Container(
                       width: MediaQuery
                           .of(context)
                           .size
-                          .width / 3,
+                          .width / 2.3,
 
                       child: Padding(
                         padding: const EdgeInsets.only(right: 25),
@@ -219,8 +299,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           partnername!,
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 13,
-                              color: Color(0xFF000000)),
+                              fontFamily: 'Mulish',
+                              fontSize: 12,
+                              color: Color(0xFF666666)),
                         ),
                       ),
                     ),
@@ -232,7 +313,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 20, bottom: 20, left: 23, right: 5),
+                        top: 10, bottom: 10, left: 23, right: 5),
                     child: Center(
 
                       child: Container(
@@ -246,7 +327,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.black),
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
                               setState(() {
@@ -255,7 +336,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
+                              primary: Color(0xFFEBEBEB),
                             )),
                       ),
                     ),
@@ -263,7 +344,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                   Padding(
                     padding: const EdgeInsets.only(
-                        top: 20, bottom: 20, left: 0, right: 10),
+                        top: 10, bottom: 10, left: 0, right: 10),
                     child: Center(
 
                       child: Container(
@@ -277,7 +358,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.black),
+                                  color: Colors.black,fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
                               setState(() {
@@ -286,7 +367,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.white,
+                              primary: Color(0xFFEBEBEB),
                             )),
                       ),
                     ),
@@ -306,23 +387,24 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       children: [
 
                         Padding(
-                          padding: const EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Start at",
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -330,8 +412,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     startdate!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -353,14 +436,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Stop at",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -368,8 +452,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     stopdate!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -378,7 +463,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -389,16 +474,17 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Duration",
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -406,8 +492,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     duration!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))
                                   ),
                                 ),
                               ),
@@ -460,14 +547,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               child: Text("Organizer",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF666666))),
                             ),
                             Container(
                               width: MediaQuery
                                   .of(context)
                                   .size
-                                  .width / 3,
+                                  .width / 2.3,
 
                               child: Padding(
                                 padding: const EdgeInsets.only(right: 25),
@@ -475,8 +563,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   organizer!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
-                                      color: Color(0xFF000000)),
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
+                                      color: Color(0xFF666666)),
                                 ),
                               ),
                             ),
@@ -484,7 +573,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -497,23 +586,25 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Reminder",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
                                     reminder!,
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -522,7 +613,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -535,23 +626,25 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Location",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
                                     location!,
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -560,7 +653,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -571,16 +664,17 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Meeting URL",
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -588,8 +682,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     meetingurl!,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -598,7 +693,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -611,14 +706,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Tags",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -626,8 +722,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     "Tags",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))
                                   ),
                                 ),
                               ),
@@ -636,7 +733,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 10, left: 22, right: 22),
+                              top: 0, left: 22, right: 22),
                           child: Divider(color: Color(0xFFEBEBEB)),
                         ),
                         Padding(
@@ -649,23 +746,25 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Description",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
                                     description!,
-                                    style: TextStyle(
+                                    style:  TextStyle(
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 13,
-                                        color: Color(0xFF000000)),
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666)),
                                   ),
                                 ),
                               ),
@@ -696,7 +795,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               child: Text("Privacy",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF666666))),
                             ),
                             Container(
@@ -709,10 +809,11 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 padding: const EdgeInsets.only(right: 25),
                                 child: Text(
                                   privacy!,
-                                  style: TextStyle(
+                                  style:TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
-                                      color: Color(0xFF000000)),
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
+                                      color: Color(0xFF666666)),
                                 ),
                               ),
                             ),
@@ -729,7 +830,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               child: Text("Show as",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
                                       color: Color(0xFF666666))),
                             ),
                             Container(
@@ -744,8 +846,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   showas!,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 13,
-                                      color: Color(0xFF000000)),
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
+                                      color: Color(0xFF666666)),
                                 ),
                               ),
                             ),
