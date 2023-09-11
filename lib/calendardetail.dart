@@ -101,6 +101,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
+
                 padding: const EdgeInsets.only(top: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -133,7 +134,17 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
 
                         InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
+
+
+
+
+                          },
                           child: SvgPicture
                               .asset(
                             "images/edit.svg",width: 28,height: 28,),
