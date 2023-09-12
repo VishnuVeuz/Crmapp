@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
+import 'calendarmainpage.dart';
 import 'drawer.dart';
 
 class CalencerFullDetail extends StatefulWidget {
@@ -164,7 +165,24 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     Column(
                       children: [
                         InkWell(
-                          onTap: ()async{},
+                          onTap: ()async{
+
+                            var data =
+                            await deleteCalendar(
+                                widget.calendarId);
+
+                            if (data['message'] ==
+                                "Success") {
+                              print("responce");
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Calender(null,"",DateTime.now(),null,[])));
+                            }
+
+
+
+                          },
                           child: SvgPicture
                               .asset(
                             "images/delete.svg",width: 28,height: 28,),
