@@ -3583,10 +3583,10 @@ class _LeadDetailState extends State<LeadDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           //color: Colors.green,
           child: SingleChildScrollView(
             child: Column(
@@ -4097,10 +4097,10 @@ class _LeadDetailState extends State<LeadDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -4134,7 +4134,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
                     hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
@@ -4196,7 +4196,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 5),
                   child: TextFormField(
                     style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
                     controller: subjectController,
@@ -4240,7 +4240,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Row(
                       children: [
                         Container(
-                          width: 50,
+                          width: 20,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
                             onPressed: () {
