@@ -1538,7 +1538,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                           Container(
                             width: 30,
-                            //color: Colors.green,
+                           // color: Colors.green,
                             child: Text(
                               attachmentCount!,
                               style: TextStyle(fontSize: 15,fontFamily: 'Mulish',),
@@ -1556,10 +1556,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                   String resMessage =   await followerFollow(widget.leadId,"lead.lead");
 
                                   if(resMessage == "success"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => LeadDetail(widget.leadId)));
+                                    setState(() {
+                                      int followCount ;
+                                      followCount = int.parse(followerCount!);
+                                      followerStatus = true;
+                                      followCount = followCount+1;
+                                      followerCount = followCount.toString();
+                                    });
+
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => LeadDetail(widget.leadId)));
                                   }
                                 }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish',),)),
                               ],
@@ -1575,10 +1583,17 @@ class _LeadDetailState extends State<LeadDetail> {
                                   String resMessage =  await followerUnFollow(widget.leadId,"lead.lead");
 
                                   if(resMessage == "success"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => LeadDetail(widget.leadId)));
+                                    setState(() {
+                                      int followCount ;
+                                      followCount = int.parse(followerCount!);
+                                      followerStatus = false;
+                                      followCount = followCount-1;
+                                      followerCount = followCount.toString();
+                                    });
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => LeadDetail(widget.leadId)));
                                   }
                                 }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish',),)),
                               ],

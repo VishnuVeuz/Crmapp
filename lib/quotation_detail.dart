@@ -1978,10 +1978,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 String resMessage =   await followerFollow(widget.quotationId,"sale.order");
 
                                 if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => QuotationDetail(widget.quotationId)));
+
+
+
+                                  setState(() {
+                                    int followCount ;
+                                    followCount = int.parse(followerCount!);
+                                    followerStatus = true;
+                                    followCount = followCount+1;
+                                    followerCount = followCount.toString();
+                                  });
+
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => QuotationDetail(widget.quotationId)));
                                 }
                               }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish'),)),
                             ],
@@ -1997,10 +2008,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 String resMessage =  await followerUnFollow(widget.quotationId,"sale.order");
 
                                 if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => QuotationDetail(widget.quotationId)));
+
+                                  setState(() {
+                                    int followCount ;
+                                    followCount = int.parse(followerCount!);
+                                    followerStatus = false;
+                                    followCount = followCount-1;
+                                    followerCount = followCount.toString();
+                                  });
+
+
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => QuotationDetail(widget.quotationId)));
                                 }
                               }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish'),)),
                             ],
