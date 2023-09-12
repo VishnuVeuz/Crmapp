@@ -2328,10 +2328,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   String resMessage =   await followerFollow(widget.opportunityId,"crm.lead");
 
                                   if(resMessage == "success"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => OpportunityDetail(widget.opportunityId)));
+
+                                    setState(() {
+                                      int followCount ;
+                                      followCount = int.parse(followerCount!);
+                                      followerStatus = true;
+                                      followCount = followCount+1;
+                                      followerCount = followCount.toString();
+                                    });
+
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => OpportunityDetail(widget.opportunityId)));
                                   }
                                 }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish'),)),
                               ],
@@ -2347,10 +2356,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   String resMessage =  await followerUnFollow(widget.opportunityId,"crm.lead");
 
                                   if(resMessage == "success"){
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                    setState(() {
+                                      int followCount ;
+                                      followCount = int.parse(followerCount!);
+                                      followerStatus = false;
+                                      followCount = followCount-1;
+                                      followerCount = followCount.toString();
+                                    });
+
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => OpportunityDetail(widget.opportunityId)));
                                   }
                                 }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish'),)),
                               ],
