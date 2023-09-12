@@ -5075,10 +5075,10 @@ class _LeadDetailState extends State<LeadDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -5086,7 +5086,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Send SMS Text Messages",style: TextStyle(fontSize: 16),),
+                    Text("Send SMS Text Messages",style: TextStyle(fontSize: 19,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish'),),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -5102,16 +5102,16 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Visibility(
                   visible: smsVisible,
-                    child: Center(child: Text("Invalid phone number",style: TextStyle(color: Colors.red,fontSize: 12),))),
+                    child: Center(child: Text("Invalid phone number",style: TextStyle(color: Colors.red,fontSize: 12,fontFamily: 'Mulish'),))),
                 SizedBox(height: 5,),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                SizedBox(height: 5,),
+                Text("Recipients",style: TextStyle(color: Color(0xFF212121),fontSize: 14,fontFamily: 'Mulish'),),
+                SizedBox(height: 0,),
                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     controller: nameController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -5122,15 +5122,15 @@ class _LeadDetailState extends State<LeadDetail> {
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                     ),
                   ),),
                 SizedBox(height:5,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     controller: phonenumberController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -5141,13 +5141,13 @@ class _LeadDetailState extends State<LeadDetail> {
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Phone Number',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                     ),
                   ),),
-                SizedBox(height: 5,),
+                SizedBox(height: 0,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.grey)
@@ -5155,7 +5155,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: TextFormField(
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                         controller: subject2Controller,
                         decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -5166,90 +5166,61 @@ class _LeadDetailState extends State<LeadDetail> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Subject',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),
                     ),
                   ),),
                 SizedBox(height: 5,),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Send SMS",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 20,left: 2,right: 2),
+                  child: Center(
+                    child: SizedBox(
+                      width: 326,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Send SMS",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                                print(subject2Controller.text);
-                                print(phonenumberController.text);
-                                print(smsId);
-                                String resMessagee = await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
+                            print(subject2Controller.text);
+                            print(phonenumberController.text);
+                            print(smsId);
+                            String resMessagee = await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
 
-                                if( resMessagee == "success"){
-                                  subject2Controller.clear();
-                                  phonenumberController.clear();
-                                  nameController.clear();
-                                  smsId=0;
-                                  type = "";
+                            if( resMessagee == "success"){
+                              subject2Controller.clear();
+                              phonenumberController.clear();
+                              nameController.clear();
+                              smsId=0;
+                              type = "";
 
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => LeadDetail(widget.leadId)));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LeadDetail(widget.leadId)));
 
 
 
-                                }
+                            }
 
 
 
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Close",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 5,),
 
