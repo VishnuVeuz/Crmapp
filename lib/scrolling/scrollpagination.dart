@@ -9,7 +9,7 @@ import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../emojipicker.dart';
+import '../emoji.dart';
 import '../leadcreation.dart';
 import '../notificationactivity.dart';
 import '../api.dart';
