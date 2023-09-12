@@ -1325,7 +1325,7 @@ opportunityStageChange(int stateId, opportunityId) async {
     print(e.toString());
   }
 
-  print(resMessageText);
+  print(resMessage);
   return resMessageText;
 }
 

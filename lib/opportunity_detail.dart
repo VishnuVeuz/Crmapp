@@ -1252,13 +1252,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       int resmessagevalue =
                                       int.parse(resmessage);
                                       if (resmessagevalue != 0) {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  OpportunityDetail(
-                                                      resmessagevalue)),
-                                        );
+
+                                        setState(() {
+                                          stageColorIndex = index;
+                                        });
+
+
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           OpportunityDetail(
+                                        //               resmessagevalue)),
+                                        // );
                                       }
 
                                     },
