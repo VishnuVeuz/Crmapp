@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           children: [
             const Spacer(),
             Container(
-                height: 66.0,
+                height: 68.0,
                 color: Colors.blue,
                 child: Row(
                   children: [
