@@ -4424,7 +4424,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 //     }),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 0),
+                      horizontal: 0, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
@@ -4550,64 +4550,35 @@ class _LeadDetailState extends State<LeadDetail> {
 
                   ),
                 ),
-                  Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                 "Send",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
-                                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20,left: 5,right: 5),
+                    child: Center(
+                      child: SizedBox(
+                        width: 320,
+                        height: 38,
+                        child: ElevatedButton(
+                            child: Center(
+                              child: Text(
+                               "Send",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13.57,
+                                    color: Colors.white,fontFamily: 'Mulish'),
                               ),
-                              onPressed: () {
+                            ),
+                            onPressed: () {
 
-                                  createSendmessage();
-                                print(recipient);
-                                print("tagattagagaga");
+                                createSendmessage();
+                              print(recipient);
+                              print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
-                              )),
-                        ),
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFFF9246A),
+                            )),
                       ),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
                 SizedBox(height: 2,),
                 Padding(
                   padding: const EdgeInsets.only(left: 150),
@@ -4905,9 +4876,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
                     Row(
                       children: [
-                        Text("Edit Subscription of",style: TextStyle(fontSize: 16),),
+                        Text("Edit Subscription of",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
                         SizedBox(width: 5,),
-                        Text(" Follower name",style: TextStyle(fontSize: 16),),
+                        Text(" Follower name",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
 
                       ],
                     ),
@@ -4944,6 +4915,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
+                                  activeColor: Color(0xFFF9246A),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -4954,7 +4926,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   },
                                 ),
                               ),
-                              Text(followerSub[i]["name"]),
+                              Text(followerSub[i]["name"],style: TextStyle(   fontFamily: 'Mulish',fontSize: 12)),
                             ],
                           ),
 
@@ -4967,79 +4939,74 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Apply",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Apply",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                               print(followerSub);
-                               List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
+                           print(followerSub);
+                           List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
 
-                                List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+                            List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
 
-                                print(selectedIds);
+                            print(selectedIds);
 
 
 
-                              String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
+                          String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
 
-                              if(resMessage == "success"){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LeadDetail(widget.leadId)));
+                          if(resMessage == "success"){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LeadDetail(widget.leadId)));
 
 
-                              }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                // SizedBox(width: 15,),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 40),
+                //   child: Center(
+                //     child: SizedBox(
+                //       width: 146,
+                //       height: 38,
+                //       child: ElevatedButton(
+                //           child: Center(
+                //             child: Text(
+                //               "Cancel",
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.w700,
+                //                   fontSize: 13.57,
+                //                   color: Colors.black),
+                //             ),
+                //           ),
+                //           onPressed: () {},
+                //           style: ElevatedButton.styleFrom(
+                //             primary: Colors.white,
+                //           )),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 5,),
 
 
@@ -5245,7 +5212,7 @@ class _LeadDetailState extends State<LeadDetail> {
     print("demodemo");
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
-        title: const Text('Mark Done'),
+        title: const Text('Mark Done',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish')),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         content: Container(
           height: 60,
@@ -5258,6 +5225,7 @@ class _LeadDetailState extends State<LeadDetail> {
             decoration: InputDecoration(
               //border: OutlineInputBorder(),
               hintText: 'Write Feedback',
+                hintStyle: TextStyle(fontSize: 12,color: Colors.black,fontFamily: 'Mulish')
             ),
           ),
         ),
@@ -5276,8 +5244,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         "Done & Schedule Next",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 10,
-                            color: Colors.white),
+                            fontSize: 11,
+                            color: Colors.white,fontFamily: 'Mulish'),
                       ),
                     ),
                     onPressed: () async {
@@ -5298,7 +5266,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF04254),
+                      primary: Color(0xFFF9246A),
                     )),
               ),
               Padding(
@@ -5315,8 +5283,8 @@ class _LeadDetailState extends State<LeadDetail> {
                           "Done",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 10,
-                              color: Colors.white),
+                              fontSize: 11,
+                              color: Colors.white,fontFamily: 'Mulish'),
                         ),
                       ),
                       onPressed: () async {
@@ -5333,7 +5301,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF04254),
+                        primary: Color(0xFFF9246A),
                       )),
                 ),
               ),
@@ -5351,8 +5319,8 @@ class _LeadDetailState extends State<LeadDetail> {
                           "Discard",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 10,
-                              color: Colors.black),
+                              fontSize: 11,
+                              color: Colors.black,fontFamily: 'Mulish'),
                         ),
                       ),
                       onPressed: () {

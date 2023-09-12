@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 import 'api.dart';
+import 'drawer.dart';
 import 'lead_detail.dart';
 
 class LogNoteEdit extends StatefulWidget {
@@ -53,6 +54,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     // drawer: MainDrawer(),
       appBar: AppBar(
         backgroundColor: Theme
             .of(context)
@@ -73,7 +75,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                 padding: const EdgeInsets.only(left: 20),
                 child: IconButton(icon: Image.asset("images/back.png"),
                   onPressed: () {
-
+                    Navigator.pop(context);
                   },
                 ),
               ),
@@ -84,7 +86,9 @@ class _LogNoteEditState extends State<LogNoteEdit> {
             return Padding(
               padding: const EdgeInsets.only(right: 20),
               child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
-                onPressed: () {},
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
               ),
             );
           })
@@ -192,6 +196,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                                         fontWeight:
                                         FontWeight
                                             .w400,
+                                        fontFamily: 'Mulish',
                                         fontSize: 10,
                                         color: Colors.grey))),
                           ),
@@ -281,6 +286,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                             fontWeight: FontWeight
                                 .w700,
                             fontSize: 11,
+                            fontFamily: 'Mulish',
                             color: Colors.white),
                       ),
                     ),
@@ -329,7 +335,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
 
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF04254),
+                      primary: Color(0xFFF9246A),
                     )),
               ),
             ),
