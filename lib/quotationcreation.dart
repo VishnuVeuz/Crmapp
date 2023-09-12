@@ -133,6 +133,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
           elevation: 0,
           title: Row(
             children: [
+
               Text(
                 "New",
                 style: TextStyle(
