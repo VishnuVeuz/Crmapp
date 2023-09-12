@@ -3453,80 +3453,84 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           ),
                                                                         ),
                                                                       ),
-                                                                      Container(
-                                                                        height: 20,
-                                                                        width: 20,
+                                                                      StatefulBuilder(
+                                                                          builder: (BuildContext context, StateSetter setState) {
+                                                                            return Container(
+                                                                          height: 20,
+                                                                          width: 20,
 
-                                                                        child: Align(
-                                                                          alignment: Alignment
-                                                                              .topRight,
-                                                                          child:
-                                                                          starImage ==
-                                                                              true
-                                                                              ?
-                                                                          IconButton(
-                                                                            icon: Icon(
-                                                                              Icons
-                                                                                  .star_rate,
-                                                                              size: 15.0,
-                                                                              color: Colors
-                                                                                  .yellow[700],
+                                                                          child: Align(
+                                                                            alignment: Alignment
+                                                                                .topRight,
+                                                                            child:
+                                                                            starImage ==
+                                                                                true
+                                                                                ?
+                                                                            IconButton(
+                                                                              icon: Icon(
+                                                                                Icons
+                                                                                    .star_rate,
+                                                                                size: 15.0,
+                                                                                color: Colors
+                                                                                    .yellow[700],
+                                                                              ),
+                                                                              onPressed: () async {
+                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                var data = await logStarChange(
+                                                                                    lodDataId,
+                                                                                    false);
+
+
+                                                                                if( data['result']['message'] == "success"){
+                                                                                  print("startrue");
+                                                                                  setState(() {
+                                                                                    starImage = false;
+                                                                                  });
+
+                                                                                }
+
+
+
+
+                                                                                print(
+                                                                                    data);
+                                                                                print(
+                                                                                    " ");
+                                                                              },
+                                                                            )
+                                                                                :
+                                                                            IconButton(
+                                                                              icon: Icon(
+                                                                                Icons
+                                                                                    .star_rate,
+                                                                                size: 15.0,
+
+                                                                              ),
+                                                                              onPressed: () async {
+                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                var data = await logStarChange(
+                                                                                    lodDataId,
+                                                                                    true);
+
+                                                                                if( data['result']['message'] == "success"){
+                                                                                  print("starfalse");
+                                                                                  setState(() {
+                                                                                    starImage = true;
+                                                                                  });
+
+                                                                                }
+
+                                                                                print(
+                                                                                    data);
+                                                                                print(
+                                                                                    "hfghavjhcvjsch2");
+                                                                              },
                                                                             ),
-                                                                            onPressed: () async {
-                                                                              int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                              var data = await logStarChange(
-                                                                                  lodDataId,
-                                                                                  false);
-
-
-                                                                              if( data['result']['message'] == "success"){
-                                                                                print("startrue");
-                                                                                setState(() {
-                                                                                  starImage = false;
-                                                                                });
-
-                                                                              }
-
-
-
-
-                                                                              print(
-                                                                                  data);
-                                                                              print(
-                                                                                  " ");
-                                                                            },
-                                                                          )
-                                                                              :
-                                                                          IconButton(
-                                                                            icon: Icon(
-                                                                              Icons
-                                                                                  .star_rate,
-                                                                              size: 15.0,
-
-                                                                            ),
-                                                                            onPressed: () async {
-                                                                              int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                              var data = await logStarChange(
-                                                                                  lodDataId,
-                                                                                  true);
-
-                                                                              if( data['result']['message'] == "success"){
-                                                                                print("starfalse");
-                                                                                setState(() {
-                                                                                  starImage = true;
-                                                                                });
-
-                                                                              }
-
-                                                                              print(
-                                                                                  data);
-                                                                              print(
-                                                                                  "hfghavjhcvjsch2");
-                                                                            },
                                                                           ),
-                                                                        ),
+                                                                        );
+                                                                      }
                                                                       ),
                                                                       Visibility(
                                                                         visible: lognoteoptions,
