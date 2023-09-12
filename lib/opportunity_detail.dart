@@ -5587,7 +5587,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                       ),
                     ),
-                    Text(followers[i]['name'],style: TextStyle(  fontFamily: 'Mulish',fontSize: 12),),
+                    Container(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width/3.5,
+                        child: Text(followers[i]['name'],style: TextStyle(  fontFamily: 'Mulish',fontSize: 12),)),
                     Row(
                       children: [
                         IconButton(onPressed: ()async{

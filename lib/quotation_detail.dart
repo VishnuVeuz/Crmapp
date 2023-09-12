@@ -4097,10 +4097,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           //color: Colors.green,
           child: SingleChildScrollView(
             child: Column(
@@ -5246,10 +5246,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -5257,7 +5257,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Odoo",style: TextStyle(fontSize: 16),),
+                    Text("Odoo",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -5277,15 +5277,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',),),
                 SizedBox(height: 5,),
-                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
+                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'Mulish',),),
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
+                    hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
                         .toList(),
@@ -5343,9 +5344,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
                     controller: subjectController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -5356,7 +5357,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 10)
+                        labelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',)
                     ),
                   ),),
                 SizedBox(height: 5,),
@@ -5392,7 +5393,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             },
                           ),
                         ),
-                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12),),
+                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12,fontFamily: 'Mulish'),),
 
 
                       ],
@@ -5562,13 +5563,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 //     }),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15, vertical: 5),
+                      horizontal: 0, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: templateName,
                     hint: Text("Use template",
-                      style: TextStyle(fontSize: 10, color: Colors.black),),
+                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async{
@@ -5634,7 +5635,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           child: Container(
                             width: 300,
                             child: Text(item["name"], style: TextStyle(
-                                fontSize: 10, color: Colors.black),),
+                              fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
                           )));
                     },
                     futureSearchFn: (String? keyword, String? orderBy,
@@ -5688,63 +5689,34 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Send",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () {
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Send",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white,fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          onPressed: () {
 
-                                createSendmessage();
-                                print(recipient);
-                                print("tagattagagaga");
+                            createSendmessage();
+                            print(recipient);
+                            print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 5,),
                 Padding(
@@ -5804,8 +5776,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
             ).then((value) => setState(() {}));
           },
-            child: Text("Add Follower"),),
+            child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',)),),
           content:  Container(
+            color: Color(0xFFF6F6F6),
+
             width: double.maxFinite,
             height:  MediaQuery.of(context).size.height/5,
             child: ListView.builder(
@@ -5858,7 +5832,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                       ),
                     ),
-                    Text(followers[i]['name']),
+                    Container(
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width/3.5,
+                        child: Text(followers[i]['name'],style: TextStyle(  fontFamily: 'Mulish',fontSize: 12),)),
                     Row(
                       children: [
                         IconButton(onPressed: ()async{
@@ -6188,9 +6167,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   children: [
                     Row(
                       children: [
-                        Text("Edit Subscription of",style: TextStyle(fontSize: 16),),
+                        Text("Edit Subscription of",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
                         SizedBox(width: 5,),
-                        Text(" Follower name",style: TextStyle(fontSize: 16),),
+                        Text(" Follower name",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
 
                       ],
                     ),
@@ -6237,7 +6216,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   },
                                 ),
                               ),
-                              Text(followerSub[i]["name"]),
+                              Text(followerSub[i]["name"],style: TextStyle(   fontFamily: 'Mulish',fontSize: 12)),
                             ],
                           ),
 
@@ -6250,78 +6229,49 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Apply",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Apply",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                                print(followerSub);
-                                List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
+                            print(followerSub);
+                            List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
 
-                                List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+                            List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
 
-                                print(selectedIds);
+                            print(selectedIds);
 
 
 
-                                String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
+                            String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
 
-                                if(resMessage == "success"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => QuotationDetail(widget.quotationId)));
+                            if(resMessage == "success"){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => QuotationDetail(widget.quotationId)));
 
 
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 5,),
 
