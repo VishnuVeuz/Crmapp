@@ -720,74 +720,40 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
 
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 93, left: 25),
-                        child: SizedBox(
-                          width: 170,
-                          height: 43,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Create Opportunity",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              onPressed: () async {
-                                String leadconvert = await  leadconvertion(leadconvertId,"convert",salespersonId,salesteamId,conversioActions!,customerId,[]);
-
-                                print(leadconvert);
-                                print("final complete data");
-                                int resmessagevalue = int.parse(leadconvert);
-                                 if(leadconvert != "0"){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => OpportunityDetail(resmessagevalue)));
-                                }
-
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
-                              ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 93, left: 25),
+                    child: SizedBox(
+                      width: 350,
+                      height: 43,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Create Opportunity",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white,fontFamily: 'Mulish'),
+                            ),
                           ),
-                        ),
+                          onPressed: () async {
+                            String leadconvert = await  leadconvertion(leadconvertId,"convert",salespersonId,salesteamId,conversioActions!,customerId,[]);
+
+                            print(leadconvert);
+                            print("final complete data");
+                            int resmessagevalue = int.parse(leadconvert);
+                             if(leadconvert != "0"){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OpportunityDetail(resmessagevalue)));
+                            }
+
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          ),
                       ),
-
-
-                      SizedBox(width: 10,),
-
-                      Padding(
-                        padding: const EdgeInsets.only(top: 93,right: 25),
-                        child: SizedBox(
-                          width: 160,
-                          height: 43,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFFFFFFF),
-                              )),
-                        ),
-                      ),
-
-                    ],
-
+                    ),
                   ),
 
                 ],
@@ -897,8 +863,9 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
         cells: <DataCell>[
           DataCell(Container(
               width: 80,
+
               child: Text(leadDuplicateIdData[index].createDate.toString(),style: TextStyle(fontFamily: 'Mulish'),))), //add name of your columns here
-          DataCell(Container(width: 80, child:Text(leadDuplicateIdData[index].opportunityName.toString(),style: TextStyle(fontFamily: 'Mulish')))),
+          DataCell(Container(width: 80,  child:Text(leadDuplicateIdData[index].opportunityName.toString(),style: TextStyle(fontFamily: 'Mulish')))),
           DataCell(Container(
               width: 80,
               child: Text(leadDuplicateIdData[index].leadType.toString(),style: TextStyle(fontFamily: 'Mulish')))), //add name of your columns here
@@ -1230,88 +1197,62 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 143, left: 20),
-                    child: SizedBox(
-                      width: 170,
-                      height: 43,
-                      child: ElevatedButton(
-                          child: Center(
-                            child: Text(
-                              "Create Opportunity",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
-                            ),
+              Padding(
+                padding: const EdgeInsets.only(top: 143, left: 20,right: 20),
+                child: Center(
+                  child: SizedBox(
+                    width: 350,
+                    height: 43,
+                    child: ElevatedButton(
+                        child: Center(
+                          child: Text(
+                            "Create Opportunity",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13.57,
+                                color: Colors.white,fontFamily: 'Mulish'),
                           ),
-                          onPressed: () async {
+                        ),
+                        onPressed: () async {
 
-                            if(leadDuplicateIdData.length>1 && leadDuplicateIdData.length<6 )
-                            {
-                              print("lead merge details");
-                              for(int i = 0;i<leadDuplicateIdData.length;i++){
-                                tabledataId.add(leadDuplicateIdData[i].leadIds);
-                              }
-                              leadDuplicateIdData.clear();
-                              print(tabledataId);
-                              print(salespersonId);
-                              print(salesteamId);
-                              print("table data");
-
-                              String leadconvert = await  leadconvertion(leadconvertId,"merge",salespersonId,salesteamId,"",null,tabledataId);
-
-                              print(leadconvert);
-                              print("final complete data");
-                              int resmessagevalue = int.parse(leadconvert);
-                              if(leadconvert != "0"){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => OpportunityDetail(resmessagevalue)));
-                              }
-
+                          if(leadDuplicateIdData.length>1 && leadDuplicateIdData.length<6 )
+                          {
+                            print("lead merge details");
+                            for(int i = 0;i<leadDuplicateIdData.length;i++){
+                              tabledataId.add(leadDuplicateIdData[i].leadIds);
                             }
-                            else{
-                              const snackBar = SnackBar(  content: Text('Minimum 2 & Maximum 5  oppertunities to merge'),
-                                backgroundColor: Colors.blueGrey,);
-                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            leadDuplicateIdData.clear();
+                            print(tabledataId);
+                            print(salespersonId);
+                            print(salesteamId);
+                            print("table data");
+
+                            String leadconvert = await  leadconvertion(leadconvertId,"merge",salespersonId,salesteamId,"",null,tabledataId);
+
+                            print(leadconvert);
+                            print("final complete data");
+                            int resmessagevalue = int.parse(leadconvert);
+                            if(leadconvert != "0"){
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OpportunityDetail(resmessagevalue)));
                             }
 
+                          }
+                          else{
+                            const snackBar = SnackBar(  content: Text('Minimum 2 & Maximum 5  oppertunities to merge'),
+                              backgroundColor: Colors.blueGrey,);
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          }
 
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
-                          )),
-                    ),
+
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Color(0xFFF9246A),
+                        )),
                   ),
-                  SizedBox(width: 10,),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 143,right: 15),
-                    child: SizedBox(
-                      width: 170,
-                      height: 43,
-                      child: ElevatedButton(
-                          child: Center(
-                            child: Text(
-                              "Cancel",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFFFFFFF),
-                          )),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ],
           ),
