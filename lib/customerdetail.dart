@@ -12,6 +12,7 @@ import 'drawer.dart';
 import 'notification.dart';
 import 'opportunitymainpage.dart';
 
+
 class CustomerDetail extends StatefulWidget {
   var customerId;
   CustomerDetail(this.customerId);
