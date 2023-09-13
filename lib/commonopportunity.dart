@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'api.dart';
+import 'customerdetail.dart';
 import 'lead_detail.dart';
 import 'leadmainpage.dart';
 import 'opportunity_detail.dart';
@@ -15,8 +16,10 @@ class CommonOpportunity extends StatefulWidget {
   final dynamic priority;
   final dynamic tags;
   final dynamic leadimg;
+  String fromCustomer;
+  int custId;
 
-  CommonOpportunity(this.id,this.name, this.contactname,this.priority, this.tags, this.leadimg);
+  CommonOpportunity(this.id,this.name, this.contactname,this.priority, this.tags, this.leadimg,this.fromCustomer,this.custId);
 
   @override
   State<CommonOpportunity> createState() => _CommonOpportunityState();
@@ -30,6 +33,9 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print(widget.custId);
+    print("demoooootesttttdemoooo");
+
     tokendata();
   }
  String? token;
@@ -37,6 +43,13 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        widget.fromCustomer == "customer" ?
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    CustomerDetail(widget.custId))):
+
         Navigator.push(
             context,
             MaterialPageRoute(

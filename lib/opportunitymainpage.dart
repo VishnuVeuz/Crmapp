@@ -18,7 +18,8 @@ class OpportunityMainPage extends StatefulWidget {
   var similartype;
   var opportunityFrom;
   var filterItems;
-  OpportunityMainPage(this.opportunityId,this.similartype,this.opportunityFrom,this.filterItems);
+  String fromCustomer;
+  OpportunityMainPage(this.opportunityId,this.similartype,this.opportunityFrom,this.filterItems,this.fromCustomer);
 
 
   @override
@@ -232,7 +233,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
                       children: List.generate(opportunityTypes.length, (index) =>
 
-                          OpportunityScrolling(opportunityTypes[index]['id'],widget.opportunityId,widget.similartype,widget.opportunityFrom,widget.filterItems),),
+                          OpportunityScrolling(opportunityTypes[index]['id'],widget.opportunityId,widget.similartype,widget.opportunityFrom,widget.filterItems,widget.fromCustomer),),
 
 
 
@@ -284,7 +285,7 @@ setState(() {
                         builder: (context) =>
                             OpportunityMainPage(
                                 null, "", "lost",
-                                "[lost]")));
+                                "[lost]","")));
 
 
               },

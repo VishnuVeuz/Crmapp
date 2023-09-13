@@ -177,7 +177,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                      context,
                      MaterialPageRoute(
                          builder: (context) =>
-                             OpportunityMainPage(null,"","notification","[activities_today,activities_overdue,activities_future]")));
+                             OpportunityMainPage(null,"","notification","[activities_today,activities_overdue,activities_future]","")));
                }
                if(notificationData[i]["model"]=="res.partner"){
                  Navigator.push(
@@ -306,7 +306,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                               builder: (context) =>
                                                   OpportunityMainPage(
                                                       null, "", "notification",
-                                                      "[activities_overdue]")));
+                                                      "[activities_overdue]","")));
                                     }
 
 
@@ -372,7 +372,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                               builder: (context) =>
                                                   OpportunityMainPage(
                                                       null, "", "notification",
-                                                      "[activities_today]")));
+                                                      "[activities_today]","")));
                                     }
 
                                     if (notificationData[i]["model"] ==
@@ -438,7 +438,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                               builder: (context) =>
                                                   OpportunityMainPage(
                                                       null, "", "notification",
-                                                      "[activities_future]")));
+                                                      "[activities_future]","")));
                                     }
                                     if (notificationData[i]["model"] ==
                                         "res.partner") {

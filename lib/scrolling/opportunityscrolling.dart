@@ -15,9 +15,10 @@ class OpportunityScrolling extends StatefulWidget {
   final dynamic type,Id,similartype;
   var quotationFrom;
   var filterItems;
+  String fromCustomer;
 
 
-  OpportunityScrolling(this.type,this.Id,this.similartype,this.quotationFrom,this.filterItems);
+  OpportunityScrolling(this.type,this.Id,this.similartype,this.quotationFrom,this.filterItems,this.fromCustomer);
 
   @override
   State<OpportunityScrolling> createState() => _OpportunityScrollingState();
@@ -237,7 +238,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
               padding: const EdgeInsets.all(0),
               child: CommonOpportunity(opportunityModel.id,
                   opportunityModel.name, opportunityModel.contactname, opportunityModel.priority,
-                  opportunityModel.tags, opportunityModel.leadimg)
+                  opportunityModel.tags, opportunityModel.leadimg,widget.fromCustomer,widget.Id== null ?0:widget.Id)
           );
 
 
