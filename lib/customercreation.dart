@@ -1633,7 +1633,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
-                          labelText: 'reference',
+                          labelText: 'Reference',
                           labelStyle:
                           TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),

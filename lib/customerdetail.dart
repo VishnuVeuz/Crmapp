@@ -4365,6 +4365,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               onPressed: () async {
                                 await getCustomerDetails();
                                 setState(() {});
+                                Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9246A),
