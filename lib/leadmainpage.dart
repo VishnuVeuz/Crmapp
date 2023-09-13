@@ -425,55 +425,58 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                 ),
                                               ),
 
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 15),
-                                              child: Container(
-                                                  width: MediaQuery
-                                                      .of(context)
-                                                      .size
-                                                      .width/1.1 ,
-                                                  height: 20,
-                                                  //color: Colors.pinkAccent,
+                                            Visibility(
+                                              visible: tags!.length >0 ? true : false,
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(left: 15),
+                                                child: Container(
+                                                    width: MediaQuery
+                                                        .of(context)
+                                                        .size
+                                                        .width/1.1 ,
+                                                    height: 20,
+                                                    //color: Colors.pinkAccent,
 
-                                                  child: ListView.builder(
-                                                    scrollDirection: Axis.horizontal,
-                                                    shrinkWrap: true,
-                                                    itemCount: tags!.length ?? 0,
-                                                    itemBuilder: (BuildContext context, int index) {
-                                                      return Padding(
-                                                        padding:
-                                                        const EdgeInsets.only(right: 8.0, top: 4),
-                                                        child: SingleChildScrollView(
-                                                          scrollDirection: Axis.horizontal,
+                                                    child: ListView.builder(
+                                                      scrollDirection: Axis.horizontal,
+                                                      shrinkWrap: true,
+                                                      itemCount: tags!.length ?? 0,
+                                                      itemBuilder: (BuildContext context, int index) {
+                                                        return Padding(
+                                                          padding:
+                                                          const EdgeInsets.only(right: 8.0, top: 4),
+                                                          child: SingleChildScrollView(
+                                                            scrollDirection: Axis.horizontal,
 
-                                                          child: Row(
-                                                            children: [
-                                                              Container(
-                                                                height: 5,
-                                                                width: 5,
-                                                                color:Colors.red,
+                                                            child: Row(
+                                                              children: [
+                                                                Container(
+                                                                  height: 5,
+                                                                  width: 5,
+                                                                  color:Colors.red,
 
-                                                              ),
-                                                              SizedBox(width: 4,),
-
-                                                              Center(
-                                                                child: Text(
-
-                                                                  tags![index]["name"].toString(),
-                                                                  style: TextStyle(
-                                                                      color: Colors.black,
-                                                                      fontFamily: 'Mulish',
-                                                                      fontWeight: FontWeight.w600,
-                                                                      fontSize: 10),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                                SizedBox(width: 4,),
+
+                                                                Center(
+                                                                  child: Text(
+
+                                                                    tags![index]["name"].toString(),
+                                                                    style: TextStyle(
+                                                                        color: Colors.black,
+                                                                        fontFamily: 'Mulish',
+                                                                        fontWeight: FontWeight.w600,
+                                                                        fontSize: 10),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      );
-                                                    },
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
-                                                ),
+                                              ),
                                             ),
 
 
