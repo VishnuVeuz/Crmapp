@@ -457,7 +457,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                                     Container(
                                                                       height: 5,
                                                                       width: 5,
-                                                                      color:Colors.red,
+                                                                      color:  Color(int.parse(tags![index]["color"])),
                                                                       // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
 
                                                                     ),

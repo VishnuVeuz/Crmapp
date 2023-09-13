@@ -114,7 +114,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                           Container(
                                             height: 5,
                                             width: 5,
-                                            color:Colors.red,
+                                          color:  Color(int.parse(widget.tags![index]["color"])),
 
                                           ),
                                           SizedBox(width: 4,),
