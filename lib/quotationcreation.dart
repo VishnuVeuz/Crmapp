@@ -42,7 +42,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
   TextEditingController leadtime = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
-
+  String notificationCount="0";
 
   List orderLineProducts = [];
   List optionalProducts = [];
@@ -219,7 +219,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -2237,6 +2237,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   void defaultvalues() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
     var data = await defaultDropdown("sale.order");
 
     print(data);
@@ -2343,6 +2344,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   void getQuotationDetails() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
     var data = await getQuotationData(widget.quotationId, "");
 
     print(data);

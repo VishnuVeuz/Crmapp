@@ -34,7 +34,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
   final int _nextPageTrigger = 3;
   String? token,leadType;
   int? quotationType;
-
+  String notificationCount="0";
   @override
   void initState() {
     super.initState();
@@ -51,6 +51,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
 
   Future<void> fetchData() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
     String urls;
     print(token);
     print(_numberOfLeadModelsPerRequest);
@@ -239,7 +240,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
                         ),
                       ]

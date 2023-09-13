@@ -24,6 +24,8 @@ class CommonOpportunity extends StatefulWidget {
 
 class _CommonOpportunityState extends State<CommonOpportunity> {
 
+
+
  @override
   void initState() {
     // TODO: implement initState
@@ -268,7 +270,6 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
 
 
  void tokendata() async{
-
    token = await getUserJwt();
 
    setState(() {

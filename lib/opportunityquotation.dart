@@ -26,7 +26,7 @@ class OpportunityQuotation extends StatefulWidget {
 class _OpportunityQuotationState extends State<OpportunityQuotation> {
   String? dropdownValue, dropdownValueId = "direct";
   String? dropdownCustomerData = "";
-
+  String notificationCount="0";
   TextEditingController deliveryDateTime = TextEditingController();
   TextEditingController expirationDateTime = TextEditingController();
   TextEditingController customerreference = TextEditingController();
@@ -208,7 +208,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -2245,6 +2245,7 @@ void defaultvalues() async {
 
 void getOpportunityDetails() async {
   token = await getUserJwt();
+  notificationCount = await getNotificationCount();
   var data = await getOpportunityQuotationData(widget.opportunityId, "");
   print(data);
   print("default data");

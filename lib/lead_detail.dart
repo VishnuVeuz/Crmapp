@@ -34,6 +34,7 @@ class LeadDetail extends StatefulWidget {
 
 class _LeadDetailState extends State<LeadDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
+  String notificationCount="0";
 
   String? leadname,
       email,
@@ -275,7 +276,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -5834,6 +5835,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   getLeadDetails() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
 
     var data = await getLeadData(widget.leadId, "");
     setState(() {

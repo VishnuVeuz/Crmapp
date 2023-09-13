@@ -26,7 +26,7 @@ class OpportunityMainPage extends StatefulWidget {
 }
 
 class _OpportunityMainPageState extends State<OpportunityMainPage> {
-
+  String notificationCount="0";
   bool _isInitialized = false;
   List opportunityTypes=[];
   int? opportunityTypesId;
@@ -142,7 +142,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -250,7 +250,8 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
 
  opportunityData() async {
-  opportunityTypes = await getOpportunityTypes();
+   notificationCount = await getNotificationCount();
+   opportunityTypes = await getOpportunityTypes();
    print(opportunityTypes);
    print(opportunityTypes.length);
 setState(() {
