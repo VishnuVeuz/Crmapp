@@ -105,7 +105,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
     }
     else{
-      List<OpportunityModel> opportunityModelList = (responseList['records'] as List<dynamic>).map<OpportunityModel>((data) => OpportunityModel(data['id']??"",data['name']??"",data['name']??"",data['priority']??"",data['priority']??"",data['image_1920']??"")).toList();
+      List<OpportunityModel> opportunityModelList = (responseList['records'] as List<dynamic>).map<OpportunityModel>((data) => OpportunityModel(data['id']??"",data['name']??"",data['name']??"",data['priority']??"",data['tag_ids']??"",data['image_1920']??"")).toList();
 
 
       setState(() {
