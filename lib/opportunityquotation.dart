@@ -930,6 +930,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                   padding:
                   const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                   child: TextFormField(
+                    style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                     controller: customerreference,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
