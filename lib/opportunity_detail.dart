@@ -6236,10 +6236,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   //     .of(context)
                   //     .size
                   //     .height/6,
-                  child: TextFormField(
-                    decoration:InputDecoration( border: InputBorder.none,) ,
-                    controller: bodyController,
-                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TextFormField(
+                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      controller: bodyController,
+                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                    ),
                   ),
                 ),
                 InkWell(

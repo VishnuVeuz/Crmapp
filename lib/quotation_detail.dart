@@ -5367,9 +5367,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   //     .of(context)
                   //     .size
                   //     .height/6,
-                  child: TextFormField(
-                    decoration:InputDecoration( border: InputBorder.none,) ,
-                    controller: bodyController,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TextFormField(
+                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      controller: bodyController,
+                    ),
                   ),
                 ),
                 InkWell(

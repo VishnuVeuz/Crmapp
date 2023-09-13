@@ -5189,10 +5189,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   //     .of(context)
                   //     .size
                   //     .height/6,
-                  child: TextFormField(
-                    decoration:InputDecoration( border: InputBorder.none,) ,
-                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
-                    controller: bodyController,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TextFormField(
+                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                      controller: bodyController,
+                    ),
                   ),
                 ),
                 InkWell(
