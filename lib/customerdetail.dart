@@ -668,7 +668,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 15),
+                    padding: const EdgeInsets.only(top: 30,bottom: 30),
                     child: Center(
                       child: ToggleSwitch(
                       radiusStyle: true,
@@ -782,7 +782,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 5, left: 0),
+                      padding: const EdgeInsets.only(top: 10, left: 0),
                       child: Text(customername!,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
@@ -3229,7 +3229,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                   Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
-                                                                    width: 90,
+                                                                    width: 102,
                                                                   ),
                                                                 ),
                                                                 Positioned(
@@ -3239,7 +3239,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                   // top:0,
                                                                   child:
                                                                   Container(
-                                                                    width: 90.0,
+                                                                    width: 102.0,
                                                                     height:
                                                                     30.0,
                                                                     decoration:
@@ -3262,9 +3262,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           bottom:5,
                                                                           child: Container(
                                                                             height:
-                                                                            20,
+                                                                            25,
                                                                             width:
-                                                                            20,
+                                                                            25,
                                                                             //color: Colors.red,
                                                                             child:
                                                                             Align(
@@ -3286,9 +3286,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                             builder: (BuildContext context, StateSetter setState) {
                                                                               return Container(
                                                                                 height:
-                                                                                20,
+                                                                                25,
                                                                                 width:
-                                                                                20,
+                                                                                25,
 
                                                                                 child:
                                                                                 Align(
@@ -3366,9 +3366,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                             children: [
                                                                               Container(
                                                                                 height:
-                                                                                20,
+                                                                                25,
                                                                                 width:
-                                                                                20,
+                                                                                25,
                                                                                 //color: Colors.red,
                                                                                 child:
                                                                                 Align(
@@ -3411,9 +3411,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               ),
                                                                               Container(
                                                                                 height:
-                                                                                20,
+                                                                                25,
                                                                                 width:
-                                                                                20,
+                                                                                25,
                                                                                 //color: Colors.red,
                                                                                 child:
                                                                                 Align(
@@ -3477,6 +3477,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     0,
                                                                     child:
                                                                     Column(
+                                                                      crossAxisAlignment: CrossAxisAlignment.start,
                                                                       children: [
                                                                         Row(
                                                                           children: [
@@ -3566,168 +3567,163 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                             ),
                                                                           ],
                                                                         ),
+                                                                        Visibility(
+                                                                          visible:logDataTitle[indexx][indexs]['subject']==""?false:true,
+                                                                          child: Padding(
+                                                                            padding: const EdgeInsets.only(left: 68),
+                                                                            child: Container(
+                                                                              // color: Colors.green,
+                                                                                width: MediaQuery
+                                                                                    .of(
+                                                                                    context)
+                                                                                    .size
+                                                                                    .width /
+                                                                                    4,
+                                                                                child: Text(
+                                                                                    logDataTitle[indexx][indexs]['subject']
+                                                                                        .replaceAll(
+                                                                                        RegExp(
+                                                                                            r'<[^>]*>|&[^;]+;'),
+                                                                                        ' ') ??
+                                                                                        "",
+                                                                                    style: TextStyle(
+                                                                                      fontSize: 12,
+                                                                                      color: Colors
+                                                                                          .black,
+                                                                                      fontFamily: 'Mulish',
+                                                                                    ))),
+                                                                          ),
+                                                                        ),
                                                                         Padding(
+                                                                          padding: const EdgeInsets.only(left: 62),
+                                                                          child: Container(
+                                                                            //color: Colors.green,
+                                                                              width: MediaQuery
+                                                                                  .of(
+                                                                                  context)
+                                                                                  .size
+                                                                                  .width /
+                                                                                  2,
+                                                                              child: Html(
+                                                                                data: logDataTitle[indexx][indexs]['body'],
+                                                                                style: {
+                                                                                  'p': Style(
+                                                                                    fontSize: FontSize
+                                                                                        .small,fontFamily: 'Mulish',),
+                                                                                  // Customize the font size for <p> elements
+                                                                                  // Customize the font size for <strong> elements
+                                                                                },
+                                                                              )),
+                                                                        ),
+                                                                        selectedImagesDisplay
+                                                                            .isEmpty
+                                                                            ? Padding(
                                                                           padding: const EdgeInsets
                                                                               .only(
-                                                                              bottom: 0,
-                                                                              right: 38),
-                                                                          child:
-                                                                          Column(
-                                                                            crossAxisAlignment:
-                                                                            CrossAxisAlignment
-                                                                                .start,
-                                                                            children: [
-                                                                              Container(
-                                                                                // color: Colors.green,
-                                                                                  width: MediaQuery
-                                                                                      .of(
-                                                                                      context)
-                                                                                      .size
-                                                                                      .width /
-                                                                                      4,
-                                                                                  child: Text(
-                                                                                      logDataTitle[indexx][indexs]['subject']
-                                                                                          .replaceAll(
-                                                                                          RegExp(
-                                                                                              r'<[^>]*>|&[^;]+;'),
-                                                                                          ' ') ??
-                                                                                          "",
-                                                                                      style: TextStyle(
-                                                                                        fontSize: 12,
-                                                                                        color: Colors
-                                                                                            .black,
-                                                                                        fontFamily: 'Mulish',
-                                                                                      ))),
-                                                                              Container(
-                                                                                //color: Colors.green,
-                                                                                  width: MediaQuery
-                                                                                      .of(
-                                                                                      context)
-                                                                                      .size
-                                                                                      .width /
-                                                                                      2,
-                                                                                  child: Html(
-                                                                                    data: logDataTitle[indexx][indexs]['body'],
-                                                                                    style: {
-                                                                                      'p': Style(
-                                                                                        fontSize: FontSize
-                                                                                            .small,fontFamily: 'Mulish',),
-                                                                                      // Customize the font size for <p> elements
-                                                                                      // Customize the font size for <strong> elements
-                                                                                    },
-                                                                                  )),
-                                                                              selectedImagesDisplay
-                                                                                  .isEmpty
-                                                                                  ? Padding(
-                                                                                padding: const EdgeInsets
-                                                                                    .only(
-                                                                                    left: 5),
-                                                                                child: Container(
-                                                                                  width: MediaQuery
-                                                                                      .of(
-                                                                                      context)
-                                                                                      .size
-                                                                                      .width /
-                                                                                      2,
-                                                                                  // height: 40,
-                                                                                ),
-                                                                              )
-                                                                                  : Padding(
-                                                                                padding: const EdgeInsets
-                                                                                    .only(
-                                                                                    left: 0,
-                                                                                    right: 100),
-                                                                                child: Container(
-                                                                                  //color: Colors.green,
+                                                                              left: 40),
+                                                                          child: Container(
+                                                                            width: MediaQuery
+                                                                                .of(
+                                                                                context)
+                                                                                .size
+                                                                                .width /
+                                                                                2,
+                                                                            // height: 40,
+                                                                          ),
+                                                                        )
+                                                                            : Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .only(
+                                                                              left: 40,
+                                                                              right: 0),
+                                                                          child: Container(
+                                                                            //color: Colors.green,
 
-                                                                                  width: MediaQuery
-                                                                                      .of(
-                                                                                      context)
-                                                                                      .size
-                                                                                      .width /
-                                                                                      3,
-                                                                                  // height: 140,
-                                                                                  child: GridView
-                                                                                      .builder(
-                                                                                    shrinkWrap: true,
-                                                                                    // Avoid scrolling
-                                                                                    physics: NeverScrollableScrollPhysics(),
-                                                                                    itemCount: selectedImagesDisplay
-                                                                                        .length,
-                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                        crossAxisCount: 1),
-                                                                                    itemBuilder: (
-                                                                                        BuildContext context,
-                                                                                        int index) {
-                                                                                      print(
-                                                                                          selectedImagesDisplay
-                                                                                              .length);
-                                                                                      print(
-                                                                                          selectedImagesDisplay[index]["datas"]);
-                                                                                      print(
-                                                                                          "selectedImagesDisplay.length,");
+                                                                            width: MediaQuery
+                                                                                .of(
+                                                                                context)
+                                                                                .size
+                                                                                .width /
+                                                                                3,
+                                                                            // height: 140,
+                                                                            child: GridView
+                                                                                .builder(
+                                                                              shrinkWrap: true,
+                                                                              // Avoid scrolling
+                                                                              physics: NeverScrollableScrollPhysics(),
+                                                                              itemCount: selectedImagesDisplay
+                                                                                  .length,
+                                                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                  crossAxisCount: 1),
+                                                                              itemBuilder: (
+                                                                                  BuildContext context,
+                                                                                  int index) {
+                                                                                print(
+                                                                                    selectedImagesDisplay
+                                                                                        .length);
+                                                                                print(
+                                                                                    selectedImagesDisplay[index]["datas"]);
+                                                                                print(
+                                                                                    "selectedImagesDisplay.length,");
 
-                                                                                      return Center(
-                                                                                        child: Container(
-                                                                                          child: Stack(
-                                                                                            children: [
-                                                                                              ClipRRect(
-                                                                                                child: Image
-                                                                                                    .network(
-                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                  height: 100,
-                                                                                                  width: 80,
-                                                                                                ),
-                                                                                              ),
-                                                                                              Positioned(
-                                                                                                  left: 37,
-                                                                                                  right: 0,
-                                                                                                  bottom: 70,
-                                                                                                  top: 1,
-                                                                                                  child: Container(
-                                                                                                    width: 20,
-                                                                                                    height: 20,
-                                                                                                    decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
-                                                                                                    child: IconButton(
-                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                      onPressed: () async {
-                                                                                                        print(
-                                                                                                            logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                        var data = await deleteLogAttachment(
-                                                                                                            lodAttachmentId);
-
-                                                                                                        if (data['message'] ==
-                                                                                                            "Success") {
-                                                                                                          print(
-                                                                                                              "jhbdndsjbv");
-                                                                                                          await getCustomerDetails();
-                                                                                                          setState(() {
-                                                                                                            logDataHeader
-                                                                                                                .clear();
-                                                                                                            logDataTitle
-                                                                                                                .clear();
-                                                                                                            selectedImagesDisplay
-                                                                                                                .clear();
-                                                                                                          });
-                                                                                                        }
-
-                                                                                                        print(
-                                                                                                            data);
-                                                                                                        print(
-                                                                                                            "delete testststs");
-                                                                                                      },
-                                                                                                    ),
-                                                                                                  ))
-                                                                                            ],
+                                                                                return Center(
+                                                                                  child: Container(
+                                                                                    child: Stack(
+                                                                                      children: [
+                                                                                        ClipRRect(
+                                                                                          child: Image
+                                                                                              .network(
+                                                                                            "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                            height: 100,
+                                                                                            width: 80,
                                                                                           ),
                                                                                         ),
-                                                                                      );
-                                                                                    },
+                                                                                        Positioned(
+                                                                                            left: 37,
+                                                                                            right: 0,
+                                                                                            bottom: 70,
+                                                                                            top: 1,
+                                                                                            child: Container(
+                                                                                              width: 20,
+                                                                                              height: 20,
+                                                                                              decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
+                                                                                              child: IconButton(
+                                                                                                icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                onPressed: () async {
+                                                                                                  print(
+                                                                                                      logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                  var data = await deleteLogAttachment(
+                                                                                                      lodAttachmentId);
+
+                                                                                                  if (data['message'] ==
+                                                                                                      "Success") {
+                                                                                                    print(
+                                                                                                        "jhbdndsjbv");
+                                                                                                    await getCustomerDetails();
+                                                                                                    setState(() {
+                                                                                                      logDataHeader
+                                                                                                          .clear();
+                                                                                                      logDataTitle
+                                                                                                          .clear();
+                                                                                                      selectedImagesDisplay
+                                                                                                          .clear();
+                                                                                                    });
+                                                                                                  }
+
+                                                                                                  print(
+                                                                                                      data);
+                                                                                                  print(
+                                                                                                      "delete testststs");
+                                                                                                },
+                                                                                              ),
+                                                                                            ))
+                                                                                      ],
+                                                                                    ),
                                                                                   ),
-                                                                                ),
-                                                                              ),
-                                                                            ],
+                                                                                );
+                                                                              },
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ],
