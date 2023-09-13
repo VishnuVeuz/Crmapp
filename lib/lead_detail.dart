@@ -4241,10 +4241,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       .of(context)
                       .size
                       .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/5,
+                  // height: MediaQuery
+                  //     .of(context)
+                  //     .size
+                  //     .height/6,
                   child: TextFormField(
                     decoration:InputDecoration( border: InputBorder.none,) ,
                     style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
@@ -4259,7 +4259,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Row(
                       children: [
                         Container(
-                          width: 20,
+                          width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
                             onPressed: () {

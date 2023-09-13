@@ -5185,10 +5185,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       .of(context)
                       .size
                       .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/5,
+                  // height: MediaQuery
+                  //     .of(context)
+                  //     .size
+                  //     .height/6,
                   child: TextFormField(
                     decoration:InputDecoration( border: InputBorder.none,) ,
                     style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
@@ -5203,7 +5203,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     child: Row(
                       children: [
                         Container(
-                          width: 20,
+                          width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
                             onPressed: () {
