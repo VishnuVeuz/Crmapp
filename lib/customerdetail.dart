@@ -511,7 +511,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             MaterialPageRoute(
                                                 builder: (
                                                     context) =>
-                                                    Calender(null,"",DateTime.now(),null,[])));
+                                                    Calender(null,"",DateTime.now(),null,[],"")));
 
 
 
@@ -2885,7 +2885,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     "",
                                                                     dateTime,
                                                                     null,
-                                                                    [])));
+                                                                    [],"")));
                                                   },
                                                   icon: Icon(
                                                     Icons
@@ -4212,7 +4212,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           widget.customerId,
                                           "res.partner",
                                           DateTime.now(),
-                                          resmessagevalue, [])),
+                                          resmessagevalue, [],summaryController.text)),
                                 );
                               }
                             },

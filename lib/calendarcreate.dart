@@ -30,8 +30,9 @@ class CalendarAdd extends StatefulWidget {
   DateTime dateTimes;
   int? activityDataId;
   List calendarData;
+  String scheduleSummary;
 
-  CalendarAdd(this.calendarId,this.calendarTypeId,this.calendarmodel,this.dateTimes,this.activityDataId,this.calendarData);
+  CalendarAdd(this.calendarId,this.calendarTypeId,this.calendarmodel,this.dateTimes,this.activityDataId,this.calendarData,this.scheduleSummary);
 
   @override
   State<CalendarAdd> createState() => _CalendarAddState();
@@ -58,6 +59,7 @@ class _CalendarAddState extends State<CalendarAdd> {
   List<ValueItem> editPartnerName = [];
   String? token;
   bool isCheckedAllday = false;
+  bool durationVisibility = true;
   List tags = [];
   List selctedTag = [];
   List<ValueItem> editTagName = [];
@@ -75,6 +77,8 @@ class _CalendarAddState extends State<CalendarAdd> {
     // TODO: implement initState
     super.initState();
     //defaultvalues();
+    print(widget.calendarId);
+    print("calendarId");
    widget.calendarId==0 ? defaultvalues() : getCalendarDetails();
 
   }
@@ -496,31 +500,34 @@ class _CalendarAddState extends State<CalendarAdd> {
                               selectDateTime(context, "stop");
                             },
                           ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
-                            child: TextFormField(
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                              controller: meeting_duration,
-                              decoration: const InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
+                          Visibility(
+                            visible: durationVisibility,
+                            child: Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 0),
+                              child: TextFormField(
+                                style: TextStyle(fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                                controller: meeting_duration,
+                                decoration: const InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
 
-                                  // border: UnderlineInputBorder(),
-                                  labelText: 'Duration',
-                                  labelStyle:
-                                  TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')),
+                                    // border: UnderlineInputBorder(),
+                                    labelText: 'Duration',
+                                    labelStyle:
+                                    TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish')),
+                              ),
                             ),
                           ),
                           Row(
@@ -545,6 +552,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   onChanged: (bool? value) {
                                     setState(() {
                                       isCheckedAllday = value!;
+                                      isCheckedAllday==true ? durationVisibility = false:
+                                      durationVisibility = true;
+                                    print(stopTime);
+                                    print("stopTime");
+
                                     });
                                   },
                                 ),
@@ -986,7 +998,7 @@ class _CalendarAddState extends State<CalendarAdd> {
       partnerName = editPartnerName.map((item) => item.value).toList();
 
 
-
+      meetingsubjectController.text = widget.scheduleSummary;
 
 
 

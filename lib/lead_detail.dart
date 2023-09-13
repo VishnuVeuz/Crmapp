@@ -2709,7 +2709,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                     "",
                                                                     dateTime,
                                                                     null,
-                                                                    [])));
+                                                                    [],"")));
                                                   },
                                                   icon: Icon(
                                                     Icons
@@ -3926,7 +3926,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           widget.leadId,
                                           "lead.lead",
                                           DateTime.now(),
-                                          resmessagevalue, [])),
+                                          resmessagevalue, [],summaryController.text)),
                                 );
                               }
                             },

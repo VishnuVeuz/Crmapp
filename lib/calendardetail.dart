@@ -140,7 +140,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
+                                        CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[],"")));
 
 
 
@@ -177,7 +177,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Calender(null,"",DateTime.now(),null,[])));
+                                      builder: (context) => Calender(null,"",DateTime.now(),null,[],"")));
                             }
 
 

@@ -16,8 +16,9 @@ class Calender extends StatelessWidget {
   DateTime dateTimes;
   int? activityDataId;
   List calendarData;
+  String scheduleSummary;
 
-  Calender(this.calendarTypeId,this.calendarmodel,this.dateTimes,this.activityDataId,this.calendarData);
+  Calender(this.calendarTypeId,this.calendarmodel,this.dateTimes,this.activityDataId,this.calendarData,this.scheduleSummary);
 
 
   int tabIndex=0;
@@ -155,7 +156,7 @@ class Calender extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => CalendarAdd(0,calendarTypeId,calendarmodel,dateTimes,activityDataId,[])));
+                              builder: (context) => CalendarAdd(0,calendarTypeId,calendarmodel,dateTimes,activityDataId,[],scheduleSummary)));
 
 
                     },

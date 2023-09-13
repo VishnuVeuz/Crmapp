@@ -988,7 +988,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               MaterialPageRoute(
                                                   builder: (
                                                       context) =>
-                                                      Calender(null,"",DateTime.now(),null,[])));
+                                                      Calender(null,"",DateTime.now(),null,[],"")));
 
 
                                         }
@@ -1030,7 +1030,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     MaterialPageRoute(
                                         builder: (
                                             context) =>
-                                            Calender(null,"",DateTime.now(),null,[])));
+                                            Calender(null,"",DateTime.now(),null,[],"")));
 
 
                               }
@@ -3281,7 +3281,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         MaterialPageRoute(
                                                             builder: (
                                                                 context) =>
-                                                                Calender(null,"",dateTime,null,[])));
+                                                                Calender(null,"",dateTime,null,[],"")));
 
 
 
@@ -4599,7 +4599,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       builder: (context) =>
                                       // Calender(0,"",DateTime.now(),[])),
 
-                                      Calender(widget.opportunityId,"crm.lead",DateTime.now(),resmessagevalue,[])),
+                                      Calender(widget.opportunityId,"crm.lead",DateTime.now(),resmessagevalue,[],summaryController.text)),
                                 );
                               }
 

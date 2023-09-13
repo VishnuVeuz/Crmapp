@@ -3178,7 +3178,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       MaterialPageRoute(
                                                           builder: (
                                                               context) =>
-                                                              Calender(null,"",dateTime,null,[])));
+                                                              Calender(null,"",dateTime,null,[],"")));
 
 
 
@@ -4018,6 +4018,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       // }
 
       // tags = editTagName.map((item) => item.value).toList();
+      data['commitment_date']==""?deliverydate = "":
       deliverydate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['commitment_date']))??"";
       fiscalposition = data['fiscal_position_id']['name'] ?? "";
       sourcedocument = (data['origin'] ?? "").toString();
@@ -4426,7 +4427,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       builder: (context) =>
                                       // Calender(0,"",DateTime.now(),[])),
 
-                                      Calender(widget.quotationId,"sale.order",DateTime.now(),resmessagevalue,[])),
+                                      Calender(widget.quotationId,"sale.order",DateTime.now(),resmessagevalue,[],summaryController.text)),
                                 );
                               }
 
