@@ -13,6 +13,7 @@ import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
@@ -662,124 +663,257 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   //     ],
                   //   ),
                   // ),
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            RadioListTile(
-
-                              title: Text(
-                                'Individual',
-                                style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
-
-                              ),
-                              value: "person",
-                              groupValue: radioInput,
-                              onChanged: (Object? value) {},
-                            ),
-                            RadioListTile(
-                              title: Text(
-                                'Company',
-                                style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
-                              ),
-                              value: "company",
-                              groupValue: radioInput,
-                              onChanged: (Object? value) {},
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5, left: 25),
-                              child: Text(customername!,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                   fontFamily: 'Mulish',
-                                    fontSize: 16,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ),
 
 
-                      customerImage !=""?
-                      Padding(
-                        padding: const EdgeInsets
-                            .only(left: 10,right: 10),
-                        child: Container(
-
-                          height: 100,
-                          width:MediaQuery.of(context).size.width/4 ,
-
-                          decoration: BoxDecoration(
-                            //  color: Colors.red,
-                            border: Border.all(
-                            ),
-                            borderRadius: BorderRadius
-                                .all(
-                                Radius.circular(
-                                    1)),
-
-                          ),
-                          // child: ClipRRect(
-                          //
-                          //   borderRadius:
-                          //   BorderRadius
-                          //       .circular(0),
-                          //   child:Image.network("${customerImage}?token=${token}"),
-                          //
-                          //
-                          // ),
-                          child: ClipRRect(
-
-                            borderRadius:
-                            BorderRadius
-                                .circular(1),
-                            child: Image.memory(
-                              base64Decode(customerImage!),
-                              fit: BoxFit.cover,
-                              width: MediaQuery.of(
-                                  context)
-                                  .size
-                                  .width,
-                              height: 300,
-                            ),
-                          ),
-                        ),
-                      ):
-                      Padding(
-                        padding: const EdgeInsets
-                            .only(left: 10,right: 10),
-                        child: Container(
-
-                          height: 100,
-                          width:MediaQuery.of(context).size.width/4 ,
-
-                          decoration: BoxDecoration(
-                            //  color: Colors.red,
-                            border: Border.all(
-                            ),
-                            borderRadius: BorderRadius
-                                .all(
-                                Radius.circular(
-                                    1)),
-
-                          ),
-                          child: ClipRRect(
-
-                            borderRadius:
-                            BorderRadius
-                                .circular(0),
-                            child:Icon(Icons.person,size: 80,),
 
 
-                          ),
-                        ),
-                      ),
+                  Center(
+                    child: ToggleSwitch(
+                    radiusStyle: true,
+                    cornerRadius: 20.0,
+                    changeOnTap: false,
+                    initialLabelIndex: radioInput=="company"? 1: 0,
+                    minWidth: 150,
+                    minHeight: 40,
 
-                    ],
+                    fontSize: 15,
+                    //iconSize: 25,
+                    activeBgColors: [[Colors.pinkAccent],[Colors.pinkAccent]],
+                    activeFgColor: Colors.white,
+                    inactiveBgColor:  Colors.white60,
+                    inactiveFgColor: Colors.black,
+                    totalSwitches: 2,
+                    labels: ['Individual','Company'],
+                     // icons: [Icons.male, Icons.female],
+                     //  onToggle: (index) {
+                     //    print('Selected item Position: $index');
+                     //  },
+                    ),
                   ),
+
+
+
+                  customerImage !=""?
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets
+                          .only(left: 10,right: 10),
+                      child: Container(
+
+                        height: 100,
+                        width:MediaQuery.of(context).size.width/4 ,
+
+                        decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border.all(
+                          ),
+                          borderRadius: BorderRadius
+                              .all(
+                              Radius.circular(
+                                  50)),
+
+                        ),
+                        // child: ClipRRect(
+                        //
+                        //   borderRadius:
+                        //   BorderRadius
+                        //       .circular(0),
+                        //   child:Image.network("${customerImage}?token=${token}"),
+                        //
+                        //
+                        // ),
+                        child: ClipRRect(
+
+                          borderRadius:
+                          BorderRadius
+                              .circular(50),
+                          child: Image.memory(
+                            base64Decode(customerImage!),
+                            fit: BoxFit.cover,
+                            width: MediaQuery.of(
+                                context)
+                                .size
+                                .width,
+                            height: 300,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ):
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets
+                          .only(left: 10,right: 10),
+                      child: Container(
+
+                        height: 100,
+                        width:MediaQuery.of(context).size.width/4 ,
+
+                        decoration: BoxDecoration(
+                          //  color: Colors.red,
+                          border: Border.all(
+                          ),
+                          borderRadius: BorderRadius
+                              .all(
+                              Radius.circular(
+                                  50)),
+
+                        ),
+                        child: ClipRRect(
+
+                          borderRadius:
+                          BorderRadius
+                              .circular(50),
+                          child:Icon(Icons.person,size: 80,),
+
+
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 5, left: 25),
+                      child: Text(customername!,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontSize: 16,
+                            color: Colors.black,
+                          )),
+                    ),
+                  ),
+
+
+
+                // radio button change
+
+                  // Row(
+                  //   children: [
+                  //     Flexible(
+                  //       child: Column(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: <Widget>[
+                  //           RadioListTile(
+                  //
+                  //             title: Text(
+                  //               'Individual',
+                  //               style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
+                  //
+                  //             ),
+                  //             value: "person",
+                  //             groupValue: radioInput,
+                  //             onChanged: (Object? value) {},
+                  //           ),
+                  //           RadioListTile(
+                  //             title: Text(
+                  //               'Company',
+                  //               style: TextStyle(fontSize: 12,  fontFamily: 'Mulish',),
+                  //             ),
+                  //             value: "company",
+                  //             groupValue: radioInput,
+                  //             onChanged: (Object? value) {},
+                  //           ),
+                  //           Padding(
+                  //             padding: const EdgeInsets.only(top: 5, left: 25),
+                  //             child: Text(customername!,
+                  //                 style: TextStyle(
+                  //                   fontWeight: FontWeight.w600,
+                  //                  fontFamily: 'Mulish',
+                  //                   fontSize: 16,
+                  //                   color: Colors.black,
+                  //                 )),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //
+                  //
+                  //     customerImage !=""?
+                  //     Padding(
+                  //       padding: const EdgeInsets
+                  //           .only(left: 10,right: 10),
+                  //       child: Container(
+                  //
+                  //         height: 100,
+                  //         width:MediaQuery.of(context).size.width/4 ,
+                  //
+                  //         decoration: BoxDecoration(
+                  //           //  color: Colors.red,
+                  //           border: Border.all(
+                  //           ),
+                  //           borderRadius: BorderRadius
+                  //               .all(
+                  //               Radius.circular(
+                  //                   1)),
+                  //
+                  //         ),
+                  //         // child: ClipRRect(
+                  //         //
+                  //         //   borderRadius:
+                  //         //   BorderRadius
+                  //         //       .circular(0),
+                  //         //   child:Image.network("${customerImage}?token=${token}"),
+                  //         //
+                  //         //
+                  //         // ),
+                  //         child: ClipRRect(
+                  //
+                  //           borderRadius:
+                  //           BorderRadius
+                  //               .circular(1),
+                  //           child: Image.memory(
+                  //             base64Decode(customerImage!),
+                  //             fit: BoxFit.cover,
+                  //             width: MediaQuery.of(
+                  //                 context)
+                  //                 .size
+                  //                 .width,
+                  //             height: 300,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ):
+                  //     Padding(
+                  //       padding: const EdgeInsets
+                  //           .only(left: 10,right: 10),
+                  //       child: Container(
+                  //
+                  //         height: 100,
+                  //         width:MediaQuery.of(context).size.width/4 ,
+                  //
+                  //         decoration: BoxDecoration(
+                  //           //  color: Colors.red,
+                  //           border: Border.all(
+                  //           ),
+                  //           borderRadius: BorderRadius
+                  //               .all(
+                  //               Radius.circular(
+                  //                   1)),
+                  //
+                  //         ),
+                  //         child: ClipRRect(
+                  //
+                  //           borderRadius:
+                  //           BorderRadius
+                  //               .circular(0),
+                  //           child:Icon(Icons.person,size: 80,),
+                  //
+                  //
+                  //         ),
+                  //       ),
+                  //     ),
+                  //
+                  //   ],
+                  // ),
+
+
+                  // radio button change
+
+
+
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -3641,6 +3775,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
       opportunityCount=data['opportunity_count']??0;
       customerImage =  (data['image_1920']??"").toString();
       radioInput  = data['company_type'].toString();
+      print(radioInput);
+      print("radioInputvalueee");
+
       customername = data['name'].toString();
       taxid = data['vat'].toString();
       jobposition = data['function'].toString();

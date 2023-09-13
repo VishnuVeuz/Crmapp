@@ -50,6 +50,7 @@ dependencies:
   table_calendar: ^3.0.7
   flutter_html: ^2.2.0
   multi_select_flutter: ^4.0.0
+  toggle_switch: ^2.1.0
 
 
 
