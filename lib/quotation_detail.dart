@@ -4606,6 +4606,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 setState((){
 
                                 });
+                                Navigator.pop(context);
 
 
                               },

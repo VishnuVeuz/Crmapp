@@ -4777,6 +4777,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 setState((){
 
                                 });
+                                Navigator.pop(context);
 
 
                               },

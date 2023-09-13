@@ -3358,7 +3358,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                         context)
                                                                                         .size
                                                                                         .width /
-                                                                                        4,
+                                                                                        4.5,
                                                                                     child: Text(
                                                                                         logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                         style: TextStyle(
@@ -3375,7 +3375,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                         context)
                                                                                         .size
                                                                                         .width /
-                                                                                        4,
+                                                                                        4.3,
                                                                                     child: Text(
                                                                                         logDataTitle[indexx][indexs]["period"],
                                                                                         style: TextStyle(
@@ -4085,6 +4085,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               onPressed: () async {
                                 await getLeadDetails();
                                 setState(() {});
+                                Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9246A),
