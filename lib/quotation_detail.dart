@@ -5363,12 +5363,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       .of(context)
                       .size
                       .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/5,
-                  child: TextFormField(
-                    controller: bodyController,
+                  // height: MediaQuery
+                  //     .of(context)
+                  //     .size
+                  //     .height/6,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TextFormField(
+                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      controller: bodyController,
+                    ),
                   ),
                 ),
                 InkWell(

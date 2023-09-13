@@ -107,7 +107,6 @@ class _CustomerCreationState extends State<CustomerCreation> {
   String base64string = "";
   List base64string1 = [];
   bool isLoading = true;
-  bool titleVisibility = true;
 
   @override
   void initState() {
@@ -327,7 +326,6 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 setState(() {
                                   radioInput = value.toString();
                                   cmpVisibility = true;
-                                  titleVisibility = true;
                                 });
                               },
                             ),
@@ -342,7 +340,6 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 setState(() {
                                   radioInput = value.toString();
                                   cmpVisibility = false;
-                                  titleVisibility = false;
                                 });
                               },
                             ),
@@ -1133,86 +1130,83 @@ class _CustomerCreationState extends State<CustomerCreation> {
                       },
                     ),
                   ),
-                  Visibility(
-                    visible: titleVisibility,
-                    child: Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                      child: SearchChoices.single(
-                        //items: items,
+                  Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: SearchChoices.single(
+                      //items: items,
 
-                        value: titleName,
-                        hint: Text(
-                          "Title",
-                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                        ),
-                        searchHint: null,
-                        autofocus: false,
-                        onChanged: (value) {
-                          setState(() {
-                            print(value['capital']);
-                            print("value");
-                            titleName = value;
-                            titleId = value["id"];
-                          });
-                        },
-
-                        dialogBox: false,
-                        isExpanded: true,
-                        menuConstraints:
-                        BoxConstraints.tight(const Size.fromHeight(350)),
-                        itemsPerPage: 10,
-                        currentPage: currentPage,
-                        selectedValueWidgetFn: (item) {
-                          return (Center(
-                              child: Container(
-                                width: 300,
-                                child: Text(
-                                  item["name"],
-                                  style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              )));
-                        },
-                        futureSearchFn: (String? keyword,
-                            String? orderBy,
-                            bool? orderAsc,
-                            List<Tuple2<String, String>>? filters,
-                            int? pageNb) async {
-                          token = await getUserJwt();
-                          Response response = await get(
-                            Uri.parse(
-                                "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
-                            headers: {
-                              'Authorization': 'Bearer $token',
-                            },
-                          ).timeout(const Duration(
-                            seconds: 10,
-                          ));
-
-                          if (response.statusCode != 200) {
-                            throw Exception("failed to get data from internet");
-                          }
-
-                          dynamic data = jsonDecode(response.body);
-
-                          int nbResults = data["length"];
-
-                          List<DropdownMenuItem> results =
-                          (data["record"] as List<dynamic>)
-                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                            value: item,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text("${item["name"]}"),
-                              ),
-                            ),
-                          ))
-                              .toList();
-                          return (Tuple2<List<DropdownMenuItem>, int>(
-                              results, nbResults));
-                        },
+                      value: titleName,
+                      hint: Text(
+                        "Title",
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
+                      searchHint: null,
+                      autofocus: false,
+                      onChanged: (value) {
+                        setState(() {
+                          print(value['capital']);
+                          print("value");
+                          titleName = value;
+                          titleId = value["id"];
+                        });
+                      },
+
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints:
+                      BoxConstraints.tight(const Size.fromHeight(350)),
+                      itemsPerPage: 10,
+                      currentPage: currentPage,
+                      selectedValueWidgetFn: (item) {
+                        return (Center(
+                            child: Container(
+                              width: 300,
+                              child: Text(
+                                item["name"],
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              ),
+                            )));
+                      },
+                      futureSearchFn: (String? keyword,
+                          String? orderBy,
+                          bool? orderAsc,
+                          List<Tuple2<String, String>>? filters,
+                          int? pageNb) async {
+                        token = await getUserJwt();
+                        Response response = await get(
+                          Uri.parse(
+                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
+                          headers: {
+                            'Authorization': 'Bearer $token',
+                          },
+                        ).timeout(const Duration(
+                          seconds: 10,
+                        ));
+
+                        if (response.statusCode != 200) {
+                          throw Exception("failed to get data from internet");
+                        }
+
+                        dynamic data = jsonDecode(response.body);
+
+                        int nbResults = data["length"];
+
+                        List<DropdownMenuItem> results =
+                        (data["record"] as List<dynamic>)
+                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                          value: item,
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.all(0),
+                              child: Text("${item["name"]}"),
+                            ),
+                          ),
+                        ))
+                            .toList();
+                        return (Tuple2<List<DropdownMenuItem>, int>(
+                            results, nbResults));
+                      },
                     ),
                   ),
                   SizedBox(
