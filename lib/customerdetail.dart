@@ -667,27 +667,31 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
 
-                  Center(
-                    child: ToggleSwitch(
-                    radiusStyle: true,
-                    cornerRadius: 20.0,
-                    changeOnTap: false,
-                    initialLabelIndex: radioInput=="company"? 1: 0,
-                    minWidth: 150,
-                    minHeight: 40,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,bottom: 15),
+                    child: Center(
+                      child: ToggleSwitch(
+                      radiusStyle: true,
+                      cornerRadius: 20.0,
+                      changeOnTap: false,
+                      initialLabelIndex: radioInput=="company"? 1: 0,
+                      minWidth: 150,
+                      minHeight: 40,
 
-                    fontSize: 15,
-                    //iconSize: 25,
-                    activeBgColors: [[Colors.pinkAccent],[Colors.pinkAccent]],
-                    activeFgColor: Colors.white,
-                    inactiveBgColor:  Colors.white60,
-                    inactiveFgColor: Colors.black,
-                    totalSwitches: 2,
-                    labels: ['Individual','Company'],
-                     // icons: [Icons.male, Icons.female],
-                     //  onToggle: (index) {
-                     //    print('Selected item Position: $index');
-                     //  },
+                      fontSize: 15,
+                      //iconSize: 25,
+                      activeBgColors: [[Color(0xFFF04254)],[Color(0xFFF04254)]],
+                      activeFgColor: Colors.white,
+                      inactiveBgColor:  Colors.grey[200],
+                      inactiveFgColor: Colors.black,
+                      totalSwitches: 2,
+                      labels: ['Individual','Company'],
+
+                       // icons: [Icons.male, Icons.female],
+                       //  onToggle: (index) {
+                       //    print('Selected item Position: $index');
+                       //  },
+                      ),
                     ),
                   ),
 
@@ -774,7 +778,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                   Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 5, left: 25),
+                      padding: const EdgeInsets.only(top: 5, left: 0),
                       child: Text(customername!,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
