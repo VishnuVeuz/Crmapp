@@ -38,7 +38,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       createdon,lastupdatedby,lastupdatedon,salespersonimg, attachmentCount = "0", followerCount = "0";
 
   bool followerStatus=false;
-
+  String notificationCount="0";
 
   bool _isInitialized = false;
   bool optvisibility = false,ordervisibility = true;
@@ -232,7 +232,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -3980,7 +3980,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
    getQuotationDetails() async {
 
     token  = await getUserJwt();
-
+    notificationCount = await getNotificationCount();
     var data = await getQuotationData(widget.quotationId, "");
 
     print(data);

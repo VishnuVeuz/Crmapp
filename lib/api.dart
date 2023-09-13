@@ -3847,6 +3847,37 @@ getNotificationActivity() async {
 }
 
 
+getNotificationCount() async {
+  String token = await getUserJwt();
+
+  var data;
+  String? authresponce;
+
+  Response response = await get(
+    Uri.parse("${baseUrl}api/notification_count"),
+    headers: {
+      'Authorization': 'Bearer $token',
+    },
+  ).timeout(const Duration(
+    seconds: 10,
+  ));
+
+  if (response.statusCode != 200) {
+    throw Exception("failed to get data from internet");
+  } else {
+    data = jsonDecode(response.body);
+
+    // authresponce = data['result'].toString();
+  }
+
+  print(data);
+  print(data['activity_count']);
+  print("datajfhejbfjbj");
+
+  return data['activity_count'].toString();
+}
+
+
 
 
 addMultiCmpnySF(String jsonListmultiCompany) async {

@@ -53,6 +53,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   double? productSubTotal;
   int? productId = null;
 
+  String notificationCount="0";
   TextEditingController opportunitynameController = TextEditingController();
   TextEditingController expectedrevenueController = TextEditingController();
   TextEditingController probabilityController = TextEditingController();
@@ -206,7 +207,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -2187,6 +2188,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void defaultvalues() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
     var data = await defaultDropdown("lead.lead");
     setState(() {
       print(data);
@@ -2291,6 +2293,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void getOpportunityDetails() async {
     token = await getUserJwt();
+    notificationCount = await getNotificationCount();
     var data = await getOpportunityData(widget.opportunityId, "");
     setState(() {
       opportunitynameController.text = data['name'].toString();

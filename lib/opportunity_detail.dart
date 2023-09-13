@@ -49,6 +49,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   dynamic lostreasonName, lostreasonId;
+  String notificationCount="0";
   String? opportunityname,
       customername,
       email,
@@ -270,7 +271,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -4094,6 +4095,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
    getOpportunityDetails() async {
 
     tokens = await getUserJwt();
+    notificationCount = await getNotificationCount();
     var data = await getOpportunityData(widget.opportunityId, "");
 
     setState(() {
