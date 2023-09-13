@@ -2788,8 +2788,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                           "";
                                                       commandsController
                                                           .text = data[
-                                                      'note'] ??
-                                                          "";
+                                                      'note']  .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                          .toString() ;
                                                       // DuedateTime.text == "default" ?
                                                       if (activityTypeNameCategory ==
                                                           "default") {
@@ -3082,27 +3082,24 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       MainAxisAlignment
                                                                           .spaceAround,
                                                                       children: [
-                                                                        Positioned(
-                                                                          bottom:5,
-                                                                          child: Container(
-                                                                            height:
-                                                                            20,
-                                                                            width:
-                                                                            20,
-                                                                            //color: Colors.red,
+                                                                        Container(
+                                                                          height:
+                                                                          20,
+                                                                          width:
+                                                                          20,
+                                                                          //color: Colors.red,
+                                                                          child:
+                                                                          Align(
+                                                                            alignment:
+                                                                            Alignment
+                                                                                .topRight,
                                                                             child:
-                                                                            Align(
-                                                                              alignment:
-                                                                              Alignment
-                                                                                  .topRight,
-                                                                              child:
-                                                                              IconButton(
-                                                                                icon: Icon(
-                                                                                    Icons
-                                                                                        .add_reaction_outlined,
-                                                                                    size: 15.0),
-                                                                                onPressed: () {},
-                                                                              ),
+                                                                            IconButton(
+                                                                              icon: Icon(
+                                                                                  Icons
+                                                                                      .add_reaction_outlined,
+                                                                                  size: 15.0),
+                                                                              onPressed: () {},
                                                                             ),
                                                                           ),
                                                                         ),

@@ -3317,7 +3317,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       assignedToid = data['user_id']['id']??null;
                                                       DuedateTime.text = data['date_deadline']??"";
                                                       summaryController.text = data['summary']??"";
-                                                      commandsController.text = data['note']??"";
+                                                      commandsController.text = data['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                          .toString() ;
                                                       // DuedateTime.text == "default" ?
                                                       if(activityTypeNameCategory == "default"){
                                                         scheduleBtn=true;
