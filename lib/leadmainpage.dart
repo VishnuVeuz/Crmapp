@@ -387,256 +387,226 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                               .size
                                               .width,
                                          // height: 90,
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .start,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment
+                                                .spaceBetween,
                                             children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15, top: 8),
-                                                child: Text(
-                                                  snapshot
-                                                      .data![index]["name"] ??
-                                                      "",
-                                                  style: TextStyle(
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight
-                                                          .w600,
-                                                      fontSize: 14,
-                                                      color: Colors.black),
-                                                ),
-                                              ),
-                                              Visibility(
-                                                visible: snapshot.data![index]["contact_name"]==""?false:true,
-                                                child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 5, left: 15),
-                                                  child: Text(snapshot
-                                                      .data![index]["contact_name"] ??
-                                                      "",
-                                                    style: TextStyle(
-                                                        fontFamily: 'Mulish',
-                                                        fontWeight: FontWeight
-                                                            .w600,
-                                                        fontSize: 12,
-                                                        color: Color(0xFF787878)),
-                                                  ),
-
-                                                ),
-                                              ),
-
-                                            Visibility(
-                                              visible: tags!.length >0 ? true : false,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(left: 15),
-                                                child: Container(
-                                                    width: MediaQuery
-                                                        .of(context)
-                                                        .size
-                                                        .width/1.1 ,
-                                                    height: 20,
-                                                    //color: Colors.pinkAccent,
-
-                                                    child: ListView.builder(
-                                                      scrollDirection: Axis.horizontal,
-                                                      shrinkWrap: true,
-                                                      itemCount: tags!.length ?? 0,
-                                                      itemBuilder: (BuildContext context, int index) {
-                                                        return Padding(
-                                                          padding:
-                                                          const EdgeInsets.only(right: 8.0, top: 4),
-                                                          child: SingleChildScrollView(
-                                                            scrollDirection: Axis.horizontal,
-
-                                                            child: Row(
-                                                              children: [
-                                                                Container(
-                                                                  height: 5,
-                                                                  width: 5,
-                                                                  color:Colors.red,
-
-                                                                ),
-                                                                SizedBox(width: 4,),
-
-                                                                Center(
-                                                                  child: Text(
-
-                                                                    tags![index]["name"].toString(),
-                                                                    style: TextStyle(
-                                                                        color: Colors.black,
-                                                                        fontFamily: 'Mulish',
-                                                                        fontWeight: FontWeight.w600,
-                                                                        fontSize: 10),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                              ),
-                                            ),
-
-
-
-
-
-                                              Row(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .spaceBetween,
+                                              Column(
+                                                crossAxisAlignment: CrossAxisAlignment
+                                                    .start,
                                                 children: [
-
-
                                                   Padding(
-                                                    padding: const EdgeInsets
-                                                        .only(left: 10),
-                                                    child: RatingBar.builder(
-                                                      initialRating: double
-                                                          .parse(
-                                                          snapshot
-                                                              .data![index]["priority"] ??
-                                                              0),
-                                                      itemSize: 19,
-                                                      minRating: 0,
-                                                      direction: Axis
-                                                          .horizontal,
-                                                      allowHalfRating: false,
-                                                      itemCount: 3,
-                                                      itemPadding: EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 1.0),
-                                                      itemBuilder: (context,
-                                                          _) =>
-                                                          Icon(
-                                                            Icons.star,
-                                                            color: Colors.amber,
-                                                            size: 10,
-                                                          ),
-                                                      onRatingUpdate: (
-                                                          double value) {
-
-                                                      },
+                                                    padding: const EdgeInsets.only(
+                                                        left: 15, top: 8),
+                                                    child: Text(
+                                                      snapshot
+                                                          .data![index]["name"] ??
+                                                          "",
+                                                      style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight
+                                                              .w600,
+                                                          fontSize: 14,
+                                                          color: Colors.black),
+                                                    ),
+                                                  ),
+                                                  Visibility(
+                                                    visible: snapshot.data![index]["contact_name"]==""?false:true,
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(
+                                                          top: 5, left: 15),
+                                                      child: Text(snapshot
+                                                          .data![index]["contact_name"] ??
+                                                          "",
+                                                        style: TextStyle(
+                                                            fontFamily: 'Mulish',
+                                                            fontWeight: FontWeight
+                                                                .w600,
+                                                            fontSize: 12,
+                                                            color: Color(0xFF787878)),
+                                                      ),
 
                                                     ),
                                                   ),
-                                                  // Padding(
-                                                  //   padding: const EdgeInsets.only(top: 0,left: 15),
-                                                  //   child: Text("Ratingbar",
-                                                  //     style: TextStyle(
-                                                  //         fontWeight: FontWeight.w600,
-                                                  //         fontSize: 12,
-                                                  //         color: Color(0xFF787878)),
-                                                  //   ),
-                                                  // ),
-                                                  snapshot
-                                                      .data![index]["image_1920"] !=
-                                                      "" ?
 
-                                                  // Padding(
-                                                  //   padding: const EdgeInsets
-                                                  //       .only(right: 25),
-                                                  //   child: Container(
-                                                  //     width: 35,
-                                                  //     height: 35,
-                                                  //     decoration: BoxDecoration(
-                                                  //         border: Border.all(
-                                                  //         ),
-                                                  //         borderRadius: BorderRadius
-                                                  //             .all(
-                                                  //             Radius.circular(
-                                                  //                 20))
-                                                  //     ),
-                                                  //     child: CircleAvatar(
-                                                  //       radius: 12,
-                                                  //       child: ClipRRect(
-                                                  //
-                                                  //         borderRadius:
-                                                  //         BorderRadius
-                                                  //             .circular(18),
-                                                  //         child: Image.memory(
-                                                  //           base64Decode(
-                                                  //               snapshot
-                                                  //                   .data![index]["image_1920"] ??
-                                                  //                   ""),
-                                                  //           fit: BoxFit.cover,
-                                                  //           width: MediaQuery
-                                                  //               .of(
-                                                  //               context)
-                                                  //               .size
-                                                  //               .width,
-                                                  //           height: 300,
-                                                  //         ),
-                                                  //       ),
-                                                  //
-                                                  //
-                                                  //     ),
-                                                  //   ),
-                                                  // ) :
-
-
-
-                                                Padding(
-                                                    padding: const EdgeInsets
-                                                        .only(right: 25,bottom: 8),
+                                                Visibility(
+                                                  visible: tags!.length >0 ? true : false,
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(left: 15),
                                                     child: Container(
-                                                      width: 25,
-                                                      height: 25,
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                          ),
-                                                          borderRadius: BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  20))
-                                                      ),
-                                                      child: CircleAvatar(
-                                                        radius: 12,
-                                                        child: ClipRRect(
+                                                        width: MediaQuery
+                                                            .of(context)
+                                                            .size
+                                                            .width/1.4 ,
+                                                        height: 20,
+                                                        //color: Colors.pinkAccent,
 
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(18),
-                                                          child:Image.network(
-                                                              "${snapshot.data![index]["image_1920"]}?token=${token}"),
+                                                        child: ListView.builder(
+                                                          scrollDirection: Axis.horizontal,
+                                                          shrinkWrap: true,
+                                                          itemCount: tags!.length ?? 0,
+                                                          itemBuilder: (BuildContext context, int index) {
+                                                            return Padding(
+                                                              padding:
+                                                              const EdgeInsets.only(right: 8.0, top: 4),
+                                                              child: SingleChildScrollView(
+                                                                scrollDirection: Axis.horizontal,
+
+                                                                child: Row(
+                                                                  children: [
+                                                                    Container(
+                                                                      height: 5,
+                                                                      width: 5,
+                                                                      color:Colors.red,
+
+                                                                    ),
+                                                                    SizedBox(width: 4,),
+
+                                                                    Center(
+                                                                      child: Text(
+
+                                                                        tags![index]["name"].toString(),
+                                                                        style: TextStyle(
+                                                                            color: Colors.black,
+                                                                            fontFamily: 'Mulish',
+                                                                            fontWeight: FontWeight.w600,
+                                                                            fontSize: 10),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ),
+                                                      ),
+                                                  ),
+                                                ),
+
+
+
+
+
+                                                  Row(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .spaceBetween,
+                                                    children: [
+
+
+                                                      Padding(
+                                                        padding: const EdgeInsets
+                                                            .only(left: 10),
+                                                        child: RatingBar.builder(
+                                                          initialRating: double
+                                                              .parse(
+                                                              snapshot
+                                                                  .data![index]["priority"] ??
+                                                                  0),
+                                                          itemSize: 19,
+                                                          minRating: 0,
+                                                          direction: Axis
+                                                              .horizontal,
+                                                          allowHalfRating: false,
+                                                          itemCount: 3,
+                                                          itemPadding: EdgeInsets
+                                                              .symmetric(
+                                                              horizontal: 1.0),
+                                                          itemBuilder: (context,
+                                                              _) =>
+                                                              Icon(
+                                                                Icons.star,
+                                                                color: Colors.amber,
+                                                                size: 10,
+                                                              ),
+                                                          onRatingUpdate: (
+                                                              double value) {
+
+                                                          },
 
                                                         ),
-
-
                                                       ),
-                                                    ),
-                                                  ) :
+                                                      // Padding(
+                                                      //   padding: const EdgeInsets.only(top: 0,left: 15),
+                                                      //   child: Text("Ratingbar",
+                                                      //     style: TextStyle(
+                                                      //         fontWeight: FontWeight.w600,
+                                                      //         fontSize: 12,
+                                                      //         color: Color(0xFF787878)),
+                                                      //   ),
+                                                      // ),
 
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .only(right: 25,bottom: 8),
-                                                    child: Container(
-                                                      width: 25,
-                                                      height: 25,
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                          ),
-                                                          borderRadius: BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  20))
-                                                      ),
-                                                      child: CircleAvatar(
-                                                        radius: 12,
-                                                        child: Icon(
-                                                          Icons.person,
-                                                          size: 20,
-                                                          // Adjust the size of the icon as per your requirements
-                                                          color: Colors
-                                                              .white, // Adjust the color of the icon as per your requirements
-                                                        ),
-
-                                                      ),
-                                                    ),
+                                                    ],
                                                   ),
                                                 ],
                                               ),
+
+                                              snapshot
+                                                  .data![index]["image_1920"] !=
+                                                  "" ?
+
+
+
+
+
+                                              Padding(
+                                                padding: const EdgeInsets
+                                                    .only(right: 25,bottom: 8),
+                                                child: Container(
+                                                  width: 25,
+                                                  height: 25,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                      ),
+                                                      borderRadius: BorderRadius
+                                                          .all(
+                                                          Radius.circular(
+                                                              20))
+                                                  ),
+                                                  child: CircleAvatar(
+                                                    radius: 12,
+                                                    child: ClipRRect(
+
+                                                      borderRadius:
+                                                      BorderRadius
+                                                          .circular(18),
+                                                      child:Image.network(
+                                                          "${snapshot.data![index]["image_1920"]}?token=${token}"),
+
+                                                    ),
+
+
+                                                  ),
+                                                ),
+                                              ) :
+
+                                              Padding(
+                                                padding: const EdgeInsets
+                                                    .only(right: 25,bottom: 8),
+                                                child: Container(
+                                                  width: 25,
+                                                  height: 25,
+                                                  decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                      ),
+                                                      borderRadius: BorderRadius
+                                                          .all(
+                                                          Radius.circular(
+                                                              20))
+                                                  ),
+                                                  child: CircleAvatar(
+                                                    radius: 12,
+                                                    child: Icon(
+                                                      Icons.person,
+                                                      size: 20,
+                                                      // Adjust the size of the icon as per your requirements
+                                                      color: Colors
+                                                          .white, // Adjust the color of the icon as per your requirements
+                                                    ),
+
+                                                  ),
+                                                ),
+                                              ),
+
                                             ],
                                           ),
 
