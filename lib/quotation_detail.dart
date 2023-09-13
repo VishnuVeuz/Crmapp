@@ -3866,30 +3866,23 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                               child: Image
                                                                                                   .network(
                                                                                                 "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                height: 120,
+                                                                                                height: 100,
                                                                                                 width: 80,
                                                                                               ),
 
 
                                                                                             ),
                                                                                             Positioned(
-
-                                                                                                left: 57,
+                                                                                                left: 37,
                                                                                                 right: 0,
-                                                                                                bottom: 85,
+                                                                                                bottom: 70,
                                                                                                 top: 1,
                                                                                                 child: Container(
-                                                                                                  width: 15,
-                                                                                                  // height: 15,
-                                                                                                  color: Colors
-                                                                                                      .grey[200],
+                                                                                                  width: 20,
+                                                                                                  height: 20,
+                                                                                                  decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
                                                                                                   child: IconButton(
-                                                                                                    icon: Icon(
-                                                                                                      Icons
-                                                                                                          .delete_outline_outlined,
-                                                                                                      size: 15.0,
-                                                                                                      color: Colors
-                                                                                                          .white,),
+                                                                                                    icon: SvgPicture.asset("images/trash.svg"),
                                                                                                     onPressed: () async {
                                                                                                       print(
                                                                                                           logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
