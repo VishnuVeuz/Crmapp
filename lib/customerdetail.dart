@@ -1474,7 +1474,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        height: 100,
+                                        height: 80,
                                         width: MediaQuery.of(context)
                                             .size
                                             .width /
@@ -1520,12 +1520,15 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 15, top: 4),
-                                            child: Text(
-                                              addNewCustomerData!['email']??"",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                            child: Container(
+                                              //color: Colors.red,
+                                              child: Text(
+                                                addNewCustomerData!['email']??"",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12,
+                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                              ),
                                             ),
                                           ),
                                           Row(
@@ -1534,26 +1537,32 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 padding:
                                                 const EdgeInsets.only(
                                                     left: 15, top: 4),
-                                                child: Text(
-                                                  addNewCustomerData!['state_id']["name"]??"",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Colors.black,  fontFamily: 'Mulish'),
+                                                child: Container(
+                                                  //color: Colors.red,
+                                                  child: Text(
+                                                    addNewCustomerData!['state_id']["name"]??"",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
                                                 padding:
                                                 const EdgeInsets.only(
                                                     left: 5, top: 4),
-                                                child: Text(
-                                                  addNewCustomerData!['country_id']["name"]??"",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                      FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Colors.black,  fontFamily: 'Mulish'),
+                                                child: Container(
+                                                  //color: Colors.red,
+                                                  child: Text(
+                                                    addNewCustomerData!['country_id']["name"]??"",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.w400,
+                                                        fontSize: 12,
+                                                        color: Colors.black,  fontFamily: 'Mulish'),
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -1561,23 +1570,29 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 15, top: 4),
-                                            child: Text(
-                                              addNewCustomerData!['phone']??"",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                            child: Container(
+                                              //color: Colors.red,
+                                              child: Text(
+                                                addNewCustomerData!['phone']??"",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12,
+                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                              ),
                                             ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 15, top: 4),
-                                            child: Text(
-                                              addNewCustomerData!['mobile']??"",
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                            child: Container(
+                                              //color: Colors.red,
+                                              child: Text(
+                                                addNewCustomerData!['mobile']??"",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 12,
+                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                              ),
                                             ),
                                           ),
                                         ],
