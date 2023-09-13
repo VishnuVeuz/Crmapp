@@ -3301,7 +3301,7 @@ getattchmentData(int dataId, String activityModel) async {
 // save as new template for send msg
 
 // send msg create
- sendMessageCreate(String lognotes,logmodel,subject ,int resId,partnerId,templateId) async {
+ sendMessageCreate(String lognotes,logmodel,subject ,int resId,partnerId,templateId,List myData1) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
@@ -3318,7 +3318,7 @@ getattchmentData(int dataId, String activityModel) async {
         "template_id":templateId,
 
 
-        // "attachments": myData2,
+         "attachment_ids": myData1,
 
       }
 

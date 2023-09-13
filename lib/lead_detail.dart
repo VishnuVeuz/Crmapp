@@ -2013,7 +2013,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   bodyController.text = lognoteController.text;
 
                                   String resMessage ;
-                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage();
+                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage(myData1);
 
                                   if(resMessage == "success"){
                                     setState(() {
@@ -4578,9 +4578,45 @@ class _LeadDetailState extends State<LeadDetail> {
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: () async{
+                              for (int i = 0;
+                              i < selectedImages.length;
+                              i++) {
+                                imagepath =
+                                    selectedImages[i].path.toString();
+                                File imagefile =
+                                File(imagepath); //convert Path to File
+                                Uint8List imagebytes = await imagefile
+                                    .readAsBytes(); //convert to bytes
+                                base64string = base64.encode(imagebytes);
 
-                                createSendmessage();
+                                // base64string1.add(
+                                //     base64string);
+                                //
+
+                                String dataImages =
+                                    '{"name":"name","type":"binary","datas":"${base64string
+                                    .toString()}"}';
+
+                                Map<String, dynamic> jsondata =
+                                jsonDecode(dataImages);
+                                myData1.add(jsondata);
+                              }
+                             String resMessage= await  createSendmessage(myData1);
+                                if(resMessage == "success"){
+                                  setState(() {
+                                    logDataHeader.clear();
+                                    logDataTitle.clear();
+                                    selectedImagesDisplay.clear();
+                                    lognoteController.text = "";
+                                    selectedImages.clear();
+                                    myData1.clear();
+                                  });
+
+                                  Navigator.pop(context);
+                                }
+
+
                               print(recipient);
                               print("tagattagagaga");
 
@@ -6004,9 +6040,9 @@ class _LeadDetailState extends State<LeadDetail> {
   }
   //String lognotes,logmodel,subject ,int resId,partnerId,templateId
 
-  createSendmessage() async {
+  createSendmessage(List myData1) async {
     String value = await sendMessageCreate(
-        bodyController.text , "lead.lead",subjectController.text, widget.leadId,recipient,templateId);
+        bodyController.text , "lead.lead",subjectController.text, widget.leadId,recipient,templateId,myData1);
 
     print(value);
     print("valuesss");

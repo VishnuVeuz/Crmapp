@@ -2189,7 +2189,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   bodyController.text = lognoteController.text;
 
                                   String resMessage ;
-                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage();
+                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage(myData1);
 
                                   if(resMessage == "success"){
                                     setState(() {
@@ -5202,7 +5202,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     ),
                   ),
                 ),
-                selectedImages.isEmpty ?  Padding(
+
+
+                // data chnage for  image
+                myData1.isEmpty ?  Padding(
                   padding: const EdgeInsets.only(left:25),
                   child: Container(
 
@@ -5211,7 +5214,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         .of(context)
                         .size
                         .width,
-                    // height: 40,
+                     height: 40,
+                    color: Colors.green,
                   ),
                 )
                     :
@@ -5253,6 +5257,21 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     ),
                   ),
                 ),
+
+
+
+                // data change for image
+
+
+
+
+
+
+
+
+
+
+
                 // FutureBuilder(
                 //     future: getattchmentData(widget.customerId, "res.partner"),
                 //     builder: (context, AsyncSnapshot snapshot) {
@@ -5507,9 +5526,53 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   color: Colors.white,fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () {
+                          onPressed: () async{
 
-                            createSendmessage();
+                            for (int i = 0;
+                            i < selectedImages.length;
+                            i++) {
+                              imagepath =
+                                  selectedImages[i].path.toString();
+                              File imagefile =
+                              File(imagepath); //convert Path to File
+                              Uint8List imagebytes = await imagefile
+                                  .readAsBytes(); //convert to bytes
+                              base64string = base64.encode(imagebytes);
+
+                              // base64string1.add(
+                              //     base64string);
+                              //
+
+                              String dataImages =
+                                  '{"name":"name","type":"binary","datas":"${base64string
+                                  .toString()}"}';
+
+                              Map<String, dynamic> jsondata =
+                              jsonDecode(dataImages);
+                              myData1.add(jsondata);
+                            }
+                            print(followersVisibility);
+                            print("final datatata");
+
+
+
+
+
+                        String resMessage =  await  createSendmessage(myData1);
+
+                            if(resMessage == "success"){
+                              setState(() {
+                                logDataHeader.clear();
+                                logDataTitle.clear();
+                                selectedImagesDisplay.clear();
+                                lognoteController.text = "";
+                                selectedImages.clear();
+                                myData1.clear();
+                              });
+
+                              Navigator.pop(context);
+                            }
+
                             print(recipient);
                             print("tagattagagaga");
 
@@ -5546,9 +5609,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
     return value;
   }
 
-  createSendmessage() async {
+  createSendmessage(List myData1) async {
     String value = await sendMessageCreate(
-        bodyController.text , "res.partner",subjectController.text, widget.customerId,recipient,templateId);
+        bodyController.text , "res.partner",subjectController.text, widget.customerId,recipient,templateId,myData1);
 
     print(value);
     print("valuesss");
