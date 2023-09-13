@@ -137,17 +137,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                       ),
                     ),
 
-
-
-
-
-
-
-
-
-
-
-                    Row(
+                        Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
 
