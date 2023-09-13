@@ -128,7 +128,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
       else{
         print(responseList['records'].length);
         print("vishnuvn");
-        List<LeadModel> LeadModelList = (responseList['records'] as List<dynamic>).map<LeadModel>((data) => LeadModel(data['id']??"",data['name']??"",data['contact_name']??"",data['priority']??"",data['priority']??"",data['image_1920']??"")).toList();
+        List<LeadModel> LeadModelList = (responseList['records'] as List<dynamic>).map<LeadModel>((data) => LeadModel(data['id']??"",data['name']??"",data['contact_name']??"",data['priority']??"",data['tag_ids']??"",data['image_1920']??"")).toList();
         setState(() {
           _isLastPage = LeadModelList.length < _numberOfLeadModelsPerRequest;
           _loading = false;
