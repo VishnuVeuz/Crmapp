@@ -675,7 +675,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       cornerRadius: 20.0,
                       changeOnTap: false,
                       initialLabelIndex: radioInput=="company"? 1: 0,
-                      minWidth: 150,
+                      minWidth: 120,
                       minHeight: 40,
 
                       fontSize: 15,
@@ -686,6 +686,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       inactiveFgColor: Colors.black,
                       totalSwitches: 2,
                       labels: ['Individual','Company'],
+                       customTextStyles: [TextStyle(
+                           fontWeight: FontWeight.w600,
+                           fontSize: 13,
+                          fontFamily: 'Mulish'),],
 
                        // icons: [Icons.male, Icons.female],
                        //  onToggle: (index) {
@@ -704,8 +708,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           .only(left: 10,right: 10),
                       child: Container(
 
-                        height: 100,
-                        width:MediaQuery.of(context).size.width/4 ,
+                        height: 80,
+                        width:MediaQuery.of(context).size.width/5 ,
 
                         decoration: BoxDecoration(
                           //  color: Colors.red,
@@ -714,7 +718,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           borderRadius: BorderRadius
                               .all(
                               Radius.circular(
-                                  50)),
+                                  80)),
 
                         ),
                         // child: ClipRRect(
@@ -730,7 +734,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                           borderRadius:
                           BorderRadius
-                              .circular(50),
+                              .circular(80),
                           child: Image.memory(
                             base64Decode(customerImage!),
                             fit: BoxFit.cover,
@@ -750,8 +754,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           .only(left: 10,right: 10),
                       child: Container(
 
-                        height: 100,
-                        width:MediaQuery.of(context).size.width/4 ,
+                        height: 80,
+                        width:MediaQuery.of(context).size.width/5 ,
 
                         decoration: BoxDecoration(
                           //  color: Colors.red,
@@ -760,14 +764,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           borderRadius: BorderRadius
                               .all(
                               Radius.circular(
-                                  50)),
+                                  80)),
 
                         ),
                         child: ClipRRect(
 
                           borderRadius:
                           BorderRadius
-                              .circular(50),
+                              .circular(80),
                           child:Icon(Icons.person,size: 80,),
 
 
