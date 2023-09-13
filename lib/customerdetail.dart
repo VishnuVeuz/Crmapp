@@ -34,6 +34,7 @@ class CustomerDetail extends StatefulWidget {
 
 class _CustomerDetailState extends State<CustomerDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
+  String notificationCount="0";
   String? customername,
       taxid,
       jobposition,
@@ -236,7 +237,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -3772,6 +3773,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
    getCustomerDetails() async {
    String tokens = await getUserJwt();
+   notificationCount = await getNotificationCount();
     var data = await getCustomerData(widget.customerId, "");
 
     print(data);
