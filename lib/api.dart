@@ -2466,7 +2466,8 @@ defaultScheduleData(int id, String value) async {
   String token = await getUserJwt();
 
   print(id);
-  print("lead dataaa");
+  print("${baseUrl}api/activity?res_model=${value}&res_id=${id}");
+  print("lead dataaatttt");
 
   var data;
   String? authresponce;
@@ -2500,7 +2501,8 @@ defaultSendmessageData(int id, String value) async {
   String token = await getUserJwt();
 
   print(id);
-  print("lead dataaa");
+  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message");
+  print("lead dataaa final");
 
   var data;
   String? authresponce;
@@ -2942,7 +2944,8 @@ getlogNoteData(int dataId, String activityModel) async {
   String token = await getUserJwt();
 
   print(dataId);
-  print("lead dataaa");
+  print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
+  print("lead dataaaaaaaa");
 
   var data;
   String? authresponce;

@@ -132,6 +132,13 @@ class _LeadDetailState extends State<LeadDetail> {
     size: 8,
   );
 
+  Icon logNoteIcon = Icon(
+    Icons.circle,
+    color: Colors.white,
+    size: 8,
+  );
+
+
   // lognote
 
   TextEditingController lognoteController = TextEditingController();
@@ -3029,6 +3036,73 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 [indexs]['is_editable']);
 
                                                 print('is_editable');
+
+
+                                                logDataTitle[indexx][indexs]['icon'] ==
+                                                    "fa-envelope"
+                                                    ? logNoteIcon = const Icon(
+                                                  Icons.email_outlined,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle[indexx][indexs]['icon'] ==
+                                                    "fa-phone"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.phone,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle[indexx][indexs]
+                                                ['icon'] ==
+                                                    "fa-users"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.person,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle[indexx][indexs]
+                                                ['icon'] ==
+                                                    "fa-file-text-o"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.file_copy,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle[indexx][indexs]
+                                                ['icon'] ==
+                                                    "fa-line-chart"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.bar_chart,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle
+                                                [indexx][indexs]
+                                                ['icon'] ==
+                                                    "fa-tasks"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.task,
+                                                  color: Colors.white,
+                                                  size: 8,
+                                                )
+                                                    : logDataTitle
+                                                [indexx][indexs]
+                                                ['icon'] ==
+                                                    "fa-upload"
+                                                    ? logNoteIcon =
+                                                    Icon(
+                                                      Icons.upload,
+                                                      color: Colors
+                                                          .white,
+                                                      size: 8,
+                                                    )
+                                                    : Icon(
+                                                  Icons.circle,
+                                                  color: Colors
+                                                      .white,
+                                                  size: 8,
+                                                );
+
 
                                                 return Card(
                                                   elevation: 1,
