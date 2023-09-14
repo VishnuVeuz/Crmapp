@@ -63,7 +63,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List<ValueItem> editRecipientName = [];
   bool _isInitialized = false;
   bool isLoading = true;
-  bool isCheckedMail = false;
+
 
   dynamic activityTypeName,
       activityTypeId,
@@ -159,6 +159,8 @@ class _LeadDetailState extends State<LeadDetail> {
   List logDataHeader = [];
   List logDataTitle = [];
   List ddd2 = [];
+  List sendMailData = [];
+  bool isCheckedMail = false;
 
   @override
   void initState() {
@@ -1452,7 +1454,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                       color: Color(0xFF212121)),
                                 ),
 
-                                onPressed: () {
+                                onPressed: () async{
+                                  sendMailData = await sendMailsFollowers(
+                                      widget.leadId, "lead.lead");
+
+
 
                                   setState(() {
                                     followersVisibility == true
@@ -1804,24 +1810,58 @@ class _LeadDetailState extends State<LeadDetail> {
 
                           ),
                         ),
-                        Padding(
+                        SizedBox(height: 5,),
+                        Visibility(
+                          visible: followersVisibility,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            //height: 100,
+                            //color: Colors.red,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: sendMailData.length,
 
-                          padding: const EdgeInsets.only(left: 65),
-                          child: Row(
-                            children: [
-                              Checkbox(
-                                activeColor: Color(0xFFF9246A),
-                                value: isCheckedMail,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isCheckedMail = value!;
-                                  });
-                                },
-                              ),
-                              Text("lakshmi@gmail",style: TextStyle(color: Colors.black,fontSize: 11,fontFamily: 'Mulish'),)
-                            ],
+                              itemBuilder: (_, i) {
+                                isCheckedMail = sendMailData[i]['selected'];
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 65),
+                                  child: Container(
+                                    height: 13,
+                                    child: Row(
+                                      children: [
+                                        Transform.scale(
+                                          scale: 0.6,
+                                          child: Checkbox(
+                                            activeColor: Color(0xFFF9246A),
+                                            value: isCheckedMail,
+                                            onChanged: (bool? value) {
+                                              print(value);
+                                              print("check box issues");
+                                              setState(() {
+                                                isCheckedMail = value!;
+                                                sendMailData[i]['selected']=value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                        Text(
+                                          sendMailData[i]['name'],
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 11,
+                                              fontFamily: 'Mulish'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
+                        SizedBox(height: 5,),
+
 
                         Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -6040,9 +6080,15 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
    defaultSendmsgvalues() async {
+
+     List<int> selectedIds = sendMailData
+         .where((item) => item["selected"] == true)
+         .map((item) => item["id"] as int)
+         .toList();
+
      recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.leadId,"lead.lead");
+    var data = await defaultSendmessageData(widget.leadId,"lead.lead",selectedIds);
     setState(() {
       print(data);
 

@@ -85,9 +85,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
     color: Colors.white,
     size: 8,
   );
-  Icon logNoteIcon = Icon(
-    Icons.circle,
-    color: Colors.red,
+  Icon logNoteIcon =  Icon(Icons.circle,
+    color: Colors.white,
     size: 8,
   );
 
@@ -114,6 +113,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
   List? recipient = [];
   List<ValueItem> editRecipientName = [];
   List selctedRecipient = [];
+
+  List sendMailData = [];
+  bool isCheckedMail = false;
 
   dynamic templateName,templateId;
 
@@ -1875,8 +1877,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     fontSize: 13,
                                     color: Color(0xFF212121)),
                               ),
-                              onPressed: () {
+                              onPressed: () async{
+
+                                sendMailData = await sendMailsFollowers(
+                                    widget.quotationId, "sale.order");
+
                                 setState(() {
+
+
+
                                   followersVisibility == true
                                       ? followersVisibility = false
                                       : followersVisibility = true;
@@ -2225,6 +2234,60 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           ),
                         ),
                       ),
+
+                      SizedBox(height: 5,),
+                      Visibility(
+                        visible: followersVisibility,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          //height: 100,
+                          //color: Colors.red,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: sendMailData.length,
+
+                            itemBuilder: (_, i) {
+                              isCheckedMail = sendMailData[i]['selected'];
+                              return Padding(
+                                padding: const EdgeInsets.only(left: 65),
+                                child: Container(
+                                  height: 13,
+                                  child: Row(
+                                    children: [
+                                      Transform.scale(
+                                        scale: 0.6,
+                                        child: Checkbox(
+                                          activeColor: Color(0xFFF9246A),
+                                          value: isCheckedMail,
+                                          onChanged: (bool? value) {
+                                            print(value);
+                                            print("check box issues");
+                                            setState(() {
+                                              isCheckedMail = value!;
+                                              sendMailData[i]['selected']=value;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Text(
+                                        sendMailData[i]['name'],
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 11,
+                                            fontFamily: 'Mulish'),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 5,),
+
+
 
                       Row(
                         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -5238,9 +5301,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   defaultSendmsgvalues() async {
+
+    List<int> selectedIds = sendMailData
+        .where((item) => item["selected"] == true)
+        .map((item) => item["id"] as int)
+        .toList();
+
     recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.quotationId,"sale.order");
+    var data = await defaultSendmessageData(widget.quotationId,"sale.order",selectedIds);
     setState(() {
       print(data);
 

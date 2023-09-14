@@ -114,6 +114,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
       schedulePlanned;
   bool isCheckedEmail = false;
   var scheduleData;
+
+  List sendMailData = [];
+  bool isCheckedMail = false;
+
+
   Icon scheduleIcon = Icon(
     Icons.circle,
     color: Colors.white,
@@ -1651,7 +1656,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         color: Color(0xFF212121)),
                                   ),
 
-                                  onPressed: () {
+                                  onPressed: () async{
+
+                                    sendMailData = await sendMailsFollowers(
+                                        widget.customerId, "res.partner");
+
+
 
                                     setState(() {
                                       followersVisibility == true
@@ -2003,6 +2013,60 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                             ),
                           ),
+
+                          SizedBox(height: 5,),
+                          Visibility(
+                            visible: followersVisibility,
+                            child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              //height: 100,
+                              //color: Colors.red,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: sendMailData.length,
+
+                                itemBuilder: (_, i) {
+                                  isCheckedMail = sendMailData[i]['selected'];
+                                  return Padding(
+                                    padding: const EdgeInsets.only(left: 65),
+                                    child: Container(
+                                      height: 13,
+                                      child: Row(
+                                        children: [
+                                          Transform.scale(
+                                            scale: 0.6,
+                                            child: Checkbox(
+                                              activeColor: Color(0xFFF9246A),
+                                              value: isCheckedMail,
+                                              onChanged: (bool? value) {
+                                                print(value);
+                                                print("check box issues");
+                                                setState(() {
+                                                  isCheckedMail = value!;
+                                                  sendMailData[i]['selected']=value;
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          Text(
+                                            sendMailData[i]['name'],
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 11,
+                                                fontFamily: 'Mulish'),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 5,),
+
+
 
                           Row(
                             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -4927,9 +4991,15 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   defaultSendmsgvalues() async {
+    List<int> selectedIds = sendMailData
+        .where((item) => item["selected"] == true)
+        .map((item) => item["id"] as int)
+        .toList();
+
+
     recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.customerId,"res.partner");
+    var data = await defaultSendmessageData(widget.customerId,"res.partner",selectedIds);
     setState(() {
       print(data);
 

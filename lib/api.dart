@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart' as globals;
 import 'model/calendarmodel.dart';
 
-//String baseUrl = "http://10.10.10.123:8030/";
- String baseUrl = "http://165.22.30.188:8040/";
+String baseUrl = "http://10.10.10.123:8030/";
+ // String baseUrl = "http://165.22.30.188:8040/";
 
 login(String email, password, dbId) async {
   String? authresponce,
@@ -2497,18 +2497,18 @@ defaultScheduleData(int id, String value) async {
 
 //send message
 
-defaultSendmessageData(int id, String value) async {
+defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
   String token = await getUserJwt();
 
   print(id);
-  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message");
+  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message&partner_ids=${selectedIds}");
   print("lead dataaa final");
 
   var data;
   String? authresponce;
 
   Response response = await get(
-    Uri.parse("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message"),
+    Uri.parse("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message&partner_ids${selectedIds}"),
     headers: {
       'Authorization': 'Bearer $token',
     },
@@ -2527,6 +2527,39 @@ defaultSendmessageData(int id, String value) async {
 
   return data;
 }
+
+sendMailsFollowers(int id, String value) async {
+  String token = await getUserJwt();
+
+  print(id);
+  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message");
+  print("lead dataaa final");
+
+  var data;
+  String? authresponce;
+
+  Response response = await get(
+    Uri.parse("${baseUrl}api/email_followers?res_model=${value}&res_id=${id}"),
+    headers: {
+      'Authorization': 'Bearer $token',
+    },
+  ).timeout(const Duration(
+    seconds: 10,
+  ));
+
+  if (response.statusCode != 200) {
+    throw Exception("failed to get data from internet");
+  } else {
+    data = jsonDecode(response.body);
+  }
+
+  print(data);
+  print("datafinalsssss");
+
+  return data;
+}
+
+
 
 
 scheduleActivity(int activity_type_id,user_id,res_id,
