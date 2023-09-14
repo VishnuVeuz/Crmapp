@@ -3460,7 +3460,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                             fontFamily: 'Mulish',
                                                                                             color: Colors
                                                                                                 .grey[700],
-                                                                                          )))
+                                                                                          ))),
+                                                                                  Container(
+                                                                                    height: 20,
+                                                                                      width: 20,
+                                                                                      child: Icon(Icons.message)),
                                                                                 ],
                                                                               ),
                                                                             ),
