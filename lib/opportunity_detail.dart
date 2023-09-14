@@ -36,7 +36,6 @@ class OpportunityDetail extends StatefulWidget {
 }
 
 class _OpportunityDetailState extends State<OpportunityDetail> {
-
   // String imgNew='images/whiterectangle.png',
   //     imgQualified='images/whiterectangle.png',
   //     imgProposition='images/whiterectangle.png',
@@ -49,7 +48,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   dynamic lostreasonName, lostreasonId;
-  String notificationCount="0";
+  String notificationCount = "0";
   String? opportunityname,
       customername,
       email,
@@ -68,29 +67,32 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       attachmentCount = "0",
       followerCount = "0";
 
-  bool followerStatus=false;
+  bool followerStatus = false;
 
-  int meeting_count=0,quotation_count = 0,similar_opportunity=0;
+  int meeting_count = 0, quotation_count = 0, similar_opportunity = 0;
 
-  bool? opportunityType,opportunityTypeWon;
+  bool? opportunityType, opportunityTypeWon;
   int? opportunityStageId;
-  List opportunityStageTypes=[];
+  List opportunityStageTypes = [];
   int? stageColorIndex;
   late int opportunitylostId;
   bool _isInitialized = false;
   bool isLoading = true;
   String? token;
   List? recipient = [];
-  List? tags=[];
+  List? tags = [];
   List orderLineProducts = [];
   List selctedRecipient = [];
   List<ValueItem> editRecipientName = [];
 
   Map<String, dynamic>? orderLineProductsData;
 
-
-  dynamic activityTypeName, activityTypeId, assignedToname, assignedToid,
-      activityTypeNameCategory,btntext="Schedule";
+  dynamic activityTypeName,
+      activityTypeId,
+      assignedToname,
+      assignedToid,
+      activityTypeNameCategory,
+      btntext = "Schedule";
   TextEditingController summaryController = TextEditingController();
   TextEditingController commandsController = TextEditingController();
   TextEditingController DuedateTime = TextEditingController();
@@ -99,7 +101,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   TextEditingController subjectController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
 
-
   TextEditingController nameController = TextEditingController();
   TextEditingController phonenumberController = TextEditingController();
   TextEditingController subject2Controller = TextEditingController();
@@ -107,30 +108,45 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   bool smsVisible = true;
   bool isCheckedEmail = false;
   bool isCheckedFollowers = false;
+  bool isCheckedMail = false;
 
- dynamic templateName,templateId;
+  dynamic templateName, templateId;
 
-
-  bool scheduleBtn=true,opencalendarBtn= false,meetingColum=true;
+  bool scheduleBtn = true, opencalendarBtn = false, meetingColum = true;
 
   DateTime? _selectedDate;
   var DuedateTimeFinal;
 
-  bool scheduleView=false,scheduleActivityVisibility = true,
-      scheduleVisibiltyOverdue=false,scheduleVisibiltyToday=false,
-      scheduleVisibiltyPlanned=false,  attachmentVisibility = false,
-      smartbuttonVisible = true,  starImage = false,lognoteoptions = true,
+  bool scheduleView = false,
+      scheduleActivityVisibility = true,
+      scheduleVisibiltyOverdue = false,
+      scheduleVisibiltyToday = false,
+      scheduleVisibiltyPlanned = false,
+      attachmentVisibility = false,
+      smartbuttonVisible = true,
+      starImage = false,
+      lognoteoptions = true,
       followersVisibility = false;
 
+  List sendMailData = [];
 
-  String? scheduleDays,scheduleactivityType,scheduleSummary,scheduleUser,
-      scheduleCreateDate,scheduleCreateUser,scheduleDueon,scheduleNotes,
-      scheduleBtn1,scheduleBtn2,scheduleBtn3;
+  String? scheduleDays,
+      scheduleactivityType,
+      scheduleSummary,
+      scheduleUser,
+      scheduleCreateDate,
+      scheduleCreateUser,
+      scheduleDueon,
+      scheduleNotes,
+      scheduleBtn1,
+      scheduleBtn2,
+      scheduleBtn3;
 
-  int? scheduleLength=0,scheduleOverdue,scheduleToday,schedulePlanned;
+  int? scheduleLength = 0, scheduleOverdue, scheduleToday, schedulePlanned;
   var scheduleData;
 
-  Icon scheduleIcon =  Icon(Icons.circle,
+  Icon scheduleIcon = Icon(
+    Icons.circle,
     color: Colors.white,
     size: 8,
   );
@@ -148,16 +164,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   List<dynamic> selectedImagesDisplay = [];
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
-  String personImg="";
+  String personImg = "";
   List base64string1 = [];
   List<Map<String, dynamic>> myData1 = [];
-  String base64string="";
+  String base64string = "";
   int lognoteDatalength = 0;
 
   Map<String, dynamic>? lognoteData;
   List logDataHeader = [];
-  List logDataTitle=[];
-  List ddd2=[];
+  List logDataTitle = [];
+  List ddd2 = [];
   @override
   void initState() {
     // TODO: implement initState
@@ -166,6 +182,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print("leadId");
     getOpportunityDetails();
   }
+
   String? tokens;
   Widget build(BuildContext context) {
     if (!_isInitialized) {
@@ -177,8 +194,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       );
     } else {
       return Scaffold(
-
-
         drawer: MainDrawer(),
         appBar: AppBar(
           backgroundColor: Theme.of(context).primaryColor,
@@ -186,10 +201,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           title: Row(
             children: [
               Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width/4,
+                width: MediaQuery.of(context).size.width / 4,
                 child: Text(
                   opportunityname!,
                   style: TextStyle(
@@ -251,36 +263,35 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   //   ),
                   // ),
                   Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ActivitiesNotification()));
-                            },
+                    child: Stack(alignment: Alignment.center, children: [
+                      IconButton(
+                        icon: SvgPicture.asset("images/clock2.svg"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ActivitiesNotification()));
+                        },
+                      ),
+                      Positioned(
+                        bottom: 25,
+                        right: 28,
+                        child: Container(
+                          width: 15.0,
+                          height: 15.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFFA256B),
                           ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 15.0,
-                              height: 15.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
+                          child: Center(
+                              child: Text(
+                            notificationCount,
+                            style: TextStyle(color: Colors.white, fontSize: 8),
+                          )),
+                        ),
+                      ),
+                    ]),
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.only(right: 0),
@@ -310,7 +321,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 context,
                 MaterialPageRoute(
                     builder: (context) =>
-                        OpportunityMainPage(null,"","","","")));
+                        OpportunityMainPage(null, "", "", "", "")));
             return true;
           },
           child: Container(
@@ -321,110 +332,106 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top:10),
+                    padding: const EdgeInsets.only(top: 10),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
                                             OpportunityCreation(0)));
-
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/create.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/create.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
                             Padding(
-                              padding: const EdgeInsets.only(top:5),
-                              child: Text("Create", style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Create",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => OpportunityCreation(
-                                            widget.opportunityId)));
-
+                                        builder: (context) =>
+                                            OpportunityCreation(
+                                                widget.opportunityId)));
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/edit.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/edit.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
                             Padding(
-                              padding: const EdgeInsets.only(top:5),                              child: Text("Edit", style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Edit",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
                           children: [
                             InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          OpportunityQuotation(widget.opportunityId)
-                                  ),
+                                          OpportunityQuotation(
+                                              widget.opportunityId)),
                                 );
-
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/convert.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/convert.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
                             Padding(
-                              padding: const EdgeInsets.only(top:5),
-                              child: Text("Convert", style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Convert",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
                           children: [
-
                             InkWell(
-                              onTap: ()async{
+                              onTap: () async {
                                 print(widget.opportunityId);
-                                var data =
-                                    await deleteOpportunityData(
-                                    widget
-                                        .opportunityId);
+                                var data = await deleteOpportunityData(
+                                    widget.opportunityId);
 
-                                if (data['message'] ==
-                                    "Success") {
+                                if (data['message'] == "Success") {
                                   print(data);
 
                                   print("responcedata");
@@ -432,66 +439,65 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            OpportunityMainPage(null,"","","","")
-                                    ),
+                                            OpportunityMainPage(
+                                                null, "", "", "", "")),
                                   );
                                 }
-
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/delete.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/delete.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
                             Padding(
-                              padding: const EdgeInsets.only(top:5),                              child: Text("Delete", style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Delete",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
                           children: [
                             InkWell(
-                              onTap: ()async{
+                              onTap: () async {
                                 showModalBottomSheet<void>(
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
                                         height: 70,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(top: 10,bottom: 10),
+                                          padding: const EdgeInsets.only(
+                                              top: 10, bottom: 10),
                                           child: Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                                MainAxisAlignment.spaceEvenly,
                                             children: [
-
                                               Column(
                                                 children: [
-
                                                   InkWell(
-                                                    onTap: ()async{
+                                                    onTap: () async {
                                                       var data =
                                                           await getOpportunityData(
-                                                          widget
-                                                              .opportunityId,
-                                                          "duplicate");
+                                                              widget
+                                                                  .opportunityId,
+                                                              "duplicate");
                                                       String resMessageText;
 
                                                       if (data['message']
-                                                          .toString() ==
+                                                              .toString() ==
                                                           "success") {
                                                         resMessageText =
                                                             data['data']['id']
                                                                 .toString();
                                                         int resmessagevalue =
-                                                        int.parse(
-                                                            resMessageText);
+                                                            int.parse(
+                                                                resMessageText);
                                                         if (resmessagevalue !=
                                                             0) {
                                                           Navigator.push(
@@ -503,314 +509,301 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           );
                                                         }
                                                       }
-
                                                     },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/create.svg",width: 28,height: 28,),
+                                                    child: SvgPicture.asset(
+                                                      "images/create.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
                                                   ),
-
-
-
                                                   Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Duplicate", style: TextStyle(
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Color(0xFF212121),
-                                                    )),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
+                                                    child: Text("Duplicate",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color:
+                                                              Color(0xFF212121),
+                                                        )),
                                                   )
                                                 ],
                                               ),
                                               opportunityType == true
                                                   ? Column(
-                                                children: [
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () {
+                                                            showDialog<String>(
+                                                                context:
+                                                                    context,
+                                                                builder: (BuildContext
+                                                                        context) =>
+                                                                    AlertDialog(
+                                                                      title: const Text(
+                                                                          'Lost Reason',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            fontSize:
+                                                                                16,
+                                                                            fontWeight:
+                                                                                FontWeight.w600,
+                                                                            color:
+                                                                                Colors.black,
+                                                                            fontFamily:
+                                                                                'Mulish',
+                                                                          )),
+                                                                      content:
+                                                                          Container(
+                                                                        width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width,
+                                                                        height: MediaQuery.of(context).size.height /
+                                                                            2.8,
+                                                                        //color: Colors.green,
 
-                                                  InkWell(
-                                                    onTap: (){
-                                                      showDialog<String>(
-                                                        context: context,
-                                                        builder: (BuildContext
-                                                        context) =>
-                                                            AlertDialog(
-                                                              title: const Text(
-                                                                  'Lost Reason',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',)),
-                                                              content: Container(
-                                                                width:
-                                                                MediaQuery.of(
-                                                                    context)
-                                                                    .size
-                                                                    .width,
-                                                                height: MediaQuery.of(
-                                                                    context)
-                                                                    .size
-                                                                    .height /
-                                                                    2.8,
-                                                                //color: Colors.green,
-
-                                                                child:
-                                                                SearchChoices
-                                                                    .single(
-                                                                  value:
-                                                                  lostreasonName,
-                                                                  hint: Text(
-                                                                    "Lost Reason",
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                        12,
-                                                                        color: Colors
-                                                                            .black,fontFamily: 'Mulish'),
-                                                                  ),
-                                                                  searchHint:
-                                                                  null,
-                                                                  autofocus:
-                                                                  false,
-                                                                  onChanged:
-                                                                      (value) {
-                                                                    setState(() {
-                                                                      lostreasonName =
-                                                                          value;
-                                                                      lostreasonId =
-                                                                      value[
-                                                                      "id"];
-                                                                    });
-                                                                  },
-                                                                  dialogBox:
-                                                                  false,
-                                                                  isExpanded:
-                                                                  true,
-                                                                  menuConstraints:
-                                                                  BoxConstraints.tight(
-                                                                      const Size.fromHeight(
-                                                                          200)),
-                                                                  itemsPerPage:
-                                                                  10,
-                                                                  currentPage:
-                                                                  currentPage,
-                                                                  selectedValueWidgetFn:
-                                                                      (item) {
-                                                                    return (Center(
-                                                                        child:
-                                                                        Container(
-                                                                          width: 300,
-                                                                          child: Text(
-                                                                            item[
-                                                                            "name"],
+                                                                        child: SearchChoices
+                                                                            .single(
+                                                                          value:
+                                                                              lostreasonName,
+                                                                          hint:
+                                                                              Text(
+                                                                            "Lost Reason",
                                                                             style: TextStyle(
-                                                                                fontSize:
-                                                                                12,
-                                                                                color:
-                                                                                Colors.black,fontFamily: 'Mulish'),
+                                                                                fontSize: 12,
+                                                                                color: Colors.black,
+                                                                                fontFamily: 'Mulish'),
                                                                           ),
-                                                                        )));
-                                                                  },
-                                                                  futureSearchFn: (String? keyword,
-                                                                      String?
-                                                                      orderBy,
-                                                                      bool?
-                                                                      orderAsc,
-                                                                      List<Tuple2<String, String>>?
-                                                                      filters,
-                                                                      int?
-                                                                      pageNb) async {
-                                                                    token =
-                                                                    await getUserJwt();
-                                                                    Response
-                                                                    response =
-                                                                    await get(
-                                                                      Uri.parse(
-                                                                          "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lost.reason"),
-                                                                      headers: {
-                                                                        'Authorization':
-                                                                        'Bearer $token',
-                                                                      },
-                                                                    ).timeout(
-                                                                        const Duration(
-                                                                          seconds: 10,
-                                                                        ));
+                                                                          searchHint:
+                                                                              null,
+                                                                          autofocus:
+                                                                              false,
+                                                                          onChanged:
+                                                                              (value) {
+                                                                            setState(() {
+                                                                              lostreasonName = value;
+                                                                              lostreasonId = value["id"];
+                                                                            });
+                                                                          },
+                                                                          dialogBox:
+                                                                              false,
+                                                                          isExpanded:
+                                                                              true,
+                                                                          menuConstraints:
+                                                                              BoxConstraints.tight(const Size.fromHeight(200)),
+                                                                          itemsPerPage:
+                                                                              10,
+                                                                          currentPage:
+                                                                              currentPage,
+                                                                          selectedValueWidgetFn:
+                                                                              (item) {
+                                                                            return (Center(
+                                                                                child: Container(
+                                                                              width: 300,
+                                                                              child: Text(
+                                                                                item["name"],
+                                                                                style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Mulish'),
+                                                                              ),
+                                                                            )));
+                                                                          },
+                                                                          futureSearchFn: (String? keyword,
+                                                                              String? orderBy,
+                                                                              bool? orderAsc,
+                                                                              List<Tuple2<String, String>>? filters,
+                                                                              int? pageNb) async {
+                                                                            token =
+                                                                                await getUserJwt();
+                                                                            Response
+                                                                                response =
+                                                                                await get(
+                                                                              Uri.parse("${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lost.reason"),
+                                                                              headers: {
+                                                                                'Authorization': 'Bearer $token',
+                                                                              },
+                                                                            ).timeout(const Duration(
+                                                                              seconds: 10,
+                                                                            ));
 
-                                                                    if (response
-                                                                        .statusCode !=
-                                                                        200) {
-                                                                      throw Exception(
-                                                                          "failed to get data from internet");
-                                                                    }
+                                                                            if (response.statusCode !=
+                                                                                200) {
+                                                                              throw Exception("failed to get data from internet");
+                                                                            }
 
-                                                                    dynamic data =
-                                                                    jsonDecode(
-                                                                        response
-                                                                            .body);
+                                                                            dynamic
+                                                                                data =
+                                                                                jsonDecode(response.body);
 
-                                                                    int nbResults =
-                                                                    data[
-                                                                    "length"];
+                                                                            int nbResults =
+                                                                                data["length"];
 
-                                                                    List<
-                                                                        DropdownMenuItem> results = (data[
-                                                                    "record"]
-                                                                    as List<
-                                                                        dynamic>)
-                                                                        .map<DropdownMenuItem>(
-                                                                            (item) =>
-                                                                            DropdownMenuItem(
-                                                                              value: item,
-                                                                              child: SingleChildScrollView(
-                                                                                child: Card(
-                                                                                  child: Padding(
-                                                                                    padding: const EdgeInsets.all(0),
-                                                                                    child: Text("${item["name"]}"),
+                                                                            List<DropdownMenuItem> results = (data["record"] as List<dynamic>)
+                                                                                .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                                                                      value: item,
+                                                                                      child: SingleChildScrollView(
+                                                                                        child: Card(
+                                                                                          child: Padding(
+                                                                                            padding: const EdgeInsets.all(0),
+                                                                                            child: Text("${item["name"]}"),
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ))
+                                                                                .toList();
+                                                                            return (Tuple2<List<DropdownMenuItem>, int>(results,
+                                                                                nbResults));
+                                                                          },
+                                                                        ),
+                                                                      ),
+                                                                      actions: <
+                                                                          Widget>[
+                                                                        Padding(
+                                                                          padding: const EdgeInsets.only(
+                                                                              left: 10,
+                                                                              right: 5),
+                                                                          child:
+                                                                              Row(
+                                                                            children: [
+                                                                              Container(
+                                                                                width: 130,
+                                                                                height: 40,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                  color: Color(0xFFF9246A),
+                                                                                ),
+                                                                                child: TextButton(
+                                                                                    child: const Text(
+                                                                                      'Submit',
+                                                                                      style: TextStyle(fontFamily: 'Mulish', color: Colors.white),
+                                                                                    ),
+                                                                                    onPressed: () async {
+                                                                                      String resmessage = await opportunityLost("lost");
+                                                                                      int resmessagevalue = int.parse(resmessage);
+                                                                                      print(resmessage);
+                                                                                      print("lostid");
+                                                                                      if (resmessagevalue != 0) {
+                                                                                        Navigator.push(
+                                                                                          context,
+                                                                                          MaterialPageRoute(builder: (context) => OpportunityDetail(resmessagevalue)),
+                                                                                        );
+                                                                                      }
+                                                                                      ;
+                                                                                    }),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                width: 5,
+                                                                              ),
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.only(right: 10),
+                                                                                child: Container(
+                                                                                  width: 130,
+                                                                                  height: 40,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                    color: Colors.grey[100],
+                                                                                  ),
+                                                                                  child: TextButton(
+                                                                                    onPressed: () => Navigator.pop(context, 'Cancel'),
+                                                                                    child: const Text(
+                                                                                      'Cancel',
+                                                                                      style: TextStyle(fontFamily: 'Mulish', color: Colors.black),
+                                                                                    ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ))
-                                                                        .toList();
-                                                                    return (Tuple2<
-                                                                        List<
-                                                                            DropdownMenuItem>,
-                                                                        int>(
-                                                                        results,
-                                                                        nbResults));
-                                                                  },
-                                                                ),
-                                                              ),
-                                                              actions: <Widget>[
-                                                                Padding(
-                                                                  padding: const EdgeInsets.only(left: 10,right: 5),
-                                                                  child: Row(
-                                                                    children: [
-                                                                      Container(
-                                                                        width:130,
-                                                                        height: 40,
-
-                                                                        decoration: BoxDecoration(borderRadius:BorderRadius.all(Radius.circular(10)), color:Color(0xFFF9246A), ),
-                                                                        child: TextButton(
-                                                                            child: const Text(
-                                                                                'Submit',style: TextStyle(fontFamily: 'Mulish',color: Colors.white),),
-                                                                            onPressed:
-                                                                                () async {
-                                                                              String
-                                                                              resmessage =
-                                                                              await opportunityLost(
-                                                                                  "lost");
-                                                                              int resmessagevalue =
-                                                                              int.parse(
-                                                                                  resmessage);
-                                                                              print(
-                                                                                  resmessage);
-                                                                              print(
-                                                                                  "lostid");
-                                                                              if (resmessagevalue !=
-                                                                                  0) {
-                                                                                Navigator
-                                                                                    .push(
-                                                                                  context,
-                                                                                  MaterialPageRoute(
-                                                                                      builder: (context) =>
-                                                                                          OpportunityDetail(resmessagevalue)),
-                                                                                );
-                                                                              }
-                                                                              ;
-                                                                            }),
-                                                                      ),
-                                                                      SizedBox(width: 5,),
-                                                                      Padding(
-                                                                        padding: const EdgeInsets.only(right: 10),
-                                                                        child: Container(
-                                                                          width:130,
-                                                                          height: 40,
-                                                                          decoration: BoxDecoration(borderRadius:BorderRadius.all(Radius.circular(10)), color:Colors.grey[100], ),
-
-                                                                          child: TextButton(
-                                                                            onPressed: () =>
-                                                                                Navigator.pop(
-                                                                                    context,
-                                                                                    'Cancel'),
-                                                                            child: const Text(
-                                                                              'Cancel',style: TextStyle(fontFamily: 'Mulish',color: Colors.black),),
+                                                                            ],
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-
-                                                              ],
-                                                            ));
-
-
-                                                    },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/lost.svg",width: 28,height: 28,),
-                                                  ),
-
-
-
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Lost", style: TextStyle(
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Color(0xFF212121),
-                                                    )),
-                                                  )
-                                                ],
-                                              )
+                                                                      ],
+                                                                    ));
+                                                          },
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "images/lost.svg",
+                                                            width: 28,
+                                                            height: 28,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(top: 5),
+                                                          child: Text("Lost",
+                                                              style: TextStyle(
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 12,
+                                                                color: Color(
+                                                                    0xFF212121),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    )
                                                   : Column(
-                                                children: [
-                                                  InkWell(
-                                                    onTap: ()async{
-                                                      String resmessage =
-                                                          await opportunityWonRestore(
-                                                          "restore");
-                                                      int resmessagevalue =
-                                                      int.parse(resmessage);
-                                                      if (resmessagevalue != 0) {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  OpportunityDetail(
-                                                                      resmessagevalue)),
-                                                        );
-                                                      }
-
-                                                    },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/more.svg",width: 28,height: 28,),
-                                                  ),
-
-
-
-
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Restore", style: TextStyle(
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Color(0xFF212121),
-                                                    )),
-                                                  )
-                                                ],
-                                              ),
-
-
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () async {
+                                                            String resmessage =
+                                                                await opportunityWonRestore(
+                                                                    "restore");
+                                                            int resmessagevalue =
+                                                                int.parse(
+                                                                    resmessage);
+                                                            if (resmessagevalue !=
+                                                                0) {
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        OpportunityDetail(
+                                                                            resmessagevalue)),
+                                                              );
+                                                            }
+                                                          },
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "images/more.svg",
+                                                            width: 28,
+                                                            height: 28,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(top: 5),
+                                                          child: Text("Restore",
+                                                              style: TextStyle(
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 12,
+                                                                color: Color(
+                                                                    0xFF212121),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    ),
                                               Visibility(
                                                 visible: opportunityType!,
                                                 child: Column(
                                                   children: [
                                                     InkWell(
-                                                      onTap: ()async{
+                                                      onTap: () async {
                                                         String resmessage =
-                                                        await opportunityWonRestore(
-                                                            "won");
+                                                            await opportunityWonRestore(
+                                                                "won");
                                                         int resmessagevalue =
-                                                        int.parse(resmessage);
-                                                        if (resmessagevalue != 0) {
+                                                            int.parse(
+                                                                resmessage);
+                                                        if (resmessagevalue !=
+                                                            0) {
                                                           Navigator.push(
                                                             context,
                                                             MaterialPageRoute(
@@ -819,147 +812,180 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         resmessagevalue)),
                                                           );
                                                         }
-
-
                                                       },
-                                                      child: SvgPicture
-                                                          .asset(
-                                                        "images/won.svg",width: 28,height: 28,),
+                                                      child: SvgPicture.asset(
+                                                        "images/won.svg",
+                                                        width: 28,
+                                                        height: 28,
+                                                      ),
                                                     ),
-
-
-
                                                     Padding(
-                                                      padding: const EdgeInsets.only(top: 5),
-                                                      child: Text("Won", style: TextStyle(
-                                                        fontFamily: 'Mulish',
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Color(0xFF212121),
-                                                      )),
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 5),
+                                                      child: Text("Won",
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            fontSize: 12,
+                                                            color: Color(
+                                                                0xFF212121),
+                                                          )),
                                                     )
                                                   ],
                                                 ),
                                               ),
-
-
-                                              opportunityType == true ?
+                                              opportunityType == true
+                                                  ? Column(
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () async {
+                                                            String resmessage =
+                                                                await opportunityarchive(
+                                                                    false);
+                                                            int resmessagevalue =
+                                                                int.parse(
+                                                                    resmessage);
+                                                            if (resmessagevalue !=
+                                                                0) {
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        OpportunityDetail(
+                                                                            resmessagevalue)),
+                                                              );
+                                                            }
+                                                          },
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "images/archive.svg",
+                                                            width: 28,
+                                                            height: 28,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(top: 5),
+                                                          child: Text("Archive",
+                                                              style: TextStyle(
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 12,
+                                                                color: Color(
+                                                                    0xFF212121),
+                                                              )),
+                                                        )
+                                                      ],
+                                                    )
+                                                  : Column(
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: () async {
+                                                            String resmessage =
+                                                                await opportunityarchive(
+                                                                    true);
+                                                            int resmessagevalue =
+                                                                int.parse(
+                                                                    resmessage);
+                                                            if (resmessagevalue !=
+                                                                0) {
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        OpportunityDetail(
+                                                                            resmessagevalue)),
+                                                              );
+                                                            }
+                                                          },
+                                                          child:
+                                                              SvgPicture.asset(
+                                                            "images/archive.svg",
+                                                            width: 28,
+                                                            height: 28,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(top: 5),
+                                                          child: Text(
+                                                            "Unarchive",
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              fontSize: 12,
+                                                              color: Color(
+                                                                  0xFF212121),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                               Column(
                                                 children: [
-
                                                   InkWell(
-                                                    onTap: ()async{
-                                                      String resmessage =
-                                                      await opportunityarchive(
-                                                          false);
-                                                      int resmessagevalue =
-                                                      int.parse(resmessage);
-                                                      if (resmessagevalue != 0) {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  OpportunityDetail(
-                                                                      resmessagevalue)),
-                                                        );
-                                                      }
+                                                    onTap: () async {
+                                                      var smsResponce =
+                                                          await smsDataGet(
+                                                              widget
+                                                                  .opportunityId,
+                                                              "crm.lead");
 
-                                                    },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
-                                                  ),
-
-
-
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Archive", style: TextStyle(
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w400,
-                                                      fontSize: 12,
-                                                      color: Color(0xFF212121),
-                                                    )),
-                                                  )
-                                                ],
-                                              )
-                                                  :Column(
-                                                children: [
-
-                                                  InkWell(
-                                                    onTap: ()async{
-                                                      String resmessage =
-                                                      await opportunityarchive(
-                                                          true);
-                                                      int resmessagevalue =
-                                                      int.parse(resmessage);
-                                                      if (resmessagevalue != 0) {
-                                                        Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  OpportunityDetail(
-                                                                      resmessagevalue)),
-                                                        );
-                                                      }
-
-                                                    },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
-                                                  ),
-
-
-
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Unarchive", style: TextStyle(
-
-                                                     fontFamily: 'Mulish',
-                                                       fontWeight: FontWeight.w400,
-                                                       fontSize: 12,
-                                                       color: Color(0xFF212121),
-                                                          ),),
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-
-                                                  InkWell(
-                                                    onTap: ()async{
-                                                      var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
-
-
-                                                      var name , phone, smsId;
+                                                      var name, phone, smsId;
                                                       bool smsCondition;
-                                                      name = smsResponce['recipient_single_description'];
-                                                      phone = smsResponce['recipient_single_number_itf'];
-                                                      smsId =smsResponce['id'];
-                                                      smsCondition = smsResponce['invalid_tag'];
-
+                                                      name = smsResponce[
+                                                          'recipient_single_description'];
+                                                      phone = smsResponce[
+                                                          'recipient_single_number_itf'];
+                                                      smsId = smsResponce['id'];
+                                                      smsCondition =
+                                                          smsResponce[
+                                                              'invalid_tag'];
 
                                                       showDialog(
                                                         context: context,
-                                                        builder: (BuildContext context) =>
-                                                            _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition,"" ),
-                                                      ).then((value) => setState(() {}));
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            _buildSendsmsPopupDialog(
+                                                                context,
+                                                                name,
+                                                                phone,
+                                                                smsId,
+                                                                smsCondition,
+                                                                ""),
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     },
-                                                    child: SvgPicture
-                                                        .asset(
-                                                      "images/delete.svg",width: 28,height: 28,),
+                                                    child: SvgPicture.asset(
+                                                      "images/delete.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
                                                   ),
-
-
-
                                                   Padding(
-                                                    padding: const EdgeInsets.only(top: 5),
-                                                    child: Text("Send SMS", style: TextStyle(
-                                      fontFamily: 'Mulish',
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Color(0xFF212121),
-                                      )),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 5),
+                                                    child: Text("Send SMS",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color:
+                                                              Color(0xFF212121),
+                                                        )),
                                                   )
                                                 ],
                                               ),
@@ -968,24 +994,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         ),
                                       );
                                     });
-
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/more.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/more.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
-
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("More", style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              child: Text("More",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         )
@@ -1010,60 +1034,53 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: IconButton(
                                       icon: Image.asset("images/calendar.png"),
                                       onPressed: () {
-                                        if(  meeting_count>=0 ){
-                                          Navigator
-                                              .push(
+                                        if (meeting_count >= 0) {
+                                          Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (
-                                                      context) =>
-                                                      Calender(null,"",DateTime.now(),null,[],"")));
-
-
+                                                  builder: (context) =>
+                                                      Calender(
+                                                          null,
+                                                          "",
+                                                          DateTime.now(),
+                                                          null,
+                                                          [],
+                                                          "")));
                                         }
-
-
-
-
                                       },
                                     ),
                                   ),
                                   Center(
                                       child: Text(
-                                        "Meeting",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 10,
-                                            color: Color(0xFF212121)),
-                                      )),
+                                    "Meeting",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 10,
+                                        color: Color(0xFF212121)),
+                                  )),
                                   Center(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 2),
-                                        child: Text(
-                                          meeting_count.toString(),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 10,
-                                              color: Color(0xFFED2449)),
-                                        ),
-                                      )),
+                                    padding: const EdgeInsets.only(left: 2),
+                                    child: Text(
+                                      meeting_count.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10,
+                                          color: Color(0xFFED2449)),
+                                    ),
+                                  )),
                                 ],
                               ),
                             ),
-                            onTap: (){
-                              if(  meeting_count>=0 ){
-                                Navigator
-                                    .push(
+                            onTap: () {
+                              if (meeting_count >= 0) {
+                                Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (
-                                            context) =>
-                                            Calender(null,"",DateTime.now(),null,[],"")));
-
-
+                                        builder: (context) => Calender(null, "",
+                                            DateTime.now(), null, [], "")));
                               }
-
                             },
                           ),
                           InkWell(
@@ -1072,102 +1089,85 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 children: [
                                   IconButton(
                                     icon: Image.asset("images/edit.png"),
-                                    onPressed: () async{
-                                      if(quotation_count==1){
-                                        int datas =  await singleQuatationOpprtunity(widget.opportunityId);
+                                    onPressed: () async {
+                                      if (quotation_count == 1) {
+                                        int datas =
+                                            await singleQuatationOpprtunity(
+                                                widget.opportunityId);
 
                                         print(datas);
                                         print("opportunitydinallalq");
 
-
-                                        if(datas!=0){
-
+                                        if (datas != 0) {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    QuotationDetail(
-                                                        datas )),
+                                                    QuotationDetail(datas)),
                                           );
                                         }
-
-
                                       }
 
-                                      if(quotation_count>1){
-
-
+                                      if (quotation_count > 1) {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   QuotationScrollingopportunity(
-                                                      widget.opportunityId )),
+                                                      widget.opportunityId)),
                                         );
-
-
                                       }
-
-
                                     },
                                   ),
                                   Center(
                                       child: Text(
-                                        "Quotations",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 10,
-                                            color: Color(0xFF212121)),
-                                      )),
+                                    "Quotations",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 10,
+                                        color: Color(0xFF212121)),
+                                  )),
                                   Center(
                                       child: Padding(
-                                        padding: const EdgeInsets.only(left: 2),
-                                        child: Text(
-                                         quotation_count.toString(),
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 10,
-                                              color: Color(0xFFED2449)),
-                                        ),
-                                      )),
+                                    padding: const EdgeInsets.only(left: 2),
+                                    child: Text(
+                                      quotation_count.toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10,
+                                          color: Color(0xFFED2449)),
+                                    ),
+                                  )),
                                 ],
                               ),
                             ),
-                            onTap: ()async{
-                              if(quotation_count==1){
-                                int datas =  await singleQuatationOpprtunity(widget.opportunityId);
+                            onTap: () async {
+                              if (quotation_count == 1) {
+                                int datas = await singleQuatationOpprtunity(
+                                    widget.opportunityId);
 
                                 print(datas);
                                 print("opportunitydinallalq");
 
-
-                                if(datas!=0){
-
+                                if (datas != 0) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            QuotationDetail(
-                                                datas )),
+                                            QuotationDetail(datas)),
                                   );
                                 }
-
-
                               }
 
-                              if(quotation_count>1){
-
-
+                              if (quotation_count > 1) {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           QuotationScrollingopportunity(
-                                              widget.opportunityId )),
+                                              widget.opportunityId)),
                                 );
-
-
                               }
                             },
                           ),
@@ -1180,51 +1180,58 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     IconButton(
                                       icon: Image.asset("images/star4.png"),
                                       onPressed: () {
-                                        if(similar_opportunity>0){
+                                        if (similar_opportunity > 0) {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      OpportunityMainPage(widget.opportunityId,"similar","","","")));
+                                                      OpportunityMainPage(
+                                                          widget.opportunityId,
+                                                          "similar",
+                                                          "",
+                                                          "",
+                                                          "")));
                                         }
-
-
                                       },
                                     ),
                                     Center(
                                         child: Text(
-                                          "Similar Opportunity",
-
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 10,
-                                              color: Color(0xFF212121)),
-                                        )),
+                                      "Similar Opportunity",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 10,
+                                          color: Color(0xFF212121)),
+                                    )),
                                     Center(
                                         child: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: 2,
-                                          ),
-                                          child: Text(
-                                            similar_opportunity.toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 10,
-                                                color: Color(0xFFED2449)),
-                                          ),
-                                        )),
+                                      padding: const EdgeInsets.only(
+                                        left: 2,
+                                      ),
+                                      child: Text(
+                                        similar_opportunity.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 10,
+                                            color: Color(0xFFED2449)),
+                                      ),
+                                    )),
                                   ],
                                 ),
                               ),
                             ),
-                            onTap: (){
-                              if(similar_opportunity>0){
+                            onTap: () {
+                              if (similar_opportunity > 0) {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            OpportunityMainPage(widget.opportunityId,"similar","","","")));
+                                            OpportunityMainPage(
+                                                widget.opportunityId,
+                                                "similar",
+                                                "",
+                                                "",
+                                                "")));
                               }
                             },
                           )
@@ -1236,7 +1243,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   Visibility(
                     visible: smartbuttonVisible,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      padding: const EdgeInsets.only(left: 20, right: 20),
                       child: Container(
                         height: 50,
                         //color: Colors.red,
@@ -1246,7 +1253,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           scrollDirection: Axis.horizontal,
                           itemCount: opportunityStageTypes.length ?? 0,
                           itemBuilder: (context, index) {
-                            return   Padding(
+                            return Padding(
                               padding: const EdgeInsets.only(left: 5, top: 10),
                               child: Row(
                                 children: [
@@ -1254,39 +1261,54 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Container(
                                       child: Stack(
                                         children: [
-                                          stageColorIndex == index ?
-                                          Image.asset(
-                                              'images/blueractangle.png'):Image.asset(
-                                              'images/whiterectangle.png'),
+                                          stageColorIndex == index
+                                              ? Image.asset(
+                                                  'images/blueractangle.png')
+                                              : Image.asset(
+                                                  'images/whiterectangle.png'),
                                           Positioned.fill(
-
                                               child: Align(
                                                   alignment: Alignment.center,
-                                                  child:
-                                                  stageColorIndex == index ?
-                                                  Text(opportunityStageTypes[index]['name'], style: TextStyle(
-                                                      color: Colors.white, fontSize: 12, fontFamily: 'Mulish',),):
-                                                  Text(opportunityStageTypes[index]['name'], style: TextStyle(
-                                                      color: Colors.black, fontSize: 12, fontFamily: 'Mulish',),) ))
+                                                  child: stageColorIndex ==
+                                                          index
+                                                      ? Text(
+                                                          opportunityStageTypes[
+                                                              index]['name'],
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 12,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                          ),
+                                                        )
+                                                      : Text(
+                                                          opportunityStageTypes[
+                                                              index]['name'],
+                                                          style: TextStyle(
+                                                            color: Colors.black,
+                                                            fontSize: 12,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                          ),
+                                                        )))
                                         ],
                                       ),
                                     ),
                                     onTap: () async {
-
-                                      print(opportunityStageTypes[index]['name']);
+                                      print(
+                                          opportunityStageTypes[index]['name']);
                                       print(opportunityStageTypes[index]['id']);
                                       print(" print(opportunityStageTypes");
                                       String resmessage =
-                                      await StageChangeOpportunity(
-                                          opportunityStageTypes[index]['id']);
+                                          await StageChangeOpportunity(
+                                              opportunityStageTypes[index]
+                                                  ['id']);
                                       int resmessagevalue =
-                                      int.parse(resmessage);
+                                          int.parse(resmessage);
                                       if (resmessagevalue != 0) {
-
                                         setState(() {
                                           stageColorIndex = index;
                                         });
-
 
                                         // Navigator.push(
                                         //   context,
@@ -1296,10 +1318,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         //               resmessagevalue)),
                                         // );
                                       }
-
                                     },
                                   ),
-
                                 ],
                               ),
                             );
@@ -1309,14 +1329,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
 
-
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding:
-                        const EdgeInsets.only(top: 20, left: 25, right: 25),
+                            const EdgeInsets.only(top: 20, left: 25, right: 25),
                         child: Text(opportunityname!,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
@@ -1326,67 +1344,74 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             )),
                       ),
                       opportunityType == true
-                          ?
-
-                      opportunityTypeWon == true?
-
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 35),
-                        child: Container(
-                          width: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                              child: Text(
-                                "Won",
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.white, fontFamily: 'Mulish',),
-                              )),
-                        ),
-                      )
-
+                          ? opportunityTypeWon == true
+                              ? Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 25, right: 35),
+                                  child: Container(
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                      "Won",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish',
+                                      ),
+                                    )),
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20, left: 25, right: 25),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Center(
+                                        child: Text(
+                                      "",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish',
+                                      ),
+                                    )),
+                                  ),
+                                )
                           : Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 25),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                              child: Text(
-                                "",
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.white, fontFamily: 'Mulish',),
-                              )),
-                        ),
-                      )
-
-                          : Padding(
-                        padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 35),
-                        child: Container(
-                          width: 50,
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Center(
-                              child: Text(
-                                "Lost",
-                                style: TextStyle(
-                                    fontSize: 16, color: Colors.white, fontFamily: 'Mulish',),
-                              )),
-                        ),
-                      ),
+                              padding: const EdgeInsets.only(
+                                  top: 20, left: 25, right: 35),
+                              child: Container(
+                                width: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Center(
+                                    child: Text(
+                                  "Lost",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontFamily: 'Mulish',
+                                  ),
+                                )),
+                              ),
+                            ),
                     ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1418,7 +1443,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1433,7 +1461,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width /2.3,
+                        width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1450,7 +1478,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1469,12 +1500,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Row(
                           children: [
                             Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width / 3,
+                              width: MediaQuery.of(context).size.width / 3,
                               child: Padding(
-                                padding: const EdgeInsets.only(left:45),
+                                padding: const EdgeInsets.only(left: 45),
                                 child: Text(
                                   phone!,
                                   style: TextStyle(
@@ -1486,39 +1514,41 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               ),
                             ),
                             InkWell(
-                              onTap: () async{
-                                var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
+                              onTap: () async {
+                                var smsResponce = await smsDataGet(
+                                    widget.opportunityId, "crm.lead");
 
-
-                                var name , phone, smsId;
+                                var name, phone, smsId;
                                 bool smsCondition;
-                                name = smsResponce['recipient_single_description'];
-                                phone = smsResponce['recipient_single_number_itf'];
-                                smsId =smsResponce['id'];
+                                name =
+                                    smsResponce['recipient_single_description'];
+                                phone =
+                                    smsResponce['recipient_single_number_itf'];
+                                smsId = smsResponce['id'];
                                 smsCondition = smsResponce['invalid_tag'];
-
 
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,"phone"),
+                                      _buildSendsmsPopupDialog(context, name,
+                                          phone, smsId, smsCondition, "phone"),
                                 ).then((value) => setState(() {}));
                               },
                               child: Container(
                                 child: Row(
                                   children: [
                                     Icon(
-                                      Icons.mobile_friendly_rounded,size: 10,),
+                                      Icons.mobile_friendly_rounded,
+                                      size: 10,
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10),
                                       child: Text("SMS"),
                                     )
                                   ],
                                 ),
-
                               ),
                             ),
-
                           ],
                         ),
                       ),
@@ -1526,7 +1556,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 36),
@@ -1545,12 +1578,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Row(
                           children: [
                             Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width / 3,
+                              width: MediaQuery.of(context).size.width / 3,
                               child: Padding(
-                                padding: const EdgeInsets.only(left:45),
+                                padding: const EdgeInsets.only(left: 45),
                                 child: Text(
                                   mobile!,
                                   style: TextStyle(
@@ -1563,39 +1593,40 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                             InkWell(
                               onTap: () async {
+                                var smsResponce = await smsDataGet(
+                                    widget.opportunityId, "crm.lead");
 
-                                var smsResponce =    await smsDataGet(widget.opportunityId,"crm.lead");
-
-
-                                var name , phone, smsId;
+                                var name, phone, smsId;
                                 bool smsCondition;
-                                name = smsResponce['recipient_single_description'];
-                                phone = smsResponce['recipient_single_number_itf'];
-                                smsId =smsResponce['id'];
+                                name =
+                                    smsResponce['recipient_single_description'];
+                                phone =
+                                    smsResponce['recipient_single_number_itf'];
+                                smsId = smsResponce['id'];
                                 smsCondition = smsResponce['invalid_tag'];
-
 
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildSendsmsPopupDialog(context, name , phone, smsId,smsCondition ,""),
+                                      _buildSendsmsPopupDialog(context, name,
+                                          phone, smsId, smsCondition, ""),
                                 ).then((value) => setState(() {}));
                               },
                               child: Container(
                                 child: Row(
                                   children: [
                                     Icon(
-                                      Icons.mobile_friendly_rounded,size: 10,),
+                                      Icons.mobile_friendly_rounded,
+                                      size: 10,
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(right: 10),
                                       child: Text("SMS"),
                                     )
                                   ],
                                 ),
-
                               ),
                             ),
-
                           ],
                         ),
                       ],
@@ -1603,7 +1634,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1611,68 +1645,56 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Salesperson",
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       salesperImg != ""
-                          ?  Padding(
-                        padding: const EdgeInsets
-                            .only(left: 100),
-                        child: Container(
-                          width: 30,
-                          height: 30,
-
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                            ),
-                            borderRadius: BorderRadius
-                                .all(
-                                Radius.circular(
-                                    20)),
-
-                          ),
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: ClipRRect(
-
-                              borderRadius:
-                              BorderRadius
-                                  .circular(18),
-                              child:Image.network("${salesperImg!}?token=${tokens}"),
-
-
-                            ),
-
-
-                          ),
-                        ),
-                      )
-                          : Padding(
-                        padding: const EdgeInsets.only(left: 80),
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                //  color: Colors.green
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 100),
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(18),
+                                    child: Image.network(
+                                        "${salesperImg!}?token=${tokens}"),
+                                  ),
+                                ),
                               ),
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(20))),
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(
-                              Icons.person,
-                              size: 20,
-                              // Adjust the size of the icon as per your requirements
-                              color: Colors
-                                  .white, // Adjust the color of the icon as per your requirements
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(left: 80),
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        //  color: Colors.green
+                                        ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 20,
+                                    // Adjust the size of the icon as per your requirements
+                                    color: Colors
+                                        .white, // Adjust the color of the icon as per your requirements
+                                  ),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
                       Container(
                         width: MediaQuery.of(context).size.width / 3.5,
                         child: Padding(
@@ -1691,7 +1713,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1718,7 +1743,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               direction: Axis.horizontal,
                               allowHalfRating: false,
                               itemCount: 3,
-                              itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 1.0),
                               itemBuilder: (context, _) => Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -1731,24 +1757,24 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Tags",
-                        style:TextStyle(
+                        style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Mulish',
                             fontSize: 12,
                             color: Color(0xFF666666))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 25,right: 0,top: 5),
+                    padding: const EdgeInsets.only(left: 25, right: 0, top: 5),
                     child: Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width /1.1,
+                      width: MediaQuery.of(context).size.width / 1.1,
                       height: 20,
                       //color: Colors.pinkAccent,
 
@@ -1758,22 +1784,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         itemCount: tags!.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
-                            padding:
-                            const EdgeInsets.only(right: 8.0, top: 4),
+                            padding: const EdgeInsets.only(right: 8.0, top: 4),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                                  color:  Color(int.parse(tags![index]["color"])),),
-
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
+                                  color:
+                                      Color(int.parse(tags![index]["color"])),
+                                ),
                                 width: 60,
                                 height: 20,
-                                child:
-                                Center(
+                                child: Center(
                                   child: Text(
-
                                     tags![index]["name"].toString(),
                                     style: TextStyle(
                                         color: Colors.white,
@@ -1791,7 +1815,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1822,8 +1849,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1831,7 +1862,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created by",
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -1855,7 +1886,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1870,7 +1904,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width /2.3,
+                        width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1887,7 +1921,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1907,7 +1944,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             lastupdateby!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -1919,7 +1956,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1951,7 +1991,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1971,7 +2014,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             internalnotes!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -1982,8 +2025,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
 
-
-
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Container(
@@ -1991,15 +2032,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       height: 39,
                       color: Color(0xFFF5F5F5),
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 25, top: 13,bottom: 10),
-                        child: Text(
-                          "Optional Products",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontFamily: 'Mulish',
-                              fontSize: 13,
-                              color: Color(0xFF212121))
-                        ),
+                        padding: const EdgeInsets.only(
+                            left: 25, top: 13, bottom: 10),
+                        child: Text("Optional Products",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                                fontSize: 13,
+                                color: Color(0xFF212121))),
                       ),
                     ),
                   ),
@@ -2012,27 +2052,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: orderLineProducts.length,
-                        itemBuilder:
-                            (BuildContext context, int index) {
-                          orderLineProductsData =
-                          orderLineProducts[index];
+                        itemBuilder: (BuildContext context, int index) {
+                          orderLineProductsData = orderLineProducts[index];
 
                           return InkWell(
-                              onTap: (){
+                              onTap: () {
                                 print(orderLineProducts[index]);
                                 print("orderLineProducts[index];");
-
                               },
-                              child:  Card(
+                              child: Card(
                                 elevation: 3,
                                 child: Padding(
-                                  padding:
-                                  const EdgeInsets.only(top: 0),
+                                  padding: const EdgeInsets.only(top: 0),
                                   child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width,
+                                      width: MediaQuery.of(context).size.width,
 
                                       // height: MediaQuery.of(context).size.height/10,
                                       color: Colors.white,
@@ -2041,104 +2074,120 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment
-                                                .spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             //crossAxisAlignment: CrossAxisAlignment.end,
                                             children: [
-
                                               Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
                                                     children: [
                                                       Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(
-                                                            top: 5,left: 22),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 5,
+                                                                left: 22),
                                                         child: Container(
-                                                          width: MediaQuery
-                                                              .of(context)
-                                                              .size
-                                                              .height/4,
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height /
+                                                              4,
                                                           //color: Colors.cyan,
                                                           child: Text(
                                                             orderLineProductsData![
-                                                            'name'] ??
+                                                                    'name'] ??
                                                                 "",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                fontFamily: 'Mulish',
-                                                                fontSize:
-                                                                14,
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontSize: 14,
                                                                 color: Colors
                                                                     .black),
                                                           ),
                                                         ),
                                                       ),
                                                       Padding(
-                                                        padding: const EdgeInsets.only(top: 5,left: 40,right: 25),
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 5,
+                                                                left: 40,
+                                                                right: 25),
                                                         child: Text(
-                                                          "sum: ${ orderLineProductsData![
-                                                          'price_subtotal']}",
+                                                          "sum: ${orderLineProductsData!['price_subtotal']}",
                                                           style: TextStyle(
-                                                              fontWeight: FontWeight.w500,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
                                                               fontSize: 11,
-                                                              fontFamily: 'Mulish',
-                                                              color: Colors.black),
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color:
+                                                                  Colors.black),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                   Padding(
                                                     padding:
-                                                    const EdgeInsets
-                                                        .only(
-                                                        top: 5,
-                                                        left: 22),
+                                                        const EdgeInsets.only(
+                                                            top: 5, left: 22),
                                                     child: Row(
                                                       mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .start,
+                                                          MainAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
                                                           "Quantity : ",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize:
-                                                              12,
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
                                                         Text(
-                                                          orderLineProductsData!["product_uom_qty"]
-                                                              .toString() ??
+                                                          orderLineProductsData![
+                                                                      "product_uom_qty"]
+                                                                  .toString() ??
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize:
-                                                              12,
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
                                                         Text(
-                                                          " " + orderLineProductsData!["product_uom"]['name'].toString() ??
+                                                          " " +
+                                                                  orderLineProductsData![
+                                                                              "product_uom"]
+                                                                          [
+                                                                          'name']
+                                                                      .toString() ??
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize:
-                                                              12,
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontSize: 12,
                                                               color: Color(
                                                                   0xFF787878)),
                                                         ),
@@ -2146,43 +2195,46 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     ),
                                                   ),
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
                                                     children: [
-
                                                       Padding(
                                                         padding:
-                                                        const EdgeInsets
-                                                            .only(
-                                                            top: 5,
-                                                            left: 22,bottom: 5),
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 5,
+                                                                left: 22,
+                                                                bottom: 5),
                                                         child: Row(
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Text(
                                                               "Unit Price :",
                                                               style: TextStyle(
                                                                   fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize:
-                                                                  12,
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontSize: 12,
                                                                   color: Color(
                                                                       0xFF787878)),
                                                             ),
                                                             Text(
-                                                              orderLineProductsData!['price_unit']
-                                                                  .toString() ??
+                                                              orderLineProductsData![
+                                                                          'price_unit']
+                                                                      .toString() ??
                                                                   "",
                                                               style: TextStyle(
                                                                   fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize:
-                                                                  12,
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontSize: 12,
                                                                   color: Color(
                                                                       0xFF787878)),
                                                             ),
@@ -2218,21 +2270,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   ),
                                                 ],
                                               ),
-
-
-
-
-
                                             ],
                                           ),
                                         ],
                                       )),
                                 ),
-                              )
-                          );
+                              ));
                         }),
                   ),
-
 
                   Container(
                     color: Color(0xFFF6F6F6),
@@ -2252,7 +2297,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
-                                onPressed: () {
+                                onPressed: () async {
+                                  sendMailData = await sendMailsFollowers(
+                                      widget.opportunityId, "crm.lead");
 
                                   setState(() {
                                     followersVisibility == true
@@ -2272,7 +2319,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: TextButton(
                                 child: Text(
                                   "Log note",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
@@ -2280,7 +2327,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 ),
                                 onPressed: () {
                                   setState(() {
-
                                     followersVisibility == false
                                         ? followersVisibility = false
                                         : followersVisibility = false;
@@ -2316,17 +2362,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ).then((value) => setState(() {}));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary:Color(0xFFF6F6F6),
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 0,  left:15, right: 10),
+                    padding: const EdgeInsets.only(top: 0, left: 15, right: 10),
                     child: Center(
                       child: Row(
                         children: [
@@ -2335,14 +2379,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: IconButton(
                               icon: Image.asset("images/pin.png"),
                               onPressed: () {
-
                                 setState(() {
                                   attachmentVisibility == true
                                       ? attachmentVisibility = false
                                       : attachmentVisibility = true;
                                 });
-
-
                               },
                             ),
                           ),
@@ -2350,81 +2391,109 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             width: 30,
                             child: Text(
                               attachmentCount!,
-                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
+                              style:
+                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
                             ),
                           ),
-                          followerStatus == false ?
-                          Padding(
-                            padding: const EdgeInsets.only(left: 100),
-                            child: Row(
-                              children: [
-                                Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                                TextButton(onPressed:()async{
+                          followerStatus == false
+                              ? Padding(
+                                  padding: const EdgeInsets.only(left: 100),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_sharp,
+                                        size: 14,
+                                        color: Colors.green,
+                                      ),
+                                      TextButton(
+                                          onPressed: () async {
+                                            String resMessage =
+                                                await followerFollow(
+                                                    widget.opportunityId,
+                                                    "crm.lead");
 
-                                  String resMessage =   await followerFollow(widget.opportunityId,"crm.lead");
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = true;
+                                                followCount = followCount + 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
 
-                                  if(resMessage == "success"){
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Following",
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(left: 100),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.close,
+                                        size: 14,
+                                        color: Colors.red,
+                                      ),
+                                      TextButton(
+                                          onPressed: () async {
+                                            String resMessage =
+                                                await followerUnFollow(
+                                                    widget.opportunityId,
+                                                    "crm.lead");
 
-                                    setState(() {
-                                      int followCount ;
-                                      followCount = int.parse(followerCount!);
-                                      followerStatus = true;
-                                      followCount = followCount+1;
-                                      followerCount = followCount.toString();
-                                    });
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = false;
+                                                followCount = followCount - 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
 
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => OpportunityDetail(widget.opportunityId)));
-                                  }
-                                }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish'),)),
-                              ],
-                            ),
-                          ):
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 100),
-                            child: Row(
-                              children: [
-                                Icon(Icons.close,size: 14,color: Colors.red,),
-                                TextButton(onPressed:()async{
-                                  String resMessage =  await followerUnFollow(widget.opportunityId,"crm.lead");
-
-                                  if(resMessage == "success"){
-                                    setState(() {
-                                      int followCount ;
-                                      followCount = int.parse(followerCount!);
-                                      followerStatus = false;
-                                      followCount = followCount-1;
-                                      followerCount = followCount.toString();
-                                    });
-
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => OpportunityDetail(widget.opportunityId)));
-                                  }
-                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish'),)),
-                              ],
-                            ),
-                          ),
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Unfollow",
+                                            style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                ),
                           Container(
                             width: 50,
                             child: IconButton(
-                              icon:SvgPicture.asset("images/user.svg"),
+                              icon: SvgPicture.asset("images/user.svg"),
                               onPressed: () async {
-
-                                List followers = await getFollowers(widget.opportunityId,"crm.lead");
-
+                                List followers = await getFollowers(
+                                    widget.opportunityId, "crm.lead");
 
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(context,followers),
+                                      _buildFollowPopupDialog(
+                                          context, followers),
                                 ).then((value) => setState(() {}));
-
-
                               },
                             ),
                           ),
@@ -2433,7 +2502,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             //color: Colors.green,
                             child: Text(
                               followerCount!,
-                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
+                              style:
+                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
                             ),
                           ),
                         ],
@@ -2448,16 +2518,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     child: Column(
                       children: [
                         FutureBuilder(
-                            future: getattchmentData(widget.opportunityId, "crm.lead"),
+                            future: getattchmentData(
+                                widget.opportunityId, "crm.lead"),
                             builder: (context, AsyncSnapshot snapshot) {
-
-                              if (snapshot.hasError) {
-
-                              }
-                              if (snapshot.connectionState == ConnectionState.done) {
+                              if (snapshot.hasError) {}
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
                                 if (snapshot.hasData) {
                                   if (snapshot.data == null) {
-
                                     return const Center(
                                         child: Text('Something went wrong'));
                                   }
@@ -2465,114 +2533,128 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     attachmentImagesDisplay = snapshot.data;
 
                                     return Padding(
-                                      padding:
-                                      const EdgeInsets.only(left: 0, right: 0),
-                                      child:
-                                          Container(
-                                            //color: Colors.green,
+                                      padding: const EdgeInsets.only(
+                                          left: 0, right: 0),
+                                      child: Container(
+                                        //color: Colors.green,
 
-                                            width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
 
-                                            child: GridView.builder(
-                                              shrinkWrap: true,
-
-                                              physics: NeverScrollableScrollPhysics(),
-                                              itemCount: attachmentImagesDisplay.length,
-                                              gridDelegate:
+                                        child: GridView.builder(
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount:
+                                              attachmentImagesDisplay.length,
+                                          gridDelegate:
                                               const SliverGridDelegateWithFixedCrossAxisCount(
                                                   crossAxisCount: 4),
-                                              itemBuilder:
-                                                  (BuildContext context, int index) {
-
-
-                                                return Center(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(left: 15,right: 15),
-                                                    child: Container(
-                                                      child: Stack(
-                                                        children: [
-                                                          ClipRRect(
-                                                            child: Image.network(
-                                                              "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                              height: 100,
-                                                              width: 80,
-                                                            ),
-                                                          ),
-                                                          Positioned(
-                                                              left: 37,
-                                                              right: 0,
-                                                              bottom: 70,
-                                                              top: 1,
-                                                              child: Container(
-                                                                width: 20,
-                                                                height: 20,
-                                                                decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
-
-                                                                child: IconButton(
-                                                                  icon: SvgPicture.asset("images/trash.svg"),
-                                                                  onPressed: () async {
-                                                                    print(
-                                                                        attachmentImagesDisplay[
-                                                                        index]['id']);
-                                                                    print("idvaluevalue");
-                                                                    // print(
-                                                                    //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                    int lodAttachmentId = attachmentImagesDisplay[index]['id'];
-                                                                    var data = await deleteLogAttachment(
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Center(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 15, right: 15),
+                                                child: Container(
+                                                  child: Stack(
+                                                    children: [
+                                                      ClipRRect(
+                                                        child: Image.network(
+                                                          "${attachmentImagesDisplay[index]['url']}?token=${token}",
+                                                          height: 100,
+                                                          width: 80,
+                                                        ),
+                                                      ),
+                                                      Positioned(
+                                                          left: 37,
+                                                          right: 0,
+                                                          bottom: 70,
+                                                          top: 1,
+                                                          child: Container(
+                                                            width: 20,
+                                                            height: 20,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                                color: Color(
+                                                                    0xFFFFFFFF)),
+                                                            child: IconButton(
+                                                              icon: SvgPicture
+                                                                  .asset(
+                                                                      "images/trash.svg"),
+                                                              onPressed:
+                                                                  () async {
+                                                                print(attachmentImagesDisplay[
+                                                                        index]
+                                                                    ['id']);
+                                                                print(
+                                                                    "idvaluevalue");
+                                                                // print(
+                                                                //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                int lodAttachmentId =
+                                                                    attachmentImagesDisplay[
+                                                                            index]
+                                                                        ['id'];
+                                                                var data =
+                                                                    await deleteLogAttachment(
                                                                         lodAttachmentId);
 
-                                                                    if (data['message'] ==
-                                                                        "Success") {
-                                                                      print(
-                                                                          "jhbdndsjbv");
-                                                                      await getOpportunityDetails();
-                                                                      setState(() {
-                                                                        attachmentImagesDisplay
-                                                                            .clear();
-                                                                      });
-                                                                    }
+                                                                if (data[
+                                                                        'message'] ==
+                                                                    "Success") {
+                                                                  print(
+                                                                      "jhbdndsjbv");
+                                                                  await getOpportunityDetails();
+                                                                  setState(() {
+                                                                    attachmentImagesDisplay
+                                                                        .clear();
+                                                                  });
+                                                                }
 
-                                                                    // print(
-                                                                    //     data);
-                                                                    print(
-                                                                        "delete testststs");
-                                                                  },
-                                                                ),
-                                                              ))
-                                                        ],
-                                                      ),
-                                                    ),
+                                                                // print(
+                                                                //     data);
+                                                                print(
+                                                                    "delete testststs");
+                                                              },
+                                                            ),
+                                                          ))
+                                                    ],
                                                   ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ),
+                                      ),
                                     );
                                   } else {
                                     return Container();
                                   }
                                 }
                               }
-                              return Center(child: const CircularProgressIndicator());
+                              return Center(
+                                  child: const CircularProgressIndicator());
                             }),
-                        TextButton(onPressed: (){
-
-                          myAlert("attachment");
-                        }, child: Text("Select Attachments",style: TextStyle(color: Colors.black,fontFamily: 'Mulish'),)),
-
+                        TextButton(
+                            onPressed: () {
+                              myAlert("attachment");
+                            },
+                            child: Text(
+                              "Select Attachments",
+                              style: TextStyle(
+                                  color: Colors.black, fontFamily: 'Mulish'),
+                            )),
                       ],
                     ),
                   ),
                   //
 
-
                   // code for send message
                   Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
+                    width: MediaQuery.of(context).size.width,
 
                     //height: MediaQuery.of(context).size.height/6,
                     // color: Colors.green,
@@ -2580,125 +2662,196 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Visibility(
-                          visible:followersVisibility,
+                          visible: followersVisibility,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 78),
                             child: Container(
                               // color: Colors.red,
                               child: Row(
                                 children: [
-                                  Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11,fontFamily: 'Mulish'),),
-                                  Text(" Followers of",style: TextStyle(color: Colors.grey[700],fontSize: 11,fontFamily: 'Mulish'),),
-                                  SizedBox(width: 5,),
+                                  Text(
+                                    "To:",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey,
+                                        fontSize: 11,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                  Text(
+                                    " Followers of",
+                                    style: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontSize: 11,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
                                   Container(
-                                    //color: Colors.green,
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width/2,
-                                      child: Text(opportunityname!,style: TextStyle(color: Colors.black,fontSize: 11,fontFamily: 'Mulish'),)),
-
+                                      //color: Colors.green,
+                                      width:
+                                          MediaQuery.of(context).size.width / 2,
+                                      child: Text(
+                                        opportunityname!,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 11,
+                                            fontFamily: 'Mulish'),
+                                      )),
                                 ],
                               ),
                             ),
                           ),
                         ),
 
+                        SizedBox(height: 5,),
+                        Visibility(
+                          visible: followersVisibility,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            //height: 100,
+                            //color: Colors.red,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: sendMailData.length,
+
+                              itemBuilder: (_, i) {
+                                isCheckedMail = sendMailData[i]['selected'];
+                                return Padding(
+                                  padding: const EdgeInsets.only(left: 65),
+                                  child: Container(
+                                    height: 13,
+                                    child: Row(
+                                      children: [
+                                        Transform.scale(
+                                          scale: 0.6,
+                                          child: Checkbox(
+                                            activeColor: Color(0xFFF9246A),
+                                            value: isCheckedMail,
+                                            onChanged: (bool? value) {
+                                              print(value);
+                                              print("check box issues");
+                                              setState(() {
+                                                isCheckedMail = value!;
+                                                sendMailData[i]['selected']=value;
+                                              });
+                                            },
+                                          ),
+                                        ),
+                                        Text(
+                                          sendMailData[i]['name'],
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 11,
+                                              fontFamily: 'Mulish'),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 5,),
+
+
                         Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             salesperImg != ""
                                 ? Padding(
-                              padding: const EdgeInsets.only(left: 30),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(20)),
-                                ),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                    BorderRadius.circular(18),
-                                    child: Image.network(
-                                        "${salesperImg!}?token=${token}"),
-                                  ),
-                                ),
-                              ),
-                            )
-                                : Padding(
-                              padding: const EdgeInsets.only(left: 30),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      //  color: Colors.green
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)),
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 12,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                          child: Image.network(
+                                              "${salesperImg!}?token=${token}"),
+                                        ),
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(20))),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.person,
-                                    size: 20,
-                                    // Adjust the size of the icon as per your requirements
-                                    color: Colors
-                                        .white, // Adjust the color of the icon as per your requirements
+                                  )
+                                : Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              //  color: Colors.green
+                                              ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: CircleAvatar(
+                                        radius: 12,
+                                        child: Icon(
+                                          Icons.person,
+                                          size: 20,
+                                          // Adjust the size of the icon as per your requirements
+                                          color: Colors
+                                              .white, // Adjust the color of the icon as per your requirements
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
                             Padding(
                               padding:
-                              const EdgeInsets.only(left: 20, right: 20),
+                                  const EdgeInsets.only(left: 20, right: 20),
                               child: Container(
-                                width: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width / 1.4,
+                                width: MediaQuery.of(context).size.width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
                                     color: Color(0xFFF6F6F6),
                                     border:
-                                    Border.all(color: Color(0xFFEBEBEB))),
+                                        Border.all(color: Color(0xFFEBEBEB))),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width /
+                                      width: MediaQuery.of(context).size.width /
                                           1.4,
                                       // height: 40,
                                       // color: Colors.red,
                                       child: Padding(
                                         padding:
-                                        const EdgeInsets.only(left: 10),
+                                            const EdgeInsets.only(left: 10),
                                         child: TextField(
-                                            textAlignVertical: TextAlignVertical.top,
+                                            textAlignVertical:
+                                                TextAlignVertical.top,
                                             //expands: true,
                                             maxLines: null,
                                             controller: lognoteController,
                                             decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText:
-                                                "Send a message to followers",
+                                                    "Send a message to followers",
                                                 hintStyle: TextStyle(
 
-                                                  //fontFamily: "inter",
+                                                    //fontFamily: "inter",
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 12,
                                                     fontFamily: 'Mulish',
                                                     color: Color(0xFFAFAFAF)))),
                                       ),
-                                    ),Divider(color: Colors.grey[350],thickness: 1,),
+                                    ),
+                                    Divider(
+                                      color: Colors.grey[350],
+                                      thickness: 1,
+                                    ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
                                           icon: Image.asset("images/pin.png"),
@@ -2706,19 +2859,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             myAlert("lognote");
                                           },
                                         ),
-                                        IconButton(onPressed:()async{
+                                        IconButton(
+                                            onPressed: () async {
+                                              recipient!.clear();
+                                              await defaultSendmsgvalues();
 
-
-                                          recipient!.clear();
-                                          await  defaultSendmsgvalues();
-
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                _buildSendmessagePopupDialog(context, 0),
-                                          ).then((value) => setState(() {}));
-                                        },
-                                            icon:Icon(Icons.arrow_outward_rounded,size: 18,color: Colors.grey[700],))
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    _buildSendmessagePopupDialog(
+                                                        context, 0),
+                                              ).then(
+                                                  (value) => setState(() {}));
+                                            },
+                                            icon: Icon(
+                                              Icons.arrow_outward_rounded,
+                                              size: 18,
+                                              color: Colors.grey[700],
+                                            ))
                                       ],
                                     ),
                                   ],
@@ -2729,48 +2888,42 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         selectedImages.isEmpty
                             ? Padding(
-                          padding: const EdgeInsets.only(left: 73),
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            // height: 40,
-                          ),
-                        )
+                                padding: const EdgeInsets.only(left: 73),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                ),
+                              )
                             : Padding(
-                          padding:
-                          const EdgeInsets.only(left: 70, right: 50),
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            // height: 40,
-                            child: Container(
-                              width: 40,
-                              //height: 40,
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                // Avoid scrolling
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: selectedImages.length,
-                                gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 8),
-                                itemBuilder:
-                                    (BuildContext context, int index) {
-                                  return Center(
-                                      child: kIsWeb
-                                          ? Image.network(
-                                          selectedImages[index].path)
-                                          : Image.file(
-                                          selectedImages[index]));
-                                },
+                                padding:
+                                    const EdgeInsets.only(left: 70, right: 50),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                  child: Container(
+                                    width: 40,
+                                    //height: 40,
+                                    child: GridView.builder(
+                                      shrinkWrap: true,
+                                      // Avoid scrolling
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: selectedImages.length,
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 8),
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Center(
+                                            child: kIsWeb
+                                                ? Image.network(
+                                                    selectedImages[index].path)
+                                                : Image.file(
+                                                    selectedImages[index]));
+                                      },
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
                         Padding(
                           padding: const EdgeInsets.only(
                               bottom: 10, left: 80, top: 5),
@@ -2790,12 +2943,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 ),
                                 onPressed: () async {
                                   for (int i = 0;
-                                  i < selectedImages.length;
-                                  i++) {
+                                      i < selectedImages.length;
+                                      i++) {
                                     imagepath =
                                         selectedImages[i].path.toString();
                                     File imagefile =
-                                    File(imagepath); //convert Path to File
+                                        File(imagepath); //convert Path to File
                                     Uint8List imagebytes = await imagefile
                                         .readAsBytes(); //convert to bytes
                                     base64string = base64.encode(imagebytes);
@@ -2805,11 +2958,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     //
 
                                     String dataImages =
-                                        '{"name":"name","type":"binary","datas":"${base64string
-                                        .toString()}"}';
+                                        '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
                                     Map<String, dynamic> jsondata =
-                                    jsonDecode(dataImages);
+                                        jsonDecode(dataImages);
                                     myData1.add(jsondata);
                                   }
                                   // print(myData1);
@@ -2817,10 +2969,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                   bodyController.text = lognoteController.text;
 
-                                  String resMessage ;
-                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage(myData1);
+                                  String resMessage;
+                                  followersVisibility == false
+                                      ? resMessage = await logNoteData(myData1)
+                                      : resMessage =
+                                          await createSendmessage(myData1);
 
-                                  if(resMessage == "success"){
+                                  if (resMessage == "success") {
                                     setState(() {
                                       logDataHeader.clear();
                                       logDataTitle.clear();
@@ -2836,12 +2991,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 )),
                           ),
                         ),
-
                       ],
                     ),
                   ),
-
-
 
                   Container(
                     color: Color(0xFFF6F6F6),
@@ -2849,13 +3001,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextButton.icon(     // <-- TextButton
+                          TextButton.icon(
+                            // <-- TextButton
                             onPressed: () {
                               setState(() {
-                                scheduleActivityVisibility == true ?scheduleActivityVisibility = false :scheduleActivityVisibility = true;
-
+                                scheduleActivityVisibility == true
+                                    ? scheduleActivityVisibility = false
+                                    : scheduleActivityVisibility = true;
                               });
-
                             },
                             icon: Icon(
                               Icons.arrow_drop_down_rounded,
@@ -2864,10 +3017,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                             label: Text(
                               'Planned Activities',
-                              style: TextStyle(fontSize: 16, color: Color(0xFF000000),fontWeight: FontWeight.w600,fontFamily: 'Mulish',),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFF000000),
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                              ),
                             ),
                           ),
-
                           Visibility(
                             visible: scheduleVisibiltyOverdue,
                             child: Container(
@@ -2876,10 +3033,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.red,
                               ),
-                              child: Center(child: Text(scheduleOverdue.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                scheduleOverdue.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
                             ),
                           ),
                           Visibility(
@@ -2890,10 +3051,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.yellow,
                               ),
-                              child: Center(child: Text(scheduleToday.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.black),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                scheduleToday.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )),
                             ),
                           ),
                           Visibility(
@@ -2904,10 +3069,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.green,
                               ),
-                              child: Center(child: Text(schedulePlanned.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                schedulePlanned.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
                             ),
                           ),
                         ],
@@ -2915,561 +3084,841 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
 
-
-
                   // code change for schedule activity
 
                   Visibility(
-                    visible:scheduleActivityVisibility ,
+                    visible: scheduleActivityVisibility,
                     child: Container(
                       color: Colors.white70,
                       //height: MediaQuery.of(context).size.height/1.8,
 
-                        child:   scheduleLength==0 ? Container()
-                            :  ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: scheduleLength,
-
-                          itemBuilder:
-                              (BuildContext context, int index) {
-
-                            scheduleData['records'][index]['icon']=="fa-envelope"? scheduleIcon =  const Icon(Icons.email_outlined,
-                              color: Colors.white,
-                              size: 8,
-                            ): scheduleData['records'][index]['icon']=="fa-phone"? scheduleIcon =  Icon(Icons.phone,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-users"? scheduleIcon =  Icon(Icons.person,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-file-text-o"? scheduleIcon =  Icon(Icons.file_copy,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-line-chart"? scheduleIcon =  Icon(Icons.bar_chart,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-tasks"? scheduleIcon =  Icon(Icons.task,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-upload"? scheduleIcon =  Icon(Icons.upload,
-                              color: Colors.white,
-                              size: 8,
-                            ):Icon(Icons.circle,
-                              color: Colors.white,
-                              size: 8,
-                            );
-                            return Card(
-                              elevation: 1,
-                              child: Column(
-                                children: [
-                                  Row(
+                      child: scheduleLength == 0
+                          ? Container()
+                          : ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: scheduleLength,
+                              itemBuilder: (BuildContext context, int index) {
+                                scheduleData['records'][index]['icon'] ==
+                                        "fa-envelope"
+                                    ? scheduleIcon = const Icon(
+                                        Icons.email_outlined,
+                                        color: Colors.white,
+                                        size: 8,
+                                      )
+                                    : scheduleData['records'][index]['icon'] ==
+                                            "fa-phone"
+                                        ? scheduleIcon = Icon(
+                                            Icons.phone,
+                                            color: Colors.white,
+                                            size: 8,
+                                          )
+                                        : scheduleData['records'][index]
+                                                    ['icon'] ==
+                                                "fa-users"
+                                            ? scheduleIcon = Icon(
+                                                Icons.person,
+                                                color: Colors.white,
+                                                size: 8,
+                                              )
+                                            : scheduleData['records'][index]
+                                                        ['icon'] ==
+                                                    "fa-file-text-o"
+                                                ? scheduleIcon = Icon(
+                                                    Icons.file_copy,
+                                                    color: Colors.white,
+                                                    size: 8,
+                                                  )
+                                                : scheduleData['records'][index]
+                                                            ['icon'] ==
+                                                        "fa-line-chart"
+                                                    ? scheduleIcon = Icon(
+                                                        Icons.bar_chart,
+                                                        color: Colors.white,
+                                                        size: 8,
+                                                      )
+                                                    : scheduleData['records']
+                                                                    [index]
+                                                                ['icon'] ==
+                                                            "fa-tasks"
+                                                        ? scheduleIcon = Icon(
+                                                            Icons.task,
+                                                            color: Colors.white,
+                                                            size: 8,
+                                                          )
+                                                        : scheduleData['records']
+                                                                        [index]
+                                                                    ['icon'] ==
+                                                                "fa-upload"
+                                                            ? scheduleIcon =
+                                                                Icon(
+                                                                Icons.upload,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              )
+                                                            : Icon(
+                                                                Icons.circle,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              );
+                                return Card(
+                                  elevation: 1,
+                                  child: Column(
                                     children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      Row(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 25.0,right: 15,top: 5),
-                                            child: Container(
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 25.0,
+                                                    right: 15,
+                                                    top: 5),
+                                                child: Container(
+                                                  child: Stack(
+                                                    alignment: Alignment.center,
+                                                    children: [
+                                                      // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                      CircleAvatar(
+                                                        radius: 12,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(18),
+                                                          child: Image.network(
+                                                              "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                        ),
+                                                      ),
 
-                                              child: Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                  CircleAvatar(
-                                                    radius: 12,
-                                                    child: ClipRRect(
-
-                                                      borderRadius:
-                                                      BorderRadius
-                                                          .circular(18),
-                                                      child: Image.network(
-                                                          "${scheduleData['records'][index]['image']!}?token=${token}"),
-
-
-                                                    ),
-
-
+                                                      Positioned(
+                                                        bottom: 0,
+                                                        right: 0,
+                                                        child: Container(
+                                                          width: 10.0,
+                                                          height: 10.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: Color(int.parse(
+                                                                scheduleData[
+                                                                            'records']
+                                                                        [index][
+                                                                    'label_color'])),
+                                                          ),
+                                                          child: Center(
+                                                            child: scheduleIcon,
+                                                            // child: Icon(
+                                                            //   Icons.image,
+                                                            //   color: Colors.white,
+                                                            //   size: 8,
+                                                            // ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 12, right: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5.5,
+                                                  // color: Colors.red,
 
+                                                  child: Text(
+                                                    scheduleData['records']
+                                                                    [index]
+                                                                ['delay_label']
+                                                            .toString() ??
+                                                        "",
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily: 'Mulish',
+                                                        color: Color(int.parse(
+                                                            scheduleData[
+                                                                        'records']
+                                                                    [index][
+                                                                'label_color']))),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  // color: Colors.red,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5.5,
 
-                                                  Positioned(
-                                                    bottom: 0,
-                                                    right: 0,
+                                                  child: Text(
+                                                    scheduleData['records']
+                                                                    [index][
+                                                                'activity_type_id'][1]
+                                                            .toString() ??
+                                                        "",
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121),
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  //color: Colors.red,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      4.5,
+
+                                                  child: Text(
+                                                    scheduleData['records']
+                                                                    [index]
+                                                                ['user_id'][1]
+                                                            .toString() ??
+                                                        "",
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily: 'Mulish',
+                                                        color:
+                                                            Color(0xFF212121)),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      print(scheduleView);
+                                                      print("final data ");
+                                                      scheduleView == false
+                                                          ? scheduleView = true
+                                                          : scheduleView == true
+                                                              ? scheduleView =
+                                                                  false
+                                                              : false;
+                                                      print(scheduleView);
+                                                    });
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 20,
+                                                            right: 20),
                                                     child: Container(
-                                                      width: 10.0,
-                                                      height: 10.0,
+                                                      width: 10,
+                                                      height: 15,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color:  Color(int.parse(scheduleData['records'][index]['label_color'])),
+                                                        color: Colors.black,
                                                       ),
                                                       child: Center(
-                                                        child: scheduleIcon,
-                                                        // child: Icon(
-                                                        //   Icons.image,
-                                                        //   color: Colors.white,
-                                                        //   size: 8,
-                                                        // ),
+                                                        child: Text(
+                                                          "i",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w800),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
-
-
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 8.0,left: 12,right: 10),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                                        padding:
+                                            const EdgeInsets.only(left: 60),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Container(
-
-                                              width: MediaQuery.of(context).size.width/5.5,
-                                              // color: Colors.red,
-
-                                              child: Text(scheduleData['records'][index]['delay_label'].toString() ?? "",
-                                                style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Mulish',color: Color(int.parse(scheduleData['records'][index]['label_color']))),),
-                                            ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              // color: Colors.red,
-                                              width: MediaQuery.of(context).size.width/5.5,
-
-
-                                              child: Text(scheduleData['records'][index]['activity_type_id'][1].toString() ?? "",
-                                                style: TextStyle( fontSize: 12,
-                                                  color: Color(0xFF212121),
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight:
-                                                  FontWeight.w600,),),
-                                            ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              //color: Colors.red,
-                                              width: MediaQuery.of(context).size.width/4.5,
-
-                                              child: Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                style: TextStyle(fontSize: 12,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Mulish',
-                                                    color: Color(0xFF212121)),),
-                                            ),
-
-
-                                            InkWell(
-                                              onTap: (){
-                                                setState(() {
-                                                  print(scheduleView);
-                                                  print("final data ");
-                                                  scheduleView==false? scheduleView=true : scheduleView==true? scheduleView=false : false;
-                                                  print(scheduleView);
-                                                });
-                                              },
+                                            Visibility(
+                                              visible: scheduleView,
                                               child: Padding(
-                                                padding: const EdgeInsets.only(left: 20,right: 20),
-                                                child: Container(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5, left: 17),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                  children: [
+                                                    Text(
+                                                      "Activity type",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      scheduleData['records']
+                                                              [index][
+                                                          'activity_type_id'][1],
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "Created",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'create_date']
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color:
+                                                                  Colors.grey),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 5,
+                                                        ),
+                                                        Container(
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child: Image.network(
+                                                                  "${scheduleData['records'][index]['image2']!}?token=${token}"),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'create_uid'][1]
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            color: Colors.grey,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "Assigned to",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child: Image.network(
+                                                                  "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'user_id'][1]
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color:
+                                                                  Colors.grey),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "Due on",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      scheduleData['records']
+                                                                      [index][
+                                                                  'date_deadline']
+                                                              .toString() ??
+                                                          "",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 0, left: 14, right: 10),
+                                              child: Container(
+                                                //color: Colors.red,
 
-                                                  width: 10,
-                                                  height: 15,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.5,
+                                                child: Text(
+                                                  scheduleData['records'][index]
+                                                              ['note']
+                                                          .replaceAll(
+                                                              RegExp(
+                                                                  r'<[^>]*>|&[^;]+;'),
+                                                              ' ')
+                                                          .toString() ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
                                                     color: Colors.black,
-                                                  ),
-                                                  child: Center(
-                                                    child: Text("i",
-
-                                                      style: TextStyle(fontSize: 12,color: Colors.white,
-                                                          fontWeight: FontWeight.w800),),
+                                                    fontFamily: 'Mulish',
                                                   ),
                                                 ),
                                               ),
                                             ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 7,
+                                              ),
+                                              child: Row(
+                                                // mainAxisAlignment: MainAxisAlignment.end,
 
+                                                children: [
+                                                  Container(
+                                                    //color: Colors.red,
+                                                    // height: 25,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            4.3,
+                                                    child: TextButton.icon(
+                                                      // <-- TextButton
+                                                      onPressed: () async {
+                                                        int datasIds =
+                                                            scheduleData[
+                                                                    'records']
+                                                                [index]['id'];
+
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              _buildMarkDoneDialog(
+                                                                  context,
+                                                                  datasIds),
+                                                        ).then((value) =>
+                                                            setState(() {}));
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.check,
+                                                        size: 13.0,
+                                                        color: Colors.black54,
+                                                      ),
+                                                      label: Text(
+                                                        scheduleData['records']
+                                                                        [index][
+                                                                    'buttons'][0]
+                                                                .toString() ??
+                                                            "",
+                                                        style: TextStyle(
+                                                            fontSize: 10,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: Color(
+                                                                0xFF717171)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 0,
+                                                  ),
+                                                  scheduleData['records'][index]
+                                                              ['buttons'][1] ==
+                                                          "Reschedule"
+                                                      ? Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              4.3,
+                                                          child:
+                                                              TextButton.icon(
+                                                            // <-- TextButton
+                                                            onPressed:
+                                                                () async {
+                                                              //  int idType = scheduleData['records'][index]['id'];
+                                                              //
+                                                              // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
+                                                              //
+                                                              //
+                                                              // String textType =  scheduleData['records'][index]['buttons'][1].toString();
+
+                                                              DateTime
+                                                                  dateTime =
+                                                                  DateTime.parse(
+                                                                      scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'date_deadline']);
+
+                                                              Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (context) => Calender(
+                                                                          null,
+                                                                          "",
+                                                                          dateTime,
+                                                                          null,
+                                                                          [],
+                                                                          "")));
+                                                            },
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .calendar_month,
+                                                              size: 13.0,
+                                                              color: Colors
+                                                                  .black54,
+                                                            ),
+                                                            label: Text(
+                                                              scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                      .toString() ??
+                                                                  "",
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Color(
+                                                                      0xFF717171)),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              4.3,
+                                                          child:
+                                                              TextButton.icon(
+                                                            // <-- TextButton
+                                                            onPressed:
+                                                                () async {
+                                                              int idType =
+                                                                  scheduleData[
+                                                                          'records']
+                                                                      [
+                                                                      index]['id'];
+
+                                                              var data = await editDefaultScheduleData(
+                                                                  scheduleData[
+                                                                          'records']
+                                                                      [
+                                                                      index]['id']);
+
+                                                              setState(() {
+                                                                activityTypeName =
+                                                                    data['activity_type_id'] ??
+                                                                        null;
+                                                                activityTypeId =
+                                                                    data['activity_type_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                        null;
+                                                                activityTypeNameCategory =
+                                                                    data['activity_type_id']
+                                                                            [
+                                                                            'category'] ??
+                                                                        "";
+                                                                assignedToname =
+                                                                    data['user_id'] ??
+                                                                        null;
+                                                                assignedToid =
+                                                                    data['user_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                        null;
+                                                                DuedateTime
+                                                                        .text =
+                                                                    data['date_deadline'] ??
+                                                                        "";
+                                                                summaryController
+                                                                        .text =
+                                                                    data['summary'] ??
+                                                                        "";
+                                                                commandsController
+                                                                    .text = data[
+                                                                        'note']
+                                                                    .replaceAll(
+                                                                        RegExp(
+                                                                            r'<[^>]*>|&[^;]+;'),
+                                                                        ' ')
+                                                                    .toString();
+                                                                // DuedateTime.text == "default" ?
+                                                                if (activityTypeNameCategory ==
+                                                                    "default") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      false;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      true;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "phonecall") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      true;
+                                                                  btntext =
+                                                                      "Save";
+                                                                  meetingColum =
+                                                                      true;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "meeting") {
+                                                                  scheduleBtn =
+                                                                      false;
+                                                                  opencalendarBtn =
+                                                                      true;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      false;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "upload_file") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      false;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      true;
+                                                                }
+
+                                                                print(
+                                                                    activityTypeNameCategory);
+                                                                print(
+                                                                    "jhbvjbvsvj");
+                                                              });
+
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder: (BuildContext
+                                                                        context) =>
+                                                                    _buildOrderPopupDialog(
+                                                                        context,
+                                                                        idType),
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
+                                                            },
+                                                            icon: Icon(
+                                                              Icons.edit,
+                                                              size: 13.0,
+                                                              color: Colors
+                                                                  .black54,
+                                                            ),
+                                                            label: Text(
+                                                              scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                      .toString() ??
+                                                                  "",
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Color(
+                                                                      0xFF717171)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                  SizedBox(
+                                                    width: 0,
+                                                  ),
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            5,
+                                                    child: TextButton.icon(
+                                                      // <-- TextButton
+                                                      onPressed: () async {
+                                                        var data =
+                                                            await deleteScheduleData(
+                                                                scheduleData[
+                                                                        'records']
+                                                                    [
+                                                                    index]['id']);
+
+                                                        if (data['message'] ==
+                                                            "Success") {
+                                                          print("responce");
+                                                          setState(() {
+                                                            getScheduleDetails();
+                                                          });
+                                                        }
+
+                                                        print("demo datataaa");
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.cancel_outlined,
+                                                        size: 13.0,
+                                                        color: Colors.black54,
+                                                      ),
+                                                      label: Text(
+                                                        scheduleData['records']
+                                                                        [index][
+                                                                    'buttons'][2]
+                                                                .toString() ??
+                                                            "",
+                                                        style: TextStyle(
+                                                            fontSize: 10,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: Color(
+                                                                0xFF717171)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 60),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-
-
-                                        Visibility(
-                                          visible: scheduleView,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(top: 5,left: 17),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text("Activity type",
-                                                  style: TextStyle(   fontSize: 12,
-                                                    fontFamily: 'Mulish',
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,),),
-
-                                                SizedBox(height: 3,),
-                                                Text(scheduleData['records'][index]['activity_type_id'][1],
-                                                  style: TextStyle(fontSize: 12,
-                                                      fontFamily: 'Mulish',
-                                                      color: Colors.grey),),
-                                                SizedBox(height: 3,),
-                                                Text("Created",
-                                                  style: TextStyle( fontSize: 12,
-                                                      fontFamily: 'Mulish',
-                                                      color: Colors.grey,
-                                                      fontWeight:
-                                                      FontWeight.w600,),),
-                                                SizedBox(height: 3,),
-                                                Row(
-                                                  children: [
-
-                                                    Text(scheduleData['records'][index]['create_date'].toString() ?? "",
-                                                      style: TextStyle(  fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                          Colors.grey),),
-
-                                                    SizedBox(width: 5,),
-
-                                                    Container(
-                                                      child:   CircleAvatar(
-                                                        radius: 12,
-                                                        child: ClipRRect(
-
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(12),
-                                                          child: Image.network(
-                                                              "${scheduleData['records'][index]['image2']!}?token=${token}"),
-
-
-                                                        ),
-
-
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 3,),
-
-                                                    Text(scheduleData['records'][index]['create_uid'][1].toString() ?? "",
-                                                      style: TextStyle( fontSize: 12,
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.grey,
-                                                        fontWeight:
-                                                        FontWeight.w600,),),
-
-
-                                                  ],
-                                                ),
-                                                SizedBox(height: 3,),
-                                                Text("Assigned to",
-                                                  style: TextStyle(  fontSize: 12,
-                                                    fontFamily: 'Mulish',
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,),),
-                                                SizedBox(height: 3,),
-                                                Row(
-                                                  children: [
-
-
-
-                                                    Container(
-                                                      child:    CircleAvatar(
-                                                        radius: 12,
-                                                        child: ClipRRect(
-
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(12),
-                                                          child: Image.network(
-                                                              "${scheduleData['records'][index]['image']!}?token=${token}"),
-
-
-                                                        ),
-
-
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 3,),
-                                                    Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                      style: TextStyle( fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                          Colors.grey),),
-
-
-                                                  ],
-                                                ),
-
-                                                SizedBox(height: 3,),
-                                                Text("Due on",
-                                                  style: TextStyle( fontSize: 12,
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,),),
-                                                SizedBox(height: 3,),
-                                                Text(scheduleData['records'][index]['date_deadline'].toString() ?? "",
-                                                  style: TextStyle(fontSize: 12,
-                                                      fontFamily: 'Mulish',
-                                                      color: Colors.grey),),
-
-                                                SizedBox(height: 3,),
-
-
-
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 0, left: 14, right: 10),
-                                          child: Container(
-                                            //color: Colors.red,
-
-                                            width: MediaQuery.of(context).size.width/1.5,
-                                            child:  Text(scheduleData['records'][index]['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                .toString() ?? "",
-                                              style: TextStyle(fontSize: 14,color: Colors.black,fontFamily: 'Mulish',
-                                              ),),
-
-                                          ),
-                                        ),
-
-
-                                        Padding(
-                                          padding: const EdgeInsets.only(left:7,),
-                                          child: Row(
-                                            // mainAxisAlignment: MainAxisAlignment.end,
-
-                                            children: [
-                                              Container(
-                                                //color: Colors.red,
-                                               // height: 25,
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-
-                                                    int datasIds = scheduleData['records'][index]['id'];
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext context) =>
-                                                          _buildMarkDoneDialog(
-                                                              context, datasIds
-                                                          ),
-                                                    ).then((value) => setState(() {}));
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.check,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][0].toString() ?? "",style: TextStyle( fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-                                              SizedBox(width: 0,),
-
-                                              scheduleData['records'][index]['buttons'][1] == "Reschedule" ?
-
-
-                                              Container(
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-                                                    //  int idType = scheduleData['records'][index]['id'];
-                                                    //
-                                                    // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-                                                    //
-                                                    //
-                                                    // String textType =  scheduleData['records'][index]['buttons'][1].toString();
-
-                                                    DateTime dateTime =  DateTime.parse(scheduleData['records'][index]['date_deadline']);
-
-
-
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (
-                                                                context) =>
-                                                                Calender(null,"",dateTime,null,[],"")));
-
-
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.calendar_month,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(  fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ):
-                                              Container(
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-                                                    int idType = scheduleData['records'][index]['id'];
-
-                                                    var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-
-
-
-
-                                                    setState(() {
-
-                                                      activityTypeName = data['activity_type_id']??null;
-                                                      activityTypeId = data['activity_type_id']['id']??null;
-                                                      activityTypeNameCategory = data['activity_type_id']['category']??"";
-                                                      assignedToname= data['user_id']??null;
-                                                      assignedToid = data['user_id']['id']??null;
-                                                      DuedateTime.text = data['date_deadline']??"";
-                                                      summaryController.text = data['summary']??"";
-                                                      commandsController.text = data['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                          .toString() ;
-                                                      // DuedateTime.text == "default" ?
-                                                      if(activityTypeNameCategory == "default"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= false;
-                                                        btntext = "Schedule";
-                                                        meetingColum = true;
-                                                      }
-                                                      else if(activityTypeNameCategory == "phonecall"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= true;
-                                                        btntext = "Save";
-                                                        meetingColum = true;
-                                                      }
-                                                      else if(activityTypeNameCategory == "meeting"){
-                                                        scheduleBtn=false;
-                                                        opencalendarBtn= true;
-                                                        btntext = "Schedule";
-                                                        meetingColum = false;
-                                                      }
-                                                      else if(activityTypeNameCategory == "upload_file"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= false;
-                                                        btntext = "Schedule";
-                                                        meetingColum = true;
-                                                      }
-
-
-                                                      print(activityTypeNameCategory);
-                                                      print("jhbvjbvsvj");
-                                                    });
-
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext context) =>
-                                                          _buildOrderPopupDialog(
-                                                              context, idType
-                                                          ),
-                                                    ).then((value) => setState(() {}));
-
-
-
-
-
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.edit,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-
-
-
-                                              SizedBox(width: 0,),
-                                              Container(
-
-                                                width: MediaQuery.of(context).size.width/5,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: () async{
-
-                                                    var data =  await deleteScheduleData(scheduleData['records'][index]['id']);
-
-
-                                                    if(data['message']=="Success") {
-                                                      print("responce");
-                                                      setState(() {
-                                                        getScheduleDetails();
-                                                      });
-                                                    }
-
-
-
-
-
-
-                                                    print("demo datataaa");
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.cancel_outlined,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][2].toString() ?? "",style: TextStyle( fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-
-
-
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-
-                            );
-                          }),
+                                );
+                              }),
                     ),
                   ),
 
-
-
-                  SizedBox(height: 0,),
-
-
+                  SizedBox(
+                    height: 0,
+                  ),
 
                   FutureBuilder(
                       future: getlogNoteData(widget.opportunityId, "crm.lead"),
@@ -3487,8 +3936,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             if (snapshot.data == null) {
                               print("dfffdfdf");
                               //print(snapshot.data!.length);
-                              return const Center(child: Text(
-                                  'Something went wrong'));
+                              return const Center(
+                                  child: Text('Something went wrong'));
                             }
                             if (snapshot.data.length != 0) {
                               snapshot.data?.forEach((key, value) {
@@ -3507,7 +3956,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               print(logDataTitle[0][0]['id']);
                               print("ddd2.lengthssss");
 
-
                               return ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   physics: NeverScrollableScrollPhysics(),
@@ -3522,56 +3970,72 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 top: 10, bottom: 10),
-                                            child: Center(child: Text(
+                                            child: Center(
+                                                child: Text(
                                               logDataHeader[indexx],
-                                              style: TextStyle(fontSize: 12,
-                                                  color: Colors.black, fontFamily: 'Mulish',),)),
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontFamily: 'Mulish',
+                                              ),
+                                            )),
                                           ),
-
                                           ListView.builder(
                                               scrollDirection: Axis.vertical,
-                                              physics: NeverScrollableScrollPhysics(),
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
                                               shrinkWrap: true,
-                                              itemCount: logDataTitle[indexx]
-                                                  .length,
+                                              itemCount:
+                                                  logDataTitle[indexx].length,
                                               itemBuilder:
                                                   (BuildContext context,
-                                                  int indexs) {
+                                                      int indexs) {
                                                 selectedImagesDisplay =
-                                                logDataTitle[indexx][indexs]['attachment_ids'];
-                                                starImage   = logDataTitle[indexx][indexs]['starred']??false;
+                                                    logDataTitle[indexx][indexs]
+                                                        ['attachment_ids'];
+                                                starImage = logDataTitle[indexx]
+                                                        [indexs]['starred'] ??
+                                                    false;
 
-                                                lognoteoptions = logDataTitle[indexx][indexs]['is_editable'] ?? true;
+                                                lognoteoptions =
+                                                    logDataTitle[indexx][indexs]
+                                                            ['is_editable'] ??
+                                                        true;
 
-
-                                                logDataTitle[indexx][indexs]['icon'] ==
-                                                    "envelope"
+                                                logDataTitle[indexx][indexs]
+                                                            ['icon'] ==
+                                                        "envelope"
                                                     ? logNoteIcon = const Icon(
-                                                  Icons.email,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                )
-                                                    : logDataTitle[indexx][indexs]['icon'] ==
-                                                    "ad_units"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.phone,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                )
-                                                    : logDataTitle[indexx][indexs]
-                                                ['icon'] ==
-                                                    "telegram"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.telegram,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                ) : Icon(
-                                                  Icons.circle,
-                                                  color: Colors
-                                                      .white,
-                                                  size: 8,
-                                                );
-
+                                                        Icons.email,
+                                                        color: Colors.red,
+                                                        size: 15,
+                                                      )
+                                                    : logDataTitle[indexx]
+                                                                    [indexs]
+                                                                ['icon'] ==
+                                                            "ad_units"
+                                                        ? logNoteIcon = Icon(
+                                                            Icons.phone,
+                                                            color: Colors.red,
+                                                            size: 15,
+                                                          )
+                                                        : logDataTitle[indexx]
+                                                                        [indexs]
+                                                                    ['icon'] ==
+                                                                "telegram"
+                                                            ? logNoteIcon =
+                                                                Icon(
+                                                                Icons.telegram,
+                                                                color:
+                                                                    Colors.red,
+                                                                size: 15,
+                                                              )
+                                                            : Icon(
+                                                                Icons.circle,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              );
 
                                                 return Card(
                                                   elevation: 1,
@@ -3582,16 +4046,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         child: Column(
                                                           children: [
                                                             Stack(
-                                                              alignment: Alignment
-                                                                  .center,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
                                                               children: [
                                                                 // scheduleData['records'][index]['delay_label'].toString() ?? ""
                                                                 Padding(
                                                                   padding: const EdgeInsets
-                                                                      .only(
+                                                                          .only(
                                                                       left: 210,
-                                                                      right: 50),
-                                                                  child: Container(
+                                                                      right:
+                                                                          50),
+                                                                  child:
+                                                                      Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
                                                                     width: 102,
@@ -3601,164 +4068,121 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   bottom: 0,
                                                                   right: 0,
                                                                   //left: 20,
-                                                                  child: Container(
-                                                                    width: 102.0,
-                                                                    height: 30.0,
-                                                                    decoration: BoxDecoration(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        border: Border
-                                                                            .all(
-                                                                          color: Colors
-                                                                              .grey,
-                                                                          width: 1,
-                                                                        )),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        102.0,
+                                                                    height:
+                                                                        30.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            border: Border.all(
+                                                                              color: Colors.grey,
+                                                                              width: 1,
+                                                                            )),
                                                                     child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment
-                                                                          .spaceAround,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
                                                                       children: [
                                                                         Container(
-                                                                          height: 25,
-                                                                          width: 25,
+                                                                          height:
+                                                                              25,
+                                                                          width:
+                                                                              25,
                                                                           //color: Colors.red,
-                                                                          child: Align(
-                                                                            alignment: Alignment
-                                                                                .topRight,
-                                                                            child: IconButton(
-                                                                              icon: Icon(
-                                                                                  Icons
-                                                                                      .add_reaction_outlined,
-                                                                                  size: 15.0),
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                Alignment.topRight,
+                                                                            child:
+                                                                                IconButton(
+                                                                              icon: Icon(Icons.add_reaction_outlined, size: 15.0),
                                                                               onPressed: () {},
                                                                             ),
                                                                           ),
                                                                         ),
-                                                                        StatefulBuilder(
-                                                                  builder: (BuildContext context, StateSetter setState) {
-                                                                    return Container(
-                                                                      height: 25,
-                                                                      width: 25,
+                                                                        StatefulBuilder(builder: (BuildContext
+                                                                                context,
+                                                                            StateSetter
+                                                                                setState) {
+                                                                          return Container(
+                                                                            height:
+                                                                                25,
+                                                                            width:
+                                                                                25,
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: Alignment.topRight,
+                                                                              child: starImage == true
+                                                                                  ? IconButton(
+                                                                                      icon: Icon(
+                                                                                        Icons.star_rate,
+                                                                                        size: 15.0,
+                                                                                        color: Colors.yellow[700],
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
 
-                                                                      child: Align(
-                                                                        alignment: Alignment
-                                                                            .topRight,
-                                                                        child:
-                                                                        starImage ==
-                                                                            true
-                                                                            ?
-                                                                        IconButton(
-                                                                          icon: Icon(
-                                                                            Icons
-                                                                                .star_rate,
-                                                                            size: 15.0,
-                                                                            color: Colors
-                                                                                .yellow[700],
-                                                                          ),
-                                                                          onPressed: () async {
-                                                                            int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                        var data = await logStarChange(lodDataId, false);
 
-                                                                            var data = await logStarChange(
-                                                                                lodDataId,
-                                                                                false);
+                                                                                        if (data['result']['message'] == "success") {
+                                                                                          print("startrue");
+                                                                                          setState(() {
+                                                                                            starImage = false;
+                                                                                          });
+                                                                                        }
 
-                                                                            if (data['result']['message'] ==
-                                                                                "success") {
-                                                                              print(
-                                                                                  "startrue");
-                                                                              setState(() {
-                                                                                starImage =
-                                                                                false;
-                                                                              });
-                                                                            }
+                                                                                        print(data);
+                                                                                        print(" ");
+                                                                                      },
+                                                                                    )
+                                                                                  : IconButton(
+                                                                                      icon: Icon(
+                                                                                        Icons.star_rate,
+                                                                                        size: 15.0,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
 
+                                                                                        var data = await logStarChange(lodDataId, true);
 
-                                                                            print(
-                                                                                data);
-                                                                            print(
-                                                                                " ");
-                                                                          },
-                                                                        )
-                                                                            :
-                                                                        IconButton(
-                                                                          icon: Icon(
-                                                                            Icons
-                                                                                .star_rate,
-                                                                            size: 15.0,
+                                                                                        if (data['result']['message'] == "success") {
+                                                                                          print("starfalse");
+                                                                                          setState(() {
+                                                                                            starImage = true;
+                                                                                          });
+                                                                                        }
 
-                                                                          ),
-                                                                          onPressed: () async {
-                                                                            int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                            var data = await logStarChange(
-                                                                                lodDataId,
-                                                                                true);
-
-
-                                                                            if (data['result']['message'] ==
-                                                                                "success") {
-                                                                              print(
-                                                                                  "starfalse");
-                                                                              setState(() {
-                                                                                starImage =
-                                                                                true;
-                                                                              });
-                                                                            }
-
-
-                                                                            print(
-                                                                                data);
-                                                                            print(
-                                                                                "hfghavjhcvjsch2");
-                                                                          },
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  }
-                                                                        ),
-
-
-
-
+                                                                                        print(data);
+                                                                                        print("hfghavjhcvjsch2");
+                                                                                      },
+                                                                                    ),
+                                                                            ),
+                                                                          );
+                                                                        }),
                                                                         Visibility(
-                                                                          visible: lognoteoptions,
-                                                                          child: Row(
+                                                                          visible:
+                                                                              lognoteoptions,
+                                                                          child:
+                                                                              Row(
                                                                             children: [
                                                                               Container(
                                                                                 height: 25,
                                                                                 width: 25,
                                                                                 //color: Colors.red,
                                                                                 child: Align(
-                                                                                  alignment: Alignment
-                                                                                      .topRight,
+                                                                                  alignment: Alignment.topRight,
                                                                                   child: IconButton(
-                                                                                    icon: Icon(
-                                                                                        Icons
-                                                                                            .edit,
-                                                                                        size: 15.0),
+                                                                                    icon: Icon(Icons.edit, size: 15.0),
                                                                                     onPressed: () {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      String logdata = logDataTitle[indexx][indexs]['body']
-                                                                                          .replaceAll(
-                                                                                          RegExp(
-                                                                                              r'<[^>]*>|&[^;]+;'),
-                                                                                          ' ') ??
-                                                                                          "";
-                                                                                      Navigator
-                                                                                          .push(
-                                                                                          context,
-                                                                                          MaterialPageRoute(
-                                                                                              builder: (
-                                                                                                  context) =>
-                                                                                                  LogNoteEdit(
-                                                                                                      lodDataId,
-                                                                                                      salesperImg!,
-                                                                                                      token!,
-                                                                                                      widget
-                                                                                                          .opportunityId,
-                                                                                                      logdata)));
+                                                                                      String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.opportunityId, logdata)));
 
-                                                                                      print(
-                                                                                          "emojiVisibility");
+                                                                                      print("emojiVisibility");
                                                                                     },
                                                                                   ),
                                                                                 ),
@@ -3768,30 +4192,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 width: 25,
                                                                                 //color: Colors.red,
                                                                                 child: Align(
-                                                                                  alignment: Alignment
-                                                                                      .center,
+                                                                                  alignment: Alignment.center,
                                                                                   child: IconButton(
-                                                                                    icon: Icon(
-                                                                                        Icons
-                                                                                            .delete_outline_outlined,
-                                                                                        size: 15.0),
+                                                                                    icon: Icon(Icons.delete_outline_outlined, size: 15.0),
                                                                                     onPressed: () async {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      var data = await deleteLogData(
-                                                                                          lodDataId);
+                                                                                      var data = await deleteLogData(lodDataId);
 
-                                                                                      if (data['message'] ==
-                                                                                          "Success") {
-                                                                                        print(
-                                                                                            "final11");
+                                                                                      if (data['message'] == "Success") {
+                                                                                        print("final11");
                                                                                         await getOpportunityDetails();
                                                                                         setState(() {
-                                                                                          logDataHeader
-                                                                                              .clear();
-                                                                                          logDataTitle
-                                                                                              .clear();
-                                                                                          selectedImagesDisplay
-                                                                                              .clear();
+                                                                                          logDataHeader.clear();
+                                                                                          logDataTitle.clear();
+                                                                                          selectedImagesDisplay.clear();
                                                                                         });
                                                                                       }
                                                                                     },
@@ -3801,58 +4215,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                             ],
                                                                           ),
                                                                         ),
-
                                                                       ],
                                                                     ),
-
-
                                                                   ),
                                                                 ),
                                                               ],
                                                             ),
                                                             ListView.builder(
-                                                                scrollDirection: Axis
-                                                                    .vertical,
-                                                                physics: NeverScrollableScrollPhysics(),
-                                                                shrinkWrap: true,
+                                                                scrollDirection:
+                                                                    Axis
+                                                                        .vertical,
+                                                                physics:
+                                                                    NeverScrollableScrollPhysics(),
+                                                                shrinkWrap:
+                                                                    true,
                                                                 itemCount: 1,
-                                                                itemBuilder: (
-                                                                    BuildContext context,
-                                                                    int index) {
+                                                                itemBuilder:
+                                                                    (BuildContext
+                                                                            context,
+                                                                        int index) {
                                                                   return Card(
-                                                                    elevation: 0,
-                                                                    child: Column(
-                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    elevation:
+                                                                        0,
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Row(
                                                                           children: [
                                                                             Column(
-                                                                              crossAxisAlignment: CrossAxisAlignment
-                                                                                  .start,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsets
-                                                                                      .only(
-                                                                                      left: 20.0,
-                                                                                      right: 15),
+                                                                                  padding: const EdgeInsets.only(left: 20.0, right: 15),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
                                                                                     child: Stack(
-                                                                                      alignment: Alignment
-                                                                                          .center,
+                                                                                      alignment: Alignment.center,
                                                                                       children: [
                                                                                         // scheduleData['records'][index]['delay_label'].toString() ?? ""
                                                                                         CircleAvatar(
                                                                                           radius: 12,
                                                                                           child: ClipRRect(
-
-                                                                                            borderRadius:
-                                                                                            BorderRadius
-                                                                                                .circular(
-                                                                                                18),
-                                                                                            child: Image
-                                                                                                .network(
-                                                                                                "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
+                                                                                            borderRadius: BorderRadius.circular(18),
+                                                                                            child: Image.network("${logDataTitle[indexx][indexs]['image']}?token=${token}"),
                                                                                           ),
                                                                                         ),
                                                                                         Positioned(
@@ -3861,20 +4269,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                           child: Container(
                                                                                             width: 10.0,
                                                                                             height: 10.0,
-
                                                                                             decoration: BoxDecoration(
-                                                                                              shape: BoxShape
-                                                                                                  .circle,
-                                                                                              color: Colors
-                                                                                                  .green,
+                                                                                              shape: BoxShape.circle,
+                                                                                              color: Colors.green,
                                                                                             ),
-
                                                                                           ),
                                                                                         ),
                                                                                       ],
                                                                                     ),
-
-
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -3884,36 +4286,24 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               child: Row(
                                                                                 children: [
                                                                                   Container(
-                                                                                    // color: Colors.green,
-                                                                                      width: MediaQuery
-                                                                                          .of(
-                                                                                          context)
-                                                                                          .size
-                                                                                          .width /
-                                                                                          4.5,
-                                                                                      child: Text(
-                                                                                          logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                                      // color: Colors.green,
+                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                           style: TextStyle(
                                                                                             fontSize: 12,
-                                                                                            color: Colors
-                                                                                                .black,
+                                                                                            color: Colors.black,
                                                                                             fontFamily: 'Mulish',
-                                                                                            fontWeight: FontWeight.w600,))),
+                                                                                            fontWeight: FontWeight.w600,
+                                                                                          ))),
                                                                                   Container(
-                                                                                    //color: Colors.green,
-                                                                                      width: MediaQuery
-                                                                                          .of(
-                                                                                          context)
-                                                                                          .size
-                                                                                          .width /
-                                                                                          4.5,
-                                                                                      child: Text(
-                                                                                          logDataTitle[indexx][indexs]["period"],
+                                                                                      //color: Colors.green,
+                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      child: Text(logDataTitle[indexx][indexs]["period"],
                                                                                           style: TextStyle(
                                                                                             fontSize: 12,
                                                                                             fontFamily: 'Mulish',
-                                                                                            color: Colors
-                                                                                                .grey[700],))),
+                                                                                            color: Colors.grey[700],
+                                                                                          ))),
                                                                                   Container(child: logNoteIcon),
                                                                                 ],
                                                                               ),
@@ -3921,225 +4311,140 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           ],
                                                                         ),
                                                                         Visibility(
-                                                                          visible:logDataTitle[indexx][indexs]['subject']==""?false:true,
-                                                                          child: Padding(
-                                                                            padding: const EdgeInsets.only(left: 68),
+                                                                          visible: logDataTitle[indexx][indexs]['subject'] == ""
+                                                                              ? false
+                                                                              : true,
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.only(left: 68),
                                                                             child: Container(
-                                                                              // color: Colors.green,
-                                                                                width: MediaQuery
-                                                                                    .of(
-                                                                                    context)
-                                                                                    .size
-                                                                                    .width /
-                                                                                    4,
-                                                                                child: Text(
-                                                                                    logDataTitle[indexx][indexs]['subject']
-                                                                                        .replaceAll(
-                                                                                        RegExp(
-                                                                                            r'<[^>]*>|&[^;]+;'),
-                                                                                        ' ') ??
-                                                                                        "",
+                                                                                // color: Colors.green,
+                                                                                width: MediaQuery.of(context).size.width / 4,
+                                                                                child: Text(logDataTitle[indexx][indexs]['subject'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "",
                                                                                     style: TextStyle(
                                                                                       fontSize: 12,
                                                                                       fontFamily: 'Mulish',
-                                                                                      color: Colors
-                                                                                          .black,))),
+                                                                                      color: Colors.black,
+                                                                                    ))),
                                                                           ),
                                                                         ),
-
-
                                                                         Padding(
-                                                                          padding: const EdgeInsets.only(left: 62),
+                                                                          padding:
+                                                                              const EdgeInsets.only(left: 62),
                                                                           child: Container(
-                                                                            // color: Colors.green,
-                                                                              width: MediaQuery
-                                                                                  .of(
-                                                                                  context)
-                                                                                  .size
-                                                                                  .width /
-                                                                                  2,
+                                                                              // color: Colors.green,
+                                                                              width: MediaQuery.of(context).size.width / 2,
                                                                               child: Html(
                                                                                 data: logDataTitle[indexx][indexs]['body'],
                                                                                 style: {
-                                                                                  'p': Style(
-                                                                                      fontSize: FontSize
-                                                                                          .small),
+                                                                                  'p': Style(fontSize: FontSize.small),
                                                                                   // Customize the font size for <p> elements
                                                                                   // Customize the font size for <strong> elements
                                                                                 },
-
                                                                               )),
                                                                         ),
-
-
-                                                                        selectedImagesDisplay
-                                                                            .isEmpty
+                                                                        selectedImagesDisplay.isEmpty
                                                                             ? Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .only(
-                                                                              left: 40),
-                                                                          child: Container(
+                                                                                padding: const EdgeInsets.only(left: 40),
+                                                                                child: Container(
+                                                                                  width: MediaQuery.of(context).size.width / 2,
+                                                                                  // height: 40,
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.only(left: 40, right: 0),
+                                                                                child: Container(
+                                                                                  //color: Colors.green,
 
-                                                                            width:
-                                                                            MediaQuery
-                                                                                .of(
-                                                                                context)
-                                                                                .size
-                                                                                .width /
-                                                                                2,
-                                                                            // height: 40,
-                                                                          ),
-                                                                        )
-                                                                            :
-                                                                        Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .only(
-                                                                              left: 40,
-                                                                              right: 0),
-                                                                          child: Container(
-                                                                            //color: Colors.green,
+                                                                                  width: MediaQuery.of(context).size.width / 3,
+                                                                                  // height: 140,
+                                                                                  child: GridView.builder(
+                                                                                    shrinkWrap: true,
+                                                                                    // Avoid scrolling
+                                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                                    itemCount: selectedImagesDisplay.length,
+                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                                                                                    itemBuilder: (BuildContext context, int index) {
+                                                                                      print(selectedImagesDisplay.length);
+                                                                                      print(selectedImagesDisplay[index]["datas"]);
+                                                                                      print("selectedImagesDisplay.length,");
 
-                                                                            width:
-                                                                            MediaQuery
-                                                                                .of(
-                                                                                context)
-                                                                                .size
-                                                                                .width /
-                                                                                3,
-                                                                            // height: 140,
-                                                                            child: GridView
-                                                                                .builder(
-                                                                              shrinkWrap: true,
-                                                                              // Avoid scrolling
-                                                                              physics: NeverScrollableScrollPhysics(),
-                                                                              itemCount:
-                                                                              selectedImagesDisplay
-                                                                                  .length,
-                                                                              gridDelegate:
-                                                                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                  crossAxisCount: 1),
-                                                                              itemBuilder:
-                                                                                  (
-                                                                                  BuildContext context,
-                                                                                  int index) {
-                                                                                print(
-                                                                                    selectedImagesDisplay
-                                                                                        .length);
-                                                                                print(
-                                                                                    selectedImagesDisplay[index]["datas"]);
-                                                                                print(
-                                                                                    "selectedImagesDisplay.length,");
-
-                                                                                return Center(
-                                                                                  child: Container(
-                                                                                    child: Stack(
-                                                                                      children: [
-                                                                                        ClipRRect(
-                                                                                          child: Image
-                                                                                              .network(
-                                                                                            "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                            height: 100,
-                                                                                            width: 80,
-                                                                                          ),
-
-
-                                                                                        ),
-                                                                                        Positioned(
-
-                                                                                            left: 37,
-                                                                                            right: 0,
-                                                                                            bottom: 70,
-                                                                                            top: 1,
-                                                                                            child: Container(
-                                                                                              width: 20,
-                                                                                              height: 20,
-                                                                                          decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
-                                                                                              // color: Colors
-                                                                                              //     .grey[200],
-                                                                                              child: IconButton(
-                                                                                                icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                onPressed: () async {
-                                                                                                  print(
-                                                                                                      logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                  var data = await deleteLogAttachment(
-                                                                                                      lodAttachmentId);
-
-                                                                                                  if (data['message'] ==
-                                                                                                      "Success") {
-                                                                                                    print(
-                                                                                                        "jhbdndsjbv");
-                                                                                                    await getOpportunityDetails();
-                                                                                                    setState(() {
-                                                                                                      logDataHeader
-                                                                                                          .clear();
-                                                                                                      logDataTitle
-                                                                                                          .clear();
-                                                                                                      selectedImagesDisplay
-                                                                                                          .clear();
-                                                                                                    });
-                                                                                                  }
-
-
-                                                                                                  print(
-                                                                                                      data);
-                                                                                                  print(
-                                                                                                      "delete testststs");
-                                                                                                },
+                                                                                      return Center(
+                                                                                        child: Container(
+                                                                                          child: Stack(
+                                                                                            children: [
+                                                                                              ClipRRect(
+                                                                                                child: Image.network(
+                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                  height: 100,
+                                                                                                  width: 80,
+                                                                                                ),
                                                                                               ),
-                                                                                            )
-                                                                                        )
-                                                                                      ],
-                                                                                    ),
+                                                                                              Positioned(
+                                                                                                  left: 37,
+                                                                                                  right: 0,
+                                                                                                  bottom: 70,
+                                                                                                  top: 1,
+                                                                                                  child: Container(
+                                                                                                    width: 20,
+                                                                                                    height: 20,
+                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                    // color: Colors
+                                                                                                    //     .grey[200],
+                                                                                                    child: IconButton(
+                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                      onPressed: () async {
+                                                                                                        print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
 
+                                                                                                        if (data['message'] == "Success") {
+                                                                                                          print("jhbdndsjbv");
+                                                                                                          await getOpportunityDetails();
+                                                                                                          setState(() {
+                                                                                                            logDataHeader.clear();
+                                                                                                            logDataTitle.clear();
+                                                                                                            selectedImagesDisplay.clear();
+                                                                                                          });
+                                                                                                        }
+
+                                                                                                        print(data);
+                                                                                                        print("delete testststs");
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ))
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
                                                                                   ),
-
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                                ),
+                                                                              ),
                                                                       ],
                                                                     ),
-
                                                                   );
-                                                                }
-
-                                                            ),
+                                                                }),
                                                           ],
                                                         ),
                                                         //color: Colors.red,
-
                                                       ),
-
                                                     ],
                                                   ),
-
-
                                                 );
                                               })
-
-
                                         ],
                                       ),
-
-
                                     );
                                   });
-                            }
-                            else{
+                            } else {
                               return Container();
                             }
                           }
                         }
                         return Center(child: const CircularProgressIndicator());
-                      }
-                  ),
-
-
-
-
-
+                      }),
                 ],
               ),
             ),
@@ -4150,14 +4455,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     }
   }
 
-   getOpportunityDetails() async {
-
+  getOpportunityDetails() async {
     tokens = await getUserJwt();
     notificationCount = await getNotificationCount();
     var data = await getOpportunityData(widget.opportunityId, "");
 
     setState(() {
-      opportunityname = data['name'].toString()??"";
+      opportunityname = data['name'].toString() ?? "";
       customername = data['partner_id']['display_name'] ?? "";
       email = data['email_from'].toString() ?? "";
       phone = data['phone'].toString() ?? "";
@@ -4168,53 +4472,50 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       //tag = data['tags_id']
       company = data["partner_name"].toString() ?? "";
       createdby = data["create_uid"][1].toString() ?? "";
-      createdon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["create_date"]))??"";
+      createdon = DateFormat('yyyy-MM-dd HH:mm:ss')
+              .format(DateTime.parse(data["create_date"])) ??
+          "";
 
       lastupdateby = data["write_uid"][1].toString() ?? "";
-      lastupdateon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data["write_date"]))??"";
+      lastupdateon = DateFormat('yyyy-MM-dd HH:mm:ss')
+              .format(DateTime.parse(data["write_date"])) ??
+          "";
 
       internalnotes = data['description']
-          .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-          .toString() ??
+              .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+              .toString() ??
           "";
       opportunityType = data['active'] ?? true;
 
-      opportunityType == false ? smartbuttonVisible= false : smartbuttonVisible = true;
+      opportunityType == false
+          ? smartbuttonVisible = false
+          : smartbuttonVisible = true;
 
       opportunityTypeWon = data['stage_id'][0]['is_won'] ?? true;
 
       opportunityStageTypes = data['stages_list'] ?? "";
 
-
-      opportunityStageId = data['stage_id'][0]['id']?? 0;
-
+      opportunityStageId = data['stage_id'][0]['id'] ?? 0;
 
       followerCount = data["followers_count"].toString() ?? "0";
 
-      followerStatus=data["message_is_follower"] ?? false;
-
+      followerStatus = data["message_is_follower"] ?? false;
 
       opportunityStageTypes.asMap().forEach((currentIndex, element) {
         if (element['id'] == opportunityStageId) {
           stageColorIndex = currentIndex;
           return;
         }
-
       });
-
-
-
-
 
       for (int i = 0; i < data['crm_lead_line'].length; i++) {
         orderLineProducts.add(data['crm_lead_line'][i]);
       }
 
-      if(data["tag_ids"].length>0){
+      if (data["tag_ids"].length > 0) {
         //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
-        tags=data["tag_ids"];
-      }
-      else{
+        tags = data["tag_ids"];
+      } else {
         tags = [];
       }
 
@@ -4224,43 +4525,37 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       print("lelelelelel");
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
 
-      meeting_count= data["calendar_event_count"]??0;
-      quotation_count =data["quotation_count"]??0;
-      similar_opportunity=data["duplicate_lead_count"]??0;
-
-
+      meeting_count = data["calendar_event_count"] ?? 0;
+      quotation_count = data["quotation_count"] ?? 0;
+      similar_opportunity = data["duplicate_lead_count"] ?? 0;
 
       _isInitialized = true;
     });
-    await  getScheduleDetails();
+    await getScheduleDetails();
   }
 
   opportunityLost(String action) async {
     String value =
-    await lostOpportunity(widget.opportunityId, lostreasonId, action);
+        await lostOpportunity(widget.opportunityId, lostreasonId, action);
     return value;
   }
 
-
   opportunityWonRestore(String action) async {
     String value =
-    await restoreWonOpportunity(widget.opportunityId, lostreasonId, action);
+        await restoreWonOpportunity(widget.opportunityId, lostreasonId, action);
     return value;
   }
 
   opportunityarchive(bool action) async {
     String value =
-    await archiveOpportunity(widget.opportunityId, lostreasonId, action);
+        await archiveOpportunity(widget.opportunityId, lostreasonId, action);
     return value;
   }
-
 
   StageChangeOpportunity(int state) async {
-    String value =
-    await opportunityStageChange(state,widget.opportunityId);
+    String value = await opportunityStageChange(state, widget.opportunityId);
     return value;
   }
-
 
   defaultScheduleValues() async {
     token = await getUserJwt();
@@ -4269,66 +4564,49 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(data['activity_type_id']);
     print("hgchgvhjb");
     setState(() {
-
-      activityTypeName = data['activity_type_id']??null;
-      activityTypeId = data['activity_type_id']['id']??null;
-      activityTypeNameCategory = data['activity_type_id']['category']??"";
-      assignedToname= data['user_id']??null;
-      assignedToid = data['user_id']['id']??null;
-      DuedateTime.text = data['date_deadline']??"";
+      activityTypeName = data['activity_type_id'] ?? null;
+      activityTypeId = data['activity_type_id']['id'] ?? null;
+      activityTypeNameCategory = data['activity_type_id']['category'] ?? "";
+      assignedToname = data['user_id'] ?? null;
+      assignedToid = data['user_id']['id'] ?? null;
+      DuedateTime.text = data['date_deadline'] ?? "";
 
       // DuedateTime.text == "default" ?
-      if(activityTypeNameCategory == "default"){
-        scheduleBtn=true;
-        opencalendarBtn= false;
+      if (activityTypeNameCategory == "default") {
+        scheduleBtn = true;
+        opencalendarBtn = false;
         btntext = "Schedule";
         meetingColum = true;
-      }
-      else if(activityTypeNameCategory == "phonecall"){
-        scheduleBtn=true;
-        opencalendarBtn= true;
+      } else if (activityTypeNameCategory == "phonecall") {
+        scheduleBtn = true;
+        opencalendarBtn = true;
         btntext = "Save";
         meetingColum = true;
-      }
-      else if(activityTypeNameCategory == "meeting"){
-        scheduleBtn=false;
-        opencalendarBtn= true;
+      } else if (activityTypeNameCategory == "meeting") {
+        scheduleBtn = false;
+        opencalendarBtn = true;
         btntext = "Schedule";
         meetingColum = false;
-      }
-      else if(activityTypeNameCategory == "upload_file"){
-        scheduleBtn=true;
-        opencalendarBtn= false;
+      } else if (activityTypeNameCategory == "upload_file") {
+        scheduleBtn = true;
+        opencalendarBtn = false;
         btntext = "Schedule";
         meetingColum = true;
       }
-
-
-
-
 
       print(activityTypeNameCategory);
       print("jhbvjbvsvj");
     });
   }
 
-
   _buildOrderPopupDialog(BuildContext context, int typeIds) {
-
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
-
-
-
-
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
         content: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -4339,18 +4617,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 260,right: 10),
+                  padding: const EdgeInsets.only(left: 260, right: 10),
                   child: IconButton(
                     icon: Image.asset(
                       "images/cross.png",
                       color: Colors.black,
                     ),
                     onPressed: () {
-
-                      setState(() {
-
-                      });
-
+                      setState(() {});
 
                       Navigator.pop(context);
                     },
@@ -4358,14 +4632,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: activityTypeName,
                     hint: Text(
                       "Activity Type",
-                      style: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xFF212121),
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'Mulish'),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -4377,33 +4655,27 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         activityTypeId = value["id"];
                         activityTypeNameCategory = value["category"];
 
-
-
-                        if(activityTypeNameCategory == "default"){
-                          scheduleBtn=true;
-                          opencalendarBtn= false;
+                        if (activityTypeNameCategory == "default") {
+                          scheduleBtn = true;
+                          opencalendarBtn = false;
                           btntext = "Schedule";
                           meetingColum = true;
-                        }
-                        else if(activityTypeNameCategory == "phonecall"){
-                          scheduleBtn=true;
-                          opencalendarBtn= true;
+                        } else if (activityTypeNameCategory == "phonecall") {
+                          scheduleBtn = true;
+                          opencalendarBtn = true;
                           btntext = "Save";
                           meetingColum = true;
-                        }
-                        else if(activityTypeNameCategory == "meeting"){
-                          scheduleBtn=false;
-                          opencalendarBtn= true;
+                        } else if (activityTypeNameCategory == "meeting") {
+                          scheduleBtn = false;
+                          opencalendarBtn = true;
                           btntext = "Schedule";
                           meetingColum = false;
-                        }
-                        else if(activityTypeNameCategory == "upload_file"){
-                          scheduleBtn=true;
-                          opencalendarBtn= false;
+                        } else if (activityTypeNameCategory == "upload_file") {
+                          scheduleBtn = true;
+                          opencalendarBtn = false;
                           btntext = "Schedule";
                           meetingColum = true;
                         }
-
 
                         print(activityTypeName);
                         print(activityTypeId);
@@ -4414,19 +4686,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     dialogBox: false,
                     isExpanded: true,
                     menuConstraints:
-                    BoxConstraints.tight(const Size.fromHeight(300)),
+                        BoxConstraints.tight(const Size.fromHeight(300)),
                     itemsPerPage: 10,
                     currentPage: currentPage,
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
-                            child: Text(
-                              item["name"],
-                              style: TextStyle(
-                                  fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
-                            ),
-                          )));
+                        width: 300,
+                        child: Text(
+                          item["name"],
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Mulish'),
+                        ),
+                      )));
                     },
                     futureSearchFn: (String? keyword,
                         String? orderBy,
@@ -4435,10 +4710,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         int? pageNb) async {
                       Response response = await get(
                         Uri.parse(
-                            "${baseUrl}api/activity_type?res_model=crm.lead&page_no=${pageNb ??
-                                1}&count=10${keyword == null
-                                ? ""
-                                : "&filter=$keyword"}"),
+                            "${baseUrl}api/activity_type?res_model=crm.lead&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
                         headers: {
                           'Authorization': 'Bearer $token',
                         },
@@ -4455,18 +4727,17 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       int nbResults = data["length"];
 
                       List<DropdownMenuItem> results =
-                      (data["records"] as List<dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text("${item["name"]}"),
-                              ),
-                            ),
-                          ))
-                          .toList();
+                          (data["records"] as List<dynamic>)
+                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text("${item["name"]}"),
+                                      ),
+                                    ),
+                                  ))
+                              .toList();
                       return (Tuple2<List<DropdownMenuItem>, int>(
                           results, nbResults));
                     },
@@ -4474,9 +4745,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF212121),
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'Mulish'),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -4486,17 +4761,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         labelText: 'Summary',
-                        labelStyle: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish')),
+                        labelStyle: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'Mulish')),
                   ),
                 ),
-
                 Visibility(
                   visible: meetingColum,
                   child: Column(
                     children: [
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 0),
                         child: SizedBox(
                           child: InkWell(
                             onTap: () {
@@ -4509,20 +4787,27 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                        fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'))),
+                                        fontSize: 12,
+                                        color: Color(0xFF212121),
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish'))),
                           ),
                         ),
                       ),
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
 
                           value: assignedToname,
                           hint: Text(
                             "Assigned To",
-                            style: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF212121),
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Mulish'),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -4539,19 +4824,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           dialogBox: false,
                           isExpanded: true,
                           menuConstraints:
-                          BoxConstraints.tight(const Size.fromHeight(300)),
+                              BoxConstraints.tight(const Size.fromHeight(300)),
                           itemsPerPage: 10,
                           currentPage: currentPage,
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
-                                  child: Text(
-                                    item["name"],
-                                    style: TextStyle(
-                                        fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
-                                  ),
-                                )));
+                              width: 300,
+                              child: Text(
+                                item["name"],
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish'),
+                              ),
+                            )));
                           },
                           futureSearchFn: (String? keyword,
                               String? orderBy,
@@ -4560,11 +4848,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               int? pageNb) async {
                             Response response = await get(
                               Uri.parse(
-                                  "${baseUrl}api/assigned_to?res_model=crm.lead&res_id=${widget
-                                      .opportunityId}&page_no=${pageNb ??
-                                      1}&count=10${keyword == null
-                                      ? ""
-                                      : "&filter=$keyword"}"),
+                                  "${baseUrl}api/assigned_to?res_model=crm.lead&res_id=${widget.opportunityId}&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
 
                               // "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
                               headers: {
@@ -4575,25 +4859,26 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ));
 
                             if (response.statusCode != 200) {
-                              throw Exception("failed to get data from internet");
+                              throw Exception(
+                                  "failed to get data from internet");
                             }
 
                             dynamic data = jsonDecode(response.body);
 
                             int nbResults = data["length"];
 
-                            List<DropdownMenuItem> results =
-                            (data["records"] as List<dynamic>)
-                                .map<DropdownMenuItem>((item) =>
-                                DropdownMenuItem(
-                                  value: item,
-                                  child: Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}"),
-                                    ),
-                                  ),
-                                ))
+                            List<DropdownMenuItem> results = (data["records"]
+                                    as List<dynamic>)
+                                .map<DropdownMenuItem>(
+                                    (item) => DropdownMenuItem(
+                                          value: item,
+                                          child: Card(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(0),
+                                              child: Text("${item["name"]}"),
+                                            ),
+                                          ),
+                                        ))
                                 .toList();
                             return (Tuple2<List<DropdownMenuItem>, int>(
                                 results, nbResults));
@@ -4601,28 +4886,35 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                       ),
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 0),
                         child: TextFormField(
-                          style: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish'),
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Mulish'),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFFAFAFAF)),
                               ),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFFAFAFAF)),
                               ),
                               labelText: 'Commands',
-                              labelStyle: TextStyle(fontSize: 12, color: Color(0xFF212121),fontWeight: FontWeight.w400,fontFamily: 'Mulish')),
+                              labelStyle: TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF212121),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish')),
                         ),
                       ),
                     ],
                   ),
                 ),
-
-
-
                 Visibility(
                   visible: opencalendarBtn,
                   child: Padding(
@@ -4637,15 +4929,17 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 11.57,
-                                    color: Colors.white,fontFamily: 'Mulish'),
+                                    fontSize: 13.57,
+                                    color: Colors.white,
+                                    fontFamily: 'Mulish'),
                               ),
                             ),
-                            onPressed: () async{
-
+                            onPressed: () async {
                               String resmessage;
-                              typeIds ==0 ? resmessage=  await activitySchedule() : resmessage=  await editactivitySchedule(typeIds);
-
+                              typeIds == 0
+                                  ? resmessage = await activitySchedule()
+                                  : resmessage =
+                                      await editactivitySchedule(typeIds);
 
                               int resmessagevalue = int.parse(resmessage);
                               if (resmessagevalue != 0) {
@@ -4655,17 +4949,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      // Calender(0,"",DateTime.now(),[])),
+                                          // Calender(0,"",DateTime.now(),[])),
 
-                                      Calender(widget.opportunityId,"crm.lead",DateTime.now(),resmessagevalue,[],summaryController.text)),
+                                          Calender(
+                                              widget.opportunityId,
+                                              "crm.lead",
+                                              DateTime.now(),
+                                              resmessagevalue,
+                                              [],
+                                              summaryController.text)),
                                 );
                               }
-
-
                             },
-
-
-
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xFFF9246A),
                             )),
@@ -4673,9 +4968,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
                 ),
-
-
-
                 Visibility(
                   visible: scheduleBtn,
                   child: Row(
@@ -4693,14 +4985,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
-                                        color: Colors.white,fontFamily: 'Mulish'),
+                                        fontSize: 13.57,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish'),
                                   ),
                                 ),
                                 onPressed: () async {
                                   String resmessage;
 
-                                  typeIds ==0 ? resmessage=  await activitySchedule() : resmessage=  await editactivitySchedule(typeIds);
+                                  typeIds == 0
+                                      ? resmessage = await activitySchedule()
+                                      : resmessage =
+                                          await editactivitySchedule(typeIds);
                                   //resmessage=  await activitySchedule();
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
@@ -4709,8 +5005,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                     Navigator.pop(context);
                                   }
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFF9246A),
@@ -4718,7 +5012,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Center(
@@ -4731,28 +5027,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
-                                        color: Colors.white,fontFamily: 'Mulish'),
+                                        fontSize: 13.57,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async{
-
+                                onPressed: () async {
                                   String resmessage;
-                                  typeIds ==0 ? resmessage=  await markDone() : resmessage=  await editMarkDone(typeIds);
+                                  typeIds == 0
+                                      ? resmessage = await markDone()
+                                      : resmessage =
+                                          await editMarkDone(typeIds);
 
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
-
                                     await getScheduleDetails();
-                                    setState(() {
-
-                                    });
+                                    setState(() {});
 
                                     Navigator.pop(context);
                                   }
-
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFF9246A),
@@ -4763,7 +5056,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ],
                   ),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -4779,19 +5071,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
+                                      fontSize: 13.57,
+                                      color: Colors.white,
+                                      fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async{
-
+                              onPressed: () async {
                                 String resmessage;
-                                typeIds ==0 ? resmessage=  await markDone() : resmessage=  await editMarkDone(typeIds);
+                                typeIds == 0
+                                    ? resmessage = await markDone()
+                                    : resmessage = await editMarkDone(typeIds);
 
                                 int resmessagevalue = int.parse(resmessage);
                                 if (resmessagevalue != 0) {
-
-
                                   await defaultScheduleValues();
 
                                   setState(() {
@@ -4801,11 +5093,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   });
                                   //Navigator.pop(context);
                                 }
-
-
-
-
-
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9246A),
@@ -4813,7 +5100,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Center(
@@ -4826,18 +5115,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
+                                      fontSize: 13.57,
+                                      color: Colors.white,
+                                      fontFamily: 'Mulish'),
                                 ),
                               ),
                               onPressed: () async {
-                                await  getOpportunityDetails();
-                                setState((){
-
-                                });
+                                await getOpportunityDetails();
+                                setState(() {});
                                 Navigator.pop(context);
-
-
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9246A),
@@ -4847,9 +5133,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ],
                 ),
-
-
-
               ],
             ),
           ),
@@ -4858,186 +5141,127 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     });
   }
 
-
-
   _buildMarkDoneDialog(BuildContext context, int marktypeIds) {
-
     print(marktypeIds);
     print("demodemo");
     return StatefulBuilder(builder: (context, setState) {
-      return   AlertDialog(
+      return AlertDialog(
         title: const Text(
-            'Mark Done',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish'),),
-        shape: RoundedRectangleBorder(
-            borderRadius:
-            BorderRadius
-                .circular(
-                8)),
-        content:
-        Container(
-          height:
-          60,
-          width: MediaQuery
-              .of(
-              context)
-              .size
-              .width,
-          child:
-          TextField(
-            controller:
-            feedbackController,
-            decoration:
-            InputDecoration(
-              //border: OutlineInputBorder(),
-              hintText:
-              'Write Feedback',
-              hintStyle: TextStyle(fontSize: 12,color: Colors.black,fontFamily: 'Mulish')
-            ),
+          'Mark Done',
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+              fontFamily: 'Mulish'),
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        content: Container(
+          height: 60,
+          width: MediaQuery.of(context).size.width,
+          child: TextField(
+            controller: feedbackController,
+            decoration: InputDecoration(
+                //border: OutlineInputBorder(),
+                hintText: 'Write Feedback',
+                hintStyle: TextStyle(
+                    fontSize: 12, color: Colors.black, fontFamily: 'Mulish')),
           ),
         ),
-        actions: <
-            Widget>[
+        actions: <Widget>[
           Row(
             children: [
               SizedBox(
-                width: MediaQuery
-                    .of(
-                    context)
-                    .size
-                    .width /
-                    2.8,
+                width: MediaQuery.of(context).size.width / 2.8,
                 height: 38,
                 child: ElevatedButton(
                     child: Center(
                       child: Text(
                         "Done & Schedule Next",
                         style: TextStyle(
-                            fontWeight: FontWeight
-                                .w700,
+                            fontWeight: FontWeight.w700,
                             fontSize: 10,
-                            color: Colors
-                                .white,fontFamily: 'Mulish'),
+                            color: Colors.white,
+                            fontFamily: 'Mulish'),
                       ),
                     ),
                     onPressed: () async {
-
-                      String  resmessage =   await markDoneScheduleActivity(feedbackController.text, marktypeIds);
-
+                      String resmessage = await markDoneScheduleActivity(
+                          feedbackController.text, marktypeIds);
 
                       int resmessagevalue = int.parse(resmessage);
                       if (resmessagevalue != 0) {
-
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
 
-
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              _buildOrderPopupDialog(
-                                  context, 0
-                              ),
+                              _buildOrderPopupDialog(context, 0),
                         ).then((value) => setState(() {}));
                       }
-
-
-
                     },
-
-                    style: ElevatedButton
-                        .styleFrom(
-                      primary: Color(
-                          0xFFF9246A),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFF9246A),
                     )),
               ),
               Padding(
-                padding: const EdgeInsets
-                    .only(
-                    left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
-                  width: MediaQuery
-                      .of(
-                      context)
-                      .size
-                      .width /
-                      6.4,
+                  width: MediaQuery.of(context).size.width / 6.4,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
                         child: Text(
                           "Done",
                           style: TextStyle(
-                              fontWeight: FontWeight
-                                  .w700,
+                              fontWeight: FontWeight.w700,
                               fontSize: 10,
-                              color: Colors
-                                  .white,fontFamily: 'Mulish'),
+                              color: Colors.white,
+                              fontFamily: 'Mulish'),
                         ),
                       ),
                       onPressed: () async {
-
-                        String  resmessage =   await markDoneScheduleActivity(feedbackController.text, marktypeIds);
-
+                        String resmessage = await markDoneScheduleActivity(
+                            feedbackController.text, marktypeIds);
 
                         int resmessagevalue = int.parse(resmessage);
                         if (resmessagevalue != 0) {
                           feedbackController.text = "";
                           await getScheduleDetails();
                           setState(() {
-
                             Navigator.pop(context);
                           });
-
-
-
                         }
-
-
                       },
-
-                      style: ElevatedButton
-                          .styleFrom(
-                        primary: Color(
-                            0xFFF9246A),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF9246A),
                       )),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets
-                    .only(
-                    left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
-                  width: MediaQuery
-                      .of(
-                      context)
-                      .size
-                      .width /
-                      5,
+                  width: MediaQuery.of(context).size.width / 5,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
                         child: Text(
                           "Discard",
                           style: TextStyle(
-                              fontWeight: FontWeight
-                                  .w700,
+                              fontWeight: FontWeight.w700,
                               fontSize: 10,
-                              color: Colors
-                                  .black,fontFamily: 'Mulish'),
+                              color: Colors.black,
+                              fontFamily: 'Mulish'),
                         ),
                       ),
                       onPressed: () {
                         setState(() {
-                          Navigator
-                              .pop(
-                              context);
+                          Navigator.pop(context);
                         });
                       },
-                      style: ElevatedButton
-                          .styleFrom(
-                        primary: Color(
-                            0xFFFFFFFF),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFFFFFFF),
                       )),
                 ),
               ),
@@ -5047,10 +5271,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       );
     });
   }
-
-
-
-
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -5074,64 +5294,49 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     }
   }
 
-
-
-
-
-
-
   getScheduleDetails() async {
-
     var datas = await getScheduleActivityData(widget.opportunityId, "crm.lead");
 
     String scheduleIcpnValue;
 
     setState(() {
-      scheduleLength = datas['length']??0 ;
+      scheduleLength = datas['length'] ?? 0;
       print(datas);
       print(scheduleLength);
       print("scheduleLength");
 
       scheduleData = datas;
-      scheduleOverdue = datas['overdue']??0 ;
-      scheduleToday = datas['today']??0 ;
-      schedulePlanned = datas['planned']??0 ;
+      scheduleOverdue = datas['overdue'] ?? 0;
+      scheduleToday = datas['today'] ?? 0;
+      schedulePlanned = datas['planned'] ?? 0;
       // scheduleIcpnValue = datas['planned']??0
 
-      scheduleOverdue!=0 ? scheduleVisibiltyOverdue = true :scheduleVisibiltyOverdue=false;
-      scheduleToday!=0 ? scheduleVisibiltyToday=true :scheduleVisibiltyToday=false;
+      scheduleOverdue != 0
+          ? scheduleVisibiltyOverdue = true
+          : scheduleVisibiltyOverdue = false;
+      scheduleToday != 0
+          ? scheduleVisibiltyToday = true
+          : scheduleVisibiltyToday = false;
 
-      schedulePlanned!=0 ? scheduleVisibiltyPlanned=true : scheduleVisibiltyPlanned=false;
+      schedulePlanned != 0
+          ? scheduleVisibiltyPlanned = true
+          : scheduleVisibiltyPlanned = false;
 
-
-
-      scheduleIcon= Icon(Icons.add,
+      scheduleIcon = Icon(
+        Icons.add,
         color: Colors.white,
         size: 8,
-
       );
-
 
       _isInitialized = true;
     });
-
-
 
     print(scheduleLength);
     print(scheduleData);
     print("dadadadadadada");
 
     return scheduleData;
-
-
-
-
   }
-
-
-
-
-
 
   leadLost(bool valueType) async {
     String value = await lostLead(widget.opportunityId, valueType);
@@ -5143,12 +5348,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   productDefaultDetails() {}
 
-
-
   activitySchedule() async {
-
-    String value = await scheduleActivity(activityTypeId, assignedToid,widget.opportunityId,
-        summaryController.text,DuedateTime.text,commandsController.text,"crm.lead","");
+    String value = await scheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.opportunityId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "crm.lead",
+        "");
 
     print(value);
     print("valuesss");
@@ -5156,22 +5365,32 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   editactivitySchedule(int typeIds) async {
-
-    String value = await editScheduleActivity(activityTypeId, assignedToid,widget.opportunityId,
-        summaryController.text,DuedateTime.text,commandsController.text,"crm.lead","",typeIds);
+    String value = await editScheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.opportunityId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "crm.lead",
+        "",
+        typeIds);
 
     print(value);
     print("valuesss");
     return value;
   }
 
-
-
-
   markDone() async {
-
-    String value = await scheduleActivity(activityTypeId, assignedToid,widget.opportunityId,
-        summaryController.text,DuedateTime.text,commandsController.text,"crm.lead","mark_done");
+    String value = await scheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.opportunityId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "crm.lead",
+        "mark_done");
 
     print(value);
     print("valuesss");
@@ -5179,23 +5398,29 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   editMarkDone(int typeIds) async {
-
-    String value = await editScheduleActivity(activityTypeId, assignedToid,widget.opportunityId,
-        summaryController.text,DuedateTime.text,commandsController.text,"crm.lead","mark_done",typeIds);
+    String value = await editScheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.opportunityId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "crm.lead",
+        "mark_done",
+        typeIds);
 
     print(value);
     print("valuesss");
     return value;
   }
 
-  logNoteData(List myData1) async{
-
-    String value = await logNoteCreate(lognoteController.text,"crm.lead",widget.opportunityId,myData1);
+  logNoteData(List myData1) async {
+    String value = await logNoteCreate(
+        lognoteController.text, "crm.lead", widget.opportunityId, myData1);
 
     print(value);
     print("valuesss");
     return value;
-
   }
 
   void myAlert(String modelType) {
@@ -5204,13 +5429,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         builder: (BuildContext context) {
           return AlertDialog(
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             title: Text('Please choose media to select'),
             content: Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 6,
+              height: MediaQuery.of(context).size.height / 6,
               child: Column(
                 children: [
                   ElevatedButton(
@@ -5268,7 +5490,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
     if (img != null) {
       setState(
-            () {
+        () {
           if (imageData.isNotEmpty) {
             print("system 3");
             for (var i = 0; i < imageData.length; i++) {
@@ -5296,7 +5518,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     List<XFile> xfilePick = pickedFile;
 
     setState(
-          () {
+      () {
         if (xfilePick.isNotEmpty) {
           for (var i = 0; i < xfilePick.length; i++) {
             selectedImages.add(File(xfilePick[i].path));
@@ -5323,15 +5545,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       Uint8List imagebytes = await img!.readAsBytes(); //convert to bytes
       base64string = base64.encode(imagebytes);
       String dataImages =
-          '{"name":"name","type":"binary","datas":"${base64string
-          .toString()}","res_model":"crm.lead","res_id":"${widget.opportunityId}"}';
+          '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"crm.lead","res_id":"${widget.opportunityId}"}';
 
-      Map<String, dynamic> jsondata =
-      jsonDecode(dataImages);
+      Map<String, dynamic> jsondata = jsonDecode(dataImages);
       myData1.add(jsondata);
     }
 
-    String attachCount =  await attchmentDataCreate(myData1);
+    String attachCount = await attchmentDataCreate(myData1);
     setState(() {
       myData1.clear();
       attachmentCount = attachCount;
@@ -5341,33 +5561,31 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     });
   }
 
-
   Future getImagesAttachment() async {
     final pickedFile = await picker.pickMultipleMedia(
         imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
     List<XFile> xfilePick = pickedFile;
 
     setState(
-          () {
+      () {
         isLoading = true;
-      },);
+      },
+    );
 
     if (xfilePick.isNotEmpty) {
       for (var i = 0; i < xfilePick.length; i++) {
-        Uint8List imagebytes = await xfilePick[i]!
-            .readAsBytes(); //convert to bytes
+        Uint8List imagebytes =
+            await xfilePick[i]!.readAsBytes(); //convert to bytes
         base64string = base64.encode(imagebytes);
         String dataImages =
-            '{"name":"name","type":"binary","datas":"${base64string
-            .toString()}","res_model":"crm.lead","res_id":"${widget.opportunityId}"}';
+            '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"crm.lead","res_id":"${widget.opportunityId}"}';
 
-        Map<String, dynamic> jsondata =
-        jsonDecode(dataImages);
+        Map<String, dynamic> jsondata = jsonDecode(dataImages);
         myData1.add(jsondata);
 
         //attachmentSelectedImages.add(File(xfilePick[i].path));
       }
-      String attachCount =  await attchmentDataCreate(myData1);
+      String attachCount = await attchmentDataCreate(myData1);
       setState(() {
         myData1.clear();
         attachmentCount = attachCount;
@@ -5378,14 +5596,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       print(myData1);
       print("listarraycheck");
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Nothing is selected')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Nothing is selected')));
     }
   }
 
-  _buildSendsmsPopupDialog(BuildContext context,var name, phone, smsId,bool smsCondition,String type){
-
-
+  _buildSendsmsPopupDialog(BuildContext context, var name, phone, smsId,
+      bool smsCondition, String type) {
     print(context);
     print(name);
     print(phone);
@@ -5393,47 +5610,45 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(smsCondition);
     print(type);
 
-
     nameController.text = name;
     phonenumberController.text = phone;
     smsVisible = smsCondition;
 
-
-
-    return StatefulBuilder(builder:(context,setState){
+    return StatefulBuilder(builder: (context, setState) {
       // nameController.text = name;
       // phonenumberController.text = phone;
 
       return AlertDialog(
-
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+        content: Container(
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Send SMS Text Messages",style: TextStyle(fontSize: 19,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish'),),
+                    Text(
+                      "Send SMS Text Messages",
+                      style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                          fontFamily: 'Mulish'),
+                    ),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
                         color: Colors.black,
                       ),
                       onPressed: () {
-
-
                         Navigator.pop(context);
                       },
                     ),
@@ -5441,79 +5656,117 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Visibility(
                     visible: smsVisible,
-                    child: Center(child: Text("Invalid phone number",style: TextStyle(color: Colors.red,fontSize: 12),))),
-                SizedBox(height: 5,),
-                Text("Recipients",style: TextStyle(color: Color(0xFF212121),fontSize: 14,fontFamily: 'Mulish'),),
-                SizedBox(height: 0,),
+                    child: Center(
+                        child: Text(
+                      "Invalid phone number",
+                      style: TextStyle(color: Colors.red, fontSize: 12),
+                    ))),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Recipients",
+                  style: TextStyle(
+                      color: Color(0xFF212121),
+                      fontSize: 14,
+                      fontFamily: 'Mulish'),
+                ),
+                SizedBox(
+                  height: 0,
+                ),
                 // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(color: Color(0xFF212121),fontSize: 12,fontFamily: 'Mulish'),
+                    style: TextStyle(
+                        color: Color(0xFF212121),
+                        fontSize: 12,
+                        fontFamily: 'Mulish'),
                     controller: nameController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
-                        labelStyle: TextStyle(color: Color(0xFF212121),fontSize: 12,fontFamily: 'Mulish')
-                    ),
-                  ),),
-                SizedBox(height:5,),
+                        labelStyle: TextStyle(
+                            color: Color(0xFF212121),
+                            fontSize: 12,
+                            fontFamily: 'Mulish')),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(color: Color(0xFF212121),fontSize: 12,fontFamily: 'Mulish'),
+                    style: TextStyle(
+                        color: Color(0xFF212121),
+                        fontSize: 12,
+                        fontFamily: 'Mulish'),
                     controller: phonenumberController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Phone Number',
-                        labelStyle: TextStyle(color: Color(0xFF212121),fontSize: 12,fontFamily: 'Mulish')
-                    ),
-                  ),),
-                SizedBox(height: 8,),
+                        labelStyle: TextStyle(
+                            color: Color(0xFF212121),
+                            fontSize: 12,
+                            fontFamily: 'Mulish')),
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey)
-                    ),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.grey)),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: TextFormField(
-                        style: TextStyle(color: Color(0xFF212121),fontSize: 12,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            color: Color(0xFF212121),
+                            fontSize: 12,
+                            fontFamily: 'Mulish'),
                         controller: subject2Controller,
                         decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                             ),
                             focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Subject',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10)
-                        ),
+                            labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 10)),
                       ),
                     ),
-                  ),),
-                SizedBox(height: 5,),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20,left: 3,right: 3),
+                  padding: const EdgeInsets.only(top: 20, left: 3, right: 3),
                   child: Center(
                     child: SizedBox(
                       width: 340,
@@ -5528,33 +5781,31 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async{
-
+                          onPressed: () async {
                             print(subject2Controller.text);
                             print(phonenumberController.text);
                             print(nameController.text);
                             print(smsId);
                             print(type);
-                          String resMessagee =   await sendSms(subject2Controller.text,phonenumberController.text,smsId,type);
+                            String resMessagee = await sendSms(
+                                subject2Controller.text,
+                                phonenumberController.text,
+                                smsId,
+                                type);
 
+                            if (resMessagee == "success") {
+                              subject2Controller.clear();
+                              phonenumberController.clear();
+                              nameController.clear();
+                              smsId = 0;
+                              type = "";
 
-                          if( resMessagee == "success"){
-                            subject2Controller.clear();
-                            phonenumberController.clear();
-                            nameController.clear();
-                            smsId=0;
-                            type = "";
-
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => OpportunityDetail(widget.opportunityId)));
-
-
-
-                          }
-
-
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OpportunityDetail(
+                                          widget.opportunityId)));
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -5562,13 +5813,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
-
-
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
@@ -5578,34 +5829,42 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          title: TextButton(onPressed: ()async {
+          title: TextButton(
+            onPressed: () async {
+              var responce = await followerDefaultDataGet(
+                  widget.opportunityId, "crm.lead");
 
-            var responce=  await followerDefaultDataGet(widget.opportunityId,"crm.lead");
+              int followerId;
+              var message;
+              bool send_mail;
 
-            int followerId;
-            var message;
-            bool send_mail;
+              followerId = responce['id'];
+              message = responce['message'];
+              send_mail = responce['send_mail'];
 
-            followerId = responce['id'];
-            message = responce['message'];
-            send_mail = responce['send_mail'];
-
-            showDialog(
-              context: context,
-              builder: (BuildContext context) =>
-                  _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
-            ).then((value) => setState(() {}));
-          },
+              showDialog(
+                context: context,
+                builder: (BuildContext context) =>
+                    _buildAddfollowersPopupDialog(
+                        context, followerId, message, send_mail),
+              ).then((value) => setState(() {}));
+            },
             child: Padding(
               padding: const EdgeInsets.only(right: 60),
               child: Container(
-                  width:MediaQuery.of(context).size.width/2,
-                  child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',))),
-            ),),
-          content:  Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Text("Add Follower",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Mulish',
+                      ))),
+            ),
+          ),
+          content: Container(
             color: Color(0xFFF6F6F6),
             width: double.maxFinite,
-            height:  MediaQuery.of(context).size.height/5,
+            height: MediaQuery.of(context).size.height / 5,
             child: ListView.builder(
               itemCount: followers.length,
               itemBuilder: (_, i) {
@@ -5614,132 +5873,137 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     followers[i]['image'] != ""
                         ? Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 10),
-                      child: Container(
-                        width: 30,
-                        height: 25,
-                        //color: Colors.green,
-                        // decoration: BoxDecoration(
-                        //   border: Border.all(),
-                        //
-                        // ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(18),
-                            child: Image.network(
-                                "${followers[i]['image']}?token=${token}"),
-                          ),
-                        ),
-                      ),
-                    )
+                            padding: const EdgeInsets.only(left: 15, right: 10),
+                            child: Container(
+                              width: 30,
+                              height: 25,
+                              //color: Colors.green,
+                              // decoration: BoxDecoration(
+                              //   border: Border.all(),
+                              //
+                              // ),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18),
+                                  child: Image.network(
+                                      "${followers[i]['image']}?token=${token}"),
+                                ),
+                              ),
+                            ),
+                          )
                         : Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 10),
-                      child: Container(
-                        width: 30,
-                        height: 25,
-                        // decoration: BoxDecoration(
-                        //     border: Border.all(
-                        //       //  color: Colors.green
-                        //     ),
-                        //
-                        // ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
-                            // Adjust the size of the icon as per your requirements
-                            color: Colors
-                                .grey, // Adjust the color of the icon as per your requirements
+                            padding: const EdgeInsets.only(left: 15, right: 10),
+                            child: Container(
+                              width: 30,
+                              height: 25,
+                              // decoration: BoxDecoration(
+                              //     border: Border.all(
+                              //       //  color: Colors.green
+                              //     ),
+                              //
+                              // ),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 20,
+                                  // Adjust the size of the icon as per your requirements
+                                  color: Colors
+                                      .grey, // Adjust the color of the icon as per your requirements
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
                     Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width/3.5,
-                        child: Text(followers[i]['name'],style: TextStyle(  fontFamily: 'Mulish',fontSize: 12),)),
+                        width: MediaQuery.of(context).size.width / 3.5,
+                        child: Text(
+                          followers[i]['name'],
+                          style: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                        )),
                     Row(
                       children: [
-                        IconButton(onPressed: ()async{
+                        IconButton(
+                            onPressed: () async {
+                              List followerSub = await followerSubscription(
+                                  followers[i]['id']);
 
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildEditfollowersPopupDialog(context,
+                                        followerSub, followers[i]['id']),
+                              ).then((value) => setState(() {}));
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 18,
+                            )),
+                        IconButton(
+                            onPressed: () async {
+                              print(followers[i]['id']);
+                              print("ghkjdghjh");
 
-                          List followerSub = await followerSubscription(followers[i]['id']);
+                              // "res_model": "lead.lead",
+                              //
+                              // "res_id": 197,
+                              //
+                              // "follower_id": 1822
 
+                              String resMessage = await unFollowing(
+                                  widget.opportunityId,
+                                  followers[i]['id'],
+                                  "crm.lead");
 
-
-
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                _buildEditfollowersPopupDialog(context, followerSub,followers[i]['id']),
-                          ).then((value) => setState(() {}));
-                        }, icon:Icon(Icons.edit,size: 18,)),
-                        IconButton(onPressed: ()async{
-                          print(followers[i]['id']);
-                          print("ghkjdghjh");
-
-                          // "res_model": "lead.lead",
-                          //
-                          // "res_id": 197,
-                          //
-                          // "follower_id": 1822
-
-                          String resMessage = await unFollowing(widget.opportunityId,followers[i]['id'],"crm.lead");
-
-                          if(resMessage=="success"){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => OpportunityDetail(widget.opportunityId)));
-
-
-                          }
-
-
-                        }, icon:Icon(Icons.close,size: 18,))
+                              if (resMessage == "success") {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OpportunityDetail(
+                                            widget.opportunityId)));
+                              }
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              size: 18,
+                            ))
                       ],
                     ),
-
-
                   ],
                 );
               },
-            ),)
-      );
+            ),
+          ));
     });
   }
 
-  _buildAddfollowersPopupDialog(BuildContext context,int followerId,String message,bool send_mail){
-
-    isCheckedEmail =  send_mail;
+  _buildAddfollowersPopupDialog(
+      BuildContext context, int followerId, String message, bool send_mail) {
+    isCheckedEmail = send_mail;
     bodyController.text = message;
 
-    return StatefulBuilder(builder:(context,setState){
+    return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+        content: Container(
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Invite Follower",style: TextStyle(fontSize: 16),),
+                    Text(
+                      "Invite Follower",
+                      style: TextStyle(fontSize: 16),
+                    ),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -5747,8 +6011,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                       onPressed: () {
                         setState(() {
-                          templateName= null;
-                          templateId=null;
+                          templateName = null;
+                          templateId = null;
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
@@ -5759,52 +6023,51 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                SizedBox(height: 5,),
+                Text(
+                  "Recipients",
+                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 // SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
-                    hint: 'Add contacts to notify...' ,
+                    hint: 'Add contacts to notify...',
                     selectedOptions: editRecipientName
-                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .map((recipient) => ValueItem(
+                            label: recipient.label, value: recipient.value))
                         .toList(),
                     onOptionSelected: (options) {
                       print(options);
                       recipient!.clear();
                       for (var options in options) {
-
                         recipient!.add(options.value);
                         print('Label: ${options.label}');
                         print('Value: ${options.value}');
                         print(recipient);
                         print('-hgvvjb--');
                       }
-
                     },
                     networkConfig: NetworkConfig(
-
-
-                      url: "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                      url:
+                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
-
-
                         'Authorization': 'Bearer $token',
                       },
                     ),
                     chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-
                     responseParser: (response) {
                       debugPrint('Response: $response');
 
-                      final list = (response['record'] as List<
-                          dynamic>).map((e) {
+                      final list =
+                          (response['record'] as List<dynamic>).map((e) {
                         final item = e as Map<String, dynamic>;
                         return ValueItem(
-
                           label: item['display_name'],
                           value: item['id'].toString(),
                         );
@@ -5822,13 +6085,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     }),
                   ),
                 ),
-                SizedBox(height: 5,),
-                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12),),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Send Email",
+                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
-                    activeColor:  Color(0xFFF9246A),
+                    activeColor: Color(0xFFF9246A),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -5858,17 +6128,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 // SizedBox(height: 5,),
                 Container(
                   //color: Colors.red,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/5,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 5,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Container(
@@ -5879,7 +6142,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         expands: true,
                         maxLines: null,
                         controller: bodyController,
-
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
@@ -5905,23 +6167,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async{
+                          onPressed: () async {
+                            String resmessage = await followerCreate(
+                                message, followerId, recipient, send_mail);
 
-                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
-
-                            if(resmessage == "success"){
+                            if (resmessage == "success") {
                               bodyController.clear();
-                              followerId=0;
+                              followerId = 0;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OpportunityDetail(widget.opportunityId)));
-
+                                      builder: (context) => OpportunityDetail(
+                                          widget.opportunityId)));
                             }
 
                             print(recipient);
                             print("tagattagagaga");
-
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -5953,23 +6214,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 5,),
-
-
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
-  _buildEditfollowersPopupDialog(BuildContext context,List followerSub,int followerId){
-    return StatefulBuilder(builder:(context,setState){
+
+  _buildEditfollowersPopupDialog(
+      BuildContext context, List followerSub, int followerId) {
+    return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
+        content: Container(
           // width: MediaQuery
           //     .of(context)
           //     .size
@@ -5978,7 +6241,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -5987,10 +6250,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     Row(
                       children: [
-                        Text("Edit Subscription of",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
-                        SizedBox(width: 5,),
-                        Text(" Follower name",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
-
+                        Text(
+                          "Edit Subscription of",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Mulish',
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          " Follower name",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Mulish',
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
                     IconButton(
@@ -5999,23 +6277,23 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        setState(() {
-
-                        });
+                        setState(() {});
 
                         Navigator.pop(context);
                       },
                     ),
                   ],
                 ),
-                Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                Divider(
+                  color: Color(0xFFF4F4F4),
+                  thickness: 2,
+                ),
 
                 Container(
                   width: double.maxFinite,
-                  height:  MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
                   child: ListView.builder(
                     itemCount: followerSub.length,
-
                     itemBuilder: (_, i) {
                       isCheckedFollowers = followerSub[i]["selected"];
                       return Row(
@@ -6031,24 +6309,24 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   onChanged: (bool? value) {
                                     setState(() {
                                       isCheckedFollowers = value!;
-                                      followerSub[i]["selected"]=isCheckedFollowers;
-
+                                      followerSub[i]["selected"] =
+                                          isCheckedFollowers;
                                     });
                                   },
                                 ),
                               ),
-                              Text(followerSub[i]["name"],style: TextStyle(   fontFamily: 'Mulish',fontSize: 12),),
+                              Text(
+                                followerSub[i]["name"],
+                                style: TextStyle(
+                                    fontFamily: 'Mulish', fontSize: 12),
+                              ),
                             ],
                           ),
-
-
-
                         ],
                       );
                     },
-                  ),),
-
-
+                  ),
+                ),
 
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
@@ -6063,29 +6341,32 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,   fontFamily: 'Mulish'),
+                                  color: Colors.white,
+                                  fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async{
-
+                          onPressed: () async {
                             print(followerSub);
-                            List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
+                            List selectedItems = followerSub
+                                .where((item) => item["selected"] == true)
+                                .toList();
 
-                            List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+                            List<int> selectedIds = selectedItems
+                                .map<int>((item) => item["id"])
+                                .toList();
 
                             print(selectedIds);
 
+                            String resMessage =
+                                await followerSubscriptionAdding(
+                                    followerId, selectedIds);
 
-
-                            String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
-
-                            if(resMessage == "success"){
+                            if (resMessage == "success") {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => OpportunityDetail(widget.opportunityId)));
-
-
+                                      builder: (context) => OpportunityDetail(
+                                          widget.opportunityId)));
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -6118,39 +6399,47 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 5,),
-
-
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
 
   defaultSendmsgvalues() async {
+
+
+    List<int> selectedIds = sendMailData
+        .where((item) => item["selected"] == true)
+        .map((item) => item["id"] as int)
+        .toList();
+
+
+    print("sjbkjbnkjnsdvkn");
+
     recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.opportunityId,"crm.lead");
+    var data = await defaultSendmessageData(widget.opportunityId, "crm.lead",selectedIds);
     setState(() {
       print(data);
 
-      subjectController.text = data['subject'].toString()??"";
+      subjectController.text = data['subject'].toString() ?? "";
 
-      for(int i=0;i<data['partner_ids'].length;i++)
-      {
+      for (int i = 0; i < data['partner_ids'].length; i++) {
         selctedRecipient.add(data['partner_ids'][i]);
-
       }
 
-      for(int i=0;i<selctedRecipient.length;i++){
-        editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
-
+      for (int i = 0; i < selctedRecipient.length; i++) {
+        editRecipientName.add(new ValueItem(
+            label: selctedRecipient[i]['display_name'],
+            value: selctedRecipient[i]['id'].toString()));
       }
 
       recipient = editRecipientName.map((item) => item.value).toList();
-
 
       _isInitialized = true;
     });
@@ -6158,29 +6447,34 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(token);
   }
 
-  _buildSendmessagePopupDialog(BuildContext context,int sendtypeIds){
-    return StatefulBuilder(builder:(context,setState){
+  _buildSendmessagePopupDialog(BuildContext context, int sendtypeIds) {
+    return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+        content: Container(
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Odoo",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
+                    Text(
+                      "Odoo",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
+                    ),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -6188,8 +6482,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                       onPressed: () {
                         setState(() {
-                          templateName= null;
-                          templateId=null;
+                          templateName = null;
+                          templateId = null;
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
@@ -6200,53 +6494,65 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',),),
-                SizedBox(height: 5,),
-                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'Mulish',),),
-                SizedBox(height: 10,),
+                Text(
+                  "Recipients",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Followers of the document and",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: MultiSelectDropDown.network(
-                    hint: 'Add contacts to notify...' ,
-                    hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
+                    hint: 'Add contacts to notify...',
+                    hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
                     selectedOptions: editRecipientName
-                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .map((recipient) => ValueItem(
+                            label: recipient.label, value: recipient.value))
                         .toList(),
                     onOptionSelected: (options) {
                       print(options);
                       recipient!.clear();
                       for (var options in options) {
-
                         recipient!.add(options.value);
                         print('Label: ${options.label}');
                         print('Value: ${options.value}');
                         print(recipient);
                         print('-hgvvjb--');
                       }
-
                     },
                     networkConfig: NetworkConfig(
-
-
-                      url: "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                      url:
+                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
-
-
                         'Authorization': 'Bearer $token',
                       },
                     ),
                     chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-
                     responseParser: (response) {
                       debugPrint('Response: $response');
 
-                      final list = (response['record'] as List<
-                          dynamic>).map((e) {
+                      final list =
+                          (response['record'] as List<dynamic>).map((e) {
                         final item = e as Map<String, dynamic>;
                         return ValueItem(
-
                           label: item['display_name'],
                           value: item['id'].toString(),
                         );
@@ -6264,35 +6570,46 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     }),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      fontFamily: 'Mulish',
+                    ),
                     controller: subjectController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
-                        labelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',)
-                    ),
-                  ),),
-                SizedBox(height: 5,),
+                        labelStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                          fontFamily: 'Mulish',
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Container(
                   //color: Colors.red,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  width: MediaQuery.of(context).size.width,
                   // height: MediaQuery
                   //     .of(context)
                   //     .size
@@ -6300,14 +6617,21 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextFormField(
-                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                      ),
                       controller: bodyController,
-                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
                     ),
                   ),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     myAlert("lognote");
                   },
                   child: Container(
@@ -6317,68 +6641,54 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                           ),
                         ),
-                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12,fontFamily: 'Mulish'),),
-
-
+                        Text(
+                          "ATTACH FILE",
+                          style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 12,
+                              fontFamily: 'Mulish'),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                selectedImages.isEmpty ?  Padding(
-                  padding: const EdgeInsets.only(left:25),
-                  child: Container(
-
-                    width:
-                    MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    // height: 40,
-                  ),
-                )
-                    :
-                Padding(
-                  padding: const EdgeInsets.only(left:25,right: 50),
-                  child: Container(
-
-                    width:
-                    MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    // height: 40,
-                    child: Container(
-                      width: 40,
-                      //height: 40,
-                      child: GridView.builder(
-                        shrinkWrap: true, // Avoid scrolling
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount:
-                        selectedImages.length,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 8),
-                        itemBuilder:
-                            (BuildContext context,
-                            int index) {
-                          return Center(
-                              child: kIsWeb
-                                  ? Image.network(
-                                  selectedImages[
-                                  index]
-                                      .path)
-                                  : Image.file(
-                                  selectedImages[
-                                  index]));
-                        },
+                selectedImages.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          // height: 40,
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 25, right: 50),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          // height: 40,
+                          child: Container(
+                            width: 40,
+                            //height: 40,
+                            child: GridView.builder(
+                              shrinkWrap: true, // Avoid scrolling
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: selectedImages.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 8),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Center(
+                                    child: kIsWeb
+                                        ? Image.network(
+                                            selectedImages[index].path)
+                                        : Image.file(selectedImages[index]));
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
                 // FutureBuilder(
                 //     future: getattchmentData(widget.leadId, "lead.lead"),
                 //     builder: (context, AsyncSnapshot snapshot) {
@@ -6490,17 +6800,24 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 //       return Center(child: const CircularProgressIndicator());
                 //     }),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: templateName,
-                    hint: Text("Use template",
-                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
+                    hint: Text(
+                      "Use template",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
+                    ),
                     searchHint: null,
                     autofocus: false,
-                    onChanged: (value) async{
+                    onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
                         print("value");
@@ -6511,80 +6828,74 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       print(templateId);
                       print(widget.opportunityId);
                       print("djbfkjnksdnk");
-                      var resultData =  await templateSelectionData(templateId,widget.opportunityId,"crm.lead");
+                      var resultData = await templateSelectionData(
+                          templateId, widget.opportunityId, "crm.lead");
 
-                      if(resultData!=""){
-                        setState((){
+                      if (resultData != "") {
+                        setState(() {
                           recipient?.clear();
                           selctedRecipient.clear();
                           editRecipientName.clear();
                           subjectController.text = resultData["subject"];
                           bodyController.text = resultData["body"];
 
-
-
-                          for(int i=0;i<resultData['partner_ids'].length;i++)
-                          {
-
+                          for (int i = 0;
+                              i < resultData['partner_ids'].length;
+                              i++) {
                             selctedRecipient.add(resultData['partner_ids'][i]);
-
-
                           }
 
-
-                          for(int i=0;i<selctedRecipient.length;i++){
-                            editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
-
+                          for (int i = 0; i < selctedRecipient.length; i++) {
+                            editRecipientName.add(new ValueItem(
+                                label: selctedRecipient[i]['display_name'],
+                                value: selctedRecipient[i]['id'].toString()));
                           }
 
-                          recipient = editRecipientName.map((item) => item.value).toList();
-
-
-
-
+                          recipient = editRecipientName
+                              .map((item) => item.value)
+                              .toList();
                         });
                       }
 
-
-
                       print(resultData["body"]);
                       print("dajksfkdmvd ");
-
                     },
 
                     dialogBox: false,
                     isExpanded: true,
-                    menuConstraints: BoxConstraints.tight(
-                        const Size.fromHeight(300)),
+                    menuConstraints:
+                        BoxConstraints.tight(const Size.fromHeight(300)),
                     itemsPerPage: 10,
                     currentPage: currentPage,
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
-                            child: Text(item["name"], style: TextStyle(
-                              fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
-                          )));
+                        width: 300,
+                        child: Text(
+                          item["name"],
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            fontFamily: 'Mulish',
+                          ),
+                        ),
+                      )));
                     },
-                    futureSearchFn: (String? keyword, String? orderBy,
+                    futureSearchFn: (String? keyword,
+                        String? orderBy,
                         bool? orderAsc,
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
-                      Response response = await get(Uri.parse(
-                          "${baseUrl}api/message_templates?page_no=${pageNb ??
-                              1}&count=10${keyword == null
-                              ? ""
-                              : "&filter=$keyword"}&model=crm.lead"),
+                      Response response = await get(
+                        Uri.parse(
+                            "${baseUrl}api/message_templates?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lead"),
                         headers: {
-
                           'Authorization': 'Bearer $token',
-
                         },
-                      )
-                          .timeout(const Duration(
+                      ).timeout(const Duration(
                         seconds: 10,
                       ));
-
 
                       if (response.statusCode != 200) {
                         throw Exception("failed to get data from internet");
@@ -6594,31 +6905,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                       int nbResults = data["length"];
 
-                      List<DropdownMenuItem> results = (data["record"] as List<
-                          dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text(
-                                    "${item["name"]}"),
-
-                              ),
-                            ),
-                          ))
-                          .toList();
+                      List<DropdownMenuItem> results =
+                          (data["record"] as List<dynamic>)
+                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text("${item["name"]}"),
+                                      ),
+                                    ),
+                                  ))
+                              .toList();
                       return (Tuple2<List<DropdownMenuItem>, int>(
                           results, nbResults));
                     },
-
-
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20,left: 5,right: 5),
+                  padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
                   child: Center(
                     child: SizedBox(
                       width: 320,
@@ -6633,16 +6938,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async{
-
-
-                            for (int i = 0;
-                            i < selectedImages.length;
-                            i++) {
-                              imagepath =
-                                  selectedImages[i].path.toString();
+                          onPressed: () async {
+                            for (int i = 0; i < selectedImages.length; i++) {
+                              imagepath = selectedImages[i].path.toString();
                               File imagefile =
-                              File(imagepath); //convert Path to File
+                                  File(imagepath); //convert Path to File
                               Uint8List imagebytes = await imagefile
                                   .readAsBytes(); //convert to bytes
                               base64string = base64.encode(imagebytes);
@@ -6652,30 +6952,29 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               //
 
                               String dataImages =
-                                  '{"name":"name","type":"binary","datas":"${base64string
-                                  .toString()}"}';
+                                  '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
                               Map<String, dynamic> jsondata =
-                              jsonDecode(dataImages);
+                                  jsonDecode(dataImages);
                               myData1.add(jsondata);
                             }
 
+                            String resMessage =
+                                await createSendmessage(myData1);
 
-                           String resMessage = await createSendmessage(myData1);
+                            if (resMessage == "success") {
+                              setState(() {
+                                logDataHeader.clear();
+                                logDataTitle.clear();
+                                selectedImagesDisplay.clear();
+                                lognoteController.text = "";
+                                selectedImages.clear();
+                                myData1.clear();
+                              });
 
-                           if(resMessage == "success") {
-                             setState(() {
-                               logDataHeader.clear();
-                               logDataTitle.clear();
-                               selectedImagesDisplay.clear();
-                               lognoteController.text = "";
-                               selectedImages.clear();
-                               myData1.clear();
-                             });
-
-                             print(recipient);
-                             print("tagattagagaga");
-                           }
+                              print(recipient);
+                              print("tagattagagaga");
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -6707,37 +7006,47 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 150),
-                  child: TextButton(onPressed:()async{
-                    await newTemplate();
-
-                  }, child:Text("Save As New Template",style: TextStyle(color: Colors.black,fontFamily: 'Mulish'),)),
+                  child: TextButton(
+                      onPressed: () async {
+                        await newTemplate();
+                      },
+                      child: Text(
+                        "Save As New Template",
+                        style: TextStyle(
+                            color: Colors.black, fontFamily: 'Mulish'),
+                      )),
                 )
-
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
+
   newTemplate() async {
-    String value = await newTemplateCreate(
-        bodyController.text , "crm.lead",subjectController.text, widget.opportunityId);
+    String value = await newTemplateCreate(bodyController.text, "crm.lead",
+        subjectController.text, widget.opportunityId);
 
     print(value);
     print("valuesss");
     return value;
   }
 
-
-
-
   createSendmessage(List myData1) async {
     String value = await sendMessageCreate(
-        bodyController.text , "crm.lead",subjectController.text, widget.opportunityId,recipient,templateId,myData1);
+        bodyController.text,
+        "crm.lead",
+        subjectController.text,
+        widget.opportunityId,
+        recipient,
+        templateId,
+        myData1);
 
     print(value);
     print("valuesss");
