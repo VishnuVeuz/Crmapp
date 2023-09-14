@@ -3285,27 +3285,24 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         MainAxisAlignment
                                                                             .spaceAround,
                                                                         children: [
-                                                                          Positioned(
-                                                                            bottom:5,
-                                                                            child: Container(
-                                                                              height:
-                                                                              25,
-                                                                              width:
-                                                                              25,
-                                                                              //color: Colors.red,
+                                                                          Container(
+                                                                            height:
+                                                                            25,
+                                                                            width:
+                                                                            25,
+                                                                            //color: Colors.red,
+                                                                            child:
+                                                                            Align(
+                                                                              alignment:
+                                                                              Alignment
+                                                                                  .topRight,
                                                                               child:
-                                                                              Align(
-                                                                                alignment:
-                                                                                Alignment
-                                                                                    .topRight,
-                                                                                child:
-                                                                                IconButton(
-                                                                                  icon: Icon(
-                                                                                      Icons
-                                                                                          .add_reaction_outlined,
-                                                                                      size: 15.0),
-                                                                                  onPressed: () {},
-                                                                                ),
+                                                                              IconButton(
+                                                                                icon: Icon(
+                                                                                    Icons
+                                                                                        .add_reaction_outlined,
+                                                                                    size: 15.0),
+                                                                                onPressed: () {},
                                                                               ),
                                                                             ),
                                                                           ),
@@ -5245,7 +5242,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         .size
                         .width,
                      height: 40,
-                    color: Colors.green,
+                   // color: Colors.green,
                   ),
                 )
                     :
