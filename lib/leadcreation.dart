@@ -311,7 +311,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Lead Name',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -328,7 +328,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
                             labelText: 'Probability',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -346,7 +346,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Company Name',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
 
@@ -360,7 +360,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                         value: titleName,
                         hint: Text("Title",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                         searchHint: null,
                         autofocus: false,
                         onChanged: (value) {
@@ -383,7 +383,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -453,7 +453,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Contact Name',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -479,7 +479,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Street',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -497,7 +497,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Street2',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -515,7 +515,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'City',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     //country
@@ -527,7 +527,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: countryName,
                         hint: Text("Country",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
 
                         searchHint: null,
@@ -552,7 +552,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -626,7 +626,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                         value: stateName,
                         hint: Text("State",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
 
                         searchHint: null,
@@ -651,7 +651,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -737,7 +737,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Zip',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
 
@@ -757,7 +757,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Website',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
 
@@ -770,7 +770,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: languageName,
                         hint: Text("Language",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -794,7 +794,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -876,7 +876,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Email',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -894,7 +894,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Email cc',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -912,7 +912,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Job Position',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -933,7 +933,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                             labelText: 'Phone',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                     Padding(
@@ -953,7 +953,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
                             labelText: 'Mobile',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
 
@@ -966,7 +966,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: campanyName,
                         hint: Text("Company",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -990,7 +990,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1063,7 +1063,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: salespersonName,
                         hint: Text("Salesperson",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -1087,7 +1087,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1159,7 +1159,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: salesteamName,
                         hint: Text("Sales Team",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -1183,7 +1183,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1255,7 +1255,7 @@ class _LeadCreationState extends State<LeadCreation> {
                       padding: const EdgeInsets.only(left: 25, top: 10),
                       child: Text(
 
-                        "Priority", style: TextStyle(fontSize: 10,
+                        "Priority", style: TextStyle(fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: Colors.black,fontFamily: 'Mulish'),),
                     ),
@@ -1288,7 +1288,7 @@ class _LeadCreationState extends State<LeadCreation> {
                           horizontal: 15, vertical: 5),
                       child: MultiSelectDropDown.network(
                            hint: 'Tags',
-                        hintStyle: TextStyle(fontFamily: 'Mulish'),
+                        hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
                         selectedOptions: editTagName
                             .map((tag) => ValueItem( label: tag.label,value: tag.value))
                             .toList(),
@@ -1354,7 +1354,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: campaignName,
                         hint: Text("Campaign",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -1378,7 +1378,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1453,7 +1453,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: mediumName,
                         hint: Text("Medium",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -1477,7 +1477,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1549,7 +1549,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         //items: items,
                         value: sourceName,
                         hint: Text("Source",
-                          style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                         searchHint: null,
                         autofocus: false,
@@ -1573,7 +1573,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Container(
                                 width: 300,
                                 child: Text(item["name"], style: TextStyle(
-                                    fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),),
+                                    fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
                         },
                         futureSearchFn: (String? keyword, String? orderBy,
@@ -1655,7 +1655,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Reffered by',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
 
@@ -1675,7 +1675,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             // border: UnderlineInputBorder(),
                             labelText: 'Internal Notes',
-                            labelStyle: TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')
+                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
                   ],
