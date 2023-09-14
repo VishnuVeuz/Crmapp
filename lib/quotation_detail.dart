@@ -85,6 +85,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
     color: Colors.white,
     size: 8,
   );
+  Icon logNoteIcon = Icon(
+    Icons.circle,
+    color: Colors.red,
+    size: 8,
+  );
+
 
   // lognote
 
@@ -3412,6 +3418,36 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               lognoteoptions = logDataTitle[indexx][indexs]['is_editable'] ?? true;
                                               starImage   = logDataTitle[indexx][indexs]['starred']??false;
 
+                                              logDataTitle[indexx][indexs]['icon'] ==
+                                                  "envelope"
+                                                  ? logNoteIcon = const Icon(
+                                                Icons.email,
+                                                color: Colors.red,
+                                                size: 15,
+                                              )
+                                                  : logDataTitle[indexx][indexs]['icon'] ==
+                                                  "ad_units"
+                                                  ? logNoteIcon = Icon(
+                                                Icons.phone,
+                                                color: Colors.red,
+                                                size: 15,
+                                              )
+                                                  : logDataTitle[indexx][indexs]
+                                              ['icon'] ==
+                                                  "telegram"
+                                                  ? logNoteIcon = Icon(
+                                                Icons.telegram,
+                                                color: Colors.red,
+                                                size: 15,
+                                              ) : Icon(
+                                                Icons.circle,
+                                                color: Colors
+                                                    .white,
+                                                size: 8,
+                                              );
+
+
+
 
 
                                               return Card(
@@ -3747,7 +3783,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                           fontSize: 11,
                                                                                           color: Colors
                                                                                               .grey[700],))),
-                                                                                Container(child: Icon(Icons.icecream_outlined)),
+                                                                                Container(child: logNoteIcon),
                                                                               ],
                                                                             ),
                                                                           ),

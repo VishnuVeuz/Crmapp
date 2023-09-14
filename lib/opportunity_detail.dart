@@ -134,6 +134,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     color: Colors.white,
     size: 8,
   );
+  Icon logNoteIcon = Icon(
+    Icons.circle,
+    color: Colors.red,
+    size: 8,
+  );
 
   // lognote
 
@@ -3538,6 +3543,36 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                 lognoteoptions = logDataTitle[indexx][indexs]['is_editable'] ?? true;
 
+
+                                                logDataTitle[indexx][indexs]['icon'] ==
+                                                    "envelope"
+                                                    ? logNoteIcon = const Icon(
+                                                  Icons.email,
+                                                  color: Colors.red,
+                                                  size: 15,
+                                                )
+                                                    : logDataTitle[indexx][indexs]['icon'] ==
+                                                    "ad_units"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.phone,
+                                                  color: Colors.red,
+                                                  size: 15,
+                                                )
+                                                    : logDataTitle[indexx][indexs]
+                                                ['icon'] ==
+                                                    "telegram"
+                                                    ? logNoteIcon = Icon(
+                                                  Icons.telegram,
+                                                  color: Colors.red,
+                                                  size: 15,
+                                                ) : Icon(
+                                                  Icons.circle,
+                                                  color: Colors
+                                                      .white,
+                                                  size: 8,
+                                                );
+
+
                                                 return Card(
                                                   elevation: 1,
                                                   child: Column(
@@ -3879,7 +3914,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             fontFamily: 'Mulish',
                                                                                             color: Colors
                                                                                                 .grey[700],))),
-                                                                                  Container(child: Icon(Icons.icecream_outlined)),
+                                                                                  Container(child: logNoteIcon),
                                                                                 ],
                                                                               ),
                                                                             ),
