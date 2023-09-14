@@ -2457,10 +2457,10 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   .of(context)
                   .size
                   .width,
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height,
+              // height: MediaQuery
+              //     .of(context)
+              //     .size
+              //     .height,
               //color: Colors.green,
               child: SingleChildScrollView(
                 child: Column(
