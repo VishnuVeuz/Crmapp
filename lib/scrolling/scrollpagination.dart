@@ -296,14 +296,14 @@ class _LeadScrollingState extends State<LeadScrolling> {
                       ]
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 0),
-                  child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 0),
+                //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                //     onPressed: () {
+                //
+                //     },
+                //   ),
+                // ),
                 // IconButton(onPressed:(){
                 //  // buildLeadModelsView();
                 //   // showDialog(

@@ -97,20 +97,20 @@ class QuotationList extends StatelessWidget {
                                       color: Color(0xFF787878)),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 0,bottom: 0),
-                                child: IconButton(icon: SvgPicture.asset("images/clock.svg",),
-
-                                  onPressed: () {
-
-                                  },
-                                ),
-                              ),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(top: 0,bottom: 0),
+                              //   child: IconButton(icon: SvgPicture.asset("images/clock.svg",),
+                              //
+                              //     onPressed: () {
+                              //
+                              //     },
+                              //   ),
+                              // ),
 
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 45,right: 20,bottom: 0),
+                            padding: const EdgeInsets.only(left: 88,right: 20,bottom: 5,top: 5),
                             child: Container(
 
                               decoration: BoxDecoration(
