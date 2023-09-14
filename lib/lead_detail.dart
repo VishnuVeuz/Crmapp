@@ -527,7 +527,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/create.svg",width: 28,height: 28,),
+                                                      "images/duplicatee.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -655,7 +655,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
+                                                      "images/more.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -697,7 +697,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
+                                                      "images/unarchivee.svg",width: 28,height: 28,),
                                                   ),
 
                                                   Padding(
@@ -735,7 +735,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/delete.svg",width: 28,height: 28,),
+                                                      "images/sendsmss.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -758,7 +758,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               },
                               child: SvgPicture
                                   .asset(
-                                "images/more.svg",width: 28,height: 28,),
+                                "images/moree.svg",width: 28,height: 28,),
                             ),
 
 
@@ -2815,7 +2815,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     scheduleData[
                                                     'records']
                                                     [
-                                                    index]['id'];
+                                                    index]['id'];https://www.mediafire.com/file/45sy7t40yglwgo4/app-release.apk/filemark as done
 
                                                     var data = await editDefaultScheduleData(
                                                         scheduleData[
@@ -4094,7 +4094,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: ElevatedButton(
                                 child: Center(
                                   child: Text(
-                                    "get  Done",
+                                    "Mark As Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 11.57,

@@ -417,7 +417,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               },
                               child: SvgPicture
                                   .asset(
-                                "images/create.svg",width: 28,height: 28,),
+                                "images/duplicatee.svg",width: 28,height: 28,),
                             ),
 
 
@@ -453,7 +453,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     },
                                     child: SvgPicture
                                         .asset(
-                                      "images/archive.svg",width: 28,height: 28,),
+                                      "images/more.svg",width: 28,height: 28,),
                                   ),
 
 
@@ -488,7 +488,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     },
                                     child: SvgPicture
                                         .asset(
-                                      "images/archive.svg",width: 28,height: 28,),
+                                      "images/unarchivee.svg",width: 28,height: 28,),
                                   ),
 
 

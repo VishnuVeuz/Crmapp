@@ -511,7 +511,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       }
                                                     },
                                                     child: SvgPicture.asset(
-                                                      "images/create.svg",
+                                                      "images/duplicatee.svg",
                                                       width: 28,
                                                       height: 28,
                                                     ),
@@ -861,7 +861,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           },
                                                           child:
                                                               SvgPicture.asset(
-                                                            "images/archive.svg",
+                                                            "images/more.svg",
                                                             width: 28,
                                                             height: 28,
                                                           ),
@@ -907,7 +907,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           },
                                                           child:
                                                               SvgPicture.asset(
-                                                            "images/archive.svg",
+                                                            "images/unarchivee.svg",
                                                             width: 28,
                                                             height: 28,
                                                           ),
@@ -968,7 +968,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           setState(() {}));
                                                     },
                                                     child: SvgPicture.asset(
-                                                      "images/delete.svg",
+                                                      "images/sendsmss.svg",
                                                       width: 28,
                                                       height: 28,
                                                     ),
@@ -996,7 +996,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     });
                               },
                               child: SvgPicture.asset(
-                                "images/more.svg",
+                                "images/moree.svg",
                                 width: 28,
                                 height: 28,
                               ),

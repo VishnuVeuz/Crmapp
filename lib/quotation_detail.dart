@@ -427,7 +427,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             },
                             child: SvgPicture
                                 .asset(
-                              "images/create.svg",width: 28,height: 28,),
+                              "images/duplicatee.svg",width: 28,height: 28,),
                           ),
 
 
