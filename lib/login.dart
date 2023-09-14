@@ -55,6 +55,7 @@ CRM made easy.
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 25,
+                        fontFamily: 'Mulish',
                         color: Colors.white,
                       ),
                     ),
@@ -92,6 +93,7 @@ CRM made easy.
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 20.15,
+                                fontFamily: 'Mulish',
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -112,9 +114,11 @@ CRM made easy.
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                       border: InputBorder.none,
+
                                       hintText: 'Your email address',
                                       hintStyle: TextStyle(
                                           color: Colors.grey,
+                                          fontFamily: 'Mulish',
                                           fontWeight: FontWeight.w400,
                                           fontSize: 15)),
                                 ),
@@ -152,6 +156,7 @@ CRM made easy.
                                       hintText: 'Password',
                                       hintStyle: TextStyle(
                                           color: Colors.grey,
+                                          fontFamily: 'Mulish',
                                           fontWeight: FontWeight.w400,
                                           fontSize: 15)),
                                 ),
@@ -174,13 +179,14 @@ CRM made easy.
                         child: Padding(
                           padding: const EdgeInsets.only(top: 30),
                           child: SizedBox(
-                            width: 319.64,
+                            width: 329.64,
                             height: 53.12,
                             child: ElevatedButton(
                               child: Text(
                                 "SUBMIT",
+
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700, fontSize: 15.57),
+                                    fontWeight: FontWeight.w700, fontFamily: 'Mulish', fontSize: 15.57),
                               ),
                               onPressed: () async {
 
