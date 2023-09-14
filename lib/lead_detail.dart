@@ -134,7 +134,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   Icon logNoteIcon = Icon(
     Icons.circle,
-    color: Colors.white,
+    color: Colors.red,
     size: 8,
   );
 
@@ -3039,64 +3039,27 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                                                 logDataTitle[indexx][indexs]['icon'] ==
-                                                    "fa-envelope"
+                                                    "envelope"
                                                     ? logNoteIcon = const Icon(
-                                                  Icons.email_outlined,
-                                                  color: Colors.white,
-                                                  size: 8,
+                                                  Icons.email,
+                                                  color: Colors.red,
+                                                  size: 15,
                                                 )
                                                     : logDataTitle[indexx][indexs]['icon'] ==
-                                                    "fa-phone"
+                                                    "ad_units"
                                                     ? logNoteIcon = Icon(
                                                   Icons.phone,
-                                                  color: Colors.white,
-                                                  size: 8,
+                                                  color: Colors.red,
+                                                  size: 15,
                                                 )
                                                     : logDataTitle[indexx][indexs]
                                                 ['icon'] ==
-                                                    "fa-users"
+                                                    "telegram"
                                                     ? logNoteIcon = Icon(
-                                                  Icons.person,
-                                                  color: Colors.white,
-                                                  size: 8,
-                                                )
-                                                    : logDataTitle[indexx][indexs]
-                                                ['icon'] ==
-                                                    "fa-file-text-o"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.file_copy,
-                                                  color: Colors.white,
-                                                  size: 8,
-                                                )
-                                                    : logDataTitle[indexx][indexs]
-                                                ['icon'] ==
-                                                    "fa-line-chart"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.bar_chart,
-                                                  color: Colors.white,
-                                                  size: 8,
-                                                )
-                                                    : logDataTitle
-                                                [indexx][indexs]
-                                                ['icon'] ==
-                                                    "fa-tasks"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.task,
-                                                  color: Colors.white,
-                                                  size: 8,
-                                                )
-                                                    : logDataTitle
-                                                [indexx][indexs]
-                                                ['icon'] ==
-                                                    "fa-upload"
-                                                    ? logNoteIcon =
-                                                    Icon(
-                                                      Icons.upload,
-                                                      color: Colors
-                                                          .white,
-                                                      size: 8,
-                                                    )
-                                                    : Icon(
+                                                  Icons.telegram,
+                                                  color: Colors.red,
+                                                  size: 15,
+                                                ) : Icon(
                                                   Icons.circle,
                                                   color: Colors
                                                       .white,
@@ -3464,7 +3427,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   Container(
                                                                                     height: 20,
                                                                                       width: 20,
-                                                                                      child: Icon(Icons.message)),
+                                                                                      color: Colors.white,
+                                                                                      child: logNoteIcon),
                                                                                 ],
                                                                               ),
                                                                             ),
