@@ -349,7 +349,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: customerName,
                       hint: Text(
                         "Customer",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -375,7 +375,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["display_name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -437,7 +437,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: quotationtemplateName,
                       hint: Text(
                         "Quotation Template",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -460,7 +460,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -516,14 +516,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         child: TextField(
                             enabled: false,
                             controller: expirationDateTime,
-                            style: TextStyle(fontSize: 10,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Expiration Date",
                                 hintStyle: TextStyle(
                                   //fontFamily: "inter",
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 10,
+                                    fontSize: 12,
                                     color: Colors.black,fontFamily: 'Mulish'))),
                       ),
                     ),
@@ -543,7 +543,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: pricelistName,
                       hint: Text(
                         "Pricelist",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -566,7 +566,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -621,7 +621,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: paymenttermsName,
                       hint: Text(
                         "Payment Terms",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -644,7 +644,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -707,7 +707,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: salespersonName,
                       hint: Text(
                         "Salesperson",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -733,7 +733,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -782,7 +782,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: salesteamName,
                       hint: Text(
                         "Sales Team",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -806,7 +806,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -861,7 +861,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: companyName,
                       hint: Text(
                         "Company",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -885,7 +885,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -936,7 +936,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         child: Text(
                           "Online Signature",
                           style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 12,
                               fontWeight: FontWeight.w400,
                               color: Color(0xFF000000),fontFamily: 'Mulish'),
                         ),
@@ -965,7 +965,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         child: Text(
                           "Online Payment",
                           style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 12,
                               fontWeight: FontWeight.w400,
                               color: Color(0xFF000000),fontFamily: 'Mulish'),
                         ),
@@ -988,7 +988,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 10,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       controller: customerreference,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1001,7 +1001,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           // border: UnderlineInputBorder(),
                           labelText: 'Customer Reference',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
                   SizedBox(
@@ -1012,7 +1012,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
-                      hintStyle: TextStyle(fontSize: 10,fontFamily: 'Mulish'),
+                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       selectedOptions: editTagName
                           .map((tag) =>
                           ValueItem(label: tag.label, value: tag.value))
@@ -1077,14 +1077,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     child: SearchChoices.single(
                       hint: Text(
                         "Shipping policy",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       items: list.map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(
                             value,
-                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                           ),
                         );
                       }).toList(),
@@ -1108,14 +1108,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         child: TextField(
                             enabled: false,
                             controller: deliveryDateTime,
-                            style: TextStyle(fontSize: 10,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                             decoration: const InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Delivery Date",
                                 hintStyle: TextStyle(
                                   //fontFamily: "inter",
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 10,
+                                    fontSize: 12,
                                     color: Colors.black,fontFamily: 'Mulish'))),
                       ),
                     ),
@@ -1139,7 +1139,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: fiscalpositionName,
                       hint: Text(
                         "Fiscal Position",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1165,7 +1165,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1226,7 +1226,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: campaignName,
                       hint: Text(
                         "Campaign",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1252,7 +1252,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1302,7 +1302,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: mediumName,
                       hint: Text(
                         "Medium",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1324,7 +1324,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1372,7 +1372,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       value: sourceName,
                       hint: Text(
                         "Source",
-                        style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -1394,7 +1394,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               width: 300,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               ),
                             )));
                       },
@@ -1450,7 +1450,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     padding:
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 10,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       controller: sourcedocument,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1463,7 +1463,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           // border: UnderlineInputBorder(),
                           labelText: 'Source Document',
                           labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
                   ),
 

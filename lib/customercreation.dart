@@ -1627,7 +1627,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       controller: referenceController,
-                      style: TextStyle(fontSize: 12),
+                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),

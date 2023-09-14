@@ -1448,7 +1448,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     child: Text(
                       "Priority",
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: Colors.black,fontFamily: 'Mulish'),
                     ),
@@ -1483,7 +1483,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
-                      hintStyle: TextStyle(fontFamily: 'Mulish'),
+                      hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
                       selectedOptions: editTagName
                           .map((tag) =>
                           ValueItem(label: tag.label, value: tag.value))
