@@ -150,7 +150,7 @@ class Calender extends StatelessWidget {
                     width: 80,
                     height: 30,
                     //alignment: Alignment.topLeft,
-                    color: Colors.pinkAccent,
+                    color: Color(0xFFF9246A),
                     child: TextButton(onPressed: () {
 
                       Navigator.push(
@@ -161,7 +161,7 @@ class Calender extends StatelessWidget {
 
                     },
 
-                      child: Text("Add",style: TextStyle(color: Colors.white),),
+                      child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Mulish',),),
 
                     ),
                   ),
@@ -191,9 +191,9 @@ class Calender extends StatelessWidget {
 
 
                                   unselectedBackgroundColor: Colors.white,
-                                  unselectedLabelStyle: TextStyle(color: Color(0xFF017E82)),
+                                  unselectedLabelStyle: TextStyle(color: Color(0xFF017E82),fontFamily: 'Mulish'),
                                   labelStyle:
-                                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,),
+                                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,fontFamily: 'Mulish'),
                                   tabs: const [
                                     Tab(text: "DAY"),
                                     Tab(text: "WEEK",),

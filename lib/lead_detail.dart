@@ -1694,8 +1694,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               bottom: 70,
                                                               top: 1,
                                                               child: Container(
-                                                                width: 20,
-                                                                 height: 20,
+                                                                width: 50,
+                                                                 height: 50,
                                                                 decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
                                                                 //color: Colors.grey[200],
                                                                 child: IconButton(
@@ -3513,8 +3513,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                             bottom: 70,
                                                                                             top: 1,
                                                                                             child: Container(
-                                                                                              width: 20,
-                                                                                              height: 20,
+                                                                                              width: 50,
+                                                                                              height: 50,
                                                                                               decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
                                                                                               // color: Colors
                                                                                               //     .grey[200],
@@ -4632,7 +4632,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 SizedBox(height: 2,),
                 Padding(
-                  padding: const EdgeInsets.only(left: 150),
+                  padding: const EdgeInsets.only(left: 120),
                   child: TextButton(onPressed:()async{
                     await newTemplate();
 
@@ -4660,11 +4660,11 @@ class _LeadDetailState extends State<LeadDetail> {
           width: MediaQuery
               .of(context)
               .size
-              .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+            .width,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -4762,6 +4762,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
+                    activeColor: Color(0xFFF9246A),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -4824,74 +4825,45 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Add Followers",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Add Followers",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                           String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+                       String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
 
-                              if(resmessage == "success"){
-                                bodyController.clear();
-                                followerId=0;
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => LeadDetail(widget.leadId)));
+                          if(resmessage == "success"){
+                            bodyController.clear();
+                            followerId=0;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LeadDetail(widget.leadId)));
 
-                              }
+                          }
 
-                                 print(recipient);
-                                print("tagattagagaga");
+                             print(recipient);
+                            print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 5,),
 
@@ -5295,7 +5267,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         "Done & Schedule Next",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 11,
+                            fontSize: 10,
                             color: Colors.white,fontFamily: 'Mulish'),
                       ),
                     ),
@@ -5334,7 +5306,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           "Done",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors.white,fontFamily: 'Mulish'),
                         ),
                       ),
@@ -5370,7 +5342,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           "Discard",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors.black,fontFamily: 'Mulish'),
                         ),
                       ),
@@ -5415,13 +5387,16 @@ class _LeadDetailState extends State<LeadDetail> {
           ).then((value) => setState(() {}));
         },
         child: Padding(
-          padding: const EdgeInsets.only(right: 160),
-          child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),),
+          padding: const EdgeInsets.only(right: 80),
+          child: Container(
+             width:  MediaQuery.of(context).size.width/2,
+              //color: Colors.red,
+              child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),)),
         ),),
 
         content:  Container(
           color: Color(0xFFF6F6F6),
-          width: double.maxFinite,
+          width: MediaQuery.of(context).size.width/2,
           height:  MediaQuery.of(context).size.height/5,
           child: ListView.builder(
             itemCount: followers.length,

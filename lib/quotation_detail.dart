@@ -4717,7 +4717,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     style: ElevatedButton
                         .styleFrom(
                       primary: Color(
-                          0xFFF04254),
+                          0xFFF9246A),
                     )),
               ),
               Padding(
@@ -4768,7 +4768,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       style: ElevatedButton
                           .styleFrom(
                         primary: Color(
-                            0xFFF04254),
+                            0xFFF9246A),
                       )),
                 ),
               ),
@@ -5810,7 +5810,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
             ).then((value) => setState(() {}));
           },
-            child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',)),),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 60),
+              child: Container(
+                  width:  MediaQuery.of(context).size.width/2,
+                  child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',))),
+            ),),
           content:  Container(
             color: Color(0xFFF6F6F6),
 

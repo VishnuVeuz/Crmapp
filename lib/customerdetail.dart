@@ -4507,8 +4507,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
             ).then((value) => setState(() {}));
           },
             child: Padding(
-              padding: const EdgeInsets.only(right: 160),
-              child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),),
+              padding: const EdgeInsets.only(right: 60),
+              child: Container(
+                  width:  MediaQuery.of(context).size.width/2,
+                  child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),)),
             ),),
 
           content:  Container(
@@ -5682,7 +5684,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         "Done & Schedule Next",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 11,
+                            fontSize: 10,
                             color: Colors.white,fontFamily: 'Mulish'),
                       ),
                     ),
@@ -5721,7 +5723,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           "Done",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors.white,fontFamily: 'Mulish'),
                         ),
                       ),
@@ -5757,7 +5759,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           "Discard",
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors.black,fontFamily: 'Mulish'),
                         ),
                       ),

@@ -129,38 +129,38 @@ class _CalendarAddState extends State<CalendarAdd> {
             Builder(builder: (context) {
               return Row(
                 children: [
-                  Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ActivitiesNotification()));
-                            },
-                          ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 15.0,
-                              height: 15.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
-                  ),
+                  // Container(
+                  //   child: Stack(
+                  //       alignment: Alignment
+                  //           .center,
+                  //       children: [
+                  //         IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                  //           onPressed: () {
+                  //             Navigator.push(
+                  //                 context,
+                  //                 MaterialPageRoute(
+                  //                     builder: (context) =>
+                  //                         ActivitiesNotification()));
+                  //           },
+                  //         ),
+                  //         Positioned(
+                  //           bottom: 25,
+                  //           right: 28,
+                  //
+                  //           child: Container(
+                  //             width: 15.0,
+                  //             height: 15.0,
+                  //             decoration: BoxDecoration(
+                  //               shape: BoxShape
+                  //                   .circle,
+                  //               color: Color(0xFFFA256B),
+                  //             ),
+                  //             child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                  //           ),
+                  //         ),
+                  //       ]
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: IconButton(

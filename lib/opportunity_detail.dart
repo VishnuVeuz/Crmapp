@@ -4854,7 +4854,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         style: TextStyle(
                             fontWeight: FontWeight
                                 .w700,
-                            fontSize: 11,
+                            fontSize: 10,
                             color: Colors
                                 .white,fontFamily: 'Mulish'),
                       ),
@@ -4910,7 +4910,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           style: TextStyle(
                               fontWeight: FontWeight
                                   .w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors
                                   .white,fontFamily: 'Mulish'),
                         ),
@@ -4962,7 +4962,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           style: TextStyle(
                               fontWeight: FontWeight
                                   .w700,
-                              fontSize: 11,
+                              fontSize: 10,
                               color: Colors
                                   .black,fontFamily: 'Mulish'),
                         ),
@@ -5536,7 +5536,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
             ).then((value) => setState(() {}));
           },
-            child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',)),),
+            child: Padding(
+              padding: const EdgeInsets.only(right: 60),
+              child: Container(
+                  width:MediaQuery.of(context).size.width/2,
+                  child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',))),
+            ),),
           content:  Container(
             color: Color(0xFFF6F6F6),
             width: double.maxFinite,
@@ -5663,10 +5668,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -5763,6 +5768,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
+                    activeColor:  Color(0xFFF9246A),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -5823,75 +5829,70 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Add Followers",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Add Followers",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                                String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
 
-                                if(resmessage == "success"){
-                                  bodyController.clear();
-                                  followerId=0;
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => OpportunityDetail(widget.opportunityId)));
+                            if(resmessage == "success"){
+                              bodyController.clear();
+                              followerId=0;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OpportunityDetail(widget.opportunityId)));
 
-                                }
+                            }
 
-                                print(recipient);
-                                print("tagattagagaga");
+                            print(recipient);
+                            print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                // SizedBox(width: 15,),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 40),
+                //   child: Center(
+                //     child: SizedBox(
+                //       width: 146,
+                //       height: 38,
+                //       child: ElevatedButton(
+                //           child: Center(
+                //             child: Text(
+                //               "Cancel",
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.w700,
+                //                   fontSize: 13.57,
+                //                   color: Colors.black),
+                //             ),
+                //           ),
+                //           onPressed: () {},
+                //           style: ElevatedButton.styleFrom(
+                //             primary: Colors.white,
+                //           )),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 5,),
 
 
