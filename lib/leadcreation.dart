@@ -1768,16 +1768,12 @@ class _LeadCreationState extends State<LeadCreation> {
 
       for(int i=0;i<data['tag_ids'].length;i++)
       {
-
         seectedTag.add(data['tag_ids'][i]);
-
-
       }
 
 
       for(int i=0;i<seectedTag.length;i++){
         editTagName.add(new ValueItem(label: seectedTag[i]['name'],value:seectedTag[i]['id'].toString() ));
-
       }
 
       tags = editTagName.map((item) => item.value).toList();

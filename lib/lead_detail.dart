@@ -4258,6 +4258,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
                     hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
+
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
                         .toList(),
@@ -6094,6 +6095,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
       subjectController.text = data['subject'].toString()??"";
 
+
+
       for(int i=0;i<data['partner_ids'].length;i++)
       {
         selctedRecipient.add(data['partner_ids'][i]);
@@ -6107,7 +6110,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
       recipient = editRecipientName.map((item) => item.value).toList();
 
-
+print(recipient);
+print("recipient");
       _isInitialized = true;
     });
 

@@ -2508,7 +2508,7 @@ defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
   String? authresponce;
 
   Response response = await get(
-    Uri.parse("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message&partner_ids${selectedIds}"),
+    Uri.parse("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message&partner_ids=${selectedIds}"),
     headers: {
       'Authorization': 'Bearer $token',
     },
