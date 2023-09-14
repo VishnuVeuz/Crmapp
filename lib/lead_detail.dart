@@ -3672,7 +3672,7 @@ class _LeadDetailState extends State<LeadDetail> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 260,right: 25),
+                  padding: const EdgeInsets.only(left: 270,right: 10),
                   child: IconButton(
                     icon: Image.asset(
                       "images/cross.png",
@@ -3954,7 +3954,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Visibility(
                   visible: opencalendarBtn,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 316,
@@ -3965,7 +3965,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
+                                    fontSize: 11.57,
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
@@ -4007,7 +4007,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4018,7 +4018,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4044,9 +4044,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 5,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4054,10 +4054,10 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: ElevatedButton(
                                 child: Center(
                                   child: Text(
-                                    "Mark as Done",
+                                    "get  Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4089,7 +4089,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4100,7 +4100,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
@@ -4129,9 +4129,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 5,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4142,7 +4142,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),

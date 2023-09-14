@@ -1230,8 +1230,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     borderRadius: BorderRadius.all(Radius.circular(30)),
                                     color:  Color(int.parse(tagss![index]["color"])),),
 
-                                  width: 70,
-                                  height: 20,
+                                  width: 80,
+                                  height: 25,
                                   child:
                                   Center(
                                     child: Text(
@@ -1241,7 +1241,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w600,
                                           fontFamily: 'Mulish',
-                                          fontSize: 7),
+                                          fontSize: 6),
                                     ),
                                   ),
                                 ),
@@ -2996,8 +2996,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                             "";
                                                         commandsController
                                                             .text = data[
-                                                        'note'] ??
-                                                            "";
+                                                        'note'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                            .toString() ;
                                                         // DuedateTime.text == "default" ?
                                                         if (activityTypeNameCategory ==
                                                             "default") {
@@ -4288,7 +4288,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4299,7 +4299,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4325,9 +4325,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 5,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4338,7 +4338,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4370,7 +4370,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4381,7 +4381,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
@@ -4410,9 +4410,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 5,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4423,7 +4423,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),

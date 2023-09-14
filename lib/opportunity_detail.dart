@@ -4637,7 +4637,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
+                                    fontSize: 11.57,
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
@@ -4693,7 +4693,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4718,7 +4718,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(width: 5,),
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Center(
@@ -4731,7 +4731,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4779,7 +4779,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
@@ -4813,7 +4813,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 10,),
+                    SizedBox(width: 5,),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Center(
@@ -4826,7 +4826,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
