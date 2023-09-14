@@ -3436,6 +3436,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               ['icon'] ==
                                                   "telegram"
                                                   ? logNoteIcon = Icon(
+
                                                 Icons.telegram,
                                                 color: Colors.red,
                                                 size: 15,

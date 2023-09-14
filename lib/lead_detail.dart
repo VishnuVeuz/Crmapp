@@ -1805,6 +1805,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                         ),
                         Padding(
+
                           padding: const EdgeInsets.only(left: 65),
                           child: Row(
                             children: [
