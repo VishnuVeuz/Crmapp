@@ -5511,7 +5511,9 @@ class _LeadDetailState extends State<LeadDetail> {
           bool send_mail;
 
           followerId = responce['id'];
-         message = responce['message'];
+         message = responce['message'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+             .toString() ??
+             "";
           send_mail = responce['send_mail'];
 
           showDialog(
