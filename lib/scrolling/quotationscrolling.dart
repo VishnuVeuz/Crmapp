@@ -245,14 +245,14 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                       ]
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 0),
-                  child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 0),
+                //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
+                //     onPressed: () {
+                //       Scaffold.of(context).openDrawer();
+                //     },
+                //   ),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
