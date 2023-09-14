@@ -1215,7 +1215,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                         ),
                         onPressed: () async {
 
-                          if(leadDuplicateIdData.length>1 && leadDuplicateIdData.length<6 )
+                          if(leadDuplicateIdData.length==1)
                           {
                             print("lead merge details");
                             for(int i = 0;i<leadDuplicateIdData.length;i++){
@@ -1241,7 +1241,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
 
                           }
                           else{
-                            const snackBar = SnackBar(  content: Text('Minimum 2 & Maximum 5  oppertunities to merge'),
+                            const snackBar = SnackBar(  content: Text('Lead Cannot Convert'),
                               backgroundColor: Colors.blueGrey,);
                             ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }

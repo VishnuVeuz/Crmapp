@@ -1750,7 +1750,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 color: Colors.amber,
                                 size: 10,
                               ),
-                              onRatingUpdate: (double value) {},
+                              onRatingUpdate: (double value) async{
+
+                                int prioritydata = value.toInt();
+                                String valuess =await editOppertunitypriority( prioritydata.toString(), widget.opportunityId);
+
+
+
+                              },
                             ),
                           )),
                     ],
@@ -2983,6 +2990,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       lognoteController.text = "";
                                       selectedImages.clear();
                                       myData1.clear();
+                                      bodyController.text = "";
                                     });
                                   }
                                 },
@@ -6461,7 +6469,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   _buildSendmessagePopupDialog(BuildContext context, int sendtypeIds) {
     return StatefulBuilder(builder: (context, setState) {
+      lognoteController.text !=""?bodyController.text=lognoteController.text
+          :bodyController.text="";
+
       return AlertDialog(
+
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
@@ -6499,6 +6511,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
+                          logDataHeader.clear();
+                          logDataTitle.clear();
+                          selectedImagesDisplay.clear();
+                          lognoteController.text = "";
+                          selectedImages.clear();
+                          myData1.clear();
+                          editRecipientName.clear();
+                          recipient?.clear();
+                          selctedRecipient.clear();
+
                         });
 
                         Navigator.pop(context);
@@ -6982,6 +7004,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 lognoteController.text = "";
                                 selectedImages.clear();
                                 myData1.clear();
+                                editRecipientName.clear();
+                                recipient?.clear();
+                                selctedRecipient.clear();
                               });
 
                               print(recipient);
