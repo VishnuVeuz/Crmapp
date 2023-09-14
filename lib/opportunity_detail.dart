@@ -698,13 +698,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       }
                                                                       ;
                                                                     }),
-                                                                TextButton(
-                                                                  onPressed: () =>
-                                                                      Navigator.pop(
-                                                                          context,
-                                                                          'Cancel'),
-                                                                  child: const Text(
-                                                                      'Cancel',style: TextStyle(fontFamily: 'Mulish'),),
+                                                                Container(
+                                                                  color:Color(0xFFF9246A),
+                                                                  child: TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            context,
+                                                                            'Cancel'),
+                                                                    child: const Text(
+                                                                        'Cancel',style: TextStyle(fontFamily: 'Mulish'),),
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ));
@@ -3854,7 +3857,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             fontSize: 12,
                                                                                             fontFamily: 'Mulish',
                                                                                             color: Colors
-                                                                                                .grey[700],)))
+                                                                                                .grey[700],))),
+                                                                                  Container(child: Icon(Icons.icecream_outlined)),
                                                                                 ],
                                                                               ),
                                                                             ),

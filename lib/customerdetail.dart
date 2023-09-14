@@ -3586,7 +3586,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                             fontFamily: 'Mulish',
                                                                                             color: Colors
                                                                                                 .grey[700],
-                                                                                          )))
+                                                                                          ))),
+                                                                                  Container(child: Icon(Icons.icecream_outlined)),
                                                                                 ],
                                                                               ),
                                                                             ],

@@ -3746,7 +3746,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                         style: TextStyle(
                                                                                           fontSize: 11,
                                                                                           color: Colors
-                                                                                              .grey[700],)))
+                                                                                              .grey[700],))),
+                                                                                Container(child: Icon(Icons.icecream_outlined)),
                                                                               ],
                                                                             ),
                                                                           ),
