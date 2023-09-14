@@ -295,7 +295,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 60),
+      padding: const EdgeInsets.only(bottom: 100),
       child: Container(
         width: MediaQuery.of(context).size.width,
 

@@ -4061,7 +4061,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
-                                                                    width: 102,
+                                                                    width: 82,
                                                                   ),
                                                                 ),
                                                                 Positioned(
@@ -4071,7 +4071,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   child:
                                                                       Container(
                                                                     width:
-                                                                        102.0,
+                                                                        82.0,
                                                                     height:
                                                                         30.0,
                                                                     decoration:
@@ -4087,23 +4087,23 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           MainAxisAlignment
                                                                               .spaceAround,
                                                                       children: [
-                                                                        Container(
-                                                                          height:
-                                                                              25,
-                                                                          width:
-                                                                              25,
-                                                                          //color: Colors.red,
-                                                                          child:
-                                                                              Align(
-                                                                            alignment:
-                                                                                Alignment.topRight,
-                                                                            child:
-                                                                                IconButton(
-                                                                              icon: Icon(Icons.add_reaction_outlined, size: 15.0),
-                                                                              onPressed: () {},
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                        // Container(
+                                                                        //   height:
+                                                                        //       25,
+                                                                        //   width:
+                                                                        //       25,
+                                                                        //   //color: Colors.red,
+                                                                        //   child:
+                                                                        //       Align(
+                                                                        //     alignment:
+                                                                        //         Alignment.topRight,
+                                                                        //     child:
+                                                                        //         IconButton(
+                                                                        //       icon: Icon(Icons.add_reaction_outlined, size: 15.0),
+                                                                        //       onPressed: () {},
+                                                                        //     ),
+                                                                        //   ),
+                                                                        // ),
                                                                         StatefulBuilder(builder: (BuildContext
                                                                                 context,
                                                                             StateSetter
