@@ -4599,6 +4599,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         editRecipientName.clear();
                          subjectController.text = resultData["subject"];
                          bodyController.text = resultData["body"];
+                         print(resultData["body"]);
+                         print("fjwhbdjeb");
 
 
 
@@ -4783,6 +4785,8 @@ class _LeadDetailState extends State<LeadDetail> {
   _buildAddfollowersPopupDialog(BuildContext context,int followerId,String message,bool send_mail){
 
     isCheckedEmail =  send_mail;
+    print(message);
+    print("gbjkdnk");
     bodyController.text = message;
 
     return StatefulBuilder(builder:(context,setState){

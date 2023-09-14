@@ -2859,7 +2859,8 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
   customerEdit() async{
 
-
+print(addNewCustomer);
+print("addNewCustomer");
 
     String value = await EditCustomer(
         radioInput,
