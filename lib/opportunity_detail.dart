@@ -670,45 +670,66 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 ),
                                                               ),
                                                               actions: <Widget>[
-                                                                TextButton(
-                                                                    child: const Text(
-                                                                        'Submit',style: TextStyle(fontFamily: 'Mulish'),),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      String
-                                                                      resmessage =
-                                                                      await opportunityLost(
-                                                                          "lost");
-                                                                      int resmessagevalue =
-                                                                      int.parse(
-                                                                          resmessage);
-                                                                      print(
-                                                                          resmessage);
-                                                                      print(
-                                                                          "lostid");
-                                                                      if (resmessagevalue !=
-                                                                          0) {
-                                                                        Navigator
-                                                                            .push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                              builder: (context) =>
-                                                                                  OpportunityDetail(resmessagevalue)),
-                                                                        );
-                                                                      }
-                                                                      ;
-                                                                    }),
-                                                                Container(
-                                                                  color:Color(0xFFF9246A),
-                                                                  child: TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            context,
-                                                                            'Cancel'),
-                                                                    child: const Text(
-                                                                        'Cancel',style: TextStyle(fontFamily: 'Mulish'),),
+                                                                Padding(
+                                                                  padding: const EdgeInsets.only(left: 10,right: 5),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        width:130,
+                                                                        height: 40,
+
+                                                                        decoration: BoxDecoration(borderRadius:BorderRadius.all(Radius.circular(10)), color:Color(0xFFF9246A), ),
+                                                                        child: TextButton(
+                                                                            child: const Text(
+                                                                                'Submit',style: TextStyle(fontFamily: 'Mulish',color: Colors.white),),
+                                                                            onPressed:
+                                                                                () async {
+                                                                              String
+                                                                              resmessage =
+                                                                              await opportunityLost(
+                                                                                  "lost");
+                                                                              int resmessagevalue =
+                                                                              int.parse(
+                                                                                  resmessage);
+                                                                              print(
+                                                                                  resmessage);
+                                                                              print(
+                                                                                  "lostid");
+                                                                              if (resmessagevalue !=
+                                                                                  0) {
+                                                                                Navigator
+                                                                                    .push(
+                                                                                  context,
+                                                                                  MaterialPageRoute(
+                                                                                      builder: (context) =>
+                                                                                          OpportunityDetail(resmessagevalue)),
+                                                                                );
+                                                                              }
+                                                                              ;
+                                                                            }),
+                                                                      ),
+                                                                      SizedBox(width: 5,),
+                                                                      Padding(
+                                                                        padding: const EdgeInsets.only(right: 10),
+                                                                        child: Container(
+                                                                          width:130,
+                                                                          height: 40,
+                                                                          decoration: BoxDecoration(borderRadius:BorderRadius.all(Radius.circular(10)), color:Colors.grey[100], ),
+
+                                                                          child: TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(
+                                                                                    context,
+                                                                                    'Cancel'),
+                                                                            child: const Text(
+                                                                              'Cancel',style: TextStyle(fontFamily: 'Mulish',color: Colors.black),),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
                                                                   ),
                                                                 ),
+
                                                               ],
                                                             ));
 
