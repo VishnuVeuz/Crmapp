@@ -6429,17 +6429,29 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
       subjectController.text = data['subject'].toString() ?? "";
 
+      print(subjectController.text);
+      print(data['partner_ids'].length);
+      print("subjectController.text");
+
+
+
       for (int i = 0; i < data['partner_ids'].length; i++) {
         selctedRecipient.add(data['partner_ids'][i]);
       }
 
       for (int i = 0; i < selctedRecipient.length; i++) {
+        print(selctedRecipient[i]['display_name']);
+        print("selctedRecipient[i]['display_name']");
         editRecipientName.add(new ValueItem(
             label: selctedRecipient[i]['display_name'],
             value: selctedRecipient[i]['id'].toString()));
       }
 
       recipient = editRecipientName.map((item) => item.value).toList();
+
+      print(recipient);
+      print("recipient");
+
 
       _isInitialized = true;
     });
