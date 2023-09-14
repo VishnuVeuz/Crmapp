@@ -1172,6 +1172,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               direction: Axis.horizontal,
                               allowHalfRating: false,
                               itemCount: 3,
+
                               itemPadding:
                               EdgeInsets.symmetric(horizontal: 1.0),
                               itemBuilder: (context, _) =>
@@ -1180,7 +1181,20 @@ class _LeadDetailState extends State<LeadDetail> {
                                     color: Colors.amber,
                                     size: 10,
                                   ),
-                              onRatingUpdate: (double value) {},
+                              onRatingUpdate: (double value) async{
+                                print(value);
+                                print("finallalala");
+
+
+                                int prioritydata = value.toInt();
+                                String valuess =await editLeadpriority( prioritydata.toString(), widget.leadId);
+
+
+
+
+
+
+                              },
                             ),
                           )),
                     ],
@@ -2089,6 +2103,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                       lognoteController.text = "";
                                       selectedImages.clear();
                                       myData1.clear();
+                                      bodyController.text = "";
+
                                     });
                                   }
 
@@ -4208,6 +4224,9 @@ class _LeadDetailState extends State<LeadDetail> {
   }
   _buildSendmessagePopupDialog(BuildContext context,int sendtypeIds){
     return StatefulBuilder(builder:(context,setState){
+      lognoteController.text !=""?bodyController.text=lognoteController.text
+      :bodyController.text="";
+
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -4241,6 +4260,16 @@ class _LeadDetailState extends State<LeadDetail> {
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
+                          logDataHeader.clear();
+                          logDataTitle.clear();
+                          selectedImagesDisplay.clear();
+                          lognoteController.text = "";
+                          selectedImages.clear();
+                          myData1.clear();
+                          editRecipientName.clear();
+                          recipient?.clear();
+                          selctedRecipient.clear();
+
                         });
 
                         Navigator.pop(context);
@@ -4716,6 +4745,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                     lognoteController.text = "";
                                     selectedImages.clear();
                                     myData1.clear();
+                                    editRecipientName.clear();
+                                    recipient?.clear();
+                                    selctedRecipient.clear();
                                   });
 
                                   Navigator.pop(context);
@@ -6092,6 +6124,7 @@ class _LeadDetailState extends State<LeadDetail> {
     var data = await defaultSendmessageData(widget.leadId,"lead.lead",selectedIds);
     setState(() {
       print(data);
+      print("finalaklcn");
 
       subjectController.text = data['subject'].toString()??"";
 

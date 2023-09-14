@@ -638,6 +638,77 @@ editLead(
   return resMessageText;
 }
 
+
+
+editLeadpriority(
+    String
+    priority,
+
+    leadid,
+    ) async {
+
+
+  String token = await getUserJwt();
+
+  print("tocken responece");
+  String? authresponce, resMessage, resMessageText;
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+
+        "priority": priority,
+
+      }
+    });
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/lead/${leadid}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      print("finalstring");
+      authresponce = data['result'].toString();
+
+      resMessage = data['result']['message'];
+      print(resMessage);
+      print("leadeditresponce");
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(authresponce);
+
+  print(resMessage);
+  print(resMessageText);
+  print("bhgvhb");
+
+
+  print(resMessageText);
+  print("dataaa");
+  return resMessageText;
+}
+
+
+
 lostLead(int id, bool value) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
@@ -1049,6 +1120,72 @@ editOpportunity(
   print(resMessageText);
   return resMessageText;
 }
+
+
+
+
+
+editOppertunitypriority(
+    String
+    priority,
+   int opportunityid,
+    ) async {
+
+  String token = await getUserJwt();
+  String? authresponce, resMessage, resMessageText;
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+
+        "priority": priority,
+
+      }
+    });
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/opportunity/${opportunityid}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      authresponce = data['result'].toString();
+
+      resMessage = data['result']['message'];
+      print(resMessage);
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(authresponce);
+
+  print(resMessage);
+  print(resMessageText);
+
+
+
+  print(resMessageText);
+  return resMessageText;
+}
+
+
 
 //delete opportunity
 

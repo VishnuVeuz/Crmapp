@@ -2294,6 +2294,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         lognoteController.text = "";
                                         selectedImages.clear();
                                         myData1.clear();
+                                        bodyController.text = "";
                                       });
                                     }
 
@@ -5172,6 +5173,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
   _buildSendmessagePopupDialog(BuildContext context,int sendtypeIds){
     return StatefulBuilder(builder:(context,setState){
+      lognoteController.text !=""?bodyController.text=lognoteController.text
+          :bodyController.text="";
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
@@ -5205,6 +5208,15 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
+                          logDataHeader.clear();
+                          logDataTitle.clear();
+                          selectedImagesDisplay.clear();
+                          lognoteController.text = "";
+                          selectedImages.clear();
+                          myData1.clear();
+                          editRecipientName.clear();
+                          recipient?.clear();
+                          selctedRecipient.clear();
                         });
 
                         Navigator.pop(context);
@@ -5707,6 +5719,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 lognoteController.text = "";
                                 selectedImages.clear();
                                 myData1.clear();
+                                editRecipientName.clear();
+                                recipient?.clear();
+                                selctedRecipient.clear();
                               });
 
                               Navigator.pop(context);
