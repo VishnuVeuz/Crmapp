@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.only(top: 62, left: 49),
                   child: SizedBox(
                     width: 261,
-                    height: 60,
+                    height: 70,
                     child: Text(
                       '''For your customers.
 CRM made easy.
@@ -86,8 +86,8 @@ CRM made easy.
                       Padding(
                         padding: const EdgeInsets.only(top: 32, left: 34.8),
                         child: SizedBox(
-                          width: 62,
-                          height: 25,
+                          width: 92,
+                          height: 35,
                           child: Text(
                             "Log in",
                             style: TextStyle(
@@ -194,8 +194,8 @@ CRM made easy.
                                 String userName,passWord,dbId;
                                 userName = emailController.text.toString();
                                 passWord = passwordController.text.toString();
-                                  // dbId = "Flutter_API";
-                                dbId = "flutter_db";
+                             dbId = "Flutter_API";
+                                //dbId = "flutter_db";
                                 String logindata = await login(userName,passWord,dbId);
 
 

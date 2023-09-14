@@ -188,6 +188,11 @@ flutter:
     - images/messages.svg
     - images/trash.svg
     - images/user.svg
+    - images/wonn.svg
+    - images/sendsmss.svg
+    - images/unarchivee.svg
+    - images/moree.svg
+    - images/duplicatee.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -427,7 +427,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             },
                             child: SvgPicture
                                 .asset(
-                              "images/create.svg",width: 28,height: 28,),
+                              "images/duplicatee.svg",width: 28,height: 28,),
                           ),
 
 
@@ -3285,7 +3285,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     assignedToid = data['user_id']['id']??null;
                                                     DuedateTime.text = data['date_deadline']??"";
                                                     summaryController.text = data['summary']??"";
-                                                    commandsController.text = data['note']??"";
+                                                    commandsController.text = data['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                        .toString() ;
                                                     // DuedateTime.text == "default" ?
                                                     if(activityTypeNameCategory == "default"){
                                                       scheduleBtn=true;
@@ -3536,7 +3537,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 child: Container(
                                                                   //color: Colors.cyan,
                                                                   height: 30,
-                                                                  width: 102,
+                                                                  width: 82,
                                                                 ),
                                                               ),
                                                               Positioned(
@@ -3544,7 +3545,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 right: 0,
                                                                 //left: 20,
                                                                 child: Container(
-                                                                  width: 102.0,
+                                                                  width: 82.0,
                                                                   height: 30.0,
                                                                   decoration: BoxDecoration(
                                                                       color: Colors
@@ -3559,22 +3560,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                     mainAxisAlignment: MainAxisAlignment
                                                                         .spaceAround,
                                                                     children: [
-                                                                      Container(
-                                                                        height: 25,
-                                                                        width: 25,
-                                                                        //color: Colors.red,
-                                                                        child: Align(
-                                                                          alignment: Alignment
-                                                                              .topRight,
-                                                                          child: IconButton(
-                                                                            icon: Icon(
-                                                                                Icons
-                                                                                    .add_reaction_outlined,
-                                                                                size: 15.0),
-                                                                            onPressed: () {},
-                                                                          ),
-                                                                        ),
-                                                                      ),
+                                                                      // Container(
+                                                                      //   height: 25,
+                                                                      //   width: 25,
+                                                                      //   //color: Colors.red,
+                                                                      //   child: Align(
+                                                                      //     alignment: Alignment
+                                                                      //         .topRight,
+                                                                      //     child: IconButton(
+                                                                      //       icon: Icon(
+                                                                      //           Icons
+                                                                      //               .add_reaction_outlined,
+                                                                      //           size: 15.0),
+                                                                      //       onPressed: () {},
+                                                                      //     ),
+                                                                      //   ),
+                                                                      // ),
                                                                       StatefulBuilder(
                                                                           builder: (BuildContext context, StateSetter setState) {
                                                                             return Container(
@@ -4496,7 +4497,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 Visibility(
                   visible: opencalendarBtn,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 146,
@@ -4507,7 +4508,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
+                                    fontSize: 11.57,
                                     color: Colors.white),
                               ),
                             ),
@@ -4552,7 +4553,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4563,7 +4564,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -4589,9 +4590,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 5,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4602,7 +4603,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -4638,7 +4639,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4649,7 +4650,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),
@@ -4684,9 +4685,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 5,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4697,7 +4698,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),

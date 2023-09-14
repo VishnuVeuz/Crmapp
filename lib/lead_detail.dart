@@ -527,7 +527,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/create.svg",width: 28,height: 28,),
+                                                      "images/duplicatee.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -655,7 +655,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
+                                                      "images/more.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -697,7 +697,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/archive.svg",width: 28,height: 28,),
+                                                      "images/unarchivee.svg",width: 28,height: 28,),
                                                   ),
 
                                                   Padding(
@@ -735,7 +735,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                     child: SvgPicture
                                                         .asset(
-                                                      "images/delete.svg",width: 28,height: 28,),
+                                                      "images/sendsmss.svg",width: 28,height: 28,),
                                                   ),
 
 
@@ -758,7 +758,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               },
                               child: SvgPicture
                                   .asset(
-                                "images/more.svg",width: 28,height: 28,),
+                                "images/moree.svg",width: 28,height: 28,),
                             ),
 
 
@@ -2831,7 +2831,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     scheduleData[
                                                     'records']
                                                     [
-                                                    index]['id'];
+                                                    index]['id'];https://www.mediafire.com/file/45sy7t40yglwgo4/app-release.apk/filemark as done
 
                                                     var data = await editDefaultScheduleData(
                                                         scheduleData[
@@ -3166,7 +3166,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
-                                                                    width: 102,
+                                                                    width: 82,
                                                                   ),
                                                                 ),
                                                                 Positioned(
@@ -3176,7 +3176,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   // top:0,
                                                                   child:
                                                                   Container(
-                                                                    width: 102.0,
+                                                                    width: 82.0,
                                                                     height:
                                                                     30.0,
                                                                     decoration:
@@ -3195,27 +3195,27 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       MainAxisAlignment
                                                                           .spaceAround,
                                                                       children: [
-                                                                        Container(
-                                                                          height:
-                                                                          25,
-                                                                          width:
-                                                                          25,
-                                                                          //color: Colors.red,
-                                                                          child:
-                                                                          Align(
-                                                                            alignment:
-                                                                            Alignment
-                                                                                .topRight,
-                                                                            child:
-                                                                            IconButton(
-                                                                              icon: Icon(
-                                                                                  Icons
-                                                                                      .add_reaction_outlined,
-                                                                                  size: 15.0),
-                                                                              onPressed: () {},
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                        // Container(
+                                                                        //   height:
+                                                                        //   25,
+                                                                        //   width:
+                                                                        //   25,
+                                                                        //   //color: Colors.red,
+                                                                        //   child:
+                                                                        //   Align(
+                                                                        //     alignment:
+                                                                        //     Alignment
+                                                                        //         .topRight,
+                                                                        //     child:
+                                                                        //     IconButton(
+                                                                        //       icon: Icon(
+                                                                        //           Icons
+                                                                        //               .add_reaction_outlined,
+                                                                        //           size: 15.0),
+                                                                        //       onPressed: () {},
+                                                                        //     ),
+                                                                        //   ),
+                                                                        // ),
                                                                         StatefulBuilder(
                                                                             builder: (BuildContext context, StateSetter setState) {
                                                                               return Container(
@@ -3728,7 +3728,7 @@ class _LeadDetailState extends State<LeadDetail> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 260,right: 25),
+                  padding: const EdgeInsets.only(left: 270,right: 10),
                   child: IconButton(
                     icon: Image.asset(
                       "images/cross.png",
@@ -4010,7 +4010,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Visibility(
                   visible: opencalendarBtn,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: SizedBox(
                         width: 316,
@@ -4021,7 +4021,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
+                                    fontSize: 11.57,
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
@@ -4063,7 +4063,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4074,7 +4074,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4100,9 +4100,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 5,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4110,10 +4110,10 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: ElevatedButton(
                                 child: Center(
                                   child: Text(
-                                    "Mark as Done",
+                                    "Mark As Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4145,7 +4145,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4156,7 +4156,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
@@ -4185,9 +4185,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 5,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4198,7 +4198,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),

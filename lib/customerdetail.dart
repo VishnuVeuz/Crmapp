@@ -417,7 +417,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               },
                               child: SvgPicture
                                   .asset(
-                                "images/create.svg",width: 28,height: 28,),
+                                "images/duplicatee.svg",width: 28,height: 28,),
                             ),
 
 
@@ -453,7 +453,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     },
                                     child: SvgPicture
                                         .asset(
-                                      "images/archive.svg",width: 28,height: 28,),
+                                      "images/more.svg",width: 28,height: 28,),
                                   ),
 
 
@@ -488,7 +488,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     },
                                     child: SvgPicture
                                         .asset(
-                                      "images/archive.svg",width: 28,height: 28,),
+                                      "images/unarchivee.svg",width: 28,height: 28,),
                                   ),
 
 
@@ -1235,8 +1235,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     borderRadius: BorderRadius.all(Radius.circular(30)),
                                     color:  Color(int.parse(tagss![index]["color"])),),
 
-                                  width: 70,
-                                  height: 20,
+                                  width: 80,
+                                  height: 25,
                                   child:
                                   Center(
                                     child: Text(
@@ -1246,7 +1246,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           color: Colors.white,
                                           fontWeight: FontWeight.w600,
                                           fontFamily: 'Mulish',
-                                          fontSize: 7),
+                                          fontSize: 6),
                                     ),
                                   ),
                                 ),
@@ -3061,8 +3061,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                             "";
                                                         commandsController
                                                             .text = data[
-                                                        'note'] ??
-                                                            "";
+                                                        'note'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                            .toString() ;
                                                         // DuedateTime.text == "default" ?
                                                         if (activityTypeNameCategory ==
                                                             "default") {
@@ -3359,7 +3359,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     Container(
                                                                       //color: Colors.cyan,
                                                                       height: 30,
-                                                                      width: 102,
+                                                                      width: 82,
                                                                     ),
                                                                   ),
                                                                   Positioned(
@@ -3369,7 +3369,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     // top:0,
                                                                     child:
                                                                     Container(
-                                                                      width: 102.0,
+                                                                      width: 82.0,
                                                                       height:
                                                                       30.0,
                                                                       decoration:
@@ -3388,27 +3388,27 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         MainAxisAlignment
                                                                             .spaceAround,
                                                                         children: [
-                                                                          Container(
-                                                                            height:
-                                                                            25,
-                                                                            width:
-                                                                            25,
-                                                                            //color: Colors.red,
-                                                                            child:
-                                                                            Align(
-                                                                              alignment:
-                                                                              Alignment
-                                                                                  .topRight,
-                                                                              child:
-                                                                              IconButton(
-                                                                                icon: Icon(
-                                                                                    Icons
-                                                                                        .add_reaction_outlined,
-                                                                                    size: 15.0),
-                                                                                onPressed: () {},
-                                                                              ),
-                                                                            ),
-                                                                          ),
+                                                                          // Container(
+                                                                          //   height:
+                                                                          //   25,
+                                                                          //   width:
+                                                                          //   25,
+                                                                          //   //color: Colors.red,
+                                                                          //   child:
+                                                                          //   Align(
+                                                                          //     alignment:
+                                                                          //     Alignment
+                                                                          //         .topRight,
+                                                                          //     child:
+                                                                          //     IconButton(
+                                                                          //       icon: Icon(
+                                                                          //           Icons
+                                                                          //               .add_reaction_outlined,
+                                                                          //           size: 15.0),
+                                                                          //       onPressed: () {},
+                                                                          //     ),
+                                                                          //   ),
+                                                                          // ),
                                                                           StatefulBuilder(
                                                                               builder: (BuildContext context, StateSetter setState) {
                                                                                 return Container(
@@ -4353,7 +4353,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4364,7 +4364,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4390,9 +4390,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 15,),
+                      SizedBox(width: 5,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 20),
                         child: Center(
                           child: SizedBox(
                             width: 146,
@@ -4403,7 +4403,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 13.57,
+                                        fontSize: 11.57,
                                         color: Colors.white,fontFamily: 'Mulish'),
                                   ),
                                 ),
@@ -4435,7 +4435,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4446,7 +4446,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
@@ -4475,9 +4475,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15,),
+                    SizedBox(width: 5,),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: const EdgeInsets.only(top: 20),
                       child: Center(
                         child: SizedBox(
                           width: 146,
@@ -4488,7 +4488,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
+                                      fontSize: 11.57,
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
