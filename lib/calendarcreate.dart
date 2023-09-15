@@ -205,12 +205,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 color: Colors.white,fontFamily: 'Mulish'),
                           ),
                           onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                    content: Text('Processing Data')),
-                              );
-
+                            if (_formKey.currentState!.validate() && meetingsubjectController.text.trim().isNotEmpty) {
 
 
                             String resmessage;
