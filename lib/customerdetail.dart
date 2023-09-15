@@ -4750,10 +4750,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -4851,6 +4851,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
+                    activeColor: Color(0xFFF9246A),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -4913,75 +4914,70 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Add Followers",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Add Followers",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white,fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                                String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
 
-                                if(resmessage == "success"){
-                                  bodyController.clear();
-                                  followerId=0;
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => CustomerDetail(widget.customerId)));
+                            if(resmessage == "success"){
+                              bodyController.clear();
+                              followerId=0;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CustomerDetail(widget.customerId)));
 
-                                }
+                            }
 
-                                print(recipient);
-                                print("tagattagagaga");
+                            print(recipient);
+                            print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                // SizedBox(width: 15,),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 40),
+                //   child: Center(
+                //     child: SizedBox(
+                //       width: 146,
+                //       height: 38,
+                //       child: ElevatedButton(
+                //           child: Center(
+                //             child: Text(
+                //               "Cancel",
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.w700,
+                //                   fontSize: 13.57,
+                //                   color: Colors.black),
+                //             ),
+                //           ),
+                //           onPressed: () {},
+                //           style: ElevatedButton.styleFrom(
+                //             primary: Colors.white,
+                //           )),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 5,),
 
 
