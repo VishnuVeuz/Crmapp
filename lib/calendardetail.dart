@@ -51,14 +51,21 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           elevation: 0,
           title: Row(
             children: [
-              Text(
-                meetingsub!,
-                style: TextStyle(
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),
+              Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/2.5,
+                //color: Colors.red,
+                child: Text(
+                  meetingsub!,
+                  style: TextStyle(
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
+                ),
               )
             ],
           ),
