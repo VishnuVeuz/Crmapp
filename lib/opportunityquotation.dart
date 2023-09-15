@@ -2258,6 +2258,9 @@ void getOpportunityDetails() async {
     //expirationDateTime.text = data['validity_date'].toString();
     pricelistName = data['pricelist_id'] ?? "";
     pricelistId = data['pricelist_id']['id'] ?? null;
+    print("bghjsbn");
+    print(pricelistId);
+
     // paymenttermsName = data['payment_term_id'] ?? "";
     // paymenttermsId = data['payment_term_id']['id'] ?? null;
     salespersonName = data['user_id'] ?? "";
@@ -2343,7 +2346,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
       insetPadding: EdgeInsets.all(10),
       content: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        //height: MediaQuery.of(context).size.height,
         //color: Colors.green,
         child: SingleChildScrollView(
           child: Column(
@@ -3023,6 +3026,10 @@ productDefaultDetails() async {
 
 productSum(List orderLineProductsData) async {
   productDatas.clear();
+
+  print(pricelistId);
+  print("fonkjnvk");
+
   var data = await getProductSum(orderLineProductsData,pricelistId);
 
  print(data);

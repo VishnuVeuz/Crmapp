@@ -49,6 +49,7 @@ class _CalendarAddState extends State<CalendarAdd> {
   TextEditingController meeting_discription = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController meetingurlController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
 
   DateTime selectedDateTime = DateTime.now();
@@ -175,334 +176,562 @@ class _CalendarAddState extends State<CalendarAdd> {
             })
           ],
         ),
-        body: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
-                  child: SizedBox(
-                    width: 93,
-                    height: 33,
-                    child: ElevatedButton(
-                        child: Text(
-                          "Save",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13.57,
-                              color: Colors.white,fontFamily: 'Mulish'),
-                        ),
-                        onPressed: () async {
-                          String resmessage;
-                          setState(() {
+        body: Form(
+          key: _formKey,
+          child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
+                    child: SizedBox(
+                      width: 93,
+                      height: 33,
+                      child: ElevatedButton(
+                          child: Text(
+                            "Save",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13.57,
+                                color: Colors.white,fontFamily: 'Mulish'),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text('Processing Data')),
+                              );
 
-                          print("final datatatata");
-                          print(partnerName);
-                          print(orgnizerId);
-                          print(reminders);
-                          print(tags);
-                          print(meetingsubjectController.text);
-                          print(startTime.text);
-                          print(stopTime.text);
-                          print(meeting_duration.text);
-                          print(locationController.text);
-                          print(meetingurlController.text);
-                          print(meeting_discription.text);
-
-
-                          (dropdownValue == "Public")
-                              ? dropdowncreatevalue = "public"
-                              : (dropdownValue == "Private")
-                              ? dropdowncreatevalue = "private"
-                              : (dropdownValue == "Only internal users")
-                              ? dropdowncreatevalue = "confidential"
-                              : dropdownValue ="public";
-
-                          (dropdownValues == "Available")
-                              ? dropdowncreatevalues = "free"
-                              : (dropdownValues == "Busy")
-                              ? dropdowncreatevalues = "busy"
-                              : dropdowncreatevalues = "busy";
-
-
-                          print(dropdowncreatevalue);
-                          print(dropdowncreatevalues);
-
-                          });
-
-                        //resmessage = await calendarCreate();
-
-                          widget.calendarId==0 ?  resmessage=await calendarCreate() :resmessage= await  calendarEdit();
-
-
-                          print(resmessage);
-
-
-                          int resmessagevalue = int.parse(resmessage);
-                          if (resmessagevalue != 0) {
+                            String resmessage;
                             setState(() {
-                              // isLoadingSave = false;
+                              print("final datatatata");
+                              print(partnerName);
+                              print(orgnizerId);
+                              print(reminders);
+                              print(tags);
+                              print(meetingsubjectController.text);
+                              print(startTime.text);
+                              print(stopTime.text);
+                              print(meeting_duration.text);
+                              print(locationController.text);
+                              print(meetingurlController.text);
+                              print(meeting_discription.text);
+
+
+                              (dropdownValue == "Public")
+                                  ? dropdowncreatevalue = "public"
+                                  : (dropdownValue == "Private")
+                                  ? dropdowncreatevalue = "private"
+                                  : (dropdownValue == "Only internal users")
+                                  ? dropdowncreatevalue = "confidential"
+                                  : dropdownValue = "public";
+
+                              (dropdownValues == "Available")
+                                  ? dropdowncreatevalues = "free"
+                                  : (dropdownValues == "Busy")
+                                  ? dropdowncreatevalues = "busy"
+                                  : dropdowncreatevalues = "busy";
+
+
+                              print(dropdowncreatevalue);
+                              print(dropdowncreatevalues);
                             });
+
+                            //resmessage = await calendarCreate();
+
+                            widget.calendarId == 0 ?
+                            resmessage = await calendarCreate() : resmessage =
+                            await calendarEdit();
+
+
+                            print(resmessage);
+
+
+                            int resmessagevalue = int.parse(resmessage);
+                            if (resmessagevalue != 0) {
+                              setState(() {
+                                // isLoadingSave = false;
+                              });
+                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CalencerFullDetail(resmessagevalue)));
                           }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      CalencerFullDetail(resmessagevalue)));
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF9246A),
-                        )),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
+                    ),
                   ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                  child: TextFormField(
-                    style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
-                    controller: meetingsubjectController,
-                    decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-
-                        // border: UnderlineInputBorder(),
-                        labelText: 'Meeting Subject',
-                        labelStyle:
-                        TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                  ),
-                ),
-                SizedBox(height: 0,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 22, vertical: 5),
-                  child: MultiSelectDropDown.network(
-
-                    selectedOptions: editPartnerName
-                        .map((tag) =>
-                        ValueItem(label: tag.label, value: tag.value))
-                        .toList(),
-                    onOptionSelected: (options) {
-                      print(options);
-                      partnerName.clear();
-                      for (var options in options) {
-                        partnerName.add(options.value);
-                        print('Label: ${options.label}');
-                        print('Value: ${options.value}');
-                        print(partnerName);
-                        print('---');
-                      }
-                    },
-                    networkConfig: NetworkConfig(
-
-
-                      url: "${baseUrl}api/partners",
-                      method: RequestMethod.get,
-                      headers: {
-
-
-                        'Authorization': 'Bearer $token',
+                  Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                    child: TextFormField(
+                      validator: (value) {
+                        print(value);
+                        print("svdsdvbfd");
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter the Meeting Subject';
+                        }
+                        return null;
                       },
+                      style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                      controller: meetingsubjectController,
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+
+                          // border: UnderlineInputBorder(),
+                          labelText: 'Meeting Subject',
+                          labelStyle:
+                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                     ),
-                    chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-
-                    responseParser: (response) {
-                      debugPrint('Response: $response');
-
-                      final list = (response['records'] as List<
-                          dynamic>).map((e) {
-                        final item = e as Map<String, dynamic>;
-                        return ValueItem(
-
-                          label: item['display_name'],
-                          value: item['id'].toString(),
-                        );
-                      }).toList();
-
-                      return Future.value(list);
-                    },
-                    responseErrorBuilder: ((context, body) {
-                      print(body);
-                      print(token);
-                      return const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text('Error fetching the data'),
-                      );
-                    }),
                   ),
-                ),
+                  SizedBox(height: 0,),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 22, vertical: 5),
+                    child: MultiSelectDropDown.network(
 
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 23, right: 5),
-                      child: Center(
+                      selectedOptions: editPartnerName
+                          .map((tag) =>
+                          ValueItem(label: tag.label, value: tag.value))
+                          .toList(),
+                      onOptionSelected: (options) {
+                        print(options);
+                        partnerName.clear();
+                        for (var options in options) {
+                          partnerName.add(options.value);
+                          print('Label: ${options.label}');
+                          print('Value: ${options.value}');
+                          print(partnerName);
+                          print('---');
+                        }
+                      },
+                      networkConfig: NetworkConfig(
 
-                        child: Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width / 2.2,
-                          child: ElevatedButton(
-                              child: Text(
-                                "Meeting Details",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  meetingvisibility = true;
-                                  optionsvisibility = false;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFEBEBEB),
-                              )),
-                        ),
+
+                        url: "${baseUrl}api/partners",
+                        method: RequestMethod.get,
+                        headers: {
+
+
+                          'Authorization': 'Bearer $token',
+                        },
                       ),
+                      chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+
+                      responseParser: (response) {
+                        debugPrint('Response: $response');
+
+                        final list = (response['records'] as List<
+                            dynamic>).map((e) {
+                          final item = e as Map<String, dynamic>;
+                          return ValueItem(
+
+                            label: item['display_name'],
+                            value: item['id'].toString(),
+                          );
+                        }).toList();
+
+                        return Future.value(list);
+                      },
+                      responseErrorBuilder: ((context, body) {
+                        print(body);
+                        print(token);
+                        return const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text('Error fetching the data'),
+                        );
+                      }),
                     ),
-                    SizedBox(width: 5,),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10, bottom: 10, left: 0, right: 10),
-                      child: Center(
+                  ),
 
-                        child: Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width / 2.4,
-                          child: ElevatedButton(
-                              child: Text(
-                                "Options",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                              onPressed: () {
-                                setState(() {
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, bottom: 10, left: 23, right: 5),
+                        child: Center(
 
-                                  optionsvisibility = true;
-                                  meetingvisibility = false;
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary:  Color(0xFFEBEBEB),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-
-                Visibility(
-                  visible: meetingvisibility,
-                  child: Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-
-                          Padding(
-                            padding: const EdgeInsets.only(top: 0, left: 25),
-                            child: Text(
-                              "Starting at",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                          ),
-                          InkWell(
-
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 0, left: 25, right: 25),
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter the name';
-                                  }
-                                  return null;
+                          child: Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 2.2,
+                            child: ElevatedButton(
+                                child: Text(
+                                  "Meeting Details",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black,fontFamily: 'Mulish'),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    meetingvisibility = true;
+                                    optionsvisibility = false;
+                                  });
                                 },
-                                controller: startTime,
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  //border: OutlineInputBorder(),
-                                  hintText: "choose date & time",
-                                  hintStyle: TextStyle(fontWeight: FontWeight.w400,
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFEBEBEB),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 5,),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10, bottom: 10, left: 0, right: 10),
+                        child: Center(
+
+                          child: Container(
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width / 2.4,
+                            child: ElevatedButton(
+                                child: Text(
+                                  "Options",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.black,fontFamily: 'Mulish'),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+
+                                    optionsvisibility = true;
+                                    meetingvisibility = false;
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  primary:  Color(0xFFEBEBEB),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Visibility(
+                    visible: meetingvisibility,
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 25),
+                              child: Text(
+                                "Starting at",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                              ),
+                            ),
+                            InkWell(
+
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 0, left: 25, right: 25),
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter the name';
+                                    }
+                                    return null;
+                                  },
+                                  controller: startTime,
+                                  enabled: false,
+                                  decoration: InputDecoration(
+                                    //border: OutlineInputBorder(),
+                                    hintText: "choose date & time",
+                                    hintStyle: TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish')
+                                  ),
+                                ),
+                              ),
+
+                              onTap: () {
+                                selectDateTime(context, "start");
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5, left: 25),
+                              child: Text(
+                                "Stopping at",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                              ),
+                            ),
+                            InkWell(
+
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10, left: 25, right: 25),
+                                child: TextFormField(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter the name';
+                                    }
+                                    return null;
+                                  },
+                                  controller: stopTime,
+                                  enabled: false,
+                                  decoration: InputDecoration(
+                                    //border: OutlineInputBorder(),
+                                    hintText: "choose date & time",
+                                    hintStyle: TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish')
+                                  ),
+                                ),
+                              ),
+
+                              onTap: () {
+                                selectDateTime(context, "stop");
+                              },
+                            ),
+                            Visibility(
+                              visible: durationVisibility,
+                              child: Padding(
+                                padding:
+                                const EdgeInsets.symmetric(
+                                    horizontal: 25, vertical: 0),
+                                child: TextFormField(
+                                  style: TextStyle(fontWeight: FontWeight.w400,
                                       fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')
+                                      color: Colors.black,fontFamily: 'Mulish'),
+                                  controller: meeting_duration,
+                                  decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFAFAFAF)),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Color(0xFFAFAFAF)),
+                                      ),
+
+                                      // border: UnderlineInputBorder(),
+                                      labelText: 'Duration',
+                                      labelStyle:
+                                      TextStyle(fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: Colors.black,fontFamily: 'Mulish')),
                                 ),
                               ),
                             ),
-
-                            onTap: () {
-                              selectDateTime(context, "start");
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5, left: 25),
-                            child: Text(
-                              "Stopping at",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                          ),
-                          InkWell(
-
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10, left: 25, right: 25),
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Please enter the name';
-                                  }
-                                  return null;
-                                },
-                                controller: stopTime,
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  //border: OutlineInputBorder(),
-                                  hintText: "choose date & time",
-                                  hintStyle: TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 25, vertical: 0),
+                                  child: Text(
+                                    "All day",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish'),
+                                  ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 20),
+                                  child: Checkbox(
+                                    activeColor: Color(0xFFF9246A),
+                                    value: isCheckedAllday,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        isCheckedAllday = value!;
+                                        isCheckedAllday==true ? durationVisibility = false:
+                                        durationVisibility = true;
+                                      print(stopTime);
+                                      print("stopTime");
+
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 0),
+                              child: SearchChoices.single(
+                                //items: items,
+                                value: orgnizerName,
+                                hint: Text(
+                                  "Organizer",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Colors.black,fontFamily: 'Mulish'),
+                                ),
+
+                                searchHint: null,
+                                autofocus: false,
+                                onChanged: (value) {
+                                  setState(() {
+                                    print(value);
+                                    print(value);
+                                    print("orgnizerName");
+                                    orgnizerName = value;
+                                    orgnizerId = value["id"];
+                                  });
+                                },
+
+                                dialogBox: false,
+                                isExpanded: true,
+                                menuConstraints:
+                                BoxConstraints.tight(const Size.fromHeight(350)),
+                                itemsPerPage: 10,
+                                currentPage: currentPage,
+                                selectedValueWidgetFn: (item) {
+                                  return (Center(
+                                      child: Container(
+                                        width: 300,
+                                        child: Text(
+                                          item["name"],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 12,
+                                              color: Colors.black,fontFamily: 'Mulish'),
+                                        ),
+                                      )));
+                                },
+                                futureSearchFn: (String? keyword,
+                                    String? orderBy,
+                                    bool? orderAsc,
+                                    List<Tuple2<String, String>>? filters,
+                                    int? pageNb) async {
+                                  String token = await getUserJwt();
+
+
+                                  Response response = await get(
+                                    Uri.parse(
+                                        "${baseUrl}api/organizer?page_no=${pageNb ??
+                                            1}&count=10${keyword == null
+                                            ? ""
+                                            : "&filter=$keyword"}${companyId ==
+                                            null
+                                            ? "&company_ids=${null}"
+                                            : "&company_ids=$selectedIds"}"),
+                                    headers: {
+                                      'Authorization': 'Bearer $token',
+                                    },
+                                  ).timeout(const Duration(
+                                    seconds: 10,
+                                  ));
+                                  if (response.statusCode != 200) {
+                                    throw Exception(
+                                        "failed to get data from internet");
+                                  }
+                                  dynamic data = jsonDecode(response.body);
+                                  int nbResults = data["length"];
+                                  List<DropdownMenuItem> results =
+                                  (data["records"] as List<dynamic>)
+                                      .map<DropdownMenuItem>((item) =>
+                                      DropdownMenuItem(
+                                        value: item,
+                                        child: Card(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(0),
+                                            child: Text(" ${item["name"]}"),
+                                          ),
+                                        ),
+                                      ))
+                                      .toList();
+                                  return (Tuple2<List<DropdownMenuItem>, int>(
+                                      results, nbResults));
+                                },
+                              ),
+                            ),
+                            SizedBox(
+                              height: 0,
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 22, vertical: 0),
+                              child: MultiSelectDropDown.network(
+                                selectedOptions: editReminders
+                                    .map((tag) =>
+                                    ValueItem(label: tag.label, value: tag.value))
+                                    .toList(),
+                                onOptionSelected: (options) {
+                                  print(options);
+                                  reminders.clear();
+                                  for (var options in options) {
+                                    reminders.add(options.value);
+                                    print('Label: ${options.label}');
+                                    print('Value: ${options.value}');
+                                    print(reminders);
+                                    print('---');
+                                  }
+                                },
+                                networkConfig: NetworkConfig(
+                                  url: "${baseUrl}api/common_dropdowns?model=calendar.alarm",
+                                  method: RequestMethod.get,
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ),
+                                chipConfig: const ChipConfig(
+                                    wrapType: WrapType.wrap),
+                                responseParser: (response) {
+                                  debugPrint('Response: $response');
+
+                                  final list =
+                                  (response['record'] as List<dynamic>).map((e) {
+                                    final item = e as Map<String, dynamic>;
+                                    return ValueItem(
+                                      label: item['name'],
+                                      value: item['id'].toString(),
+                                    );
+                                  }).toList();
+
+                                  return Future.value(list);
+                                },
+                                responseErrorBuilder: ((context, body) {
+                                  print(body);
+                                  print(token);
+                                  return const Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Text('Error fetching the data'),
+                                  );
+                                }),
                               ),
                             ),
 
-                            onTap: () {
-                              selectDateTime(context, "stop");
-                            },
-                          ),
-                          Visibility(
-                            visible: durationVisibility,
-                            child: Padding(
+                            Padding(
                               padding:
                               const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
@@ -510,7 +739,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 style: TextStyle(fontWeight: FontWeight.w400,
                                     fontSize: 12,
                                     color: Colors.black,fontFamily: 'Mulish'),
-                                controller: meeting_duration,
+                                controller: locationController,
                                 decoration: const InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
@@ -522,424 +751,214 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     ),
 
                                     // border: UnderlineInputBorder(),
-                                    labelText: 'Duration',
+                                    labelText: 'Location',
                                     labelStyle:
                                     TextStyle(fontWeight: FontWeight.w400,
                                         fontSize: 12,
                                         color: Colors.black,fontFamily: 'Mulish')),
                               ),
                             ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 25, vertical: 0),
-                                child: Text(
-                                  "All day",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 20),
-                                child: Checkbox(
-                                  activeColor: Color(0xFFF9246A),
-                                  value: isCheckedAllday,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      isCheckedAllday = value!;
-                                      isCheckedAllday==true ? durationVisibility = false:
-                                      durationVisibility = true;
-                                    print(stopTime);
-                                    print("stopTime");
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 0),
+                              child: TextFormField(
+                                style: TextStyle(fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                                controller: meetingurlController,
+                                decoration: const InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
 
-                                    });
+                                    // border: UnderlineInputBorder(),
+                                    labelText: 'Meeting URL',
+                                    labelStyle:
+                                    TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish')),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 0,
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 22, vertical: 5),
+                              child: MultiSelectDropDown.network(
+                                selectedOptions: editTagName
+                                    .map((tag) =>
+                                    ValueItem(label: tag.label, value: tag.value))
+                                    .toList(),
+                                onOptionSelected: (options) {
+                                  print(options);
+                                  tags.clear();
+                                  for (var options in options) {
+                                    tags.add(options.value);
+                                    print('Label: ${options.label}');
+                                    print('Value: ${options.value}');
+                                    print(tags);
+                                    print('---');
+                                  }
+                                },
+                                networkConfig: NetworkConfig(
+                                  url: "${baseUrl}api/common_dropdowns?model=calendar.event.type",
+                                  method: RequestMethod.get,
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
                                   },
                                 ),
+                                chipConfig: const ChipConfig(
+                                    wrapType: WrapType.wrap),
+                                responseParser: (response) {
+                                  debugPrint('Response: $response');
+
+                                  final list =
+                                  (response['record'] as List<dynamic>).map((e) {
+                                    final item = e as Map<String, dynamic>;
+                                    return ValueItem(
+                                      label: item['name'],
+                                      value: item['id'].toString(),
+                                    );
+                                  }).toList();
+
+                                  return Future.value(list);
+                                },
+                                responseErrorBuilder: ((context, body) {
+                                  print(body);
+                                  print(token);
+                                  return const Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Text('Error fetching the data'),
+                                  );
+                                }),
                               ),
-                            ],
+                            ),
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(
+                                  horizontal: 25, vertical: 0),
+                              child: TextFormField(
+                                style: TextStyle(fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                                controller: meeting_discription,
+                                decoration: const InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xFFAFAFAF)),
+                                    ),
+
+                                    // border: UnderlineInputBorder(),
+                                    labelText: 'Description',
+                                    labelStyle:
+                                    TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish')),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Visibility(
+                    visible: optionsvisibility,
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 0),
+                            child: SearchChoices.single(
+                              hint: Text(
+                                "Privacy",
+                                style: TextStyle(fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Colors.black,fontFamily: 'Mulish'),
+                              ),
+                              items: privacylist.map<DropdownMenuItem<String>>((
+                                  String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish'),
+                                  ),
+                                );
+                              }).toList(),
+                              value: dropdownValue,
+                              onChanged: (value) {
+                                print(dropdownValue);
+                                print("demo vale");
+                                setState(() {
+                                  dropdownValue = value!;
+                                });
+                              },
+                              isExpanded: true,
+                            ),
                           ),
                           Padding(
                             padding:
                             const EdgeInsets.symmetric(
                                 horizontal: 15, vertical: 0),
                             child: SearchChoices.single(
-                              //items: items,
-                              value: orgnizerName,
                               hint: Text(
-                                "Organizer",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
+                                "Show as",
+                                style: TextStyle(fontWeight: FontWeight.w400,
                                     fontSize: 12,
                                     color: Colors.black,fontFamily: 'Mulish'),
                               ),
-
-                              searchHint: null,
-                              autofocus: false,
+                              items: showaslist.map<DropdownMenuItem<String>>((
+                                  String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style:TextStyle(fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Colors.black,fontFamily: 'Mulish'),
+                                  ),
+                                );
+                              }).toList(),
+                              value: dropdownValues,
                               onChanged: (value) {
                                 setState(() {
-                                  print(value);
-                                  print(value);
-                                  print("orgnizerName");
-                                  orgnizerName = value;
-                                  orgnizerId = value["id"];
+                                  dropdownValues = value!;
                                 });
                               },
-
-                              dialogBox: false,
                               isExpanded: true,
-                              menuConstraints:
-                              BoxConstraints.tight(const Size.fromHeight(350)),
-                              itemsPerPage: 10,
-                              currentPage: currentPage,
-                              selectedValueWidgetFn: (item) {
-                                return (Center(
-                                    child: Container(
-                                      width: 300,
-                                      child: Text(
-                                        item["name"],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            color: Colors.black,fontFamily: 'Mulish'),
-                                      ),
-                                    )));
-                              },
-                              futureSearchFn: (String? keyword,
-                                  String? orderBy,
-                                  bool? orderAsc,
-                                  List<Tuple2<String, String>>? filters,
-                                  int? pageNb) async {
-                                String token = await getUserJwt();
-
-
-                                Response response = await get(
-                                  Uri.parse(
-                                      "${baseUrl}api/organizer?page_no=${pageNb ??
-                                          1}&count=10${keyword == null
-                                          ? ""
-                                          : "&filter=$keyword"}${companyId ==
-                                          null
-                                          ? "&company_ids=${null}"
-                                          : "&company_ids=$selectedIds"}"),
-                                  headers: {
-                                    'Authorization': 'Bearer $token',
-                                  },
-                                ).timeout(const Duration(
-                                  seconds: 10,
-                                ));
-                                if (response.statusCode != 200) {
-                                  throw Exception(
-                                      "failed to get data from internet");
-                                }
-                                dynamic data = jsonDecode(response.body);
-                                int nbResults = data["length"];
-                                List<DropdownMenuItem> results =
-                                (data["records"] as List<dynamic>)
-                                    .map<DropdownMenuItem>((item) =>
-                                    DropdownMenuItem(
-                                      value: item,
-                                      child: Card(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(0),
-                                          child: Text(" ${item["name"]}"),
-                                        ),
-                                      ),
-                                    ))
-                                    .toList();
-                                return (Tuple2<List<DropdownMenuItem>, int>(
-                                    results, nbResults));
-                              },
-                            ),
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 22, vertical: 0),
-                            child: MultiSelectDropDown.network(
-                              selectedOptions: editReminders
-                                  .map((tag) =>
-                                  ValueItem(label: tag.label, value: tag.value))
-                                  .toList(),
-                              onOptionSelected: (options) {
-                                print(options);
-                                reminders.clear();
-                                for (var options in options) {
-                                  reminders.add(options.value);
-                                  print('Label: ${options.label}');
-                                  print('Value: ${options.value}');
-                                  print(reminders);
-                                  print('---');
-                                }
-                              },
-                              networkConfig: NetworkConfig(
-                                url: "${baseUrl}api/common_dropdowns?model=calendar.alarm",
-                                method: RequestMethod.get,
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ),
-                              chipConfig: const ChipConfig(
-                                  wrapType: WrapType.wrap),
-                              responseParser: (response) {
-                                debugPrint('Response: $response');
-
-                                final list =
-                                (response['record'] as List<dynamic>).map((e) {
-                                  final item = e as Map<String, dynamic>;
-                                  return ValueItem(
-                                    label: item['name'],
-                                    value: item['id'].toString(),
-                                  );
-                                }).toList();
-
-                                return Future.value(list);
-                              },
-                              responseErrorBuilder: ((context, body) {
-                                print(body);
-                                print(token);
-                                return const Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text('Error fetching the data'),
-                                );
-                              }),
-                            ),
-                          ),
-
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
-                            child: TextFormField(
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                              controller: locationController,
-                              decoration: const InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-
-                                  // border: UnderlineInputBorder(),
-                                  labelText: 'Location',
-                                  labelStyle:
-                                  TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
-                            child: TextFormField(
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                              controller: meetingurlController,
-                              decoration: const InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-
-                                  // border: UnderlineInputBorder(),
-                                  labelText: 'Meeting URL',
-                                  labelStyle:
-                                  TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 22, vertical: 5),
-                            child: MultiSelectDropDown.network(
-                              selectedOptions: editTagName
-                                  .map((tag) =>
-                                  ValueItem(label: tag.label, value: tag.value))
-                                  .toList(),
-                              onOptionSelected: (options) {
-                                print(options);
-                                tags.clear();
-                                for (var options in options) {
-                                  tags.add(options.value);
-                                  print('Label: ${options.label}');
-                                  print('Value: ${options.value}');
-                                  print(tags);
-                                  print('---');
-                                }
-                              },
-                              networkConfig: NetworkConfig(
-                                url: "${baseUrl}api/common_dropdowns?model=calendar.event.type",
-                                method: RequestMethod.get,
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ),
-                              chipConfig: const ChipConfig(
-                                  wrapType: WrapType.wrap),
-                              responseParser: (response) {
-                                debugPrint('Response: $response');
-
-                                final list =
-                                (response['record'] as List<dynamic>).map((e) {
-                                  final item = e as Map<String, dynamic>;
-                                  return ValueItem(
-                                    label: item['name'],
-                                    value: item['id'].toString(),
-                                  );
-                                }).toList();
-
-                                return Future.value(list);
-                              },
-                              responseErrorBuilder: ((context, body) {
-                                print(body);
-                                print(token);
-                                return const Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text('Error fetching the data'),
-                                );
-                              }),
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                            const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
-                            child: TextFormField(
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                              controller: meeting_discription,
-                              decoration: const InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Color(0xFFAFAFAF)),
-                                  ),
-
-                                  // border: UnderlineInputBorder(),
-                                  labelText: 'Description',
-                                  labelStyle:
-                                  TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish')),
                             ),
                           ),
                         ],
                       ),
+
                     ),
-                  ),
-                ),
-
-                Visibility(
-                  visible: optionsvisibility,
-                  child: Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 0),
-                          child: SearchChoices.single(
-                            hint: Text(
-                              "Privacy",
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                            items: privacylist.map<DropdownMenuItem<String>>((
-                                String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              );
-                            }).toList(),
-                            value: dropdownValue,
-                            onChanged: (value) {
-                              print(dropdownValue);
-                              print("demo vale");
-                              setState(() {
-                                dropdownValue = value!;
-                              });
-                            },
-                            isExpanded: true,
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 0),
-                          child: SearchChoices.single(
-                            hint: Text(
-                              "Show as",
-                              style: TextStyle(fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                            items: showaslist.map<DropdownMenuItem<String>>((
-                                String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style:TextStyle(fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              );
-                            }).toList(),
-                            value: dropdownValues,
-                            onChanged: (value) {
-                              setState(() {
-                                dropdownValues = value!;
-                              });
-                            },
-                            isExpanded: true,
-                          ),
-                        ),
-                      ],
-                    ),
-
-                  ),
-                )
+                  )
 
 
-              ],
+                ],
 
+              ),
             ),
           ),
         ),

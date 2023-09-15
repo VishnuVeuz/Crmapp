@@ -2383,7 +2383,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
+          // height: MediaQuery.of(context).size.height,
           //color: Colors.green,
           child: SingleChildScrollView(
             child: Column(

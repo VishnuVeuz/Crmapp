@@ -6069,10 +6069,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
               .of(context)
               .size
               .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
           child:SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -6080,7 +6080,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Invite Follower",style: TextStyle(fontSize: 16),),
+                    Text("Invite Follower",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -6100,7 +6100,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
                 SizedBox(height: 5,),
                 // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 // SizedBox(height: 10,),
@@ -6109,6 +6109,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...' ,
+                    hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
                         .toList(),
@@ -6164,7 +6166,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                 ),
                 SizedBox(height: 5,),
-                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12),),
+                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
                 SizedBox(height: 5,),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
@@ -6223,81 +6225,78 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
+                          hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+
                         ),
                       ),
                     ),
                   ),
                 ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Add Followers",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              onPressed: () async{
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: Center(
+                    child: SizedBox(
+                      width: 316,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Add Followers",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.white,fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          onPressed: () async{
 
-                                String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
+                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
 
-                                if(resmessage == "success"){
-                                  bodyController.clear();
-                                  followerId=0;
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => QuotationDetail(widget.quotationId)));
+                            if(resmessage == "success"){
+                              bodyController.clear();
+                              followerId=0;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => QuotationDetail(widget.quotationId)));
 
-                                }
+                            }
 
-                                print(recipient);
-                                print("tagattagagaga");
+                            print(recipient);
+                            print("tagattagagaga");
 
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF04254),
-                              )),
-                        ),
-                      ),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
                     ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Cancel",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.black),
-                                ),
-                              ),
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.white,
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
+                // SizedBox(width: 15,),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 40),
+                //   child: Center(
+                //     child: SizedBox(
+                //       width: 146,
+                //       height: 38,
+                //       child: ElevatedButton(
+                //           child: Center(
+                //             child: Text(
+                //               "Cancel",
+                //               style: TextStyle(
+                //                   fontWeight: FontWeight.w700,
+                //                   fontSize: 13.57,
+                //                   color: Colors.black),
+                //             ),
+                //           ),
+                //           onPressed: () {},
+                //           style: ElevatedButton.styleFrom(
+                //             primary: Colors.white,
+                //           )),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 5,),
 
 

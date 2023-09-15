@@ -4976,7 +4976,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
                           ),
                           onPressed: () async{

@@ -6001,7 +6001,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
-          //     .size
+          //    .s ize
           //     .height,
           child: SingleChildScrollView(
             child: Column(
@@ -6012,7 +6012,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     Text(
                       "Invite Follower",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),
                     ),
                     IconButton(
                       icon: Image.asset(
@@ -6035,7 +6035,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Text(
                   "Recipients",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
                 ),
                 SizedBox(
                   height: 5,
@@ -6047,6 +6047,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...',
+                    hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem(
                             label: recipient.label, value: recipient.value))
@@ -6100,7 +6102,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Text(
                   "Send Email",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
                 ),
                 SizedBox(
                   height: 5,
@@ -6155,6 +6157,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
+                          hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+
                         ),
                       ),
                     ),
@@ -6174,7 +6178,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white ,fontFamily: 'Mulish'),
                             ),
                           ),
                           onPressed: () async {

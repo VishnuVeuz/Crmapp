@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart' as globals;
 import 'model/calendarmodel.dart';
 
-String baseUrl = "http://10.10.10.123:8030/";
-//   String baseUrl = "http://165.22.30.188:8040/";
+//String baseUrl = "http://10.10.10.123:8030/";
+  String baseUrl = "http://165.22.30.188:8040/";
 
 login(String email, password, dbId) async {
   String? authresponce,
@@ -1473,6 +1473,8 @@ getOpportunityQuotationData(int opportunityId, String value) async {
   print(opportunityId);
   var data;
   String? authresponce;
+print("${baseUrl}api/opportunity/${opportunityId}/quotation");
+print("shvjbhjvba");
 
   Response response = await get(
 
@@ -1626,6 +1628,7 @@ createQuotation(
       if (resMessage == "error") {
         resMessageText = '0';
       }
+      print(authresponce);
       print("lakkkkkk");
     } else {}
   } catch (e) {
