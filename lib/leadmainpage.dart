@@ -364,7 +364,12 @@ class _LeadMainPageState extends State<LeadMainPage> {
                             // } else {
                             //   tags = [];
                             // }
-                        return    snapshot.data?.length == 0 ?  Center(child: Text("No data")):
+                        return    snapshot.data?.length == 0 ?  Center(child: Text("No data found", style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight
+                                .w600,
+                            fontSize: 14,
+                            color: Colors.black))):
 
                              ListView.builder(
                               // physics: NeverScrollableScrollPhysics(),
