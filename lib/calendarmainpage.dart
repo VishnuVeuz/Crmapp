@@ -8,6 +8,7 @@ import 'calendartype/calendarmonth.dart';
 import 'calendartype/calendarweek.dart';
 import 'calendartype/calendaryear.dart';
 import 'drawer.dart';
+import 'leadmainpage.dart';
 
 class Calender extends StatelessWidget {
 
@@ -115,124 +116,131 @@ class Calender extends StatelessWidget {
         ],
 
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment:MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      body: WillPopScope(
+        onWillPop: () async {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => LeadMainPage()));
+          return true;
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment:MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
 
-            Column(
-              children: [
+              Column(
+                children: [
 
-                Container(
-                  width: 450,
-                  height: 60,
-                  color: Colors.white,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //  DateTime now = DateTime.now();
+                  Container(
+                    width: 450,
+                    height: 60,
+                    color: Colors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //  DateTime now = DateTime.now();
 
-                      Padding(
-                        padding: const EdgeInsets.only(left:34),
-                        child: Text(DateTime.now().toString(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Color(0xFF292929),fontFamily: 'Mulish',),),
+                        Padding(
+                          padding: const EdgeInsets.only(left:34),
+                          child: Text(DateTime.now().toString(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Color(0xFF292929),fontFamily: 'Mulish',),),
+                        ),
+
+
+
+                      ],),
+
+                  ),
+                  Divider(color: Color(0xFFEBEBEB),),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 260),
+                    child: Container(
+                      width: 80,
+                      height: 30,
+                      //alignment: Alignment.topLeft,
+                      color: Color(0xFFF9246A),
+                      child: TextButton(onPressed: () {
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CalendarAdd(0,calendarTypeId,calendarmodel,dateTimes,activityDataId,[],scheduleSummary)));
+
+
+                      },
+
+                        child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Mulish',),),
+
                       ),
-
-
-
-                    ],),
-
-                ),
-                Divider(color: Color(0xFFEBEBEB),),
-                Padding(
-                  padding: const EdgeInsets.only(right: 260),
-                  child: Container(
-                    width: 80,
-                    height: 30,
-                    //alignment: Alignment.topLeft,
-                    color: Color(0xFFF9246A),
-                    child: TextButton(onPressed: () {
-
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => CalendarAdd(0,calendarTypeId,calendarmodel,dateTimes,activityDataId,[],scheduleSummary)));
-
-
-                    },
-
-                      child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Mulish',),),
-
                     ),
                   ),
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 40),
-                  child: Container(
-                    height: 680,
-                    color: Colors.white,
-                    child: DefaultTabController(
-                      initialIndex: tabIndex,
-                      length:4  ,
-                      child:
-                      Column(
-                        children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40),
+                    child: Container(
+                      height: 680,
+                      color: Colors.white,
+                      child: DefaultTabController(
+                        initialIndex: tabIndex,
+                        length:4  ,
+                        child:
+                        Column(
+                          children: <Widget>[
 
-                          Column(
-                            children: [
+                            Column(
+                              children: [
 
-                              Padding(
-                                padding: const EdgeInsets.only(right: 150),
-                                child: ButtonsTabBar(
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 150),
+                                  child: ButtonsTabBar(
 
-                                  //backgroundColor: Colors.grey,
-                                  //elevation: 0,
+                                    //backgroundColor: Colors.grey,
+                                    //elevation: 0,
 
 
-                                  unselectedBackgroundColor: Colors.white,
-                                  unselectedLabelStyle: TextStyle(color: Color(0xFF017E82),fontFamily: 'Mulish'),
-                                  labelStyle:
-                                  TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,fontFamily: 'Mulish'),
-                                  tabs: const [
-                                    Tab(text: "DAY"),
-                                    Tab(text: "WEEK",),
-                                    Tab( text: "MONTH",),
-                                    Tab( text: "YEAR",),
+                                    unselectedBackgroundColor: Colors.white,
+                                    unselectedLabelStyle: TextStyle(color: Color(0xFF017E82),fontFamily: 'Mulish'),
+                                    labelStyle:
+                                    TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,fontFamily: 'Mulish'),
+                                    tabs: const [
+                                      Tab(text: "DAY"),
+                                      Tab(text: "WEEK",),
+                                      Tab( text: "MONTH",),
+                                      Tab( text: "YEAR",),
 
-                                  ],
-                                ),
-                              ),
-
-                            ],
-                          ),
-                          Expanded(
-                            child: TabBarView(
-                              children: <Widget>[
-                                Center(
-                                  child: CalendarDay(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
-                                ),
-                                Center(
-                                  child: CalendarWeek(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
-                                ),
-                                Center(
-                                  child: CalendarMobth(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
-                                ),
-                                Center(
-                                  child: CalendarYear(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
+                                    ],
+                                  ),
                                 ),
 
                               ],
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: TabBarView(
+                                children: <Widget>[
+                                  Center(
+                                    child: CalendarDay(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
+                                  ),
+                                  Center(
+                                    child: CalendarWeek(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
+                                  ),
+                                  Center(
+                                    child: CalendarMobth(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
+                                  ),
+                                  Center(
+                                    child: CalendarYear(calendarTypeId,calendarmodel,dateTimes,activityDataId,[]),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
