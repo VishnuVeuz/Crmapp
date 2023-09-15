@@ -765,6 +765,8 @@ Future<List<dynamic>> recentLead(String model) async {
   var responseList;
   print(token);
 
+  print("${baseUrl}api/leads?count=10&page_no=1&key_word=&company_ids=${globals.selectedIds}&filters=[$model]");
+  print("fsfsdfsf");
   try {
     final response = await get(
       Uri.parse(

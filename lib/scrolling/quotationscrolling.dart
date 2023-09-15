@@ -28,6 +28,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
   late bool _isLastPage;
   late int _pageNumber;
   late bool _error;
+  late bool _error1;
   late bool _loading;
   final int _numberOfLeadModelsPerRequest = 10;
   late List<QuotationModel> _QuotationModel;
@@ -90,6 +91,11 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
       if(quotationModelList.isEmpty){
         print("vishnu");
 
+        setState(() {
+          _loading = false;
+          _error1 = true;
+        });
+
 
       }
       else{
@@ -125,6 +131,35 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Something went wrong while fetching data.',
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
+            ),
+          ),
+          const SizedBox(height: 10,),
+          TextButton(
+              onPressed:  ()  {
+                setState(() {
+                  _loading = true;
+                  _error = false;
+                  fetchData();
+                });
+              },
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+        ],
+      ),
+    );
+  }
+
+  Widget errorDialog1({required double size}){
+    return SizedBox(
+      height: 180,
+      width: 400,
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('No data found.',
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
@@ -296,6 +331,12 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
             child: errorDialog(size: 20)
         );
       }
+
+      else if(_error1){
+        return Center(
+            child: errorDialog1(size: 20)
+        );
+      }
     }
     return ListView.builder(
         itemCount: _QuotationModel.length + (_isLastPage ? 0 : 1),
@@ -319,6 +360,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                     child: CircularProgressIndicator(),
                   ));
             }
+
+
           }
 
           final QuotationModel quotationModel = _QuotationModel[index];

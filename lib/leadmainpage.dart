@@ -355,17 +355,18 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   'Something went wrong'));
                             }
                             print("dajkdnm1");
-                            print(snapshot.data[0]["tag_ids"].length);
+                           // print(snapshot.data[0]["tag_ids"].length);
                             print("dajkdnm");
+                            print(snapshot.data?.length);
                             // if (snapshot.data[0]["tag_ids"].length > 0) {
                             //   //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
                             //   tags = snapshot.data[0]["tag_ids"];
                             // } else {
                             //   tags = [];
                             // }
+                        return    snapshot.data?.length == 0 ?  Center(child: Text("No data")):
 
-
-                            return ListView.builder(
+                             ListView.builder(
                               // physics: NeverScrollableScrollPhysics(),
                               //shrinkWrap: true,
                               itemCount: snapshot.data?.length ?? 0,

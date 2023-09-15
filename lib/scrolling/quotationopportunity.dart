@@ -26,6 +26,7 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
   late bool _isLastPage;
   late int _pageNumber;
   late bool _error;
+  late bool _error1;
   late bool _loading;
   final int _numberOfLeadModelsPerRequest = 10;
   late List<QuotationModel> _QuotationModel;
@@ -75,6 +76,10 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
       List quotationModelList= responseList['records'];
       if(quotationModelList.isEmpty){
         print("vishnu");
+        setState(() {
+          _loading = false;
+          _error1 = true;
+        });
 
 
       }
@@ -131,6 +136,36 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
       ),
     );
   }
+
+  Widget errorDialog1({required double size}){
+    return SizedBox(
+      height: 180,
+      width: 400,
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('No data found.',
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
+            ),
+          ),
+          const SizedBox(height: 10,),
+          TextButton(
+              onPressed:  ()  {
+                setState(() {
+                  _loading = true;
+                  _error = false;
+                  fetchData();
+                });
+              },
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+        ],
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -203,6 +238,12 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
       } else if (_error) {
         return Center(
             child: errorDialog(size: 20)
+        );
+      }
+
+      else if(_error1){
+        return Center(
+            child: errorDialog1(size: 20)
         );
       }
     }

@@ -28,6 +28,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
   late bool _isLastPage;
   late int _pageNumber;
   late bool _error;
+  late bool _error1;
   late bool _nodata;
   late bool _loading;
   final int _numberOfLeadModelsPerRequest = 10;
@@ -104,6 +105,13 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
       print("vishnuscrolling");
       _nodata = true;
 
+      setState(() {
+        _loading = false;
+        _error1 = true;
+      });
+
+
+
     }
     else{
       List<OpportunityModel> opportunityModelList = (responseList['records'] as List<dynamic>).map<OpportunityModel>((data) => OpportunityModel(data['id']??"",data['name']??"",data['name']??"",data['priority']??"",data['tag_ids']??"",data['image_1920']??"")).toList();
@@ -159,6 +167,37 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     );
   }
 
+
+  Widget errorDialog1({required double size}){
+    return SizedBox(
+      height: 180,
+      width: 400,
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('No data found.',
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
+            ),
+          ),
+          const SizedBox(height: 10,),
+          TextButton(
+              onPressed:  ()  {
+                setState(() {
+                  _loading = true;
+                  _error = false;
+                  fetchData();
+                });
+              },
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+        ],
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -207,6 +246,13 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
             child: errorDialog(size: 15)
         );
       }
+
+      else if(_error1){
+        return Center(
+            child: errorDialog1(size: 20)
+        );
+      }
+
     }
     return ListView.builder(
         itemCount: _OpportunityModel.length + (_isLastPage ? 0 : 1),

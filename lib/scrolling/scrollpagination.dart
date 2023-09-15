@@ -37,6 +37,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
   late bool _isLastPage;
   late int _pageNumber;
   late bool _error;
+  late bool _error1;
   late bool _loading;
   final int _numberOfLeadModelsPerRequest = 10;
   late List<LeadModel> _LeadModels;
@@ -121,6 +122,10 @@ class _LeadScrollingState extends State<LeadScrolling> {
       List LeadModelList1= responseList['records'];
       if(LeadModelList1.isEmpty){
         print("vishnu");
+        setState(() {
+          _loading = false;
+          _error1 = true;
+        });
 
 
 
@@ -128,16 +133,28 @@ class _LeadScrollingState extends State<LeadScrolling> {
       else{
         print(responseList['records'].length);
         print("vishnuvn");
-        List<LeadModel> LeadModelList = (responseList['records'] as List<dynamic>).map<LeadModel>((data) => LeadModel(data['id']??"",data['name']??"",data['contact_name']??"",data['priority']??"",data['tag_ids']??"",data['image_1920']??"")).toList();
-        setState(() {
-          _isLastPage = LeadModelList.length < _numberOfLeadModelsPerRequest;
-          _loading = false;
-          _pageNumber = _pageNumber + 1;
-          //_LeadModels.clear();
 
-          _LeadModels.addAll(LeadModelList);
+        if(responseList['records'].length==0){
+          setState(() {
+            _loading = false;
+            _error = true;
+          });
+        }
 
-        });
+        else{
+          List<LeadModel> LeadModelList = (responseList['records'] as List<dynamic>).map<LeadModel>((data) => LeadModel(data['id']??"",data['name']??"",data['contact_name']??"",data['priority']??"",data['tag_ids']??"",data['image_1920']??"")).toList();
+          setState(() {
+            _isLastPage = LeadModelList.length < _numberOfLeadModelsPerRequest;
+            _loading = false;
+            _pageNumber = _pageNumber + 1;
+            //_LeadModels.clear();
+
+            _LeadModels.addAll(LeadModelList);
+
+          });
+        }
+
+
       }
 
 
@@ -183,6 +200,36 @@ class _LeadScrollingState extends State<LeadScrolling> {
       ),
     );
   }
+
+  Widget errorDialog1({required double size}){
+    return SizedBox(
+      height: 180,
+      width: 400,
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('No data found.',
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Colors.black
+            ),
+          ),
+          const SizedBox(height: 10,),
+          TextButton(
+              onPressed:  ()  {
+                setState(() {
+                  _loading = true;
+                  _error = false;
+                  fetchData();
+                });
+              },
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+        ],
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -354,6 +401,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
         return Center(
             child: errorDialog(size: 20)
         );
+      }
+
+      else if(_error1){
+      return Center(
+      child: errorDialog1(size: 20)
+    );
       }
     }
     return Column(
