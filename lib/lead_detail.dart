@@ -218,7 +218,12 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: IconButton(
                     icon: Image.asset("images/back.png"),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) {
+                            return LeadMainPage();
+                          },
+                            settings: RouteSettings(name: 'LeadMainPage',),
+                          ));
                     },
                   ),
                 ),

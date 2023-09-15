@@ -69,7 +69,12 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                   child: IconButton(
                     icon: Image.asset("images/back.png"),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) {
+                            return Calender(null,"",DateTime.now(),null,[],"");
+                          },
+                            settings: RouteSettings(name: 'Calender',),
+                          ));
                     },
                   ),
                 ),

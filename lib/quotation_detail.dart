@@ -172,7 +172,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   padding: const EdgeInsets.only(left: 20),
                   child: IconButton(icon: Image.asset("images/back.png"),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) {
+                            return QuotationScrolling("","");
+                          },
+                            settings: RouteSettings(name: 'QuotationScrolling',),
+                          ));
                     },
                   ),
                 ),
@@ -6171,6 +6176,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
+                    activeColor: Color(0xFFF9246A),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {

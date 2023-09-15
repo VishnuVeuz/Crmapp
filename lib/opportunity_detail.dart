@@ -220,7 +220,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               child: IconButton(
                 icon: Image.asset("images/back.png"),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) {
+                        return OpportunityMainPage(null,"","","","");
+                      },
+                        settings: RouteSettings(name: 'OpportunityMainPage',),
+                      ));
                 },
               ),
             ),

@@ -189,7 +189,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 child: IconButton(
                   icon: Image.asset("images/back.png"),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) {
+                          return CustomerScrolling("","");
+                        },
+                          settings: RouteSettings(name: 'CustomerScrolling',),
+                        ));
                   },
                 ),
               ),
