@@ -213,10 +213,8 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             onPressed: () async {
 
-                              if (_formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(content: Text('Processing Data')),
-                                );
+                              if (_formKey.currentState!.validate() && leadnameController.text.trim().isNotEmpty) {
+                               
 
                               setState(() {
                                 _isInitialized = false;
