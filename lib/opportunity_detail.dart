@@ -7010,6 +7010,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 recipient?.clear();
                                 selctedRecipient.clear();
                               });
+                              Navigator.pop(context);
 
                               print(recipient);
                               print("tagattagagaga");
