@@ -2258,6 +2258,8 @@ void getOpportunityDetails() async {
     //expirationDateTime.text = data['validity_date'].toString();
     pricelistName = data['pricelist_id'] ?? "";
     pricelistId = data['pricelist_id']['id'] ?? null;
+    print("fkjdbjksa");
+    print(pricelistId);
     // paymenttermsName = data['payment_term_id'] ?? "";
     // paymenttermsId = data['payment_term_id']['id'] ?? null;
     salespersonName = data['user_id'] ?? "";
