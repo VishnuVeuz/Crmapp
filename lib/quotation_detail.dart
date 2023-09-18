@@ -4185,7 +4185,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       _isInitialized = true;
     });
 
-
+    await getScheduleDetails();
   }
 
   _buildOrderPopupDialog(BuildContext context, int typeIds) {

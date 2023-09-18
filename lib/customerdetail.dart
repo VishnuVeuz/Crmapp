@@ -3951,6 +3951,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
       _isInitialized = true;
     });
+   await getScheduleDetails();
   }
 
   customerArchive(bool valueType) async {

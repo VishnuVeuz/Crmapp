@@ -101,6 +101,8 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
       print("company_ids");
 
     List opportunityModelList= responseList['records'];
+
+
     if(opportunityModelList.isEmpty){
       print("vishnuscrolling");
       _nodata = true;
