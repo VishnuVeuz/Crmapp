@@ -51,6 +51,7 @@ dependencies:
   flutter_html: ^2.2.0
   multi_select_flutter: ^4.0.0
   toggle_switch: ^2.1.0
+  basic_utils: ^5.5.4
 
 
 

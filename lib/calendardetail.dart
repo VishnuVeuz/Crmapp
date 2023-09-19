@@ -1,7 +1,9 @@
+import 'package:basic_utils/basic_utils.dart';
 import 'package:crm_project/calendarcreate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 
 import 'api.dart';
 import 'calendarmainpage.dart';
@@ -17,7 +19,11 @@ class CalencerFullDetail extends StatefulWidget {
 
 class _CalencerFullDetailState extends State<CalencerFullDetail> {
   String? meetingsub,partnername,startdate,stopdate,duration,allday,organizer,
-      reminder,location,meetingurl,tags,description,privacy,showas;
+      location,meetingurl,description,privacy,showas;
+
+  List reminder = [];
+  List tags = [];
+
 
   String ? token;
   bool meetingvisibility = true,optionsvisibility = false;
@@ -644,14 +650,53 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       .width / 2.3,
 
                                   child: Padding(
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: Text(
-                                      reminder!,
-                                      style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                    padding: const EdgeInsets.only(right: 5),
+                                    child: Container(
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width/1.1 ,
+                                     // height: 20,
+                                      //color: Colors.pinkAccent,
+
+                                      child: ListView.builder(
+                                        scrollDirection: Axis.vertical,
+                                        shrinkWrap: true,
+                                        itemCount: reminder!.length ?? 0,
+                                        itemBuilder: (BuildContext context, int index) {
+                                          return Padding(
+                                            padding:
+                                            const EdgeInsets.only(right: 8.0, top: 4),
+                                            child: SingleChildScrollView(
+                                              scrollDirection: Axis.horizontal,
+
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                                                 // color:  Color(int.parse(reminder![index]["color"])),
+                                                 // color: Colors.red,
+                                           ),
+
+                                                width: MediaQuery.of(context).size.width/2.8,
+                                                //height: 20,
+
+                                                child:
+                                                Center(
+                                                  child: Text(
+
+                                                    reminder![index]["name"].toString(),
+                                                    style: TextStyle(
+                                                        fontWeight: FontWeight.w600,
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 12,
+                                                        color: Color(0xFF212121)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -746,9 +791,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                            child:
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Tags",
@@ -758,25 +801,61 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
-                                Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width / 2.3,
 
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: Text(
-                                      "Tags",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121))
+
+                          ),
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(left:25,right: 0,top: 5),
+                            child: Container(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width/1.1 ,
+                              height: 20,
+                              //color: Colors.pinkAccent,
+
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemCount: tags!.length ?? 0,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Padding(
+                                    padding:
+                                    const EdgeInsets.only(right: 8.0, top: 4),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                                          //color:  Color(int.parse(tags![index]["color"])),
+                                        color: Colors.red,
+                                        ),
+
+                                       // width: 60,
+                                        height: 20,
+                                        child:
+                                        Center(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left: 4,right: 4),
+                                            child: Text(
+
+                                              tags![index]["name"].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 8),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ],
+                                  );
+                                },
+                              ),
                             ),
                           ),
                           Padding(
@@ -856,7 +935,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                    privacy!,
+                                    StringUtils.capitalize(privacy!),
+
                                     style:TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Mulish',
@@ -891,7 +971,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
                                   child: Text(
-                                    showas!,
+                                    StringUtils.capitalize(showas!),
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Mulish',
@@ -939,9 +1019,17 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
       privacy = data['privacy']??"";
       showas = data['show_as']??"";
 
-      data['alarm_ids'].length!=0?
-        reminder =data['alarm_ids'][0]['name'].toString()??""
-          :reminder = "";
+      data['alarm_ids'].length>0?
+        reminder =data['alarm_ids']
+          :reminder = [];
+
+
+      data['categ_ids'].length>0?
+      tags =data['categ_ids']
+          :tags = [];
+
+      print(reminder);
+      print("reminderrrr");
 
       organizer=data['user_id']['name']??"";
       //reminder =data['alarm_ids']['name'].toString()??"";
