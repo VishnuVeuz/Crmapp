@@ -643,60 +643,52 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
-                                Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width / 2.3,
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 2),
+                                  child: Container(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width / 2.3,
 
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 5),
-                                    child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width/1.1 ,
-                                     // height: 20,
-                                      //color: Colors.pinkAccent,
+                                     // color: Colors.pinkAccent,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: reminder!.length ?? 0,
+                                      itemBuilder: (BuildContext context, int index) {
+                                        return Padding(
+                                          padding:
+                                          const EdgeInsets.only(right: 8.0, top: 5),
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.horizontal,
 
-                                      child: ListView.builder(
-                                        scrollDirection: Axis.vertical,
-                                        shrinkWrap: true,
-                                        itemCount: reminder!.length ?? 0,
-                                        itemBuilder: (BuildContext context, int index) {
-                                          return Padding(
-                                            padding:
-                                            const EdgeInsets.only(right: 8.0, top: 4),
-                                            child: SingleChildScrollView(
-                                              scrollDirection: Axis.horizontal,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(Radius.circular(30)),
+                                               // color:  Color(int.parse(reminder![index]["color"])),
+                                               // color: Colors.red,
+                                         ),
 
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                                                 // color:  Color(int.parse(reminder![index]["color"])),
-                                                 // color: Colors.red,
-                                           ),
+                                              width: MediaQuery.of(context).size.width/2.8,
+                                              //height: 20,
 
-                                                width: MediaQuery.of(context).size.width/2.8,
-                                                //height: 20,
+                                              child:
+                                              Center(
+                                                child: Text(
 
-                                                child:
-                                                Center(
-                                                  child: Text(
-
-                                                    reminder![index]["name"].toString(),
-                                                    style: TextStyle(
-                                                        fontWeight: FontWeight.w600,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 12,
-                                                        color: Color(0xFF212121)),
-                                                  ),
+                                                  reminder![index]["name"].toString(),
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w600,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 12,
+                                                      color: Color(0xFF212121)),
                                                 ),
                                               ),
                                             ),
-                                          );
-                                        },
-                                      ),
+                                          ),
+                                        );
+                                      },
                                     ),
                                   ),
                                 ),
@@ -930,7 +922,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
@@ -966,7 +958,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 width: MediaQuery
                                     .of(context)
                                     .size
-                                    .width / 3,
+                                    .width / 2.3,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
