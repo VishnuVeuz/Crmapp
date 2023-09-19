@@ -830,8 +830,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(Radius.circular(30)),
-                                          //color:  Color(int.parse(tags![index]["color"])),
-                                        color: Colors.red,
+                                          color:  Color(int.parse(tags![index]["color"])),
+                                        //color: Colors.red,
                                         ),
 
                                        // width: 60,
