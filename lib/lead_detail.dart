@@ -5807,7 +5807,11 @@ class _LeadDetailState extends State<LeadDetail> {
           return AlertDialog(
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Please choose media to select'),
+            title: Text('Please choose media to select',style: TextStyle(
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Mulish',
+                fontSize: 14,
+                color: Color(0xFF212121))),
             content: Container(
               height: MediaQuery
                   .of(context)
@@ -5816,6 +5820,15 @@ class _LeadDetailState extends State<LeadDetail> {
               child: Column(
                 children: [
                   ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
+                       // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
+                        textStyle: MaterialStateProperty.all(TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontSize: 14,
+                            color: Color(0xFF212121)))),
+
                     //if user click this button, user can upload image from gallery
                     onPressed: () {
                       Navigator.pop(context);
@@ -5827,11 +5840,23 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.image),
-                        Text('From Gallery'),
+                        Text('From Gallery',style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontSize: 14,
+                            color: Colors.white)),
                       ],
                     ),
                   ),
                   ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
+                        // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
+                        textStyle: MaterialStateProperty.all(TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontSize: 14,
+                            color: Color(0xFF212121)))),
                     //if user click this button. user can upload image from camera
                     onPressed: () {
                       Navigator.pop(context);
@@ -5845,7 +5870,11 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.camera),
-                        Text('From Camera'),
+                        Text('From Camera',style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontSize: 14,
+                            color: Colors.white)),
                       ],
                     ),
                   ),
