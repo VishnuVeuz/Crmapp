@@ -1064,7 +1064,7 @@ class _CalendarAddState extends State<CalendarAdd> {
       orgnizerId = data['user_id'] ['id']?? null;
       locationController.text = data['location'].toString();
       meetingurlController.text = data['videocall_location'].toString();
-      meeting_discription.text =data['description'].toString();
+      meeting_discription.text =data['description'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')??"";
 
       for (int i = 0; i < data['categ_ids'].length; i++) {
         selctedTag.add(data['categ_ids'][i]);
