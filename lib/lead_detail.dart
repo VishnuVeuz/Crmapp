@@ -3648,22 +3648,25 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             children: [
                                                                               Row(
                                                                                 children: [
-                                                                                  FittedBox(
-                                                                                    child: SizedBox(
-                                                                                      width: 45,
-                                                                                      height: 45,
-                                                                                      child: DecoratedBox(
-                                                                                        decoration: BoxDecoration(
-                                                                                          gradient: LinearGradient(
-                                                                                            colors: [Color(0xFFE57373), Color(0xFFEF5350)],
+                                                                                  Padding(
+                                                                                    padding: const EdgeInsets.only(top: 10,left: 5),
+                                                                                    child: FittedBox(
+                                                                                      child: SizedBox(
+                                                                                        width: 45,
+                                                                                        height: 45,
+                                                                                        child: DecoratedBox(
+                                                                                          decoration: BoxDecoration(
+                                                                                            gradient: LinearGradient(
+                                                                                              colors: [Color(0xFFE57373), Color(0xFFEF5350)],
+                                                                                            ),
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(10)),
                                                                                           ),
-                                                                                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                                        ),
-                                                                                        child: Center(
-                                                                                          child: Icon(
-                                                                                            Icons.picture_as_pdf_sharp,
-                                                                                            color: Colors.white,
-                                                                                            size: 25,
+                                                                                          child: Center(
+                                                                                            child: Icon(
+                                                                                              Icons.picture_as_pdf_sharp,
+                                                                                              color: Colors.white,
+                                                                                              size: 25,
+                                                                                            ),
                                                                                           ),
                                                                                         ),
                                                                                       ),
@@ -3673,14 +3676,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   Column(
                                                                                     children: [
                                                                                       Container(
-                                                                                          width: MediaQuery.of(context).size.width/3.5,
+                                                                                          width: MediaQuery.of(context).size.width/3.8,
                                                                                           //color: Colors.blue,
-                                                                                          child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish'),)),
+                                                                                          child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),)),
                                                                                       SizedBox(height: 10,),
                                                                                       Container(
-                                                                                          width: MediaQuery.of(context).size.width/3.5,
+                                                                                          width: MediaQuery.of(context).size.width/3.8,
                                                                                           //color: Colors.blue,
-                                                                                          child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 13,fontFamily: 'Mulish'),)),
+                                                                                          child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 11,fontFamily: 'Mulish'),)),
                                                                                     ],
                                                                                   ),
                                                                                   SizedBox(width: 20,),

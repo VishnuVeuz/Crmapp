@@ -206,7 +206,10 @@ class _LeadCreationState extends State<LeadCreation> {
                       child: SizedBox(
                         width: 93,
                         height: 33,
-                        child: ElevatedButton(child: Text("Save", style: TextStyle(
+
+                        child: ElevatedButton(
+
+                            child: Text("Save", style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 13.57,
                             color: Colors.white,fontFamily: 'Mulish'),),
@@ -280,6 +283,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                             },
                             style: ElevatedButton.styleFrom(
+
                               primary: Color(0xFFF04254),
                             )
                         ),
@@ -1676,6 +1680,89 @@ class _LeadCreationState extends State<LeadCreation> {
                             labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
                         ),
                       ),),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                        margin: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(10.0),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.grey[350],
+                            border: Border.all(color: Colors.grey)
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        //height: MediaQuery.of(context).size.height/8,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                        FittedBox(
+                          child: SizedBox(
+                            width: 45,
+                            height: 45,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [Colors.blue,Colors.blue],
+                                ),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.article_outlined,
+                                  color: Colors.white,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                                SizedBox(width: 10,),
+                                Column(
+                                  children: [
+                                    Container(
+                                        width: MediaQuery.of(context).size.width/2,
+                                        //color: Colors.blue,
+                                        child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish'),)),
+                                    SizedBox(height: 10,),
+                                    Container(
+                                        width: MediaQuery.of(context).size.width/2,
+                                        //color: Colors.blue,
+                                        child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 13,fontFamily: 'Mulish'),)),
+                                  ],
+                                ),
+                                SizedBox(width: 20,),
+                                Column(
+                                  children: [
+                                    Container(
+                                      width: 30,
+                                      height: 30,
+                                      //color: Colors.green,
+                                      child: IconButton(
+                                        icon:SvgPicture.asset("images/trash.svg"),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 34,
+                                      height: 20,
+                                      //color: Colors.green,
+                                      child: IconButton(
+                                        icon:Icon(Icons.download),
+                                        onPressed: () {},
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
