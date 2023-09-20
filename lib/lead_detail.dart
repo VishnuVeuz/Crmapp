@@ -147,6 +147,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List<File> selectedImages = [];
   List<File> attachmentSelectedImages = [];
   List<dynamic> selectedImagesDisplay = [];
+  String mimetype = "";
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
   String personImg = "";
@@ -2105,6 +2106,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       logDataHeader.clear();
                                       logDataTitle.clear();
                                       selectedImagesDisplay.clear();
+                                      mimetype="";
                                       lognoteController.text = "";
                                       selectedImages.clear();
                                       myData1.clear();
@@ -3104,6 +3106,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 selectedImagesDisplay =
                                                 logDataTitle[indexx][indexs]
                                                 ['attachment_ids'];
+
+                                                mimetype =   selectedImagesDisplay[indexx]
+                                                ['mimetype'];
+
+                                                print(mimetype);
+                                                print("mimetypefinals");
+
                                                 print(logDataTitle[indexx]
                                                 [indexs]['attachment_ids']);
                                                 print(
@@ -3380,6 +3389,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                               .clear();
                                                                                           selectedImagesDisplay
                                                                                               .clear();
+                                                                                          mimetype="";
                                                                                         });
                                                                                       }
                                                                                     },
@@ -3578,7 +3588,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 context)
                                                                                 .size
                                                                                 .width /
-                                                                                2,
+                                                                                3,
                                                                             // height: 40,
                                                                           ),
                                                                         )
@@ -3587,7 +3597,132 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               .only(
                                                                               left: 40,
                                                                               right: 0),
-                                                                          child: Container(
+                                                                          child:
+
+                                                                          mimetype== "application/pdf"?  Container(
+                                                                      //color: Colors.green,
+
+                                                                      width: MediaQuery
+                                                                          .of(
+                                                                      context)
+                                                                          .size
+                                                                          .width / 1.5,
+                                                                      // height: 140,
+                                                                      child: GridView
+                                                                          .builder(
+                                                                      shrinkWrap: true,
+                                                                      // Avoid scrolling
+                                                                      physics: NeverScrollableScrollPhysics(),
+                                                                      itemCount: selectedImagesDisplay
+                                                                          .length,
+                                                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                      crossAxisCount: 1),
+                                                                      itemBuilder: (
+                                                                      BuildContext context,
+                                                                      int index) {
+                                                                      print(
+                                                                      selectedImagesDisplay
+                                                                          .length);
+                                                                      print(
+                                                                      selectedImagesDisplay[index]["datas"]);
+                                                                      print(
+                                                                      "selectedImagesDisplay.length,");
+
+                                                                      return Center(
+                                                                      child:
+
+
+                                                                      Padding(
+                                                                        padding: const EdgeInsets.only(left: 25),
+                                                                        child: Container(
+                                                                          margin: const EdgeInsets.all(5.0),
+                                                                         //padding: const EdgeInsets.all(10.0),
+                                                                          //color: Colors.white,
+                                                                          decoration: BoxDecoration(
+                                                                              color: Colors.grey[350],
+                                                                              border: Border.all(color: Colors.grey)
+                                                                          ),
+                                                                          width: MediaQuery.of(context).size.width,
+                                                                          height: MediaQuery.of(context).size.height/12,
+                                                                          child: Column(
+                                                                            children: [
+                                                                              Row(
+                                                                                children: [
+                                                                                  FittedBox(
+                                                                                    child: SizedBox(
+                                                                                      width: 45,
+                                                                                      height: 45,
+                                                                                      child: DecoratedBox(
+                                                                                        decoration: BoxDecoration(
+                                                                                          gradient: LinearGradient(
+                                                                                            colors: [Color(0xFFE57373), Color(0xFFEF5350)],
+                                                                                          ),
+                                                                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                        ),
+                                                                                        child: Center(
+                                                                                          child: Icon(
+                                                                                            Icons.picture_as_pdf_sharp,
+                                                                                            color: Colors.white,
+                                                                                            size: 25,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  SizedBox(width: 10,),
+                                                                                  Column(
+                                                                                    children: [
+                                                                                      Container(
+                                                                                          width: MediaQuery.of(context).size.width/3.5,
+                                                                                          //color: Colors.blue,
+                                                                                          child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish'),)),
+                                                                                      SizedBox(height: 10,),
+                                                                                      Container(
+                                                                                          width: MediaQuery.of(context).size.width/3.5,
+                                                                                          //color: Colors.blue,
+                                                                                          child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 13,fontFamily: 'Mulish'),)),
+                                                                                    ],
+                                                                                  ),
+                                                                                  SizedBox(width: 20,),
+                                                                                  Column(
+                                                                                    children: [
+                                                                                      Container(
+                                                                                        width: 30,
+                                                                                        height: 30,
+                                                                                        //color: Colors.green,
+                                                                                        child: IconButton(
+                                                                                          icon:SvgPicture.asset("images/trash.svg"),
+                                                                                          onPressed: () {},
+                                                                                        ),
+                                                                                      ),
+                                                                                      Container(
+                                                                                        width: 34,
+                                                                                        height: 20,
+                                                                                        //color: Colors.green,
+                                                                                        child: IconButton(
+                                                                                          icon:Icon(Icons.download),
+                                                                                          onPressed: () {},
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+
+
+                                                                                ],
+                                                                              )
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                      );
+                                                                      },
+                                                                      ),
+                                                                      ):
+
+
+
+
+                                                                          Container(
                                                                             //color: Colors.green,
 
                                                                             width: MediaQuery
@@ -3618,7 +3753,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     "selectedImagesDisplay.length,");
 
                                                                                 return Center(
-                                                                                  child: Container(
+                                                                                  child:
+
+
+                                                                                  Container(
                                                                                     child: Stack(
                                                                                       children: [
                                                                                         ClipRRect(
@@ -3661,6 +3799,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                           .clear();
                                                                                                       selectedImagesDisplay
                                                                                                           .clear();
+                                                                                                      mimetype="";
                                                                                                     });
                                                                                                   }
 
@@ -4268,6 +4407,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           logDataHeader.clear();
                           logDataTitle.clear();
                           selectedImagesDisplay.clear();
+                          mimetype="";
                           lognoteController.text = "";
                           selectedImages.clear();
                           myData1.clear();
@@ -4749,6 +4889,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     logDataHeader.clear();
                                     logDataTitle.clear();
                                     selectedImagesDisplay.clear();
+                                    mimetype="";
                                     lognoteController.text = "";
                                     selectedImages.clear();
                                     myData1.clear();
