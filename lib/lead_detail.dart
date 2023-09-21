@@ -3654,10 +3654,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             ),
                                                                                                             Container(
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                                //color: Colors.blue,
+                                                                                                               // color: Colors.green,
                                                                                                                 child: Text(
+
+
                                                                                                                   "PDF",
-                                                                                                                  style: TextStyle(color: Colors.black, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                                  style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
                                                                                                                 )),
                                                                                                           ],
                                                                                                         ),
