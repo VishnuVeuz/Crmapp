@@ -136,7 +136,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List<File> selectedImages = [];
   List<File> attachmentSelectedImages = [];
   List<dynamic> selectedImagesDisplay = [];
-  List mimetype = [];
+
 
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
@@ -3580,7 +3580,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 child: Container(
                                                                                   //color: Colors.green,
 
-                                                                                  width: MediaQuery.of(context).size.width / 3,
+                                                                                  width: MediaQuery.of(context).size.width / 1.5,
                                                                                   // height: 140,
                                                                                   child: GridView.builder(
                                                                                     shrinkWrap: true,
