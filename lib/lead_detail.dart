@@ -3583,16 +3583,23 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   width: MediaQuery.of(context).size.width / 1.5,
                                                                                   // height: 140,
                                                                                   child: GridView.builder(
+
                                                                                     shrinkWrap: true,
                                                                                     // Avoid scrolling
                                                                                     physics: NeverScrollableScrollPhysics(),
                                                                                     itemCount: selectedImagesDisplay.length,
-                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
+
+                                                                                      mainAxisSpacing: 10.0,
+                                                                                      crossAxisSpacing: 10.0,
+                                                                                      childAspectRatio: 3.5,
+
+                                                                                    ),
                                                                                     itemBuilder: (BuildContext context, int index) {
                                                                                       print(selectedImagesDisplay.length);
                                                                                       print(selectedImagesDisplay[index]["datas"]);
                                                                                       print("selectedImagesDisplay.length,");
-                                                                                      return selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf")
                                                                                           ? Padding(
                                                                                               padding: const EdgeInsets.only(left: 25),
                                                                                               child: Container(
