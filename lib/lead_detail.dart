@@ -3599,7 +3599,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                       print(selectedImagesDisplay.length);
                                                                                       print(selectedImagesDisplay[index]["datas"]);
                                                                                       print("selectedImagesDisplay.length,");
-                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf")
+                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/zip")
                                                                                           ? Padding(
                                                                                               padding: const EdgeInsets.only(left: 25),
                                                                                               child: Container(
@@ -3621,14 +3625,28 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               height: 45,
                                                                                                               child: DecoratedBox(
                                                                                                                 decoration: BoxDecoration(
-                                                                                                                  gradient: LinearGradient(
-                                                                                                                    colors: [Color(0xFFE57373), Color(0xFFEF5350)],
-                                                                                                                  ),
+                                                                                                                  color:
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                                  Color(0xFFEF5350):
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                                  Color(0xFF2196F3):
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                                  Color(0xFF4CAF50):
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                                  Color(0xFF0277BD):
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                                  Color(0xFFFDD835):
+                                                                                                                  Color(0xFFFFFFFF),
+
                                                                                                                   borderRadius: BorderRadius.all(Radius.circular(10)),
                                                                                                                 ),
                                                                                                                 child: Center(
-                                                                                                                  child: Icon(
-                                                                                                                    Icons.picture_as_pdf_sharp,
+                                                                                                                  child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                                    Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
+
                                                                                                                     color: Colors.white,
                                                                                                                     size: 25,
                                                                                                                   ),
@@ -3698,7 +3716,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                 ),
                                                                                               ),
                                                                                             )
-                                                                                          : Center(
+                                                                                          :
+
+                                                                                      (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
+                                                                                      Center(
                                                                                               child: Container(
                                                                                                 child: Stack(
                                                                                                   children: [
@@ -3745,7 +3766,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                   ],
                                                                                                 ),
                                                                                               ),
-                                                                                            );
+                                                                                            ):
+                                                                                          Container();
                                                                                     },
                                                                                   ),
                                                                                 ),
