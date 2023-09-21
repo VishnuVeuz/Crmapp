@@ -15,7 +15,6 @@ import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
-
 import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'lognoteedit.dart';
@@ -32,27 +31,49 @@ class QuotationDetail extends StatefulWidget {
 
 class _QuotationDetailState extends State<QuotationDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
-  String? quotationname,customername,expiration,pricelist,paymentterms,
-      salesperson,salesteam,company,customerreference,tags,shippingpolicy,deliverydate,
-      fiscalposition,sourcedocument,campaign,medium,source,createdby,
-      createdon,lastupdatedby,lastupdatedon,salespersonimg, attachmentCount = "0", followerCount = "0";
+  String? quotationname,
+      customername,
+      expiration,
+      pricelist,
+      paymentterms,
+      salesperson,
+      salesteam,
+      company,
+      customerreference,
+      tags,
+      shippingpolicy,
+      deliverydate,
+      fiscalposition,
+      sourcedocument,
+      campaign,
+      medium,
+      source,
+      createdby,
+      createdon,
+      lastupdatedby,
+      lastupdatedon,
+      salespersonimg,
+      attachmentCount = "0",
+      followerCount = "0";
 
-  bool followerStatus=false;
-  String notificationCount="0";
+  bool followerStatus = false;
+  String notificationCount = "0";
 
   bool _isInitialized = false;
-  bool optvisibility = false,ordervisibility = true;
+  bool optvisibility = false, ordervisibility = true;
 
   List orderLineProducts = [];
   List optionalProducts = [];
 
-
   Map<String, dynamic>? orderLineProductsData;
   Map<String, dynamic>? optionalProductsData;
 
-
-  dynamic activityTypeName, activityTypeId, assignedToname, assignedToid,
-      activityTypeNameCategory,btntext="Schedule";
+  dynamic activityTypeName,
+      activityTypeId,
+      assignedToname,
+      assignedToid,
+      activityTypeNameCategory,
+      btntext = "Schedule";
   TextEditingController summaryController = TextEditingController();
   TextEditingController commandsController = TextEditingController();
   TextEditingController DuedateTime = TextEditingController();
@@ -60,36 +81,48 @@ class _QuotationDetailState extends State<QuotationDetail> {
   TextEditingController feedbackController = TextEditingController();
   TextEditingController subjectController = TextEditingController();
   TextEditingController bodyController = TextEditingController();
-  bool scheduleBtn=true,opencalendarBtn= false,meetingColum=true;
+  bool scheduleBtn = true, opencalendarBtn = false, meetingColum = true;
   bool isCheckedEmail = false;
   bool isCheckedFollowers = false;
-
 
   DateTime? _selectedDate;
   var DuedateTimeFinal;
 
-  bool scheduleView=false,scheduleActivityVisibility = true,
-      scheduleVisibiltyOverdue=false,scheduleVisibiltyToday=false,
-      scheduleVisibiltyPlanned=false, attachmentVisibility = false,
-      lognoteoptions = true, starImage = false, followersVisibility = false;
+  bool scheduleView = false,
+      scheduleActivityVisibility = true,
+      scheduleVisibiltyOverdue = false,
+      scheduleVisibiltyToday = false,
+      scheduleVisibiltyPlanned = false,
+      attachmentVisibility = false,
+      lognoteoptions = true,
+      starImage = false,
+      followersVisibility = false;
 
+  String? scheduleDays,
+      scheduleactivityType,
+      scheduleSummary,
+      scheduleUser,
+      scheduleCreateDate,
+      scheduleCreateUser,
+      scheduleDueon,
+      scheduleNotes,
+      scheduleBtn1,
+      scheduleBtn2,
+      scheduleBtn3;
 
-  String? scheduleDays,scheduleactivityType,scheduleSummary,scheduleUser,
-      scheduleCreateDate,scheduleCreateUser,scheduleDueon,scheduleNotes,
-      scheduleBtn1,scheduleBtn2,scheduleBtn3;
-
-  int? scheduleLength=0,scheduleOverdue,scheduleToday,schedulePlanned;
+  int? scheduleLength = 0, scheduleOverdue, scheduleToday, schedulePlanned;
   var scheduleData;
 
-  Icon scheduleIcon =  Icon(Icons.circle,
+  Icon scheduleIcon = Icon(
+    Icons.circle,
     color: Colors.white,
     size: 8,
   );
-  Icon logNoteIcon =  Icon(Icons.circle,
+  Icon logNoteIcon = Icon(
+    Icons.circle,
     color: Colors.white,
     size: 8,
   );
-
 
   // lognote
 
@@ -99,17 +132,17 @@ class _QuotationDetailState extends State<QuotationDetail> {
   List<dynamic> selectedImagesDisplay = [];
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
-  String personImg="";
+  String personImg = "";
   List base64string1 = [];
   List<Map<String, dynamic>> myData1 = [];
-  String base64string="";
+  String base64string = "";
   int lognoteDatalength = 0;
 
   Map<String, dynamic>? lognoteData;
   List logDataHeader = [];
-  List logDataTitle=[];
-  List ddd2=[];
-  List? tagss=[];
+  List logDataTitle = [];
+  List ddd2 = [];
+  List? tagss = [];
   List? recipient = [];
   List<ValueItem> editRecipientName = [];
   List selctedRecipient = [];
@@ -117,9 +150,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   List sendMailData = [];
   bool isCheckedMail = false;
 
-  dynamic templateName,templateId;
-
-
+  dynamic templateName, templateId;
 
   bool isLoading = true;
 
@@ -133,7 +164,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
   String? token;
   @override
   Widget build(BuildContext context) {
-
     if (!_isInitialized) {
       // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
@@ -141,46 +171,45 @@ class _QuotationDetailState extends State<QuotationDetail> {
           child: CircularProgressIndicator(),
         ),
       );
-    }
-   else {
+    } else {
       return Scaffold(
         drawer: MainDrawer(),
         appBar: AppBar(
-          backgroundColor: Theme
-              .of(context)
-              .primaryColor,
+          backgroundColor: Theme.of(context).primaryColor,
           elevation: 0,
           title: Row(
             children: [
               Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width/4,
-                child: Text(quotationname!, style: TextStyle(
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),),
+                width: MediaQuery.of(context).size.width / 4,
+                child: Text(
+                  quotationname!,
+                  style: TextStyle(
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w700,
+                      fontSize: 15,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),
+                ),
               )
             ],
           ),
           leading: Builder(
-            builder: (context) =>
-                Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: IconButton(icon: Image.asset("images/back.png"),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) {
-                            return QuotationScrolling("","");
-                          },
-                            settings: RouteSettings(name: 'QuotationScrolling',),
-                          ));
+            builder: (context) => Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: IconButton(
+                icon: Image.asset("images/back.png"),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) {
+                      return QuotationScrolling("", "");
                     },
-                  ),
-                ),
+                    settings: RouteSettings(
+                      name: 'QuotationScrolling',
+                    ),
+                  ));
+                },
+              ),
+            ),
           ),
           automaticallyImplyLeading: false,
           actions: [
@@ -220,36 +249,35 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   //   ),
                   // ),
                   Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ActivitiesNotification()));
-                            },
+                    child: Stack(alignment: Alignment.center, children: [
+                      IconButton(
+                        icon: SvgPicture.asset("images/clock2.svg"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ActivitiesNotification()));
+                        },
+                      ),
+                      Positioned(
+                        bottom: 25,
+                        right: 28,
+                        child: Container(
+                          width: 15.0,
+                          height: 15.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFFA256B),
                           ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 15.0,
-                              height: 15.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
+                          child: Center(
+                              child: Text(
+                            notificationCount,
+                            style: TextStyle(color: Colors.white, fontSize: 8),
+                          )),
+                        ),
+                      ),
+                    ]),
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.only(right: 0),
@@ -261,7 +289,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   // ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
-                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
+                    child: IconButton(
+                      icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();
                       },
@@ -274,19 +303,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
         ),
         body: WillPopScope(
           onWillPop: () async {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => QuotationScrolling("","")));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => QuotationScrolling("", "")));
             return true;
           },
           child: Container(
-            width: MediaQuery
-                .of(context)
-                .size
-                .width,
-            height: MediaQuery
-                .of(context)
-                .size
-                .height,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -298,134 +323,111 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       children: [
                         Column(
                           children: [
-
                             InkWell(
-                              onTap: (){
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuotationCreation(0)));
-
-                              },
-                              child: SvgPicture
-                                  .asset(
-                                "images/create.svg",width: 28,height: 28,),
-                            ),
-
-
-
-
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5),
-                              child: Text("Create",style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
-                            )
-                          ],
-                        ),
-                        Column(
-
-                          children: [
-
-                            InkWell(
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            QuotationCreation(
-                                                widget.quotationId
-
-                                            )));
-
+                                            QuotationCreation(0)));
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/edit.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/create.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("Edit",style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              child: Text("Create",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
-
                           children: [
-
                             InkWell(
-                              onTap: ()async{
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => QuotationCreation(
+                                            widget.quotationId)));
+                              },
+                              child: SvgPicture.asset(
+                                "images/edit.svg",
+                                width: 28,
+                                height: 28,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Text("Edit",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
+                            )
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            InkWell(
+                              onTap: () async {
                                 print(widget.quotationId);
-                                var data =
-                                await deleteQuotationData(
-                                    widget
-                                        .quotationId);
+                                var data = await deleteQuotationData(
+                                    widget.quotationId);
 
-                                if (data['message'] ==
-                                    "Success") {
+                                if (data['message'] == "Success") {
                                   print(data);
-
 
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            QuotationScrolling ("","")
-                                    ),
+                                            QuotationScrolling("", "")),
                                   );
                                 }
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/delete.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/delete.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("Delete",style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              child: Text("Delete",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
                         Column(
-
                           children: [
-
                             InkWell(
-                              onTap: ()async{
+                              onTap: () async {
                                 var data = await getQuotationData(
-                                    widget.quotationId,
-                                    "duplicate");
+                                    widget.quotationId, "duplicate");
                                 String resMessageText;
 
-                                if (data['message']
-                                    .toString() ==
-                                    "success") {
+                                if (data['message'].toString() == "success") {
                                   resMessageText =
-                                      data['data']['id']
-                                          .toString();
+                                      data['data']['id'].toString();
                                   int resmessagevalue =
-                                  int.parse(
-                                      resMessageText);
-                                  if (resmessagevalue !=
-                                      0) {
+                                      int.parse(resMessageText);
+                                  if (resmessagevalue != 0) {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -434,25 +436,24 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                   resmessagevalue)),
                                     );
                                   }
-                                };
+                                }
+                                ;
                               },
-                              child: SvgPicture
-                                  .asset(
-                                "images/duplicatee.svg",width: 28,height: 28,),
+                              child: SvgPicture.asset(
+                                "images/duplicatee.svg",
+                                width: 28,
+                                height: 28,
+                              ),
                             ),
-
-
-
-
-
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("Duplicate",style: TextStyle(
-                                fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                              )),
+                              child: Text("Duplicate",
+                                  style: TextStyle(
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Color(0xFF212121),
+                                  )),
                             )
                           ],
                         ),
@@ -460,16 +461,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20, left: 25, right: 25),
-                    child: Text(quotationname!, style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 17,
-                      color: Colors.black,
-                    )),
+                    padding:
+                        const EdgeInsets.only(top: 20, left: 25, right: 25),
+                    child: Text(quotationname!,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 17,
+                          color: Colors.black,
+                        )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -484,11 +490,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -505,7 +507,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -520,11 +525,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -541,7 +542,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -556,11 +560,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -577,7 +577,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -592,11 +595,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -613,9 +612,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
-
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -630,11 +631,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -651,7 +648,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -664,7 +664,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -672,80 +675,58 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Salesperson",
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
-
-
-
-                      salespersonimg!=""?
-                      Padding(
-                        padding: const EdgeInsets
-                            .only(left: 110),
-                        child: Container(
-                          width: 30,
-                          height: 30,
-
-                          decoration: BoxDecoration(
-                              border: Border.all(
+                      salespersonimg != ""
+                          ? Padding(
+                              padding: const EdgeInsets.only(left: 110),
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(18),
+                                    child: Image.network(
+                                        "${salespersonimg!}?token=${token}"),
+                                  ),
+                                ),
                               ),
-                              borderRadius: BorderRadius
-                                  .all(
-                                  Radius.circular(
-                                      20)),
-
-                          ),
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: ClipRRect(
-
-                              borderRadius:
-                              BorderRadius
-                                  .circular(18),
-                              child:Image.network("${salespersonimg!}?token=${token}"),
-
-
-                            ),
-
-
-                          ),
-                        ),
-                      ) :
-
-
-                      Padding(
-                        padding: const EdgeInsets.only(left: 80),
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                //  color: Colors.green
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(left: 80),
+                              child: Container(
+                                width: 30,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        //  color: Colors.green
+                                        ),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 20,
+                                    // Adjust the size of the icon as per your requirements
+                                    color: Colors
+                                        .white, // Adjust the color of the icon as per your requirements
+                                  ),
+                                ),
                               ),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  20))),
-                          child: CircleAvatar(
-                            radius: 12,
-                            child: Icon(
-                              Icons.person,
-                              size: 20,
-                              // Adjust the size of the icon as per your requirements
-                              color: Colors
-                                  .white, // Adjust the color of the icon as per your requirements
                             ),
-
-                          ),
-                        ),
-                      ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 3.5,
-
+                        width: MediaQuery.of(context).size.width / 3.5,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -762,7 +743,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -777,16 +761,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             salesteam!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -798,7 +778,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -813,16 +796,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             company!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -834,7 +813,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -849,11 +831,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -870,7 +848,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -882,12 +863,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             color: Color(0xFF666666))),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 25,right: 0,top: 5),
+                    padding: const EdgeInsets.only(left: 25, right: 0, top: 5),
                     child: Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width /1.1,
+                      width: MediaQuery.of(context).size.width / 1.1,
                       height: 20,
                       //color: Colors.pinkAccent,
 
@@ -897,22 +875,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         itemCount: tagss!.length ?? 0,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
-                            padding:
-                            const EdgeInsets.only(right: 8.0, top: 4),
+                            padding: const EdgeInsets.only(right: 8.0, top: 4),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                                  color:  Color(int.parse(tagss![index]["color"])),),
-
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
+                                  color:
+                                      Color(int.parse(tagss![index]["color"])),
+                                ),
                                 width: 60,
                                 height: 20,
-                                child:
-                                Center(
+                                child: Center(
                                   child: Text(
-
                                     tagss![index]["name"].toString(),
                                     style: TextStyle(
                                         color: Colors.white,
@@ -930,7 +906,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
 
                   Padding(
@@ -944,7 +923,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -959,16 +941,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             shippingpolicy!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -980,7 +958,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -995,11 +976,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1016,7 +993,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -1029,7 +1009,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1044,11 +1027,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1065,7 +1044,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 25),
@@ -1078,7 +1060,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1093,11 +1078,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1114,7 +1095,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1129,16 +1113,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             campaign!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -1150,7 +1130,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1165,11 +1148,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1186,7 +1165,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1201,11 +1183,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1221,8 +1199,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1237,11 +1219,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1258,7 +1236,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1273,16 +1254,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             createdon!,
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
@@ -1294,7 +1271,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1302,18 +1282,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated by",
-                            style:TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width / 2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1330,7 +1306,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1345,11 +1324,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width /  2.4,
-
+                        width: MediaQuery.of(context).size.width / 2.4,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
@@ -1366,15 +1341,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child:  Divider(color: Color(0xFFF4F4F4),thickness: 2,),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
                   ),
-
-
-
-
-
-
-
 
                   Container(
                     color: Color(0xFFF6F6F6),
@@ -1382,58 +1353,47 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 0, bottom: 0,left: 20,right: 0),
+                          padding: const EdgeInsets.only(
+                              top: 0, bottom: 0, left: 20, right: 0),
                           child: Center(
-
                             child: TextButton(
                                 child: Text(
                                   "Orderlines",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
-
                                   setState(() {
-
                                     optvisibility = false;
                                     ordervisibility = true;
-
                                   });
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary:Color(0xFFF6F6F6),
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.only(top: 0, bottom: 0,left: 0,right: 50),
+                          padding: const EdgeInsets.only(
+                              top: 0, bottom: 0, left: 0, right: 50),
                           child: Center(
-
                             child: TextButton(
                                 child: Text(
                                   "Optional products",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
-
                                   setState(() {
-
                                     optvisibility = true;
                                     ordervisibility = false;
-
                                   });
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFF6F6F6),
@@ -1443,10 +1403,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ],
                     ),
                   ),
-
-
-
-
 
                   Visibility(
                     visible: ordervisibility,
@@ -1465,48 +1421,46 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 1),
                                 child: Container(
-                                  // width: 490,
-                                  // height:
-                                  // MediaQuery.of(context).size.height / 7,
+                                    // width: 490,
+                                    // height:
+                                    // MediaQuery.of(context).size.height / 7,
                                     color: Colors.white,
                                     child: Column(
                                       // crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           //crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
                                             Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 25),
+                                                          const EdgeInsets.only(
+                                                              top: 5, left: 25),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
-                                                          orderLineProductsData![
-                                                          'name'] ??
-                                                              "",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .w600,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize:
-                                                              14,
-                                                              color: Colors
-                                                                  .black)
-                                                        ),
+                                                            orderLineProductsData![
+                                                                    'name'] ??
+                                                                "",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontSize: 14,
+                                                                color: Colors
+                                                                    .black)),
                                                       ),
                                                     ),
                                                     // Padding(
@@ -1529,52 +1483,50 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 ),
                                                 Padding(
                                                   padding:
-                                                  const EdgeInsets.only(
-                                                      top: 0, left: 25),
+                                                      const EdgeInsets.only(
+                                                          top: 0, left: 25),
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       Text(
                                                         "Quantity : ",
-                                                        style:TextStyle(
+                                                        style: TextStyle(
                                                             fontWeight:
-                                                            FontWeight
-                                                                .w600,
-                                                            fontFamily: 'Mulish',
-                                                            fontSize:
-                                                            12,
+                                                                FontWeight.w600,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 12,
                                                             color: Color(
                                                                 0xFF787878)),
                                                       ),
                                                       Text(
                                                         orderLineProductsData![
-                                                        "product_uom_qty"]
-                                                            .toString() ??
+                                                                    "product_uom_qty"]
+                                                                .toString() ??
                                                             "",
-                                                        style:TextStyle(
+                                                        style: TextStyle(
                                                             fontWeight:
-                                                            FontWeight
-                                                                .w600,
-                                                            fontFamily: 'Mulish',
-                                                            fontSize:
-                                                            12,
+                                                                FontWeight.w600,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 12,
                                                             color: Color(
                                                                 0xFF787878)),
                                                       ),
                                                       Text(
                                                         " " +
-                                                            orderLineProductsData![
-                                                            "product_uom"]["name"]
-                                                                .toString() ??
+                                                                orderLineProductsData![
+                                                                            "product_uom"]
+                                                                        ["name"]
+                                                                    .toString() ??
                                                             "",
-                                                        style:TextStyle(
+                                                        style: TextStyle(
                                                             fontWeight:
-                                                            FontWeight
-                                                                .w600,
-                                                            fontFamily: 'Mulish',
-                                                            fontSize:
-                                                            12,
+                                                                FontWeight.w600,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 12,
                                                             color: Color(
                                                                 0xFF787878)),
                                                       ),
@@ -1583,42 +1535,44 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 ),
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5, left: 25,bottom: 5),
+                                                          const EdgeInsets.only(
+                                                              top: 5,
+                                                              left: 25,
+                                                              bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .start,
+                                                            MainAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text(
                                                             "Unit Price :",
-                                                            style:TextStyle(
+                                                            style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                fontFamily: 'Mulish',
-                                                                fontSize:
-                                                                12,
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontSize: 12,
                                                                 color: Color(
                                                                     0xFF787878)),
                                                           ),
                                                           Text(
                                                             orderLineProductsData![
-                                                            'price_unit']
-                                                                .toString() ??
+                                                                        'price_unit']
+                                                                    .toString() ??
                                                                 "",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight
-                                                                    .w600,
-                                                                fontFamily: 'Mulish',
-                                                                fontSize:
-                                                                12,
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontFamily:
+                                                                    'Mulish',
+                                                                fontSize: 12,
                                                                 color: Color(
                                                                     0xFF787878)),
                                                           ),
@@ -1672,11 +1626,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
 
-
                   // code change for products
-
-
-
 
                   Visibility(
                     visible: optvisibility,
@@ -1695,130 +1645,145 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 1),
                                 child: Container(
-                                  // width: 490,
-                                  // height:
-                                  // MediaQuery.of(context).size.height / 7,
+                                    // width: 490,
+                                    // height:
+                                    // MediaQuery.of(context).size.height / 7,
                                     color: Colors.white,
                                     child: Column(
                                       // crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                              MainAxisAlignment.spaceBetween,
                                           //crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
                                             Column(
                                               crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5,
-                                                          left: 25),
+                                                          const EdgeInsets.only(
+                                                              top: 5, left: 25),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
                                                           optionalProductsData![
-                                                          'name'] ??
+                                                                  'name'] ??
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight
-                                                                  .w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize: 14,
                                                               color:
-                                                              Colors.black,fontFamily: 'Mulish'),
+                                                                  Colors.black,
+                                                              fontFamily:
+                                                                  'Mulish'),
                                                         ),
                                                       ),
                                                     ),
-
                                                   ],
                                                 ),
                                                 Padding(
                                                   padding:
-                                                  const EdgeInsets.only(
-                                                      top:5, left: 25),
+                                                      const EdgeInsets.only(
+                                                          top: 5, left: 25),
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       Text(
                                                         "Quantity : ",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                            FontWeight.w500,
+                                                                FontWeight.w500,
                                                             fontSize: 12,
                                                             color: Color(
-                                                                0xFF787878),fontFamily: 'Mulish'),
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                                'Mulish'),
                                                       ),
                                                       Text(
                                                         optionalProductsData![
-                                                        "quantity"]
-                                                            .toString() ??
-                                                            "",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                            FontWeight.w500,
-                                                            fontSize: 12,
-                                                            color: Color(
-                                                                0xFF787878),fontFamily: 'Mulish'),
-                                                      ),
-                                                      Text(
-                                                        " " +
-                                                            optionalProductsData![
-                                                            "uom_id"]["name"]
+                                                                    "quantity"]
                                                                 .toString() ??
                                                             "",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                            FontWeight.w500,
+                                                                FontWeight.w500,
                                                             fontSize: 12,
                                                             color: Color(
-                                                                0xFF787878),fontFamily: 'Mulish'),
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                                'Mulish'),
+                                                      ),
+                                                      Text(
+                                                        " " +
+                                                                optionalProductsData![
+                                                                            "uom_id"]
+                                                                        ["name"]
+                                                                    .toString() ??
+                                                            "",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 12,
+                                                            color: Color(
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                                'Mulish'),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
                                                 Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5, left: 25,bottom: 5),
+                                                          const EdgeInsets.only(
+                                                              top: 5,
+                                                              left: 25,
+                                                              bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .start,
+                                                            MainAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text(
                                                             "Unit Price :",
-                                                            style:TextStyle(
+                                                            style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight.w500,
+                                                                    FontWeight
+                                                                        .w500,
                                                                 fontSize: 12,
                                                                 color: Color(
-                                                                    0xFF787878),fontFamily: 'Mulish'),
+                                                                    0xFF787878),
+                                                                fontFamily:
+                                                                    'Mulish'),
                                                           ),
                                                           Text(
                                                             optionalProductsData![
-                                                            'price_unit']
-                                                                .toString() ??
+                                                                        'price_unit']
+                                                                    .toString() ??
                                                                 "",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight.w500,
+                                                                    FontWeight
+                                                                        .w500,
                                                                 fontSize: 12,
                                                                 color: Color(
-                                                                    0xFF787878),fontFamily: 'Mulish'),
+                                                                    0xFF787878),
+                                                                fontFamily:
+                                                                    'Mulish'),
                                                           ),
                                                         ],
                                                       ),
@@ -1882,28 +1847,24 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             child: TextButton(
                                 child: Text(
                                   "Send Message",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
-                                onPressed: () async{
-
+                                onPressed: () async {
                                   sendMailData = await sendMailsFollowers(
                                       widget.quotationId, "sale.order");
 
                                   setState(() {
-
-
-
                                     followersVisibility == true
                                         ? followersVisibility = false
                                         : followersVisibility = true;
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary:  Color(0xFFF6F6F6),
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
@@ -1914,7 +1875,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             child: TextButton(
                                 child: Text(
                                   "Log note",
-                                  style:  TextStyle(
+                                  style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
@@ -1928,7 +1889,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary:  Color(0xFFF6F6F6),
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
@@ -1957,17 +1918,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   ).then((value) => setState(() {}));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary:  Color(0xFFF6F6F6),
+                                  primary: Color(0xFFF6F6F6),
                                 )),
                           ),
                         ),
-
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(
-                        top: 0,  left:15, right: 10),
+                    padding: const EdgeInsets.only(top: 0, left: 15, right: 10),
                     child: Center(
                       child: Row(
                         children: [
@@ -1981,7 +1940,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       ? attachmentVisibility = false
                                       : attachmentVisibility = true;
                                 });
-
                               },
                             ),
                           ),
@@ -1989,83 +1947,108 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             width: 30,
                             child: Text(
                               attachmentCount!,
-                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
+                              style:
+                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
                             ),
                           ),
+                          followerStatus == false
+                              ? Padding(
+                                  padding: const EdgeInsets.only(left: 100),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_sharp,
+                                        size: 14,
+                                        color: Colors.green,
+                                      ),
+                                      TextButton(
+                                          onPressed: () async {
+                                            String resMessage =
+                                                await followerFollow(
+                                                    widget.quotationId,
+                                                    "sale.order");
 
-                          followerStatus == false ?
-                          Padding(
-                            padding: const EdgeInsets.only(left: 100),
-                            child: Row(
-                              children: [
-                                Icon(Icons.check_sharp,size: 14,color: Colors.green,),
-                                TextButton(onPressed:()async{
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = true;
+                                                followCount = followCount + 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
 
-                                  String resMessage =   await followerFollow(widget.quotationId,"sale.order");
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => QuotationDetail(widget.quotationId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Following",
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                )
+                              : Padding(
+                                  padding: const EdgeInsets.only(left: 100),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.close,
+                                        size: 14,
+                                        color: Colors.red,
+                                      ),
+                                      TextButton(
+                                          onPressed: () async {
+                                            String resMessage =
+                                                await followerUnFollow(
+                                                    widget.quotationId,
+                                                    "sale.order");
 
-                                  if(resMessage == "success"){
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = false;
+                                                followCount = followCount - 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
 
-
-
-                                    setState(() {
-                                      int followCount ;
-                                      followCount = int.parse(followerCount!);
-                                      followerStatus = true;
-                                      followCount = followCount+1;
-                                      followerCount = followCount.toString();
-                                    });
-
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => QuotationDetail(widget.quotationId)));
-                                  }
-                                }, child:Text("Following",style: TextStyle(color: Colors.green,fontFamily: 'Mulish'),)),
-                              ],
-                            ),
-                          ):
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 100),
-                            child: Row(
-                              children: [
-                                Icon(Icons.close,size: 14,color: Colors.red,),
-                                TextButton(onPressed:()async{
-                                  String resMessage =  await followerUnFollow(widget.quotationId,"sale.order");
-
-                                  if(resMessage == "success"){
-
-                                    setState(() {
-                                      int followCount ;
-                                      followCount = int.parse(followerCount!);
-                                      followerStatus = false;
-                                      followCount = followCount-1;
-                                      followerCount = followCount.toString();
-                                    });
-
-
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //         builder: (context) => QuotationDetail(widget.quotationId)));
-                                  }
-                                }, child:Text("Unfollow",style: TextStyle(color: Colors.red,fontFamily: 'Mulish'),)),
-                              ],
-                            ),
-                          ),
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => QuotationDetail(widget.quotationId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Unfollow",
+                                            style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                ),
                           Container(
                             width: 50,
                             child: IconButton(
-                              icon:SvgPicture.asset("images/user.svg"),
+                              icon: SvgPicture.asset("images/user.svg"),
                               onPressed: () async {
-
-                                List followers = await getFollowers(widget.quotationId,"sale.order");
-
+                                List followers = await getFollowers(
+                                    widget.quotationId, "sale.order");
 
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(context,followers),
+                                      _buildFollowPopupDialog(
+                                          context, followers),
                                 ).then((value) => setState(() {}));
                               },
                             ),
@@ -2075,7 +2058,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             //color: Colors.green,
                             child: Text(
                               followerCount!,
-                              style: TextStyle(fontSize: 15,fontFamily: 'Mulish'),
+                              style:
+                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
                             ),
                           ),
                         ],
@@ -2090,16 +2074,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     child: Column(
                       children: [
                         FutureBuilder(
-                            future: getattchmentData(widget.quotationId, "sale.order"),
+                            future: getattchmentData(
+                                widget.quotationId, "sale.order"),
                             builder: (context, AsyncSnapshot snapshot) {
-
-                              if (snapshot.hasError) {
-
-                              }
-                              if (snapshot.connectionState == ConnectionState.done) {
+                              if (snapshot.hasError) {}
+                              if (snapshot.connectionState ==
+                                  ConnectionState.done) {
                                 if (snapshot.hasData) {
                                   if (snapshot.data == null) {
-
                                     return const Center(
                                         child: Text('Something went wrong'));
                                   }
@@ -2107,28 +2089,29 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     attachmentImagesDisplay = snapshot.data;
 
                                     return Padding(
-                                      padding:
-                                      const EdgeInsets.only(left: 0, right: 0),
+                                      padding: const EdgeInsets.only(
+                                          left: 0, right: 0),
                                       child: Container(
                                         //color: Colors.green,
 
-                                        width: MediaQuery.of(context).size.width ,
+                                        width:
+                                            MediaQuery.of(context).size.width,
 
                                         child: GridView.builder(
                                           shrinkWrap: true,
-
-                                          physics: NeverScrollableScrollPhysics(),
-                                          itemCount: attachmentImagesDisplay.length,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount:
+                                              attachmentImagesDisplay.length,
                                           gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 4),
-                                          itemBuilder:
-                                              (BuildContext context, int index) {
-
-
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 4),
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
                                             return Center(
                                               child: Padding(
-                                                padding: const EdgeInsets.only(left: 15,right: 15),
+                                                padding: const EdgeInsets.only(
+                                                    left: 15, right: 15),
                                                 child: Container(
                                                   child: Stack(
                                                     children: [
@@ -2147,22 +2130,36 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                           child: Container(
                                                             width: 20,
                                                             height: 20,
-                                                            decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
-
+                                                            decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20),
+                                                                color: Color(
+                                                                    0xFFFFFFFF)),
                                                             child: IconButton(
-                                                              icon:SvgPicture.asset("images/trash.svg"),
-                                                              onPressed: () async {
+                                                              icon: SvgPicture
+                                                                  .asset(
+                                                                      "images/trash.svg"),
+                                                              onPressed:
+                                                                  () async {
+                                                                print(attachmentImagesDisplay[
+                                                                        index]
+                                                                    ['id']);
                                                                 print(
-                                                                    attachmentImagesDisplay[
-                                                                    index]['id']);
-                                                                print("idvaluevalue");
+                                                                    "idvaluevalue");
                                                                 // print(
                                                                 //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                int lodAttachmentId = attachmentImagesDisplay[index]['id'];
-                                                                var data = await deleteLogAttachment(
-                                                                    lodAttachmentId);
+                                                                int lodAttachmentId =
+                                                                    attachmentImagesDisplay[
+                                                                            index]
+                                                                        ['id'];
+                                                                var data =
+                                                                    await deleteLogAttachment(
+                                                                        lodAttachmentId);
 
-                                                                if (data['message'] ==
+                                                                if (data[
+                                                                        'message'] ==
                                                                     "Success") {
                                                                   print(
                                                                       "jhbdndsjbv");
@@ -2194,27 +2191,27 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   }
                                 }
                               }
-                              return Center(child: const CircularProgressIndicator());
+                              return Center(
+                                  child: const CircularProgressIndicator());
                             }),
-                        TextButton(onPressed: (){
-
-                          myAlert("attachment");
-                        }, child:  Text("Select Attachments",style: TextStyle(color: Colors.black,fontFamily: 'Mulish'),)),
-
+                        TextButton(
+                            onPressed: () {
+                              myAlert("attachment");
+                            },
+                            child: Text(
+                              "Select Attachments",
+                              style: TextStyle(
+                                  color: Colors.black, fontFamily: 'Mulish'),
+                            )),
                       ],
                     ),
                   ),
                   //
 
-
-
                   // code for send message
 
                   Container(
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
+                    width: MediaQuery.of(context).size.width,
 
                     //height: MediaQuery.of(context).size.height/6,
                     // color: Colors.green,
@@ -2222,31 +2219,50 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Visibility(
-                          visible:followersVisibility,
+                          visible: followersVisibility,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 75),
                             child: Container(
                               // color: Colors.red,
                               child: Row(
                                 children: [
-                                  Text("To:",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey,fontSize: 11,fontFamily: 'Mulish'),),
-                                  Text(" Followers of",style: TextStyle(color: Colors.grey[700],fontSize: 11,fontFamily: 'Mulish'),),
-                                  SizedBox(width: 5,),
+                                  Text(
+                                    "To:",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey,
+                                        fontSize: 11,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                  Text(
+                                    " Followers of",
+                                    style: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontSize: 11,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
                                   Container(
-                                    //color: Colors.green,
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width/2,
-                                      child: Text(quotationname!,style: TextStyle(color: Colors.black,fontSize: 11,fontFamily: 'Mulish'),)),
-
+                                      //color: Colors.green,
+                                      width:
+                                          MediaQuery.of(context).size.width / 2,
+                                      child: Text(
+                                        quotationname!,
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 11,
+                                            fontFamily: 'Mulish'),
+                                      )),
                                 ],
                               ),
                             ),
                           ),
                         ),
-
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Visibility(
                           visible: followersVisibility,
                           child: Container(
@@ -2257,7 +2273,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: sendMailData.length,
-
                               itemBuilder: (_, i) {
                                 isCheckedMail = sendMailData[i]['selected'];
                                 return Padding(
@@ -2276,7 +2291,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               print("check box issues");
                                               setState(() {
                                                 isCheckedMail = value!;
-                                                sendMailData[i]['selected']=value;
+                                                sendMailData[i]['selected'] =
+                                                    value;
                                               });
                                             },
                                           ),
@@ -2296,96 +2312,90 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 5,),
-
-
-
+                        SizedBox(
+                          height: 5,
+                        ),
                         Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             salespersonimg != ""
                                 ? Padding(
-                              padding: const EdgeInsets.only(left: 30),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(20)),
-                                ),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: ClipRRect(
-                                    borderRadius:
-                                    BorderRadius.circular(18),
-                                    child: Image.network(
-                                        "${salespersonimg!}?token=${token}"),
-                                  ),
-                                ),
-                              ),
-                            )
-                                : Padding(
-                              padding: const EdgeInsets.only(left: 30),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                      //  color: Colors.green
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20)),
+                                      ),
+                                      child: CircleAvatar(
+                                        radius: 12,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                          child: Image.network(
+                                              "${salespersonimg!}?token=${token}"),
+                                        ),
+                                      ),
                                     ),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(20))),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.person,
-                                    size: 20,
-                                    // Adjust the size of the icon as per your requirements
-                                    color: Colors
-                                        .white, // Adjust the color of the icon as per your requirements
+                                  )
+                                : Padding(
+                                    padding: const EdgeInsets.only(left: 30),
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              //  color: Colors.green
+                                              ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(20))),
+                                      child: CircleAvatar(
+                                        radius: 12,
+                                        child: Icon(
+                                          Icons.person,
+                                          size: 20,
+                                          // Adjust the size of the icon as per your requirements
+                                          color: Colors
+                                              .white, // Adjust the color of the icon as per your requirements
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
                             Padding(
                               padding:
-                              const EdgeInsets.only(left: 20, right: 20),
+                                  const EdgeInsets.only(left: 20, right: 20),
                               child: Container(
-                                width: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width / 1.4,
+                                width: MediaQuery.of(context).size.width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
                                     color: Color(0xFFF6F6F6),
                                     border:
-                                    Border.all(color: Color(0xFFEBEBEB))),
+                                        Border.all(color: Color(0xFFEBEBEB))),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width /
+                                      width: MediaQuery.of(context).size.width /
                                           1.4,
                                       // height: 40,
                                       // color: Colors.red,
                                       child: Padding(
                                         padding:
-                                        const EdgeInsets.only(left: 10),
+                                            const EdgeInsets.only(left: 10),
                                         child: TextField(
-                                            textAlignVertical: TextAlignVertical.top,
+                                            textAlignVertical:
+                                                TextAlignVertical.top,
                                             //expands: true,
                                             maxLines: null,
                                             controller: lognoteController,
                                             decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText:
-                                                "Send a message to followers",
+                                                    "Send a message to followers",
                                                 hintStyle: TextStyle(
-                                                  //fontFamily: "inter",
+                                                    //fontFamily: "inter",
                                                     fontWeight: FontWeight.w500,
                                                     fontFamily: 'Mulish',
                                                     fontSize: 12,
@@ -2393,10 +2403,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       ),
                                     ),
                                     Divider(
-                                        color: Colors.grey[350],thickness: 1,
+                                      color: Colors.grey[350],
+                                      thickness: 1,
                                     ),
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
                                           icon: Image.asset("images/pin.png"),
@@ -2404,19 +2416,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                             myAlert("lognote");
                                           },
                                         ),
-                                        IconButton(onPressed:()async{
+                                        IconButton(
+                                            onPressed: () async {
+                                              recipient!.clear();
+                                              await defaultSendmsgvalues();
 
-
-                                          recipient!.clear();
-                                          await  defaultSendmsgvalues();
-
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                _buildSendmessagePopupDialog(context, 0),
-                                          ).then((value) => setState(() {}));
-                                        },
-                                            icon:Icon(Icons.arrow_outward_rounded,size: 18,color: Colors.grey[700],))
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext
+                                                        context) =>
+                                                    _buildSendmessagePopupDialog(
+                                                        context, 0),
+                                              ).then(
+                                                  (value) => setState(() {}));
+                                            },
+                                            icon: Icon(
+                                              Icons.arrow_outward_rounded,
+                                              size: 18,
+                                              color: Colors.grey[700],
+                                            ))
                                       ],
                                     ),
                                   ],
@@ -2427,48 +2445,42 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                         selectedImages.isEmpty
                             ? Padding(
-                          padding: const EdgeInsets.only(left: 73),
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            // height: 40,
-                          ),
-                        )
+                                padding: const EdgeInsets.only(left: 73),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                ),
+                              )
                             : Padding(
-                          padding:
-                          const EdgeInsets.only(left: 70, right: 50),
-                          child: Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
-                            // height: 40,
-                            child: Container(
-                              width: 40,
-                              //height: 40,
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                // Avoid scrolling
-                                physics: NeverScrollableScrollPhysics(),
-                                itemCount: selectedImages.length,
-                                gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 8),
-                                itemBuilder:
-                                    (BuildContext context, int index) {
-                                  return Center(
-                                      child: kIsWeb
-                                          ? Image.network(
-                                          selectedImages[index].path)
-                                          : Image.file(
-                                          selectedImages[index]));
-                                },
+                                padding:
+                                    const EdgeInsets.only(left: 70, right: 50),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                  child: Container(
+                                    width: 40,
+                                    //height: 40,
+                                    child: GridView.builder(
+                                      shrinkWrap: true,
+                                      // Avoid scrolling
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: selectedImages.length,
+                                      gridDelegate:
+                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 8),
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Center(
+                                            child: kIsWeb
+                                                ? Image.network(
+                                                    selectedImages[index].path)
+                                                : Image.file(
+                                                    selectedImages[index]));
+                                      },
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
                         Padding(
                           padding: const EdgeInsets.only(
                               bottom: 10, left: 80, top: 5),
@@ -2488,12 +2500,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 ),
                                 onPressed: () async {
                                   for (int i = 0;
-                                  i < selectedImages.length;
-                                  i++) {
+                                      i < selectedImages.length;
+                                      i++) {
                                     imagepath =
                                         selectedImages[i].path.toString();
                                     File imagefile =
-                                    File(imagepath); //convert Path to File
+                                        File(imagepath); //convert Path to File
                                     Uint8List imagebytes = await imagefile
                                         .readAsBytes(); //convert to bytes
                                     base64string = base64.encode(imagebytes);
@@ -2503,11 +2515,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     //
 
                                     String dataImages =
-                                        '{"name":"name","type":"binary","datas":"${base64string
-                                        .toString()}"}';
+                                        '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
                                     Map<String, dynamic> jsondata =
-                                    jsonDecode(dataImages);
+                                        jsonDecode(dataImages);
                                     myData1.add(jsondata);
                                   }
                                   // print(myData1);
@@ -2515,11 +2526,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                   bodyController.text = lognoteController.text;
 
-                                  String resMessage ;
-                                  followersVisibility == false ?resMessage =   await logNoteData(myData1): resMessage = await createSendmessage(myData1);
+                                  String resMessage;
+                                  followersVisibility == false
+                                      ? resMessage = await logNoteData(myData1)
+                                      : resMessage =
+                                          await createSendmessage(myData1);
 
                                   print(resMessage);
-                                  if(resMessage == "success"){
+                                  if (resMessage == "success") {
                                     print("fsdvds");
                                     setState(() {
                                       logDataHeader.clear();
@@ -2537,14 +2551,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 )),
                           ),
                         ),
-
                       ],
                     ),
                   ),
                   // code for send message
 
                   // code for attchments
-
 
                   // code for lognote
 
@@ -2793,8 +2805,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   //
                   // ),
 
-
-
                   // code for lognote
 
                   Container(
@@ -2803,22 +2813,30 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextButton.icon(     // <-- TextButton
+                          TextButton.icon(
+                            // <-- TextButton
                             onPressed: () {
                               setState(() {
-                                scheduleActivityVisibility == true ?scheduleActivityVisibility = false :scheduleActivityVisibility = true;
-
+                                scheduleActivityVisibility == true
+                                    ? scheduleActivityVisibility = false
+                                    : scheduleActivityVisibility = true;
                               });
-
                             },
                             icon: Icon(
                               Icons.arrow_drop_down_rounded,
                               size: 30.0,
                               color: Colors.black54,
                             ),
-                            label: Text('Planned Activities',style: TextStyle(fontSize: 16, color: Color(0xFF000000),fontWeight: FontWeight.w600,fontFamily: 'Mulish',),),
+                            label: Text(
+                              'Planned Activities',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFF000000),
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                              ),
+                            ),
                           ),
-
                           Visibility(
                             visible: scheduleVisibiltyOverdue,
                             child: Container(
@@ -2827,10 +2845,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.red,
                               ),
-                              child: Center(child: Text(scheduleOverdue.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                scheduleOverdue.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
                             ),
                           ),
                           Visibility(
@@ -2841,10 +2863,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.yellow,
                               ),
-                              child: Center(child: Text(scheduleToday.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.black),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                scheduleToday.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )),
                             ),
                           ),
                           Visibility(
@@ -2855,10 +2881,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 shape: BoxShape.circle,
                                 color: Colors.green,
                               ),
-                              child: Center(child: Text(schedulePlanned.toString(),style: TextStyle(fontSize: 10,
-                                  fontWeight:FontWeight.bold ,color: Colors.white),)),
-
-
+                              child: Center(
+                                  child: Text(
+                                schedulePlanned.toString(),
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )),
                             ),
                           ),
                         ],
@@ -2866,564 +2896,840 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
 
-
-
                   // code change for schedule activity
 
                   Visibility(
-                    visible:scheduleActivityVisibility ,
+                    visible: scheduleActivityVisibility,
                     child: Container(
                       color: Colors.white70,
                       //height: MediaQuery.of(context).size.height/1.8,
-                      child: scheduleLength==0 ? Container()
-                     : ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: scheduleLength,
-                          itemBuilder:
-                              (BuildContext context, int index) {
-
-                            scheduleData['records'][index]['icon']=="fa-envelope"? scheduleIcon =  const Icon(Icons.email_outlined,
-                              color: Colors.white,
-                              size: 8,
-                            ): scheduleData['records'][index]['icon']=="fa-phone"? scheduleIcon =  Icon(Icons.phone,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-users"? scheduleIcon =  Icon(Icons.person,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-file-text-o"? scheduleIcon =  Icon(Icons.file_copy,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-line-chart"? scheduleIcon =  Icon(Icons.bar_chart,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-tasks"? scheduleIcon =  Icon(Icons.task,
-                              color: Colors.white,
-                              size: 8,
-                            ):scheduleData['records'][index]['icon']=="fa-upload"? scheduleIcon =  Icon(Icons.upload,
-                              color: Colors.white,
-                              size: 8,
-                            ):Icon(Icons.circle,
-                              color: Colors.white,
-                              size: 8,
-                            );
-                            return Card(
-                              elevation: 1,
-                              child: Column(
-                                children: [
-                                  Row(
+                      child: scheduleLength == 0
+                          ? Container()
+                          : ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: scheduleLength,
+                              itemBuilder: (BuildContext context, int index) {
+                                scheduleData['records'][index]['icon'] ==
+                                        "fa-envelope"
+                                    ? scheduleIcon = const Icon(
+                                        Icons.email_outlined,
+                                        color: Colors.white,
+                                        size: 8,
+                                      )
+                                    : scheduleData['records'][index]['icon'] ==
+                                            "fa-phone"
+                                        ? scheduleIcon = Icon(
+                                            Icons.phone,
+                                            color: Colors.white,
+                                            size: 8,
+                                          )
+                                        : scheduleData['records'][index]
+                                                    ['icon'] ==
+                                                "fa-users"
+                                            ? scheduleIcon = Icon(
+                                                Icons.person,
+                                                color: Colors.white,
+                                                size: 8,
+                                              )
+                                            : scheduleData['records'][index]
+                                                        ['icon'] ==
+                                                    "fa-file-text-o"
+                                                ? scheduleIcon = Icon(
+                                                    Icons.file_copy,
+                                                    color: Colors.white,
+                                                    size: 8,
+                                                  )
+                                                : scheduleData['records'][index]
+                                                            ['icon'] ==
+                                                        "fa-line-chart"
+                                                    ? scheduleIcon = Icon(
+                                                        Icons.bar_chart,
+                                                        color: Colors.white,
+                                                        size: 8,
+                                                      )
+                                                    : scheduleData['records']
+                                                                    [index]
+                                                                ['icon'] ==
+                                                            "fa-tasks"
+                                                        ? scheduleIcon = Icon(
+                                                            Icons.task,
+                                                            color: Colors.white,
+                                                            size: 8,
+                                                          )
+                                                        : scheduleData['records']
+                                                                        [index]
+                                                                    ['icon'] ==
+                                                                "fa-upload"
+                                                            ? scheduleIcon =
+                                                                Icon(
+                                                                Icons.upload,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              )
+                                                            : Icon(
+                                                                Icons.circle,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              );
+                                return Card(
+                                  elevation: 1,
+                                  child: Column(
                                     children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      Row(
                                         children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(left: 25.0,right: 15,top: 5),
-                                            child: Container(
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 25.0,
+                                                    right: 15,
+                                                    top: 5),
+                                                child: Container(
+                                                  child: Stack(
+                                                    alignment: Alignment.center,
+                                                    children: [
+                                                      // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                      CircleAvatar(
+                                                        radius: 12,
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(18),
+                                                          child: Image.network(
+                                                              "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                        ),
+                                                      ),
 
-                                              child: Stack(
-                                                alignment: Alignment.center,
-                                                children: [
-                                                  // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                  CircleAvatar(
-                                                    radius: 12,
-                                                    child: ClipRRect(
-
-                                                      borderRadius:
-                                                      BorderRadius
-                                                          .circular(18),
-                                                      child: Image.network(
-                                                          "${scheduleData['records'][index]['image']!}?token=${token}"),
-
-
-                                                    ),
-
-
+                                                      Positioned(
+                                                        bottom: 0,
+                                                        right: 0,
+                                                        child: Container(
+                                                          width: 10.0,
+                                                          height: 10.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            color: Color(int.parse(
+                                                                scheduleData[
+                                                                            'records']
+                                                                        [index][
+                                                                    'label_color'])),
+                                                          ),
+                                                          child: Center(
+                                                            child: scheduleIcon,
+                                                            // child: Icon(
+                                                            //   Icons.image,
+                                                            //   color: Colors.white,
+                                                            //   size: 8,
+                                                            // ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                top: 8.0, left: 12, right: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Container(
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5.5,
+                                                  // color: Colors.red,
 
+                                                  child: Text(
+                                                    scheduleData['records']
+                                                                    [index]
+                                                                ['delay_label']
+                                                            .toString() ??
+                                                        "",
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily: 'Mulish',
+                                                        color: Color(int.parse(
+                                                            scheduleData[
+                                                                        'records']
+                                                                    [index][
+                                                                'label_color']))),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  // color: Colors.red,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      5.5,
 
-                                                  Positioned(
-                                                    bottom: 0,
-                                                    right: 0,
+                                                  child: Text(
+                                                      scheduleData['records']
+                                                                      [index][
+                                                                  'activity_type_id'][1]
+                                                              .toString() ??
+                                                          "",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        color:
+                                                            Color(0xFF212121),
+                                                        fontFamily: 'Mulish',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      )),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  //color: Colors.red,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                      4.5,
+
+                                                  child: Text(
+                                                    scheduleData['records']
+                                                                    [index]
+                                                                ['user_id'][1]
+                                                            .toString() ??
+                                                        "",
+                                                    style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily: 'Mulish',
+                                                        color:
+                                                            Color(0xFF212121)),
+                                                  ),
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(() {
+                                                      print(scheduleView);
+                                                      print("final data ");
+                                                      scheduleView == false
+                                                          ? scheduleView = true
+                                                          : scheduleView == true
+                                                              ? scheduleView =
+                                                                  false
+                                                              : false;
+                                                      print(scheduleView);
+                                                    });
+                                                  },
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 20,
+                                                            right: 20),
                                                     child: Container(
-                                                      width: 10.0,
-                                                      height: 10.0,
+                                                      width: 10,
+                                                      height: 15,
                                                       decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
-                                                        color:  Color(int.parse(scheduleData['records'][index]['label_color'])),
+                                                        color: Colors.black,
                                                       ),
                                                       child: Center(
-                                                        child: scheduleIcon,
-                                                        // child: Icon(
-                                                        //   Icons.image,
-                                                        //   color: Colors.white,
-                                                        //   size: 8,
-                                                        // ),
+                                                        child: Text(
+                                                          "i",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              color:
+                                                                  Colors.white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w800),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ],
-                                              ),
-
-
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 8.0,left: 12,right: 10),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                                        padding:
+                                            const EdgeInsets.only(left: 60),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Container(
-
-                                              width: MediaQuery.of(context).size.width/5.5,
-                                              // color: Colors.red,
-
-                                              child: Text(scheduleData['records'][index]['delay_label'].toString() ?? "",
-                                                style: TextStyle(fontSize: 12,fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Mulish',color: Color(int.parse(scheduleData['records'][index]['label_color']))),),
-                                            ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              // color: Colors.red,
-                                              width: MediaQuery.of(context).size.width/5.5,
-
-
-                                              child: Text(scheduleData['records'][index]['activity_type_id'][1].toString() ?? "",
-                                                style: TextStyle( fontSize: 12,
-                                                  color: Color(0xFF212121),
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight:
-                                                  FontWeight.w600,)),
-                                            ),
-                                            SizedBox(width: 5,),
-                                            Container(
-                                              //color: Colors.red,
-                                              width: MediaQuery.of(context).size.width/4.5,
-
-                                              child: Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                style: TextStyle(fontSize: 12,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontFamily: 'Mulish',
-                                                    color: Color(0xFF212121)),),
-                                            ),
-
-
-                                            InkWell(
-                                              onTap: (){
-                                                setState(() {
-                                                  print(scheduleView);
-                                                  print("final data ");
-                                                  scheduleView==false? scheduleView=true : scheduleView==true? scheduleView=false : false;
-                                                  print(scheduleView);
-                                                });
-                                              },
+                                            Visibility(
+                                              visible: scheduleView,
                                               child: Padding(
-                                                padding: const EdgeInsets.only(left: 20,right: 20),
-                                                child: Container(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5, left: 17),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                  children: [
+                                                    Text("Activity type",
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        )),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      scheduleData['records']
+                                                              [index][
+                                                          'activity_type_id'][1],
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text("Created",
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                        )),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'create_date']
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color:
+                                                                  Colors.grey),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Container(
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child: Image.network(
+                                                                  "${scheduleData['records'][index]['image2']!}?token=${token}"),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'create_uid'][1]
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                            fontSize: 12,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            color: Colors.grey,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "Assigned to",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontFamily: 'Mulish',
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        Container(
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          12),
+                                                              child: Image.network(
+                                                                  "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: 3,
+                                                        ),
+                                                        Text(
+                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                      [
+                                                                      'user_id'][1]
+                                                                  .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              color:
+                                                                  Colors.grey),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      "Due on",
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        color: Colors.grey,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                    Text(
+                                                      scheduleData['records']
+                                                                      [index][
+                                                                  'date_deadline']
+                                                              .toString() ??
+                                                          "",
+                                                      style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontFamily: 'Mulish',
+                                                          color: Colors.grey),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 3,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 0, left: 14, right: 10),
+                                              child: Container(
+                                                //color: Colors.red,
 
-                                                  width: 10,
-                                                  height: 15,
-                                                  decoration: BoxDecoration(
-                                                    shape: BoxShape.circle,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.5,
+                                                child: Text(
+                                                  scheduleData['records'][index]
+                                                              ['note']
+                                                          .replaceAll(
+                                                              RegExp(
+                                                                  r'<[^>]*>|&[^;]+;'),
+                                                              ' ')
+                                                          .toString() ??
+                                                      "",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
                                                     color: Colors.black,
-                                                  ),
-                                                  child: Center(
-                                                    child: Text("i",
-
-                                                      style: TextStyle(fontSize: 12,color: Colors.white,
-                                                          fontWeight: FontWeight.w800),),
+                                                    fontFamily: 'Mulish',
                                                   ),
                                                 ),
                                               ),
                                             ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 7,
+                                              ),
+                                              child: Row(
+                                                // mainAxisAlignment: MainAxisAlignment.end,
 
+                                                children: [
+                                                  Container(
+                                                    //color: Colors.red,
+                                                    // height: 25,
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            4.3,
+                                                    child: TextButton.icon(
+                                                      // <-- TextButton
+                                                      onPressed: () async {
+                                                        int datasIds =
+                                                            scheduleData[
+                                                                    'records']
+                                                                [index]['id'];
+
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (BuildContext
+                                                                  context) =>
+                                                              _buildMarkDoneDialog(
+                                                                  context,
+                                                                  datasIds),
+                                                        ).then((value) =>
+                                                            setState(() {}));
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.check,
+                                                        size: 13.0,
+                                                        color: Colors.black54,
+                                                      ),
+                                                      label: Text(
+                                                        scheduleData['records']
+                                                                        [index][
+                                                                    'buttons'][0]
+                                                                .toString() ??
+                                                            "",
+                                                        style: TextStyle(
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            fontSize: 10,
+                                                            color: Color(
+                                                                0xFF717171)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width: 0,
+                                                  ),
+                                                  scheduleData['records'][index]
+                                                              ['buttons'][1] ==
+                                                          "Reschedule"
+                                                      ? Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              4.3,
+                                                          child:
+                                                              TextButton.icon(
+                                                            // <-- TextButton
+                                                            onPressed:
+                                                                () async {
+                                                              //  int idType = scheduleData['records'][index]['id'];
+                                                              //
+                                                              // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
+                                                              //
+                                                              //
+                                                              // String textType =  scheduleData['records'][index]['buttons'][1].toString();
+
+                                                              DateTime
+                                                                  dateTime =
+                                                                  DateTime.parse(
+                                                                      scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'date_deadline']);
+
+                                                              Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (context) => Calender(
+                                                                          null,
+                                                                          "",
+                                                                          dateTime,
+                                                                          null,
+                                                                          [],
+                                                                          "")));
+                                                            },
+                                                            icon: Icon(
+                                                              Icons
+                                                                  .calendar_month,
+                                                              size: 13.0,
+                                                              color: Colors
+                                                                  .black54,
+                                                            ),
+                                                            label: Text(
+                                                              scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                      .toString() ??
+                                                                  "",
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Color(
+                                                                      0xFF717171)),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : Container(
+                                                          width: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .width /
+                                                              4.3,
+                                                          child:
+                                                              TextButton.icon(
+                                                            // <-- TextButton
+                                                            onPressed:
+                                                                () async {
+                                                              int idType =
+                                                                  scheduleData[
+                                                                          'records']
+                                                                      [
+                                                                      index]['id'];
+
+                                                              var data = await editDefaultScheduleData(
+                                                                  scheduleData[
+                                                                          'records']
+                                                                      [
+                                                                      index]['id']);
+
+                                                              setState(() {
+                                                                activityTypeName =
+                                                                    data['activity_type_id'] ??
+                                                                        null;
+                                                                activityTypeId =
+                                                                    data['activity_type_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                        null;
+                                                                activityTypeNameCategory =
+                                                                    data['activity_type_id']
+                                                                            [
+                                                                            'category'] ??
+                                                                        "";
+                                                                assignedToname =
+                                                                    data['user_id'] ??
+                                                                        null;
+                                                                assignedToid =
+                                                                    data['user_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                        null;
+                                                                DuedateTime
+                                                                        .text =
+                                                                    data['date_deadline'] ??
+                                                                        "";
+                                                                summaryController
+                                                                        .text =
+                                                                    data['summary'] ??
+                                                                        "";
+                                                                commandsController
+                                                                    .text = data[
+                                                                        'note']
+                                                                    .replaceAll(
+                                                                        RegExp(
+                                                                            r'<[^>]*>|&[^;]+;'),
+                                                                        ' ')
+                                                                    .toString();
+                                                                // DuedateTime.text == "default" ?
+                                                                if (activityTypeNameCategory ==
+                                                                    "default") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      false;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      true;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "phonecall") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      true;
+                                                                  btntext =
+                                                                      "Save";
+                                                                  meetingColum =
+                                                                      true;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "meeting") {
+                                                                  scheduleBtn =
+                                                                      false;
+                                                                  opencalendarBtn =
+                                                                      true;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      false;
+                                                                } else if (activityTypeNameCategory ==
+                                                                    "upload_file") {
+                                                                  scheduleBtn =
+                                                                      true;
+                                                                  opencalendarBtn =
+                                                                      false;
+                                                                  btntext =
+                                                                      "Schedule";
+                                                                  meetingColum =
+                                                                      true;
+                                                                }
+
+                                                                print(
+                                                                    activityTypeNameCategory);
+                                                                print(
+                                                                    "jhbvjbvsvj");
+                                                              });
+
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder: (BuildContext
+                                                                        context) =>
+                                                                    _buildOrderPopupDialog(
+                                                                        context,
+                                                                        idType),
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
+                                                            },
+                                                            icon: Icon(
+                                                              Icons.edit,
+                                                              size: 13.0,
+                                                              color: Colors
+                                                                  .black54,
+                                                            ),
+                                                            label: Text(
+                                                              scheduleData['records']
+                                                                              [
+                                                                              index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                      .toString() ??
+                                                                  "",
+                                                              style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Color(
+                                                                      0xFF717171)),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                  SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Container(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            5,
+                                                    child: TextButton.icon(
+                                                      // <-- TextButton
+                                                      onPressed: () async {
+                                                        var data =
+                                                            await deleteScheduleData(
+                                                                scheduleData[
+                                                                        'records']
+                                                                    [
+                                                                    index]['id']);
+
+                                                        if (data['message'] ==
+                                                            "Success") {
+                                                          print("responce");
+                                                          setState(() {
+                                                            getScheduleDetails();
+                                                          });
+                                                        }
+
+                                                        print("demo datataaa");
+                                                      },
+                                                      icon: Icon(
+                                                        Icons.cancel_outlined,
+                                                        size: 13.0,
+                                                        color: Colors.black54,
+                                                      ),
+                                                      label: Text(
+                                                        scheduleData['records']
+                                                                        [index][
+                                                                    'buttons'][2]
+                                                                .toString() ??
+                                                            "",
+                                                        style: TextStyle(
+                                                            fontSize: 10,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            color: Color(
+                                                                0xFF717171)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
                                           ],
                                         ),
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 60),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-
-
-                                        Visibility(
-                                          visible: scheduleView,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(top: 5,left: 17),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Text("Activity type",
-                                                  style: TextStyle(   fontSize: 12,
-                                                    fontFamily: 'Mulish',
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,)),
-
-                                                SizedBox(height: 3,),
-                                                Text(scheduleData['records'][index]['activity_type_id'][1],
-                                                  style: TextStyle(fontSize: 12,
-                                                      fontFamily: 'Mulish',
-                                                      color: Colors.grey),),
-                                                SizedBox(height: 3,),
-                                                Text("Created",
-                                                  style: TextStyle( fontSize: 12,
-                                                    fontFamily: 'Mulish',
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,)),
-                                                SizedBox(height: 3,),
-                                                Row(
-                                                  children: [
-
-                                                    Text(scheduleData['records'][index]['create_date'].toString() ?? "",
-                                                      style: TextStyle(  fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                          Colors.grey),),
-
-                                                    SizedBox(width: 3,),
-
-                                                    Container(
-                                                      child:   CircleAvatar(
-                                                        radius: 12,
-                                                        child: ClipRRect(
-
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(12),
-                                                          child: Image.network(
-                                                              "${scheduleData['records'][index]['image2']!}?token=${token}"),
-
-
-                                                        ),
-
-
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 3,),
-
-                                                    Text(scheduleData['records'][index]['create_uid'][1].toString() ?? "",
-                                                      style: TextStyle( fontSize: 12,
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.grey,
-                                                        fontWeight:
-                                                        FontWeight.w600,),),
-
-
-                                                  ],
-                                                ),
-                                                SizedBox(height: 3,),
-                                                Text("Assigned to",
-                                                  style: TextStyle(  fontSize: 12,
-                                                    fontFamily: 'Mulish',
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,),),
-                                                SizedBox(height: 3,),
-                                                Row(
-                                                  children: [
-
-
-
-                                                    Container(
-                                                      child:    CircleAvatar(
-                                                        radius: 12,
-                                                        child: ClipRRect(
-
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(12),
-                                                          child: Image.network(
-                                                              "${scheduleData['records'][index]['image']!}?token=${token}"),
-
-
-                                                        ),
-
-
-                                                      ),
-                                                    ),
-                                                    SizedBox(width: 3,),
-                                                    Text(scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                      style: TextStyle( fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color:
-                                                          Colors.grey),),
-
-
-                                                  ],
-                                                ),
-
-                                                SizedBox(height: 3,),
-                                                Text("Due on",
-                                                  style: TextStyle( fontSize: 12,
-                                                    color: Colors.grey,
-                                                    fontWeight:
-                                                    FontWeight.w600,),),
-                                                SizedBox(height: 3,),
-                                                Text(scheduleData['records'][index]['date_deadline'].toString() ?? "",
-                                                  style: TextStyle(fontSize: 12,
-                                                      fontFamily: 'Mulish',
-                                                      color: Colors.grey),),
-
-                                                SizedBox(height: 3,),
-
-
-
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-
-                                        Padding(
-                                          padding: const EdgeInsets.only(top: 0, left: 14, right: 10),
-                                          child: Container(
-                                            //color: Colors.red,
-
-                                            width: MediaQuery.of(context).size.width/1.5,
-                                            child:  Text(scheduleData['records'][index]['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                .toString() ?? "",
-                                              style: TextStyle(fontSize: 14,color: Colors.black,fontFamily: 'Mulish',
-                                              ),),
-
-                                          ),
-                                        ),
-
-
-                                        Padding(
-                                          padding: const EdgeInsets.only(left:7,),
-                                          child: Row(
-                                            // mainAxisAlignment: MainAxisAlignment.end,
-
-                                            children: [
-                                              Container(
-                                                //color: Colors.red,
-                                               // height: 25,
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-
-                                                    int datasIds = scheduleData['records'][index]['id'];
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext context) =>
-                                                          _buildMarkDoneDialog(
-                                                              context, datasIds
-                                                          ),
-                                                    ).then((value) => setState(() {}));
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.check,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][0].toString() ?? "",style: TextStyle(fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      fontSize: 10,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-                                              SizedBox(width: 0,),
-
-                                              scheduleData['records'][index]['buttons'][1] == "Reschedule" ?
-
-
-                                              Container(
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-                                                    //  int idType = scheduleData['records'][index]['id'];
-                                                    //
-                                                    // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-                                                    //
-                                                    //
-                                                    // String textType =  scheduleData['records'][index]['buttons'][1].toString();
-
-                                                    DateTime dateTime =  DateTime.parse(scheduleData['records'][index]['date_deadline']);
-
-
-
-                                                    Navigator.push(
-                                                        context,
-                                                        MaterialPageRoute(
-                                                            builder: (
-                                                                context) =>
-                                                                Calender(null,"",dateTime,null,[],"")));
-
-
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.calendar_month,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ):
-                                              Container(
-                                                width: MediaQuery.of(context).size.width/4.3,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: ()async {
-                                                    int idType = scheduleData['records'][index]['id'];
-
-                                                    var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-
-
-
-
-                                                    setState(() {
-
-                                                      activityTypeName = data['activity_type_id']??null;
-                                                      activityTypeId = data['activity_type_id']['id']??null;
-                                                      activityTypeNameCategory = data['activity_type_id']['category']??"";
-                                                      assignedToname= data['user_id']??null;
-                                                      assignedToid = data['user_id']['id']??null;
-                                                      DuedateTime.text = data['date_deadline']??"";
-                                                      summaryController.text = data['summary']??"";
-                                                      commandsController.text = data['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                          .toString() ;
-                                                      // DuedateTime.text == "default" ?
-                                                      if(activityTypeNameCategory == "default"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= false;
-                                                        btntext = "Schedule";
-                                                        meetingColum = true;
-                                                      }
-                                                      else if(activityTypeNameCategory == "phonecall"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= true;
-                                                        btntext = "Save";
-                                                        meetingColum = true;
-                                                      }
-                                                      else if(activityTypeNameCategory == "meeting"){
-                                                        scheduleBtn=false;
-                                                        opencalendarBtn= true;
-                                                        btntext = "Schedule";
-                                                        meetingColum = false;
-                                                      }
-                                                      else if(activityTypeNameCategory == "upload_file"){
-                                                        scheduleBtn=true;
-                                                        opencalendarBtn= false;
-                                                        btntext = "Schedule";
-                                                        meetingColum = true;
-                                                      }
-
-
-                                                      print(activityTypeNameCategory);
-                                                      print("jhbvjbvsvj");
-                                                    });
-
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext context) =>
-                                                          _buildOrderPopupDialog(
-                                                              context, idType
-                                                          ),
-                                                    ).then((value) => setState(() {}));
-
-
-
-
-
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.edit,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][1].toString() ?? "",style: TextStyle(fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-
-
-
-                                              SizedBox(width: 10,),
-                                              Container(
-
-                                                width: MediaQuery.of(context).size.width/5,
-                                                child: TextButton.icon(     // <-- TextButton
-                                                  onPressed: () async{
-
-                                                    var data =  await deleteScheduleData(scheduleData['records'][index]['id']);
-
-
-                                                    if(data['message']=="Success") {
-                                                      print("responce");
-                                                      setState(() {
-                                                        getScheduleDetails();
-                                                      });
-                                                    }
-
-
-
-
-
-
-                                                    print("demo datataaa");
-
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.cancel_outlined,
-                                                    size: 13.0,
-                                                    color: Colors.black54,
-                                                  ),
-                                                  label: Text(scheduleData['records'][index]['buttons'][2].toString() ?? "",style: TextStyle(fontSize: 10,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight: FontWeight.w500,
-                                                      color:
-                                                      Color(0xFF717171)),),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-
-
-
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-
-                            );
-                          }),
+                                );
+                              }),
                     ),
                   ),
 
-
-
-                  SizedBox(height: 20,),
-
-
+                  SizedBox(
+                    height: 20,
+                  ),
 
                   FutureBuilder(
                       future: getlogNoteData(widget.quotationId, "sale.order"),
                       builder: (context, AsyncSnapshot snapshot) {
-
                         logDataHeader.clear();
                         logDataTitle.clear();
                         print(snapshot.data);
@@ -3437,8 +3743,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             if (snapshot.data == null) {
                               print("dfffdfdf");
                               //print(snapshot.data!.length);
-                              return const Center(child: Text(
-                                  'Something went wrong'));
+                              return const Center(
+                                  child: Text('Something went wrong'));
                             }
 
                             if (snapshot.data.length != 0) {
@@ -3450,7 +3756,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 print("ddd1.length");
                               });
 
-
                               // print(logDataHeader.length);
                               // print(logDataTitle.length);
                               // print("ddd2.length");
@@ -3458,7 +3763,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               // print(logDataHeader[0]);
                               // print(logDataTitle[0][0]['id']);
                               // print("ddd2.lengthssss");
-
 
                               return ListView.builder(
                                   scrollDirection: Axis.vertical,
@@ -3474,58 +3778,69 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                           Padding(
                                             padding: const EdgeInsets.only(
                                                 top: 10, bottom: 10),
-                                            child: Center(child: Text(
+                                            child: Center(
+                                                child: Text(
                                               logDataHeader[indexx],
-                                              style: TextStyle(fontSize: 12,
-                                                  color: Colors.black),)),
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.black),
+                                            )),
                                           ),
-
                                           ListView.builder(
                                               scrollDirection: Axis.vertical,
-                                              physics: NeverScrollableScrollPhysics(),
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
                                               shrinkWrap: true,
-                                              itemCount: logDataTitle[indexx]
-                                                  .length,
+                                              itemCount:
+                                                  logDataTitle[indexx].length,
                                               itemBuilder:
                                                   (BuildContext context,
-                                                  int indexs) {
+                                                      int indexs) {
                                                 selectedImagesDisplay =
-                                                logDataTitle[indexx][indexs]['attachment_ids'];
-                                                lognoteoptions = logDataTitle[indexx][indexs]['is_editable'] ?? true;
-                                                starImage   = logDataTitle[indexx][indexs]['starred']??false;
+                                                    logDataTitle[indexx][indexs]
+                                                        ['attachment_ids'];
+                                                lognoteoptions =
+                                                    logDataTitle[indexx][indexs]
+                                                            ['is_editable'] ??
+                                                        true;
+                                                starImage = logDataTitle[indexx]
+                                                        [indexs]['starred'] ??
+                                                    false;
 
-                                                logDataTitle[indexx][indexs]['icon'] ==
-                                                    "envelope"
+                                                logDataTitle[indexx][indexs]
+                                                            ['icon'] ==
+                                                        "envelope"
                                                     ? logNoteIcon = const Icon(
-                                                  Icons.email,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                )
-                                                    : logDataTitle[indexx][indexs]['icon'] ==
-                                                    "ad_units"
-                                                    ? logNoteIcon = Icon(
-                                                  Icons.phone,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                )
-                                                    : logDataTitle[indexx][indexs]
-                                                ['icon'] ==
-                                                    "telegram"
-                                                    ? logNoteIcon = Icon(
-
-                                                  Icons.telegram,
-                                                  color: Colors.red,
-                                                  size: 15,
-                                                ) : Icon(
-                                                  Icons.circle,
-                                                  color: Colors
-                                                      .white,
-                                                  size: 8,
-                                                );
-
-
-
-
+                                                        Icons.email,
+                                                        color: Colors.red,
+                                                        size: 15,
+                                                      )
+                                                    : logDataTitle[indexx]
+                                                                    [indexs]
+                                                                ['icon'] ==
+                                                            "ad_units"
+                                                        ? logNoteIcon = Icon(
+                                                            Icons.phone,
+                                                            color: Colors.red,
+                                                            size: 15,
+                                                          )
+                                                        : logDataTitle[indexx]
+                                                                        [indexs]
+                                                                    ['icon'] ==
+                                                                "telegram"
+                                                            ? logNoteIcon =
+                                                                Icon(
+                                                                Icons.telegram,
+                                                                color:
+                                                                    Colors.red,
+                                                                size: 15,
+                                                              )
+                                                            : Icon(
+                                                                Icons.circle,
+                                                                color: Colors
+                                                                    .white,
+                                                                size: 8,
+                                                              );
 
                                                 return Card(
                                                   elevation: 1,
@@ -3536,16 +3851,19 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                         child: Column(
                                                           children: [
                                                             Stack(
-                                                              alignment: Alignment
-                                                                  .center,
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
                                                               children: [
                                                                 // scheduleData['records'][index]['delay_label'].toString() ?? ""
                                                                 Padding(
                                                                   padding: const EdgeInsets
-                                                                      .only(
+                                                                          .only(
                                                                       left: 210,
-                                                                      right: 50),
-                                                                  child: Container(
+                                                                      right:
+                                                                          50),
+                                                                  child:
+                                                                      Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
                                                                     width: 82,
@@ -3555,21 +3873,23 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                   bottom: 0,
                                                                   right: 0,
                                                                   //left: 20,
-                                                                  child: Container(
+                                                                  child:
+                                                                      Container(
                                                                     width: 82.0,
-                                                                    height: 30.0,
-                                                                    decoration: BoxDecoration(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        border: Border
-                                                                            .all(
-                                                                          color: Colors
-                                                                              .grey,
-                                                                          width: 1,
-                                                                        )),
+                                                                    height:
+                                                                        30.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            border: Border.all(
+                                                                              color: Colors.grey,
+                                                                              width: 1,
+                                                                            )),
                                                                     child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment
-                                                                          .spaceAround,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .spaceAround,
                                                                       children: [
                                                                         // Container(
                                                                         //   height: 25,
@@ -3587,125 +3907,85 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         //     ),
                                                                         //   ),
                                                                         // ),
-                                                                        StatefulBuilder(
-                                                                            builder: (BuildContext context, StateSetter setState) {
-                                                                              return Container(
-                                                                            height: 25,
-                                                                            width: 25,
+                                                                        StatefulBuilder(builder: (BuildContext
+                                                                                context,
+                                                                            StateSetter
+                                                                                setState) {
+                                                                          return Container(
+                                                                            height:
+                                                                                25,
+                                                                            width:
+                                                                                25,
+                                                                            child:
+                                                                                Align(
+                                                                              alignment: Alignment.topRight,
+                                                                              child: starImage == true
+                                                                                  ? IconButton(
+                                                                                      icon: Icon(
+                                                                                        Icons.star_rate,
+                                                                                        size: 15.0,
+                                                                                        color: Colors.yellow[700],
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
 
-                                                                            child: Align(
-                                                                              alignment: Alignment
-                                                                                  .topRight,
-                                                                              child:
-                                                                              starImage ==
-                                                                                  true
-                                                                                  ?
-                                                                              IconButton(
-                                                                                icon: Icon(
-                                                                                  Icons
-                                                                                      .star_rate,
-                                                                                  size: 15.0,
-                                                                                  color: Colors
-                                                                                      .yellow[700],
-                                                                                ),
-                                                                                onPressed: () async {
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                        var data = await logStarChange(lodDataId, false);
 
-                                                                                  var data = await logStarChange(
-                                                                                      lodDataId,
-                                                                                      false);
+                                                                                        if (data['result']['message'] == "success") {
+                                                                                          print("startrue");
+                                                                                          setState(() {
+                                                                                            starImage = false;
+                                                                                          });
+                                                                                        }
 
+                                                                                        print(data);
+                                                                                        print(" ");
+                                                                                      },
+                                                                                    )
+                                                                                  : IconButton(
+                                                                                      icon: Icon(
+                                                                                        Icons.star_rate,
+                                                                                        size: 15.0,
+                                                                                      ),
+                                                                                      onPressed: () async {
+                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
 
-                                                                                  if( data['result']['message'] == "success"){
-                                                                                    print("startrue");
-                                                                                    setState(() {
-                                                                                      starImage = false;
-                                                                                    });
+                                                                                        var data = await logStarChange(lodDataId, true);
 
-                                                                                  }
+                                                                                        if (data['result']['message'] == "success") {
+                                                                                          print("starfalse");
+                                                                                          setState(() {
+                                                                                            starImage = true;
+                                                                                          });
+                                                                                        }
 
-
-
-
-                                                                                  print(
-                                                                                      data);
-                                                                                  print(
-                                                                                      " ");
-                                                                                },
-                                                                              )
-                                                                                  :
-                                                                              IconButton(
-                                                                                icon: Icon(
-                                                                                  Icons
-                                                                                      .star_rate,
-                                                                                  size: 15.0,
-
-                                                                                ),
-                                                                                onPressed: () async {
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                  var data = await logStarChange(
-                                                                                      lodDataId,
-                                                                                      true);
-
-                                                                                  if( data['result']['message'] == "success"){
-                                                                                    print("starfalse");
-                                                                                    setState(() {
-                                                                                      starImage = true;
-                                                                                    });
-
-                                                                                  }
-
-                                                                                  print(
-                                                                                      data);
-                                                                                  print(
-                                                                                      "hfghavjhcvjsch2");
-                                                                                },
-                                                                              ),
+                                                                                        print(data);
+                                                                                        print("hfghavjhcvjsch2");
+                                                                                      },
+                                                                                    ),
                                                                             ),
                                                                           );
-                                                                        }
-                                                                        ),
+                                                                        }),
                                                                         Visibility(
-                                                                          visible: lognoteoptions,
-                                                                          child: Row(
+                                                                          visible:
+                                                                              lognoteoptions,
+                                                                          child:
+                                                                              Row(
                                                                             children: [
                                                                               Container(
                                                                                 height: 25,
                                                                                 width: 25,
                                                                                 //color: Colors.red,
                                                                                 child: Align(
-                                                                                  alignment: Alignment
-                                                                                      .topRight,
+                                                                                  alignment: Alignment.topRight,
                                                                                   child: IconButton(
-                                                                                    icon: Icon(
-                                                                                        Icons
-                                                                                            .edit,
-                                                                                        size: 15.0),
+                                                                                    icon: Icon(Icons.edit, size: 15.0),
                                                                                     onPressed: () {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      String logdata = logDataTitle[indexx][indexs]['body']
-                                                                                          .replaceAll(
-                                                                                          RegExp(
-                                                                                              r'<[^>]*>|&[^;]+;'),
-                                                                                          ' ') ??
-                                                                                          "";
-                                                                                      Navigator
-                                                                                          .push(
-                                                                                          context,
-                                                                                          MaterialPageRoute(
-                                                                                              builder: (
-                                                                                                  context) =>
-                                                                                                  LogNoteEdit(
-                                                                                                      lodDataId,
-                                                                                                      salespersonimg!,
-                                                                                                      token!,
-                                                                                                      widget
-                                                                                                          .quotationId,
-                                                                                                      logdata)));
+                                                                                      String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salespersonimg!, token!, widget.quotationId, logdata)));
 
-                                                                                      print(
-                                                                                          "emojiVisibility");
+                                                                                      print("emojiVisibility");
                                                                                     },
                                                                                   ),
                                                                                 ),
@@ -3715,30 +3995,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                 width: 25,
                                                                                 //color: Colors.red,
                                                                                 child: Align(
-                                                                                  alignment: Alignment
-                                                                                      .center,
+                                                                                  alignment: Alignment.center,
                                                                                   child: IconButton(
-                                                                                    icon: Icon(
-                                                                                        Icons
-                                                                                            .delete_outline_outlined,
-                                                                                        size: 15.0),
+                                                                                    icon: Icon(Icons.delete_outline_outlined, size: 15.0),
                                                                                     onPressed: () async {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      var data = await deleteLogData(
-                                                                                          lodDataId);
+                                                                                      var data = await deleteLogData(lodDataId);
 
-                                                                                      if (data['message'] ==
-                                                                                          "Success") {
-                                                                                        print(
-                                                                                            "final11");
+                                                                                      if (data['message'] == "Success") {
+                                                                                        print("final11");
                                                                                         await getQuotationDetails();
                                                                                         setState(() {
-                                                                                          logDataHeader
-                                                                                              .clear();
-                                                                                          logDataTitle
-                                                                                              .clear();
-                                                                                          selectedImagesDisplay
-                                                                                              .clear();
+                                                                                          logDataHeader.clear();
+                                                                                          logDataTitle.clear();
+                                                                                          selectedImagesDisplay.clear();
                                                                                         });
                                                                                       }
                                                                                     },
@@ -3748,58 +4018,52 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                             ],
                                                                           ),
                                                                         ),
-
                                                                       ],
                                                                     ),
-
-
                                                                   ),
                                                                 ),
                                                               ],
                                                             ),
                                                             ListView.builder(
-                                                                scrollDirection: Axis
-                                                                    .vertical,
-                                                                physics: NeverScrollableScrollPhysics(),
-                                                                shrinkWrap: true,
+                                                                scrollDirection:
+                                                                    Axis
+                                                                        .vertical,
+                                                                physics:
+                                                                    NeverScrollableScrollPhysics(),
+                                                                shrinkWrap:
+                                                                    true,
                                                                 itemCount: 1,
-                                                                itemBuilder: (
-                                                                    BuildContext context,
-                                                                    int index) {
+                                                                itemBuilder:
+                                                                    (BuildContext
+                                                                            context,
+                                                                        int index) {
                                                                   return Card(
-                                                                    elevation: 0,
-                                                                    child: Column(
-                                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    elevation:
+                                                                        0,
+                                                                    child:
+                                                                        Column(
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         Row(
                                                                           children: [
                                                                             Column(
-                                                                              crossAxisAlignment: CrossAxisAlignment
-                                                                                  .start,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsets
-                                                                                      .only(
-                                                                                      left: 15.0,
-                                                                                      right: 15),
+                                                                                  padding: const EdgeInsets.only(left: 15.0, right: 15),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
                                                                                     child: Stack(
-                                                                                      alignment: Alignment
-                                                                                          .center,
+                                                                                      alignment: Alignment.center,
                                                                                       children: [
                                                                                         // scheduleData['records'][index]['delay_label'].toString() ?? ""
                                                                                         CircleAvatar(
                                                                                           radius: 12,
                                                                                           child: ClipRRect(
-
-                                                                                            borderRadius:
-                                                                                            BorderRadius
-                                                                                                .circular(
-                                                                                                18),
-                                                                                            child: Image
-                                                                                                .network(
-                                                                                                "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
+                                                                                            borderRadius: BorderRadius.circular(18),
+                                                                                            child: Image.network("${logDataTitle[indexx][indexs]['image']}?token=${token}"),
                                                                                           ),
                                                                                         ),
                                                                                         Positioned(
@@ -3808,20 +4072,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                           child: Container(
                                                                                             width: 10.0,
                                                                                             height: 10.0,
-
                                                                                             decoration: BoxDecoration(
-                                                                                              shape: BoxShape
-                                                                                                  .circle,
-                                                                                              color: Colors
-                                                                                                  .green,
+                                                                                              shape: BoxShape.circle,
+                                                                                              color: Colors.green,
                                                                                             ),
-
                                                                                           ),
                                                                                         ),
                                                                                       ],
                                                                                     ),
-
-
                                                                                   ),
                                                                                 ),
                                                                               ],
@@ -3831,35 +4089,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                               child: Row(
                                                                                 children: [
                                                                                   Container(
-                                                                                    // color: Colors.green,
-                                                                                      width: MediaQuery
-                                                                                          .of(
-                                                                                          context)
-                                                                                          .size
-                                                                                          .width /
-                                                                                          4.5,
-                                                                                      child: Text(
-                                                                                          logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                                      // color: Colors.green,
+                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                           style: TextStyle(
                                                                                             fontSize: 13,
-                                                                                            color: Colors
-                                                                                                .black,
-                                                                                            fontWeight: FontWeight
-                                                                                                .bold,))),
+                                                                                            color: Colors.black,
+                                                                                            fontWeight: FontWeight.bold,
+                                                                                          ))),
                                                                                   Container(
-                                                                                    //color: Colors.green,
-                                                                                      width: MediaQuery
-                                                                                          .of(
-                                                                                          context)
-                                                                                          .size
-                                                                                          .width /
-                                                                                          4.5,
-                                                                                      child: Text(
-                                                                                          logDataTitle[indexx][indexs]["period"],
+                                                                                      //color: Colors.green,
+                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      child: Text(logDataTitle[indexx][indexs]["period"],
                                                                                           style: TextStyle(
                                                                                             fontSize: 11,
-                                                                                            color: Colors
-                                                                                                .grey[700],))),
+                                                                                            color: Colors.grey[700],
+                                                                                          ))),
                                                                                   Container(child: logNoteIcon),
                                                                                 ],
                                                                               ),
@@ -3867,220 +4112,271 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           ],
                                                                         ),
                                                                         Visibility(
-                                                                          visible:logDataTitle[indexx][indexs]['subject']==""?false:true,
-                                                                          child: Padding(
-                                                                            padding: const EdgeInsets.only(left: 68),
+                                                                          visible: logDataTitle[indexx][indexs]['subject'] == ""
+                                                                              ? false
+                                                                              : true,
+                                                                          child:
+                                                                              Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.only(left: 68),
                                                                             child: Container(
                                                                                 //color: Colors.green,
-                                                                                width: MediaQuery
-                                                                                    .of(
-                                                                                    context)
-                                                                                    .size
-                                                                                    .width /
-                                                                                    4.5,
-                                                                                child: Text(
-                                                                                    logDataTitle[indexx][indexs]['subject']
-                                                                                        .replaceAll(
-                                                                                        RegExp(
-                                                                                            r'<[^>]*>|&[^;]+;'),
-                                                                                        ' ') ??
-                                                                                        "",
+                                                                                width: MediaQuery.of(context).size.width / 4.5,
+                                                                                child: Text(logDataTitle[indexx][indexs]['subject'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      color: Colors
-                                                                                          .black,))),
+                                                                                      color: Colors.black,
+                                                                                    ))),
                                                                           ),
                                                                         ),
-
-
                                                                         Padding(
-                                                                          padding: const EdgeInsets.only(left: 62),
+                                                                          padding:
+                                                                              const EdgeInsets.only(left: 62),
                                                                           child: Container(
-                                                                            // color: Colors.green,
-                                                                              width: MediaQuery
-                                                                                  .of(
-                                                                                  context)
-                                                                                  .size
-                                                                                  .width /
-                                                                                  2,
+                                                                              // color: Colors.green,
+                                                                              width: MediaQuery.of(context).size.width / 2,
                                                                               child: Html(
                                                                                 data: logDataTitle[indexx][indexs]['body'],
                                                                                 style: {
-                                                                                  'p': Style(
-                                                                                      fontSize: FontSize
-                                                                                          .small),
+                                                                                  'p': Style(fontSize: FontSize.small),
                                                                                   // Customize the font size for <p> elements
                                                                                   // Customize the font size for <strong> elements
                                                                                 },
-
                                                                               )),
                                                                         ),
-
-
-                                                                        selectedImagesDisplay
-                                                                            .isEmpty
+                                                                        selectedImagesDisplay.isEmpty
                                                                             ? Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .only(
-                                                                              left: 40),
-                                                                          child: Container(
+                                                                                padding: const EdgeInsets.only(left: 40),
+                                                                                child: Container(
+                                                                                  width: MediaQuery.of(context).size.width / 3,
+                                                                                  // height: 40,
+                                                                                ),
+                                                                              )
+                                                                            : Padding(
+                                                                                padding: const EdgeInsets.only(left: 40, right: 0),
+                                                                                child: Container(
+                                                                                  //color: Colors.green,
 
-                                                                            width:
-                                                                            MediaQuery
-                                                                                .of(
-                                                                                context)
-                                                                                .size
-                                                                                .width /
-                                                                                2,
-                                                                            // height: 40,
-                                                                          ),
-                                                                        )
-                                                                            :
-                                                                        Padding(
-                                                                          padding: const EdgeInsets
-                                                                              .only(
-                                                                              left: 40,
-                                                                              right: 0),
-                                                                          child: Container(
-                                                                            //color: Colors.green,
+                                                                                  width: MediaQuery.of(context).size.width / 1.5,
+                                                                                  // height: 140,
+                                                                                  child: GridView.builder(
+                                                                                    shrinkWrap: true,
+                                                                                    // Avoid scrolling
+                                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                                    itemCount: selectedImagesDisplay.length,
+                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
+                                                                                      mainAxisSpacing: 10.0,
+                                                                                      crossAxisSpacing: 10.0,
+                                                                                      childAspectRatio: 3.5,
 
-                                                                            width:
-                                                                            MediaQuery
-                                                                                .of(
-                                                                                context)
-                                                                                .size
-                                                                                .width /
-                                                                                3,
-                                                                            // height: 140,
-                                                                            child: GridView
-                                                                                .builder(
-                                                                              shrinkWrap: true,
-                                                                              // Avoid scrolling
-                                                                              physics: NeverScrollableScrollPhysics(),
-                                                                              itemCount:
-                                                                              selectedImagesDisplay
-                                                                                  .length,
-                                                                              gridDelegate:
-                                                                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                  crossAxisCount: 1),
-                                                                              itemBuilder:
-                                                                                  (
-                                                                                  BuildContext context,
-                                                                                  int index) {
-                                                                                print(
-                                                                                    selectedImagesDisplay
-                                                                                        .length);
-                                                                                print(
-                                                                                    selectedImagesDisplay[index]["datas"]);
-                                                                                print(
-                                                                                    "selectedImagesDisplay.length,");
-
-                                                                                return Center(
-                                                                                  child: Container(
-                                                                                    child: Stack(
-                                                                                      children: [
-                                                                                        ClipRRect(
-                                                                                          child: Image
-                                                                                              .network(
-                                                                                            "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                            height: 100,
-                                                                                            width: 80,
-                                                                                          ),
-
-
-                                                                                        ),
-                                                                                        Positioned(
-                                                                                            left: 37,
-                                                                                            right: 0,
-                                                                                            bottom: 70,
-                                                                                            top: 1,
-                                                                                            child: Container(
-                                                                                              width: 20,
-                                                                                              height: 20,
-                                                                                              decoration:BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color(0xFFFFFFFF)) ,
-                                                                                              child: IconButton(
-                                                                                                icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                onPressed: () async {
-                                                                                                  print(
-                                                                                                      logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                  var data = await deleteLogAttachment(
-                                                                                                      lodAttachmentId);
-
-                                                                                                  if (data['message'] ==
-                                                                                                      "Success") {
-                                                                                                    print(
-                                                                                                        "jhbdndsjbv");
-                                                                                                    await getQuotationDetails();
-                                                                                                    setState(() {
-                                                                                                      logDataHeader
-                                                                                                          .clear();
-                                                                                                      logDataTitle
-                                                                                                          .clear();
-                                                                                                      selectedImagesDisplay
-                                                                                                          .clear();
-                                                                                                    });
-                                                                                                  }
-
-
-                                                                                                  print(
-                                                                                                      data);
-                                                                                                  print(
-                                                                                                      "delete testststs");
-                                                                                                },
-                                                                                              ),
-                                                                                            )
-                                                                                        )
-                                                                                      ],
                                                                                     ),
+                                                                                    itemBuilder: (BuildContext context, int index) {
+                                                                                      print(selectedImagesDisplay.length);
+                                                                                      print(selectedImagesDisplay[index]["datas"]);
+                                                                                      print("selectedImagesDisplay.length,");
 
+                                                                                      return
+                                                                                        (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
+                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
+                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
+                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/zip")
+                                                                                            ? Padding(
+                                                                                          padding: const EdgeInsets.only(left: 25),
+                                                                                          child: Container(
+                                                                                            margin: const EdgeInsets.all(5.0),
+                                                                                            //padding: const EdgeInsets.all(10.0),
+                                                                                            //color: Colors.white,
+                                                                                            decoration: BoxDecoration(color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                            width: MediaQuery.of(context).size.width,
+                                                                                            // height: MediaQuery.of(context).size.height/18,
+                                                                                            child: Column(
+                                                                                              children: [
+                                                                                                Row(
+                                                                                                  children: [
+                                                                                                    Padding(
+                                                                                                      padding: const EdgeInsets.only(top: 10, left: 5),
+                                                                                                      child: FittedBox(
+                                                                                                        child: SizedBox(
+                                                                                                          width: 45,
+                                                                                                          height: 45,
+                                                                                                          child: DecoratedBox(
+                                                                                                            decoration: BoxDecoration(
+                                                                                                              color:
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                              Color(0xFFEF5350):
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                              Color(0xFF2196F3):
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                              Color(0xFF4CAF50):
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                              Color(0xFF0277BD):
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                              Color(0xFFFDD835):
+                                                                                                              Color(0xFFFFFFFF),
+
+                                                                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                                            ),
+                                                                                                            child: Center(
+                                                                                                              child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                              Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
+
+                                                                                                                color: Colors.white,
+                                                                                                                size: 25,
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    SizedBox(
+                                                                                                      width: 10,
+                                                                                                    ),
+                                                                                                    Column(
+                                                                                                      children: [
+                                                                                                        Container(
+                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                            //color: Colors.blue,
+                                                                                                            child: Text(
+
+
+                                                                                                              "pdf name.pdf",
+                                                                                                              style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
+                                                                                                            )),
+                                                                                                        SizedBox(
+                                                                                                          height: 10,
+                                                                                                        ),
+                                                                                                        Container(
+                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                            // color: Colors.green,
+                                                                                                            child: Text(
+
+
+                                                                                                              "PDF",
+                                                                                                              style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                            )),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                    SizedBox(
+                                                                                                      width: 20,
+                                                                                                    ),
+                                                                                                    Column(
+                                                                                                      children: [
+                                                                                                        Container(
+                                                                                                          width: 30,
+                                                                                                          height: 30,
+                                                                                                          //color: Colors.green,
+                                                                                                          child: IconButton(
+                                                                                                            icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                            onPressed: () {},
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Container(
+                                                                                                          width: 34,
+                                                                                                          height: 20,
+                                                                                                          //color: Colors.green,
+                                                                                                          child: IconButton(
+                                                                                                            icon: Icon(Icons.download),
+                                                                                                            onPressed: () {
+                                                                                                              print(index);
+                                                                                                              print(selectedImagesDisplay);
+                                                                                                              print(selectedImagesDisplay[index]["datas"]);
+                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                              print("final print dataaa");
+                                                                                                            },
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                )
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        )
+                                                                                            :
+
+                                                                                        (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
+
+
+                                                                                        Padding(
+                                                                                        padding: const EdgeInsets.only(left: 20),
+                                                                                        child: Container(
+                                                                                          child: Stack(
+                                                                                            children: [
+                                                                                              ClipRRect(
+                                                                                                child: Image.network(
+                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                  height: 100,
+                                                                                                  width: 80,
+                                                                                                ),
+                                                                                              ),
+                                                                                              Positioned(
+                                                                                                  left: 40,
+                                                                                                  right: 175,
+                                                                                                  bottom: 50,
+                                                                                                  top: 0,
+                                                                                                  child: Container(
+                                                                                                    width: 20,
+                                                                                                    height: 20,
+                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                    child: IconButton(
+                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                      onPressed: () async {
+                                                                                                        print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                                        if (data['message'] == "Success") {
+                                                                                                          print("jhbdndsjbv");
+                                                                                                          await getQuotationDetails();
+                                                                                                          setState(() {
+                                                                                                            logDataHeader.clear();
+                                                                                                            logDataTitle.clear();
+                                                                                                            selectedImagesDisplay.clear();
+                                                                                                          });
+                                                                                                        }
+
+                                                                                                        print(data);
+                                                                                                        print("delete testststs");
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ))
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      ):
+                                                                                        Container();
+                                                                                    },
                                                                                   ),
-
-                                                                                );
-                                                                              },
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                                ),
+                                                                              ),
                                                                       ],
                                                                     ),
-
                                                                   );
-                                                                }
-
-                                                            ),
+                                                                }),
                                                           ],
                                                         ),
                                                         //color: Colors.red,
-
                                                       ),
-
                                                     ],
                                                   ),
-
-
                                                 );
                                               })
-
-
                                         ],
                                       ),
-
-
                                     );
                                   });
-                            }
-                            else{
+                            } else {
                               return Container();
                             }
                           }
                         }
                         return Center(child: const CircularProgressIndicator());
-                      }
-                  ),
-
-
-
-
+                      }),
                 ],
               ),
             ),
@@ -4090,9 +4386,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
     }
   }
 
-   getQuotationDetails() async {
-
-    token  = await getUserJwt();
+  getQuotationDetails() async {
+    token = await getUserJwt();
     notificationCount = await getNotificationCount();
     var data = await getQuotationData(widget.quotationId, "");
 
@@ -4100,15 +4395,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print("default data");
 
     setState(() {
-
-
-
       quotationname = data['name'] ?? "";
-
 
       customername = data['partner_id']['display_name'] ?? "";
       expiration = data['validity_date'].toString();
-      pricelist = data['pricelist_id']['name']?? "";
+      pricelist = data['pricelist_id']['name'] ?? "";
 
       paymentterms = data['payment_term_id']['name'] ?? "";
 
@@ -4118,7 +4409,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
       company = data['company_id']['name'] ?? "";
 
-       customerreference = (data['client_order_ref'] ?? "").toString();
+      customerreference = (data['client_order_ref'] ?? "").toString();
 
       // for (int i = 0; i < data['tag_ids'].length; i++) {
       //   selctedTag.add(data['tag_ids'][i]);
@@ -4131,8 +4422,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
       // }
 
       // tags = editTagName.map((item) => item.value).toList();
-      data['commitment_date']==""?deliverydate = "":
-      deliverydate = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['commitment_date']))??"";
+      data['commitment_date'] == ""
+          ? deliverydate = ""
+          : deliverydate = DateFormat('yyyy-MM-dd HH:mm:ss')
+                  .format(DateTime.parse(data['commitment_date'])) ??
+              "";
       fiscalposition = data['fiscal_position_id']['name'] ?? "";
       sourcedocument = (data['origin'] ?? "").toString();
 
@@ -4144,41 +4438,36 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
       followerCount = data["followers_count"].toString() ?? "0";
 
-      followerStatus=data["message_is_follower"] ?? false;
-
-
+      followerStatus = data["message_is_follower"] ?? false;
 
       shippingpolicy = data['picking_policy'] ?? "";
       createdby = data['create_uid'][1] ?? "";
-      createdon = DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['create_date']))??"";
-      lastupdatedby= data['write_uid'][1] ?? "";
-      lastupdatedon= DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.parse(data['write_date']))??"";
+      createdon = DateFormat('yyyy-MM-dd HH:mm:ss')
+              .format(DateTime.parse(data['create_date'])) ??
+          "";
+      lastupdatedby = data['write_uid'][1] ?? "";
+      lastupdatedon = DateFormat('yyyy-MM-dd HH:mm:ss')
+              .format(DateTime.parse(data['write_date'])) ??
+          "";
       salespersonimg = data['image'] ?? "";
-
 
       for (int i = 0; i < data['order_line'].length; i++) {
         orderLineProducts.add(data['order_line'][i]);
       }
 
-
       for (int i = 0; i < data['sale_order_option_ids'].length; i++) {
         optionalProducts.add(data['sale_order_option_ids'][i]);
       }
 
-
-      if(data["tag_ids"].length>0){
+      if (data["tag_ids"].length > 0) {
         //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
-        tagss=data["tag_ids"];
-      }
-      else{
+        tagss = data["tag_ids"];
+      } else {
         tagss = [];
       }
       print(orderLineProducts);
       print(optionalProducts);
       print("initial data");
-
-
-
 
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
 
@@ -4189,21 +4478,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   _buildOrderPopupDialog(BuildContext context, int typeIds) {
-
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
-
-
-
-
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
         content: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -4221,11 +4502,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       color: Colors.black,
                     ),
                     onPressed: () {
-
-                      setState(() {
-
-                      });
-
+                      setState(() {});
 
                       Navigator.pop(context);
                     },
@@ -4233,14 +4510,18 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: activityTypeName,
                     hint: Text(
                       "Activity Type",
-                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish',),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -4252,33 +4533,27 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         activityTypeId = value["id"];
                         activityTypeNameCategory = value["category"];
 
-
-
-                        if(activityTypeNameCategory == "default"){
-                          scheduleBtn=true;
-                          opencalendarBtn= false;
+                        if (activityTypeNameCategory == "default") {
+                          scheduleBtn = true;
+                          opencalendarBtn = false;
                           btntext = "Schedule";
                           meetingColum = true;
-                        }
-                        else if(activityTypeNameCategory == "phonecall"){
-                          scheduleBtn=true;
-                          opencalendarBtn= true;
+                        } else if (activityTypeNameCategory == "phonecall") {
+                          scheduleBtn = true;
+                          opencalendarBtn = true;
                           btntext = "Save";
                           meetingColum = true;
-                        }
-                        else if(activityTypeNameCategory == "meeting"){
-                          scheduleBtn=false;
-                          opencalendarBtn= true;
+                        } else if (activityTypeNameCategory == "meeting") {
+                          scheduleBtn = false;
+                          opencalendarBtn = true;
                           btntext = "Schedule";
                           meetingColum = false;
-                        }
-                        else if(activityTypeNameCategory == "upload_file"){
-                          scheduleBtn=true;
-                          opencalendarBtn= false;
+                        } else if (activityTypeNameCategory == "upload_file") {
+                          scheduleBtn = true;
+                          opencalendarBtn = false;
                           btntext = "Schedule";
                           meetingColum = true;
                         }
-
 
                         print(activityTypeName);
                         print(activityTypeId);
@@ -4289,19 +4564,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     dialogBox: false,
                     isExpanded: true,
                     menuConstraints:
-                    BoxConstraints.tight(const Size.fromHeight(300)),
+                        BoxConstraints.tight(const Size.fromHeight(300)),
                     itemsPerPage: 10,
                     currentPage: currentPage,
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
-                            child: Text(
-                              item["name"],
-                              style: TextStyle(
-                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish',),
-                            ),
-                          )));
+                        width: 300,
+                        child: Text(
+                          item["name"],
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish',
+                          ),
+                        ),
+                      )));
                     },
                     futureSearchFn: (String? keyword,
                         String? orderBy,
@@ -4310,10 +4588,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         int? pageNb) async {
                       Response response = await get(
                         Uri.parse(
-                            "${baseUrl}api/activity_type?res_model=sale.order&page_no=${pageNb ??
-                                1}&count=10${keyword == null
-                                ? ""
-                                : "&filter=$keyword"}"),
+                            "${baseUrl}api/activity_type?res_model=sale.order&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
                         headers: {
                           'Authorization': 'Bearer $token',
                         },
@@ -4330,18 +4605,17 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       int nbResults = data["length"];
 
                       List<DropdownMenuItem> results =
-                      (data["records"] as List<dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text("${item["name"]}"),
-                              ),
-                            ),
-                          ))
-                          .toList();
+                          (data["records"] as List<dynamic>)
+                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text("${item["name"]}"),
+                                      ),
+                                    ),
+                                  ))
+                              .toList();
                       return (Tuple2<List<DropdownMenuItem>, int>(
                           results, nbResults));
                     },
@@ -4349,10 +4623,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(color: Colors.black,
-                      fontSize: 12,fontFamily: 'Mulish',),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: 'Mulish',
+                    ),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -4362,18 +4639,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         labelText: 'Summary',
-                        labelStyle: TextStyle(color: Colors.black,
-                            fontSize: 12,fontFamily: 'Mulish',)),
+                        labelStyle: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontFamily: 'Mulish',
+                        )),
                   ),
                 ),
-
                 Visibility(
                   visible: meetingColum,
                   child: Column(
                     children: [
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 0),
                         child: SizedBox(
                           child: InkWell(
                             onTap: () {
@@ -4388,21 +4667,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     hintStyle: TextStyle(
                                       //fontFamily: "inter",
                                       color: Colors.black,
-                                      fontSize: 12,fontFamily: 'Mulish',))),
+                                      fontSize: 12, fontFamily: 'Mulish',
+                                    ))),
                           ),
                         ),
                       ),
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 5, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
 
                           value: assignedToname,
                           hint: Text(
                             "Assigned To",
-                            style: TextStyle(color: Colors.black,
-                              fontSize: 12,fontFamily: 'Mulish',),
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish',
+                            ),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -4419,20 +4702,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           dialogBox: false,
                           isExpanded: true,
                           menuConstraints:
-                          BoxConstraints.tight(const Size.fromHeight(300)),
+                              BoxConstraints.tight(const Size.fromHeight(300)),
                           itemsPerPage: 10,
                           currentPage: currentPage,
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
-                                  child: Text(
-                                    item["name"],
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                      fontSize: 12,fontFamily: 'Mulish',),
-                                  ),
-                                )));
+                              width: 300,
+                              child: Text(
+                                item["name"],
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 12,
+                                  fontFamily: 'Mulish',
+                                ),
+                              ),
+                            )));
                           },
                           futureSearchFn: (String? keyword,
                               String? orderBy,
@@ -4441,11 +4726,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               int? pageNb) async {
                             Response response = await get(
                               Uri.parse(
-                                  "${baseUrl}api/assigned_to?res_model=sale.order&res_id=${widget
-                                      .quotationId}&page_no=${pageNb ??
-                                      1}&count=10${keyword == null
-                                      ? ""
-                                      : "&filter=$keyword"}"),
+                                  "${baseUrl}api/assigned_to?res_model=sale.order&res_id=${widget.quotationId}&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
 
                               // "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
                               headers: {
@@ -4456,25 +4737,26 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             ));
 
                             if (response.statusCode != 200) {
-                              throw Exception("failed to get data from internet");
+                              throw Exception(
+                                  "failed to get data from internet");
                             }
 
                             dynamic data = jsonDecode(response.body);
 
                             int nbResults = data["length"];
 
-                            List<DropdownMenuItem> results =
-                            (data["records"] as List<dynamic>)
-                                .map<DropdownMenuItem>((item) =>
-                                DropdownMenuItem(
-                                  value: item,
-                                  child: Card(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}"),
-                                    ),
-                                  ),
-                                ))
+                            List<DropdownMenuItem> results = (data["records"]
+                                    as List<dynamic>)
+                                .map<DropdownMenuItem>(
+                                    (item) => DropdownMenuItem(
+                                          value: item,
+                                          child: Card(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(0),
+                                              child: Text("${item["name"]}"),
+                                            ),
+                                          ),
+                                        ))
                                 .toList();
                             return (Tuple2<List<DropdownMenuItem>, int>(
                                 results, nbResults));
@@ -4482,30 +4764,35 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                       ),
                       Padding(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 0),
                         child: TextFormField(
-                          style: TextStyle(color: Colors.black,
-                            fontSize: 12,fontFamily: 'Mulish',),
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
+                            fontFamily: 'Mulish',
+                          ),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFFAFAFAF)),
                               ),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFFAFAFAF)),
                               ),
                               labelText: 'Commands',
-                              labelStyle: TextStyle(color: Colors.black,
-                                fontSize: 12,fontFamily: 'Mulish',)),
+                              labelStyle: TextStyle(
+                                color: Colors.black,
+                                fontSize: 12,
+                                fontFamily: 'Mulish',
+                              )),
                         ),
                       ),
                     ],
                   ),
                 ),
-
-
-
                 Visibility(
                   visible: opencalendarBtn,
                   child: Padding(
@@ -4524,11 +4811,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     color: Colors.white),
                               ),
                             ),
-                            onPressed: () async{
-
+                            onPressed: () async {
                               String resmessage;
-                              typeIds ==0 ? resmessage=  await activitySchedule() : resmessage=  await editactivitySchedule(typeIds);
-
+                              typeIds == 0
+                                  ? resmessage = await activitySchedule()
+                                  : resmessage =
+                                      await editactivitySchedule(typeIds);
 
                               int resmessagevalue = int.parse(resmessage);
                               if (resmessagevalue != 0) {
@@ -4538,17 +4826,18 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      // Calender(0,"",DateTime.now(),[])),
+                                          // Calender(0,"",DateTime.now(),[])),
 
-                                      Calender(widget.quotationId,"sale.order",DateTime.now(),resmessagevalue,[],summaryController.text)),
+                                          Calender(
+                                              widget.quotationId,
+                                              "sale.order",
+                                              DateTime.now(),
+                                              resmessagevalue,
+                                              [],
+                                              summaryController.text)),
                                 );
                               }
-
-
                             },
-
-
-
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xFFFA256B),
                             )),
@@ -4556,9 +4845,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
                 ),
-
-
-
                 Visibility(
                   visible: scheduleBtn,
                   child: Row(
@@ -4584,7 +4870,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 onPressed: () async {
                                   String resmessage;
 
-                                  typeIds ==0 ? resmessage=  await activitySchedule() : resmessage=  await editactivitySchedule(typeIds);
+                                  typeIds == 0
+                                      ? resmessage = await activitySchedule()
+                                      : resmessage =
+                                          await editactivitySchedule(typeIds);
                                   //resmessage=  await activitySchedule();
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
@@ -4593,8 +4882,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                     Navigator.pop(context);
                                   }
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFFA256B),
@@ -4602,7 +4889,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(width: 5,),
+                      SizedBox(
+                        width: 5,
+                      ),
                       Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Center(
@@ -4620,22 +4909,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async{
-
+                                onPressed: () async {
                                   String resmessage;
-                                  typeIds ==0 ? resmessage=  await markDone() : resmessage=  await editMarkDone(typeIds);
+                                  typeIds == 0
+                                      ? resmessage = await markDone()
+                                      : resmessage =
+                                          await editMarkDone(typeIds);
 
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
-
                                     await getScheduleDetails();
                                     setState(() {});
 
                                     Navigator.pop(context);
                                   }
-
-
-
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Color(0xFFFA256B),
@@ -4646,7 +4933,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ],
                   ),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -4667,29 +4953,23 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async{
-
+                              onPressed: () async {
                                 String resmessage;
-                                typeIds ==0 ? resmessage=  await markDone() : resmessage=  await editMarkDone(typeIds);
+                                typeIds == 0
+                                    ? resmessage = await markDone()
+                                    : resmessage = await editMarkDone(typeIds);
 
                                 int resmessagevalue = int.parse(resmessage);
                                 if (resmessagevalue != 0) {
-
-
                                   await defaultScheduleValues();
 
                                   setState(() {
                                     summaryController.text = "";
                                     commandsController.text = "";
-                                    typeIds =0;
+                                    typeIds = 0;
                                   });
                                   //Navigator.pop(context);
                                 }
-
-
-
-
-
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFFA256B),
@@ -4697,7 +4977,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5,),
+                    SizedBox(
+                      width: 5,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 20),
                       child: Center(
@@ -4716,13 +4998,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 ),
                               ),
                               onPressed: () async {
-                                await  getQuotationDetails();
-                                setState((){
-
-                                });
+                                await getQuotationDetails();
+                                setState(() {});
                                 Navigator.pop(context);
-
-
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFFA256B),
@@ -4732,9 +5010,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ],
                 ),
-
-
-
               ],
             ),
           ),
@@ -4743,185 +5018,116 @@ class _QuotationDetailState extends State<QuotationDetail> {
     });
   }
 
-
-
   _buildMarkDoneDialog(BuildContext context, int marktypeIds) {
-
     print(marktypeIds);
     print("demodemo");
     return StatefulBuilder(builder: (context, setState) {
-      return   AlertDialog(
-        title: const Text(
-            'Mark Done'),
-        shape: RoundedRectangleBorder(
-            borderRadius:
-            BorderRadius
-                .circular(
-                8)),
-        content:
-        Container(
-          height:
-          60,
-          width: MediaQuery
-              .of(
-              context)
-              .size
-              .width,
-          child:
-          TextField(
-            controller:
-            feedbackController,
-            decoration:
-            InputDecoration(
+      return AlertDialog(
+        title: const Text('Mark Done'),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        content: Container(
+          height: 60,
+          width: MediaQuery.of(context).size.width,
+          child: TextField(
+            controller: feedbackController,
+            decoration: InputDecoration(
               //border: OutlineInputBorder(),
-              hintText:
-              'Write Feedback',
+              hintText: 'Write Feedback',
             ),
           ),
         ),
-        actions: <
-            Widget>[
+        actions: <Widget>[
           Row(
             children: [
               SizedBox(
-                width: MediaQuery
-                    .of(
-                    context)
-                    .size
-                    .width /
-                    2.8,
+                width: MediaQuery.of(context).size.width / 2.8,
                 height: 38,
                 child: ElevatedButton(
                     child: Center(
                       child: Text(
                         "Done & Schedule Next",
                         style: TextStyle(
-                            fontWeight: FontWeight
-                                .w700,
+                            fontWeight: FontWeight.w700,
                             fontSize: 10,
-                            color: Colors
-                                .white),
+                            color: Colors.white),
                       ),
                     ),
                     onPressed: () async {
-
-                      String  resmessage =   await markDoneScheduleActivity(feedbackController.text, marktypeIds);
-
+                      String resmessage = await markDoneScheduleActivity(
+                          feedbackController.text, marktypeIds);
 
                       int resmessagevalue = int.parse(resmessage);
                       if (resmessagevalue != 0) {
-
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
 
-
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
-                              _buildOrderPopupDialog(
-                                  context, 0
-                              ),
+                              _buildOrderPopupDialog(context, 0),
                         ).then((value) => setState(() {}));
                       }
-
-
-
                     },
-
-                    style: ElevatedButton
-                        .styleFrom(
-                      primary: Color(
-                          0xFFF9246A),
+                    style: ElevatedButton.styleFrom(
+                      primary: Color(0xFFF9246A),
                     )),
               ),
               Padding(
-                padding: const EdgeInsets
-                    .only(
-                    left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
-                  width: MediaQuery
-                      .of(
-                      context)
-                      .size
-                      .width /
-                      6.4,
+                  width: MediaQuery.of(context).size.width / 6.4,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
                         child: Text(
                           "Done",
                           style: TextStyle(
-                              fontWeight: FontWeight
-                                  .w700,
+                              fontWeight: FontWeight.w700,
                               fontSize: 10,
-                              color: Colors
-                                  .white),
+                              color: Colors.white),
                         ),
                       ),
                       onPressed: () async {
-
-                        String  resmessage =   await markDoneScheduleActivity(feedbackController.text, marktypeIds);
-
+                        String resmessage = await markDoneScheduleActivity(
+                            feedbackController.text, marktypeIds);
 
                         int resmessagevalue = int.parse(resmessage);
                         if (resmessagevalue != 0) {
                           feedbackController.text = "";
                           await getScheduleDetails();
                           setState(() {
-
                             Navigator.pop(context);
                           });
-
-
-
                         }
-
-
                       },
-
-                      style: ElevatedButton
-                          .styleFrom(
-                        primary: Color(
-                            0xFFF9246A),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF9246A),
                       )),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets
-                    .only(
-                    left: 5),
+                padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
-                  width: MediaQuery
-                      .of(
-                      context)
-                      .size
-                      .width /
-                      5,
+                  width: MediaQuery.of(context).size.width / 5,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
                         child: Text(
                           "Discard",
                           style: TextStyle(
-                              fontWeight: FontWeight
-                                  .w700,
+                              fontWeight: FontWeight.w700,
                               fontSize: 10,
-                              color: Colors
-                                  .black),
+                              color: Colors.black),
                         ),
                       ),
                       onPressed: () {
                         setState(() {
-                          Navigator
-                              .pop(
-                              context);
+                          Navigator.pop(context);
                         });
                       },
-                      style: ElevatedButton
-                          .styleFrom(
-                        primary: Color(
-                            0xFFFFFFFF),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFFFFFFF),
                       )),
                 ),
               ),
@@ -4931,10 +5137,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
       );
     });
   }
-
-
-
-
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -4958,59 +5160,43 @@ class _QuotationDetailState extends State<QuotationDetail> {
     }
   }
 
-
-
-
-
-
-
   getScheduleDetails() async {
-
     var datas = await getScheduleActivityData(widget.quotationId, "sale.order");
 
     String scheduleIcpnValue;
 
     setState(() {
-      scheduleLength = datas['length']??0 ;
+      scheduleLength = datas['length'] ?? 0;
       scheduleData = datas;
-      scheduleOverdue = datas['overdue']??0 ;
-      scheduleToday = datas['today']??0 ;
-      schedulePlanned = datas['planned']??0 ;
+      scheduleOverdue = datas['overdue'] ?? 0;
+      scheduleToday = datas['today'] ?? 0;
+      schedulePlanned = datas['planned'] ?? 0;
       // scheduleIcpnValue = datas['planned']??0
 
-      scheduleOverdue!=0 ? scheduleVisibiltyOverdue = true :scheduleVisibiltyOverdue=false;
-      scheduleToday!=0 ? scheduleVisibiltyToday=true :scheduleVisibiltyToday=false;
+      scheduleOverdue != 0
+          ? scheduleVisibiltyOverdue = true
+          : scheduleVisibiltyOverdue = false;
+      scheduleToday != 0
+          ? scheduleVisibiltyToday = true
+          : scheduleVisibiltyToday = false;
 
-      schedulePlanned!=0 ? scheduleVisibiltyPlanned=true : scheduleVisibiltyPlanned=false;
+      schedulePlanned != 0
+          ? scheduleVisibiltyPlanned = true
+          : scheduleVisibiltyPlanned = false;
 
-
-
-      scheduleIcon= Icon(Icons.add,
+      scheduleIcon = Icon(
+        Icons.add,
         color: Colors.white,
         size: 8,
-
       );
-
 
       _isInitialized = true;
     });
 
-
-
-
     print(scheduleData);
 
     return scheduleData;
-
-
-
-
   }
-
-
-
-
-
 
   leadLost(bool valueType) async {
     String value = await lostLead(widget.quotationId, valueType);
@@ -5022,12 +5208,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   productDefaultDetails() {}
 
-
-
   activitySchedule() async {
-
-    String value = await scheduleActivity(activityTypeId, assignedToid,widget.quotationId,
-        summaryController.text,DuedateTime.text,commandsController.text,"sale.order","");
+    String value = await scheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.quotationId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "sale.order",
+        "");
 
     print(value);
     print("valuesss");
@@ -5035,22 +5225,32 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   editactivitySchedule(int typeIds) async {
-
-    String value = await editScheduleActivity(activityTypeId, assignedToid,widget.quotationId,
-        summaryController.text,DuedateTime.text,commandsController.text,"sale.order","",typeIds);
+    String value = await editScheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.quotationId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "sale.order",
+        "",
+        typeIds);
 
     print(value);
     print("valuesss");
     return value;
   }
 
-
-
-
   markDone() async {
-
-    String value = await scheduleActivity(activityTypeId, assignedToid,widget.quotationId,
-        summaryController.text,DuedateTime.text,commandsController.text,"sale.order","mark_done");
+    String value = await scheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.quotationId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "sale.order",
+        "mark_done");
 
     print(value);
     print("valuesss");
@@ -5058,48 +5258,52 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   editMarkDone(int typeIds) async {
-
-    String value = await editScheduleActivity(activityTypeId, assignedToid,widget.quotationId,
-        summaryController.text,DuedateTime.text,commandsController.text,"sale.order","mark_done",typeIds);
+    String value = await editScheduleActivity(
+        activityTypeId,
+        assignedToid,
+        widget.quotationId,
+        summaryController.text,
+        DuedateTime.text,
+        commandsController.text,
+        "sale.order",
+        "mark_done",
+        typeIds);
 
     print(value);
     print("valuesss");
     return value;
   }
 
-  logNoteData(List myData1) async{
-
-    String value = await logNoteCreate(lognoteController.text,"sale.order",widget.quotationId,myData1);
+  logNoteData(List myData1) async {
+    String value = await logNoteCreate(
+        lognoteController.text, "sale.order", widget.quotationId, myData1);
 
     print(value);
     print("valuesss");
     return value;
-
   }
+
   void myAlert(String modelType) {
     showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Please choose media to select',style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Mulish',
-                fontSize: 14,
-                color: Color(0xFF212121))),
-
-
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            title: Text('Please choose media to select',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Mulish',
+                    fontSize: 14,
+                    color: Color(0xFF212121))),
             content: Container(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height / 6,
+              height: MediaQuery.of(context).size.height / 6,
               child: Column(
                 children: [
                   ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0XFFF9246A)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -5117,17 +5321,19 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.image),
-                        Text('From Gallery',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
-                            fontSize: 14,
-                            color: Colors.white)),
+                        Text('From Gallery',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                                fontSize: 14,
+                                color: Colors.white)),
                       ],
                     ),
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0XFFF9246A)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -5147,11 +5353,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.camera),
-                        Text('From Camera',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
-                            fontSize: 14,
-                            color: Colors.white)),
+                        Text('From Camera',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                                fontSize: 14,
+                                color: Colors.white)),
                       ],
                     ),
                   ),
@@ -5176,7 +5383,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
     if (img != null) {
       setState(
-            () {
+        () {
           if (imageData.isNotEmpty) {
             print("system 3");
             for (var i = 0; i < imageData.length; i++) {
@@ -5204,7 +5411,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
     List<XFile> xfilePick = pickedFile;
 
     setState(
-          () {
+      () {
         if (xfilePick.isNotEmpty) {
           for (var i = 0; i < xfilePick.length; i++) {
             selectedImages.add(File(xfilePick[i].path));
@@ -5231,15 +5438,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
       Uint8List imagebytes = await img!.readAsBytes(); //convert to bytes
       base64string = base64.encode(imagebytes);
       String dataImages =
-          '{"name":"name","type":"binary","datas":"${base64string
-          .toString()}","res_model":"sale.order","res_id":"${widget.quotationId}"}';
+          '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"sale.order","res_id":"${widget.quotationId}"}';
 
-      Map<String, dynamic> jsondata =
-      jsonDecode(dataImages);
+      Map<String, dynamic> jsondata = jsonDecode(dataImages);
       myData1.add(jsondata);
     }
 
-    String attachCount =  await attchmentDataCreate(myData1);
+    String attachCount = await attchmentDataCreate(myData1);
     setState(() {
       myData1.clear();
       attachmentCount = attachCount;
@@ -5249,33 +5454,31 @@ class _QuotationDetailState extends State<QuotationDetail> {
     });
   }
 
-
   Future getImagesAttachment() async {
     final pickedFile = await picker.pickMultipleMedia(
         imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
     List<XFile> xfilePick = pickedFile;
 
     setState(
-          () {
+      () {
         isLoading = true;
-      },);
+      },
+    );
 
     if (xfilePick.isNotEmpty) {
       for (var i = 0; i < xfilePick.length; i++) {
-        Uint8List imagebytes = await xfilePick[i]!
-            .readAsBytes(); //convert to bytes
+        Uint8List imagebytes =
+            await xfilePick[i]!.readAsBytes(); //convert to bytes
         base64string = base64.encode(imagebytes);
         String dataImages =
-            '{"name":"name","type":"binary","datas":"${base64string
-            .toString()}","res_model":"sale.order","res_id":"${widget.quotationId}"}';
+            '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"sale.order","res_id":"${widget.quotationId}"}';
 
-        Map<String, dynamic> jsondata =
-        jsonDecode(dataImages);
+        Map<String, dynamic> jsondata = jsonDecode(dataImages);
         myData1.add(jsondata);
 
         //attachmentSelectedImages.add(File(xfilePick[i].path));
       }
-      String attachCount =   await attchmentDataCreate(myData1);
+      String attachCount = await attchmentDataCreate(myData1);
       setState(() {
         myData1.clear();
         attachmentCount = attachCount;
@@ -5286,13 +5489,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
       print(myData1);
       print("listarraycheck");
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Nothing is selected')));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Nothing is selected')));
     }
   }
-
-
-
 
   defaultScheduleValues() async {
     token = await getUserJwt();
@@ -5301,43 +5501,35 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(data['activity_type_id']);
     print("hgchgvhjb");
     setState(() {
-
-      activityTypeName = data['activity_type_id']??null;
-      activityTypeId = data['activity_type_id']['id']??null;
-      activityTypeNameCategory = data['activity_type_id']['category']??"";
-      assignedToname= data['user_id']??null;
-      assignedToid = data['user_id']['id']??null;
-      DuedateTime.text = data['date_deadline']??"";
+      activityTypeName = data['activity_type_id'] ?? null;
+      activityTypeId = data['activity_type_id']['id'] ?? null;
+      activityTypeNameCategory = data['activity_type_id']['category'] ?? "";
+      assignedToname = data['user_id'] ?? null;
+      assignedToid = data['user_id']['id'] ?? null;
+      DuedateTime.text = data['date_deadline'] ?? "";
 
       // DuedateTime.text == "default" ?
-      if(activityTypeNameCategory == "default"){
-        scheduleBtn=true;
-        opencalendarBtn= false;
+      if (activityTypeNameCategory == "default") {
+        scheduleBtn = true;
+        opencalendarBtn = false;
         btntext = "Schedule";
         meetingColum = true;
-      }
-      else if(activityTypeNameCategory == "phonecall"){
-        scheduleBtn=true;
-        opencalendarBtn= true;
+      } else if (activityTypeNameCategory == "phonecall") {
+        scheduleBtn = true;
+        opencalendarBtn = true;
         btntext = "Save";
         meetingColum = true;
-      }
-      else if(activityTypeNameCategory == "meeting"){
-        scheduleBtn=false;
-        opencalendarBtn= true;
+      } else if (activityTypeNameCategory == "meeting") {
+        scheduleBtn = false;
+        opencalendarBtn = true;
         btntext = "Schedule";
         meetingColum = false;
-      }
-      else if(activityTypeNameCategory == "upload_file"){
-        scheduleBtn=true;
-        opencalendarBtn= false;
+      } else if (activityTypeNameCategory == "upload_file") {
+        scheduleBtn = true;
+        opencalendarBtn = false;
         btntext = "Schedule";
         meetingColum = true;
       }
-
-
-
-
 
       print(activityTypeNameCategory);
       print("jhbvjbvsvj");
@@ -5345,7 +5537,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   defaultSendmsgvalues() async {
-
     List<int> selectedIds = sendMailData
         .where((item) => item["selected"] == true)
         .map((item) => item["id"] as int)
@@ -5353,25 +5544,24 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
     recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.quotationId,"sale.order",selectedIds);
+    var data = await defaultSendmessageData(
+        widget.quotationId, "sale.order", selectedIds);
     setState(() {
       print(data);
 
-      subjectController.text = data['subject'].toString()??"";
+      subjectController.text = data['subject'].toString() ?? "";
 
-      for(int i=0;i<data['partner_ids'].length;i++)
-      {
+      for (int i = 0; i < data['partner_ids'].length; i++) {
         selctedRecipient.add(data['partner_ids'][i]);
-
       }
 
-      for(int i=0;i<selctedRecipient.length;i++){
-        editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
-
+      for (int i = 0; i < selctedRecipient.length; i++) {
+        editRecipientName.add(new ValueItem(
+            label: selctedRecipient[i]['display_name'],
+            value: selctedRecipient[i]['id'].toString()));
       }
 
       recipient = editRecipientName.map((item) => item.value).toList();
-
 
       _isInitialized = true;
     });
@@ -5379,32 +5569,38 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(token);
   }
 
-  _buildSendmessagePopupDialog(BuildContext context,int sendtypeIds){
-    return StatefulBuilder(builder:(context,setState){
-      lognoteController.text !=""?bodyController.text=lognoteController.text
-          :bodyController.text="";
+  _buildSendmessagePopupDialog(BuildContext context, int sendtypeIds) {
+    return StatefulBuilder(builder: (context, setState) {
+      lognoteController.text != ""
+          ? bodyController.text = lognoteController.text
+          : bodyController.text = "";
 
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+        content: Container(
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Odoo",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
+                    Text(
+                      "Odoo",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
+                    ),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -5412,8 +5608,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ),
                       onPressed: () {
                         setState(() {
-                          templateName= null;
-                          templateId=null;
+                          templateName = null;
+                          templateId = null;
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
@@ -5433,53 +5629,65 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',),),
-                SizedBox(height: 5,),
-                Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12,fontFamily: 'Mulish',),),
-                SizedBox(height: 10,),
+                Text(
+                  "Recipients",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Followers of the document and",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
-                    hint: 'Add contacts to notify...' ,
-                    hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
+                    hint: 'Add contacts to notify...',
+                    hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
                     selectedOptions: editRecipientName
-                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .map((recipient) => ValueItem(
+                            label: recipient.label, value: recipient.value))
                         .toList(),
                     onOptionSelected: (options) {
                       print(options);
                       recipient!.clear();
                       for (var options in options) {
-
                         recipient!.add(options.value);
                         print('Label: ${options.label}');
                         print('Value: ${options.value}');
                         print(recipient);
                         print('-hgvvjb--');
                       }
-
                     },
                     networkConfig: NetworkConfig(
-
-
-                      url: "${baseUrl}api/recipients?&model=sale.order&company_ids=${globals.selectedIds}",
+                      url:
+                          "${baseUrl}api/recipients?&model=sale.order&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
-
-
                         'Authorization': 'Bearer $token',
                       },
                     ),
                     chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-
                     responseParser: (response) {
                       debugPrint('Response: $response');
 
-                      final list = (response['record'] as List<
-                          dynamic>).map((e) {
+                      final list =
+                          (response['record'] as List<dynamic>).map((e) {
                         final item = e as Map<String, dynamic>;
                         return ValueItem(
-
                           label: item['display_name'],
                           value: item['id'].toString(),
                         );
@@ -5497,35 +5705,46 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     }),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black,
+                      fontFamily: 'Mulish',
+                    ),
                     controller: subjectController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
-                        labelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',)
-                    ),
-                  ),),
-                SizedBox(height: 5,),
+                        labelStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                          fontFamily: 'Mulish',
+                        )),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Container(
                   //color: Colors.red,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  width: MediaQuery.of(context).size.width,
                   // height: MediaQuery
                   //     .of(context)
                   //     .size
@@ -5533,13 +5752,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextFormField(
-                      decoration:InputDecoration( border: InputBorder.none,) ,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                      ),
                       controller: bodyController,
                     ),
                   ),
                 ),
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     myAlert("lognote");
                   },
                   child: Container(
@@ -5549,68 +5770,54 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
-                            onPressed: () {
-                            },
+                            onPressed: () {},
                           ),
                         ),
-                        Text("ATTACH FILE",style: TextStyle(color: Colors.grey[700],fontSize: 12,fontFamily: 'Mulish'),),
-
-
+                        Text(
+                          "ATTACH FILE",
+                          style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 12,
+                              fontFamily: 'Mulish'),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                selectedImages.isEmpty ?  Padding(
-                  padding: const EdgeInsets.only(left:25),
-                  child: Container(
-
-                    width:
-                    MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    // height: 40,
-                  ),
-                )
-                    :
-                Padding(
-                  padding: const EdgeInsets.only(left:25,right: 50),
-                  child: Container(
-
-                    width:
-                    MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    // height: 40,
-                    child: Container(
-                      width: 40,
-                      //height: 40,
-                      child: GridView.builder(
-                        shrinkWrap: true, // Avoid scrolling
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount:
-                        selectedImages.length,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 8),
-                        itemBuilder:
-                            (BuildContext context,
-                            int index) {
-                          return Center(
-                              child: kIsWeb
-                                  ? Image.network(
-                                  selectedImages[
-                                  index]
-                                      .path)
-                                  : Image.file(
-                                  selectedImages[
-                                  index]));
-                        },
+                selectedImages.isEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          // height: 40,
+                        ),
+                      )
+                    : Padding(
+                        padding: const EdgeInsets.only(left: 25, right: 50),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          // height: 40,
+                          child: Container(
+                            width: 40,
+                            //height: 40,
+                            child: GridView.builder(
+                              shrinkWrap: true, // Avoid scrolling
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: selectedImages.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount: 8),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Center(
+                                    child: kIsWeb
+                                        ? Image.network(
+                                            selectedImages[index].path)
+                                        : Image.file(selectedImages[index]));
+                              },
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
                 // FutureBuilder(
                 //     future: getattchmentData(widget.leadId, "lead.lead"),
                 //     builder: (context, AsyncSnapshot snapshot) {
@@ -5722,17 +5929,24 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 //       return Center(child: const CircularProgressIndicator());
                 //     }),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 0, vertical: 0),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
 
                     value: templateName,
-                    hint: Text("Use template",
-                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
+                    hint: Text(
+                      "Use template",
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
+                    ),
                     searchHint: null,
                     autofocus: false,
-                    onChanged: (value) async{
+                    onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
                         print("value");
@@ -5743,80 +5957,74 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       print(templateId);
                       print(widget.quotationId);
                       print("djbfkjnksdnk");
-                      var resultData =  await templateSelectionData(templateId,widget.quotationId,"sale.order");
+                      var resultData = await templateSelectionData(
+                          templateId, widget.quotationId, "sale.order");
 
-                      if(resultData!=""){
-                        setState((){
+                      if (resultData != "") {
+                        setState(() {
                           recipient?.clear();
                           selctedRecipient.clear();
                           editRecipientName.clear();
                           subjectController.text = resultData["subject"];
                           bodyController.text = resultData["body"];
 
-
-
-                          for(int i=0;i<resultData['partner_ids'].length;i++)
-                          {
-
+                          for (int i = 0;
+                              i < resultData['partner_ids'].length;
+                              i++) {
                             selctedRecipient.add(resultData['partner_ids'][i]);
-
-
                           }
 
-
-                          for(int i=0;i<selctedRecipient.length;i++){
-                            editRecipientName.add(new ValueItem(label: selctedRecipient[i]['display_name'],value:selctedRecipient[i]['id'].toString() ));
-
+                          for (int i = 0; i < selctedRecipient.length; i++) {
+                            editRecipientName.add(new ValueItem(
+                                label: selctedRecipient[i]['display_name'],
+                                value: selctedRecipient[i]['id'].toString()));
                           }
 
-                          recipient = editRecipientName.map((item) => item.value).toList();
-
-
-
-
+                          recipient = editRecipientName
+                              .map((item) => item.value)
+                              .toList();
                         });
                       }
 
-
-
                       print(resultData["body"]);
                       print("dajksfkdmvd ");
-
                     },
 
                     dialogBox: false,
                     isExpanded: true,
-                    menuConstraints: BoxConstraints.tight(
-                        const Size.fromHeight(300)),
+                    menuConstraints:
+                        BoxConstraints.tight(const Size.fromHeight(300)),
                     itemsPerPage: 10,
                     currentPage: currentPage,
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
-                            child: Text(item["name"], style: TextStyle(
-                              fontSize: 12,fontWeight: FontWeight.w400,color: Colors.black,fontFamily: 'Mulish',),),
-                          )));
+                        width: 300,
+                        child: Text(
+                          item["name"],
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                            fontFamily: 'Mulish',
+                          ),
+                        ),
+                      )));
                     },
-                    futureSearchFn: (String? keyword, String? orderBy,
+                    futureSearchFn: (String? keyword,
+                        String? orderBy,
                         bool? orderAsc,
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
-                      Response response = await get(Uri.parse(
-                          "${baseUrl}api/message_templates?page_no=${pageNb ??
-                              1}&count=10${keyword == null
-                              ? ""
-                              : "&filter=$keyword"}&model=sale.order"),
+                      Response response = await get(
+                        Uri.parse(
+                            "${baseUrl}api/message_templates?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=sale.order"),
                         headers: {
-
                           'Authorization': 'Bearer $token',
-
                         },
-                      )
-                          .timeout(const Duration(
+                      ).timeout(const Duration(
                         seconds: 10,
                       ));
-
 
                       if (response.statusCode != 200) {
                         throw Exception("failed to get data from internet");
@@ -5826,27 +6034,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                       int nbResults = data["length"];
 
-                      List<DropdownMenuItem> results = (data["record"] as List<
-                          dynamic>)
-                          .map<DropdownMenuItem>((item) =>
-                          DropdownMenuItem(
-                            value: item,
-                            child: Card(
-
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text(
-                                    "${item["name"]}"),
-
-                              ),
-                            ),
-                          ))
-                          .toList();
+                      List<DropdownMenuItem> results =
+                          (data["record"] as List<dynamic>)
+                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text("${item["name"]}"),
+                                      ),
+                                    ),
+                                  ))
+                              .toList();
                       return (Tuple2<List<DropdownMenuItem>, int>(
                           results, nbResults));
                     },
-
-
                   ),
                 ),
                 Padding(
@@ -5862,17 +6064,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,
+                                  fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async{
-                            for (int i = 0;
-                            i < selectedImages.length;
-                            i++) {
-                              imagepath =
-                                  selectedImages[i].path.toString();
+                          onPressed: () async {
+                            for (int i = 0; i < selectedImages.length; i++) {
+                              imagepath = selectedImages[i].path.toString();
                               File imagefile =
-                              File(imagepath); //convert Path to File
+                                  File(imagepath); //convert Path to File
                               Uint8List imagebytes = await imagefile
                                   .readAsBytes(); //convert to bytes
                               base64string = base64.encode(imagebytes);
@@ -5882,18 +6082,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               //
 
                               String dataImages =
-                                  '{"name":"name","type":"binary","datas":"${base64string
-                                  .toString()}"}';
+                                  '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
                               Map<String, dynamic> jsondata =
-                              jsonDecode(dataImages);
+                                  jsonDecode(dataImages);
                               myData1.add(jsondata);
                             }
 
-
-
-                            String resMessage =   await createSendmessage(myData1);
-                            if(resMessage == "success"){
+                            String resMessage =
+                                await createSendmessage(myData1);
+                            if (resMessage == "success") {
                               setState(() {
                                 logDataHeader.clear();
                                 logDataTitle.clear();
@@ -5910,7 +6108,6 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             }
                             print(recipient);
                             print("tagattagagaga");
-
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -5918,26 +6115,31 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 150),
-                  child: TextButton(onPressed:()async{
-                    await newTemplate();
-
-                  }, child:Text("Save As New Template",style: TextStyle(color: Colors.black),)),
+                  child: TextButton(
+                      onPressed: () async {
+                        await newTemplate();
+                      },
+                      child: Text(
+                        "Save As New Template",
+                        style: TextStyle(color: Colors.black),
+                      )),
                 )
-
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
 
   newTemplate() async {
-    String value = await newTemplateCreate(
-        bodyController.text , "sale.order",subjectController.text, widget.quotationId);
+    String value = await newTemplateCreate(bodyController.text, "sale.order",
+        subjectController.text, widget.quotationId);
 
     print(value);
     print("valuesss");
@@ -5946,7 +6148,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   createSendmessage(List myData1) async {
     String value = await sendMessageCreate(
-        bodyController.text , "sale.order",subjectController.text, widget.quotationId,recipient,templateId,myData1);
+        bodyController.text,
+        "sale.order",
+        subjectController.text,
+        widget.quotationId,
+        recipient,
+        templateId,
+        myData1);
 
     print(value);
     print("valuesss");
@@ -5958,37 +6166,45 @@ class _QuotationDetailState extends State<QuotationDetail> {
       return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
-          title: TextButton(onPressed: ()async {
+          title: TextButton(
+            onPressed: () async {
+              var responce = await followerDefaultDataGet(
+                  widget.quotationId, "sale.order");
 
-            var responce=  await followerDefaultDataGet(widget.quotationId,"sale.order");
+              int followerId;
+              var message;
+              bool send_mail;
 
-            int followerId;
-            var message;
-            bool send_mail;
+              followerId = responce['id'];
+              message = responce['message']
+                      .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                      .toString() ??
+                  "";
+              send_mail = responce['send_mail'];
 
-            followerId = responce['id'];
-            message = responce['message'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                .toString() ??
-                "";
-            send_mail = responce['send_mail'];
-
-            showDialog(
-              context: context,
-              builder: (BuildContext context) =>
-                  _buildAddfollowersPopupDialog(context, followerId,message,send_mail),
-            ).then((value) => setState(() {}));
-          },
+              showDialog(
+                context: context,
+                builder: (BuildContext context) =>
+                    _buildAddfollowersPopupDialog(
+                        context, followerId, message, send_mail),
+              ).then((value) => setState(() {}));
+            },
             child: Padding(
               padding: const EdgeInsets.only(right: 60),
               child: Container(
-                  width:  MediaQuery.of(context).size.width/2,
-                  child: Text("Add Follower",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',))),
-            ),),
-          content:  Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  child: Text("Add Follower",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'Mulish',
+                      ))),
+            ),
+          ),
+          content: Container(
             color: Color(0xFFF6F6F6),
-
             width: double.maxFinite,
-            height:  MediaQuery.of(context).size.height/5,
+            height: MediaQuery.of(context).size.height / 5,
             child: ListView.builder(
               itemCount: followers.length,
               itemBuilder: (_, i) {
@@ -5997,132 +6213,142 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   children: [
                     followers[i]['image'] != ""
                         ? Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 10),
-                      child: Container(
-                        width: 30,
-                        height: 25,
-                        //color: Colors.green,
-                        // decoration: BoxDecoration(
-                        //   border: Border.all(),
-                        //
-                        // ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(18),
-                            child: Image.network(
-                                "${followers[i]['image']}?token=${token}"),
-                          ),
-                        ),
-                      ),
-                    )
+                            padding: const EdgeInsets.only(left: 15, right: 10),
+                            child: Container(
+                              width: 30,
+                              height: 25,
+                              //color: Colors.green,
+                              // decoration: BoxDecoration(
+                              //   border: Border.all(),
+                              //
+                              // ),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18),
+                                  child: Image.network(
+                                      "${followers[i]['image']}?token=${token}"),
+                                ),
+                              ),
+                            ),
+                          )
                         : Padding(
-                      padding: const EdgeInsets.only(left: 15,right: 10),
-                      child: Container(
-                        width: 30,
-                        height: 25,
-                        // decoration: BoxDecoration(
-                        //     border: Border.all(
-                        //       //  color: Colors.green
-                        //     ),
-                        //
-                        // ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
-                            // Adjust the size of the icon as per your requirements
-                            color: Colors
-                                .grey, // Adjust the color of the icon as per your requirements
+                            padding: const EdgeInsets.only(left: 15, right: 10),
+                            child: Container(
+                              width: 30,
+                              height: 25,
+                              // decoration: BoxDecoration(
+                              //     border: Border.all(
+                              //       //  color: Colors.green
+                              //     ),
+                              //
+                              // ),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 20,
+                                  // Adjust the size of the icon as per your requirements
+                                  color: Colors
+                                      .grey, // Adjust the color of the icon as per your requirements
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
                     Container(
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width/3.5,
-                        child: Text(followers[i]['name'],style: TextStyle(  fontFamily: 'Mulish',fontSize: 12),)),
+                        width: MediaQuery.of(context).size.width / 3.5,
+                        child: Text(
+                          followers[i]['name'],
+                          style: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                        )),
                     Row(
                       children: [
-                        IconButton(onPressed: ()async{
+                        IconButton(
+                            onPressed: () async {
+                              List followerSub = await followerSubscription(
+                                  followers[i]['id']);
 
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildEditfollowersPopupDialog(context,
+                                        followerSub, followers[i]['id']),
+                              ).then((value) => setState(() {}));
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              size: 18,
+                            )),
+                        IconButton(
+                            onPressed: () async {
+                              print(followers[i]['id']);
+                              print("ghkjdghjh");
 
-                          List followerSub = await followerSubscription(followers[i]['id']);
+                              // "res_model": "lead.lead",
+                              //
+                              // "res_id": 197,
+                              //
+                              // "follower_id": 1822
 
+                              String resMessage = await unFollowing(
+                                  widget.quotationId,
+                                  followers[i]['id'],
+                                  "sale.order");
 
-
-
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                _buildEditfollowersPopupDialog(context, followerSub,followers[i]['id']),
-                          ).then((value) => setState(() {}));
-                        }, icon:Icon(Icons.edit,size: 18,)),
-                        IconButton(onPressed: ()async{
-                          print(followers[i]['id']);
-                          print("ghkjdghjh");
-
-                          // "res_model": "lead.lead",
-                          //
-                          // "res_id": 197,
-                          //
-                          // "follower_id": 1822
-
-                          String resMessage = await unFollowing(widget.quotationId,followers[i]['id'],"sale.order");
-
-                          if(resMessage=="success"){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => QuotationDetail(widget.quotationId)));
-
-
-                          }
-
-
-                        }, icon:Icon(Icons.close,size: 18,))
+                              if (resMessage == "success") {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => QuotationDetail(
+                                            widget.quotationId)));
+                              }
+                            },
+                            icon: Icon(
+                              Icons.close,
+                              size: 18,
+                            ))
                       ],
                     ),
-
-
                   ],
                 );
               },
-            ),)
-      );
+            ),
+          ));
     });
   }
 
-  _buildAddfollowersPopupDialog(BuildContext context,int followerId,String message,bool send_mail){
-
-    isCheckedEmail =  send_mail;
+  _buildAddfollowersPopupDialog(
+      BuildContext context, int followerId, String message, bool send_mail) {
+    isCheckedEmail = send_mail;
     bodyController.text = message;
 
-    return StatefulBuilder(builder:(context,setState){
+    return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+        content: Container(
+          width: MediaQuery.of(context).size.width,
           // height: MediaQuery
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Invite Follower",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),),
+                    Text(
+                      "Invite Follower",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
+                    ),
                     IconButton(
                       icon: Image.asset(
                         "images/cross.png",
@@ -6130,8 +6356,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ),
                       onPressed: () {
                         setState(() {
-                          templateName= null;
-                          templateId=null;
+                          templateName = null;
+                          templateId = null;
                           recipient!.clear();
                           bodyController.text = "";
                           subjectController.text = "";
@@ -6142,54 +6368,62 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ],
                 ),
-                Text("Recipients",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
-                SizedBox(height: 5,),
+                Text(
+                  "Recipients",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 // SizedBox(height: 10,),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 5, vertical: 5),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
-                    hint: 'Add contacts to notify...' ,
-                    hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
-
+                    hint: 'Add contacts to notify...',
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w600,
+                    ),
                     selectedOptions: editRecipientName
-                        .map((recipient) => ValueItem( label: recipient.label,value: recipient.value))
+                        .map((recipient) => ValueItem(
+                            label: recipient.label, value: recipient.value))
                         .toList(),
                     onOptionSelected: (options) {
                       print(options);
                       recipient!.clear();
                       for (var options in options) {
-
                         recipient!.add(options.value);
                         print('Label: ${options.label}');
                         print('Value: ${options.value}');
                         print(recipient);
                         print('-hgvvjb--');
                       }
-
                     },
                     networkConfig: NetworkConfig(
-
-
-                      url: "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                      url:
+                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
-
-
                         'Authorization': 'Bearer $token',
                       },
                     ),
                     chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-
                     responseParser: (response) {
                       debugPrint('Response: $response');
 
-                      final list = (response['record'] as List<
-                          dynamic>).map((e) {
+                      final list =
+                          (response['record'] as List<dynamic>).map((e) {
                         final item = e as Map<String, dynamic>;
                         return ValueItem(
-
                           label: item['display_name'],
                           value: item['id'].toString(),
                         );
@@ -6207,9 +6441,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     }),
                   ),
                 ),
-                SizedBox(height: 5,),
-                Text("Send Email",style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "Send Email",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
@@ -6243,17 +6489,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 // SizedBox(height: 5,),
                 Container(
                   //color: Colors.red,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey)
-                  ),
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height/5,
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height / 5,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Container(
@@ -6264,12 +6503,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         expands: true,
                         maxLines: null,
                         controller: bodyController,
-
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
-                          hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
-
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -6289,28 +6531,26 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,
+                                  fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async{
+                          onPressed: () async {
+                            String resmessage = await followerCreate(
+                                message, followerId, recipient, send_mail);
 
-                            String resmessage =   await followerCreate( message, followerId ,recipient, send_mail);
-
-                            if(resmessage == "success"){
+                            if (resmessage == "success") {
                               bodyController.clear();
-                              followerId=0;
+                              followerId = 0;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => QuotationDetail(widget.quotationId)));
-
+                                      builder: (context) =>
+                                          QuotationDetail(widget.quotationId)));
                             }
 
                             print(recipient);
                             print("tagattagagaga");
-
-
-
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -6342,23 +6582,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 //     ),
                 //   ),
                 // ),
-                SizedBox(height: 5,),
-
-
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
-  _buildEditfollowersPopupDialog(BuildContext context,List followerSub,int followerId){
-    return StatefulBuilder(builder:(context,setState){
+
+  _buildEditfollowersPopupDialog(
+      BuildContext context, List followerSub, int followerId) {
+    return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content:Container(
+        content: Container(
           // width: MediaQuery
           //     .of(context)
           //     .size
@@ -6367,7 +6609,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
           //     .of(context)
           //     .size
           //     .height,
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -6376,10 +6618,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   children: [
                     Row(
                       children: [
-                        Text("Edit Subscription of",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
-                        SizedBox(width: 5,),
-                        Text(" Follower name",style: TextStyle(fontSize: 16,   fontFamily: 'Mulish',color: Color(0xFF212121),fontWeight: FontWeight.w600),),
-
+                        Text(
+                          "Edit Subscription of",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Mulish',
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          " Follower name",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Mulish',
+                              color: Color(0xFF212121),
+                              fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
                     IconButton(
@@ -6388,23 +6645,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        setState(() {
-
-                        });
+                        setState(() {});
 
                         Navigator.pop(context);
                       },
                     ),
                   ],
                 ),
-                Divider(color: Colors.grey,),
-
+                Divider(
+                  color: Colors.grey,
+                ),
                 Container(
                   width: double.maxFinite,
-                  height:  MediaQuery.of(context).size.height/2.5,
+                  height: MediaQuery.of(context).size.height / 2.5,
                   child: ListView.builder(
                     itemCount: followerSub.length,
-
                     itemBuilder: (_, i) {
                       isCheckedFollowers = followerSub[i]["selected"];
                       return Row(
@@ -6419,25 +6674,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   onChanged: (bool? value) {
                                     setState(() {
                                       isCheckedFollowers = value!;
-                                      followerSub[i]["selected"]=isCheckedFollowers;
-
+                                      followerSub[i]["selected"] =
+                                          isCheckedFollowers;
                                     });
                                   },
                                 ),
                               ),
-                              Text(followerSub[i]["name"],style: TextStyle(   fontFamily: 'Mulish',fontSize: 12)),
+                              Text(followerSub[i]["name"],
+                                  style: TextStyle(
+                                      fontFamily: 'Mulish', fontSize: 12)),
                             ],
                           ),
-
-
-
                         ],
                       );
                     },
-                  ),),
-
-
-
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 40),
                   child: Center(
@@ -6454,26 +6706,28 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async{
-
+                          onPressed: () async {
                             print(followerSub);
-                            List selectedItems = followerSub.where((item) => item["selected"] == true).toList();
+                            List selectedItems = followerSub
+                                .where((item) => item["selected"] == true)
+                                .toList();
 
-                            List<int> selectedIds = selectedItems.map<int>((item) => item["id"]).toList();
+                            List<int> selectedIds = selectedItems
+                                .map<int>((item) => item["id"])
+                                .toList();
 
                             print(selectedIds);
 
+                            String resMessage =
+                                await followerSubscriptionAdding(
+                                    followerId, selectedIds);
 
-
-                            String resMessage = await followerSubscriptionAdding(followerId,selectedIds);
-
-                            if(resMessage == "success"){
+                            if (resMessage == "success") {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => QuotationDetail(widget.quotationId)));
-
-
+                                      builder: (context) =>
+                                          QuotationDetail(widget.quotationId)));
                             }
                           },
                           style: ElevatedButton.styleFrom(
@@ -6482,15 +6736,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
-
-
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
-          ) ,
-        ) ,
+          ),
+        ),
       );
     });
   }
-
 }
