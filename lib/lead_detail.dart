@@ -147,7 +147,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List<File> selectedImages = [];
   List<File> attachmentSelectedImages = [];
   List<dynamic> selectedImagesDisplay = [];
-  String mimetype = "";
+  String  mimetype = "";
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
   String personImg = "";
@@ -3107,8 +3107,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 logDataTitle[indexx][indexs]
                                                 ['attachment_ids'];
 
-                                                mimetype =   selectedImagesDisplay[indexx]
-                                                ['mimetype'];
+                                                print(selectedImagesDisplay.length);
+                                                print(selectedImagesDisplay);
+                                                print(indexs);
+                                                print(indexx);
+                                                print("datatatatatatatatata");
+                                                print("datatatatatatatatata");
+
+                                                for(int i =0 ; i< selectedImagesDisplay.length;i++){
+                                                  selectedImagesDisplay.length>0? mimetype =   selectedImagesDisplay[i]
+                                                  ['mimetype']: mimetype ="";
+
+                                                }
+
 
                                                 print(mimetype);
                                                 print("mimetypefinals");
@@ -3583,6 +3594,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               .only(
                                                                               left: 40),
                                                                           child: Container(
+                                                                            color:Colors.blue,
                                                                             width: MediaQuery
                                                                                 .of(
                                                                                 context)
@@ -3599,128 +3611,124 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               right: 0),
                                                                           child:
 
-                                                                          mimetype== "application/pdf"?  Container(
-                                                                      //color: Colors.green,
+                                                                          mimetype== "application/pdf"?  GridView
+                                                                              .builder(
+                                                                          shrinkWrap: true,
+                                                                          // Avoid scrolling
+                                                                          physics: NeverScrollableScrollPhysics(),
+                                                                          itemCount: selectedImagesDisplay
+                                                                              .length,
+                                                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                          crossAxisCount: 1),
+                                                                          itemBuilder: (
+                                                                          BuildContext context,
+                                                                          int index) {
+                                                                          print(
+                                                                          selectedImagesDisplay
+                                                                              .length);
+                                                                          print(
+                                                                          selectedImagesDisplay[index]["datas"]);
+                                                                          print(
+                                                                          "selectedImagesDisplay.length,");
 
-                                                                      width: MediaQuery
-                                                                          .of(
-                                                                      context)
-                                                                          .size
-                                                                          .width / 1.5,
-                                                                      // height: 140,
-                                                                      child: GridView
-                                                                          .builder(
-                                                                      shrinkWrap: true,
-                                                                      // Avoid scrolling
-                                                                      physics: NeverScrollableScrollPhysics(),
-                                                                      itemCount: selectedImagesDisplay
-                                                                          .length,
-                                                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                      crossAxisCount: 1),
-                                                                      itemBuilder: (
-                                                                      BuildContext context,
-                                                                      int index) {
-                                                                      print(
-                                                                      selectedImagesDisplay
-                                                                          .length);
-                                                                      print(
-                                                                      selectedImagesDisplay[index]["datas"]);
-                                                                      print(
-                                                                      "selectedImagesDisplay.length,");
-
-                                                                      return Center(
-                                                                      child:
-
-
-                                                                      Padding(
-                                                                        padding: const EdgeInsets.only(left: 25),
-                                                                        child: Container(
-                                                                          margin: const EdgeInsets.all(5.0),
-                                                                         //padding: const EdgeInsets.all(10.0),
-                                                                          //color: Colors.white,
-                                                                          decoration: BoxDecoration(
-                                                                              color: Colors.grey[350],
-                                                                              border: Border.all(color: Colors.grey)
-                                                                          ),
-                                                                          width: MediaQuery.of(context).size.width,
-                                                                          height: MediaQuery.of(context).size.height/12,
-                                                                          child: Column(
-                                                                            children: [
-                                                                              Row(
+                                                                          return Padding(
+                                                                            padding: const EdgeInsets.only(left: 25),
+                                                                            child: Container(
+                                                                              margin: const EdgeInsets.all(5.0),
+                                                                             //padding: const EdgeInsets.all(10.0),
+                                                                              //color: Colors.white,
+                                                                              decoration: BoxDecoration(
+                                                                                  color: Colors.grey[350],
+                                                                                  border: Border.all(color: Colors.grey)
+                                                                              ),
+                                                                              width: MediaQuery.of(context).size.width,
+                                                                             // height: MediaQuery.of(context).size.height/18,
+                                                                              child: Column(
                                                                                 children: [
-                                                                                  Padding(
-                                                                                    padding: const EdgeInsets.only(top: 10,left: 5),
-                                                                                    child: FittedBox(
-                                                                                      child: SizedBox(
-                                                                                        width: 45,
-                                                                                        height: 45,
-                                                                                        child: DecoratedBox(
-                                                                                          decoration: BoxDecoration(
-                                                                                            gradient: LinearGradient(
-                                                                                              colors: [Color(0xFFE57373), Color(0xFFEF5350)],
-                                                                                            ),
-                                                                                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                                          ),
-                                                                                          child: Center(
-                                                                                            child: Icon(
-                                                                                              Icons.picture_as_pdf_sharp,
-                                                                                              color: Colors.white,
-                                                                                              size: 25,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(width: 10,),
-                                                                                  Column(
+                                                                                  Row(
                                                                                     children: [
-                                                                                      Container(
-                                                                                          width: MediaQuery.of(context).size.width/3.8,
-                                                                                          //color: Colors.blue,
-                                                                                          child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),)),
-                                                                                      SizedBox(height: 10,),
-                                                                                      Container(
-                                                                                          width: MediaQuery.of(context).size.width/3.8,
-                                                                                          //color: Colors.blue,
-                                                                                          child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 11,fontFamily: 'Mulish'),)),
-                                                                                    ],
-                                                                                  ),
-                                                                                  SizedBox(width: 20,),
-                                                                                  Column(
-                                                                                    children: [
-                                                                                      Container(
-                                                                                        width: 30,
-                                                                                        height: 30,
-                                                                                        //color: Colors.green,
-                                                                                        child: IconButton(
-                                                                                          icon:SvgPicture.asset("images/trash.svg"),
-                                                                                          onPressed: () {},
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsets.only(top: 10,left: 5),
+                                                                                        child: FittedBox(
+                                                                                          child: SizedBox(
+                                                                                            width: 45,
+                                                                                            height: 45,
+                                                                                            child: DecoratedBox(
+                                                                                              decoration: BoxDecoration(
+                                                                                                gradient: LinearGradient(
+                                                                                                  colors: [Color(0xFFE57373), Color(0xFFEF5350)],
+                                                                                                ),
+                                                                                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                              ),
+                                                                                              child: Center(
+                                                                                                child: Icon(
+                                                                                                  Icons.picture_as_pdf_sharp,
+                                                                                                  color: Colors.white,
+                                                                                                  size: 25,
+                                                                                                ),
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
                                                                                         ),
                                                                                       ),
-                                                                                      Container(
-                                                                                        width: 34,
-                                                                                        height: 20,
-                                                                                        //color: Colors.green,
-                                                                                        child: IconButton(
-                                                                                          icon:Icon(Icons.download),
-                                                                                          onPressed: () {},
-                                                                                        ),
+                                                                                      SizedBox(width: 10,),
+                                                                                      Column(
+                                                                                        children: [
+                                                                                          Container(
+                                                                                              width: MediaQuery.of(context).size.width/3.8,
+                                                                                              //color: Colors.blue,
+                                                                                              child: Text("pdf name.pdf",style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),)),
+                                                                                          SizedBox(height: 10,),
+                                                                                          Container(
+                                                                                              width: MediaQuery.of(context).size.width/3.8,
+                                                                                              //color: Colors.blue,
+                                                                                              child: Text("PDF",style: TextStyle(color: Colors.black, fontSize: 11,fontFamily: 'Mulish'),)),
+                                                                                        ],
                                                                                       ),
-                                                                                    ],
-                                                                                  ),
+                                                                                      SizedBox(width: 20,),
+                                                                                      Column(
+                                                                                        children: [
+                                                                                          Container(
+                                                                                            width: 30,
+                                                                                            height: 30,
+                                                                                            //color: Colors.green,
+                                                                                            child: IconButton(
+                                                                                              icon:SvgPicture.asset("images/trash.svg"),
+                                                                                              onPressed: () {},
+                                                                                            ),
+                                                                                          ),
+                                                                                          Container(
+                                                                                            width: 34,
+                                                                                            height: 20,
+                                                                                            //color: Colors.green,
+                                                                                            child: IconButton(
+                                                                                              icon:Icon(Icons.download),
+                                                                                              onPressed: () {
 
 
+                                                                                                print(index);
+                                                                                                print(selectedImagesDisplay);
+                                                                                                print(selectedImagesDisplay[index]["datas"]);
+                                                                                                print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                print("final print dataaa");
+
+
+
+                                                                                              },
+                                                                                            ),
+                                                                                          ),
+                                                                                        ],
+                                                                                      ),
+
+
+                                                                                    ],
+                                                                                  )
                                                                                 ],
-                                                                              )
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      )
-                                                                      );
-                                                                      },
-                                                                      ),
-                                                                      ):
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                          },
+                                                                          ):
 
 
 
