@@ -3664,6 +3664,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
                                                                                                                 //color: Colors.blue,
                                                                                                                 child: Text(
+
+
                                                                                                                   "pdf name.pdf",
                                                                                                                   style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
                                                                                                                 )),
@@ -3721,54 +3723,55 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                           :
 
                                                                                       (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
-                                                                                      Center(
-                                                                                              child: Container(
-                                                                                                child: Stack(
-                                                                                                  children: [
-                                                                                                    ClipRRect(
-                                                                                                      child: Image.network(
-                                                                                                        "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                        height: 100,
-                                                                                                        width: 80,
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    Positioned(
-                                                                                                        left: 37,
-                                                                                                        right: 0,
-                                                                                                        bottom: 70,
-                                                                                                        top: 1,
-                                                                                                        child: Container(
-                                                                                                          width: 50,
-                                                                                                          height: 50,
-                                                                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
-                                                                                                          // color: Colors
-                                                                                                          //     .grey[200],
-                                                                                                          child: IconButton(
-                                                                                                            icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                            onPressed: () async {
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                              int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                              var data = await deleteLogAttachment(lodAttachmentId);
-
-                                                                                                              if (data['message'] == "Success") {
-                                                                                                                print("jhbdndsjbv");
-                                                                                                                await getLeadDetails();
-                                                                                                                setState(() {
-                                                                                                                  logDataHeader.clear();
-                                                                                                                  logDataTitle.clear();
-                                                                                                                  selectedImagesDisplay.clear();
-                                                                                                                });
-                                                                                                              }
-
-                                                                                                              print(data);
-                                                                                                              print("delete testststs");
-                                                                                                            },
-                                                                                                          ),
-                                                                                                        ))
-                                                                                                  ],
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsets.only(left: 20),
+                                                                                        child: Container(
+                                                                                          child: Stack(
+                                                                                            children: [
+                                                                                              ClipRRect(
+                                                                                                child: Image.network(
+                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                  height: 100,
+                                                                                                  width: 80,
                                                                                                 ),
                                                                                               ),
-                                                                                            ):
+                                                                                              Positioned(
+                                                                                                  left: 40,
+                                                                                                  right: 175,
+                                                                                                  bottom: 50,
+                                                                                                  top: 0,
+                                                                                                  child: Container(
+                                                                                                    width: 20,
+                                                                                                    height: 20,
+                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                    // color: Colors
+                                                                                                    //     .grey[200],
+                                                                                                    child: IconButton(
+                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                      onPressed: () async {
+                                                                                                        print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                                        if (data['message'] == "Success") {
+                                                                                                          print("jhbdndsjbv");
+                                                                                                          await getLeadDetails();
+                                                                                                          setState(() {
+                                                                                                            logDataHeader.clear();
+                                                                                                            logDataTitle.clear();
+                                                                                                            selectedImagesDisplay.clear();
+                                                                                                          });
+                                                                                                        }
+
+                                                                                                        print(data);
+                                                                                                        print("delete testststs");
+                                                                                                      },
+                                                                                                    ),
+                                                                                                  ))
+                                                                                            ],
+                                                                                          ),
+                                                                                        ),
+                                                                                      ):
                                                                                           Container();
                                                                                     },
                                                                                   ),
