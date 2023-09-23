@@ -4157,6 +4157,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
       } else {
         tagss = [];
       }
+      followerCount = data["followers_count"].toString() ?? "0";
+      attachmentCount = (data["message_attachment_count"] ?? "0").toString();
+
 
       _isInitialized = true;
     });

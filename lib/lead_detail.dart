@@ -3267,7 +3267,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       Container(
                                                                     //color: Colors.cyan,
                                                                     height: 30,
-                                                                    width: 82,
+                                                                    width: 102,
                                                                   ),
                                                                 ),
                                                                 Positioned(
@@ -3277,7 +3277,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   // top:0,
                                                                   child:
                                                                       Container(
-                                                                    width: 82.0,
+                                                                    width: 102.0,
                                                                     height:
                                                                         30.0,
                                                                     decoration:
@@ -3293,27 +3293,34 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           MainAxisAlignment
                                                                               .spaceAround,
                                                                       children: [
-                                                                        // Container(
-                                                                        //   height:
-                                                                        //   25,
-                                                                        //   width:
-                                                                        //   25,
-                                                                        //   //color: Colors.red,
-                                                                        //   child:
-                                                                        //   Align(
-                                                                        //     alignment:
-                                                                        //     Alignment
-                                                                        //         .topRight,
-                                                                        //     child:
-                                                                        //     IconButton(
-                                                                        //       icon: Icon(
-                                                                        //           Icons
-                                                                        //               .add_reaction_outlined,
-                                                                        //           size: 15.0),
-                                                                        //       onPressed: () {},
-                                                                        //     ),
-                                                                        //   ),
-                                                                        // ),
+                                                                        Container(
+                                                                          height:
+                                                                          25,
+                                                                          width:
+                                                                          25,
+                                                                          //color: Colors.red,
+                                                                          child:
+                                                                          Align(
+                                                                            alignment:
+                                                                            Alignment
+                                                                                .topRight,
+                                                                            child:
+                                                                            IconButton(
+                                                                              icon: Icon(
+                                                                                  Icons
+                                                                                      .add_reaction_outlined,
+                                                                                  size: 15.0),
+                                                                              onPressed: ()  {
+                                                                                showDialog(
+                                                                                  context: context,
+                                                                                  builder: (BuildContext context) =>
+                                                                                      _buildEmojiPopupDialog(
+                                                                                          context),
+                                                                                ).then((value) => setState(() {}));
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                        ),
                                                                         StatefulBuilder(builder: (BuildContext
                                                                                 context,
                                                                             StateSetter
@@ -4316,6 +4323,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   setState(() {
                                     summaryController.text = "";
                                     commandsController.text = "";
+
                                     typeIds = 0;
                                   });
                                   //Navigator.pop(context);
@@ -5044,7 +5052,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     },
                     networkConfig: NetworkConfig(
                       url:
-                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                          "${baseUrl}api/recipients?&model=lead.lead&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
                         'Authorization': 'Bearer $token',
@@ -6436,5 +6444,113 @@ class _LeadDetailState extends State<LeadDetail> {
     print(value);
     print("valuesss");
     return value;
+  }
+  _buildEmojiPopupDialog(BuildContext context) {
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+
+          content: Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width / 1.6,
+            height: MediaQuery.of(context).size.height /4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Image.asset("images/image.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image1.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image2.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image3.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image4.png"),
+                      onPressed: (){},
+                    ),
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Image.asset("images/image5.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image6.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image7.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image8.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image9.png"),
+                      onPressed: (){},
+                    ),
+
+                  ],
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: Image.asset("images/image10.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image11.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image12.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image13.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image14.png"),
+                      onPressed: (){},
+                    ),
+
+
+                  ],
+                ),
+                Row(
+                  children: [
+
+                    IconButton(
+                      icon: Image.asset("images/image15.png"),
+                      onPressed: (){},
+                    ),
+
+
+
+                  ],
+                ),
+
+              ],
+            ),
+
+          ));
+    });
   }
 }

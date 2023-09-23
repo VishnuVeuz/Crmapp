@@ -2345,7 +2345,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
       insetPadding: EdgeInsets.all(10),
       content: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        //height: MediaQuery.of(context).size.height,
         //color: Colors.green,
         child: SingleChildScrollView(
           child: Column(
@@ -2856,63 +2856,115 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                               ),
                             ),
                             onPressed: () async{
+                              if (productType == "order") {
+                                productUnitPrice.text == ""
+                                    ? productUnitPrice.text = "0"
+                                    : productUnitPrice.text =
+                                    productUnitPrice.text;
 
-                              productUnitPrice.text == ""
-                                  ? productUnitPrice.text = "0"
-                                  : productUnitPrice.text =
-                                  productUnitPrice.text;
+                                String productName =
+                                productDescription.text.toString();
+                                print(productName);
+                                print("productnamee");
+                                print(productTax.length);
+                                print(editProductTaxName);
+                                print(productTax);
 
-                              String productName =
-                              productDescription.text.toString();
-                              print(productName);
-                              print(productTax.length);
-                              print(selectedtaxesIdFinal);
-                              print(editProductTaxName);
-                              print("productnamee");
+                                for (int i = 0; i <
+                                    productTax.length; i++) {
+                                  String dataoTaxes =
+                                      '{"id":${editProductTaxName[i]
+                                      .value},"name":"${editProductTaxName[i]
+                                      .label}"}';
 
-                              for (int i = 0; i < productTax.length; i++) {
-                                String dataoTaxes =
-                                    '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+                                  Map<String, dynamic> jsondata =
+                                  jsonDecode(dataoTaxes);
+
+                                  selectedtaxesIdFinal.add(dataoTaxes);
+                                  print(selectedtaxesIdFinal);
+                                  print(editProductTaxName);
+                                  print("taxesssssss");
+                                }
+
+                                double quantity, price;
+
+                                quantity =
+                                    double.parse(productQuantity.text);
+                                price =
+                                    double.parse(productUnitPrice.text);
+
+                                productSubTotal = price * quantity;
+
+                                String dataone =
+                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
+                                    .text}","product_uom_qty":${double
+                                    .parse(productQuantity
+                                    .text)},"customer_lead":${double
+                                    .parse(
+                                    leadtime
+                                        .text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
+                                    .parse(productUnitPrice
+                                    .text)},"tax_id":${selectedtaxesIdFinal}}';
 
                                 Map<String, dynamic> jsondata =
-                                jsonDecode(dataoTaxes);
+                                jsonDecode(dataone);
+                                print(dataone);
+                                print("demo datatatata");
 
-                                selectedtaxesIdFinal.add(dataoTaxes);
-                                print(selectedtaxesIdFinal);
-                                print(editProductTaxName);
-                                print("taxesssssss");
+                                type == -1 ?
+                                orderLineProducts.add(jsondata) :
+
+                                orderLineProducts[type] = jsondata;
+                                print(productUomName['name']);
+                                print("demo datatatata1");
+                                // for app side
+
+                                print(orderLineProducts);
+                                print("orderLineProducts");
+
+
+                                _isInitialized = false;
+                                await productSum(orderLineProducts);
                               }
 
-                              double quantity, price;
 
-                              quantity = double.parse(productQuantity.text);
-                              price = double.parse(productUnitPrice.text);
+                              if (productType == "optionjal") {
+                                productUnitPrice.text == ""
+                                    ? productUnitPrice.text = "0"
+                                    : productUnitPrice.text =
+                                    productUnitPrice.text;
 
-                              productSubTotal = price * quantity;
-
-
-                              String dataone =
-                                  '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
-
-                              Map<String, dynamic> jsondata =
-                              jsonDecode(dataone);
-                              print(dataone);
-                              print("demo datatatata");
+                                String productName =
+                                productDescription.text.toString();
+                                print(productName);
+                                print("productnamee");
 
 
+                                String datatwo =
+                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
+                                    .text}","quantity":${double.parse(
+                                    productQuantity
+                                        .text)},"uom_id":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
+                                    .parse(productUnitPrice.text)}}';
 
-                              type == -1 ?
-                              orderLineProducts.add(jsondata) :
 
-                              orderLineProducts[type] = jsondata;
-                              print(productUomName['name']);
-                              print("demo datatatata1");
-                              // for app side
+                                Map<String, dynamic> jsondatatwo =
+                                jsonDecode(datatwo);
+                                print(datatwo);
+                                print("demo datatatatatwo");
 
-                              print(orderLineProducts);
-                              print("orderLineProducts");
+                                type == -1 ?
+                                optionalProducts.add(jsondatatwo) :
 
-                              await productSum(orderLineProducts);
+                                optionalProducts[type] = jsondatatwo;
+                                print(productUomName['name']);
+                                print("demo datatatata1");
+                                // for app side
+
+                                print(optionalProducts);
+                                print("orderLineProducts");
+                              }
+
 
                               setState(() {
                                 productTiltleName = null;
@@ -2923,15 +2975,13 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                                 productDescription.text = "";
                                 productUnitPrice.text = "";
                                 productQuantity.text = "";
+                                leadtime.text = "0";
 
                                 productTax.clear();
                                 selectedProductTax.clear();
                                 editProductTaxName.clear();
                                 selectedtaxesIdFinal.clear();
                               });
-
-                             // Navigator.pop(context);
-
 
                             },
                             style: ElevatedButton.styleFrom(
