@@ -129,11 +129,12 @@ class Calender extends StatelessWidget {
             children: [
 
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
                   Container(
                     width: 450,
-                    height: 60,
+                    height: 50,
                     color: Colors.white,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,7 +142,7 @@ class Calender extends StatelessWidget {
                         //  DateTime now = DateTime.now();
 
                         Padding(
-                          padding: const EdgeInsets.only(left:34),
+                          padding: const EdgeInsets.only(left:22),
                           child: Text(DateTime.now().toString(),style: TextStyle(fontWeight: FontWeight.w600,fontSize: 18,color: Color(0xFF292929),fontFamily: 'Mulish',),),
                         ),
 
@@ -150,9 +151,9 @@ class Calender extends StatelessWidget {
                       ],),
 
                   ),
-                  Divider(color: Color(0xFFEBEBEB),),
+                 // Divider(color: Color(0xFFEBEBEB),),
                   Padding(
-                    padding: const EdgeInsets.only(right: 260),
+                    padding: const EdgeInsets.only(left: 22),
                     child: Container(
                       width: 80,
                       height: 30,
@@ -167,6 +168,11 @@ class Calender extends StatelessWidget {
 
 
                       },
+                        // style: TextButton.styleFrom(
+                        //   shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(30),
+                        //   ),
+                        // ),
 
                         child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Mulish',),),
 
@@ -175,7 +181,7 @@ class Calender extends StatelessWidget {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 40),
+                    padding: const EdgeInsets.only(top: 20),
                     child: Container(
                       height: 680,
                       color: Colors.white,

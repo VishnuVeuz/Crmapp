@@ -284,7 +284,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             },
                             style: ElevatedButton.styleFrom(
 
-                              primary: Color(0xFFF04254),
+                              primary: Color(0xFFF9246A),
                             )
                         ),
                       ),
