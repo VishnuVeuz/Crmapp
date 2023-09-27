@@ -2370,6 +2370,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 width: MediaQuery.of(context).size.width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(5)),
                                     color: Color(0xFFF6F6F6),
                                     border:
                                         Border.all(color: Color(0xFFEBEBEB))),
@@ -3880,11 +3882,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         30.0,
                                                                     decoration:
                                                                         BoxDecoration(
+                                                                            borderRadius: BorderRadius.all(
+                                                                                Radius.circular(5)),
                                                                             color:
                                                                                 Colors.white,
                                                                             border: Border.all(
                                                                               color: Colors.grey,
-                                                                              width: 1,
+                                                                              width: .5,
                                                                             )),
                                                                     child: Row(
                                                                       mainAxisAlignment:
@@ -4187,7 +4191,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                             margin: const EdgeInsets.all(5.0),
                                                                                             //padding: const EdgeInsets.all(10.0),
                                                                                             //color: Colors.white,
-                                                                                            decoration: BoxDecoration(color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                            decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(5),
+                                                                                                color: Colors.grey[350], border: Border.all(color: Colors.grey)),
                                                                                             width: MediaQuery.of(context).size.width,
                                                                                             // height: MediaQuery.of(context).size.height/18,
                                                                                             child: Column(

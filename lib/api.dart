@@ -3073,7 +3073,7 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
           "res_id": resId
         },
 
-        "attachments": myData1,
+       "attachments": myData1,
 
       }
 
@@ -4056,6 +4056,58 @@ getNotificationCount() async {
   print("datajfhejbfjbj");
 
   return data['activity_count'].toString();
+}
+
+
+EmojiReaction(List reaction,int logId) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+  print(logId);
+  print("asjfbvjsbf");
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+          "reaction":"😳"
+      }
+
+    });
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/log/${logId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      print("finalstringdataaa");
+      resMessage = data['result']['message'];
+      print(resMessage);
+      print("leadeditresponce");
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+
+  print(resMessageText);
+  print("dataaaa");
+  return resMessageText;
 }
 
 

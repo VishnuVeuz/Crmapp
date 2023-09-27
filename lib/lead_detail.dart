@@ -26,8 +26,11 @@ import 'lognoteedit.dart';
 import 'globals.dart' as globals;
 
 class LeadDetail extends StatefulWidget {
+  //late int lognoteId;
   var leadId;
   LeadDetail(this.leadId);
+
+
   @override
   State<LeadDetail> createState() => _LeadDetailState();
 }
@@ -35,7 +38,6 @@ class LeadDetail extends StatefulWidget {
 class _LeadDetailState extends State<LeadDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String notificationCount = "0";
-
   String? leadname,
       email,
       phone,
@@ -52,6 +54,7 @@ class _LeadDetailState extends State<LeadDetail> {
       internalnotes,
       attachmentCount = "0",
       followerCount = "0";
+
 
   bool followerStatus = false;
 
@@ -143,6 +146,8 @@ class _LeadDetailState extends State<LeadDetail> {
   String personImg = "";
   List base64string1 = [];
   List<Map<String, dynamic>> myData1 = [];
+  List<Map<String, dynamic>> reaction = [];
+  //var lognoteId;
   String base64string = "";
   int lognoteDatalength = 0;
 
@@ -1998,6 +2003,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                 //height: 46,
                                 decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(5)),
                                     color: Color(0xFFF6F6F6),
                                     border: Border.all(
                                       color: Color(0xFFEBEBEB),
@@ -2020,6 +2027,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             //expands: true,
                                             maxLines: null,
                                             controller: lognoteController,
+
                                             decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText:
@@ -3282,11 +3290,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         30.0,
                                                                     decoration:
                                                                         BoxDecoration(
+                                                                          borderRadius: BorderRadius.circular(5),
                                                                             color:
                                                                                 Colors.white,
                                                                             border: Border.all(
                                                                               color: Colors.grey,
-                                                                              width: 1,
+                                                                              width: .5,
                                                                             )),
                                                                     child: Row(
                                                                       mainAxisAlignment:
@@ -3616,8 +3625,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                               child: Container(
                                                                                                 margin: const EdgeInsets.all(5.0),
                                                                                                 //padding: const EdgeInsets.all(10.0),
-                                                                                                //color: Colors.white,
-                                                                                                decoration: BoxDecoration(color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                                //color: Colors.red,
+                                                                                                decoration: BoxDecoration(
+                                                                                                    borderRadius: BorderRadius.circular(5),
+                                                                                                    color: Colors.grey[350], border: Border.all(color: Colors.grey)),
                                                                                                 width: MediaQuery.of(context).size.width,
                                                                                                 // height: MediaQuery.of(context).size.height/18,
                                                                                                 child: Column(
@@ -6454,22 +6465,40 @@ class _LeadDetailState extends State<LeadDetail> {
           content: Container(
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.6,
-            height: MediaQuery.of(context).size.height /4,
+            height: MediaQuery.of(context).size.height /2.7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     IconButton(
-                      icon: Image.asset("images/image.png"),
-                      onPressed: (){},
+                      icon: Image.asset("images/image24.png"),
+                      onPressed: (){}
+                      // async{
+                      //   String resMessage = await reactionEmoji(reaction);
+                      //
+                      //
+                      //
+                      //   if(resMessage != 0){
+                      //
+                      //     setState(() {
+                      //       // lognoteController.text= "";
+                      //       // selectedImages.clear();
+                      //       // myData1.clear();
+                      //     });
+                      //     Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(builder: (context) => LeadDetail(widget.leadId)),);
+                      //
+                      //   }
+                      // },
                     ),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image2.png"),
+                      icon: Image.asset("images/image23.png"),
                       onPressed: (){},
                     ),
                     IconButton(
@@ -6490,7 +6519,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image6.png"),
+                      icon: Image.asset("images/image2.png"),
                       onPressed: (){},
                     ),
                     IconButton(
@@ -6502,7 +6531,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image9.png"),
+                      icon: Image.asset("images/image27.png"),
                       onPressed: (){},
                     ),
 
@@ -6511,19 +6540,19 @@ class _LeadDetailState extends State<LeadDetail> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Image.asset("images/image10.png"),
+                      icon: Image.asset("images/image.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image11.png"),
+                      icon: Image.asset("images/image26.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image12.png"),
+                      icon: Image.asset("images/image25.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image13.png"),
+                      icon: Image.asset("images/image22.png"),
                       onPressed: (){},
                     ),
                     IconButton(
@@ -6541,6 +6570,81 @@ class _LeadDetailState extends State<LeadDetail> {
                       icon: Image.asset("images/image15.png"),
                       onPressed: (){},
                     ),
+                    IconButton(
+                      icon: Image.asset("images/image16.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image17.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image18.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image19.png"),
+                      onPressed: (){},
+                    ),
+
+
+
+                  ],
+                ),
+                Row(
+                  children: [
+
+                    IconButton(
+                      icon: Image.asset("images/image20.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image30.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image29.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image28.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image31.png"),
+                      onPressed: (){},
+                    ),
+
+
+
+                  ],
+                ),
+                Row(
+                  children: [
+
+                    IconButton(
+                      icon: Image.asset("images/image21.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image12.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image10.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image6.png"),
+                      onPressed: (){},
+                    ),
+                    IconButton(
+                      icon: Image.asset("images/image13.png"),
+                      onPressed: (){},
+                    ),
+
+
+
 
 
 
@@ -6553,4 +6657,14 @@ class _LeadDetailState extends State<LeadDetail> {
           ));
     });
   }
+
+  // reactionEmoji(List reaction) async{
+  //
+  //   String value = await EmojiReaction(reaction,widget.lognoteId);
+  //
+  //   print(value);
+  //   print("valuesssdemooooo");
+  //   return value;
+  //
+  // }
 }

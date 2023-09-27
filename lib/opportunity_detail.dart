@@ -78,7 +78,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   late int opportunitylostId;
   bool _isInitialized = false;
   bool isLoading = true;
-  String? token;
+  //String? token;
   List? recipient = [];
   List? tags = [];
   List orderLineProducts = [];
@@ -183,7 +183,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     getOpportunityDetails();
   }
 
-  String? tokens;
+  String? token;
   Widget build(BuildContext context) {
     if (!_isInitialized) {
       // Show a loading indicator or any other placeholder widget while waiting for initialization
@@ -1672,7 +1672,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(18),
                                     child: Image.network(
-                                        "${salesperImg!}?token=${tokens}"),
+                                        "${salesperImg!}?token=${token}"),
                                   ),
                                 ),
                               ),
@@ -2824,6 +2824,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 width: MediaQuery.of(context).size.width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(5)),
                                     color: Color(0xFFF6F6F6),
                                     border:
                                         Border.all(color: Color(0xFFEBEBEB))),
@@ -4089,6 +4091,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         30.0,
                                                                     decoration:
                                                                         BoxDecoration(
+                                                                            borderRadius: BorderRadius.all(
+                                                                                Radius.circular(5)),
                                                                             color:
                                                                                 Colors.white,
                                                                             border: Border.all(
@@ -4401,7 +4405,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             margin: const EdgeInsets.all(5.0),
                                                                                             //padding: const EdgeInsets.all(10.0),
                                                                                             //color: Colors.white,
-                                                                                            decoration: BoxDecoration(color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                            decoration: BoxDecoration(
+                                                                                                borderRadius: BorderRadius.circular(5),
+                                                                                                color: Colors.grey[350], border: Border.all(color: Colors.grey)),
                                                                                             width: MediaQuery.of(context).size.width,
                                                                                             // height: MediaQuery.of(context).size.height/18,
                                                                                             child: Column(
@@ -4602,7 +4608,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   getOpportunityDetails() async {
-    tokens = await getUserJwt();
+    token = await getUserJwt();
     notificationCount = await getNotificationCount();
     var data = await getOpportunityData(widget.opportunityId, "");
 
