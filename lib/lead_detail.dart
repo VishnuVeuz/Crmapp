@@ -6523,15 +6523,15 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image7.png"),
+                      icon: Image.asset("images/image28.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image8.png"),
+                      icon: Image.asset("images/image31.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image27.png"),
+                      icon: Image.asset("images/image21.png"),
                       onPressed: (){},
                     ),
 
@@ -6607,11 +6607,11 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image28.png"),
+                      icon: Image.asset("images/image7.png"),
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image31.png"),
+                      icon: Image.asset("images/image8.png"),
                       onPressed: (){},
                     ),
 
@@ -6623,7 +6623,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
 
                     IconButton(
-                      icon: Image.asset("images/image21.png"),
+                      icon: Image.asset("images/image27.png"),
                       onPressed: (){},
                     ),
                     IconButton(
