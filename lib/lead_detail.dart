@@ -6594,7 +6594,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image8.png"),
+                      icon: Image.asset("images/image27.png"),
                       onPressed: (){},
                     ),
 
@@ -6606,7 +6606,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
 
                     IconButton(
-                      icon: Image.asset("images/image27.png"),
+                      icon: Image.asset("images/image8.png"),
                       onPressed: (){},
                     ),
                     IconButton(
