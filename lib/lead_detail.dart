@@ -6474,24 +6474,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     IconButton(
                       icon: Image.asset("images/image24.png"),
                       onPressed: (){}
-                      // async{
-                      //   String resMessage = await reactionEmoji(reaction);
-                      //
-                      //
-                      //
-                      //   if(resMessage != 0){
-                      //
-                      //     setState(() {
-                      //       // lognoteController.text= "";
-                      //       // selectedImages.clear();
-                      //       // myData1.clear();
-                      //     });
-                      //     Navigator.push(
-                      //       context,
-                      //       MaterialPageRoute(builder: (context) => LeadDetail(widget.leadId)),);
-                      //
-                      //   }
-                      // },
+
                     ),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
@@ -6540,7 +6523,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Row(
                   children: [
                     IconButton(
-                      icon: Image.asset("images/image.png"),
+                      icon: Image.asset("images/image32.png"),
                       onPressed: (){},
                     ),
                     IconButton(
@@ -6556,7 +6539,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       onPressed: (){},
                     ),
                     IconButton(
-                      icon: Image.asset("images/image14.png"),
+                      icon: Image.asset("images/image33.png"),
                       onPressed: (){},
                     ),
 
@@ -6642,12 +6625,6 @@ class _LeadDetailState extends State<LeadDetail> {
                       icon: Image.asset("images/image13.png"),
                       onPressed: (){},
                     ),
-
-
-
-
-
-
                   ],
                 ),
 
@@ -6658,13 +6635,4 @@ class _LeadDetailState extends State<LeadDetail> {
     });
   }
 
-  // reactionEmoji(List reaction) async{
-  //
-  //   String value = await EmojiReaction(reaction,widget.lognoteId);
-  //
-  //   print(value);
-  //   print("valuesssdemooooo");
-  //   return value;
-  //
-  // }
 }
