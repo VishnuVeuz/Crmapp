@@ -174,6 +174,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   List logDataHeader = [];
   List logDataTitle = [];
   List ddd2 = [];
+  int? logDataIdEmoji;
   @override
   void initState() {
     // TODO: implement initState
@@ -4118,6 +4119,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 IconButton(
                                                                               icon: Icon(Icons.add_reaction_outlined, size: 15.0),
                                                                               onPressed: () {
+                                                                                logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
                                                                                 showDialog(
                                                                                   context: context,
                                                                                   builder: (BuildContext context) =>
@@ -7293,24 +7295,35 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     IconButton(
                         icon: Image.asset("images/image24.png"),
-                        onPressed: (){}
+                        onPressed: (){
+                          emojiClick("😃");
+                        }
 
                     ),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😄");
+
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image23.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😊");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image3.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🤩");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image4.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😎");
+                      },
                     ),
 
                   ],
@@ -7319,23 +7332,33 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     IconButton(
                       icon: Image.asset("images/image5.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😢");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image2.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😇");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image28.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😲");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image31.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😭");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image21.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😕");
+                      },
                     ),
 
                   ],
@@ -7344,23 +7367,34 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     IconButton(
                       icon: Image.asset("images/image32.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😱");
+
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image26.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😂");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image25.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😋");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image22.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😐");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image33.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😨");
+                      },
                     ),
 
 
@@ -7371,23 +7405,33 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image15.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🤪");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image16.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😔");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image17.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😘");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image18.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😝");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image19.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😠");
+                      },
                     ),
 
 
@@ -7399,23 +7443,33 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image20.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😢");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image30.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😍");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image29.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😉");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image7.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("👍🏻");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image27.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("👎🏻");
+                      },
                     ),
 
 
@@ -7427,23 +7481,33 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image8.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🙏🏻");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image12.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🔥");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image10.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🌹");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image6.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("❤️");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image13.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🎉");
+                      },
                     ),
                   ],
                 ),
@@ -7453,5 +7517,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
           ));
     });
+  }
+  void emojiClick(String emoji ) async{
+    print(emoji);
+    print(logDataIdEmoji);
+
+    String value = await EmojiReaction(emoji,logDataIdEmoji!);
+
+    print(value);
+    print("valuesssdemooooo");
+    Navigator.pop(context);
+
   }
 }
