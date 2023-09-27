@@ -3203,6 +3203,26 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                 print(logDataTitle[indexx]
                                                     [indexs]['attachment_ids']);
+
+                                                print(logDataTitle[indexx]
+                                                [indexs]['reaction_ids']);
+                                                print("hjvdbjsbdv");
+
+
+
+                                                List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
+
+                                               if( emojiSet.length>0){
+                                                print( emojiSet[0]['emoji']);
+                                                print( emojiSet[0]['count']);
+                                                print("fsvdsvdvdv");
+                                               }
+
+
+
+                                                print(emojiSet);
+                                                print("hbfuhebin");
+
                                                 print(
                                                     "selectedImagesDisplaysss");
 
@@ -3846,6 +3866,37 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   ),
                                                                                 ),
                                                                               ),
+
+                                                                        emojiSet.length>0?
+
+                                                                        GridView.builder(
+                                                                          shrinkWrap: true, // Avoid scrolling
+                                                                          physics: NeverScrollableScrollPhysics(),
+                                                                          itemCount: emojiSet.length,
+                                                                          gridDelegate:
+                                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                              crossAxisCount: 8,
+                                                                            mainAxisSpacing: 5.0,
+                                                                            crossAxisSpacing: 5.0,
+                                                                            childAspectRatio: 2,),
+                                                                          itemBuilder: (BuildContext context, int index) {
+                                                                            return Container(
+                                                                              width: 30,
+                                                                             // color: Colors.red,
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Text(emojiSet[index]['emoji']),
+                                                                                  SizedBox(width: 5),
+                                                                                  Text(emojiSet[index]['count'].toString()),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ) :
+
+                                                                            Container(),
+
+
                                                                       ],
                                                                     ),
                                                                   );

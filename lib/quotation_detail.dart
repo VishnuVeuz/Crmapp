@@ -3845,6 +3845,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 size: 8,
                                                               );
 
+                                                List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
+
                                                 return Card(
                                                   elevation: 1,
                                                   child: Column(
@@ -4369,6 +4371,36 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                   ),
                                                                                 ),
                                                                               ),
+
+                                                                        emojiSet.length>0?
+
+                                                                        GridView.builder(
+                                                                          shrinkWrap: true, // Avoid scrolling
+                                                                          physics: NeverScrollableScrollPhysics(),
+                                                                          itemCount: emojiSet.length,
+                                                                          gridDelegate:
+                                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                            crossAxisCount: 8,
+                                                                            mainAxisSpacing: 5.0,
+                                                                            crossAxisSpacing: 5.0,
+                                                                            childAspectRatio: 2,),
+                                                                          itemBuilder: (BuildContext context, int index) {
+                                                                            return Container(
+                                                                              width: 30,
+                                                                              // color: Colors.red,
+                                                                              child: Row(
+                                                                                children: [
+                                                                                  Text(emojiSet[index]['emoji']),
+                                                                                  SizedBox(width: 5),
+                                                                                  Text(emojiSet[index]['count'].toString()),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ) :
+
+                                                                        Container(),
+
                                                                       ],
                                                                     ),
                                                                   );
