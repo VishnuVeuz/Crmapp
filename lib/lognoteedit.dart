@@ -340,20 +340,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                     )),
               ),
             ),
-            IconButton(
-              icon: Icon(
-                  Icons
-                      .add_reaction_outlined,
-                  size: 15.0),
-              onPressed: ()  {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) =>
-                      _buildEmojiPopupDialog(
-                          context),
-                ).then((value) => setState(() {}));
-              },
-            ),
+
 
 
           ],
@@ -480,131 +467,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
       },
     );
   }
-  _buildEmojiPopupDialog(BuildContext context) {
-    return StatefulBuilder(builder: (context, setState) {
-      return AlertDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
 
-          content: Container(
-            color: Colors.white,
-            width: MediaQuery.of(context).size.width / 1.6,
-            height: MediaQuery.of(context).size.height /4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                        icon: Image.asset("images/image.png"),
-                        onPressed: ()async{
-                        String resMessage = await reactionEmoji(reaction);
-
-
-
-                        if(resMessage != 0){
-
-                          setState(() {
-                            // lognoteController.text= "";
-                            // selectedImages.clear();
-                            // myData1.clear();
-                          });
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => LeadDetail(widget.typeId)),);
-
-                        }
-                      },
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image1.png"),
-                      onPressed: (){}
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image2.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image3.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image4.png"),
-                      onPressed: (){},
-                    ),
-
-                  ],
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Image.asset("images/image5.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image6.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image7.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image8.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image9.png"),
-                      onPressed: (){},
-                    ),
-
-                  ],
-                ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: Image.asset("images/image10.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image11.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image12.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image13.png"),
-                      onPressed: (){},
-                    ),
-                    IconButton(
-                      icon: Image.asset("images/image14.png"),
-                      onPressed: (){},
-                    ),
-
-
-                  ],
-                ),
-                Row(
-                  children: [
-
-                    IconButton(
-                      icon: Image.asset("images/image15.png"),
-                      onPressed: (){},
-                    ),
-
-
-
-                  ],
-                ),
-
-              ],
-            ),
-
-          ));
-    });
-  }
 
   logNoteData(List myData1) async{
 
@@ -615,15 +478,15 @@ class _LogNoteEditState extends State<LogNoteEdit> {
     return value;
 
   }
-  reactionEmoji(List reaction) async{
-
-    String value = await EmojiReaction(reaction,widget.lognoteId);
-
-    print(value);
-    print("valuesssdemooooo");
-    return value;
-
-  }
+  // reactionEmoji(List reaction) async{
+  //
+  //   String value = await EmojiReaction(reaction,widget.lognoteId);
+  //
+  //   print(value);
+  //   print("valuesssdemooooo");
+  //   return value;
+  //
+  // }
 
 }
 

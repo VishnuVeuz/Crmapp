@@ -4059,7 +4059,7 @@ getNotificationCount() async {
 }
 
 
-EmojiReaction(List reaction,int logId) async {
+EmojiReaction(String reaction,int logId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
@@ -4069,7 +4069,7 @@ EmojiReaction(List reaction,int logId) async {
   try {
     final msg = jsonEncode({
       "params": {
-          "reaction":"😳"
+          "reaction":reaction
       }
 
     });

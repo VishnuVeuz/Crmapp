@@ -6,6 +6,7 @@ import 'package:crm_project/notification.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_file_downloader/flutter_file_downloader.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,6 +14,7 @@ import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'notificationactivity.dart';
@@ -157,6 +159,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List ddd2 = [];
   List sendMailData = [];
   bool isCheckedMail = false;
+   int? logDataIdEmoji;
 
   @override
   void initState() {
@@ -3320,6 +3323,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                       .add_reaction_outlined,
                                                                                   size: 15.0),
                                                                               onPressed: ()  {
+                                                                                 logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
                                                                                 showDialog(
                                                                                   context: context,
                                                                                   builder: (BuildContext context) =>
@@ -3721,12 +3725,59 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               //color: Colors.green,
                                                                                                               child: IconButton(
                                                                                                                 icon: Icon(Icons.download),
-                                                                                                                onPressed: () {
+                                                                                                                onPressed: () async{
+                                                                                                                  await getExternalStorageDirectory();
+
+
+
+                                                                                                                  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+
+                                                                                                                  String itemName,itemNamefinal;
+
+                                                                                                                  itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
+
+
+                                                                                                                  mimetypes == "application/pdf"?
+                                                                                                                  itemNamefinal = "${itemName}.pdf":mimetypes == "application/msword"?  itemNamefinal = "${itemName}.doc":
+                                                                                                                  mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"? itemNamefinal = "${itemName}.ods":
+                                                                                                                  mimetypes == "application/xml"? itemNamefinal = "${itemName}.xml":
+                                                                                                                  mimetypes == "application/zip"? itemNamefinal = "${itemName}.zip": itemNamefinal = "${itemName}";
+
                                                                                                                   print(index);
+
                                                                                                                   print(selectedImagesDisplay);
                                                                                                                   print(selectedImagesDisplay[index]["datas"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                                  print(itemNamefinal);
                                                                                                                   print("final print dataaa");
+
+                                                                                                                  FileDownloader.downloadFile(
+                                                                                                                      url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
+                                                                                                                      name: itemNamefinal,
+                                                                                                                      onProgress: (name, progress) {
+
+
+                                                                                                                        print(name);
+                                                                                                                        print("name");
+
+                                                                                                                        setState(() {
+                                                                                                                          //_progress = progress;
+                                                                                                                        });
+                                                                                                                      },
+
+                                                                                                                      onDownloadCompleted: (value) {
+                                                                                                                        print('path  $value ');
+                                                                                                                        setState(() {
+                                                                                                                         // _progress = null;
+                                                                                                                        });
+                                                                                                                      });
+
+
+
+
+
                                                                                                                 },
                                                                                                               ),
                                                                                                             ),
@@ -6473,24 +6524,35 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
                     IconButton(
                       icon: Image.asset("images/image24.png"),
-                      onPressed: (){}
+                      onPressed: (){
+                        emojiClick("😃");
+                      }
 
                     ),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😄");
+
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image23.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😊");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image3.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🤩");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image4.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😎");
+                      },
                     ),
 
                   ],
@@ -6499,23 +6561,33 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
                     IconButton(
                       icon: Image.asset("images/image5.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😢");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image2.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😇");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image28.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😲");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image31.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😭");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image21.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😕");
+                      },
                     ),
 
                   ],
@@ -6524,23 +6596,34 @@ class _LeadDetailState extends State<LeadDetail> {
                   children: [
                     IconButton(
                       icon: Image.asset("images/image32.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😱");
+
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image26.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😂");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image25.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😋");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image22.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😐");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image33.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😨");
+                      },
                     ),
 
 
@@ -6551,23 +6634,33 @@ class _LeadDetailState extends State<LeadDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image15.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🤪");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image16.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😔");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image17.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😘");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image18.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😝");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image19.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😠");
+                      },
                     ),
 
 
@@ -6579,23 +6672,33 @@ class _LeadDetailState extends State<LeadDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image20.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😢");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image30.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😍");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image29.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("😉");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image7.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("👍🏻");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image27.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("👎🏻");
+                      },
                     ),
 
 
@@ -6607,23 +6710,33 @@ class _LeadDetailState extends State<LeadDetail> {
 
                     IconButton(
                       icon: Image.asset("images/image8.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🙏🏻");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image12.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🔥");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image10.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🌹");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image6.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("❤️");
+                      },
                     ),
                     IconButton(
                       icon: Image.asset("images/image13.png"),
-                      onPressed: (){},
+                      onPressed: (){
+                        emojiClick("🎉");
+                      },
                     ),
                   ],
                 ),
@@ -6633,6 +6746,18 @@ class _LeadDetailState extends State<LeadDetail> {
 
           ));
     });
+  }
+
+  void emojiClick(String emoji ) async{
+    print(emoji);
+    print(logDataIdEmoji);
+
+    String value = await EmojiReaction(emoji,logDataIdEmoji!);
+
+    print(value);
+    print("valuesssdemooooo");
+    Navigator.pop(context);
+
   }
 
 }
