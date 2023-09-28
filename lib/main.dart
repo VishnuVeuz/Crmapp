@@ -1,12 +1,18 @@
 import 'package:crm_project/lead_detail.dart';
 import 'package:crm_project/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 
 import 'leadcreation.dart';
 import 'login.dart';
 import 'opportunitymainpage.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+
+  await FlutterDownloader.initialize( // Initialize flutter_downloader
+    debug: true, // Set this to true for debugging purposes
+  );
   runApp(const MyApp());
 
 
