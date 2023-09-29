@@ -3744,7 +3744,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               height: 30,
                                                                                                               //color: Colors.green,
                                                                                                               child: IconButton(
-                                                                                                                icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                                icon: SvgPicture.asset("images/trash.svg",),
                                                                                                                 onPressed: () {},
                                                                                                               ),
                                                                                                             ),
@@ -3891,7 +3891,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         emojiSet.length>0?
 
                                                                         Padding(
-                                                                          padding: const EdgeInsets.only(left: 65),
+                                                                          padding: const EdgeInsets.only(left: 65,top: 5),
                                                                           child: GridView.builder(
                                                                             shrinkWrap: true, // Avoid scrolling
                                                                             physics: NeverScrollableScrollPhysics(),
@@ -3907,7 +3907,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 width: 30,
                                                                                 //color: Colors.red,
                                                                                 decoration: BoxDecoration(
-                                                                                    border: Border.all(color: Colors.grey)
+                                                                                  borderRadius: BorderRadius.circular(3),
+                                                                                    color: Colors.grey[200],
+                                                                                    border: Border.all(color: Colors.grey, width: 0.3,),
+
+
                                                                                 ),
                                                                                 child: Row(
                                                                                   children: [

@@ -4096,7 +4096,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           emojiSet.length>0?
 
                                                                           Padding(
-                                                                            padding: const EdgeInsets.only(left: 65),
+                                                                            padding: const EdgeInsets.only(left: 65,top: 5),
                                                                             child: GridView.builder(
                                                                               shrinkWrap: true, // Avoid scrolling
                                                                               physics: NeverScrollableScrollPhysics(),
@@ -4111,7 +4111,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 return Container(
                                                                                   width: 30,
                                                                                   decoration: BoxDecoration(
-                                                                                      border: Border.all(color: Colors.grey)
+                                                                                    borderRadius: BorderRadius.circular(3),
+                                                                                    color: Colors.grey[200],
+                                                                                    border: Border.all(color: Colors.grey, width: 0.3,),
+
+
                                                                                   ),
                                                                                   // color: Colors.red,
                                                                                   child: Row(
