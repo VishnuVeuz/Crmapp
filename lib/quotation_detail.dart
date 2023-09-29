@@ -6,6 +6,7 @@ import 'package:crm_project/quotationcreation.dart';
 import 'package:crm_project/scrolling/quotationscrolling.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
@@ -13,6 +14,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'calendarmainpage.dart';
@@ -160,9 +163,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
     // TODO: implement initState
     super.initState();
     getQuotationDetails();
+    requestPermission();
+    _initDownloadPath();
+    FlutterDownloader.registerCallback(downloadCallback);
   }
 
   String? token;
+  String? _taskId;
+  String? _localPath;
   @override
   Widget build(BuildContext context) {
     if (!_isInitialized) {
@@ -4297,12 +4305,72 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                           //color: Colors.green,
                                                                                                           child: IconButton(
                                                                                                             icon: Icon(Icons.download),
-                                                                                                            onPressed: () {
-                                                                                                              print(index);
+                                                                                                            onPressed: () async {
+                                                                                                              //await getExternalStorageDirectory();
+
                                                                                                               print(selectedImagesDisplay);
-                                                                                                              print(selectedImagesDisplay[index]["datas"]);
+                                                                                                              print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                                                              //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                                                              String mimetypes =logDataTitle[indexx][indexs]
+                                                                                                              ['attachment_ids'][index]["mimetype"];
+                                                                                                              //String mimetypes = "application/pdf";
+
+                                                                                                              String itemName, itemNamefinal;
+
+                                                                                                              itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
+
+                                                                                                              mimetypes == "application/pdf"
+                                                                                                                  ? itemNamefinal = "${itemName}.pdf"
+                                                                                                                  : mimetypes == "application/msword"
+                                                                                                                  ? itemNamefinal = "${itemName}.doc"
+                                                                                                                  : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                  ? itemNamefinal = "${itemName}..xlsx"
+                                                                                                                  : mimetypes == "application/xml"
+                                                                                                                  ? itemNamefinal = "${itemName}.xml"
+                                                                                                                  : mimetypes == "application/zip"
+                                                                                                                  ? itemNamefinal = "${itemName}.zip"
+                                                                                                                  : mimetypes == "image/jpeg"
+                                                                                                                  ? itemNamefinal = "${itemName}.jpeg"
+                                                                                                                  : mimetypes == "image/png"
+                                                                                                                  ? itemNamefinal = "${itemName}.png"
+                                                                                                                  : itemNamefinal = "${itemName}";
+
+                                                                                                              print(index);
+
+                                                                                                              print(selectedImagesDisplay);
+                                                                                                              // print(selectedImagesDisplay[index]["datas"]);
                                                                                                               print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
+                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                              print(itemNamefinal);
+                                                                                                              print(mimetypes);
                                                                                                               print("final print dataaa");
+
+                                                                                                              _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
+                                                                                                              // FileDownloader.downloadFile(
+                                                                                                              //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
+                                                                                                              //     name: itemNamefinal,
+                                                                                                              //     onProgress: (name, progress) {
+                                                                                                              //
+                                                                                                              //
+                                                                                                              //       print(name);
+                                                                                                              //       print("name");
+                                                                                                              //
+                                                                                                              //       setState(() {
+                                                                                                              //         //_progress = progress;
+                                                                                                              //       });
+                                                                                                              //     },
+                                                                                                              //
+                                                                                                              //     onDownloadCompleted: (value) {
+                                                                                                              //       print('path  $value ');
+                                                                                                              //       setState(() {
+                                                                                                              //        // _progress = null;
+                                                                                                              //       });
+                                                                                                              //     });
+                                                                                                              //
+                                                                                                              //
                                                                                                             },
                                                                                                           ),
                                                                                                         ),
@@ -7050,6 +7118,68 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print("valuesssdemooooo");
     Navigator.pop(context);
 
+  }
+
+  Future<void> _initDownloadPath() async {
+    final directory = await getExternalStorageDirectory();
+    // _localPath = "${directory!.path} + '/Download'";
+
+    _localPath = "${directory!.path}/Download";
+
+    final savedDir = Directory(_localPath!);
+    bool hasExisted = await savedDir.exists();
+    if (!hasExisted) {
+      savedDir.create();
+    }
+  }
+
+  // Function to start the download task
+  Future<void> _startDownload(String name, String urldata) async {
+    final taskId = await FlutterDownloader.enqueue(
+      //url: 'http://165.22.30.188:8040/image/ir.attachment/944/datas', // Replace with your download link
+        url: urldata,
+        savedDir: _localPath!,
+        showNotification: true,
+        openFileFromNotification: true,
+        fileName: name);
+
+    setState(() {
+      _taskId = taskId;
+    });
+  }
+
+  // Callback to handle download events
+  static void downloadCallback(String id, int status, int progress) {
+    // Handle download status and progress updates here
+    // You can use this callback to update UI elements as needed.
+    print('Download task ($id) is in status ($status) and $progress% complete');
+  }
+
+  Future<void> requestPermission() async {
+    final status = await Permission.storage.request();
+
+    if (status.isGranted) {
+      // Permission granted; you can proceed with file operations
+      // For example, you can start downloading a file here
+      // _startDownload();
+    } else {
+      // Permission denied; you may want to handle this gracefully or show an error message
+      // You can show a message to the user explaining why the permission is necessary
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Permission Required'),
+          content: Text(
+              'Please grant permission to access storage for downloading files.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), // Close the dialog
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
 }

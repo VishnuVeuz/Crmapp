@@ -9,6 +9,7 @@ import 'package:crm_project/quotationcreation.dart';
 import 'package:crm_project/scrolling/quotationopportunity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,6 +17,8 @@ import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'notificationactivity.dart';
@@ -182,9 +185,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(widget.opportunityId);
     print("leadId");
     getOpportunityDetails();
+    requestPermission();
+    _initDownloadPath();
+    FlutterDownloader.registerCallback(downloadCallback);
   }
 
   String? token;
+
+  String? _taskId;
+  String? _localPath;
   Widget build(BuildContext context) {
     if (!_isInitialized) {
       // Show a loading indicator or any other placeholder widget while waiting for initialization
@@ -221,12 +230,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               child: IconButton(
                 icon: Image.asset("images/back.png"),
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (_) {
-                        return OpportunityMainPage(null,"","","","");
-                      },
-                        settings: RouteSettings(name: 'OpportunityMainPage',),
-                      ));
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) {
+                      return OpportunityMainPage(null, "", "", "", "");
+                    },
+                    settings: RouteSettings(
+                      name: 'OpportunityMainPage',
+                    ),
+                  ));
                 },
               ),
             ),
@@ -1756,13 +1767,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 color: Colors.amber,
                                 size: 10,
                               ),
-                              onRatingUpdate: (double value) async{
-
+                              onRatingUpdate: (double value) async {
                                 int prioritydata = value.toInt();
-                                String valuess =await editOppertunitypriority( prioritydata.toString(), widget.opportunityId);
-
-
-
+                                String valuess = await editOppertunitypriority(
+                                    prioritydata.toString(),
+                                    widget.opportunityId);
                               },
                             ),
                           )),
@@ -2716,8 +2725,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                         ),
-
-                        SizedBox(height: 5,),
+                        SizedBox(
+                          height: 5,
+                        ),
                         Visibility(
                           visible: followersVisibility,
                           child: Container(
@@ -2728,7 +2738,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: sendMailData.length,
-
                               itemBuilder: (_, i) {
                                 isCheckedMail = sendMailData[i]['selected'];
                                 return Padding(
@@ -2747,7 +2756,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               print("check box issues");
                                               setState(() {
                                                 isCheckedMail = value!;
-                                                sendMailData[i]['selected']=value;
+                                                sendMailData[i]['selected'] =
+                                                    value;
                                               });
                                             },
                                           ),
@@ -2767,9 +2777,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                           ),
                         ),
-                        SizedBox(height: 5,),
-
-
+                        SizedBox(
+                          height: 5,
+                        ),
                         Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -2825,8 +2835,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 width: MediaQuery.of(context).size.width / 1.4,
                                 //height: 46,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                     color: Color(0xFFF6F6F6),
                                     border:
                                         Border.all(color: Color(0xFFEBEBEB))),
@@ -4052,8 +4062,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                     .white,
                                                                 size: 8,
                                                               );
-                                                List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
-
+                                                List emojiSet =
+                                                    logDataTitle[indexx][indexs]
+                                                        ['reaction_ids'];
 
                                                 return Card(
                                                   elevation: 1,
@@ -4092,16 +4103,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         102.0,
                                                                     height:
                                                                         30.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                            borderRadius: BorderRadius.all(
-                                                                                Radius.circular(5)),
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(
-                                                                              color: Colors.grey,
-                                                                              width: 1,
-                                                                            )),
+                                                                    decoration: BoxDecoration(
+                                                                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                                                                        color: Colors.white,
+                                                                        border: Border.all(
+                                                                          color:
+                                                                              Colors.grey,
+                                                                          width:
+                                                                              1,
+                                                                        )),
                                                                     child: Row(
                                                                       mainAxisAlignment:
                                                                           MainAxisAlignment
@@ -4124,9 +4134,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
                                                                                 showDialog(
                                                                                   context: context,
-                                                                                  builder: (BuildContext context) =>
-                                                                                      _buildEmojiPopupDialog(
-                                                                                          context),
+                                                                                  builder: (BuildContext context) => _buildEmojiPopupDialog(context),
                                                                                 ).then((value) => setState(() {}));
                                                                               },
                                                                             ),
@@ -4397,229 +4405,254 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       mainAxisSpacing: 10.0,
                                                                                       crossAxisSpacing: 10.0,
                                                                                       childAspectRatio: 3.5,
-
                                                                                     ),
                                                                                     itemBuilder: (BuildContext context, int index) {
                                                                                       print(selectedImagesDisplay.length);
                                                                                       print(selectedImagesDisplay[index]["datas"]);
                                                                                       print("selectedImagesDisplay.length,");
 
-                                                                                      return
-                                                                                        (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/zip")
-                                                                                            ? Padding(
-                                                                                          padding: const EdgeInsets.only(left: 25),
-                                                                                          child: Container(
-                                                                                            margin: const EdgeInsets.all(5.0),
-                                                                                            //padding: const EdgeInsets.all(10.0),
-                                                                                            //color: Colors.white,
-                                                                                            decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                                color: Colors.grey[350], border: Border.all(color: Colors.grey)),
-                                                                                            width: MediaQuery.of(context).size.width,
-                                                                                            // height: MediaQuery.of(context).size.height/18,
-                                                                                            child: Column(
-                                                                                              children: [
-                                                                                                Row(
+                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf" || selectedImagesDisplay[index]["mimetype"] == "application/msword" || selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || selectedImagesDisplay[index]["mimetype"] == "application/xml" || selectedImagesDisplay[index]["mimetype"] == "application/zip")
+                                                                                          ? Padding(
+                                                                                              padding: const EdgeInsets.only(left: 25),
+                                                                                              child: Container(
+                                                                                                margin: const EdgeInsets.all(5.0),
+                                                                                                //padding: const EdgeInsets.all(10.0),
+                                                                                                //color: Colors.white,
+                                                                                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                                width: MediaQuery.of(context).size.width,
+                                                                                                // height: MediaQuery.of(context).size.height/18,
+                                                                                                child: Column(
                                                                                                   children: [
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.only(top: 10, left: 5),
-                                                                                                      child: FittedBox(
-                                                                                                        child: SizedBox(
-                                                                                                          width: 45,
-                                                                                                          height: 45,
-                                                                                                          child: DecoratedBox(
-                                                                                                            decoration: BoxDecoration(
-                                                                                                              color:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                              Color(0xFFEF5350):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/msword"?
-                                                                                                              Color(0xFF2196F3):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                                                              Color(0xFF4CAF50):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?
-                                                                                                              Color(0xFF0277BD):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?
-                                                                                                              Color(0xFFFDD835):
-                                                                                                              Color(0xFFFFFFFF),
-
-                                                                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                                                            ),
-                                                                                                            child: Center(
-                                                                                                              child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                              Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
-
-                                                                                                                color: Colors.white,
-                                                                                                                size: 25,
+                                                                                                    Row(
+                                                                                                      children: [
+                                                                                                        Padding(
+                                                                                                          padding: const EdgeInsets.only(top: 10, left: 5),
+                                                                                                          child: FittedBox(
+                                                                                                            child: SizedBox(
+                                                                                                              width: 45,
+                                                                                                              height: 45,
+                                                                                                              child: DecoratedBox(
+                                                                                                                decoration: BoxDecoration(
+                                                                                                                  color: selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                                                      ? Color(0xFFEF5350)
+                                                                                                                      : selectedImagesDisplay[index]["mimetype"] == "application/msword"
+                                                                                                                          ? Color(0xFF2196F3)
+                                                                                                                          : selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                              ? Color(0xFF4CAF50)
+                                                                                                                              : selectedImagesDisplay[index]["mimetype"] == "application/xml"
+                                                                                                                                  ? Color(0xFF0277BD)
+                                                                                                                                  : selectedImagesDisplay[index]["mimetype"] == "application/zip"
+                                                                                                                                      ? Color(0xFFFDD835)
+                                                                                                                                      : Color(0xFFFFFFFF),
+                                                                                                                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                                                ),
+                                                                                                                child: Center(
+                                                                                                                  child: Icon(
+                                                                                                                    selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                                                        ? Icons.picture_as_pdf_sharp
+                                                                                                                        : selectedImagesDisplay[index]["mimetype"] == "application/msword"
+                                                                                                                            ? Icons.article_outlined
+                                                                                                                            : selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                                ? Icons.clear
+                                                                                                                                : selectedImagesDisplay[index]["mimetype"] == "application/xml"
+                                                                                                                                    ? Icons.code_off
+                                                                                                                                    : selectedImagesDisplay[index]["mimetype"] == "application/zip"
+                                                                                                                                        ? Icons.folder_zip_outlined
+                                                                                                                                        : Icons.access_time_filled_outlined,
+                                                                                                                    color: Colors.white,
+                                                                                                                    size: 25,
+                                                                                                                  ),
+                                                                                                                ),
                                                                                                               ),
                                                                                                             ),
                                                                                                           ),
                                                                                                         ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                    SizedBox(
-                                                                                                      width: 10,
-                                                                                                    ),
-                                                                                                    Column(
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                            //color: Colors.blue,
-                                                                                                            child: Text(
-
-
-                                                                                                              "pdf name.pdf",
-                                                                                                              style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
-                                                                                                            )),
                                                                                                         SizedBox(
-                                                                                                          height: 10,
+                                                                                                          width: 10,
                                                                                                         ),
-                                                                                                        Container(
-                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                            // color: Colors.green,
-                                                                                                            child: Text(
+                                                                                                        Column(
+                                                                                                          children: [
+                                                                                                            Container(
+                                                                                                                width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                                //color: Colors.blue,
+                                                                                                                child: Text(
+                                                                                                                  "pdf name.pdf",
+                                                                                                                  style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
+                                                                                                                )),
+                                                                                                            SizedBox(
+                                                                                                              height: 10,
+                                                                                                            ),
+                                                                                                            Container(
+                                                                                                                width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                                // color: Colors.green,
+                                                                                                                child: Text(
+                                                                                                                  "PDF",
+                                                                                                                  style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                                )),
+                                                                                                          ],
+                                                                                                        ),
+                                                                                                        SizedBox(
+                                                                                                          width: 20,
+                                                                                                        ),
+                                                                                                        Column(
+                                                                                                          children: [
+                                                                                                            Container(
+                                                                                                              width: 30,
+                                                                                                              height: 30,
+                                                                                                              //color: Colors.green,
+                                                                                                              child: IconButton(
+                                                                                                                icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                                onPressed: () {},
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                            Container(
+                                                                                                              width: 34,
+                                                                                                              height: 20,
+                                                                                                              //color: Colors.green,
+                                                                                                              child: IconButton(
+                                                                                                                icon: Icon(Icons.download),
+                                                                                                                onPressed: () async {
+                                                                                                                  //await getExternalStorageDirectory();
+
+                                                                                                                  print(selectedImagesDisplay);
+                                                                                                                  print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                                                                  //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                                                                  String mimetypes =logDataTitle[indexx][indexs]
+                                                                                                                  ['attachment_ids'][index]["mimetype"];
+                                                                                                                  //String mimetypes = "application/pdf";
+
+                                                                                                                  String itemName, itemNamefinal;
+
+                                                                                                                  itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
+
+                                                                                                                  mimetypes == "application/pdf"
+                                                                                                                      ? itemNamefinal = "${itemName}.pdf"
+                                                                                                                      : mimetypes == "application/msword"
+                                                                                                                      ? itemNamefinal = "${itemName}.doc"
+                                                                                                                      : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                      ? itemNamefinal = "${itemName}..xlsx"
+                                                                                                                      : mimetypes == "application/xml"
+                                                                                                                      ? itemNamefinal = "${itemName}.xml"
+                                                                                                                      : mimetypes == "application/zip"
+                                                                                                                      ? itemNamefinal = "${itemName}.zip"
+                                                                                                                      : mimetypes == "image/jpeg"
+                                                                                                                      ? itemNamefinal = "${itemName}.jpeg"
+                                                                                                                      : mimetypes == "image/png"
+                                                                                                                      ? itemNamefinal = "${itemName}.png"
+                                                                                                                      : itemNamefinal = "${itemName}";
+
+                                                                                                                  print(index);
+
+                                                                                                                  print(selectedImagesDisplay);
+                                                                                                                  // print(selectedImagesDisplay[index]["datas"]);
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                                  print(itemNamefinal);
+                                                                                                                  print(mimetypes);
+                                                                                                                  print("final print dataaa");
+
+                                                                                                                  _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
 
 
-                                                                                                              "PDF",
-                                                                                                              style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
-                                                                                                            )),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                    SizedBox(
-                                                                                                      width: 20,
-                                                                                                    ),
-                                                                                                    Column(
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                          width: 30,
-                                                                                                          height: 30,
-                                                                                                          //color: Colors.green,
-                                                                                                          child: IconButton(
-                                                                                                            icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                            onPressed: () {},
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          width: 34,
-                                                                                                          height: 20,
-                                                                                                          //color: Colors.green,
-                                                                                                          child: IconButton(
-                                                                                                            icon: Icon(Icons.download),
-                                                                                                            onPressed: () {
-                                                                                                              print(index);
-                                                                                                              print(selectedImagesDisplay);
-                                                                                                              print(selectedImagesDisplay[index]["datas"]);
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                              print("final print dataaa");
-                                                                                                            },
-                                                                                                          ),
+                                                                                                                },
+                                                                                                              ),
+                                                                                                            ),
+                                                                                                          ],
                                                                                                         ),
                                                                                                       ],
-                                                                                                    ),
+                                                                                                    )
                                                                                                   ],
-                                                                                                )
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        )
-                                                                                            :
-
-                                                                                        (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
-                                                                                        Padding(
-                                                                                          padding: const EdgeInsets.only(left: 20),
-                                                                                          child: Container(
-                                                                                            child: Stack(
-                                                                                              children: [
-                                                                                                ClipRRect(
-                                                                                                  child: Image.network(
-                                                                                                    "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                    height: 100,
-                                                                                                    width: 80,
-                                                                                                  ),
                                                                                                 ),
-                                                                                                Positioned(
-                                                                                                    left: 40,
-                                                                                                    right: 175,
-                                                                                                    bottom: 50,
-                                                                                                    top: 0,
-                                                                                                    child: Container(
-                                                                                                      width: 20,
-                                                                                                      height: 20,
-                                                                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
-                                                                                                      // color: Colors
-                                                                                                      //     .grey[200],
-                                                                                                      child: IconButton(
-                                                                                                        icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                        onPressed: () async {
-                                                                                                          print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                          int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                          var data = await deleteLogAttachment(lodAttachmentId);
+                                                                                              ),
+                                                                                            )
+                                                                                          : (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")
+                                                                                              ? Padding(
+                                                                                                  padding: const EdgeInsets.only(left: 20),
+                                                                                                  child: Container(
+                                                                                                    child: Stack(
+                                                                                                      children: [
+                                                                                                        ClipRRect(
+                                                                                                          child: Image.network(
+                                                                                                            "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                            height: 100,
+                                                                                                            width: 80,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Positioned(
+                                                                                                            left: 40,
+                                                                                                            right: 175,
+                                                                                                            bottom: 50,
+                                                                                                            top: 0,
+                                                                                                            child: Container(
+                                                                                                              width: 20,
+                                                                                                              height: 20,
+                                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                              // color: Colors
+                                                                                                              //     .grey[200],
+                                                                                                              child: IconButton(
+                                                                                                                icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                                onPressed: () async {
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                                  var data = await deleteLogAttachment(lodAttachmentId);
 
-                                                                                                          if (data['message'] == "Success") {
-                                                                                                            print("jhbdndsjbv");
-                                                                                                            await getOpportunityDetails();
-                                                                                                            setState(() {
-                                                                                                              logDataHeader.clear();
-                                                                                                              logDataTitle.clear();
-                                                                                                              selectedImagesDisplay.clear();
-                                                                                                            });
-                                                                                                          }
+                                                                                                                  if (data['message'] == "Success") {
+                                                                                                                    print("jhbdndsjbv");
+                                                                                                                    await getOpportunityDetails();
+                                                                                                                    setState(() {
+                                                                                                                      logDataHeader.clear();
+                                                                                                                      logDataTitle.clear();
+                                                                                                                      selectedImagesDisplay.clear();
+                                                                                                                    });
+                                                                                                                  }
 
-                                                                                                          print(data);
-                                                                                                          print("delete testststs");
-                                                                                                        },
-                                                                                                      ),
-                                                                                                    ))
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        ):
-                                                                                        Container();
+                                                                                                                  print(data);
+                                                                                                                  print("delete testststs");
+                                                                                                                },
+                                                                                                              ),
+                                                                                                            ))
+                                                                                                      ],
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                )
+                                                                                              : Container();
                                                                                     },
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                        emojiSet.length>0?
-
-                                                                        Padding(
-                                                                          padding: const EdgeInsets.only(left: 65),
-                                                                          child: GridView.builder(
-                                                                            shrinkWrap: true, // Avoid scrolling
-                                                                            physics: NeverScrollableScrollPhysics(),
-                                                                            itemCount: emojiSet.length,
-                                                                            gridDelegate:
-                                                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                              crossAxisCount: 8,
-                                                                              mainAxisSpacing: 5.0,
-                                                                              crossAxisSpacing: 5.0,
-                                                                              childAspectRatio: 1.5,),
-                                                                            itemBuilder: (BuildContext context, int index) {
-                                                                              return Container(
-                                                                                width: 30,
-                                                                                decoration: BoxDecoration(
-                                                                                    border: Border.all(color: Colors.grey)
+                                                                        emojiSet.length >
+                                                                                0
+                                                                            ? Padding(
+                                                                                padding: const EdgeInsets.only(left: 65),
+                                                                                child: GridView.builder(
+                                                                                  shrinkWrap: true, // Avoid scrolling
+                                                                                  physics: NeverScrollableScrollPhysics(),
+                                                                                  itemCount: emojiSet.length,
+                                                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                    crossAxisCount: 8,
+                                                                                    mainAxisSpacing: 5.0,
+                                                                                    crossAxisSpacing: 5.0,
+                                                                                    childAspectRatio: 1.5,
+                                                                                  ),
+                                                                                  itemBuilder: (BuildContext context, int index) {
+                                                                                    return Container(
+                                                                                      width: 30,
+                                                                                      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+                                                                                      // color: Colors.red,
+                                                                                      child: Row(
+                                                                                        children: [
+                                                                                          Text(emojiSet[index]['emoji']),
+                                                                                          SizedBox(width: 5),
+                                                                                          Text(emojiSet[index]['count'].toString()),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  },
                                                                                 ),
-                                                                                // color: Colors.red,
-                                                                                child: Row(
-                                                                                  children: [
-                                                                                    Text(emojiSet[index]['emoji']),
-                                                                                    SizedBox(width: 5),
-                                                                                    Text(emojiSet[index]['count'].toString()),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        ) :
-
-                                                                        Container(),
-
+                                                                              )
+                                                                            : Container(),
                                                                       ],
                                                                     ),
                                                                   );
@@ -5628,19 +5661,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           return AlertDialog(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Please choose media to select',style: TextStyle(
-            fontWeight: FontWeight.w600,
-                fontFamily: 'Mulish',
-                fontSize: 14,
-                color: Colors.black)),
+            title: Text('Please choose media to select',
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Mulish',
+                    fontSize: 14,
+                    color: Colors.black)),
             content: Container(
               height: MediaQuery.of(context).size.height / 6,
               child: Column(
                 children: [
                   ElevatedButton(
-
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0XFFF9246A)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -5658,23 +5692,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.image),
-                        Text('From Gallery',style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
-                            fontSize: 14,
-                            color: Colors.white)),
+                        Text('From Gallery',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                                fontSize: 14,
+                                color: Colors.white)),
                       ],
                     ),
                   ),
                   ElevatedButton(
-                   style: ButtonStyle(
-                     backgroundColor: MaterialStateProperty.all(Color(0XFFF9246A)),
-          // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
-                       textStyle: MaterialStateProperty.all(TextStyle(
-                       fontWeight: FontWeight.w600,
-                        fontFamily: 'Mulish',
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                        // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
+                        textStyle: MaterialStateProperty.all(TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
                             fontSize: 14,
-                          color: Color(0xFF212121)))),
+                            color: Color(0xFF212121)))),
                     //if user click this button. user can upload image from camera
                     onPressed: () {
                       Navigator.pop(context);
@@ -5688,11 +5724,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     child: Row(
                       children: [
                         Icon(Icons.camera),
-                        Text('From Camera',style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
-                            fontSize: 14,
-                            color: Colors.white)),
+                        Text('From Camera',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Mulish',
+                                fontSize: 14,
+                                color: Colors.white)),
                       ],
                     ),
                   ),
@@ -6066,8 +6103,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               bool send_mail;
 
               followerId = responce['id'];
-              message = responce['message'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                  .toString() ??
+              message = responce['message']
+                      .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                      .toString() ??
                   "";
               send_mail = responce['send_mail'];
 
@@ -6231,7 +6269,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     Text(
                       "Invite Follower",
-                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.black,fontFamily: 'Mulish',),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontFamily: 'Mulish',
+                      ),
                     ),
                     IconButton(
                       icon: Image.asset(
@@ -6254,7 +6297,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Text(
                   "Recipients",
-                  style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -6266,8 +6314,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...',
-                    hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
-
+                    hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w600,
+                    ),
                     selectedOptions: editRecipientName
                         .map((recipient) => ValueItem(
                             label: recipient.label, value: recipient.value))
@@ -6321,7 +6373,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Text(
                   "Send Email",
-                  style: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontFamily: 'Mulish',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 SizedBox(
                   height: 5,
@@ -6376,8 +6433,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
-                          hintStyle: TextStyle(color: Colors.grey,fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w600,),
-
+                          hintStyle: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
@@ -6397,7 +6458,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white ,fontFamily: 'Mulish'),
+                                  color: Colors.white,
+                                  fontFamily: 'Mulish'),
                             ),
                           ),
                           onPressed: () async {
@@ -6644,19 +6706,17 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   defaultSendmsgvalues() async {
-
-
     List<int> selectedIds = sendMailData
         .where((item) => item["selected"] == true)
         .map((item) => item["id"] as int)
         .toList();
 
-
     print("sjbkjbnkjnsdvkn");
 
     recipient!.clear();
     token = await getUserJwt();
-    var data = await defaultSendmessageData(widget.opportunityId, "crm.lead",selectedIds);
+    var data = await defaultSendmessageData(
+        widget.opportunityId, "crm.lead", selectedIds);
     setState(() {
       print(data);
 
@@ -6665,8 +6725,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       print(subjectController.text);
       print(data['partner_ids'].length);
       print("subjectController.text");
-
-
 
       for (int i = 0; i < data['partner_ids'].length; i++) {
         selctedRecipient.add(data['partner_ids'][i]);
@@ -6685,7 +6743,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       print(recipient);
       print("recipient");
 
-
       _isInitialized = true;
     });
 
@@ -6694,11 +6751,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   _buildSendmessagePopupDialog(BuildContext context, int sendtypeIds) {
     return StatefulBuilder(builder: (context, setState) {
-      lognoteController.text !=""?bodyController.text=lognoteController.text
-          :bodyController.text="";
+      lognoteController.text != ""
+          ? bodyController.text = lognoteController.text
+          : bodyController.text = "";
 
       return AlertDialog(
-
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
@@ -6745,7 +6802,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           editRecipientName.clear();
                           recipient?.clear();
                           selctedRecipient.clear();
-
                         });
 
                         Navigator.pop(context);
@@ -7315,16 +7371,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print("valuesss");
     return value;
   }
+
   _buildEmojiPopupDialog(BuildContext context) {
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
-
           content: Container(
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.6,
-            height: MediaQuery.of(context).size.height /2.7,
+            height: MediaQuery.of(context).size.height / 2.7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -7332,238 +7388,281 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     IconButton(
                         icon: Image.asset("images/image24.png"),
-                        onPressed: (){
+                        onPressed: () {
                           emojiClick("😃");
-                        }
-
-                    ),
+                        }),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😄");
-
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image23.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😊");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image3.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🤩");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image4.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😎");
                       },
                     ),
-
                   ],
                 ),
                 Row(
                   children: [
                     IconButton(
                       icon: Image.asset("images/image5.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😢");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image2.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😇");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image28.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😲");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image31.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😭");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image21.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😕");
                       },
                     ),
-
                   ],
                 ),
                 Row(
                   children: [
                     IconButton(
                       icon: Image.asset("images/image32.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😱");
-
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image26.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😂");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image25.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😋");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image22.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😐");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image33.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😨");
                       },
                     ),
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image15.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🤪");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image16.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😔");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image17.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😘");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image18.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😝");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image19.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😠");
                       },
                     ),
-
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image20.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😢");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image30.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😍");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image29.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😉");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image7.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("👍🏻");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image27.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("👎🏻");
                       },
                     ),
-
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image8.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🙏🏻");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image12.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🔥");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image10.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🌹");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image6.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("❤️");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image13.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🎉");
                       },
                     ),
                   ],
                 ),
-
               ],
             ),
-
           ));
     });
   }
-  void emojiClick(String emoji ) async{
+
+  void emojiClick(String emoji) async {
     print(emoji);
     print(logDataIdEmoji);
 
-    String value = await EmojiReaction(emoji,logDataIdEmoji!);
+    String value = await EmojiReaction(emoji, logDataIdEmoji!);
 
     print(value);
     print("valuesssdemooooo");
     Navigator.pop(context);
+  }
 
+  Future<void> _initDownloadPath() async {
+    final directory = await getExternalStorageDirectory();
+    // _localPath = "${directory!.path} + '/Download'";
+
+    _localPath = "${directory!.path}/Download";
+
+    final savedDir = Directory(_localPath!);
+    bool hasExisted = await savedDir.exists();
+    if (!hasExisted) {
+      savedDir.create();
+    }
+  }
+
+  // Function to start the download task
+  Future<void> _startDownload(String name, String urldata) async {
+    final taskId = await FlutterDownloader.enqueue(
+      //url: 'http://165.22.30.188:8040/image/ir.attachment/944/datas', // Replace with your download link
+        url: urldata,
+        savedDir: _localPath!,
+        showNotification: true,
+        openFileFromNotification: true,
+        fileName: name);
+
+    setState(() {
+      _taskId = taskId;
+    });
+  }
+
+  // Callback to handle download events
+  static void downloadCallback(String id, int status, int progress) {
+    // Handle download status and progress updates here
+    // You can use this callback to update UI elements as needed.
+    print('Download task ($id) is in status ($status) and $progress% complete');
+  }
+
+  Future<void> requestPermission() async {
+    final status = await Permission.storage.request();
+
+    if (status.isGranted) {
+      // Permission granted; you can proceed with file operations
+      // For example, you can start downloading a file here
+      // _startDownload();
+    } else {
+      // Permission denied; you may want to handle this gracefully or show an error message
+      // You can show a message to the user explaining why the permission is necessary
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Permission Required'),
+          content: Text(
+              'Please grant permission to access storage for downloading files.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context), // Close the dialog
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 }

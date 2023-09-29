@@ -34,7 +34,6 @@ class LeadDetail extends StatefulWidget {
   var leadId;
   LeadDetail(this.leadId);
 
-
   @override
   State<LeadDetail> createState() => _LeadDetailState();
 }
@@ -58,7 +57,6 @@ class _LeadDetailState extends State<LeadDetail> {
       internalnotes,
       attachmentCount = "0",
       followerCount = "0";
-
 
   bool followerStatus = false;
 
@@ -144,7 +142,6 @@ class _LeadDetailState extends State<LeadDetail> {
   List<File> attachmentSelectedImages = [];
   List<dynamic> selectedImagesDisplay = [];
 
-
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
   String personImg = "";
@@ -161,7 +158,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List ddd2 = [];
   List sendMailData = [];
   bool isCheckedMail = false;
-   int? logDataIdEmoji;
+  int? logDataIdEmoji;
 
   @override
   void initState() {
@@ -176,7 +173,6 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   String? token;
-
 
   String? _taskId;
   String? _localPath;
@@ -2015,8 +2011,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                 //height: 46,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
                                     color: Color(0xFFF6F6F6),
                                     border: Border.all(
                                       color: Color(0xFFEBEBEB),
@@ -2039,7 +2035,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                             //expands: true,
                                             maxLines: null,
                                             controller: lognoteController,
-
                                             decoration: const InputDecoration(
                                                 border: InputBorder.none,
                                                 hintText:
@@ -3214,20 +3209,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     [indexs]['attachment_ids']);
 
                                                 print(logDataTitle[indexx]
-                                                [indexs]['reaction_ids']);
+                                                    [indexs]['reaction_ids']);
                                                 print("hjvdbjsbdv");
 
+                                                List emojiSet =
+                                                    logDataTitle[indexx][indexs]
+                                                        ['reaction_ids'];
 
-
-                                                List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
-
-                                               if( emojiSet.length>0){
-                                                print( emojiSet[0]['emoji']);
-                                                print( emojiSet[0]['count']);
-                                                print("fsvdsvdvdv");
-                                               }
-
-
+                                                if (emojiSet.length > 0) {
+                                                  print(emojiSet[0]['emoji']);
+                                                  print(emojiSet[0]['count']);
+                                                  print("fsvdsvdvdv");
+                                                }
 
                                                 print(emojiSet);
                                                 print("hbfuhebin");
@@ -3317,18 +3310,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   // top:0,
                                                                   child:
                                                                       Container(
-                                                                    width: 102.0,
+                                                                    width:
+                                                                        102.0,
                                                                     height:
                                                                         30.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                          borderRadius: BorderRadius.circular(5),
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(
-                                                                              color: Colors.grey,
-                                                                              width: .5,
-                                                                            )),
+                                                                    decoration: BoxDecoration(
+                                                                        borderRadius: BorderRadius.circular(5),
+                                                                        color: Colors.white,
+                                                                        border: Border.all(
+                                                                          color:
+                                                                              Colors.grey,
+                                                                          width:
+                                                                              .5,
+                                                                        )),
                                                                     child: Row(
                                                                       mainAxisAlignment:
                                                                           MainAxisAlignment
@@ -3336,28 +3330,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       children: [
                                                                         Container(
                                                                           height:
-                                                                          25,
+                                                                              25,
                                                                           width:
-                                                                          25,
+                                                                              25,
                                                                           //color: Colors.red,
                                                                           child:
-                                                                          Align(
+                                                                              Align(
                                                                             alignment:
-                                                                            Alignment
-                                                                                .topRight,
+                                                                                Alignment.topRight,
                                                                             child:
-                                                                            IconButton(
-                                                                              icon: Icon(
-                                                                                  Icons
-                                                                                      .add_reaction_outlined,
-                                                                                  size: 15.0),
-                                                                              onPressed: ()  {
-                                                                                 logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
+                                                                                IconButton(
+                                                                              icon: Icon(Icons.add_reaction_outlined, size: 15.0),
+                                                                              onPressed: () {
+                                                                                logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
                                                                                 showDialog(
                                                                                   context: context,
-                                                                                  builder: (BuildContext context) =>
-                                                                                      _buildEmojiPopupDialog(
-                                                                                          context),
+                                                                                  builder: (BuildContext context) => _buildEmojiPopupDialog(context),
                                                                                 ).then((value) => setState(() {}));
                                                                               },
                                                                             ),
@@ -3632,36 +3620,28 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   width: MediaQuery.of(context).size.width / 1.5,
                                                                                   // height: 140,
                                                                                   child: GridView.builder(
-
                                                                                     shrinkWrap: true,
                                                                                     // Avoid scrolling
                                                                                     physics: NeverScrollableScrollPhysics(),
                                                                                     itemCount: selectedImagesDisplay.length,
-                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
-
+                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                      crossAxisCount: 1,
                                                                                       mainAxisSpacing: 10.0,
                                                                                       crossAxisSpacing: 10.0,
                                                                                       childAspectRatio: 3.5,
-
                                                                                     ),
                                                                                     itemBuilder: (BuildContext context, int index) {
                                                                                       print(selectedImagesDisplay.length);
                                                                                       print(selectedImagesDisplay[index]["datas"]);
                                                                                       print("selectedImagesDisplay.length,");
-                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
-                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
-                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
-                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/zip")
+                                                                                      return (selectedImagesDisplay[index]["mimetype"] == "application/pdf" || selectedImagesDisplay[index]["mimetype"] == "application/msword" || selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || selectedImagesDisplay[index]["mimetype"] == "application/xml" || selectedImagesDisplay[index]["mimetype"] == "application/zip")
                                                                                           ? Padding(
                                                                                               padding: const EdgeInsets.only(left: 25),
                                                                                               child: Container(
                                                                                                 margin: const EdgeInsets.all(5.0),
                                                                                                 //padding: const EdgeInsets.all(10.0),
                                                                                                 //color: Colors.red,
-                                                                                                decoration: BoxDecoration(
-                                                                                                    borderRadius: BorderRadius.circular(5),
-                                                                                                    color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey[350], border: Border.all(color: Colors.grey)),
                                                                                                 width: MediaQuery.of(context).size.width,
                                                                                                 // height: MediaQuery.of(context).size.height/18,
                                                                                                 child: Column(
@@ -3676,28 +3656,32 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               height: 45,
                                                                                                               child: DecoratedBox(
                                                                                                                 decoration: BoxDecoration(
-                                                                                                                  color:
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                                  Color(0xFFEF5350):
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/msword"?
-                                                                                                                  Color(0xFF2196F3):
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                                                                  Color(0xFF4CAF50):
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/xml"?
-                                                                                                                  Color(0xFF0277BD):
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/zip"?
-                                                                                                                  Color(0xFFFDD835):
-                                                                                                                  Color(0xFFFFFFFF),
-
+                                                                                                                  color: selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                                                      ? Color(0xFFEF5350)
+                                                                                                                      : selectedImagesDisplay[index]["mimetype"] == "application/msword"
+                                                                                                                          ? Color(0xFF2196F3)
+                                                                                                                          : selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                              ? Color(0xFF4CAF50)
+                                                                                                                              : selectedImagesDisplay[index]["mimetype"] == "application/xml"
+                                                                                                                                  ? Color(0xFF0277BD)
+                                                                                                                                  : selectedImagesDisplay[index]["mimetype"] == "application/zip"
+                                                                                                                                      ? Color(0xFFFDD835)
+                                                                                                                                      : Color(0xFFFFFFFF),
                                                                                                                   borderRadius: BorderRadius.all(Radius.circular(10)),
                                                                                                                 ),
                                                                                                                 child: Center(
-                                                                                                                  child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                                    Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
-
+                                                                                                                  child: Icon(
+                                                                                                                    selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                                                        ? Icons.picture_as_pdf_sharp
+                                                                                                                        : selectedImagesDisplay[index]["mimetype"] == "application/msword"
+                                                                                                                            ? Icons.article_outlined
+                                                                                                                            : selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                                ? Icons.clear
+                                                                                                                                : selectedImagesDisplay[index]["mimetype"] == "application/xml"
+                                                                                                                                    ? Icons.code_off
+                                                                                                                                    : selectedImagesDisplay[index]["mimetype"] == "application/zip"
+                                                                                                                                        ? Icons.folder_zip_outlined
+                                                                                                                                        : Icons.access_time_filled_outlined,
                                                                                                                     color: Colors.white,
                                                                                                                     size: 25,
                                                                                                                   ),
@@ -3715,8 +3699,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
                                                                                                                 //color: Colors.blue,
                                                                                                                 child: Text(
-
-
                                                                                                                   "pdf name.pdf",
                                                                                                                   style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
                                                                                                                 )),
@@ -3725,10 +3707,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             ),
                                                                                                             Container(
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                               // color: Colors.green,
+                                                                                                                // color: Colors.green,
                                                                                                                 child: Text(
-
-
                                                                                                                   "PDF",
                                                                                                                   style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
                                                                                                                 )),
@@ -3754,45 +3734,49 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               //color: Colors.green,
                                                                                                               child: IconButton(
                                                                                                                 icon: Icon(Icons.download),
-                                                                                                                onPressed: () async{
+                                                                                                                onPressed: () async {
                                                                                                                   //await getExternalStorageDirectory();
-
 
                                                                                                                   print(selectedImagesDisplay);
                                                                                                                   print("dbjfnkdfbjsjfbdsvbkdsvkdj");
 
-                                                                                                                  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-
+                                                                                                                //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                                                                  String mimetypes =logDataTitle[indexx][indexs]
+                                                                                                                  ['attachment_ids'][index]["mimetype"];
                                                                                                                   //String mimetypes = "application/pdf";
 
-
-
-                                                                                                                  String itemName,itemNamefinal;
+                                                                                                                  String itemName, itemNamefinal;
 
                                                                                                                   itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
 
-
-                                                                                                                  mimetypes == "application/pdf"?
-                                                                                                                  itemNamefinal = "${itemName}.pdf":mimetypes == "application/msword"?  itemNamefinal = "${itemName}.doc":
-                                                                                                                  mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"? itemNamefinal = "${itemName}.ods":
-                                                                                                                  mimetypes == "application/xml"? itemNamefinal = "${itemName}.xml":
-                                                                                                                  mimetypes == "application/zip"? itemNamefinal = "${itemName}.zip": itemNamefinal = "${itemName}";
+                                                                                                                  mimetypes == "application/pdf"
+                                                                                                                      ? itemNamefinal = "${itemName}.pdf"
+                                                                                                                      : mimetypes == "application/msword"
+                                                                                                                          ? itemNamefinal = "${itemName}.doc"
+                                                                                                                          : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                              ? itemNamefinal = "${itemName}..xlsx"
+                                                                                                                              : mimetypes == "application/xml"
+                                                                                                                                  ? itemNamefinal = "${itemName}.xml"
+                                                                                                                                  : mimetypes == "application/zip"
+                                                                                                                                      ? itemNamefinal = "${itemName}.zip"
+                                                                                                                                      : mimetypes == "image/jpeg"
+                                                                                                                                          ? itemNamefinal = "${itemName}.jpeg"
+                                                                                                                                          : mimetypes == "image/png"
+                                                                                                                                              ? itemNamefinal = "${itemName}.png"
+                                                                                                                                              : itemNamefinal = "${itemName}";
 
                                                                                                                   print(index);
 
                                                                                                                   print(selectedImagesDisplay);
-                                                                                                                  print(selectedImagesDisplay[index]["datas"]);
+                                                                                                                 // print(selectedImagesDisplay[index]["datas"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
                                                                                                                   print(itemNamefinal);
+                                                                                                                  print(mimetypes);
                                                                                                                   print("final print dataaa");
 
-
-
-                                                                                                                  _startDownload(itemNamefinal,logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-
-
+                                                                                                                  _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
 
                                                                                                                   // FileDownloader.downloadFile(
                                                                                                                   //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
@@ -3816,9 +3800,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                   //     });
                                                                                                                   //
                                                                                                                   //
-
-
-
                                                                                                                 },
                                                                                                               ),
                                                                                                             ),
@@ -3830,100 +3811,92 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                 ),
                                                                                               ),
                                                                                             )
-                                                                                          :
-
-                                                                                      (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
-                                                                                      Padding(
-                                                                                        padding: const EdgeInsets.only(left: 20),
-                                                                                        child: Container(
-                                                                                          child: Stack(
-                                                                                            children: [
-                                                                                              ClipRRect(
-                                                                                                child: Image.network(
-                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                  height: 100,
-                                                                                                  width: 80,
-                                                                                                ),
-                                                                                              ),
-                                                                                              Positioned(
-                                                                                                  left: 40,
-                                                                                                  right: 175,
-                                                                                                  bottom: 50,
-                                                                                                  top: 0,
+                                                                                          : (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")
+                                                                                              ? Padding(
+                                                                                                  padding: const EdgeInsets.only(left: 20),
                                                                                                   child: Container(
-                                                                                                    width: 20,
-                                                                                                    height: 20,
-                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
-                                                                                                    // color: Colors
-                                                                                                    //     .grey[200],
-                                                                                                    child: IconButton(
-                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                      onPressed: () async {
-                                                                                                        print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
+                                                                                                    child: Stack(
+                                                                                                      children: [
+                                                                                                        ClipRRect(
+                                                                                                          child: Image.network(
+                                                                                                            "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                            height: 100,
+                                                                                                            width: 80,
+                                                                                                          ),
+                                                                                                        ),
+                                                                                                        Positioned(
+                                                                                                            left: 40,
+                                                                                                            right: 175,
+                                                                                                            bottom: 50,
+                                                                                                            top: 0,
+                                                                                                            child: Container(
+                                                                                                              width: 20,
+                                                                                                              height: 20,
+                                                                                                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                              // color: Colors
+                                                                                                              //     .grey[200],
+                                                                                                              child: IconButton(
+                                                                                                                icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                                onPressed: () async {
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                                  var data = await deleteLogAttachment(lodAttachmentId);
 
-                                                                                                        if (data['message'] == "Success") {
-                                                                                                          print("jhbdndsjbv");
-                                                                                                          await getLeadDetails();
-                                                                                                          setState(() {
-                                                                                                            logDataHeader.clear();
-                                                                                                            logDataTitle.clear();
-                                                                                                            selectedImagesDisplay.clear();
-                                                                                                          });
-                                                                                                        }
+                                                                                                                  if (data['message'] == "Success") {
+                                                                                                                    print("jhbdndsjbv");
+                                                                                                                    await getLeadDetails();
+                                                                                                                    setState(() {
+                                                                                                                      logDataHeader.clear();
+                                                                                                                      logDataTitle.clear();
+                                                                                                                      selectedImagesDisplay.clear();
+                                                                                                                    });
+                                                                                                                  }
 
-                                                                                                        print(data);
-                                                                                                        print("delete testststs");
-                                                                                                      },
+                                                                                                                  print(data);
+                                                                                                                  print("delete testststs");
+                                                                                                                },
+                                                                                                              ),
+                                                                                                            ))
+                                                                                                      ],
                                                                                                     ),
-                                                                                                  ))
-                                                                                            ],
-                                                                                          ),
-                                                                                        ),
-                                                                                      ):
-                                                                                          Container();
+                                                                                                  ),
+                                                                                                )
+                                                                                              : Container();
                                                                                     },
                                                                                   ),
                                                                                 ),
                                                                               ),
-
-                                                                        emojiSet.length>0?
-
-                                                                        Padding(
-                                                                          padding: const EdgeInsets.only(left: 65),
-                                                                          child: GridView.builder(
-                                                                            shrinkWrap: true, // Avoid scrolling
-                                                                            physics: NeverScrollableScrollPhysics(),
-                                                                            itemCount: emojiSet.length,
-                                                                            gridDelegate:
-                                                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                crossAxisCount: 8,
-                                                                              mainAxisSpacing: 5.0,
-                                                                              crossAxisSpacing: 5.0,
-                                                                              childAspectRatio: 1.5,),
-                                                                            itemBuilder: (BuildContext context, int index) {
-                                                                              return Container(
-                                                                                width: 30,
-                                                                                //color: Colors.red,
-                                                                                decoration: BoxDecoration(
-                                                                                    border: Border.all(color: Colors.grey)
+                                                                        emojiSet.length >
+                                                                                0
+                                                                            ? Padding(
+                                                                                padding: const EdgeInsets.only(left: 65),
+                                                                                child: GridView.builder(
+                                                                                  shrinkWrap: true, // Avoid scrolling
+                                                                                  physics: NeverScrollableScrollPhysics(),
+                                                                                  itemCount: emojiSet.length,
+                                                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                                    crossAxisCount: 8,
+                                                                                    mainAxisSpacing: 5.0,
+                                                                                    crossAxisSpacing: 5.0,
+                                                                                    childAspectRatio: 1.5,
+                                                                                  ),
+                                                                                  itemBuilder: (BuildContext context, int index) {
+                                                                                    return Container(
+                                                                                      width: 30,
+                                                                                      //color: Colors.red,
+                                                                                      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+                                                                                      child: Row(
+                                                                                        children: [
+                                                                                          Text(emojiSet[index]['emoji']),
+                                                                                          SizedBox(width: 5),
+                                                                                          Text(emojiSet[index]['count'].toString()),
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  },
                                                                                 ),
-                                                                                child: Row(
-                                                                                  children: [
-                                                                                    Text(emojiSet[index]['emoji']),
-                                                                                    SizedBox(width: 5),
-                                                                                    Text(emojiSet[index]['count'].toString()),
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        ) :
-
-                                                                            Container(),
-
-
+                                                                              )
+                                                                            : Container(),
                                                                       ],
                                                                     ),
                                                                   );
@@ -6585,257 +6558,237 @@ class _LeadDetailState extends State<LeadDetail> {
     print("valuesss");
     return value;
   }
+
   _buildEmojiPopupDialog(BuildContext context) {
     return StatefulBuilder(builder: (context, setState) {
       return AlertDialog(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
-
           content: Container(
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.6,
-            height: MediaQuery.of(context).size.height /2.7,
+            height: MediaQuery.of(context).size.height / 2.7,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     IconButton(
-                      icon: Image.asset("images/image24.png"),
-                      onPressed: (){
-                        emojiClick("😃");
-                      }
-
-                    ),
+                        icon: Image.asset("images/image24.png"),
+                        onPressed: () {
+                          emojiClick("😃");
+                        }),
                     IconButton(
                       icon: Image.asset("images/image1.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😄");
-
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image23.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😊");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image3.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🤩");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image4.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😎");
                       },
                     ),
-
                   ],
                 ),
                 Row(
                   children: [
                     IconButton(
                       icon: Image.asset("images/image5.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😢");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image2.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😇");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image28.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😲");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image31.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😭");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image21.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😕");
                       },
                     ),
-
                   ],
                 ),
                 Row(
                   children: [
                     IconButton(
                       icon: Image.asset("images/image32.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😱");
-
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image26.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😂");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image25.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😋");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image22.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😐");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image33.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😨");
                       },
                     ),
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image15.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🤪");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image16.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😔");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image17.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😘");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image18.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😝");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image19.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😠");
                       },
                     ),
-
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image20.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😢");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image30.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😍");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image29.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("😉");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image7.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("👍🏻");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image27.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("👎🏻");
                       },
                     ),
-
-
-
                   ],
                 ),
                 Row(
                   children: [
-
                     IconButton(
                       icon: Image.asset("images/image8.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🙏🏻");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image12.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🔥");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image10.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🌹");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image6.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("❤️");
                       },
                     ),
                     IconButton(
                       icon: Image.asset("images/image13.png"),
-                      onPressed: (){
+                      onPressed: () {
                         emojiClick("🎉");
                       },
                     ),
                   ],
                 ),
-
               ],
             ),
-
           ));
     });
   }
 
-  void emojiClick(String emoji ) async{
+  void emojiClick(String emoji) async {
     print(emoji);
     print(logDataIdEmoji);
 
-    String value = await EmojiReaction(emoji,logDataIdEmoji!);
+    String value = await EmojiReaction(emoji, logDataIdEmoji!);
 
     print(value);
     print("valuesssdemooooo");
     Navigator.pop(context);
-
   }
 
   Future<void> _initDownloadPath() async {
@@ -6852,17 +6805,14 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   // Function to start the download task
-  Future<void> _startDownload(String name , String urldata) async {
-
-
+  Future<void> _startDownload(String name, String urldata) async {
     final taskId = await FlutterDownloader.enqueue(
         //url: 'http://165.22.30.188:8040/image/ir.attachment/944/datas', // Replace with your download link
-        url : urldata,
+        url: urldata,
         savedDir: _localPath!,
         showNotification: true,
         openFileFromNotification: true,
-        fileName: name
-    );
+        fileName: name);
 
     setState(() {
       _taskId = taskId;
@@ -6870,8 +6820,7 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   // Callback to handle download events
-  static void downloadCallback(
-      String id, int status, int progress) {
+  static void downloadCallback(String id, int status, int progress) {
     // Handle download status and progress updates here
     // You can use this callback to update UI elements as needed.
     print('Download task ($id) is in status ($status) and $progress% complete');
@@ -6887,11 +6836,15 @@ class _LeadDetailState extends State<LeadDetail> {
     } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
+
+      //await Permission.storage.request();
+
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Permission Required'),
-          content: Text('Please grant permission to access storage for downloading files.'),
+          content: Text(
+              'Please grant permission to access storage for downloading files.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context), // Close the dialog
