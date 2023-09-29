@@ -6807,7 +6807,7 @@ class _LeadDetailState extends State<LeadDetail> {
   // Function to start the download task
   Future<void> _startDownload(String name, String urldata) async {
     final taskId = await FlutterDownloader.enqueue(
-        //url: 'http://165.22.30.188:8040/image/ir.attachment/944/datas', // Replace with your download link
+       // url: 'https://165.22.30.188:8040/image/ir.attachment/1002/datas', // Replace with your download link
         url: urldata,
         savedDir: _localPath!,
         showNotification: true,
@@ -6826,31 +6826,68 @@ class _LeadDetailState extends State<LeadDetail> {
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
 
-  Future<void> requestPermission() async {
-    final status = await Permission.storage.request();
+  // Future<void> requestPermission() async {
+  //   var status =  await Permission.storage.request();
+  //   print(status);
+  //   print("storage status ");
+  //
+  //   if (status.isGranted) {
+  //     // Permission granted; you can proceed with file operations
+  //     // For example, you can start downloading a file here
+  //     // _startDownload();
+  //   }
+  //
+  //
+  //   else {
+  //     // Permission denied; you may want to handle this gracefully or show an error message
+  //     // You can show a message to the user explaining why the permission is necessary
+  //
+  //    Permission.storage.request();
+  //
+  //     showDialog(
+  //       context: context,
+  //       builder: (context) => AlertDialog(
+  //         title: Text('Permission Required'),
+  //         content: Text(
+  //             'Please grant permission to access storage for downloading files.'),
+  //         actions: [
+  //           TextButton(
+  //             onPressed: () => Navigator.pop(context), // Close the dialog
+  //
+  //
+  //
+  //             child: Text('OK'),
+  //           ),
+  //         ],
+  //       ),
+  //     );
+  //   }
+  // }
 
-    if (status.isGranted) {
+  Future<void> requestPermission() async {
+    var status = await Permission.manageExternalStorage.request();
+    print(status);
+
+    if (status.isGranted || await Permission.storage.request().isGranted) {
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
       // _startDownload();
-    }
-
-
-    else {
+    } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
-
-      //await Permission.storage.request();
-
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Permission Required'),
           content: Text(
-              'Please grant permission to access storage for downloading files.'),
+            'Please grant permission to access storage for downloading files.',
+          ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context), // Close the dialog
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                Permission.manageExternalStorage.request();
+              },
               child: Text('OK'),
             ),
           ],
@@ -6858,4 +6895,6 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     }
   }
+
+
 }
