@@ -6833,7 +6833,10 @@ class _LeadDetailState extends State<LeadDetail> {
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
       // _startDownload();
-    } else {
+    }
+
+
+    else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
 
