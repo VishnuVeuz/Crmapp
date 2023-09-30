@@ -170,6 +170,7 @@ class _LeadDetailState extends State<LeadDetail> {
     print("leadId");
     getLeadDetails();
     // requestPermission();
+    requestNotificationPermissions();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
   }
@@ -6806,6 +6807,26 @@ class _LeadDetailState extends State<LeadDetail> {
     Navigator.pop(context);
   }
 
+
+
+
+  Future<void> requestNotificationPermissions() async {
+    final PermissionStatus status = await Permission.notification.request();
+    if (status.isGranted) {
+      print("finaldata11");
+      // Notification permissions granted
+    } else if (status.isDenied) {
+      // Notification permissions denied
+      // Notification permissions denied
+      await openAppSettings();
+      print("finaldata12");
+    } else if (status.isPermanentlyDenied) {
+      print("finaldata13");
+      // Notification permissions permanently denied, open app settings
+      await openAppSettings();
+    }
+  }
+
   Future<void> _initDownloadPath() async {
     final directory = await getExternalStorageDirectory();
     // _localPath = "${directory!.path} + '/Download'";
@@ -6825,6 +6846,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
     var status = await Permission.storage.request();
+
     print(status);
     print("status1");
     // if (!status.isGranted) {

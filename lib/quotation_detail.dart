@@ -163,7 +163,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
     // TODO: implement initState
     super.initState();
     getQuotationDetails();
-    requestPermission();
+    requestNotificationPermissions();
+    // requestPermission();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
   }
@@ -4347,7 +4348,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                               print(mimetypes);
                                                                                                               print("final print dataaa");
 
-                                                                                                              _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                              FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                                                              requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
+                                                                                                             // _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
 
                                                                                                               // FileDownloader.downloadFile(
                                                                                                               //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
@@ -7124,11 +7129,29 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   }
 
+  Future<void> requestNotificationPermissions() async {
+    final PermissionStatus status = await Permission.notification.request();
+    if (status.isGranted) {
+      print("finaldata11");
+      // Notification permissions granted
+    } else if (status.isDenied) {
+      // Notification permissions denied
+      // Notification permissions denied
+      await openAppSettings();
+      print("finaldata12");
+    } else if (status.isPermanentlyDenied) {
+      print("finaldata13");
+      // Notification permissions permanently denied, open app settings
+      await openAppSettings();
+    }
+  }
+
+
   Future<void> _initDownloadPath() async {
     final directory = await getExternalStorageDirectory();
     // _localPath = "${directory!.path} + '/Download'";
 
-    _localPath = "${directory!.path}/Download";
+    _localPath = "${directory!.path}";
 
     final savedDir = Directory(_localPath!);
     bool hasExisted = await savedDir.exists();
@@ -7139,17 +7162,28 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   // Function to start the download task
   Future<void> _startDownload(String name, String urldata) async {
-    final taskId = await FlutterDownloader.enqueue(
-      //url: 'http://165.22.30.188:8040/image/ir.attachment/944/datas', // Replace with your download link
-        url: urldata,
-        savedDir: _localPath!,
-        showNotification: true,
-        openFileFromNotification: true,
-        fileName: name);
 
-    setState(() {
-      _taskId = taskId;
-    });
+    var status = await Permission.storage.request();
+
+
+
+    try {
+      print("status3");
+      final taskId = await FlutterDownloader.enqueue(
+          url: urldata,
+          savedDir: _localPath!,
+          showNotification: true,
+          openFileFromNotification: true,
+          saveInPublicStorage: true,
+          fileName: name);
+      print("dddddtask2");
+      print(_localPath);
+      setState(() {
+        _taskId = taskId;
+      });
+    } catch (e) {
+      print('Download error: $e');
+    }
   }
 
   // Callback to handle download events
@@ -7159,13 +7193,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
 
-  Future<void> requestPermission() async {
-    final status = await Permission.storage.request();
-
-    if (status.isGranted) {
+  Future<void> requestPermission(String name, String urldata) async {
+    var status = await Permission.manageExternalStorage.request();
+    if (status.isGranted|| await Permission.storage.request().isGranted) {
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
-      // _startDownload();
+      _startDownload(name,urldata);
     } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
