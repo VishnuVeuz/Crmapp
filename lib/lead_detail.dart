@@ -144,6 +144,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
   List<dynamic> attachmentImagesDisplay = [];
   String imagepath = "";
+  //String  imagefilename = "";
+
   String personImg = "";
   List base64string1 = [];
   List<Map<String, dynamic>> myData1 = [];
@@ -2147,16 +2149,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                   for (int i = 0;
                                       i < selectedImages.length;
                                       i++) {
+                                    // print(selectedImages[i].path.split('/').last);
+
+                                     //imagefilename=selectedImages[i].path.split('/').last;
+
                                     imagepath =
                                         selectedImages[i].path.toString();
                                     File imagefile =
-                                        File(imagepath); //convert Path to File
+                                        File(imagepath);
+
                                     Uint8List imagebytes = await imagefile
                                         .readAsBytes(); //convert to bytes
                                     base64string = base64.encode(imagebytes);
 
-                                    // base64string1.add(
-                                    //     base64string);
                                     //
 
                                     String dataImages =
@@ -3617,6 +3622,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 child: Container(
                                                                                   //color: Colors.green,
 
+
                                                                                   width: MediaQuery.of(context).size.width / 1.5,
                                                                                   // height: 140,
                                                                                   child: GridView.builder(
@@ -3888,7 +3894,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     return Container(
                                                                                       width: 30,
                                                                                       //color: Colors.red,
-                                                                                      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+                                                                                      decoration: BoxDecoration(color: Colors.grey[200],
+                                                                                          borderRadius: BorderRadius.all(Radius.circular(3)),
+                                                                                          border: Border.all(color: Colors.grey, width: 0.3)),
                                                                                       child: Row(
                                                                                         children: [
                                                                                           Text(emojiSet[index]['emoji']),
@@ -5008,8 +5016,11 @@ class _LeadDetailState extends State<LeadDetail> {
                               imagepath = selectedImages[i].path.toString();
                               File imagefile =
                                   File(imagepath); //convert Path to File
+
                               Uint8List imagebytes = await imagefile
-                                  .readAsBytes(); //convert to bytes
+                                  .readAsBytes();
+                              print(imagefile);
+                              print(55555555555);//convert to bytes
                               base64string = base64.encode(imagebytes);
 
                               // base64string1.add(
