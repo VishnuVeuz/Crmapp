@@ -167,7 +167,7 @@ class _LeadDetailState extends State<LeadDetail> {
     print(widget.leadId);
     print("leadId");
     getLeadDetails();
-    requestPermission();
+    // requestPermission();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
   }
@@ -3776,7 +3776,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                   print(mimetypes);
                                                                                                                   print("final print dataaa");
 
-                                                                                                                  _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                                  FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                                                                  requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
+                                                                                                                  //_startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
 
                                                                                                                   // FileDownloader.downloadFile(
                                                                                                                   //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
@@ -6795,7 +6799,7 @@ class _LeadDetailState extends State<LeadDetail> {
     final directory = await getExternalStorageDirectory();
     // _localPath = "${directory!.path} + '/Download'";
 
-    _localPath = "${directory!.path}/Download";
+    _localPath = "${directory!.path}";
 
     final savedDir = Directory(_localPath!);
     bool hasExisted = await savedDir.exists();
@@ -6806,23 +6810,43 @@ class _LeadDetailState extends State<LeadDetail> {
 
   // Function to start the download task
   Future<void> _startDownload(String name, String urldata) async {
-    final taskId = await FlutterDownloader.enqueue(
-       // url: 'https://165.22.30.188:8040/image/ir.attachment/1002/datas', // Replace with your download link
-        url: urldata,
-        savedDir: _localPath!,
-        showNotification: true,
-        openFileFromNotification: true,
-        fileName: name);
+    print("dddddtask1");
 
-    setState(() {
-      _taskId = taskId;
-    });
+
+    var status = await Permission.storage.request();
+    print(status);
+    print("status1");
+    // if (!status.isGranted) {
+    //   print("status2");
+    //  return;
+   // }
+    try {
+      print("status3");
+      final taskId = await FlutterDownloader.enqueue(
+        // url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with your download link
+
+          url: urldata,
+          savedDir: _localPath!,
+          showNotification: true,
+          openFileFromNotification: true,
+           saveInPublicStorage: true,
+          fileName: name);
+      print("dddddtask2");
+      print(_localPath);
+      setState(() {
+        _taskId = taskId;
+      });
+    } catch (e) {
+      print('Download error: $e');
+    }
+ // }
   }
 
   // Callback to handle download events
   static void downloadCallback(String id, int status, int progress) {
     // Handle download status and progress updates here
     // You can use this callback to update UI elements as needed.
+
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
 
@@ -6834,7 +6858,7 @@ class _LeadDetailState extends State<LeadDetail> {
   //   if (status.isGranted) {
   //     // Permission granted; you can proceed with file operations
   //     // For example, you can start downloading a file here
-  //     // _startDownload();
+  //     //  _startDownload();
   //   }
   //
   //
@@ -6842,7 +6866,7 @@ class _LeadDetailState extends State<LeadDetail> {
   //     // Permission denied; you may want to handle this gracefully or show an error message
   //     // You can show a message to the user explaining why the permission is necessary
   //
-  //    Permission.storage.request();
+  //   // Permission.storage.request();
   //
   //     showDialog(
   //       context: context,
@@ -6864,14 +6888,14 @@ class _LeadDetailState extends State<LeadDetail> {
   //   }
   // }
 
-  Future<void> requestPermission() async {
+  Future<void> requestPermission(String name, String urldata) async {
     var status = await Permission.manageExternalStorage.request();
     print(status);
 
     if (status.isGranted || await Permission.storage.request().isGranted) {
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
-      // _startDownload();
+       _startDownload(name,urldata);
     } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
