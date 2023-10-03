@@ -107,6 +107,8 @@ class _LeadDetailState extends State<LeadDetail> {
       starImage = false,
       lognoteoptions = true;
 
+  int? scheduleViewIndex;
+
   String? scheduleDays,
       scheduleactivityType,
       scheduleSummary,
@@ -2530,6 +2532,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     setState(() {
                                                       print(scheduleView);
                                                       print("final data ");
+                                                      scheduleViewIndex = index;
+
                                                       scheduleView == false
                                                           ? scheduleView = true
                                                           : scheduleView == true
@@ -2579,7 +2583,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Visibility(
-                                              visible: scheduleView,
+                                              visible:scheduleView?index==scheduleViewIndex:false,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 5, left: 17),

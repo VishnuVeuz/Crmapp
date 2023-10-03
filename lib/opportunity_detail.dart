@@ -131,6 +131,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       lognoteoptions = true,
       followersVisibility = false;
 
+
+  int? scheduleViewIndex;
+
+
   List sendMailData = [];
 
   String? scheduleDays,
@@ -3341,6 +3345,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     setState(() {
                                                       print(scheduleView);
                                                       print("final data ");
+                                                      scheduleViewIndex = index;
                                                       scheduleView == false
                                                           ? scheduleView = true
                                                           : scheduleView == true
@@ -3390,7 +3395,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Visibility(
-                                              visible: scheduleView,
+                                              visible:scheduleView?index==scheduleViewIndex:false,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 5, left: 17),

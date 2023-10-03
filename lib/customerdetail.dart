@@ -101,6 +101,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
       followersVisibility = false;
   bool isCheckedFollowers = false;
 
+  int? scheduleViewIndex;
+
+
   dynamic templateName, templateId;
   List logDataTitle = [];
   List logDataHeader = [];
@@ -2807,6 +2810,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                       setState(() {
                                                         print(scheduleView);
                                                         print("final data ");
+                                                        scheduleViewIndex = index;
                                                         scheduleView == false
                                                             ? scheduleView =
                                                                 true
@@ -2860,7 +2864,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Visibility(
-                                                visible: scheduleView,
+                                                visible:scheduleView?index==scheduleViewIndex:false,
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.only(

@@ -101,6 +101,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
       starImage = false,
       followersVisibility = false;
 
+  int? scheduleViewIndex;
+
+
   String? scheduleDays,
       scheduleactivityType,
       scheduleSummary,
@@ -3138,6 +3141,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     setState(() {
                                                       print(scheduleView);
                                                       print("final data ");
+                                                      scheduleViewIndex = index;
                                                       scheduleView == false
                                                           ? scheduleView = true
                                                           : scheduleView == true
@@ -3187,7 +3191,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Visibility(
-                                              visible: scheduleView,
+                                              visible:scheduleView?index==scheduleViewIndex:false,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 5, left: 17),
