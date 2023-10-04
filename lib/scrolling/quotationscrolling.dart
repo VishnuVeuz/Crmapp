@@ -247,7 +247,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
                         ),
                       ]
