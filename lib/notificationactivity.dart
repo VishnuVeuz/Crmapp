@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'notification.dart';
 import 'opportunitymainpage.dart';
 
 class ActivitiesNotification extends StatefulWidget {
@@ -79,6 +80,11 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                           icon: SvgPicture.asset("images/messages.svg"),
                           onPressed: () {
 
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Notifications()));
                           },
                         ),
                         Positioned(
