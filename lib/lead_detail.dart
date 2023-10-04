@@ -3982,7 +3982,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
                                                                                                                 //color: Colors.blue,
                                                                                                                 child: Text(
-                                                                                                                  "pdf name.pdf",
+                                                                                                                  selectedImagesDisplay[index]["name"],
                                                                                                                   style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
                                                                                                                 )),
                                                                                                             SizedBox(
@@ -3991,9 +3991,16 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             Container(
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
                                                                                                                 // color: Colors.green,
-                                                                                                                child: Text(
-                                                                                                                  "PDF",
-                                                                                                                  style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                                child:
+                                                                                                                Text(
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                                  "PDF":selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                                      "WORD": selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                                      "EXCEL": selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                                      "XML":selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                                      "ZIP":"",
+
+                                                                                      style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
                                                                                                                 )),
                                                                                                           ],
                                                                                                         ),

@@ -4273,7 +4273,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                             child: Text(
 
 
-                                                                                                              "pdf name.pdf",
+                                                                                                              selectedImagesDisplay[index]["name"],
                                                                                                               style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
                                                                                                             )),
                                                                                                         SizedBox(
@@ -4285,7 +4285,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                             child: Text(
 
 
-                                                                                                              "PDF",
+                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                              "PDF":selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                              "WORD": selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                              "EXCEL": selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                              "XML":selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                              "ZIP":"",
                                                                                                               style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
                                                                                                             )),
                                                                                                       ],
