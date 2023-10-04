@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'api.dart';
 import 'chatpage.dart';
 import 'drawer.dart';
 
@@ -12,36 +13,58 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
- // int _selectedIndex = 0;
 
-  String ? salesperImg;
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  //}
+
+  String notificationCount="0";
+  String  messageCount="0";
+  String? token;
+
+  List notificationMessageData=[];
+  bool _isInitialized = false;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     notifications();
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+
+    if (!_isInitialized) {
+      // Show a loading indicator or any other placeholder widget while waiting for initialization
+      return Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    } else {
+      return Scaffold(
       drawer: MainDrawer(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme
+            .of(context)
+            .primaryColor,
         elevation: 0,
         title: Row(
           children: [
-
           ],
         ),
         leading: Builder(
-          builder: (context) => Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: IconButton(
-              icon: Image.asset("images/back.png"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
+          builder: (context) =>
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: IconButton(
+                  icon: Image.asset("images/back.png"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
         ),
         automaticallyImplyLeading: false,
         actions: [
@@ -53,7 +76,8 @@ class _NotificationsState extends State<Notifications> {
                       alignment: Alignment
                           .center,
                       children: [
-                        IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                        IconButton(
+                          icon: SvgPicture.asset("images/messages.svg"),
                           onPressed: () {
 
                           },
@@ -70,7 +94,9 @@ class _NotificationsState extends State<Notifications> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(messageCount,
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 8),)),
                           ),
                         ),
                       ]
@@ -98,7 +124,9 @@ class _NotificationsState extends State<Notifications> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(notificationCount,
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 8),)),
                           ),
                         ),
                       ]
@@ -120,29 +148,59 @@ class _NotificationsState extends State<Notifications> {
         ],
       ),
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
+        height: MediaQuery
+            .of(context)
+            .size
+            .height,
         child: Column(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/1.3,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 1.3,
               //color: Colors.red,
 
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: notificationMessageData.length,
 
                 itemBuilder: (_, i) {
-
                   return Card(
                     child: Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 20,bottom: 10),
+                          padding: const EdgeInsets.only(top: 20, bottom: 10),
                           child: Row(
                             children: [
-                              salesperImg != ""
-                                  ? Padding(
+                              notificationMessageData[i]["image_128"] != ""
+                                  ?
+
+                          Padding(
+                          padding: const EdgeInsets.only(left: 25),
+                    child: Container(
+                      width: 30,
+                      height: 30,
+
+                      child: CircleAvatar(
+                        radius: 1,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(1),
+                          child: Image.network(
+                              notificationMessageData[i]["image_128"]),
+                        ),
+                      ),
+                    ),
+                  )
+
+                             : Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Container(
                                   width: 30,
@@ -155,29 +213,6 @@ class _NotificationsState extends State<Notifications> {
 
                                 ),
                               )
-                                  : Padding(
-                                padding: const EdgeInsets.only(left: 25),
-                                child: Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        //  color: Colors.green
-                                      ),
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(20))),
-                                  child: CircleAvatar(
-                                    radius: 12,
-                                    child: Icon(
-                                      Icons.person,
-                                      size: 20,
-                                      // Adjust the size of the icon as per your requirements
-                                      color: Colors
-                                          .white, // Adjust the color of the icon as per your requirements
-                                    ),
-                                  ),
-                                ),
-                              ),
 
                             ],
                           ),
@@ -192,31 +227,37 @@ class _NotificationsState extends State<Notifications> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 20),
-                                  child: Text("lead"),
+                                  child: Text(notificationMessageData[i]["name"]),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 0,bottom: 0,left: 140,right: 20),
-                                  child: Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width/3.5,
-                                //color: Colors.red,
-                                      child: Text("3 months ago",style: TextStyle(color: Colors.grey[800]),))
+                                    padding: const EdgeInsets.only(top: 0,
+                                        bottom: 0,
+                                        left: 140,
+                                        right: 20),
+                                    child: Container(
+                                        width: MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width / 3.5,
+                                        //color: Colors.red,
+                                        child: Text(notificationMessageData[i]["period"],
+                                          style: TextStyle(
+                                              color: Colors.grey[800]),))
 
 
                                 ),
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 20,top: 10),
+                              padding: const EdgeInsets.only(left: 20, top: 10),
                               child: Container(
                                   width: MediaQuery
                                       .of(context)
                                       .size
-                                      .width/1.5,
-                                //color: Colors.red,
-                                  child: Text("message",style: TextStyle(color: Colors.grey),)),
+                                      .width / 1.5,
+                                  //color: Colors.red,
+                                  child: Text("message",
+                                    style: TextStyle(color: Colors.grey),)),
                             ),
 
                           ],
@@ -232,7 +273,10 @@ class _NotificationsState extends State<Notifications> {
             // Divider(color: Colors.grey[800],),
             Container(
               // width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height/13.5,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height / 13.5,
               //color: Colors.blue,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey
@@ -248,21 +292,21 @@ class _NotificationsState extends State<Notifications> {
                         //color: Colors.red,
                         child: Column(
                           children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Icon(Icons.person),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Icon(Icons.person),
 
-                              ),
+                            ),
                             Text("Chat")
                           ],
 
                         ),
 
                       ),
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) =>  ChatPage()),
+                          MaterialPageRoute(builder: (context) => ChatPage()),
                         );
                       },
                     ),
@@ -272,10 +316,11 @@ class _NotificationsState extends State<Notifications> {
                     child: Container(
                       child: Padding(
                         padding: const EdgeInsets.only(left: 60),
-                        child: Text("New message",style: TextStyle(fontSize: 16),),
+                        child: Text("New message", style: TextStyle(
+                            fontSize: 16),),
                       ),
                     ),
-                    onTap: (){},
+                    onTap: () {},
                   )
 
                 ],
@@ -308,5 +353,28 @@ class _NotificationsState extends State<Notifications> {
       //   onTap: _onItemTapped,
       // ),
     );
+  }
+
+
+
+  }
+
+  notifications() async {
+    token = await getUserJwt();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
+
+    var data = await getNotificationMessageActivity();
+    setState(() {
+
+      notificationMessageData = data;
+      _isInitialized = true;
+    });
+
+
+
   }
 }
