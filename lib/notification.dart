@@ -219,11 +219,14 @@ class _NotificationsState extends State<Notifications> {
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
 
 
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 20),
@@ -232,32 +235,35 @@ class _NotificationsState extends State<Notifications> {
                                 Padding(
                                     padding: const EdgeInsets.only(top: 0,
                                         bottom: 0,
-                                        left: 140,
+                                        //left: 10,
                                         right: 20),
-                                    child: Container(
-                                        width: MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width / 3.5,
-                                        //color: Colors.red,
-                                        child: Text(notificationMessageData[i]["period"],
-                                          style: TextStyle(
-                                              color: Colors.grey[800]),))
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Container(
+                                          width: MediaQuery
+                                              .of(context)
+                                              .size
+                                              .width/3.5,
+                                          color: Colors.red,
+                                          child: Text(notificationMessageData[i]["period"],
+                                            style: TextStyle(
+                                                color: Colors.grey[800]),)),
+                                    )
 
 
                                 ),
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 10),
+                              padding: const EdgeInsets.only(left: 20, top: 5,bottom: 5),
                               child: Container(
                                   width: MediaQuery
                                       .of(context)
                                       .size
                                       .width / 1.5,
                                   //color: Colors.red,
-                                  child: Text("message",
-                                    style: TextStyle(color: Colors.grey),)),
+                                  child: Text(notificationMessageData[i]["body"],
+                                    style: TextStyle(color: Colors.grey,fontSize: 11),)),
                             ),
 
                           ],
