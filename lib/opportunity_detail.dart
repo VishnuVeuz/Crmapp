@@ -52,6 +52,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   dynamic lostreasonName, lostreasonId;
   String notificationCount = "0";
+  String messageCount ="0";
   String? opportunityname,
       customername,
       email,
@@ -4965,7 +4966,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   getOpportunityDetails() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getOpportunityData(widget.opportunityId, "");
 
     setState(() {

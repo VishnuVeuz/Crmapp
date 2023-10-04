@@ -54,6 +54,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   int? productId = null;
 
   String notificationCount="0";
+  String messageCount ="0";
   TextEditingController opportunitynameController = TextEditingController();
   TextEditingController expectedrevenueController = TextEditingController();
   TextEditingController probabilityController = TextEditingController();
@@ -2183,7 +2184,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void defaultvalues() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await defaultDropdown("crm.lead");
     setState(() {
       print(data);
@@ -2288,7 +2293,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void getOpportunityDetails() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getOpportunityData(widget.opportunityId, "");
     setState(() {
       opportunitynameController.text = data['name'].toString();

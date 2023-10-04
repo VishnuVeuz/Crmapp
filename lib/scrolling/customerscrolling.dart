@@ -36,6 +36,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
   String? token,leadType;
   int? quotationType;
   String notificationCount="0";
+  String messageCount="0";
   @override
   void initState() {
     super.initState();
@@ -52,7 +53,11 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
 
   Future<void> fetchData() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     String urls;
     print(token);
     print(_numberOfLeadModelsPerRequest);

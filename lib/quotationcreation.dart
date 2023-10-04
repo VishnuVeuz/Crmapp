@@ -43,6 +43,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   final _formKey = GlobalKey<FormState>();
   String notificationCount="0";
+  String  messageCount="0";
 
   List orderLineProducts = [];
   List optionalProducts = [];
@@ -2237,7 +2238,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   void defaultvalues() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await defaultDropdown("sale.order");
 
     print(data);
@@ -2344,7 +2349,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   void getQuotationDetails() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getQuotationData(widget.quotationId, "");
 
     print(data);

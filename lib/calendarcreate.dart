@@ -679,6 +679,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                               const EdgeInsets.symmetric(
                                   horizontal: 22, vertical: 0),
                               child: MultiSelectDropDown.network(
+                                hint: "Reminders",
                                 selectedOptions: editReminders
                                     .map((tag) =>
                                     ValueItem(label: tag.label, value: tag.value))
@@ -790,6 +791,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                               const EdgeInsets.symmetric(
                                   horizontal: 22, vertical: 5),
                               child: MultiSelectDropDown.network(
+                                hint: "Tags",
                                 selectedOptions: editTagName
                                     .map((tag) =>
                                     ValueItem(label: tag.label, value: tag.value))

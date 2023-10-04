@@ -27,6 +27,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
   String? dropdownValue, dropdownValueId = "direct";
   String? dropdownCustomerData = "";
   String notificationCount="0";
+  String messageCount="0";
   TextEditingController deliveryDateTime = TextEditingController();
   TextEditingController expirationDateTime = TextEditingController();
   TextEditingController customerreference = TextEditingController();
@@ -2245,7 +2246,11 @@ void defaultvalues() async {
 
 void getOpportunityDetails() async {
   token = await getUserJwt();
-  notificationCount = await getNotificationCount();
+  var notificationMessage  = await getNotificationCount();
+
+  notificationCount = notificationMessage['activity_count'].toString();
+
+  messageCount = notificationMessage['message_count'].toString();
   var data = await getOpportunityQuotationData(widget.opportunityId, "");
   print(data);
   print("default data");

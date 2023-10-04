@@ -28,6 +28,7 @@ class OpportunityMainPage extends StatefulWidget {
 
 class _OpportunityMainPageState extends State<OpportunityMainPage> {
   String notificationCount="0";
+  String  messageCount ="0";
   bool _isInitialized = false;
   List opportunityTypes=[];
   int? opportunityTypesId;
@@ -251,7 +252,11 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
 
  opportunityData() async {
-   notificationCount = await getNotificationCount();
+   var notificationMessage  = await getNotificationCount();
+
+   notificationCount = notificationMessage['activity_count'].toString();
+
+   messageCount = notificationMessage['message_count'].toString();
    opportunityTypes = await getOpportunityTypes();
    print(opportunityTypes);
    print(opportunityTypes.length);

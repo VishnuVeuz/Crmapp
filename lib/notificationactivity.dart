@@ -18,6 +18,7 @@ class ActivitiesNotification extends StatefulWidget {
 class _ActivitiesNotificationState extends State<ActivitiesNotification> {
 
   String notificationCount="0";
+  String  messageCount="0";
   String ? salesperImg;
   List notificationData=[];
   bool _isInitialized = false;
@@ -474,7 +475,11 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
 
   notifications() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getNotificationActivity();
     setState(() {
 

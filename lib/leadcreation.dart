@@ -52,7 +52,7 @@ class _LeadCreationState extends State<LeadCreation> {
   TextEditingController internalnotesController = TextEditingController();
 
   String notificationCount="0";
-  String messageCount = "0";
+  String messageCount="0";
 
   final _formKey = GlobalKey<FormState>();
 
@@ -159,7 +159,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -1734,7 +1734,6 @@ class _LeadCreationState extends State<LeadCreation> {
     notificationCount = notificationMessage['activity_count'].toString();
 
     messageCount = notificationMessage['message_count'].toString();
-
     var data =  await defaultDropdown("lead.lead");
     setState(() {
       print(data);
@@ -1763,7 +1762,11 @@ class _LeadCreationState extends State<LeadCreation> {
   void getLeadDetails() async{
 
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data =  await getLeadData(widget.leadId,"");
     setState(() {
 

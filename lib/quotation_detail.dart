@@ -61,6 +61,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   bool followerStatus = false;
   String notificationCount = "0";
+  String  messageCount="0";
 
   bool _isInitialized = false;
   bool optvisibility = false, ordervisibility = true;
@@ -4791,7 +4792,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   getQuotationDetails() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getQuotationData(widget.quotationId, "");
 
     print(data);
