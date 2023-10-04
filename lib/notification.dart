@@ -254,6 +254,8 @@ class _NotificationsState extends State<Notifications> {
                               ),
                             Text("Chat")
                           ],
+
+
                         ),
 
                       ),
