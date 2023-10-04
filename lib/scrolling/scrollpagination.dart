@@ -43,6 +43,8 @@ class _LeadScrollingState extends State<LeadScrolling> {
   late List<LeadModel> _LeadModels;
   final int _nextPageTrigger = 3;
   String? token,leadType;
+  String notificationCount="0";
+  String messageCount="0";
 
   final _multiSelectKey = GlobalKey<FormFieldState>();
 
@@ -85,6 +87,11 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
     print("lead fetch");
     token = await getUserJwt();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     String urls;
     print(token);
     print(_numberOfLeadModelsPerRequest);
@@ -306,7 +313,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
                         ),
                       ]
@@ -338,7 +345,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                                   .circle,
                               color: Color(0xFFFA256B),
                             ),
-                            child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
                         ),
                       ]
