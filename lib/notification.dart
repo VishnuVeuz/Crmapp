@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'api.dart';
 import 'chatpage.dart';
 import 'drawer.dart';
+import 'notificationactivity.dart';
 
 class Notifications extends StatefulWidget {
   const Notifications({Key? key}) : super(key: key);
@@ -109,7 +110,11 @@ class _NotificationsState extends State<Notifications> {
                       children: [
                         IconButton(icon: SvgPicture.asset("images/clock2.svg"),
                           onPressed: () {
-
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ActivitiesNotification()));
                           },
                         ),
                         Positioned(
@@ -173,129 +178,140 @@ class _NotificationsState extends State<Notifications> {
                 itemCount: notificationMessageData.length,
 
                 itemBuilder: (_, i) {
-                  return Card(
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20, bottom: 10),
-                          child: Row(
-                            children: [
-                              notificationMessageData[i]["image_128"] != ""
-                                  ?
+                  return InkWell(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              ChatPage()));
 
+
+                    },
+                    child: Card(
+                      child: Row(
+                        children: [
                           Padding(
-                          padding: const EdgeInsets.only(left: 25),
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      //color: Colors.red,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                          ),
-                          borderRadius: BorderRadius
-                              .all(
-                              Radius.circular(
-                                  25))
-                      ),
-
-                      child: CircleAvatar(
-                        radius: 1,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(22),
-                          child: Image.network(
-                              notificationMessageData[i]["image_128"]),
-                        ),
-                      ),
-                    ),
-                  )
-
-                             : Padding(
-                                padding: const EdgeInsets.only(left: 25),
-                                child: Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                  ),
-
-                                ),
-                              )
-
-                            ],
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            padding: const EdgeInsets.only(top: 20, bottom: 10),
+                            child: Row(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20),
-                                  child: Container(
-                                      //color: Colors.red,
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width / 3.5,
+                                notificationMessageData[i]["image_128"] != ""
+                                    ?
 
-                                      child: Text(notificationMessageData[i]["name"],
-                                      style: TextStyle(fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 13,
-                                          decoration: TextDecoration.none
-                                      ),)),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(top: 0,
-                                        bottom: 0,
-                                        left: 60,
-                                        right: 20),
+                            Padding(
+                            padding: const EdgeInsets.only(left: 25),
+                      child: Container(
+                        width: 50,
+                        height: 50,
+                        //color: Colors.red,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                            ),
+                            borderRadius: BorderRadius
+                                .all(
+                                Radius.circular(
+                                    25))
+                        ),
+
+                        child: CircleAvatar(
+                          radius: 1,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(22),
+                            child: Image.network(
+                                notificationMessageData[i]["image_128"]),
+                          ),
+                        ),
+                      ),
+                    )
+
+                               : Padding(
+                                  padding: const EdgeInsets.only(left: 25),
+                                  child: Container(
+                                    width: 30,
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(),
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(20)),
+                                    ),
+
+                                  ),
+                                )
+
+                              ],
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Container(
                                         //color: Colors.red,
                                         width: MediaQuery
                                             .of(context)
                                             .size
-                                            .width / 4.1,
-                                        //color: Colors.red,
-                                        child: Text(notificationMessageData[i]["period"],
-                                          style: TextStyle(
-                                              color: Colors.grey[800],
-                                              fontFamily: 'Mulish',
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 12,
-                                              decoration: TextDecoration.none
-                                          ),))
+                                            .width / 3.5,
+
+                                        child: Text(notificationMessageData[i]["name"],
+                                        style: TextStyle(fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 13,
+                                            decoration: TextDecoration.none
+                                        ),)),
+                                  ),
+                                  Padding(
+                                      padding: const EdgeInsets.only(top: 0,
+                                          bottom: 0,
+                                          left: 60,
+                                          right: 20),
+                                      child: Container(
+                                          //color: Colors.red,
+                                          width: MediaQuery
+                                              .of(context)
+                                              .size
+                                              .width / 4.1,
+                                          //color: Colors.red,
+                                          child: Text(notificationMessageData[i]["period"],
+                                            style: TextStyle(
+                                                color: Colors.grey[800],
+                                                fontFamily: 'Mulish',
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12,
+                                                decoration: TextDecoration.none
+                                            ),))
 
 
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 10),
-                              child: Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width / 1.5,
-                                  //color: Colors.red,
-                                  child: Text(notificationMessageData[i]["body"],
-                                    style: TextStyle(color: Colors.grey,
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 11,
-                                        decoration: TextDecoration.none
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20, top: 10),
+                                child: Container(
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width / 1.5,
+                                    //color: Colors.red,
+                                    child: Text(notificationMessageData[i]["body"],
+                                      style: TextStyle(color: Colors.grey,
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 11,
+                                          decoration: TextDecoration.none
 
-                                    ),)),
-                            ),
+                                      ),)),
+                              ),
 
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
