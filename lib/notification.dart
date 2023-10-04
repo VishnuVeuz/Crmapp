@@ -253,7 +253,7 @@ class _NotificationsState extends State<Notifications> {
                                 child: Icon(Icons.person),
 
                               ),
-                            Text("Chattt")
+                            Text("Chat")
                           ],
 
                         ),
