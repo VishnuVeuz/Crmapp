@@ -243,7 +243,12 @@ class _NotificationsState extends State<Notifications> {
                                           .size
                                           .width / 3.5,
 
-                                      child: Text(notificationMessageData[i]["name"])),
+                                      child: Text(notificationMessageData[i]["name"],
+                                      style: TextStyle(fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 13,
+                                          decoration: TextDecoration.none
+                                      ),)),
                                 ),
                                 Padding(
                                     padding: const EdgeInsets.only(top: 0,
@@ -259,7 +264,12 @@ class _NotificationsState extends State<Notifications> {
                                         //color: Colors.red,
                                         child: Text(notificationMessageData[i]["period"],
                                           style: TextStyle(
-                                              color: Colors.grey[800]),))
+                                              color: Colors.grey[800],
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 12,
+                                              decoration: TextDecoration.none
+                                          ),))
 
 
                                 ),
@@ -273,8 +283,14 @@ class _NotificationsState extends State<Notifications> {
                                       .size
                                       .width / 1.5,
                                   //color: Colors.red,
-                                  child: Text("message",
-                                    style: TextStyle(color: Colors.grey),)),
+                                  child: Text(notificationMessageData[i]["body"],
+                                    style: TextStyle(color: Colors.grey,
+                                        fontFamily: 'Mulish',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 11,
+                                        decoration: TextDecoration.none
+
+                                    ),)),
                             ),
 
                           ],
