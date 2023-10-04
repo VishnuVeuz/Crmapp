@@ -672,6 +672,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
     notificationCount = notificationMessage['activity_count'].toString();
 
     messageCount = notificationMessage['message_count'].toString();
+
     String responce = await getUserCompanyData();
     print(responce);
 
