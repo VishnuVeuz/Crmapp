@@ -233,6 +233,7 @@ class _NotificationsState extends State<Notifications> {
                                   child: Text(notificationMessageData[i]["name"]),
                                 ),
                                 Padding(
+
                                     padding: const EdgeInsets.only(top: 0,
                                         bottom: 0,
                                         //left: 10,
