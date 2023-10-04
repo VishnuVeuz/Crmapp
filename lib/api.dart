@@ -4055,7 +4055,7 @@ getNotificationCount() async {
   print(data['activity_count']);
   print("datajfhejbfjbj");
 
-  return data['activity_count'].toString();
+  return data;
 }
 
 

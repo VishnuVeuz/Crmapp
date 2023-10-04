@@ -29,6 +29,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
   List tags = [];
   bool _isInitialized = false;
   String notificationCount="0";
+  String messageCount="0";
   @override
   void initState() {
     // TODO: implement initState
@@ -122,7 +123,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -666,8 +667,11 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
     token = await getUserJwt();
 
-     notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
 
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     String responce = await getUserCompanyData();
     print(responce);
 

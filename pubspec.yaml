@@ -59,6 +59,7 @@ dependencies:
   open_file: ^3.2.1
   flutter_file_downloader: ^1.1.0+1
   flutter_downloader: ^1.10.5
+  file_picker: ^4.2.1
 
 
 

@@ -41,6 +41,7 @@ class LeadDetail extends StatefulWidget {
 class _LeadDetailState extends State<LeadDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String notificationCount = "0";
+  String messageCount ="0";
   String? leadname,
       email,
       phone,
@@ -6688,7 +6689,11 @@ class _LeadDetailState extends State<LeadDetail> {
 
   getLeadDetails() async {
     token = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
 
     var data = await getLeadData(widget.leadId, "");
     setState(() {

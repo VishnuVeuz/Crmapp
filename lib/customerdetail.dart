@@ -37,6 +37,7 @@ class CustomerDetail extends StatefulWidget {
 class _CustomerDetailState extends State<CustomerDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String notificationCount = "0";
+  String messageCount = "0";
   String? customername,
       taxid,
       jobposition,
@@ -2396,6 +2397,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             crossAxisCount: 8),
                                         itemBuilder:
                                             (BuildContext context, int index) {
+                                          print(selectedImages[index]
+                                              );
+                                          print("thererere");
+
                                           return Center(
                                               child: kIsWeb
                                                   ? Image.network(
@@ -4271,6 +4276,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                                 selectedImagesDisplay[index]["name"],
                                                                                                                 style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
                                                                                                               )),
+
                                                                                                           SizedBox(
                                                                                                             height: 10,
                                                                                                           ),
@@ -4522,7 +4528,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
   getCustomerDetails() async {
     String tokens = await getUserJwt();
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     var data = await getCustomerData(widget.customerId, "");
 
     print(data);
@@ -5818,6 +5828,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
       () {
         if (xfilePick.isNotEmpty) {
           for (var i = 0; i < xfilePick.length; i++) {
+            print(xfilePick[i].path);
+        //
+        //     if(xfilePick[i].path.contains(".zip")){
+        //
+        //       selectedImages.add("ZIP" as File);
+        //       print("Zip detected");
+        //     }
+        //
+        //
+        //     else{
+        //   selectedImages.add(File(xfilePick[i].path));
+        // }
+
             selectedImages.add(File(xfilePick[i].path));
           }
         } else {
@@ -6910,6 +6933,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
           .showSnackBar(const SnackBar(content: Text('Nothing is selected')));
     }
   }
+
 
   newTemplate() async {
     String value = await newTemplateCreate(bodyController.text, "res.partner",

@@ -26,6 +26,7 @@ class CustomerCreation extends StatefulWidget {
 class _CustomerCreationState extends State<CustomerCreation> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String notificationCount="0";
+  String messageCount = "0";
 
   dynamic companyName,
       companyId,
@@ -190,7 +191,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     .circle,
                                 color: Color(0xFFFA256B),
                               ),
-                              child: Center(child: Text("12",style: TextStyle(color: Colors.white,fontSize: 8),)),
+                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                             ),
                           ),
                         ]
@@ -2781,7 +2782,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
   }
 
   void tokendata() async {
-    notificationCount = await getNotificationCount();
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
     token = await getUserJwt();
 
     setState(() {
