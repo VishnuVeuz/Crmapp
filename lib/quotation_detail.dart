@@ -99,7 +99,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
       attachmentVisibility = false,
       lognoteoptions = true,
       starImage = false,
-      followersVisibility = false;
+      followersVisibility = false,
+      lognoteVisibility = false;
 
   int? scheduleViewIndex;
 
@@ -1874,6 +1875,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     followersVisibility == true
                                         ? followersVisibility = false
                                         : followersVisibility = true;
+                                    lognoteVisibility==false
+                                        ? lognoteVisibility = false
+                                        : lognoteVisibility=false;
+
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1899,6 +1904,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     followersVisibility == false
                                         ? followersVisibility = false
                                         : followersVisibility = false;
+                                    lognoteVisibility==true
+                                        ? lognoteVisibility=false
+                                        : lognoteVisibility=true;
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -2328,11 +2336,263 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         SizedBox(
                           height: 5,
                         ),
-                        Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            salespersonimg != ""
-                                ? Padding(
+                        Visibility(
+                          visible: followersVisibility,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  salespersonimg != ""
+                                      ? Padding(
+                                          padding: const EdgeInsets.only(left: 30),
+                                          child: Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                            ),
+                                            child: CircleAvatar(
+                                              radius: 12,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(18),
+                                                child: Image.network(
+                                                    "${salespersonimg!}?token=${token}"),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : Padding(
+                                          padding: const EdgeInsets.only(left: 30),
+                                          child: Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    //  color: Colors.green
+                                                    ),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20))),
+                                            child: CircleAvatar(
+                                              radius: 12,
+                                              child: Icon(
+                                                Icons.person,
+                                                size: 20,
+                                                // Adjust the size of the icon as per your requirements
+                                                color: Colors
+                                                    .white, // Adjust the color of the icon as per your requirements
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.only(left: 20, right: 20),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      //height: 46,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
+                                          color: Color(0xFFF6F6F6),
+                                          border:
+                                              Border.all(color: Color(0xFFEBEBEB))),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context).size.width /
+                                                1.4,
+                                            // height: 40,
+                                            // color: Colors.red,
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.only(left: 10),
+                                              child: TextField(
+                                                  textAlignVertical:
+                                                      TextAlignVertical.top,
+                                                  //expands: true,
+                                                  maxLines: null,
+                                                  controller: lognoteController,
+                                                  decoration: const InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                          "Send a message to followers",
+                                                      hintStyle: TextStyle(
+                                                          //fontFamily: "inter",
+                                                          fontWeight: FontWeight.w500,
+                                                          fontFamily: 'Mulish',
+                                                          fontSize: 12,
+                                                          color: Color(0xFFAFAFAF)))),
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.grey[350],
+                                            thickness: 1,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              IconButton(
+                                                icon: Image.asset("images/pin.png"),
+                                                onPressed: () {
+                                                  myAlert("lognote");
+                                                },
+                                              ),
+                                              IconButton(
+                                                  onPressed: () async {
+                                                    recipient!.clear();
+                                                    await defaultSendmsgvalues();
+
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          _buildSendmessagePopupDialog(
+                                                              context, 0),
+                                                    ).then(
+                                                        (value) => setState(() {}));
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.arrow_outward_rounded,
+                                                    size: 18,
+                                                    color: Colors.grey[700],
+                                                  ))
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              selectedImages.isEmpty
+                                  ? Padding(
+                                padding: const EdgeInsets.only(left: 73),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                ),
+                              )
+                                  : Padding(
+                                padding:
+                                const EdgeInsets.only(left: 70, right: 50),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 40,
+                                  child: Container(
+                                    width: 40,
+                                    //height: 40,
+                                    child: GridView.builder(
+                                      shrinkWrap: true,
+                                      // Avoid scrolling
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: selectedImages.length,
+                                      gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 8),
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Center(
+                                            child: kIsWeb
+                                                ? Image.network(
+                                                selectedImages[index].path)
+                                                : Image.file(
+                                                selectedImages[index]));
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: 10, left: 80, top: 5),
+                                child: SizedBox(
+                                  width: 73,
+                                  height: 28,
+                                  child: ElevatedButton(
+                                      child: Center(
+                                        child: Text(
+                                          "Send",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 10,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      onPressed: () async {
+                                        for (int i = 0;
+                                        i < selectedImages.length;
+                                        i++) {
+                                          imagepath =
+                                              selectedImages[i].path.toString();
+                                          File imagefile =
+                                          File(imagepath); //convert Path to File
+                                          Uint8List imagebytes = await imagefile
+                                              .readAsBytes(); //convert to bytes
+                                          base64string = base64.encode(imagebytes);
+
+                                          // base64string1.add(
+                                          //     base64string);
+                                          //
+
+                                          String dataImages =
+                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+
+                                          Map<String, dynamic> jsondata =
+                                          jsonDecode(dataImages);
+                                          myData1.add(jsondata);
+                                        }
+                                        // print(myData1);
+                                        // print("final datatata");
+
+                                        bodyController.text = lognoteController.text;
+
+                                        String resMessage;
+                                        followersVisibility == false
+                                            ? resMessage = await logNoteData(myData1)
+                                            : resMessage =
+                                        await createSendmessage(myData1);
+
+                                        print(resMessage);
+                                        if (resMessage == "success") {
+                                          print("fsdvds");
+                                          setState(() {
+                                            logDataHeader.clear();
+                                            logDataTitle.clear();
+                                            selectedImagesDisplay.clear();
+                                            lognoteController.text = "";
+                                            selectedImages.clear();
+                                            myData1.clear();
+                                            bodyController.text = "";
+                                          });
+                                        }
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFFA256A),
+                                      )),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        Visibility(
+                          visible: lognoteVisibility,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  salespersonimg != ""
+                                      ? Padding(
                                     padding: const EdgeInsets.only(left: 30),
                                     child: Container(
                                       width: 30,
@@ -2346,22 +2606,22 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         radius: 12,
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(18),
+                                          BorderRadius.circular(18),
                                           child: Image.network(
                                               "${salespersonimg!}?token=${token}"),
                                         ),
                                       ),
                                     ),
                                   )
-                                : Padding(
+                                      : Padding(
                                     padding: const EdgeInsets.only(left: 30),
                                     child: Container(
                                       width: 30,
                                       height: 30,
                                       decoration: BoxDecoration(
                                           border: Border.all(
-                                              //  color: Colors.green
-                                              ),
+                                            //  color: Colors.green
+                                          ),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
                                       child: CircleAvatar(
@@ -2376,99 +2636,99 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       ),
                                     ),
                                   ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 20, right: 20),
-                              child: Container(
-                                width: MediaQuery.of(context).size.width / 1.4,
-                                //height: 46,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(5)),
-                                    color: Color(0xFFF6F6F6),
-                                    border:
-                                        Border.all(color: Color(0xFFEBEBEB))),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width /
-                                          1.4,
-                                      // height: 40,
-                                      // color: Colors.red,
-                                      child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 10),
-                                        child: TextField(
-                                            textAlignVertical:
-                                                TextAlignVertical.top,
-                                            //expands: true,
-                                            maxLines: null,
-                                            controller: lognoteController,
-                                            decoration: const InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText:
-                                                    "Send a message to followers",
-                                                hintStyle: TextStyle(
-                                                    //fontFamily: "inter",
-                                                    fontWeight: FontWeight.w500,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
-                                                    color: Color(0xFFAFAFAF)))),
+                                  Padding(
+                                    padding:
+                                    const EdgeInsets.only(left: 20, right: 20),
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      //height: 46,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
+                                          color: Color(0xFFF6F6F6),
+                                          border:
+                                          Border.all(color: Color(0xFFEBEBEB))),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.of(context).size.width /
+                                                1.4,
+                                            // height: 40,
+                                            // color: Colors.red,
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.only(left: 10),
+                                              child: TextField(
+                                                  textAlignVertical:
+                                                  TextAlignVertical.top,
+                                                  //expands: true,
+                                                  maxLines: null,
+                                                  controller: lognoteController,
+                                                  decoration: const InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                      "Send a message to followers",
+                                                      hintStyle: TextStyle(
+                                                        //fontFamily: "inter",
+                                                          fontWeight: FontWeight.w500,
+                                                          fontFamily: 'Mulish',
+                                                          fontSize: 12,
+                                                          color: Color(0xFFAFAFAF)))),
+                                            ),
+                                          ),
+                                          Divider(
+                                            color: Colors.grey[350],
+                                            thickness: 1,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              IconButton(
+                                                icon: Image.asset("images/pin.png"),
+                                                onPressed: () {
+                                                  myAlert("lognote");
+                                                },
+                                              ),
+                                              IconButton(
+                                                  onPressed: () async {
+                                                    recipient!.clear();
+                                                    await defaultSendmsgvalues();
+
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (BuildContext
+                                                      context) =>
+                                                          _buildSendmessagePopupDialog(
+                                                              context, 0),
+                                                    ).then(
+                                                            (value) => setState(() {}));
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.arrow_outward_rounded,
+                                                    size: 18,
+                                                    color: Colors.grey[700],
+                                                  ))
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    Divider(
-                                      color: Colors.grey[350],
-                                      thickness: 1,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        IconButton(
-                                          icon: Image.asset("images/pin.png"),
-                                          onPressed: () {
-                                            myAlert("lognote");
-                                          },
-                                        ),
-                                        IconButton(
-                                            onPressed: () async {
-                                              recipient!.clear();
-                                              await defaultSendmsgvalues();
-
-                                              showDialog(
-                                                context: context,
-                                                builder: (BuildContext
-                                                        context) =>
-                                                    _buildSendmessagePopupDialog(
-                                                        context, 0),
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            },
-                                            icon: Icon(
-                                              Icons.arrow_outward_rounded,
-                                              size: 18,
-                                              color: Colors.grey[700],
-                                            ))
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
-                            )
-                          ],
-                        ),
-                        selectedImages.isEmpty
-                            ? Padding(
+                              selectedImages.isEmpty
+                                  ? Padding(
                                 padding: const EdgeInsets.only(left: 73),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,
                                 ),
                               )
-                            : Padding(
+                                  : Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 70, right: 50),
+                                const EdgeInsets.only(left: 70, right: 50),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,
@@ -2481,91 +2741,95 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: selectedImages.length,
                                       gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 8),
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 8),
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return Center(
                                             child: kIsWeb
                                                 ? Image.network(
-                                                    selectedImages[index].path)
+                                                selectedImages[index].path)
                                                 : Image.file(
-                                                    selectedImages[index]));
+                                                selectedImages[index]));
                                       },
                                     ),
                                   ),
                                 ),
                               ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 10, left: 80, top: 5),
-                          child: SizedBox(
-                            width: 73,
-                            height: 28,
-                            child: ElevatedButton(
-                                child: Center(
-                                  child: Text(
-                                    "Send",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 10,
-                                        color: Colors.white),
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    bottom: 10, left: 80, top: 5),
+                                child: SizedBox(
+                                  width: 73,
+                                  height: 28,
+                                  child: ElevatedButton(
+                                      child: Center(
+                                        child: Text(
+                                          "Send",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 10,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      onPressed: () async {
+                                        for (int i = 0;
+                                        i < selectedImages.length;
+                                        i++) {
+                                          imagepath =
+                                              selectedImages[i].path.toString();
+                                          File imagefile =
+                                          File(imagepath); //convert Path to File
+                                          Uint8List imagebytes = await imagefile
+                                              .readAsBytes(); //convert to bytes
+                                          base64string = base64.encode(imagebytes);
+
+                                          // base64string1.add(
+                                          //     base64string);
+                                          //
+
+                                          String dataImages =
+                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+
+                                          Map<String, dynamic> jsondata =
+                                          jsonDecode(dataImages);
+                                          myData1.add(jsondata);
+                                        }
+                                        // print(myData1);
+                                        // print("final datatata");
+
+                                        bodyController.text = lognoteController.text;
+
+                                        String resMessage;
+                                        followersVisibility == false
+                                            ? resMessage = await logNoteData(myData1)
+                                            : resMessage =
+                                        await createSendmessage(myData1);
+
+                                        print(resMessage);
+                                        if (resMessage == "success") {
+                                          print("fsdvds");
+                                          setState(() {
+                                            logDataHeader.clear();
+                                            logDataTitle.clear();
+                                            selectedImagesDisplay.clear();
+                                            lognoteController.text = "";
+                                            selectedImages.clear();
+                                            myData1.clear();
+                                            bodyController.text = "";
+                                          });
+                                        }
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFFFA256A),
+                                      )),
                                 ),
-                                onPressed: () async {
-                                  for (int i = 0;
-                                      i < selectedImages.length;
-                                      i++) {
-                                    imagepath =
-                                        selectedImages[i].path.toString();
-                                    File imagefile =
-                                        File(imagepath); //convert Path to File
-                                    Uint8List imagebytes = await imagefile
-                                        .readAsBytes(); //convert to bytes
-                                    base64string = base64.encode(imagebytes);
-
-                                    // base64string1.add(
-                                    //     base64string);
-                                    //
-
-                                    String dataImages =
-                                        '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
-
-                                    Map<String, dynamic> jsondata =
-                                        jsonDecode(dataImages);
-                                    myData1.add(jsondata);
-                                  }
-                                  // print(myData1);
-                                  // print("final datatata");
-
-                                  bodyController.text = lognoteController.text;
-
-                                  String resMessage;
-                                  followersVisibility == false
-                                      ? resMessage = await logNoteData(myData1)
-                                      : resMessage =
-                                          await createSendmessage(myData1);
-
-                                  print(resMessage);
-                                  if (resMessage == "success") {
-                                    print("fsdvds");
-                                    setState(() {
-                                      logDataHeader.clear();
-                                      logDataTitle.clear();
-                                      selectedImagesDisplay.clear();
-                                      lognoteController.text = "";
-                                      selectedImages.clear();
-                                      myData1.clear();
-                                      bodyController.text = "";
-                                    });
-                                  }
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFFA256A),
-                                )),
+                              ),
+                            ],
                           ),
                         ),
+
                       ],
                     ),
                   ),
