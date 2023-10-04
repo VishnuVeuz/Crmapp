@@ -251,10 +251,10 @@ class _NotificationsState extends State<Notifications> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 5),
                                 child: Icon(Icons.person),
+
                               ),
                             Text("Chat")
                           ],
-
 
                         ),
 
