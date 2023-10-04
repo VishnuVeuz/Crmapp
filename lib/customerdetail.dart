@@ -4192,8 +4192,6 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                     borderRadius: BorderRadius.circular(3),
                                                                                     color: Colors.grey[200],
                                                                                     border: Border.all(color: Colors.grey, width: 0.3,),
-
-
                                                                                   ),
                                                                                   // color: Colors.red,
                                                                                   child: Row(

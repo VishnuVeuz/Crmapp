@@ -55,7 +55,7 @@ dependencies:
   flowder: ^0.2.0
   dio: ^4.0.4
   path_provider: ^2.0.8
-  permission_handler: ^8.3.0
+  permission_handler: ^11.0.0
   open_file: ^3.2.1
   flutter_file_downloader: ^1.1.0+1
   flutter_downloader: ^1.10.5

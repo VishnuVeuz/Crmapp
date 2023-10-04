@@ -4110,7 +4110,56 @@ EmojiReaction(String reaction,int logId) async {
   return resMessageText;
 }
 
+deleteEmojiReaction(String reaction,int logId) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
 
+  print(logId);
+  print("asjfbvjsbf");
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "reaction":"🤩"
+      }
+
+    });
+
+    Response response = await delete(
+      Uri.parse('${baseUrl}api/reaction/${logId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      print("finalstringdataaa");
+      resMessage = data['result']['message'];
+      print(resMessage);
+      print("leadeditresponce");
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+
+  print(resMessageText);
+  print("dataaaa");
+  return resMessageText;
+}
 
 
 addMultiCmpnySF(String jsonListmultiCompany) async {

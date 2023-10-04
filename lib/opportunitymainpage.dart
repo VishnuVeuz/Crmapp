@@ -267,9 +267,11 @@ setState(() {
         padding: const EdgeInsets.only(bottom: 550,left: 50),
         child: AlertDialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                borderRadius: BorderRadius.all(Radius.circular(10.0))),
             title: InkWell(
               child: Container(
+               // width: 20,
+                //color: Colors.red,
                 //width: 40,
                 child: Center(
                   child: Text(
