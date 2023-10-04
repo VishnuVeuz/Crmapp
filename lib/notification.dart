@@ -186,13 +186,22 @@ class _NotificationsState extends State<Notifications> {
                           Padding(
                           padding: const EdgeInsets.only(left: 25),
                     child: Container(
-                      width: 30,
-                      height: 30,
+                      width: 50,
+                      height: 50,
+                      //color: Colors.red,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                          ),
+                          borderRadius: BorderRadius
+                              .all(
+                              Radius.circular(
+                                  25))
+                      ),
 
                       child: CircleAvatar(
                         radius: 1,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(1),
+                          borderRadius: BorderRadius.circular(22),
                           child: Image.network(
                               notificationMessageData[i]["image_128"]),
                         ),
@@ -227,18 +236,26 @@ class _NotificationsState extends State<Notifications> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 20),
-                                  child: Text(notificationMessageData[i]["name"]),
+                                  child: Container(
+                                      //color: Colors.red,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width / 3.5,
+
+                                      child: Text(notificationMessageData[i]["name"])),
                                 ),
                                 Padding(
                                     padding: const EdgeInsets.only(top: 0,
                                         bottom: 0,
-                                        left: 140,
+                                        left: 60,
                                         right: 20),
                                     child: Container(
+                                        //color: Colors.red,
                                         width: MediaQuery
                                             .of(context)
                                             .size
-                                            .width / 3.5,
+                                            .width / 4.1,
                                         //color: Colors.red,
                                         child: Text(notificationMessageData[i]["period"],
                                           style: TextStyle(
