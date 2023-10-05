@@ -2482,7 +2482,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               )
                                   : Padding(
                                 padding:
-                                const EdgeInsets.only(left: 70, right: 50),
+                                const EdgeInsets.only(left: 70, right: 50,top: 5),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,
@@ -2769,7 +2769,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               )
                                   : Padding(
                                 padding:
-                                const EdgeInsets.only(left: 70, right: 50),
+                                const EdgeInsets.only(left: 70, right: 50,top: 5),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,

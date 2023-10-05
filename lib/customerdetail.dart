@@ -2380,7 +2380,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 )
                                     : Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 70, right: 50),
+                                      left: 70, right: 50,top: 5),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     // height: 40,
@@ -2679,7 +2679,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 )
                                     : Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 70, right: 50),
+                                      left: 70, right: 50,top: 5),
                                   child: Container(
                                     width: MediaQuery.of(context).size.width,
                                     // height: 40,
