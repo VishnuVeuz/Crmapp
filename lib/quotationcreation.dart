@@ -373,7 +373,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["display_name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -424,7 +424,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: Container(
                       child: Text(dropdownCustomerData!),
                     ),
@@ -458,7 +458,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -564,7 +564,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -642,7 +642,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -731,7 +731,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -804,7 +804,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -883,7 +883,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1163,7 +1163,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1250,7 +1250,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1322,7 +1322,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1392,7 +1392,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),

@@ -417,7 +417,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -586,7 +586,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -685,7 +685,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -828,7 +828,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1024,7 +1024,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1121,7 +1121,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1217,7 +1217,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1412,7 +1412,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1511,7 +1511,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));
@@ -1607,7 +1607,7 @@ class _LeadCreationState extends State<LeadCreation> {
                         selectedValueWidgetFn: (item) {
                           return (Center(
                               child: Container(
-                                width: 300,
+                                width: 320,
                                 child: Text(item["name"], style: TextStyle(
                                     fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                               )));

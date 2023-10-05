@@ -58,7 +58,7 @@ class QuotationList extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5,right: 30),
+                          padding: const EdgeInsets.only(top: 5,right: 40),
                           child: Text(amount.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,

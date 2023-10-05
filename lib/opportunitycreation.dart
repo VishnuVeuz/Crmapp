@@ -427,7 +427,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["display_name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -530,7 +530,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -692,7 +692,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -781,7 +781,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -914,7 +914,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1105,7 +1105,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(item["name"], style: TextStyle(
                                   fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                             )));
@@ -1198,7 +1198,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1288,7 +1288,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1380,7 +1380,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1561,7 +1561,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1655,7 +1655,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -1747,7 +1747,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 300,
+                              width: 320,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
