@@ -4563,21 +4563,35 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 crossAxisSpacing: 5.0,
                                                                                 childAspectRatio: 1.5,),
                                                                               itemBuilder: (BuildContext context, int index) {
-                                                                                return Container(
-                                                                                  width: 30,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(3),
-                                                                                    color: Colors.grey[200],
-                                                                                    border: Border.all(color: Colors.grey, width: 0.3,),
+                                                                                return InkWell(
+                                                                                  child: Container(
+                                                                                    width: 30,
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius.circular(3),
+                                                                                      color: Colors.grey[200],
+                                                                                      border: Border.all(color: Colors.grey, width: 0.3,),
+                                                                                    ),
+                                                                                    // color: Colors.red,
+                                                                                    child: Row(
+                                                                                      children: [
+                                                                                        Text(emojiSet[index]['emoji']),
+                                                                                        SizedBox(width: 5),
+                                                                                        Text(emojiSet[index]['count'].toString()),
+                                                                                      ],
+                                                                                    ),
                                                                                   ),
-                                                                                  // color: Colors.red,
-                                                                                  child: Row(
-                                                                                    children: [
-                                                                                      Text(emojiSet[index]['emoji']),
-                                                                                      SizedBox(width: 5),
-                                                                                      Text(emojiSet[index]['count'].toString()),
-                                                                                    ],
-                                                                                  ),
+                                                                                    onTap: () async {
+                                                                                      var data = await deleteEmoji(
+                                                                                          emojiSet[index]['emoji'],
+                                                                                          logDataTitle[indexx][indexs]['id']);
+
+                                                                                      if (data['result']['message'] ==
+                                                                                          "success") {
+                                                                                        setState(() {});
+
+                                                                                      }
+
+                                                                                    }
                                                                                 );
                                                                               },
                                                                             ),

@@ -4831,23 +4831,37 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                               crossAxisSpacing: 5.0,
                                                                               childAspectRatio: 1.5,),
                                                                             itemBuilder: (BuildContext context, int index) {
-                                                                              return Container(
-                                                                                width: 30,
-                                                                                // color: Colors.red,
-                                                                                decoration: BoxDecoration(
-                                                                                  borderRadius: BorderRadius.circular(3),
-                                                                                  color: Colors.grey[200],
-                                                                                  border: Border.all(color: Colors.grey, width: 0.3,),
+                                                                              return InkWell(
+                                                                                child: Container(
+                                                                                  width: 30,
+                                                                                  // color: Colors.red,
+                                                                                  decoration: BoxDecoration(
+                                                                                    borderRadius: BorderRadius.circular(3),
+                                                                                    color: Colors.grey[200],
+                                                                                    border: Border.all(color: Colors.grey, width: 0.3,),
 
 
+                                                                                  ),
+                                                                                  child: Row(
+                                                                                    children: [
+                                                                                      Text(emojiSet[index]['emoji']),
+                                                                                      SizedBox(width: 5),
+                                                                                      Text(emojiSet[index]['count'].toString()),
+                                                                                    ],
+                                                                                  ),
                                                                                 ),
-                                                                                child: Row(
-                                                                                  children: [
-                                                                                    Text(emojiSet[index]['emoji']),
-                                                                                    SizedBox(width: 5),
-                                                                                    Text(emojiSet[index]['count'].toString()),
-                                                                                  ],
-                                                                                ),
+                                                                                  onTap: () async {
+                                                                                    var data = await deleteEmoji(
+                                                                                        emojiSet[index]['emoji'],
+                                                                                        logDataTitle[indexx][indexs]['id']);
+
+                                                                                    if (data['result']['message'] ==
+                                                                                        "success") {
+                                                                                      setState(() {});
+
+                                                                                    }
+
+                                                                                  }
                                                                               );
                                                                             },
                                                                           ),

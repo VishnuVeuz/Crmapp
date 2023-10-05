@@ -5010,19 +5010,34 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     childAspectRatio: 1.5,
                                                                                   ),
                                                                                   itemBuilder: (BuildContext context, int index) {
-                                                                                    return Container(
-                                                                                      width: 30,
-                                                                                      decoration: BoxDecoration(color: Colors.grey[200],
-                                                                                          borderRadius: BorderRadius.all(Radius.circular(3)),
-                                                                                          border: Border.all(color: Colors.grey, width: 0.3)),
-                                                                                      // color: Colors.red,
-                                                                                      child: Row(
-                                                                                        children: [
-                                                                                          Text(emojiSet[index]['emoji']),
-                                                                                          SizedBox(width: 5),
-                                                                                          Text(emojiSet[index]['count'].toString()),
-                                                                                        ],
+                                                                                    return InkWell(
+
+                                                                                      child: Container(
+                                                                                        width: 30,
+                                                                                        decoration: BoxDecoration(color: Colors.grey[200],
+                                                                                            borderRadius: BorderRadius.all(Radius.circular(3)),
+                                                                                            border: Border.all(color: Colors.grey, width: 0.3)),
+                                                                                        // color: Colors.red,
+                                                                                        child: Row(
+                                                                                          children: [
+                                                                                            Text(emojiSet[index]['emoji']),
+                                                                                            SizedBox(width: 5),
+                                                                                            Text(emojiSet[index]['count'].toString()),
+                                                                                          ],
+                                                                                        ),
                                                                                       ),
+                                                                                        onTap: () async {
+                                                                                          var data = await deleteEmoji(
+                                                                                              emojiSet[index]['emoji'],
+                                                                                              logDataTitle[indexx][indexs]['id']);
+
+                                                                                          if (data['result']['message'] ==
+                                                                                              "success") {
+                                                                                            setState(() {});
+
+                                                                                          }
+
+                                                                                        }
                                                                                     );
                                                                                   },
                                                                                 ),

@@ -4289,22 +4289,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                           ],
                                                                                         ),
                                                                                       ),
-                                                                                      onTap: (){}
-                                                                                      // async{
-                                                                                      //   int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      //   var data = await deleteEmojiReaction("",lodDataId);
-                                                                                      //
-                                                                                      //   if (data['message'] == "Success") {
-                                                                                      //     print("final11");
-                                                                                      //     await getLeadDetails();
-                                                                                      //     setState(() {
-                                                                                      //       // logDataHeader.clear();
-                                                                                      //       // logDataTitle.clear();
-                                                                                      //       // reaction.clear();
-                                                                                      //     });
-                                                                                      //   }
-                                                                                      // },
-                                                                                    );
+                                                                                      onTap: () async {
+                                                                                        var data = await deleteEmoji(
+                                                                                            emojiSet[index]['emoji'],
+                                                                                            logDataTitle[indexx][indexs]['id']);
+
+                                                                                        if (data['result']['message'] ==
+                                                                                            "success") {
+                                                                                          setState(() {});
+
+                                                                                        }
+
+                                                                                      });
                                                                                   },
                                                                                 ),
                                                                               )

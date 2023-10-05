@@ -3186,6 +3186,48 @@ deleteLogData(int logId) async {
 }
 
 
+deleteEmoji(String emoji,int logId) async {
+  String token = await getUserJwt();
+  var data;
+
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "reaction": emoji
+      }
+    });
+    print(msg);
+    print("finedata");
+    Response response = await delete(
+      Uri.parse("${baseUrl}api/reaction/${logId}"),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+print(msg);
+
+    if (response.statusCode != 200) {
+      throw Exception("failed to get data from internet");
+    } else {
+      data = jsonDecode(response.body);
+
+
+    }
+  }
+  catch(e) {
+    print(e.toString());
+  }
+  print(data);
+  print("datadeleteeee");
+
+  return data;
+}
+
+
+
 logStarChange(int logId, bool value) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
@@ -4141,57 +4183,57 @@ EmojiReaction(String reaction,int logId) async {
   print("dataaaa");
   return resMessageText;
 }
-
-deleteEmojiReaction(String reaction,int logId) async {
-  String token = await getUserJwt();
-  String? resMessage, resMessageText;
-
-  print(logId);
-  print("asjfbvjsbf");
-
-  try {
-    final msg = jsonEncode({
-      "params": {
-        "reaction":"🤩"
-      }
-
-    });
-
-    Response response = await delete(
-      Uri.parse('${baseUrl}api/reaction/${logId}'),
-      headers: {
-        "Content-Type": "application/json",
-        'Authorization': 'Bearer $token',
-      },
-      body: msg,
-    );
-
-    print(msg);
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
-      resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
-
-      if (data['result']['message'].toString() == "success") {
-        print("121212121212");
-        resMessageText = data['result']['data']['id'].toString();
-      }
-
-      if (resMessage == "error") {
-        resMessageText = "0";
-      }
-    } else {}
-  } catch (e) {
-    print(e.toString());
-  }
-
-  print(resMessageText);
-  print("dataaaa");
-  return resMessageText;
-}
+//
+// deleteEmojiReaction(String reaction,int logId) async {
+//   String token = await getUserJwt();
+//   String? resMessage, resMessageText;
+//
+//   print(logId);
+//   print("asjfbvjsbf");
+//
+//   try {
+//     final msg = jsonEncode({
+//       "params": {
+//         "reaction":"🤩"
+//       }
+//
+//     });
+//
+//     Response response = await delete(
+//       Uri.parse('${baseUrl}api/reaction/${logId}'),
+//       headers: {
+//         "Content-Type": "application/json",
+//         'Authorization': 'Bearer $token',
+//       },
+//       body: msg,
+//     );
+//
+//     print(msg);
+//     if (response.statusCode == 200) {
+//       var data = jsonDecode(response.body.toString());
+//       print(data);
+//       print("finalstringdataaa");
+//       resMessage = data['result']['message'];
+//       print(resMessage);
+//       print("leadeditresponce");
+//
+//       if (data['result']['message'].toString() == "success") {
+//         print("121212121212");
+//         resMessageText = data['result']['data']['id'].toString();
+//       }
+//
+//       if (resMessage == "error") {
+//         resMessageText = "0";
+//       }
+//     } else {}
+//   } catch (e) {
+//     print(e.toString());
+//   }
+//
+//   print(resMessageText);
+//   print("dataaaa");
+//   return resMessageText;
+// }
 
 
 addMultiCmpnySF(String jsonListmultiCompany) async {
