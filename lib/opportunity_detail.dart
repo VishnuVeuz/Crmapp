@@ -2954,12 +2954,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           crossAxisCount: 8),
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        return Center(
-                                            child: kIsWeb
-                                                ? Image.network(
-                                                selectedImages[index].path)
-                                                : Image.file(
-                                                selectedImages[index]));
+                                            return   selectedImages[index].path.contains(".pdf") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFFEF5350),
+                                              child: Icon(Icons.picture_as_pdf_sharp),
+
+                                            ) :
+                                            selectedImages[index].path.contains(".zip") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFFFDD835),
+                                              child: Icon(Icons.folder_zip_outlined),
+
+                                            ):
+                                            selectedImages[index].path.contains(".xlsx") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFF4CAF50),
+                                              child: Icon(Icons.clear),
+
+                                            ):
+                                            selectedImages[index].path.contains(".xml") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color:Color(0xFF0277BD),
+                                              child: Icon(Icons.code_off),
+
+                                            ):
+                                            selectedImages[index].path.contains(".doc") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color:Color(0xFF2196F3),
+                                              child: Icon(Icons.article_outlined),
+
+                                            ):
+                                            Center(
+                                                child: kIsWeb
+                                                    ? Image.network(
+                                                    selectedImages[index].path)
+                                                    : Image.file(
+                                                    selectedImages[index]));
                                       },
                                     ),
                                   ),
@@ -3199,12 +3239,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           crossAxisCount: 8),
                                       itemBuilder:
                                           (BuildContext context, int index) {
-                                        return Center(
-                                            child: kIsWeb
-                                                ? Image.network(
-                                                selectedImages[index].path)
-                                                : Image.file(
-                                                selectedImages[index]));
+                                            return   selectedImages[index].path.contains(".pdf") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFFEF5350),
+                                              child: Icon(Icons.picture_as_pdf_sharp),
+
+                                            ) :
+                                            selectedImages[index].path.contains(".zip") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFFFDD835),
+                                              child: Icon(Icons.folder_zip_outlined),
+
+                                            ):
+                                            selectedImages[index].path.contains(".xlsx") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color: Color(0xFF4CAF50),
+                                              child: Icon(Icons.clear),
+
+                                            ):
+                                            selectedImages[index].path.contains(".xml") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color:Color(0xFF0277BD),
+                                              child: Icon(Icons.code_off),
+
+                                            ):
+                                            selectedImages[index].path.contains(".doc") ?
+                                            Container(
+                                              width: 40,
+                                              height: 40,
+                                              color:Color(0xFF2196F3),
+                                              child: Icon(Icons.article_outlined),
+
+                                            ):
+                                            Center(
+                                                child: kIsWeb
+                                                    ? Image.network(
+                                                    selectedImages[index].path)
+                                                    : Image.file(
+                                                    selectedImages[index]));
                                       },
                                     ),
                                   ),
@@ -7276,11 +7356,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   const SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 8),
                               itemBuilder: (BuildContext context, int index) {
-                                return Center(
+                                return   selectedImages[index].path.contains(".pdf") ?
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  color: Color(0xFFEF5350),
+                                  child: Icon(Icons.picture_as_pdf_sharp),
+
+                                ) :
+                                selectedImages[index].path.contains(".zip") ?
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  color: Color(0xFFFDD835),
+                                  child: Icon(Icons.folder_zip_outlined),
+
+                                ):
+                                selectedImages[index].path.contains(".xlsx") ?
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  color: Color(0xFF4CAF50),
+                                  child: Icon(Icons.clear),
+
+                                ):
+                                selectedImages[index].path.contains(".xml") ?
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  color:Color(0xFF0277BD),
+                                  child: Icon(Icons.code_off),
+
+                                ):
+                                selectedImages[index].path.contains(".doc") ?
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  color:Color(0xFF2196F3),
+                                  child: Icon(Icons.article_outlined),
+
+                                ):
+                                Center(
                                     child: kIsWeb
                                         ? Image.network(
-                                            selectedImages[index].path)
-                                        : Image.file(selectedImages[index]));
+                                        selectedImages[index].path)
+                                        : Image.file(
+                                        selectedImages[index]));
                               },
                             ),
                           ),
