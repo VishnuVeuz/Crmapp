@@ -131,6 +131,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       starImage = false,
       lognoteoptions = true,
       lognoteVisibility = false,
+
+      recipientsVisibility = false,
       followersVisibility = false;
 
   int? scheduleViewIndex;
@@ -2908,6 +2910,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   onPressed: () async {
                                                     recipient!.clear();
                                                     await defaultSendmsgvalues();
+                                                    setState(() {
+                                                      recipientsVisibility == true
+                                                          ? recipientsVisibility = false
+                                                          : recipientsVisibility = true;
+
+
+                                                    });
 
                                                     showDialog(
                                                       context: context,
@@ -3200,6 +3209,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   onPressed: () async {
                                                     recipient!.clear();
                                                     await defaultSendmsgvalues();
+                                                    setState(() {
+                                                      recipientsVisibility == false
+                                                          ? recipientsVisibility = false
+                                                          : recipientsVisibility = false;
+
+
+                                                    });
 
                                                     showDialog(
                                                       context: context,
@@ -7223,80 +7239,95 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ],
                 ),
-                Text(
-                  "Recipients",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                    fontFamily: 'Mulish',
-                  ),
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  "Followers of the document and",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontFamily: 'Mulish',
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  child: MultiSelectDropDown.network(
-                    hint: 'Add contacts to notify...',
-                    hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
-                    selectedOptions: editRecipientName
-                        .map((recipient) => ValueItem(
-                            label: recipient.label, value: recipient.value))
-                        .toList(),
-                    onOptionSelected: (options) {
-                      print(options);
-                      recipient!.clear();
-                      for (var options in options) {
-                        recipient!.add(options.value);
-                        print('Label: ${options.label}');
-                        print('Value: ${options.value}');
-                        print(recipient);
-                        print('-hgvvjb--');
-                      }
-                    },
-                    networkConfig: NetworkConfig(
-                      url:
-                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
-                      method: RequestMethod.get,
-                      headers: {
-                        'Authorization': 'Bearer $token',
-                      },
+                Visibility(
+                  visible: recipientsVisibility,
+                  child: Text(
+                    "Recipients",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                      fontFamily: 'Mulish',
                     ),
-                    chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-                    responseParser: (response) {
-                      debugPrint('Response: $response');
+                  ),
+                ),
+                Visibility(
+                  visible: recipientsVisibility,
+                  child: SizedBox(
+                    height: 5,
+                  ),
+                ),
+                Visibility(
+                  visible: recipientsVisibility,
+                  child: Text(
+                    "Followers of the document and",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: 'Mulish',
+                    ),
+                  ),
+                ),
+                Visibility(
+                  visible: recipientsVisibility,
+                  child: SizedBox(
+                    height: 10,
+                  ),
+                ),
+                Visibility(
+                  visible: recipientsVisibility,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                    child: MultiSelectDropDown.network(
+                      hint: 'Add contacts to notify...',
+                      hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                      selectedOptions: editRecipientName
+                          .map((recipient) => ValueItem(
+                              label: recipient.label, value: recipient.value))
+                          .toList(),
+                      onOptionSelected: (options) {
+                        print(options);
+                        recipient!.clear();
+                        for (var options in options) {
+                          recipient!.add(options.value);
+                          print('Label: ${options.label}');
+                          print('Value: ${options.value}');
+                          print(recipient);
+                          print('-hgvvjb--');
+                        }
+                      },
+                      networkConfig: NetworkConfig(
+                        url:
+                            "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
+                        method: RequestMethod.get,
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ),
+                      chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+                      responseParser: (response) {
+                        debugPrint('Response: $response');
 
-                      final list =
-                          (response['record'] as List<dynamic>).map((e) {
-                        final item = e as Map<String, dynamic>;
-                        return ValueItem(
-                          label: item['display_name'],
-                          value: item['id'].toString(),
+                        final list =
+                            (response['record'] as List<dynamic>).map((e) {
+                          final item = e as Map<String, dynamic>;
+                          return ValueItem(
+                            label: item['display_name'],
+                            value: item['id'].toString(),
+                          );
+                        }).toList();
+
+                        return Future.value(list);
+                      },
+                      responseErrorBuilder: ((context, body) {
+                        print(body);
+                        print(token);
+                        return const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text('Error fetching the data'),
                         );
-                      }).toList();
-
-                      return Future.value(list);
-                    },
-                    responseErrorBuilder: ((context, body) {
-                      print(body);
-                      print(token);
-                      return const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text('Error fetching the data'),
-                      );
-                    }),
+                      }),
+                    ),
                   ),
                 ),
                 SizedBox(
