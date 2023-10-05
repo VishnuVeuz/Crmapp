@@ -166,6 +166,9 @@ class _LeadDetailState extends State<LeadDetail> {
   bool isCheckedMail = false;
   int? logDataIdEmoji;
 
+
+  bool _isSavingData = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -183,6 +186,10 @@ class _LeadDetailState extends State<LeadDetail> {
 
   String? _taskId;
   String? _localPath;
+
+
+  final ScrollController _scrollController = ScrollController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -335,6 +342,7 @@ class _LeadDetailState extends State<LeadDetail> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: SingleChildScrollView(
+              controller: _scrollController, // Link
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -2206,7 +2214,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed: _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :
+                                          () async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
+
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -2245,6 +2261,10 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                         if (resMessage == "success") {
                                           setState(() {
+
+                                            _isSavingData=false;
+
+
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -2501,7 +2521,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed:
+                                      _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :() async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -2540,6 +2567,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                         if (resMessage == "success") {
                                           setState(() {
+
+                                            _isSavingData=false;
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -3498,8 +3527,10 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
 
                   FutureBuilder(
+
                       future: getlogNoteData(widget.leadId, "lead.lead"),
                       builder: (context, AsyncSnapshot snapshot) {
+
                         logDataHeader.clear();
                         logDataTitle.clear();
                         print(snapshot.data);
@@ -3710,10 +3741,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               icon: Icon(Icons.add_reaction_outlined, size: 15.0),
                                                                               onPressed: () {
                                                                                 logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
+                                                                                final double scrollPosition = _scrollController.position.pixels;
+
                                                                                 showDialog(
                                                                                   context: context,
                                                                                   builder: (BuildContext context) => _buildEmojiPopupDialog(context),
-                                                                                ).then((value) => setState(() {}));
+                                                                                ) .then((value) => setState(() {
+
+                                                                                  _scrollController.jumpTo(scrollPosition);
+                                                                                }));
+
+
+
                                                                               },
                                                                             ),
                                                                           ),
@@ -4307,6 +4346,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 ),
                                                                               )
                                                                             : Container(),
+
                                                                       ],
                                                                     ),
                                                                   );

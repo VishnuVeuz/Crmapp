@@ -162,6 +162,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   bool isLoading = true;
   int? logDataIdEmoji;
+  bool _isSavingData = false;
 
   @override
   void initState() {
@@ -2567,7 +2568,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed:  _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :() async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
+
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -2605,6 +2613,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         if (resMessage == "success") {
                                           print("fsdvds");
                                           setState(() {
+                                            _isSavingData=false;
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -2854,7 +2863,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed:  _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :() async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
+
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -2892,6 +2908,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         if (resMessage == "success") {
                                           print("fsdvds");
                                           setState(() {
+
+                                            _isSavingData=false;
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();

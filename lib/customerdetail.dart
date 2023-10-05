@@ -121,6 +121,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
   bool isCheckedMail = false;
   int? logDataIdEmoji;
 
+  bool _isSavingData = false;
+
   Icon scheduleIcon = Icon(
     Icons.circle,
     color: Colors.white,
@@ -2469,7 +2471,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 color: Colors.white),
                                           ),
                                         ),
-                                        onPressed: () async {
+                                        onPressed: _isSavingData
+                                            ? null // Disable the button if saving is in progress
+                                            : () async {
+
+                                          setState(() {
+                                            _isSavingData=true;
+                                          });
+
                                           for (int i = 0;
                                           i < selectedImages.length;
                                           i++) {
@@ -2507,6 +2516,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                                           if (resMessage == "success") {
                                             setState(() {
+
+
+                                              _isSavingData=false;
                                               logDataHeader.clear();
                                               logDataTitle.clear();
                                               selectedImagesDisplay.clear();
@@ -2764,7 +2776,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 color: Colors.white),
                                           ),
                                         ),
-                                        onPressed: () async {
+                                        onPressed: _isSavingData
+                                            ? null // Disable the button if saving is in progress
+                                            : () async {
+
+                                          setState(() {
+                                            _isSavingData=true;
+                                          });
                                           for (int i = 0;
                                           i < selectedImages.length;
                                           i++) {
@@ -2802,6 +2820,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                                           if (resMessage == "success") {
                                             setState(() {
+                                              _isSavingData=false;
                                               logDataHeader.clear();
                                               logDataTitle.clear();
                                               selectedImagesDisplay.clear();

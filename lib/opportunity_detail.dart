@@ -183,6 +183,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   List logDataTitle = [];
   List ddd2 = [];
   int? logDataIdEmoji;
+
+  bool _isSavingData = false;
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -3022,7 +3026,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed:  _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :() async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -3058,6 +3068,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                         if (resMessage == "success") {
                                           setState(() {
+                                            _isSavingData=false;
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -3307,7 +3318,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed: () async {
+                                      onPressed:  _isSavingData
+                                          ? null // Disable the button if saving is in progress
+                                          :() async {
+
+                                        setState(() {
+                                          _isSavingData=true;
+                                        });
+
                                         for (int i = 0;
                                         i < selectedImages.length;
                                         i++) {
@@ -3343,6 +3361,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                         if (resMessage == "success") {
                                           setState(() {
+
+                                            _isSavingData=false;
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
