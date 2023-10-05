@@ -258,8 +258,8 @@ class _LeadDetailState extends State<LeadDetail> {
                             right: 28,
 
                             child: Container(
-                              width: 15.0,
-                              height: 15.0,
+                              width: 18.0,
+                              height: 18.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape
                                     .circle,
@@ -287,8 +287,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         bottom: 25,
                         right: 28,
                         child: Container(
-                          width: 15.0,
-                          height: 15.0,
+                          width: 18.0,
+                          height: 18.0,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Color(0xFFFA256B),
@@ -4098,7 +4098,24 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                               //color: Colors.green,
                                                                                                               child: IconButton(
                                                                                                                 icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                                onPressed: () {},
+                                                                                                                onPressed: () async {
+                                                                                                                  print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                                  var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                                                  if (data['message'] == "Success") {
+                                                                                                                    print("jhbdndsjbv");
+                                                                                                                    await getLeadDetails();
+                                                                                                                    setState(() {
+                                                                                                                      logDataHeader.clear();
+                                                                                                                      logDataTitle.clear();
+                                                                                                                      selectedImagesDisplay.clear();
+                                                                                                                    });
+                                                                                                                  }
+
+                                                                                                                  print(data);
+                                                                                                                  print("delete testststs");
+                                                                                                                },
                                                                                                               ),
                                                                                                             ),
                                                                                                             Container(
