@@ -2118,13 +2118,15 @@ class _LeadDetailState extends State<LeadDetail> {
                               )
                                   : Padding(
                                 padding:
-                                const EdgeInsets.only(left: 70, right: 50),
+                                const EdgeInsets.only(left: 70, right: 50,top: 5),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,
+                                  //color: Colors.red,
                                   child: Container(
                                     width: 40,
                                     //height: 40,
+                                   // color: Colors.green,
                                     child: GridView.builder(
                                       shrinkWrap: true,
                                       // Avoid scrolling
@@ -2413,7 +2415,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               )
                                   : Padding(
                                 padding:
-                                const EdgeInsets.only(left: 70, right: 50),
+                                const EdgeInsets.only(left: 70, right: 50,top: 5),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width,
                                   // height: 40,
