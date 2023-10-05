@@ -240,8 +240,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                           right: 28,
 
                           child: Container(
-                            width: 15.0,
-                            height: 15.0,
+                            width: 18.0,
+                            height: 18.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -272,8 +272,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                           right: 28,
 
                           child: Container(
-                            width: 15.0,
-                            height: 15.0,
+                            width: 18.0,
+                            height: 18.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
