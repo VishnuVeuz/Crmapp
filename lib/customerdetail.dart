@@ -4306,7 +4306,24 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                             //color: Colors.green,
                                                                                                             child: IconButton(
                                                                                                               icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                              onPressed: () {},
+                                                                                                              onPressed: ()  async {
+                                                                                                                print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                                int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                                var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                                                if (data['message'] == "Success") {
+                                                                                                                  print("jhbdndsjbv");
+                                                                                                                  await getCustomerDetails();
+                                                                                                                  setState(() {
+                                                                                                                    logDataHeader.clear();
+                                                                                                                    logDataTitle.clear();
+                                                                                                                    selectedImagesDisplay.clear();
+                                                                                                                  });
+                                                                                                                }
+
+                                                                                                                print(data);
+                                                                                                                print("delete testststs");
+                                                                                                              },
                                                                                                             ),
                                                                                                           ),
                                                                                                           Container(
