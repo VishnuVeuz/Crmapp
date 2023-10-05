@@ -2709,7 +2709,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                   decoration: const InputDecoration(
                                                       border: InputBorder.none,
                                                       hintText:
-                                                      "Send a message to followers",
+                                                      "Log an internal note",
                                                       hintStyle: TextStyle(
                                                         //fontFamily: "inter",
                                                           fontWeight: FontWeight.w500,
