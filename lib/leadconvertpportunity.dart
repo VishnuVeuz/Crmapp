@@ -1155,6 +1155,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                 padding: const EdgeInsets.only(top: 25,left: 20,right: 20),
                 child: Container(
                   height: 200,
+
                   decoration: BoxDecoration(
                     border: Border.all(color: Color(0xFFEBEBEB)),
                   ),
@@ -1167,6 +1168,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                               (states) => Colors.white70,
                         ),
                         columnSpacing: 40,
+                        dataRowHeight: 60,
                         columns: [
                           DataColumn(
                               label: Container(width: 75, child: Text('Created on',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600),))),
