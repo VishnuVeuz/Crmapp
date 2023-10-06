@@ -8354,4 +8354,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       );
     }
   }
+
+
 }
