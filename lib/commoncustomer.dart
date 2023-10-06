@@ -134,7 +134,7 @@ class _CustomerListState extends State<CustomerList> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 15),
+                                padding: const EdgeInsets.only(left: 15,top: 5),
                                 child: Container(
                                   width:MediaQuery.of(context).size.width/1.6,
                                   child: Text(widget.name,
@@ -210,7 +210,7 @@ class _CustomerListState extends State<CustomerList> {
                               Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 15,top: 8,bottom: 8),
+                                    padding: const EdgeInsets.only(left: 15,top: 8,bottom: 5),
                                     child: Container(
                                       child: Row(
                                         children: [
