@@ -21,6 +21,7 @@ class LogNoteEdit extends StatefulWidget {
 }
 
 class _LogNoteEditState extends State<LogNoteEdit> {
+
   bool isLoading = true;
   List<File> selectedImages = [];
   final ImagePicker picker = ImagePicker();
@@ -293,7 +294,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                     ),
                     onPressed: () async {
                       for (int i = 0;
-                      i < selectedImages.length;
+                      i <selectedImages.length;
                       i++) {
                         imagepath = selectedImages[i]
                             .path
