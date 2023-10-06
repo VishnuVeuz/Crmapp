@@ -1510,26 +1510,26 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                         "Quantity : ",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                'Mulish',
+                                                            FontWeight.w500,
                                                             fontSize: 12,
                                                             color: Color(
-                                                                0xFF787878)),
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                            'Mulish'),
                                                       ),
                                                       Text(
                                                         orderLineProductsData![
                                                                     "product_uom_qty"]
                                                                 .toString() ??
                                                             "",
-                                                        style: TextStyle(
+                                                        style:TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                'Mulish',
+                                                            FontWeight.w500,
                                                             fontSize: 12,
                                                             color: Color(
-                                                                0xFF787878)),
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                            'Mulish'),
                                                       ),
                                                       Text(
                                                         " " +
@@ -1540,12 +1540,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                             "",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                'Mulish',
+                                                            FontWeight.w500,
                                                             fontSize: 12,
                                                             color: Color(
-                                                                0xFF787878)),
+                                                                0xFF787878),
+                                                            fontFamily:
+                                                            'Mulish'),
                                                       ),
                                                     ],
                                                   ),
@@ -1570,13 +1570,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                             "Unit Price :",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontFamily:
-                                                                    'Mulish',
+                                                                FontWeight.w500,
                                                                 fontSize: 12,
                                                                 color: Color(
-                                                                    0xFF787878)),
+                                                                    0xFF787878),
+                                                                fontFamily:
+                                                                'Mulish'),
                                                           ),
                                                           Text(
                                                             orderLineProductsData![
@@ -1585,13 +1584,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 "",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontFamily:
-                                                                    'Mulish',
+                                                                FontWeight.w500,
                                                                 fontSize: 12,
                                                                 color: Color(
-                                                                    0xFF787878)),
+                                                                    0xFF787878),
+                                                                fontFamily:
+                                                                'Mulish'),
                                                           ),
                                                         ],
                                                       ),
@@ -7278,6 +7276,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
+                                  activeColor: Color(0xFFF9246A),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
