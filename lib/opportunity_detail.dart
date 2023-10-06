@@ -2160,13 +2160,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           "sum: ${orderLineProductsData!['price_subtotal']}",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              fontSize: 11,
+                                                              FontWeight.w500,
+                                                              fontSize: 12,
+                                                              color: Color(
+                                                                  0xFF787878),
                                                               fontFamily:
-                                                                  'Mulish',
-                                                              color:
-                                                                  Colors.black),
+                                                              'Mulish'),
                                                         ),
                                                       ),
                                                     ],
@@ -2184,28 +2183,26 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           "Quantity : ",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontFamily:
-                                                                  'Mulish',
+                                                              FontWeight.w500,
                                                               fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                              'Mulish'),
                                                         ),
                                                         Text(
                                                           orderLineProductsData![
                                                                       "product_uom_qty"]
                                                                   .toString() ??
                                                               "",
-                                                          style: TextStyle(
+                                                          style:TextStyle(
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontFamily:
-                                                                  'Mulish',
+                                                              FontWeight.w500,
                                                               fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                              'Mulish'),
                                                         ),
                                                         Text(
                                                           " " +
@@ -2217,13 +2214,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontFamily:
-                                                                  'Mulish',
+                                                              FontWeight.w500,
                                                               fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878)),
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                              'Mulish'),
                                                         ),
                                                       ],
                                                     ),
@@ -2247,30 +2243,28 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           children: [
                                                             Text(
                                                               "Unit Price :",
-                                                              style: TextStyle(
+                                                              style:TextStyle(
                                                                   fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontFamily:
-                                                                      'Mulish',
+                                                                  FontWeight.w500,
                                                                   fontSize: 12,
                                                                   color: Color(
-                                                                      0xFF787878)),
+                                                                      0xFF787878),
+                                                                  fontFamily:
+                                                                  'Mulish'),
                                                             ),
                                                             Text(
                                                               orderLineProductsData![
                                                                           'price_unit']
                                                                       .toString() ??
                                                                   "",
-                                                              style: TextStyle(
+                                                              style:TextStyle(
                                                                   fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontFamily:
-                                                                      'Mulish',
+                                                                  FontWeight.w500,
                                                                   fontSize: 12,
                                                                   color: Color(
-                                                                      0xFF787878)),
+                                                                      0xFF787878),
+                                                                  fontFamily:
+                                                                  'Mulish'),
                                                             ),
                                                           ],
                                                         ),
