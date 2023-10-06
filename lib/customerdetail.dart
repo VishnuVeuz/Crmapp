@@ -2292,8 +2292,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 int lodAttachmentId =
                                                                                 attachmentFileDisplay[
                                                                                 index]
-                                                                                [
-                                                                                'id'];
+                                                                                ['id'];
                                                                                 var data =
                                                                                 await deleteLogAttachment(
                                                                                     lodAttachmentId);
@@ -2324,53 +2323,42 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               .download),
                                                                           onPressed:
                                                                               () async {
-                                                                            //await getExternalStorageDirectory();
+                                                                            await getExternalStorageDirectory();
 
-                                                                            // print(selectedImagesDisplay);
-                                                                            // print("dbjfnkdfbjsjfbdsvbkdsvkdj");
-                                                                            //
-                                                                            // //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-                                                                            // String mimetypes =logDataTitle[indexx][indexs]
-                                                                            // ['attachment_ids'][index]["mimetype"];
-                                                                            // //String mimetypes = "application/pdf";
-                                                                            //
-                                                                            // String itemName, itemNamefinal;
-                                                                            //
-                                                                            // itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
-                                                                            //
-                                                                            // mimetypes == "application/pdf"
-                                                                            //     ? itemNamefinal = "${itemName}.pdf"
-                                                                            //     : mimetypes == "application/msword"
-                                                                            //     ? itemNamefinal = "${itemName}.doc"
-                                                                            //     : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                            //     ? itemNamefinal = "${itemName}..xlsx"
-                                                                            //     : mimetypes == "application/xml"
-                                                                            //     ? itemNamefinal = "${itemName}.xml"
-                                                                            //     : mimetypes == "application/zip"
-                                                                            //     ? itemNamefinal = "${itemName}.zip"
-                                                                            //     : mimetypes == "image/jpeg"
-                                                                            //     ? itemNamefinal = "${itemName}.jpeg"
-                                                                            //     : mimetypes == "image/png"
-                                                                            //     ? itemNamefinal = "${itemName}.png"
-                                                                            //     : itemNamefinal = "${itemName}";
-                                                                            //
-                                                                            // print(index);
-                                                                            //
-                                                                            // print(selectedImagesDisplay);
-                                                                            // // print(selectedImagesDisplay[index]["datas"]);
-                                                                            // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                            // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
-                                                                            // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-                                                                            // print(itemNamefinal);
-                                                                            // print(mimetypes);
-                                                                            // print("final print dataaa");
-                                                                            //
-                                                                            // FlutterDownloader.registerCallback(downloadCallback);
-                                                                            //
-                                                                            // requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-                                                                            //
-                                                                            // //_startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-                                                                            //
+                                                                            print(selectedImagesDisplay);
+                                                                            print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                            //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                            String mimetypes = attachmentFileDisplay[index]['mimetype'];
+                                                                            //String mimetypes = "application/pdf";
+
+                                                                            String itemName, itemNamefinal;
+
+                                                                            itemName = attachmentFileDisplay[index]['name'];
+
+                                                                            mimetypes == "application/pdf"
+                                                                                ? itemNamefinal = "${itemName}.pdf"
+                                                                                : mimetypes == "application/msword"
+                                                                                ? itemNamefinal = "${itemName}.doc"
+                                                                                : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                ? itemNamefinal = "${itemName}..xlsx"
+                                                                                : mimetypes == "application/xml"
+                                                                                ? itemNamefinal = "${itemName}.xml"
+                                                                                : mimetypes == "application/zip"
+                                                                                ? itemNamefinal = "${itemName}.zip"
+                                                                                : mimetypes == "image/jpeg"
+                                                                                ? itemNamefinal = "${itemName}.jpeg"
+                                                                                : mimetypes == "image/png"
+                                                                                ? itemNamefinal = "${itemName}.png"
+                                                                                : itemNamefinal = "${itemName}";
+
+
+                                                                            FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                            requestPermission(itemNamefinal, attachmentFileDisplay[index]['url']);
+
+                                                                            //_startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
                                                                           },
                                                                         ),
                                                                       ),
