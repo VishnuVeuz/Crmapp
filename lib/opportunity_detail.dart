@@ -5039,6 +5039,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             border: Border.all(color: Colors.grey, width: 0.3)),
                                                                                         // color: Colors.red,
                                                                                         child: Row(
+
                                                                                           children: [
                                                                                             Text(emojiSet[index]['emoji']),
                                                                                             SizedBox(width: 5),
