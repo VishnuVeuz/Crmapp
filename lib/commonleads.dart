@@ -60,7 +60,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,top: 8),
+                          padding: const EdgeInsets.only(left: 15,top: 5),
                           child: Text(widget.name,
                             style: TextStyle(
                                 fontFamily: 'Mulish',
@@ -200,7 +200,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
                     Padding(
                       padding: const EdgeInsets
-                          .only(right: 25,bottom: 8),
+                          .only(right: 25,bottom: 5),
                       child: Container(
                         width: 25,
                         height: 25,

@@ -405,7 +405,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                 children: [
                                                   Padding(
                                                     padding: const EdgeInsets.only(
-                                                        left: 15, top: 8),
+                                                        left: 15, top: 5),
                                                     child: Text(
                                                       snapshot
                                                           .data![index]["name"] ??
@@ -559,7 +559,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                               Padding(
                                                 padding: const EdgeInsets
-                                                    .only(right: 25,bottom: 8),
+                                                    .only(right: 25,bottom:5),
                                                 child: Container(
                                                   width: 25,
                                                   height: 25,
