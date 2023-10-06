@@ -41,7 +41,7 @@ class LeadDetail extends StatefulWidget {
 class _LeadDetailState extends State<LeadDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String notificationCount = "0";
-  String messageCount ="0";
+  String messageCount = "0";
   String? leadname,
       email,
       phone,
@@ -148,6 +148,7 @@ class _LeadDetailState extends State<LeadDetail> {
   List<dynamic> selectedImagesDisplay = [];
 
   List<dynamic> attachmentImagesDisplay = [];
+  List<dynamic> attachmentFileDisplay = [];
   String imagepath = "";
   //String  imagefilename = "";
 
@@ -166,7 +167,6 @@ class _LeadDetailState extends State<LeadDetail> {
   List sendMailData = [];
   bool isCheckedMail = false;
   int? logDataIdEmoji;
-
 
   bool _isSavingData = false;
 
@@ -188,9 +188,7 @@ class _LeadDetailState extends State<LeadDetail> {
   String? _taskId;
   String? _localPath;
 
-
   final ScrollController _scrollController = ScrollController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -248,36 +246,34 @@ class _LeadDetailState extends State<LeadDetail> {
               return Row(
                 children: [
                   Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          Notifications()));
-                            },
+                    child: Stack(alignment: Alignment.center, children: [
+                      IconButton(
+                        icon: SvgPicture.asset("images/messages.svg"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Notifications()));
+                        },
+                      ),
+                      Positioned(
+                        bottom: 25,
+                        right: 28,
+                        child: Container(
+                          width: 18.0,
+                          height: 18.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFFA256B),
                           ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 18.0,
-                              height: 18.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
+                          child: Center(
+                              child: Text(
+                            messageCount,
+                            style: TextStyle(color: Colors.white, fontSize: 8),
+                          )),
+                        ),
+                      ),
+                    ]),
                   ),
                   Container(
                     child: Stack(alignment: Alignment.center, children: [
@@ -1505,10 +1501,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                     followersVisibility == true
                                         ? followersVisibility = false
                                         : followersVisibility = true;
-                                    lognoteVisibility==false
-                                    ? lognoteVisibility = false
-                                    : lognoteVisibility=false;
-
+                                    lognoteVisibility == false
+                                        ? lognoteVisibility = false
+                                        : lognoteVisibility = false;
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1534,10 +1529,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                     followersVisibility == false
                                         ? followersVisibility = false
                                         : followersVisibility = false;
-                                    lognoteVisibility==true
-                                    ? lognoteVisibility=false
-                                    : lognoteVisibility=true;
-
+                                    lognoteVisibility == true
+                                        ? lognoteVisibility = false
+                                        : lognoteVisibility = true;
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1741,89 +1735,239 @@ class _LeadDetailState extends State<LeadDetail> {
                                     return const Center(
                                         child: Text('Something went wrong'));
                                   }
+
                                   if (snapshot.data.length != 0) {
-                                    attachmentImagesDisplay = snapshot.data;
+                                    attachmentImagesDisplay =
+                                        snapshot.data['images'];
+                                    attachmentFileDisplay =
+                                        snapshot.data['files'];
 
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 0, right: 0),
-                                      child: Container(
-                                        //color: Colors.green,
+                                    return Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 0, right: 0),
+                                          child: Container(
+                                            //color: Colors.green,
 
-                                        width:
-                                            MediaQuery.of(context).size.width,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
 
-                                        child: GridView.builder(
-                                          shrinkWrap: true,
-                                          physics:
-                                              NeverScrollableScrollPhysics(),
-                                          itemCount:
-                                              attachmentImagesDisplay.length,
-                                          gridDelegate:
-                                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount: 2,
+                                            child: GridView.builder(
+                                              shrinkWrap: true,
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              itemCount: attachmentImagesDisplay
+                                                  .length,
+                                              gridDelegate:
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 4,
+                                              ),
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                print(attachmentImagesDisplay[
+                                                    index]['id']);
+                                                print("demodatatatata");
+
+                                                return Center(
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 15,
+                                                            right: 15),
+                                                    child: Container(
+                                                      //  color: Colors.red,
+                                                      child: Stack(
+                                                        children: [
+                                                          ClipRRect(
+                                                            child:
+                                                                Image.network(
+                                                              "${attachmentImagesDisplay[index]['url']}?token=${token}",
+                                                              height: 100,
+                                                              width: 80,
+                                                            ),
+                                                          ),
+                                                          Positioned(
+                                                              left: 37,
+                                                              right: 0,
+                                                              bottom: 70,
+                                                              top: 1,
+                                                              child: Container(
+                                                                width: 50,
+                                                                height: 50,
+                                                                decoration: BoxDecoration(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            20),
+                                                                    color: Color(
+                                                                        0xFFFFFFFF)),
+                                                                //color: Colors.grey[200],
+                                                                child:
+                                                                    IconButton(
+                                                                  icon: SvgPicture
+                                                                      .asset(
+                                                                          "images/trash.svg"),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    print(attachmentImagesDisplay[
+                                                                            index]
+                                                                        ['id']);
+                                                                    print(
+                                                                        "idvaluevalue");
+                                                                    // print(
+                                                                    //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                    int lodAttachmentId =
+                                                                        attachmentImagesDisplay[index]
+                                                                            [
+                                                                            'id'];
+                                                                    var data =
+                                                                        await deleteLogAttachment(
+                                                                            lodAttachmentId);
+
+                                                                    if (data[
+                                                                            'message'] ==
+                                                                        "Success") {
+                                                                      print(
+                                                                          "jhbdndsjbv");
+                                                                      await getLeadDetails();
+                                                                      setState(
+                                                                          () {
+                                                                        attachmentImagesDisplay
+                                                                            .clear();
+                                                                      });
+                                                                    }
+
+                                                                    // print(
+                                                                    //     data);
+                                                                    print(
+                                                                        "delete testststs");
+                                                                  },
+                                                                ),
+                                                              ))
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 0, right: 0),
+                                          child: Container(
+                                            //color: Colors.green,
+
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+
+                                            child: GridView.builder(
+                                              shrinkWrap: true,
+                                              physics:
+                                                  NeverScrollableScrollPhysics(),
+                                              itemCount:
+                                                  attachmentFileDisplay.length,
+                                              gridDelegate:
+                                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 1,
                                                 mainAxisSpacing: 5.0,
                                                 crossAxisSpacing: 5.0,
-                                                childAspectRatio: 1.5,),
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
+                                                childAspectRatio: 5,
+                                              ),
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                print(
+                                                    attachmentFileDisplay[index]
+                                                        ['id']);
+                                                print("demodatatatata");
 
-                                            print(attachmentImagesDisplay[index]['id']);
-                                            print("demodatatatata");
-
-                                            return
-                                              (attachmentImagesDisplay[index]['mimetype'] == "application/pdf" || attachmentImagesDisplay[index]['mimetype']  == "application/msword" || attachmentImagesDisplay[index]['mimetype']  == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || attachmentImagesDisplay[index]['mimetype']  == "application/xml" || attachmentImagesDisplay[index]['mimetype']  == "application/zip")
-                                                  ? Center(
+                                                return Center(
                                                     child: Padding(
-                                                padding: const EdgeInsets.only(left: 12,right: 12),
-                                                child: Container(
-                                                    margin: const EdgeInsets.all(5.0),
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 25, right: 25),
+                                                  child: Container(
+                                                    margin:
+                                                        const EdgeInsets.all(
+                                                            5.0),
                                                     //padding: const EdgeInsets.all(10.0),
                                                     //color: Colors.white,
-                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.grey[350], border: Border.all(color: Colors.grey)),
-                                                    //width: MediaQuery.of(context).size.width/2,
-                                                      height: MediaQuery.of(context).size.height/9,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5),
+                                                        color: Colors.grey[350],
+                                                        border: Border.all(
+                                                            color:
+                                                                Colors.grey)),
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    // height: MediaQuery.of(context).size.height/18,
                                                     child: Column(
-
                                                       children: [
                                                         Row(
                                                           children: [
                                                             Padding(
-                                                              padding: const EdgeInsets.only(top: 10, left: 5),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      top: 10,
+                                                                      left: 5),
                                                               child: FittedBox(
                                                                 child: SizedBox(
-                                                                  width: 25,
-                                                                  height: 25,
-                                                                  child: DecoratedBox(
-                                                                    decoration: BoxDecoration(
-                                                                      color: attachmentImagesDisplay[index]['mimetype']  == "application/pdf"
-                                                                          ? Color(0xFFEF5350)
-                                                                          : attachmentImagesDisplay[index]['mimetype']  == "application/msword"
-                                                                          ? Color(0xFF2196F3)
-                                                                          : attachmentImagesDisplay[index]['mimetype']  == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                          ? Color(0xFF4CAF50)
-                                                                          : attachmentImagesDisplay[index]['mimetype']  == "application/xml"
-                                                                          ? Color(0xFF0277BD)
-                                                                          : attachmentImagesDisplay[index]['mimetype']  == "application/zip"
-                                                                          ? Color(0xFFFDD835)
-                                                                          : Color(0xFFFFFFFF),
-                                                                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                  width: 45,
+                                                                  height: 45,
+                                                                  child:
+                                                                      DecoratedBox(
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: attachmentFileDisplay[index]["mimetype"] ==
+                                                                              "application/pdf"
+                                                                          ? Color(
+                                                                              0xFFEF5350)
+                                                                          : attachmentFileDisplay[index]["mimetype"] == "application/msword"
+                                                                              ? Color(0xFF2196F3)
+                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                  ? Color(0xFF4CAF50)
+                                                                                  : attachmentFileDisplay[index]["mimetype"] == "application/xml"
+                                                                                      ? Color(0xFF0277BD)
+                                                                                      : attachmentFileDisplay[index]["mimetype"] == "application/zip"
+                                                                                          ? Color(0xFFFDD835)
+                                                                                          : Color(0xFFFFFFFF),
+                                                                      borderRadius:
+                                                                          BorderRadius.all(
+                                                                              Radius.circular(10)),
                                                                     ),
-                                                                    child: Center(
-                                                                      child: Icon(
-                                                                        attachmentImagesDisplay[index]['mimetype']  == "application/pdf"
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Icon(
+                                                                        attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/pdf"
                                                                             ? Icons.picture_as_pdf_sharp
-                                                                            : attachmentImagesDisplay[index]['mimetype']  == "application/msword"
-                                                                            ? Icons.article_outlined
-                                                                            : attachmentImagesDisplay[index]['mimetype']  == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                            ? Icons.clear
-                                                                            : attachmentImagesDisplay[index]['mimetype']  == "application/xml"
-                                                                            ? Icons.code_off
-                                                                            : attachmentImagesDisplay[index]['mimetype']  == "application/zip"
-                                                                            ? Icons.folder_zip_outlined
-                                                                            : Icons.access_time_filled_outlined,
-                                                                        color: Colors.white,
-                                                                        size: 18,
+                                                                            : attachmentFileDisplay[index]["mimetype"] == "application/msword"
+                                                                                ? Icons.article_outlined
+                                                                                : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                    ? Icons.clear
+                                                                                    : attachmentFileDisplay[index]["mimetype"] == "application/xml"
+                                                                                        ? Icons.code_off
+                                                                                        : attachmentFileDisplay[index]["mimetype"] == "application/zip"
+                                                                                            ? Icons.folder_zip_outlined
+                                                                                            : Icons.access_time_filled_outlined,
+                                                                        color: Colors
+                                                                            .white,
+                                                                        size:
+                                                                            25,
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1836,71 +1980,108 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             Column(
                                                               children: [
                                                                 Container(
-                                                                    width: MediaQuery.of(context).size.width / 4.5,
-                                                                  //  color: Colors.blue,
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        3.8,
+                                                                    //color: Colors.blue,
                                                                     child: Text(
-                                                                      attachmentImagesDisplay[index]["name"],
-                                                                      style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
+                                                                      attachmentFileDisplay[
+                                                                              index]
+                                                                          [
+                                                                          "name"],
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .black,
+                                                                          fontSize:
+                                                                              12,
+                                                                          fontFamily:
+                                                                              'Mulish'),
                                                                     )),
-
-                                                                // Container(
-                                                                //     width: MediaQuery.of(context).size.width / 3.8,
-                                                                //     // color: Colors.green,
-                                                                //     child: Text(
-                                                                //       attachmentImagesDisplay[index]['mimetype']  == "application/pdf"?
-                                                                //       "PDF":attachmentImagesDisplay[index]['mimetype']  == "application/msword"?
-                                                                //       "WORD": attachmentImagesDisplay[index]['mimetype']  == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                //       "EXCEL": attachmentImagesDisplay[index]['mimetype']  == "application/xml"?
-                                                                //       "XML":attachmentImagesDisplay[index]['mimetype']  == "application/zip"?
-                                                                //       "ZIP":"",
-                                                                //
-                                                                //       style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
-                                                                //     )),
+                                                                SizedBox(
+                                                                  height: 10,
+                                                                ),
+                                                                Container(
+                                                                    width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width /
+                                                                        3.8,
+                                                                    // color: Colors.green,
+                                                                    child: Text(
+                                                                      attachmentFileDisplay[index]["mimetype"] ==
+                                                                              "application/pdf"
+                                                                          ? "PDF"
+                                                                          : attachmentFileDisplay[index]["mimetype"] == "application/msword"
+                                                                              ? "WORD"
+                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                  ? "EXCEL"
+                                                                                  : attachmentFileDisplay[index]["mimetype"] == "application/xml"
+                                                                                      ? "XML"
+                                                                                      : attachmentFileDisplay[index]["mimetype"] == "application/zip"
+                                                                                          ? "ZIP"
+                                                                                          : "",
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .blue,
+                                                                          fontSize:
+                                                                              11,
+                                                                          fontFamily:
+                                                                              'Mulish'),
+                                                                    )),
                                                               ],
                                                             ),
-                                                          ],
-                                                        ),
-                                                        Row(
-                                                          children: [
-                                                            Container(
-                                                                width: MediaQuery.of(context).size.width / 7,
-                                                                // color: Colors.green,
-                                                                child: Text(
-                                                                  attachmentImagesDisplay[index]['mimetype']  == "application/pdf"?
-                                                                  "PDF":attachmentImagesDisplay[index]['mimetype']  == "application/msword"?
-                                                                  "WORD": attachmentImagesDisplay[index]['mimetype']  == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                  "EXCEL": attachmentImagesDisplay[index]['mimetype']  == "application/xml"?
-                                                                  "XML":attachmentImagesDisplay[index]['mimetype']  == "application/zip"?
-                                                                  "ZIP":"",
-
-                                                                  style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
-                                                                )),
-                                                            // SizedBox(
-                                                            //   width: 20,
-                                                            // ),
-                                                            Row(
-
+                                                            SizedBox(
+                                                              width: 20,
+                                                            ),
+                                                            Column(
                                                               children: [
                                                                 Container(
-                                                                  // width: 15,
-                                                                  // height: 15,
+                                                                  width: 30,
+                                                                  height: 30,
                                                                   //color: Colors.green,
-                                                                  child: IconButton(
-                                                                    icon: Icon(Icons.delete_outline_rounded,size: 18,),
-                                                                    onPressed: () async {
+                                                                  child:
+                                                                      IconButton(
+                                                                    icon: SvgPicture
+                                                                        .asset(
+                                                                            "images/trash.svg"),
+                                                                    onPressed:
+                                                                        () async {
+                                                                          int lodAttachmentId =
+                                                                          attachmentFileDisplay[index]
+                                                                          [
+                                                                          'id'];
+                                                                          var data =
+                                                                          await deleteLogAttachment(
+                                                                              lodAttachmentId);
 
-                                                                    },
+                                                                          if (data[
+                                                                          'message'] ==
+                                                                              "Success") {
+                                                                            print(
+                                                                                "jhbdndsjbv");
+                                                                            await getLeadDetails();
+                                                                            setState(
+                                                                                    () {
+                                                                                      attachmentFileDisplay
+                                                                                      .clear();
+                                                                                });
+                                                                          }
+
+                                                                        },
                                                                   ),
                                                                 ),
                                                                 Container(
-                                                                  // width: 15,
-                                                                  // height: 15,
-                                                                 // color: Colors.green,
-                                                                  child: IconButton(
-                                                                    icon: Icon(Icons.download,size: 18,),
-                                                                    onPressed: () async {
+                                                                  width: 34,
+                                                                  height: 20,
+                                                                  //color: Colors.green,
+                                                                  child:
+                                                                      IconButton(
+                                                                    icon: Icon(Icons
+                                                                        .download),
+                                                                    onPressed:
+                                                                        () async {
                                                                       //await getExternalStorageDirectory();
-                                                                      //
+
                                                                       // print(selectedImagesDisplay);
                                                                       // print("dbjfnkdfbjsjfbdsvbkdsvkdj");
                                                                       //
@@ -1946,105 +2127,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       //
                                                                       // //_startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
                                                                       //
-
                                                                     },
                                                                   ),
                                                                 ),
                                                               ],
                                                             ),
                                                           ],
-                                                        ),
-
-
-
-
+                                                        )
                                                       ],
                                                     ),
-                                                ),
-                                              ),
-                                                  ):
-
-
-
-                                              Center(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15, right: 15),
-                                                child: Container(
-                                                 //  color: Colors.red,
-                                                  child: Stack(
-                                                    children: [
-                                                      ClipRRect(
-                                                        child: Image.network(
-                                                          "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                          height: 100,
-                                                          width: 80,
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                          left: 37,
-                                                          right: 0,
-                                                          bottom: 70,
-                                                          top: 1,
-                                                          child: Container(
-                                                            width: 50,
-                                                            height: 50,
-                                                            decoration: BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            20),
-                                                                color: Color(
-                                                                    0xFFFFFFFF)),
-                                                            //color: Colors.grey[200],
-                                                            child: IconButton(
-                                                              icon: SvgPicture
-                                                                  .asset(
-                                                                      "images/trash.svg"),
-                                                              onPressed:
-                                                                  () async {
-                                                                print(attachmentImagesDisplay[
-                                                                        index]
-                                                                    ['id']);
-                                                                print(
-                                                                    "idvaluevalue");
-                                                                // print(
-                                                                //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                int lodAttachmentId =
-                                                                    attachmentImagesDisplay[
-                                                                            index]
-                                                                        ['id'];
-                                                                var data =
-                                                                    await deleteLogAttachment(
-                                                                        lodAttachmentId);
-
-                                                                if (data[
-                                                                        'message'] ==
-                                                                    "Success") {
-                                                                  print(
-                                                                      "jhbdndsjbv");
-                                                                  await getLeadDetails();
-                                                                  setState(() {
-                                                                    attachmentImagesDisplay
-                                                                        .clear();
-                                                                  });
-                                                                }
-
-                                                                // print(
-                                                                //     data);
-                                                                print(
-                                                                    "delete testststs");
-                                                              },
-                                                            ),
-                                                          ))
-                                                    ],
                                                   ),
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                                ));
+                                              },
+                                            ),
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     );
                                   } else {
                                     return Container();
@@ -2191,7 +2289,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 children: [
                                   salesperImg != ""
                                       ? Padding(
-                                          padding: const EdgeInsets.only(left: 30),
+                                          padding:
+                                              const EdgeInsets.only(left: 30),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -2212,7 +2311,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                           ),
                                         )
                                       : Padding(
-                                          padding: const EdgeInsets.only(left: 30),
+                                          padding:
+                                              const EdgeInsets.only(left: 30),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -2235,47 +2335,57 @@ class _LeadDetailState extends State<LeadDetail> {
                                           ),
                                         ),
                                   Padding(
-                                    padding:
-                                        const EdgeInsets.only(left: 20, right: 20),
+                                    padding: const EdgeInsets.only(
+                                        left: 20, right: 20),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      width: MediaQuery.of(context).size.width /
+                                          1.4,
 
                                       //height: 46,
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.all(Radius.circular(5)),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
                                           color: Color(0xFFF6F6F6),
                                           border: Border.all(
                                             color: Color(0xFFEBEBEB),
                                           )),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: MediaQuery.of(context).size.width /
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
                                                 1.4,
 
                                             // height: 40,
                                             //color: Colors.red,
                                             child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 10),
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
                                               child: TextField(
                                                   textAlignVertical:
                                                       TextAlignVertical.top,
                                                   //expands: true,
                                                   maxLines: null,
                                                   controller: lognoteController,
-                                                  decoration: const InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText:
-                                                          "Send a message to followers",
-                                                      hintStyle: TextStyle(
-                                                          //fontFamily: "inter",
-                                                          fontWeight: FontWeight.w400,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 12,
-                                                          color: Color(0xFFAFAFAF)))),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                          border:
+                                                              InputBorder.none,
+                                                          hintText:
+                                                              "Send a message to followers",
+                                                          hintStyle: TextStyle(
+                                                              //fontFamily: "inter",
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontSize: 12,
+                                                              color: Color(
+                                                                  0xFFAFAFAF)))),
                                             ),
                                           ),
                                           Divider(
@@ -2287,7 +2397,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               IconButton(
-                                                icon: Image.asset("images/pin.png"),
+                                                icon: Image.asset(
+                                                    "images/pin.png"),
                                                 onPressed: () {
                                                   myAlert("lognote");
                                                 },
@@ -2297,11 +2408,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     recipient!.clear();
                                                     await defaultSendmsgvalues();
                                                     setState(() {
-                                                      recipientsVisibility == true
-                                                          ? recipientsVisibility = false
-                                                          : recipientsVisibility = true;
-
-
+                                                      recipientsVisibility ==
+                                                              true
+                                                          ? recipientsVisibility =
+                                                              false
+                                                          : recipientsVisibility =
+                                                              true;
                                                     });
 
                                                     showDialog(
@@ -2310,8 +2422,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               context) =>
                                                           _buildSendmessagePopupDialog(
                                                               context, 0),
-                                                    ).then(
-                                                        (value) => setState(() {}));
+                                                    ).then((value) =>
+                                                        setState(() {}));
                                                   },
                                                   icon: Icon(
                                                     Icons.arrow_outward_rounded,
@@ -2328,85 +2440,111 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               selectedImages.isEmpty
                                   ? Padding(
-                                padding: const EdgeInsets.only(left: 73),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  // height: 40,
-                                ),
-                              )
-                                  : Padding(
-                                padding:
-                                const EdgeInsets.only(left: 70, right: 50,top: 5),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  // height: 40,
-                                  //color: Colors.red,
-                                  child: Container(
-                                    width: 40,
-                                    //height: 40,
-                                   // color: Colors.green,
-                                    child: GridView.builder(
-                                      shrinkWrap: true,
-                                      // Avoid scrolling
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemCount: selectedImages.length,
-                                      gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 8,
+                                      padding: const EdgeInsets.only(left: 73),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        // height: 40,
                                       ),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                     return   selectedImages[index].path.contains(".pdf") ?
-                                        Container(
+                                    )
+                                  : Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 70, right: 50, top: 5),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        // height: 40,
+                                        //color: Colors.red,
+                                        child: Container(
                                           width: 40,
-                                          height: 40,
-                                          color: Color(0xFFEF5350),
-                                          child: Icon(Icons.picture_as_pdf_sharp),
-
-                                        ) :
-                                     selectedImages[index].path.contains(".zip") ?
-                                     Container(
-                                       width: 40,
-                                       height: 40,
-                                       color: Color(0xFFFDD835),
-                                       child: Icon(Icons.folder_zip_outlined),
-
-                                     ):
-                                     selectedImages[index].path.contains(".xlsx") ?
-                                     Container(
-                                       width: 40,
-                                       height: 40,
-                                       color: Color(0xFF4CAF50),
-                                       child: Icon(Icons.clear,color: Colors.white,),
-
-                                     ):
-                                     selectedImages[index].path.contains(".xml") ?
-                                     Container(
-                                       width: 40,
-                                       height: 40,
-                                       color:Color(0xFF0277BD),
-                                       child: Icon(Icons.code_off),
-
-                                     ):
-                                     selectedImages[index].path.contains(".doc") ?
-                                     Container(
-                                       width: 40,
-                                       height: 40,
-                                       color:Color(0xFF2196F3),
-                                       child: Icon(Icons.article_outlined),
-
-                                     ):
-                                          Center(
-                                            child: kIsWeb
-                                                ? Image.network(
-                                                selectedImages[index].path)
-                                                : Image.file(
-                                                selectedImages[index]));
-                                      },
+                                          //height: 40,
+                                          // color: Colors.green,
+                                          child: GridView.builder(
+                                            shrinkWrap: true,
+                                            // Avoid scrolling
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            itemCount: selectedImages.length,
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 8,
+                                            ),
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              return selectedImages[index]
+                                                      .path
+                                                      .contains(".pdf")
+                                                  ? Container(
+                                                      width: 40,
+                                                      height: 40,
+                                                      color: Color(0xFFEF5350),
+                                                      child: Icon(Icons
+                                                          .picture_as_pdf_sharp),
+                                                    )
+                                                  : selectedImages[index]
+                                                          .path
+                                                          .contains(".zip")
+                                                      ? Container(
+                                                          width: 40,
+                                                          height: 40,
+                                                          color:
+                                                              Color(0xFFFDD835),
+                                                          child: Icon(Icons
+                                                              .folder_zip_outlined),
+                                                        )
+                                                      : selectedImages[index]
+                                                              .path
+                                                              .contains(".xlsx")
+                                                          ? Container(
+                                                              width: 40,
+                                                              height: 40,
+                                                              color: Color(
+                                                                  0xFF4CAF50),
+                                                              child: Icon(
+                                                                Icons.clear,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                            )
+                                                          : selectedImages[
+                                                                      index]
+                                                                  .path
+                                                                  .contains(
+                                                                      ".xml")
+                                                              ? Container(
+                                                                  width: 40,
+                                                                  height: 40,
+                                                                  color: Color(
+                                                                      0xFF0277BD),
+                                                                  child: Icon(Icons
+                                                                      .code_off),
+                                                                )
+                                                              : selectedImages[
+                                                                          index]
+                                                                      .path
+                                                                      .contains(
+                                                                          ".doc")
+                                                                  ? Container(
+                                                                      width: 40,
+                                                                      height:
+                                                                          40,
+                                                                      color: Color(
+                                                                          0xFF2196F3),
+                                                                      child: Icon(
+                                                                          Icons
+                                                                              .article_outlined),
+                                                                    )
+                                                                  : Center(
+                                                                      child: kIsWeb
+                                                                          ? Image.network(selectedImages[index]
+                                                                              .path)
+                                                                          : Image.file(
+                                                                              selectedImages[index]));
+                                            },
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
                                     bottom: 10, left: 80, top: 5),
@@ -2426,66 +2564,68 @@ class _LeadDetailState extends State<LeadDetail> {
                                       ),
                                       onPressed: _isSavingData
                                           ? null // Disable the button if saving is in progress
-                                          :
-                                          () async {
+                                          : () async {
+                                              setState(() {
+                                                _isSavingData = true;
+                                              });
 
-                                        setState(() {
-                                          _isSavingData=true;
-                                        });
+                                              for (int i = 0;
+                                                  i < selectedImages.length;
+                                                  i++) {
+                                                // print(selectedImages[i].path.split('/').last);
 
-                                        for (int i = 0;
-                                        i < selectedImages.length;
-                                        i++) {
-                                          // print(selectedImages[i].path.split('/').last);
+                                                //imagefilename=selectedImages[i].path.split('/').last;
 
-                                          //imagefilename=selectedImages[i].path.split('/').last;
+                                                imagepath = selectedImages[i]
+                                                    .path
+                                                    .toString();
+                                                File imagefile =
+                                                    File(imagepath);
 
-                                          imagepath =
-                                              selectedImages[i].path.toString();
-                                          File imagefile =
-                                          File(imagepath);
+                                                Uint8List imagebytes =
+                                                    await imagefile
+                                                        .readAsBytes(); //convert to bytes
+                                                base64string =
+                                                    base64.encode(imagebytes);
 
-                                          Uint8List imagebytes = await imagefile
-                                              .readAsBytes(); //convert to bytes
-                                          base64string = base64.encode(imagebytes);
+                                                //
 
-                                          //
+                                                String dataImages =
+                                                    '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
-                                          String dataImages =
-                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                                Map<String, dynamic> jsondata =
+                                                    jsonDecode(dataImages);
+                                                myData1.add(jsondata);
+                                              }
+                                              print(followersVisibility);
+                                              print("final datatata");
 
-                                          Map<String, dynamic> jsondata =
-                                          jsonDecode(dataImages);
-                                          myData1.add(jsondata);
-                                        }
-                                        print(followersVisibility);
-                                        print("final datatata");
+                                              bodyController.text =
+                                                  lognoteController.text;
 
-                                        bodyController.text = lognoteController.text;
+                                              String resMessage;
+                                              followersVisibility == false
+                                                  ? resMessage =
+                                                      await logNoteData(myData1)
+                                                  : resMessage =
+                                                      await createSendmessage(
+                                                          myData1);
 
-                                        String resMessage;
-                                        followersVisibility == false
-                                            ? resMessage = await logNoteData(myData1)
-                                            : resMessage =
-                                        await createSendmessage(myData1);
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  _isSavingData = false;
 
-                                        if (resMessage == "success") {
-                                          setState(() {
+                                                  logDataHeader.clear();
+                                                  logDataTitle.clear();
+                                                  selectedImagesDisplay.clear();
 
-                                            _isSavingData=false;
-
-
-                                            logDataHeader.clear();
-                                            logDataTitle.clear();
-                                            selectedImagesDisplay.clear();
-
-                                            lognoteController.text = "";
-                                            selectedImages.clear();
-                                            myData1.clear();
-                                            bodyController.text = "";
-                                          });
-                                        }
-                                      },
+                                                  lognoteController.text = "";
+                                                  selectedImages.clear();
+                                                  myData1.clear();
+                                                  bodyController.text = "";
+                                                });
+                                              }
+                                            },
                                       style: ElevatedButton.styleFrom(
                                         primary: Color(0xFFFA256A),
                                       )),
@@ -2494,9 +2634,6 @@ class _LeadDetailState extends State<LeadDetail> {
                             ],
                           ),
                         ),
-
-
-
                         Visibility(
                           visible: lognoteVisibility,
                           child: Column(
@@ -2507,91 +2644,103 @@ class _LeadDetailState extends State<LeadDetail> {
                                 children: [
                                   salesperImg != ""
                                       ? Padding(
-                                    padding: const EdgeInsets.only(left: 30),
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20)),
-                                      ),
-                                      child: CircleAvatar(
-                                        radius: 12,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                          BorderRadius.circular(18),
-                                          child: Image.network(
-                                              "${salesperImg!}?token=${token}"),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                      : Padding(
-                                    padding: const EdgeInsets.only(left: 30),
-                                    child: Container(
-                                      width: 30,
-                                      height: 30,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            //  color: Colors.green
+                                          padding:
+                                              const EdgeInsets.only(left: 30),
+                                          child: Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(),
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(20)),
+                                            ),
+                                            child: CircleAvatar(
+                                              radius: 12,
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(18),
+                                                child: Image.network(
+                                                    "${salesperImg!}?token=${token}"),
+                                              ),
+                                            ),
                                           ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: CircleAvatar(
-                                        radius: 12,
-                                        child: Icon(
-                                          Icons.person,
-                                          size: 20,
-                                          // Adjust the size of the icon as per your requirements
-                                          color: Colors
-                                              .white, // Adjust the color of the icon as per your requirements
+                                        )
+                                      : Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 30),
+                                          child: Container(
+                                            width: 30,
+                                            height: 30,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    //  color: Colors.green
+                                                    ),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20))),
+                                            child: CircleAvatar(
+                                              radius: 12,
+                                              child: Icon(
+                                                Icons.person,
+                                                size: 20,
+                                                // Adjust the size of the icon as per your requirements
+                                                color: Colors
+                                                    .white, // Adjust the color of the icon as per your requirements
+                                              ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
-                                    ),
-                                  ),
                                   Padding(
-                                    padding:
-                                    const EdgeInsets.only(left: 20, right: 20),
+                                    padding: const EdgeInsets.only(
+                                        left: 20, right: 20),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      width: MediaQuery.of(context).size.width /
+                                          1.4,
 
                                       //height: 46,
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
                                           color: Color(0xFFF6F6F6),
                                           border: Border.all(
                                             color: Color(0xFFEBEBEB),
                                           )),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: MediaQuery.of(context).size.width /
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
                                                 1.4,
 
                                             // height: 40,
                                             //color: Colors.red,
                                             child: Padding(
-                                              padding:
-                                              const EdgeInsets.only(left: 10),
+                                              padding: const EdgeInsets.only(
+                                                  left: 10),
                                               child: TextField(
                                                   textAlignVertical:
-                                                  TextAlignVertical.top,
+                                                      TextAlignVertical.top,
                                                   //expands: true,
                                                   maxLines: null,
                                                   controller: lognoteController,
-                                                  decoration: const InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText:
-                                                      "Log an internal note",
-                                                      hintStyle: TextStyle(
-                                                        //fontFamily: "inter",
-                                                          fontWeight: FontWeight.w400,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 12,
-                                                          color: Color(0xFFAFAFAF)))),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                          border:
+                                                              InputBorder.none,
+                                                          hintText:
+                                                              "Log an internal note",
+                                                          hintStyle: TextStyle(
+                                                              //fontFamily: "inter",
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              fontFamily:
+                                                                  'Mulish',
+                                                              fontSize: 12,
+                                                              color: Color(
+                                                                  0xFFAFAFAF)))),
                                             ),
                                           ),
                                           Divider(
@@ -2600,10 +2749,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                           ),
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             children: [
                                               IconButton(
-                                                icon: Image.asset("images/pin.png"),
+                                                icon: Image.asset(
+                                                    "images/pin.png"),
                                                 onPressed: () {
                                                   myAlert("lognote");
                                                 },
@@ -2613,21 +2763,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     recipient!.clear();
                                                     await defaultSendmsgvalues();
                                                     setState(() {
-                                                      recipientsVisibility == false
-                                                          ? recipientsVisibility = false
-                                                          : recipientsVisibility = false;
-
-
+                                                      recipientsVisibility ==
+                                                              false
+                                                          ? recipientsVisibility =
+                                                              false
+                                                          : recipientsVisibility =
+                                                              false;
                                                     });
 
                                                     showDialog(
                                                       context: context,
                                                       builder: (BuildContext
-                                                      context) =>
+                                                              context) =>
                                                           _buildSendmessagePopupDialog(
                                                               context, 0),
-                                                    ).then(
-                                                            (value) => setState(() {}));
+                                                    ).then((value) =>
+                                                        setState(() {}));
                                                   },
                                                   icon: Icon(
                                                     Icons.arrow_outward_rounded,
@@ -2644,83 +2795,106 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               selectedImages.isEmpty
                                   ? Padding(
-                                padding: const EdgeInsets.only(left: 73),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  // height: 40,
-                                ),
-                              )
+                                      padding: const EdgeInsets.only(left: 73),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        // height: 40,
+                                      ),
+                                    )
                                   : Padding(
-                                padding:
-                                const EdgeInsets.only(left: 70, right: 50,top: 5),
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  // height: 40,
-                                  child: Container(
-                                    width: 40,
-                                    //height: 40,
-                                    child: GridView.builder(
-                                      shrinkWrap: true,
-                                      // Avoid scrolling
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemCount: selectedImages.length,
-                                      gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                          crossAxisCount: 8),
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                            print("pdfffffffffff2");
-                                            return   selectedImages[index].path.contains(".pdf") ?
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              color: Color(0xFFEF5350),
-                                              child: Icon(Icons.picture_as_pdf_sharp),
-
-                                            ) :
-                                            selectedImages[index].path.contains(".zip") ?
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              color: Color(0xFFFDD835),
-                                              child: Icon(Icons.folder_zip_outlined),
-
-                                            ):
-                                            selectedImages[index].path.contains(".xlsx") ?
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              color: Color(0xFF4CAF50),
-                                              child: Icon(Icons.clear),
-
-                                            ):
-                                            selectedImages[index].path.contains(".xml") ?
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              color:Color(0xFF0277BD),
-                                              child: Icon(Icons.code_off),
-
-                                            ):
-                                            selectedImages[index].path.contains(".doc") ?
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              color:Color(0xFF2196F3),
-                                              child: Icon(Icons.article_outlined),
-
-                                            ):
-                                            Center(
-                                                child: kIsWeb
-                                                    ? Image.network(
-                                                    selectedImages[index].path)
-                                                    : Image.file(
-                                                    selectedImages[index]));
-                                      },
+                                      padding: const EdgeInsets.only(
+                                          left: 70, right: 50, top: 5),
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        // height: 40,
+                                        child: Container(
+                                          width: 40,
+                                          //height: 40,
+                                          child: GridView.builder(
+                                            shrinkWrap: true,
+                                            // Avoid scrolling
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            itemCount: selectedImages.length,
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 8),
+                                            itemBuilder: (BuildContext context,
+                                                int index) {
+                                              print("pdfffffffffff2");
+                                              return selectedImages[index]
+                                                      .path
+                                                      .contains(".pdf")
+                                                  ? Container(
+                                                      width: 40,
+                                                      height: 40,
+                                                      color: Color(0xFFEF5350),
+                                                      child: Icon(Icons
+                                                          .picture_as_pdf_sharp),
+                                                    )
+                                                  : selectedImages[index]
+                                                          .path
+                                                          .contains(".zip")
+                                                      ? Container(
+                                                          width: 40,
+                                                          height: 40,
+                                                          color:
+                                                              Color(0xFFFDD835),
+                                                          child: Icon(Icons
+                                                              .folder_zip_outlined),
+                                                        )
+                                                      : selectedImages[index]
+                                                              .path
+                                                              .contains(".xlsx")
+                                                          ? Container(
+                                                              width: 40,
+                                                              height: 40,
+                                                              color: Color(
+                                                                  0xFF4CAF50),
+                                                              child: Icon(
+                                                                  Icons.clear),
+                                                            )
+                                                          : selectedImages[
+                                                                      index]
+                                                                  .path
+                                                                  .contains(
+                                                                      ".xml")
+                                                              ? Container(
+                                                                  width: 40,
+                                                                  height: 40,
+                                                                  color: Color(
+                                                                      0xFF0277BD),
+                                                                  child: Icon(Icons
+                                                                      .code_off),
+                                                                )
+                                                              : selectedImages[
+                                                                          index]
+                                                                      .path
+                                                                      .contains(
+                                                                          ".doc")
+                                                                  ? Container(
+                                                                      width: 40,
+                                                                      height:
+                                                                          40,
+                                                                      color: Color(
+                                                                          0xFF2196F3),
+                                                                      child: Icon(
+                                                                          Icons
+                                                                              .article_outlined),
+                                                                    )
+                                                                  : Center(
+                                                                      child: kIsWeb
+                                                                          ? Image.network(selectedImages[index]
+                                                                              .path)
+                                                                          : Image.file(
+                                                                              selectedImages[index]));
+                                            },
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
                                     bottom: 10, left: 80, top: 5),
@@ -2738,65 +2912,68 @@ class _LeadDetailState extends State<LeadDetail> {
                                               color: Colors.white),
                                         ),
                                       ),
-                                      onPressed:
-                                      _isSavingData
+                                      onPressed: _isSavingData
                                           ? null // Disable the button if saving is in progress
-                                          :() async {
+                                          : () async {
+                                              setState(() {
+                                                _isSavingData = true;
+                                              });
+                                              for (int i = 0;
+                                                  i < selectedImages.length;
+                                                  i++) {
+                                                // print(selectedImages[i].path.split('/').last);
 
-                                        setState(() {
-                                          _isSavingData=true;
-                                        });
-                                        for (int i = 0;
-                                        i < selectedImages.length;
-                                        i++) {
-                                          // print(selectedImages[i].path.split('/').last);
+                                                //imagefilename=selectedImages[i].path.split('/').last;
 
-                                          //imagefilename=selectedImages[i].path.split('/').last;
+                                                imagepath = selectedImages[i]
+                                                    .path
+                                                    .toString();
+                                                File imagefile =
+                                                    File(imagepath);
 
-                                          imagepath =
-                                              selectedImages[i].path.toString();
-                                          File imagefile =
-                                          File(imagepath);
+                                                Uint8List imagebytes =
+                                                    await imagefile
+                                                        .readAsBytes(); //convert to bytes
+                                                base64string =
+                                                    base64.encode(imagebytes);
 
-                                          Uint8List imagebytes = await imagefile
-                                              .readAsBytes(); //convert to bytes
-                                          base64string = base64.encode(imagebytes);
+                                                //
 
-                                          //
+                                                String dataImages =
+                                                    '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
-                                          String dataImages =
-                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                                Map<String, dynamic> jsondata =
+                                                    jsonDecode(dataImages);
+                                                myData1.add(jsondata);
+                                              }
+                                              print(followersVisibility);
+                                              print("final datatata");
 
-                                          Map<String, dynamic> jsondata =
-                                          jsonDecode(dataImages);
-                                          myData1.add(jsondata);
-                                        }
-                                        print(followersVisibility);
-                                        print("final datatata");
+                                              bodyController.text =
+                                                  lognoteController.text;
 
-                                        bodyController.text = lognoteController.text;
+                                              String resMessage;
+                                              followersVisibility == false
+                                                  ? resMessage =
+                                                      await logNoteData(myData1)
+                                                  : resMessage =
+                                                      await createSendmessage(
+                                                          myData1);
 
-                                        String resMessage;
-                                        followersVisibility == false
-                                            ? resMessage = await logNoteData(myData1)
-                                            : resMessage =
-                                        await createSendmessage(myData1);
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  _isSavingData = false;
+                                                  logDataHeader.clear();
+                                                  logDataTitle.clear();
+                                                  selectedImagesDisplay.clear();
 
-                                        if (resMessage == "success") {
-                                          setState(() {
-
-                                            _isSavingData=false;
-                                            logDataHeader.clear();
-                                            logDataTitle.clear();
-                                            selectedImagesDisplay.clear();
-
-                                            lognoteController.text = "";
-                                            selectedImages.clear();
-                                            myData1.clear();
-                                            bodyController.text = "";
-                                          });
-                                        }
-                                      },
+                                                  lognoteController.text = "";
+                                                  selectedImages.clear();
+                                                  myData1.clear();
+                                                  bodyController.text = "";
+                                                });
+                                              }
+                                            },
                                       style: ElevatedButton.styleFrom(
                                         primary: Color(0xFFFA256A),
                                       )),
@@ -2805,7 +2982,6 @@ class _LeadDetailState extends State<LeadDetail> {
                             ],
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -3186,7 +3362,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Visibility(
-                                              visible:scheduleView?index==scheduleViewIndex:false,
+                                              visible: scheduleView
+                                                  ? index == scheduleViewIndex
+                                                  : false,
                                               child: Padding(
                                                 padding: const EdgeInsets.only(
                                                     top: 5, left: 17),
@@ -3744,10 +3922,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
 
                   FutureBuilder(
-
                       future: getlogNoteData(widget.leadId, "lead.lead"),
                       builder: (context, AsyncSnapshot snapshot) {
-
                         logDataHeader.clear();
                         logDataTitle.clear();
                         print(snapshot.data);
@@ -3963,13 +4139,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 showDialog(
                                                                                   context: context,
                                                                                   builder: (BuildContext context) => _buildEmojiPopupDialog(context),
-                                                                                ) .then((value) => setState(() {
-
-                                                                                  _scrollController.jumpTo(scrollPosition);
-                                                                                }));
-
-
-
+                                                                                ).then((value) => setState(() {
+                                                                                      _scrollController.jumpTo(scrollPosition);
+                                                                                    }));
                                                                               },
                                                                             ),
                                                                           ),
@@ -4240,7 +4412,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 child: Container(
                                                                                   //color: Colors.green,
 
-
                                                                                   width: MediaQuery.of(context).size.width / 1.5,
                                                                                   // height: 140,
                                                                                   child: GridView.builder(
@@ -4332,16 +4503,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             Container(
                                                                                                                 width: MediaQuery.of(context).size.width / 3.8,
                                                                                                                 // color: Colors.green,
-                                                                                                                child:
-                                                                                                                Text(
-                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                                  "PDF":selectedImagesDisplay[index]["mimetype"] == "application/msword"?
-                                                                                                                      "WORD": selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                                                                      "EXCEL": selectedImagesDisplay[index]["mimetype"] == "application/xml"?
-                                                                                                                      "XML":selectedImagesDisplay[index]["mimetype"] == "application/zip"?
-                                                                                                                      "ZIP":"",
-
-                                                                                      style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                                child: Text(
+                                                                                                                  selectedImagesDisplay[index]["mimetype"] == "application/pdf"
+                                                                                                                      ? "PDF"
+                                                                                                                      : selectedImagesDisplay[index]["mimetype"] == "application/msword"
+                                                                                                                          ? "WORD"
+                                                                                                                          : selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                              ? "EXCEL"
+                                                                                                                              : selectedImagesDisplay[index]["mimetype"] == "application/xml"
+                                                                                                                                  ? "XML"
+                                                                                                                                  : selectedImagesDisplay[index]["mimetype"] == "application/zip"
+                                                                                                                                      ? "ZIP"
+                                                                                                                                      : "",
+                                                                                                                  style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
                                                                                                                 )),
                                                                                                           ],
                                                                                                         ),
@@ -4388,9 +4562,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                                   print(selectedImagesDisplay);
                                                                                                                   print("dbjfnkdfbjsjfbdsvbkdsvkdj");
 
-                                                                                                                //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-                                                                                                                  String mimetypes =logDataTitle[indexx][indexs]
-                                                                                                                  ['attachment_ids'][index]["mimetype"];
+                                                                                                                  //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                                                                  String mimetypes = logDataTitle[indexx][indexs]['attachment_ids'][index]["mimetype"];
                                                                                                                   //String mimetypes = "application/pdf";
 
                                                                                                                   String itemName, itemNamefinal;
@@ -4415,9 +4588,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                                                                   print(index);
 
-
                                                                                                                   print(selectedImagesDisplay);
-                                                                                                                 // print(selectedImagesDisplay[index]["datas"]);
+                                                                                                                  // print(selectedImagesDisplay[index]["datas"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
                                                                                                                   print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
@@ -4534,37 +4706,29 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   ),
                                                                                   itemBuilder: (BuildContext context, int index) {
                                                                                     return InkWell(
-                                                                                      child: Container(
-                                                                                        width: 30,
-                                                                                        //color: Colors.red,
-                                                                                        decoration: BoxDecoration(color: Colors.grey[200],
-                                                                                            borderRadius: BorderRadius.all(Radius.circular(3)),
-                                                                                            border: Border.all(color: Colors.grey, width: 0.3)),
-                                                                                        child: Row(
-                                                                                          children: [
-                                                                                            Text(emojiSet[index]['emoji']),
-                                                                                            SizedBox(width: 5),
-                                                                                            Text(emojiSet[index]['count'].toString()),
-                                                                                          ],
+                                                                                        child: Container(
+                                                                                          width: 30,
+                                                                                          //color: Colors.red,
+                                                                                          decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.all(Radius.circular(3)), border: Border.all(color: Colors.grey, width: 0.3)),
+                                                                                          child: Row(
+                                                                                            children: [
+                                                                                              Text(emojiSet[index]['emoji']),
+                                                                                              SizedBox(width: 5),
+                                                                                              Text(emojiSet[index]['count'].toString()),
+                                                                                            ],
+                                                                                          ),
                                                                                         ),
-                                                                                      ),
-                                                                                      onTap: () async {
-                                                                                        var data = await deleteEmoji(
-                                                                                            emojiSet[index]['emoji'],
-                                                                                            logDataTitle[indexx][indexs]['id']);
+                                                                                        onTap: () async {
+                                                                                          var data = await deleteEmoji(emojiSet[index]['emoji'], logDataTitle[indexx][indexs]['id']);
 
-                                                                                        if (data['result']['message'] ==
-                                                                                            "success") {
-                                                                                          setState(() {});
-
-                                                                                        }
-
-                                                                                      });
+                                                                                          if (data['result']['message'] == "success") {
+                                                                                            setState(() {});
+                                                                                          }
+                                                                                        });
                                                                                   },
                                                                                 ),
                                                                               )
                                                                             : Container(),
-
                                                                       ],
                                                                     ),
                                                                   );
@@ -5421,52 +5585,63 @@ class _LeadDetailState extends State<LeadDetail> {
                                       crossAxisCount: 8),
                               itemBuilder: (BuildContext context, int index) {
                                 print("pdfffffffffff3");
-                                return   selectedImages[index].path.contains(".pdf") ?
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color: Color(0xFFEF5350),
-                                  child: Icon(Icons.picture_as_pdf_sharp),
-
-                                ) :
-                                selectedImages[index].path.contains(".zip") ?
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color: Color(0xFFFDD835),
-                                  child: Icon(Icons.folder_zip_outlined),
-
-                                ):
-                                selectedImages[index].path.contains(".xlsx") ?
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color: Color(0xFF4CAF50),
-                                  child: Icon(Icons.clear),
-
-                                ):
-                                selectedImages[index].path.contains(".xml") ?
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color:Color(0xFF0277BD),
-                                  child: Icon(Icons.code_off),
-
-                                ):
-                                selectedImages[index].path.contains(".doc") ?
-                                Container(
-                                  width: 40,
-                                  height: 40,
-                                  color:Color(0xFF2196F3),
-                                  child: Icon(Icons.article_outlined),
-
-                                ):
-                                Center(
-                                    child: kIsWeb
-                                        ? Image.network(
-                                        selectedImages[index].path)
-                                        : Image.file(
-                                        selectedImages[index]));
+                                return selectedImages[index]
+                                        .path
+                                        .contains(".pdf")
+                                    ? Container(
+                                        width: 40,
+                                        height: 40,
+                                        color: Color(0xFFEF5350),
+                                        child: Icon(Icons.picture_as_pdf_sharp),
+                                      )
+                                    : selectedImages[index]
+                                            .path
+                                            .contains(".zip")
+                                        ? Container(
+                                            width: 40,
+                                            height: 40,
+                                            color: Color(0xFFFDD835),
+                                            child:
+                                                Icon(Icons.folder_zip_outlined),
+                                          )
+                                        : selectedImages[index]
+                                                .path
+                                                .contains(".xlsx")
+                                            ? Container(
+                                                width: 40,
+                                                height: 40,
+                                                color: Color(0xFF4CAF50),
+                                                child: Icon(Icons.clear),
+                                              )
+                                            : selectedImages[index]
+                                                    .path
+                                                    .contains(".xml")
+                                                ? Container(
+                                                    width: 40,
+                                                    height: 40,
+                                                    color: Color(0xFF0277BD),
+                                                    child: Icon(Icons.code_off),
+                                                  )
+                                                : selectedImages[index]
+                                                        .path
+                                                        .contains(".doc")
+                                                    ? Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        color:
+                                                            Color(0xFF2196F3),
+                                                        child: Icon(Icons
+                                                            .article_outlined),
+                                                      )
+                                                    : Center(
+                                                        child: kIsWeb
+                                                            ? Image.network(
+                                                                selectedImages[
+                                                                        index]
+                                                                    .path)
+                                                            : Image.file(
+                                                                selectedImages[
+                                                                    index]));
                               },
                             ),
                           ),
@@ -5730,10 +5905,10 @@ class _LeadDetailState extends State<LeadDetail> {
                               File imagefile =
                                   File(imagepath); //convert Path to File
 
-                              Uint8List imagebytes = await imagefile
-                                  .readAsBytes();
+                              Uint8List imagebytes =
+                                  await imagefile.readAsBytes();
                               print(imagefile);
-                              print(55555555555);//convert to bytes
+                              print(55555555555); //convert to bytes
                               base64string = base64.encode(imagebytes);
 
                               // base64string1.add(
@@ -7019,13 +7194,12 @@ class _LeadDetailState extends State<LeadDetail> {
       () {
         if (xfilePick.isNotEmpty) {
           for (var i = 0; i < xfilePick.length; i++) {
-
-           //  if(xfilePick[i].path.contains(".pdf")||xfilePick[i].path.contains(".zip")){
-           //    print("pdf detected");
-           //  }
-           // else {
-           //    selectedImages.add(File(xfilePick[i].path));
-           //  }
+            //  if(xfilePick[i].path.contains(".pdf")||xfilePick[i].path.contains(".zip")){
+            //    print("pdf detected");
+            //  }
+            // else {
+            //    selectedImages.add(File(xfilePick[i].path));
+            //  }
             selectedImages.add(File(xfilePick[i].path));
             print("pdf detected test");
           }
@@ -7109,7 +7283,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   getLeadDetails() async {
     token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
+    var notificationMessage = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
 
@@ -7531,9 +7705,6 @@ class _LeadDetailState extends State<LeadDetail> {
     Navigator.pop(context);
   }
 
-
-
-
   Future<void> requestNotificationPermissions() async {
     final PermissionStatus status = await Permission.notification.request();
     if (status.isGranted) {
@@ -7550,7 +7721,6 @@ class _LeadDetailState extends State<LeadDetail> {
       await openAppSettings();
     }
   }
-
 
   Future<void> _initDownloadPath() async {
     final directory = await getExternalStorageDirectory();
@@ -7569,7 +7739,6 @@ class _LeadDetailState extends State<LeadDetail> {
   Future<void> _startDownload(String name, String urldata) async {
     print("dddddtask1");
 
-
     var status = await Permission.storage.request();
 
     print(status);
@@ -7577,17 +7746,17 @@ class _LeadDetailState extends State<LeadDetail> {
     // if (!status.isGranted) {
     //   print("status2");
     //  return;
-   // }
+    // }
     try {
       print("status3");
       final taskId = await FlutterDownloader.enqueue(
-        // url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with your download link
+          // url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf', // Replace with your download link
 
           url: urldata,
           savedDir: _localPath!,
           showNotification: true,
           openFileFromNotification: true,
-           saveInPublicStorage: true,
+          saveInPublicStorage: true,
           fileName: name);
       print("dddddtask2");
       print(_localPath);
@@ -7597,7 +7766,7 @@ class _LeadDetailState extends State<LeadDetail> {
     } catch (e) {
       print('Download error: $e');
     }
- // }
+    // }
   }
 
   // Callback to handle download events
@@ -7653,7 +7822,7 @@ class _LeadDetailState extends State<LeadDetail> {
     if (status.isGranted || await Permission.storage.request().isGranted) {
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
-       _startDownload(name,urldata);
+      _startDownload(name, urldata);
     } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
@@ -7677,6 +7846,4 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     }
   }
-
-
 }
