@@ -158,7 +158,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                           children: [
 
                             Padding(
-                              padding: const EdgeInsets.only(left: 10),
+                              padding: const EdgeInsets.only(left: 10,bottom: 8,top: 2),
                               child: RatingBar.builder(
                                 initialRating: double.parse(widget.priority),
                                 itemSize: 19,

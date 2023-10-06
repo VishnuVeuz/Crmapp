@@ -43,7 +43,7 @@ class QuotationList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,top: 1),
+                          padding: const EdgeInsets.only(left: 15,top: 2),
                           child: Container(
                             width: MediaQuery.of(context).size.width/2,
 
@@ -58,7 +58,7 @@ class QuotationList extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5,right: 40),
+                          padding: const EdgeInsets.only(top: 2,right: 40),
                           child: Text(amount.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -71,7 +71,7 @@ class QuotationList extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
+                      padding: const EdgeInsets.only(bottom: 2),
                       child: Row(
                         children: [
 

@@ -504,7 +504,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                                       Padding(
                                                         padding: const EdgeInsets
-                                                            .only(left: 10),
+                                                            .only(left: 10,bottom: 8,top: 2),
                                                         child: RatingBar.builder(
                                                           initialRating: double
                                                               .parse(

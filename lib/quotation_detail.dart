@@ -1502,7 +1502,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 0, left: 25),
+                                                          top: 5, left: 25),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
