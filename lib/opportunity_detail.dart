@@ -3354,15 +3354,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                         bodyController.text = lognoteController.text;
 
-                                        String resMessage;
+                                        var resMessage;
                                         followersVisibility == false
                                             ? resMessage = await logNoteData(myData1)
                                             : resMessage =
                                         await createSendmessage(myData1);
 
-                                        if (resMessage == "success") {
+                                        if (resMessage['message']  == "success") {
                                           setState(() {
+
                                             _isSavingData=false;
+                                            attachmentCount = resMessage['data']['att_count'].toString();
+
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -3654,16 +3657,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                         bodyController.text = lognoteController.text;
 
-                                        String resMessage;
+                                        var resMessage;
                                         followersVisibility == false
                                             ? resMessage = await logNoteData(myData1)
                                             : resMessage =
                                         await createSendmessage(myData1);
 
-                                        if (resMessage == "success") {
+                                        if (resMessage['message']  == "success") {
                                           setState(() {
 
                                             _isSavingData=false;
+                                            attachmentCount = resMessage['data']['att_count'].toString();
+
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -6404,7 +6409,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   logNoteData(List myData1) async {
-    String value = await logNoteCreate(
+    var value = await logNoteCreate(
         lognoteController.text, "crm.lead", widget.opportunityId, myData1);
 
     print(value);
@@ -8001,11 +8006,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               myData1.add(jsondata);
                             }
 
-                            String resMessage =
+                            var resMessage =
                                 await createSendmessage(myData1);
 
-                            if (resMessage == "success") {
+                            if (resMessage['message']  == "success") {
                               setState(() {
+                                attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();
                                 selectedImagesDisplay.clear();
@@ -8085,7 +8091,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   createSendmessage(List myData1) async {
-    String value = await sendMessageCreate(
+    var value = await sendMessageCreate(
         bodyController.text,
         "crm.lead",
         subjectController.text,

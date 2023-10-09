@@ -2890,17 +2890,19 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                         bodyController.text = lognoteController.text;
 
-                                        String resMessage;
+                                        var resMessage;
                                         followersVisibility == false
                                             ? resMessage = await logNoteData(myData1)
                                             : resMessage =
                                         await createSendmessage(myData1);
 
                                         print(resMessage);
-                                        if (resMessage == "success") {
+                                        if (resMessage['message'] == "success") {
                                           print("fsdvds");
                                           setState(() {
                                             _isSavingData=false;
+                                            attachmentCount = resMessage['data']['att_count'].toString();
+
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -3192,18 +3194,20 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                         bodyController.text = lognoteController.text;
 
-                                        String resMessage;
+                                        var resMessage;
                                         followersVisibility == false
                                             ? resMessage = await logNoteData(myData1)
                                             : resMessage =
                                         await createSendmessage(myData1);
 
                                         print(resMessage);
-                                        if (resMessage == "success") {
+                                        if (resMessage['message'] == "success") {
                                           print("fsdvds");
                                           setState(() {
 
                                             _isSavingData=false;
+                                            attachmentCount = resMessage['data']['att_count'].toString();
+
                                             logDataHeader.clear();
                                             logDataTitle.clear();
                                             selectedImagesDisplay.clear();
@@ -6147,7 +6151,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   logNoteData(List myData1) async {
-    String value = await logNoteCreate(
+    var value = await logNoteCreate(
         lognoteController.text, "sale.order", widget.quotationId, myData1);
 
     print(value);
@@ -7017,10 +7021,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               myData1.add(jsondata);
                             }
 
-                            String resMessage =
+                            var resMessage =
                                 await createSendmessage(myData1);
-                            if (resMessage == "success") {
+                            if (resMessage['message'] == "success") {
                               setState(() {
+                                attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();
                                 selectedImagesDisplay.clear();
@@ -7075,7 +7080,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   createSendmessage(List myData1) async {
-    String value = await sendMessageCreate(
+    var value = await sendMessageCreate(
         bodyController.text,
         "sale.order",
         subjectController.text,

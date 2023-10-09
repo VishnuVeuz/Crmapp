@@ -2996,7 +2996,8 @@ editDefaultScheduleData(int dataId) async {
 
 logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
   String token = await getUserJwt();
-  String? resMessage, resMessageText;
+  String? resMessage;
+      var resMessageText;
 
   print(resId);
   print("asjfbvjsbf");
@@ -3038,7 +3039,7 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 
       if (data['result']['message'].toString() == "success") {
         print("121212121212");
-        resMessageText = "success";
+        resMessageText = data['result'];
       }
 
       if (resMessage == "error") {
@@ -3527,7 +3528,8 @@ getattchmentData(int dataId, String activityModel) async {
 // send msg create
  sendMessageCreate(String lognotes,logmodel,subject ,int resId,partnerId,templateId,List myData1) async {
   String token = await getUserJwt();
-  String? resMessage, resMessageText;
+  String? resMessage;
+  var resMessageText;
 
   print(partnerId);
   print("laakkkkk");
@@ -3564,7 +3566,7 @@ getattchmentData(int dataId, String activityModel) async {
       resMessage = data['result']['message'];
       print(resMessage);
       if (data['result']['message'].toString() == "success") {
-        resMessageText = "success";
+        resMessageText = data['result'];
       }
 
       if (resMessage == "error") {

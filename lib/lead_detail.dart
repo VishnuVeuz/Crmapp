@@ -2599,7 +2599,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               bodyController.text =
                                                   lognoteController.text;
 
-                                              String resMessage;
+                                              var resMessage;
                                               followersVisibility == false
                                                   ? resMessage =
                                                       await logNoteData(myData1)
@@ -2607,9 +2607,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       await createSendmessage(
                                                           myData1);
 
-                                              if (resMessage == "success") {
+                                              if (resMessage['message'] == "success") {
+                                                print(resMessage['data']['att_count']);
+                                                print("attachment count ");
                                                 setState(() {
                                                   _isSavingData = false;
+                                                  attachmentCount = resMessage['data']['att_count'].toString();
 
                                                   logDataHeader.clear();
                                                   logDataTitle.clear();
@@ -2948,7 +2951,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               bodyController.text =
                                                   lognoteController.text;
 
-                                              String resMessage;
+                                              var resMessage;
                                               followersVisibility == false
                                                   ? resMessage =
                                                       await logNoteData(myData1)
@@ -2956,8 +2959,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       await createSendmessage(
                                                           myData1);
 
-                                              if (resMessage == "success") {
+                                              if (resMessage['message'] == "success") {
+                                                print(resMessage['data']['att_count']);
+                                                print("attachment count ");
                                                 setState(() {
+                                                  attachmentCount = resMessage['data']['att_count'].toString();
                                                   _isSavingData = false;
                                                   logDataHeader.clear();
                                                   logDataTitle.clear();
@@ -5959,10 +5965,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                   jsonDecode(dataImages);
                               myData1.add(jsondata);
                             }
-                            String resMessage =
+                            var resMessage =
                                 await createSendmessage(myData1);
-                            if (resMessage == "success") {
+                            if (resMessage['message'] == "success") {
                               setState(() {
+                                attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();
                                 selectedImagesDisplay.clear();
@@ -7118,7 +7125,7 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   logNoteData(List myData1) async {
-    String value = await logNoteCreate(
+    var value = await logNoteCreate(
         lognoteController.text, "lead.lead", widget.leadId, myData1);
 
     print(value);
@@ -7530,7 +7537,7 @@ class _LeadDetailState extends State<LeadDetail> {
   //String lognotes,logmodel,subject ,int resId,partnerId,templateId
 
   createSendmessage(List myData1) async {
-    String value = await sendMessageCreate(bodyController.text, "lead.lead",
+    var value = await sendMessageCreate(bodyController.text, "lead.lead",
         subjectController.text, widget.leadId, recipient, templateId, myData1);
 
     print(value);
