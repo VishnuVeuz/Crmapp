@@ -736,8 +736,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           fontSize: 15,
                           //iconSize: 25,
                           activeBgColors: [
-                            [Color(0xFFF04254)],
-                            [Color(0xFFF04254)]
+                            [Color(0xFFF9246A)],
+                            [Color(0xFFF9246A)]
                           ],
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.grey[200],
