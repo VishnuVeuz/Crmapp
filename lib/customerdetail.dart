@@ -6961,7 +6961,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed:_isSavingData
+                              ? null // Disable the button if saving is in progress
+                              :  () async {
+
+                            setState(() {
+                              _isSavingData=true;
+                            });
+
                             for (int i = 0; i < selectedImages.length; i++) {
                               imagepath = selectedImages[i].path.toString();
                               File imagefile =
@@ -6989,6 +6996,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                             if (resMessage['message'] == "success") {
                               setState(() {
+                                _isSavingData=false;
                                 attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();

@@ -7985,7 +7985,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed:  _isSavingData
+                              ? null // Disable the button if saving is in progress
+                              : () async {
+
+                            setState(() {
+                              _isSavingData=true;
+                            });
                             for (int i = 0; i < selectedImages.length; i++) {
                               imagepath = selectedImages[i].path.toString();
                               File imagefile =
@@ -8011,6 +8017,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                             if (resMessage['message']  == "success") {
                               setState(() {
+                                _isSavingData=false;
                                 attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();
