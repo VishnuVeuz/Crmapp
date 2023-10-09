@@ -2274,7 +2274,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     ],
                                                                   ),
                                                                   SizedBox(
-                                                                    width: 20,
+                                                                    width: 120,
                                                                   ),
                                                                   Column(
                                                                     children: [

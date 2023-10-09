@@ -2387,7 +2387,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                   ],
                                                                 ),
                                                                 SizedBox(
-                                                                  width: 20,
+                                                                  width: 120,
                                                                 ),
                                                                 Column(
                                                                   children: [
