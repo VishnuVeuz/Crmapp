@@ -1862,9 +1862,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                             ),
                                           ),
                                         ),
-                                        // SizedBox(
-                                        //   height: 20,
-                                        // ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               left: 0, right: 0),
@@ -1875,7 +1875,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 .size
                                                 .width,
 
-                                            child: GridView.builder(
+                                            child:
+                                            attachmentFileDisplay.length>0?
+
+                                            GridView.builder(
                                               shrinkWrap: true,
                                               physics:
                                                   NeverScrollableScrollPhysics(),
@@ -2135,7 +2138,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   ),
                                                 ));
                                               },
-                                            ),
+                                            ):
+                                                Container(),
                                           ),
                                         ),
                                       ],

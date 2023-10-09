@@ -2111,7 +2111,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   .size
                                                   .width,
 
-                                              child: GridView.builder(
+                                              child:attachmentFileDisplay.length>0? GridView.builder(
                                                 shrinkWrap: true,
                                                 physics:
                                                 NeverScrollableScrollPhysics(),
@@ -2371,7 +2371,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         ),
                                                       ));
                                                 },
-                                              ),
+                                              ):
+                                              Container(),
                                             ),
                                           ),
 

@@ -2224,7 +2224,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 .size
                                                 .width,
 
-                                            child: GridView.builder(
+                                            child: attachmentFileDisplay.length>0? GridView.builder(
                                               shrinkWrap: true,
                                               physics:
                                               NeverScrollableScrollPhysics(),
@@ -2483,7 +2483,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       ),
                                                     ));
                                               },
-                                            ),
+                                            ):
+                                            Container(),
                                           ),
                                         ),
 
