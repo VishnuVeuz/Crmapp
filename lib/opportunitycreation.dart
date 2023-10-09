@@ -52,6 +52,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   dynamic productTiltleName, productTiltleId, productUomName, productUomId;
   double? productSubTotal;
   int? productId = null;
+  bool _isSavingData = false;
 
   String notificationCount="0";
   String messageCount ="0";
@@ -2726,7 +2727,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async{
+                              onPressed: _isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async{
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
                                 productUnitPrice.text == ""
                                     ? productUnitPrice.text = "0"
                                     : productUnitPrice.text =
@@ -2785,6 +2792,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 await productSum(orderLineProducts);
 
                                 setState(() {
+                                  _isSavingData=false;
                                   productTiltleName = null;
                                   productTiltleId = null;
                                   productUomName = null;
@@ -2825,7 +2833,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       color: Colors.white,fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async{
+                              onPressed: _isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async{
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
 
                                 productUnitPrice.text == ""
                                     ? productUnitPrice.text = "0"
@@ -2885,6 +2899,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 await productSum(orderLineProducts);
 
                                 setState(() {
+                                  _isSavingData=false;
                                   productTiltleName = null;
                                   productTiltleId = null;
                                   productUomName = null;

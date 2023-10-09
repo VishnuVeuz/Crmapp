@@ -97,7 +97,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
   List<dynamic> selectedtaxesIdFinal = [];
 
   bool optvisibility = false,ordervisibility = true;
-
+  bool _isSavingData = false;
 
   @override
   void initState() {
@@ -2715,7 +2715,14 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
-                            onPressed: () async{
+                            onPressed:_isSavingData
+                                ? null // Disable the button if saving is in progress
+                                : () async{
+
+                              setState(() {
+                                _isSavingData=true;
+                              });
+
 
                               if( productType == "order") {
                                 productUnitPrice.text == ""
@@ -2822,6 +2829,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
 
                               setState(() {
+                                _isSavingData=false;
                                 productTiltleName = null;
                                 productTiltleId = null;
                                 productUomName = null;
@@ -2862,7 +2870,13 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                                     color: Colors.white,fontFamily: 'Mulish'),
                               ),
                             ),
-                            onPressed: () async{
+                            onPressed: _isSavingData
+                                ? null // Disable the button if saving is in progress
+                                :() async{
+
+                              setState(() {
+                                _isSavingData=true;
+                              });
                               if (productType == "order") {
                                 productUnitPrice.text == ""
                                     ? productUnitPrice.text = "0"
@@ -2974,6 +2988,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
 
                               setState(() {
+                                _isSavingData=false;
                                 productTiltleName = null;
                                 productTiltleId = null;
                                 productUomName = null;
