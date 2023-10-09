@@ -1869,7 +1869,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           padding: const EdgeInsets.only(
                                               left: 0, right: 0),
                                           child: Container(
-                                         //   color: Colors.green,
+                                           // color: Colors.green,
 
                                             width: MediaQuery.of(context)
                                                 .size
@@ -5587,7 +5587,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
-                            onPressed: () {},
+                            onPressed: () {
+                              myAlert("lognote");
+                            },
                           ),
                         ),
                         Text(

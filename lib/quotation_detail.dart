@@ -6661,7 +6661,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           width: 50,
                           child: IconButton(
                             icon: Image.asset("images/pin.png"),
-                            onPressed: () {},
+                            onPressed: () {
+                              myAlert("lognote");
+                            },
                           ),
                         ),
                         Text(
