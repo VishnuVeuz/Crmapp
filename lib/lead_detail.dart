@@ -961,64 +961,68 @@ class _LeadDetailState extends State<LeadDetail> {
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 34),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 45),
-                                child: Text(
-                                  phone!,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF000000)),
+                      Visibility(
+                        visible:phone!="" ? true: false  ,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 34),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 45),
+                                  child: Text(
+                                    phone!,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF000000)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                var smsResponce = await smsDataGet(
-                                    widget.leadId, "lead.lead");
+                              InkWell(
+                                onTap: () async {
+                                  var smsResponce = await smsDataGet(
+                                      widget.leadId, "lead.lead");
 
-                                var name, phone, smsId;
-                                bool smsCondition;
-                                name =
-                                    smsResponce['recipient_single_description'];
-                                phone =
-                                    smsResponce['recipient_single_number_itf'];
-                                smsId = smsResponce['id'];
-                                smsCondition = smsResponce['invalid_tag'];
+                                  var name, phone, smsId;
+                                  bool smsCondition;
+                                  name =
+                                      smsResponce['recipient_single_description'];
+                                  phone =
+                                      smsResponce['recipient_single_number_itf'];
+                                  smsId = smsResponce['id'];
+                                  smsCondition = smsResponce['invalid_tag'];
 
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildSendsmsPopupDialog(context, name,
-                                          phone, smsId, smsCondition, "phone"),
-                                ).then((value) => setState(() {}));
-                              },
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.mobile_friendly_rounded,
-                                      size: 10,
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Text("SMS"),
-                                    )
-                                  ],
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        _buildSendsmsPopupDialog(context, name,
+                                            phone, smsId, smsCondition, "phone"),
+                                  ).then((value) => setState(() {}));
+
+                                },
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.mobile_friendly_rounded,
+                                        size: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 10),
+                                        child: Text("SMS"),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -1042,64 +1046,67 @@ class _LeadDetailState extends State<LeadDetail> {
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 34),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(left: 45),
-                                child: Text(
-                                  mobile!,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF000000)),
+                      Visibility(
+                        visible: mobile!=""? true : false,
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 34),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width / 3,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 45),
+                                  child: Text(
+                                    mobile!,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF000000)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            InkWell(
-                              onTap: () async {
-                                var smsResponce = await smsDataGet(
-                                    widget.leadId, "lead.lead");
+                              InkWell(
+                                onTap: () async {
+                                  var smsResponce = await smsDataGet(
+                                      widget.leadId, "lead.lead");
 
-                                var name, phone, smsId;
-                                bool smsCondition;
-                                name =
-                                    smsResponce['recipient_single_description'];
-                                phone =
-                                    smsResponce['recipient_single_number_itf'];
-                                smsId = smsResponce['id'];
-                                smsCondition = smsResponce['invalid_tag'];
+                                  var name, phone, smsId;
+                                  bool smsCondition;
+                                  name =
+                                      smsResponce['recipient_single_description'];
+                                  phone =
+                                      smsResponce['recipient_single_number_itf'];
+                                  smsId = smsResponce['id'];
+                                  smsCondition = smsResponce['invalid_tag'];
 
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildSendsmsPopupDialog(context, name,
-                                          phone, smsId, smsCondition, ""),
-                                ).then((value) => setState(() {}));
-                              },
-                              child: Container(
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.mobile_friendly_rounded,
-                                      size: 10,
-                                    ),
-                                    SizedBox(
-                                      width: 3,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Text("SMS"),
-                                    )
-                                  ],
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        _buildSendsmsPopupDialog(context, name,
+                                            phone, smsId, smsCondition, ""),
+                                  ).then((value) => setState(() {}));
+                                },
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.mobile_friendly_rounded,
+                                        size: 10,
+                                      ),
+                                      SizedBox(
+                                        width: 3,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(right: 10),
+                                        child: Text("SMS"),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -6615,7 +6622,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: _isSavingData
+                          onPressed:
+                          _isSavingData
                               ? null // Disable the button if saving is in progress
                               :() async {
 
@@ -6650,6 +6658,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                           LeadDetail(widget.leadId)));
                             }
                           },
+
+
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
                           )),
@@ -7336,6 +7346,7 @@ class _LeadDetailState extends State<LeadDetail> {
       email = data['email_from'].toString() ?? "";
       phone = data['phone'].toString() ?? "";
       mobile = data['mobile'].toString() ?? "";
+
       salesperson = data['user_id']['name'] ?? "";
       salesperImg = data['image'] ?? "";
       priority = data['priority'].toString() ?? "";
