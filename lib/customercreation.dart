@@ -109,6 +109,8 @@ class _CustomerCreationState extends State<CustomerCreation> {
   List base64string1 = [];
   bool isLoading = true;
 
+  bool _isSavingData = false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -2631,7 +2633,14 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   fontSize: 13.57,
                                   color: Colors.white,fontFamily: 'Mulish'),
                             ),
-                            onPressed: () {
+                            onPressed:_isSavingData
+                                ? null // Disable the button if saving is in progress
+                                :  () {
+
+                              setState(() {
+                                _isSavingData = true;
+                              });
+
                               String dataone =
                                   '{"id":${addCustomerId},"type":"${alertradioSelect}","name":"${alertCompanyNameController.text}","street":"${alertStreetController.text}","street2":"${alertStreetTwoController.text}","city":"${alertCityController.text}","function":"${alertJobController.text}","email":"${alertEmailController.text}","mobile":"${alertMobileController.text}","phone":"${alertPhoneController.text}","title":{"id":${alertTitleId},"name":"${alerTitleName != null ? alerTitleName['name'] : ""}"},"state_id":{"id":${alertStateId},"name":"${alertStateName != null ? alertStateName['name'] : ""}"},"zip":"${alertZipController.text}","country_id":{"id":${alertCountryId},"name":"${alertCountryName != null ? alertCountryName['name'] : ""}"},"comment":"${alertNotesController.text}"}';
 
@@ -2647,6 +2656,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               print("orderLineProducts");
 
                               setState((){
+                                _isSavingData = false;
                                 alertCompanyNameController.text = "";
                                 alertStreetController.text = "";
                                 alertStreetTwoController.text = "";
@@ -2683,7 +2693,14 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   fontSize: 13.57,
                                   color: Colors.white,fontFamily: 'Mulish'),
                             ),
-                            onPressed: () {
+                            onPressed: _isSavingData
+                                ? null // Disable the button if saving is in progress
+                                : () {
+
+                              setState(() {
+                                _isSavingData = true;
+                              });
+
 
                               String dataone =
                                   '{"id":${addCustomerId},"type":"${alertradioSelect}","name":"${alertCompanyNameController.text}","street":"${alertStreetController.text}","street2":"${alertStreetTwoController.text}","city":"${alertCityController.text}","function":"${alertJobController.text}","email":"${alertEmailController.text}","mobile":"${alertMobileController.text}","phone":"${alertPhoneController.text}","title":{"id":${alertTitleId},"name":"${alerTitleName != null ? alerTitleName['name'] : ""}"},"state_id":{"id":${alertStateId},"name":"${alertStateName != null ? alertStateName['name'] : ""}"},"zip":"${alertZipController.text}","country_id":{"id":${alertCountryId},"name":"${alertCountryName != null ? alertCountryName['name'] : ""}"},"comment":"${alertNotesController.text}"}';
@@ -2700,6 +2717,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               print("orderLineProducts");
 
                               setState((){
+                                _isSavingData = false;
                                 alertCompanyNameController.text = "";
                                 alertStreetController.text = "";
                                 alertStreetTwoController.text = "";

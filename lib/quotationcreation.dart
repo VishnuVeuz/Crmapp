@@ -52,7 +52,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
   Map<String, dynamic>? optionalProductsData;
   String? productData="",productTotal="";
   List productDatas = [];
-
+  bool _isSavingData = false;
 
   DateTime? _selectedDate;
   var QuotationDateTimefinal, deliveryDateTimefinal, expirationDateTimefinal;
@@ -2856,7 +2856,16 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                           color: Colors.white,fontFamily: 'Mulish'),
                                     ),
                                   ),
-                                  onPressed: () async {
+                                  onPressed:_isSavingData
+                                      ? null // Disable the button if saving is in progress
+                                      :  () async {
+
+                                    setState(() {
+                                      _isSavingData = true;
+                                    });
+
+
+
                                     if (productType == "order") {
                                       productUnitPrice.text == ""
                                           ? productUnitPrice.text = "0"
@@ -2968,6 +2977,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                                     setState(() {
+                                      _isSavingData = false;
                                       productTiltleName = null;
                                       productTiltleId = null;
                                       productUomName = null;
@@ -3009,7 +3019,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                           color: Colors.white,fontFamily: 'Mulish'),
                                     ),
                                   ),
-                                  onPressed: () async{
+                                  onPressed:  _isSavingData
+                                      ? null // Disable the button if saving is in progress
+                                      :() async{
+
+                                    setState(() {
+                                      _isSavingData = true;
+                                    });
+
                                     if (productType == "order") {
                                       productUnitPrice.text == ""
                                           ? productUnitPrice.text = "0"
@@ -3121,6 +3138,8 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                                     setState(() {
+
+                                      _isSavingData = false;
                                       productTiltleName = null;
                                       productTiltleId = null;
                                       productUomName = null;
