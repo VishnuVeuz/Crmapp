@@ -251,7 +251,8 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               color: Colors.white,fontFamily: 'Mulish'),
                         ),
                         onPressed: () async {
-                          String resmessage;
+                          var resmessage;
+                          int resmessagevalue;
                           print(customerId);
                           print(quotationtemplateId);
                           print(pricelistId);
@@ -277,7 +278,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
 
                           resmessage = await quotationCreate();
 
-                          int resmessagevalue = int.parse(resmessage);
+                          resmessage['result']['message'].toString() == "success"?
+                          resmessagevalue = int.parse(resmessage['result']['data']['id'].toString()):
+                          resmessage['result']['message'].toString() == "error"?
+                          resmessagevalue = 0: resmessagevalue = 0;
+
+                         // int resmessagevalue = int.parse(resmessage);
                           if (resmessagevalue != 0) {
                             setState(() {});
 
@@ -289,6 +295,12 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                   builder: (context) =>
                                       QuotationDetail(resmessagevalue)),
                             );
+                          }
+                          else{
+                            String textmsg = resmessage['result']['data'].toString()??"";
+                            var snackBar = SnackBar(  content: Text(textmsg),
+                              backgroundColor: Colors.blueGrey,);
+                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           }
                         },
                         style: ElevatedButton.styleFrom(
@@ -2215,7 +2227,7 @@ void defaultvalues() async {
 
     print(dropdownValueId);
     print("dropdownValue");
-    String value = await createQuotation(
+    var value = await createQuotationOpp(
         customerId,
         quotationtemplateId,
         pricelistId,

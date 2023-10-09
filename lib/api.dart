@@ -1534,6 +1534,7 @@ getOpportunityProductDefaultData(int opportunityProductId) async {
   return data;
 }
 
+
 createQuotation(
     int? customer_id,
     quotation_template_id,
@@ -1557,22 +1558,6 @@ createQuotation(
     List orderLineProducts,
     optionalProducts,
     opportunity_id) async {
-  print(customer_id);
-  print(quotation_template_id);
-  print(pricelist_id);
-  print(payment_terms_id);
-  print(salesperson_id);
-  print(team_id);
-  print(company_id);
-  print(tags_id);
-  print(fiscal_position_id);
-  print(campaign_id);
-  print(medium_id);
-  print(source_id);
-  print(customer_reference.toString());
-  print(source_document.toString());
-  print(expiration_date.toString());
-  print(delivery_date.toString());
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
@@ -1646,6 +1631,127 @@ createQuotation(
   print(resMessage);
   print(" resMessageText");
   return resMessageText;
+}
+
+
+
+
+
+createQuotationOpp(
+    int? customer_id,
+    quotation_template_id,
+    pricelist_id,
+    payment_terms_id,
+    salesperson_id,
+    team_id,
+    company_id,
+    tags_id,
+    fiscal_position_id,
+    campaign_id,
+    medium_id,
+    source_id,
+    String customer_reference,
+    source_document,
+    expiration_date,
+    delivery_date,
+    bool online_signature,
+    online_payment,
+    String shipping_policy,
+    List orderLineProducts,
+    optionalProducts,
+    opportunity_id) async {
+  print(customer_id);
+  print(quotation_template_id);
+  print(pricelist_id);
+  print(payment_terms_id);
+  print(salesperson_id);
+  print(team_id);
+  print(company_id);
+  print(tags_id);
+  print(fiscal_position_id);
+  print(campaign_id);
+  print(medium_id);
+  print(source_id);
+  print(customer_reference.toString());
+  print(source_document.toString());
+  print(expiration_date.toString());
+  print(delivery_date.toString());
+
+  String token = await getUserJwt();
+  String?  resMessage, resMessageText;
+  var authresponce;
+  print(token);
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "partner_id": customer_id,
+        "opportunity_id":opportunity_id,
+        "sale_order_template_id": quotation_template_id,
+        "validity_date": expiration_date,
+        "pricelist_id": pricelist_id,
+        "commitment_date": delivery_date,
+        "payment_term_id": payment_terms_id,
+        "user_id": salesperson_id,
+        "team_id": team_id,
+        "company_id": company_id,
+        "require_signature": online_signature,
+        "require_payment": online_payment,
+        "client_order_ref": customer_reference,
+        "picking_policy": shipping_policy,
+        "source_id": source_id,
+        "medium_id": medium_id,
+        "campaign_id": campaign_id,
+        "tag_ids": tags_id,
+        "fiscal_position_id": fiscal_position_id,
+        "origin": source_document,
+        "order_line": orderLineProducts,
+        "sale_order_option_ids": optionalProducts
+      }
+    });
+
+    Response response = await post(
+      Uri.parse('${baseUrl}api/quotation'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+
+    print("printtttttt");
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      // authresponce = data['result'].toString();
+      authresponce = data;
+
+      resMessage = data['result']['message'];
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = data['result']['data']['id'].toString();
+        print(resMessageText);
+        print("suuuuuuu");
+      }
+
+      if (resMessage == "error") {
+        resMessageText = data['result']['data'];
+      }
+      print("lakkkkkk");
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  customer_reference = "";
+  source_document = "";
+  expiration_date = "";
+  delivery_date = "";
+
+  print(resMessage);
+  print(" resMessageText");
+  return authresponce;
 }
 
 editQuotation(

@@ -2286,7 +2286,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
     print(dropdownValueId);
     print("dropdownValue");
-    String value = await createQuotation(
+    var value = await createQuotation(
         customerId,
         quotationtemplateId,
         pricelistId,
