@@ -5411,7 +5411,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     fontFamily: 'Mulish'),
                               ),
                             ),
-                            onPressed: () async {
+                            onPressed:  _isSavingData
+                                ? null // Disable the button if saving is in progress
+                                :() async {
+
+                              setState(() {
+                                _isSavingData=true;
+                              });
                               String resmessage;
                               typeIds == 0
                                   ? resmessage = await activitySchedule()
@@ -5420,7 +5426,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                               int resmessagevalue = int.parse(resmessage);
                               if (resmessagevalue != 0) {
-                                setState(() {});
+                                setState(() {
+                                  _isSavingData=false;
+                                });
 
                                 Navigator.push(
                                   context,
