@@ -4890,7 +4890,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     onPressed: () {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                       String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.opportunityId, logdata)));
+                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.opportunityId, logdata,"crm.lead")));
 
                                                                                       print("emojiVisibility");
                                                                                     },

@@ -4407,7 +4407,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                       onPressed: () {
                                                                                         int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.customerId, logdata)));
+                                                                                        Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.customerId, logdata,"res.partner")));
 
                                                                                         print("emojiVisibility");
                                                                                       },

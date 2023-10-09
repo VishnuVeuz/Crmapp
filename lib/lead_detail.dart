@@ -4230,7 +4230,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     onPressed: () {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                       String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata)));
+                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
 
                                                                                       print("emojiVisibility");
                                                                                     },

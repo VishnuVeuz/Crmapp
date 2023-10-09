@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:crm_project/customerdetail.dart';
+import 'package:crm_project/quotation_detail.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,13 +11,14 @@ import 'dart:io';
 import 'api.dart';
 import 'drawer.dart';
 import 'lead_detail.dart';
+import 'opportunity_detail.dart';
 
 class LogNoteEdit extends StatefulWidget {
 
   int lognoteId,typeId;
-  String salesperImg,token,logdata;
+  String salesperImg,token,logdata,logmodel;
 
-  LogNoteEdit(this.lognoteId,this.salesperImg,this.token,this.typeId,this.logdata);
+  LogNoteEdit(this.lognoteId,this.salesperImg,this.token,this.typeId,this.logdata,this.logmodel);
   @override
   State<LogNoteEdit> createState() => _LogNoteEditState();
 }
@@ -329,9 +332,25 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                           selectedImages.clear();
                           myData1.clear();
                         });
+
+                        widget.logmodel=="lead.lead"?
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => LeadDetail(widget.typeId)),);
+                          MaterialPageRoute(builder: (context) => LeadDetail(widget.typeId)),):
+                        widget.logmodel=="crm.lead"?
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => OpportunityDetail(widget.typeId)),):
+                        widget.logmodel=="sale.order"?
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => QuotationDetail(widget.typeId)),):
+                        widget.logmodel=="res.partner"?
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CustomerDetail(widget.typeId)),):
+
+                            null;
 
                       }
 
@@ -472,7 +491,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
 
   logNoteData(List myData1) async{
 
-    String value = await EditlogNote(lognoteController.text,"lead.lead",widget.typeId,myData1,widget.lognoteId);
+    String value = await EditlogNote(lognoteController.text,widget.logmodel,widget.typeId,myData1,widget.lognoteId);
 
     print(value);
     print("valuesssdemooooo");

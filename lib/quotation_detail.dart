@@ -4673,7 +4673,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                     onPressed: () {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                       String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salespersonimg!, token!, widget.quotationId, logdata)));
+                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salespersonimg!, token!, widget.quotationId, logdata,"sale.order")));
 
                                                                                       print("emojiVisibility");
                                                                                     },
