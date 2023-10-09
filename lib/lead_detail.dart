@@ -1855,14 +1855,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
+                                        // SizedBox(
+                                        //   height: 20,
+                                        // ),
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               left: 0, right: 0),
                                           child: Container(
-                                            //color: Colors.green,
+                                         //   color: Colors.green,
 
                                             width: MediaQuery.of(context)
                                                 .size
@@ -5158,7 +5158,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed: _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
+
                                   String resmessage;
 
                                   typeIds == 0
@@ -5169,7 +5176,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5200,7 +5210,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed:  _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
                                   String resmessage;
                                   typeIds == 0
                                       ? resmessage = await markDone()
@@ -5210,7 +5226,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5244,7 +5262,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async {
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
                                 String resmessage;
                                 typeIds == 0
                                     ? resmessage = await markDone()
@@ -5255,9 +5279,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                   await defaultScheduleValues();
 
                                   setState(() {
+
                                     summaryController.text = "";
                                     commandsController.text = "";
-
+                                    _isSavingData=false;
                                     typeIds = 0;
                                   });
                                   //Navigator.pop(context);
@@ -5289,9 +5314,17 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  :  () async {
+                                setState(() {
+                                  _isSavingData=true;
+                                });
+
                                 await getLeadDetails();
-                                setState(() {});
+                                setState(() {
+                                  _isSavingData=false;
+                                });
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(

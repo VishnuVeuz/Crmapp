@@ -5698,7 +5698,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed:  _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
                                   String resmessage;
 
                                   typeIds == 0
@@ -5709,7 +5715,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5740,7 +5748,13 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed: _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
                                   String resmessage;
                                   typeIds == 0
                                       ? resmessage = await markDone()
@@ -5750,7 +5764,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5784,7 +5801,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  :  () async {
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
+
                                 String resmessage;
                                 typeIds == 0
                                     ? resmessage = await markDone()
@@ -5797,6 +5821,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   setState(() {
                                     summaryController.text = "";
                                     commandsController.text = "";
+                                    _isSavingData=false;
                                     typeIds = 0;
                                   });
                                   //Navigator.pop(context);
@@ -5828,9 +5853,17 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  :  () async {
+                                setState(() {
+                                  _isSavingData=true;
+                                });
+
                                 await getQuotationDetails();
-                                setState(() {});
+                                setState(() {
+                                  _isSavingData=false;
+                                });
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(

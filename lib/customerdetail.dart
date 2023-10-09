@@ -5467,7 +5467,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed:  _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
+
                                   String resmessage;
 
                                   typeIds == 0
@@ -5478,7 +5485,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5509,7 +5518,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fontFamily: 'Mulish'),
                                   ),
                                 ),
-                                onPressed: () async {
+                                onPressed: _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    :() async {
+
+                                  setState(() {
+                                    _isSavingData=true;
+                                  });
                                   String resmessage;
                                   typeIds == 0
                                       ? resmessage = await markDone()
@@ -5519,7 +5534,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   int resmessagevalue = int.parse(resmessage);
                                   if (resmessagevalue != 0) {
                                     await getScheduleDetails();
-                                    setState(() {});
+                                    setState(() {
+                                      _isSavingData=false;
+                                    });
 
                                     Navigator.pop(context);
                                   }
@@ -5553,7 +5570,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async {
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
                                 String resmessage;
                                 typeIds == 0
                                     ? resmessage = await markDone()
@@ -5566,6 +5589,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   setState(() {
                                     summaryController.text = "";
                                     commandsController.text = "";
+                                    _isSavingData=false;
                                     typeIds = 0;
                                   });
                                   //Navigator.pop(context);
@@ -5597,9 +5621,17 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: () async {
+                              onPressed: _isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async {
+
+                                setState(() {
+                                  _isSavingData=true;
+                                });
                                 await getCustomerDetails();
-                                setState(() {});
+                                setState(() {
+                                  _isSavingData=false;
+                                });
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
