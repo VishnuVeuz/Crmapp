@@ -6798,7 +6798,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   color: Colors.white),
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed:_isSavingData
+                              ? null // Disable the button if saving is in progress
+                              : () async {
+
+                            setState(() {
+                              _isSavingData=true;
+                            });
                             print(subject2Controller.text);
                             print(phonenumberController.text);
                             print(nameController.text);
@@ -6811,6 +6817,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 type);
 
                             if (resMessagee == "success") {
+
+                              setState(() {
+
+                                _isSavingData=false;
+                              });
+
                               subject2Controller.clear();
                               phonenumberController.clear();
                               nameController.clear();
