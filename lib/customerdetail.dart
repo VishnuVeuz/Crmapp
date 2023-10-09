@@ -6108,13 +6108,22 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed:_isSavingData
+                              ? null // Disable the button if saving is in progress
+                              :   () async {
+
+                            setState(() {
+                              _isSavingData=true;
+                            });
                             String resmessage = await followerCreate(
                                 message, followerId, recipient, send_mail);
 
                             if (resmessage == "success") {
                               bodyController.clear();
                               followerId = 0;
+                              setState(() {
+                                _isSavingData=false;
+                              });
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

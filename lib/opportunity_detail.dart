@@ -5897,7 +5897,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               int resmessagevalue = int.parse(resmessage);
                               if (resmessagevalue != 0) {
                                 setState(() {
-
                                   _isSavingData=false;
                                 });
 
@@ -7233,13 +7232,23 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   fontFamily: 'Mulish'),
                             ),
                           ),
-                          onPressed: () async {
+                          onPressed:_isSavingData
+                              ? null // Disable the button if saving is in progress
+                              :  () async {
+
+                            setState(() {
+                              _isSavingData=true;
+                            });
+
                             String resmessage = await followerCreate(
                                 message, followerId, recipient, send_mail);
 
                             if (resmessage == "success") {
                               bodyController.clear();
                               followerId = 0;
+                              setState(() {
+                                _isSavingData=false;
+                              });
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
