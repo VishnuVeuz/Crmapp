@@ -2940,7 +2940,10 @@ print("addNewCustomer");
                         Text('From Gallery'),
                       ],
                     ),
-                  ),
+                      style: ElevatedButton.styleFrom(
+
+                        primary: Color(0xFFF9246A),
+                      )                  ),
                   ElevatedButton(
                     //if user click this button. user can upload image from camera
                     onPressed: () {
@@ -2956,6 +2959,10 @@ print("addNewCustomer");
                         Text('From Camera'),
                       ],
                     ),
+                      style: ElevatedButton.styleFrom(
+
+                        primary: Color(0xFFF9246A),
+                      )
                   ),
                 ],
               ),
