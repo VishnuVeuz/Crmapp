@@ -100,7 +100,15 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
   bool _isSavingData = false;
 
   final _formKeyalert = GlobalKey<FormState>();
+  final FocusNode _textFieldFocusNode = FocusNode();
 
+
+  @override
+  void dispose() {
+    _textFieldFocusNode.dispose();
+    productQuantity.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
     // TODO: implement initState
@@ -2438,6 +2446,8 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                         productTiltleId = value["id"];
                       });
                       await productDefaultDetails();
+                      FocusScope.of(context).requestFocus(_textFieldFocusNode);
+
                     },
 
                     dialogBox: false,
@@ -2500,6 +2510,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                   padding:
                   const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
+                    focusNode: _textFieldFocusNode,
                     style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
                     controller: productQuantity,
                     decoration: const InputDecoration(

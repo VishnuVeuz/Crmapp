@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:crm_project/model/multicompany.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart' as globals;
 import 'model/calendarmodel.dart';
@@ -1794,6 +1795,9 @@ editQuotation(
   print(source_document.toString());
   print(expiration_date.toString());
   print(delivery_date);
+  print(orderLineProducts);
+  print(optionalProducts);
+
   print("demo datatata");
 
   String token = await getUserJwt();
@@ -1910,6 +1914,8 @@ getProductSum(List orderLineProductsData,int pricelistId) async {
       }
     });
 
+print(orderLineProductsData);
+print("orderLineProductsData");
 
     Response response = await post(
       Uri.parse('${baseUrl}api/total'),
