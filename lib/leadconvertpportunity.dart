@@ -319,7 +319,8 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                           .size
                           .width/1.1,
                       decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xFFEBEBEB))
+                           border: Border.all(color: Color(0xFFEBEBEB))
+                          //border: Border.all(color: Colors.red)
                       ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -330,6 +331,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                           hint: Text("Salesperson",
                             style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
+                          underline: SizedBox(),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {
@@ -437,6 +439,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                           hint: Text("Sales Team",
                             style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
+                          underline: SizedBox(),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {
