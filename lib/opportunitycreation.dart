@@ -2089,7 +2089,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                           child: Text(
                                                             orderLineProductsData![
                                                                     'name'] ??
-                                                                "",
+                                                                "no dataaaaa",
                                                             style: TextStyle(
                                                                 fontWeight:
                                                                     FontWeight
@@ -3114,18 +3114,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   print(_formKeyalert.currentState!
                                       .validate());
                                   print("formkey validation");
-                                  productTiltleNamefinal = productTiltleName;
-                                  _formKeyalert.currentState!.reset();
+
+                                  //_formKeyalert.currentState!.reset();
 
                                         if (_formKeyalert.currentState!
                                             .validate()) {
                                           setState(() {
-
                                             _isSavingData = true;
-
 
                                           });
 
+                                          print(productUnitPrice.text);
+                                          print("productUnitPrice.text");
                                           productUnitPrice.text == ""
                                               ? productUnitPrice.text = "0"
                                               : productUnitPrice.text =
@@ -3175,13 +3175,15 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                          print("productTiltleNamefinal");
 
                                           String dataone =
-                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleNamefinal['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
 
 
                                           Map<String, dynamic> jsondata =
                                               jsonDecode(dataone);
 
                                           print(dataone);
+                                          print(jsondata);
+                                          print(type);
                                           print("demo datatatata");
 
                                           type == -1
@@ -3220,7 +3222,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                                           // demo
 
-
+                                          Future.delayed(Duration(seconds: 2), () {
+                                            // After the asynchronous operation is complete, reset the form
+                                            _formKeyalert.currentState?.reset();
+                                            // _textController.clear();
+                                            // setState(() {
+                                            //   _isResetting = false;
+                                            // });
+                                          });
 
                                         }
                                         else {
