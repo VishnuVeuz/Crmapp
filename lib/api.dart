@@ -1898,6 +1898,7 @@ getQuotationData(int quotationId, String value) async {
 
 getProductSum(List orderLineProductsData,int pricelistId) async {
   String token = await getUserJwt();
+  print("pricelisttt");
 
   String? authresponce, resMessage, resMessageText;
  var data;

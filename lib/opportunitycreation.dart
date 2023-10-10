@@ -50,7 +50,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       pricelistName,
       pricelistId;
 
-  dynamic productTiltleName, productTiltleId, productUomName, productUomId,productTiltleNamefinal;
+  dynamic productTiltleName, productTiltleId, productUomName, productUomId;
   double? productSubTotal;
   int? productId = null;
   bool _isSavingData = false;
@@ -101,6 +101,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   List<dynamic> selectedtaxesIdFinal = [];
 
   List productDatas = [];
+
+
+  final FocusNode _textFieldFocusNode = FocusNode();
+
+
+  @override
+  void dispose() {
+    _textFieldFocusNode.dispose();
+    productQuantity.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -2590,6 +2601,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           productTiltleId = value["id"];
                         });
                         await productDefaultDetails();
+                        FocusScope.of(context).requestFocus(_textFieldFocusNode);
                       },
 
                       dialogBox: false,
@@ -2655,6 +2667,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
+                      focusNode: _textFieldFocusNode,
                       controller: productQuantity,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -3171,8 +3184,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                               productUnitPrice.text);
 
                                           productSubTotal = price * quantity;
-                                         print(productTiltleNamefinal);
-                                         print("productTiltleNamefinal");
 
                                           String dataone =
                                               '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
@@ -3223,12 +3234,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           // demo
 
                                           Future.delayed(Duration(seconds: 2), () {
-                                            // After the asynchronous operation is complete, reset the form
+
                                             _formKeyalert.currentState?.reset();
-                                            // _textController.clear();
-                                            // setState(() {
-                                            //   _isResetting = false;
-                                            // });
+
                                           });
 
                                         }
@@ -3379,6 +3387,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   productDefaultDetails() async {
     var data = await getOpportunityProductDefaultData(productTiltleId);
     setState(() {
+      print("finnknkj");
       productTax.clear();
       editProductTaxName.clear();
       selectedProductTax.clear();
@@ -3399,7 +3408,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       }
 
       productTax = editProductTaxName.map((item) => item.value).toList();
-
+      print(productTax);
       _isInitialized = true;
     });
 
