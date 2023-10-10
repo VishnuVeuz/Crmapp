@@ -50,7 +50,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       pricelistName,
       pricelistId;
 
-  dynamic productTiltleName, productTiltleId, productUomName, productUomId;
+  dynamic productTiltleName, productTiltleId, productUomName, productUomId,productTiltleNamefinal;
   double? productSubTotal;
   int? productId = null;
   bool _isSavingData = false;
@@ -3114,11 +3114,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   print(_formKeyalert.currentState!
                                       .validate());
                                   print("formkey validation");
-                                 // _formKeyalert.currentState!.reset();
+                                  productTiltleNamefinal = productTiltleName;
+                                  _formKeyalert.currentState!.reset();
 
                                         if (_formKeyalert.currentState!
                                             .validate()) {
                                           setState(() {
+
                                             _isSavingData = true;
 
 
@@ -3169,12 +3171,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                               productUnitPrice.text);
 
                                           productSubTotal = price * quantity;
+                                         print(productTiltleNamefinal);
+                                         print("productTiltleNamefinal");
 
                                           String dataone =
-                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleNamefinal['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+
 
                                           Map<String, dynamic> jsondata =
                                               jsonDecode(dataone);
+
                                           print(dataone);
                                           print("demo datatatata");
 
@@ -3189,7 +3195,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           print(orderLineProducts);
                                           print("orderLineProducts");
 
+
                                           await productSum(orderLineProducts);
+
+
 
                                           setState(() {
                                             _isSavingData = false;
@@ -3208,13 +3217,15 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                             selectedtaxesIdFinal.clear();
 
                                           });
-                                          _formKeyalert.currentState!.reset();
 
                                           // demo
 
 
 
-                                        } else {
+                                        }
+                                        else {
+                                          _formKeyalert.currentState!.reset();
+
                                           print("valid checkk");
                                         }
 
