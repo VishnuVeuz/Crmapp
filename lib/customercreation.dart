@@ -2964,24 +2964,74 @@ print("addNewCustomer");
         });
   }
 
-  Future getImages() async {
-    final pickedFile = await picker.pickMultiImage(
-        imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
-    List<XFile> xfilePick = pickedFile;
+  // Future getImages() async {
+  //   final pickedFile = await picker.pickMultiImage(
+  //       imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
+  //   List<XFile> xfilePick = pickedFile;
+  //
+  //   setState(
+  //         () {
+  //       if (xfilePick.isNotEmpty) {
+  //         for (var i = 0; i < xfilePick.length; i++) {
+  //           selectedImages[0] = (File(xfilePick[i].path));
+  //         }
+  //       } else {
+  //         ScaffoldMessenger.of(context).showSnackBar(
+  //             const SnackBar(content: Text('Nothing is selected')));
+  //       }
+  //     },
+  //   );
+  // }
 
-    setState(
-          () {
-        if (xfilePick.isNotEmpty) {
-          for (var i = 0; i < xfilePick.length; i++) {
-            selectedImages[0] = (File(xfilePick[i].path));
-          }
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Nothing is selected')));
-        }
-      },
-    );
+
+  Future getImages() async {
+    XFile? img = await picker.pickImage(source: ImageSource.gallery);
+    List imageData = [];
+    imageData.add(img);
+    print(imageData);
+    print("system 2");
+    // var img = await picker.pickMultiImage();
+
+
+    if (img != null) {
+      if (imageData.isNotEmpty) {
+        selectedImages.insert(0, (File(img.path)));
+
+
+        imagepath = selectedImages[0].path.toString();
+        File imagefile = File(imagepath); //convert Path to File
+        Uint8List imagebytes =
+        await imagefile.readAsBytes(); //convert to bytes
+        setState(() {
+          personImg = base64.encode(imagebytes);
+          print(personImg);
+          print("system 3");
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Nothing is selected')));
+      }
+
+
+      //   final pickedFile = await picker.pickImage(
+      //     imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
+      // List<XFile> xfilePick = pickedFile;
+      //
+      // setState(
+      //       () {
+      //     if (xfilePick.isNotEmpty) {
+      //       for (var i = 0; i < xfilePick.length; i++) {
+      //         selectedImages[0] = (File(xfilePick[i].path));
+      //       }
+      //     } else {
+      //       ScaffoldMessenger.of(context).showSnackBar(
+      //           const SnackBar(content: Text('Nothing is selected')));
+      //     }
+      // },
+    }
+
   }
+
 
   Future getImage(ImageSource media) async {
     print(selectedImages);
