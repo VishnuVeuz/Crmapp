@@ -99,6 +99,8 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
   bool optvisibility = false,ordervisibility = true;
   bool _isSavingData = false;
 
+  final _formKeyalert = GlobalKey<FormState>();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -2362,252 +2364,144 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
       insetPadding: EdgeInsets.all(10),
-      content: Container(
-        width: MediaQuery.of(context).size.width,
-        //height: MediaQuery.of(context).size.height,
-        //color: Colors.green,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 260),
-                child: IconButton(
-                  icon: Image.asset(
-                    "images/cross.png",
-                    color: Colors.black,
+      content: Form(
+        key: _formKeyalert,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          //height: MediaQuery.of(context).size.height,
+          //color: Colors.green,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 260),
+                  child: IconButton(
+                    icon: Image.asset(
+                      "images/cross.png",
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        productTiltleName = null;
+                        productTiltleId = null;
+                        productUomName = null;
+                        productUomId = null;
+
+                        productDescription.text = "";
+                        productUnitPrice.text = "";
+                        productQuantity.text = "";
+
+                        productTax.clear();
+                        selectedProductTax.clear();
+                        editProductTaxName.clear();
+
+                      });
+                      Navigator.pop(context);
+
+
+
+                    },
                   ),
-                  onPressed: () {
-                    setState(() {
-                      productTiltleName = null;
-                      productTiltleId = null;
-                      productUomName = null;
-                      productUomId = null;
-
-                      productDescription.text = "";
-                      productUnitPrice.text = "";
-                      productQuantity.text = "";
-
-                      productTax.clear();
-                      selectedProductTax.clear();
-                      editProductTaxName.clear();
-
-                    });
-                    Navigator.pop(context);
-
-
-
-                  },
                 ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                child: SearchChoices.single(
-                  //items: items,
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                  child: SearchChoices.single(
+                    //items: items,
+                    validator: (value) {
+                      if (value == null) {
+                        return 'please select product';
+                      }
+                      return null;
+                    },
+                    value: productTiltleName,
+                    hint: Text(
+                      "Product",
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                    ),
+                    searchHint: null,
+                    autofocus: false,
+                    onChanged: (value) async {
+                      setState(() {
+                        print(value['capital']);
 
-                  value: productTiltleName,
-                  hint: Text(
-                    "Product",
-                    style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                  ),
-                  searchHint: null,
-                  autofocus: false,
-                  onChanged: (value) async {
-                    setState(() {
-                      print(value['capital']);
+                        // productTax.clear();
+                        // editProductTaxName.clear();
+                        // selectedProductTax.clear();
+                        print(productTax);
+                        print(editProductTaxName);
+                        print(selectedProductTax);
+                        print("product valursss");
 
-                      // productTax.clear();
-                      // editProductTaxName.clear();
-                      // selectedProductTax.clear();
-                      print(productTax);
-                      print(editProductTaxName);
-                      print(selectedProductTax);
-                      print("product valursss");
+                        productTiltleName = value;
+                        productTiltleId = value["id"];
+                      });
+                      await productDefaultDetails();
+                    },
 
-                      productTiltleName = value;
-                      productTiltleId = value["id"];
-                    });
-                    await productDefaultDetails();
-                  },
+                    dialogBox: false,
+                    isExpanded: true,
+                    menuConstraints:
+                    BoxConstraints.tight(const Size.fromHeight(300)),
+                    itemsPerPage: 10,
+                    currentPage: currentPage,
+                    selectedValueWidgetFn: (item) {
+                      return (Center(
+                          child: Container(
+                            width: 300,
+                            child: Text(
+                              item["display_name"],
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                          )));
+                    },
+                    futureSearchFn: (String? keyword,
+                        String? orderBy,
+                        bool? orderAsc,
+                        List<Tuple2<String, String>>? filters,
+                        int? pageNb) async {
+                      Response response = await get(
+                        Uri.parse(
+                            "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ).timeout(const Duration(
+                        seconds: 10,
+                      ));
 
-                  dialogBox: false,
-                  isExpanded: true,
-                  menuConstraints:
-                  BoxConstraints.tight(const Size.fromHeight(300)),
-                  itemsPerPage: 10,
-                  currentPage: currentPage,
-                  selectedValueWidgetFn: (item) {
-                    return (Center(
-                        child: Container(
-                          width: 300,
-                          child: Text(
-                            item["display_name"],
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                      if (response.statusCode != 200) {
+                        throw Exception("failed to get data from internet");
+                      }
+
+                      dynamic data = jsonDecode(response.body);
+
+                      int nbResults = data["length"];
+
+                      List<DropdownMenuItem> results =
+                      (data["records"] as List<dynamic>)
+                          .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                        value: item,
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Text("${item["display_name"]}"),
                           ),
-                        )));
-                  },
-                  futureSearchFn: (String? keyword,
-                      String? orderBy,
-                      bool? orderAsc,
-                      List<Tuple2<String, String>>? filters,
-                      int? pageNb) async {
-                    Response response = await get(
-                      Uri.parse(
-                          "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
-                      headers: {
-                        'Authorization': 'Bearer $token',
-                      },
-                    ).timeout(const Duration(
-                      seconds: 10,
-                    ));
-
-                    if (response.statusCode != 200) {
-                      throw Exception("failed to get data from internet");
-                    }
-
-                    dynamic data = jsonDecode(response.body);
-
-                    int nbResults = data["length"];
-
-                    List<DropdownMenuItem> results =
-                    (data["records"] as List<dynamic>)
-                        .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                      value: item,
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Text("${item["display_name"]}"),
                         ),
-                      ),
-                    ))
-                        .toList();
-                    return (Tuple2<List<DropdownMenuItem>, int>(
-                        results, nbResults));
-                  },
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                child: TextFormField(
-                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
-                  controller: productQuantity,
-                  decoration: const InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      labelText: 'Quantity',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                child: TextFormField(
-                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
-                  controller: productUnitPrice,
-                  decoration: const InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      labelText: 'Unit Price',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                child: SearchChoices.single(
-                  //items: items,
-
-                  value: productUomName,
-                  hint: Text(
-                    "Uom",
-                    style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                      ))
+                          .toList();
+                      return (Tuple2<List<DropdownMenuItem>, int>(
+                          results, nbResults));
+                    },
                   ),
-                  searchHint: null,
-                  autofocus: false,
-                  onChanged: (value) {
-                    setState(() {
-                      print(value['capital']);
-                      print("value");
-                      productUomName = value;
-                      productUomId = value["id"];
-                    });
-                  },
-
-                  dialogBox: false,
-                  isExpanded: true,
-                  menuConstraints:
-                  BoxConstraints.tight(const Size.fromHeight(300)),
-                  itemsPerPage: 10,
-                  currentPage: currentPage,
-                  selectedValueWidgetFn: (item) {
-                    return (Center(
-                        child: Container(
-                          width: 300,
-                          child: Text(
-                            item["name"],
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
-                        )));
-                  },
-                  futureSearchFn: (String? keyword,
-                      String? orderBy,
-                      bool? orderAsc,
-                      List<Tuple2<String, String>>? filters,
-                      int? pageNb) async {
-                    Response response = await get(
-                      Uri.parse(
-                          "${baseUrl}api/uom?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${productTiltleId == null ? "" : "&product_id=$productTiltleId"}"),
-                      headers: {
-                        'Authorization': 'Bearer $token',
-                      },
-                    ).timeout(const Duration(
-                      seconds: 10,
-                    ));
-
-                    if (response.statusCode != 200) {
-                      throw Exception("failed to get data from internet");
-                    }
-
-                    dynamic data = jsonDecode(response.body);
-
-                    int nbResults = data["length"];
-
-                    List<DropdownMenuItem> results =
-                    (data["records"] as List<dynamic>)
-                        .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                      value: item,
-                      child: Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Text("${item["name"]}"),
-                        ),
-                      ),
-                    ))
-                        .toList();
-                    return (Tuple2<List<DropdownMenuItem>, int>(
-                        results, nbResults));
-                  },
                 ),
-              ),
-
-              Visibility(
-                visible: tvisibility,
-                child: Padding(
+                Padding(
                   padding:
                   const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
-                    controller: leadtime,
+                    controller: productQuantity,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -2615,460 +2509,651 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
-                        labelText: 'Lead Time',
+                        labelText: 'Quantity',
                         labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 0,
-              ),
-              Visibility(
-                visible: tvisibility,
-                child: Padding(
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                  child: TextFormField(
+                    style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                    controller: productUnitPrice,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        labelText: 'Unit Price',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                  ),
+                ),
+                Padding(
                   padding:
                   const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                  child: MultiSelectDropDown.network(
-                     hint: 'Taxes',
-                    hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                    selectedOptions: editProductTaxName
-                        .map((tag) =>
-                        ValueItem(label: tag.label, value: tag.value))
-                        .toList(),
-                    onOptionSelected: (options) {
-                      print(options);
-                      productTax.clear();
+                  child: SearchChoices.single(
+                    //items: items,
 
-                      for (var options in options) {
-                        productTax.add(options.value);
-                        editProductTaxName.add(new ValueItem(
-                            label: options.label,
-                            value: options.value.toString()));
+                    value: productUomName,
+                    hint: Text(
+                      "Uom",
+                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                    ),
+                    searchHint: null,
+                    autofocus: false,
+                    onChanged: (value) {
+                      setState(() {
+                        print(value['capital']);
+                        print("value");
+                        productUomName = value;
+                        productUomId = value["id"];
+                      });
+                    },
 
+                    dialogBox: false,
+                    isExpanded: true,
+                    menuConstraints:
+                    BoxConstraints.tight(const Size.fromHeight(300)),
+                    itemsPerPage: 10,
+                    currentPage: currentPage,
+                    selectedValueWidgetFn: (item) {
+                      return (Center(
+                          child: Container(
+                            width: 300,
+                            child: Text(
+                              item["name"],
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                          )));
+                    },
+                    futureSearchFn: (String? keyword,
+                        String? orderBy,
+                        bool? orderAsc,
+                        List<Tuple2<String, String>>? filters,
+                        int? pageNb) async {
+                      Response response = await get(
+                        Uri.parse(
+                            "${baseUrl}api/uom?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${productTiltleId == null ? "" : "&product_id=$productTiltleId"}"),
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ).timeout(const Duration(
+                        seconds: 10,
+                      ));
 
-                        print('Label: ${options.label}');
-                        print('Value: ${options.value}');
-                        print(productTax);
-                        print(editProductTaxName);
-                        print(selectedProductTax);
-                        print('tax valuessss');
+                      if (response.statusCode != 200) {
+                        throw Exception("failed to get data from internet");
                       }
-                    },
-                    networkConfig: NetworkConfig(
-                      url:
-                      "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
-                      method: RequestMethod.get,
-                      headers: {
-                        'Authorization': 'Bearer $token',
-                      },
-                    ),
-                    chipConfig: const ChipConfig(
-                      wrapType: WrapType.scroll,
-                      autoScroll: true,
-                    ),
-                    responseParser: (response) {
-                      debugPrint('Response: $response');
 
-                      final list =
-                      (response['records'] as List<dynamic>).map((e) {
-                        final item = e as Map<String, dynamic>;
-                        return ValueItem(
-                          label: item['name'],
-                          value: item['id'].toString(),
-                        );
-                      }).toList();
-
-                      return Future.value(list);
-                    },
-                    responseErrorBuilder: ((context, body) {
-                      print(body);
-                      print(token);
-                      return const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text('Error fetching the data'),
-                      );
-                    }),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                child: TextFormField(
-                  style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
-                  controller: productDescription,
-                  decoration: const InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                      ),
-                      labelText: 'Description',
-                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Center(
-                      child: SizedBox(
-                        width: 146,
-                        height: 38,
-                        child: ElevatedButton(
-                            child: Center(
-                              child: Text(
-                                "Save & Close",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.white,fontFamily: 'Mulish'),
-                              ),
-                            ),
-                            onPressed:_isSavingData
-                                ? null // Disable the button if saving is in progress
-                                : () async{
-
-                              setState(() {
-                                _isSavingData=true;
-                              });
-
-
-                              if( productType == "order") {
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
-
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print("productnamee");
-
-                                for (int i = 0; i < productTax.length; i++) {
-                                  String dataoTaxes =
-                                      '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
-
-                                  Map<String, dynamic> jsondata =
-                                  jsonDecode(dataoTaxes);
-
-                                  selectedtaxesIdFinal.add(dataoTaxes);
-                                  print(selectedtaxesIdFinal);
-                                  print(editProductTaxName);
-                                  print("taxesssssss");
-                                }
-
-                                double quantity, price;
-
-                                quantity = double.parse(productQuantity.text);
-                                price = double.parse(productUnitPrice.text);
-
-                                productSubTotal = price * quantity;
-
-                                String dataone =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"customer_lead":${double.parse(leadtime.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal}}';
-
-                                Map<String, dynamic> jsondata =
-                                jsonDecode(dataone);
-                                print(dataone);
-                                print("demo datatatata");
-
-                                type == -1 ?
-                                orderLineProducts.add(jsondata) :
-
-                                orderLineProducts[type] = jsondata;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(orderLineProducts);
-                                print("orderLineProducts");
-
-
-
-                                _isInitialized = false;
-                                await productSum(orderLineProducts);
-
-
-                              }
-
-
-
-                              if( productType == "optionjal") {
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
-
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print("productnamee");
-
-
-
-
-                                String datatwo =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","quantity":${double.parse(productQuantity.text)},"uom_id":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)}}';
-
-
-                                Map<String, dynamic> jsondatatwo =
-                                jsonDecode(datatwo);
-                                print(datatwo);
-                                print("demo datatatatatwo");
-
-                                type == -1 ?
-                                optionalProducts.add(jsondatatwo) :
-
-                                optionalProducts[type] = jsondatatwo;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(optionalProducts);
-                                print("orderLineProducts");
-
-
-
-
-
-                              }
-
-
-
-
-
-                              setState(() {
-                                _isSavingData=false;
-                                productTiltleName = null;
-                                productTiltleId = null;
-                                productUomName = null;
-                                productUomId = null;
-
-                                productDescription.text = "";
-                                productUnitPrice.text = "";
-                                productQuantity.text = "";
-                                leadtime.text = "";
-
-                                productTax.clear();
-                                selectedProductTax.clear();
-                                editProductTaxName.clear();
-                                selectedtaxesIdFinal.clear();
-                              });
-
-                              Navigator.pop(context);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
-                            )),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Center(
-                      child: SizedBox(
-                        width: 146,
-                        height: 38,
-                        child: ElevatedButton(
-                            child: Center(
-                              child: Text(
-                                "Save & New",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
-                                    color: Colors.white,fontFamily: 'Mulish'),
-                              ),
-                            ),
-                            onPressed: _isSavingData
-                                ? null // Disable the button if saving is in progress
-                                :() async{
-
-                              setState(() {
-                                _isSavingData=true;
-                              });
-                              if (productType == "order") {
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
-
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print("productnamee");
-                                print(productTax.length);
-                                print(editProductTaxName);
-                                print(productTax);
-
-                                for (int i = 0; i <
-                                    productTax.length; i++) {
-                                  String dataoTaxes =
-                                      '{"id":${editProductTaxName[i]
-                                      .value},"name":"${editProductTaxName[i]
-                                      .label}"}';
-
-                                  Map<String, dynamic> jsondata =
-                                  jsonDecode(dataoTaxes);
-
-                                  selectedtaxesIdFinal.add(dataoTaxes);
-                                  print(selectedtaxesIdFinal);
-                                  print(editProductTaxName);
-                                  print("taxesssssss");
-                                }
-
-                                double quantity, price;
-
-                                quantity =
-                                    double.parse(productQuantity.text);
-                                price =
-                                    double.parse(productUnitPrice.text);
-
-                                productSubTotal = price * quantity;
-
-                                String dataone =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
-                                    .text}","product_uom_qty":${double
-                                    .parse(productQuantity
-                                    .text)},"customer_lead":${double
-                                    .parse(
-                                    leadtime
-                                        .text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
-                                    .parse(productUnitPrice
-                                    .text)},"tax_id":${selectedtaxesIdFinal}}';
-
-                                Map<String, dynamic> jsondata =
-                                jsonDecode(dataone);
-                                print(dataone);
-                                print("demo datatatata");
-
-                                type == -1 ?
-                                orderLineProducts.add(jsondata) :
-
-                                orderLineProducts[type] = jsondata;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(orderLineProducts);
-                                print("orderLineProducts");
-
-
-                                _isInitialized = false;
-                                await productSum(orderLineProducts);
-                              }
-
-
-                              if (productType == "optionjal") {
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
-
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print("productnamee");
-
-
-                                String datatwo =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
-                                    .text}","quantity":${double.parse(
-                                    productQuantity
-                                        .text)},"uom_id":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
-                                    .parse(productUnitPrice.text)}}';
-
-
-                                Map<String, dynamic> jsondatatwo =
-                                jsonDecode(datatwo);
-                                print(datatwo);
-                                print("demo datatatatatwo");
-
-                                type == -1 ?
-                                optionalProducts.add(jsondatatwo) :
-
-                                optionalProducts[type] = jsondatatwo;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(optionalProducts);
-                                print("orderLineProducts");
-                              }
-
-
-                              setState(() {
-                                _isSavingData=false;
-                                productTiltleName = null;
-                                productTiltleId = null;
-                                productUomName = null;
-                                productUomId = null;
-
-                                productDescription.text = "";
-                                productUnitPrice.text = "";
-                                productQuantity.text = "";
-                                leadtime.text = "0";
-
-                                productTax.clear();
-                                selectedProductTax.clear();
-                                editProductTaxName.clear();
-                                selectedtaxesIdFinal.clear();
-                              });
-
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
-                            )),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 40,bottom: 10),
-                child: Center(
-                  child: SizedBox(
-                    width: 306,
-                    height: 38,
-                    child: ElevatedButton(
-                        child: Center(
-                          child: Text(
-                            "Discard",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.black),
+                      dynamic data = jsonDecode(response.body);
+
+                      int nbResults = data["length"];
+
+                      List<DropdownMenuItem> results =
+                      (data["records"] as List<dynamic>)
+                          .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                        value: item,
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Text("${item["name"]}"),
                           ),
                         ),
-                        onPressed: () {
-
-                          setState(() {
-                            productTiltleName = null;
-                            productTiltleId = null;
-                            productUomName = null;
-                            productUomId = null;
-
-                            productDescription.text = "";
-                            productUnitPrice.text = "";
-                            productQuantity.text = "";
-
-                            productTax.clear();
-                            selectedProductTax.clear();
-                            editProductTaxName.clear();
-                            selectedtaxesIdFinal.clear();
-                          });
-                          Navigator.pop(context);
-
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.white,
-                        )),
+                      ))
+                          .toList();
+                      return (Tuple2<List<DropdownMenuItem>, int>(
+                          results, nbResults));
+                    },
                   ),
                 ),
-              ),
-            ],
+
+                Visibility(
+                  visible: tvisibility,
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: TextFormField(
+                      style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                      controller: leadtime,
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          labelText: 'Lead Time',
+                          labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 0,
+                ),
+                Visibility(
+                  visible: tvisibility,
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                    child: MultiSelectDropDown.network(
+                       hint: 'Taxes',
+                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      selectedOptions: editProductTaxName
+                          .map((tag) =>
+                          ValueItem(label: tag.label, value: tag.value))
+                          .toList(),
+                      onOptionSelected: (options) {
+                        print(options);
+                        productTax.clear();
+
+                        for (var options in options) {
+                          productTax.add(options.value);
+                          editProductTaxName.add(new ValueItem(
+                              label: options.label,
+                              value: options.value.toString()));
+
+
+                          print('Label: ${options.label}');
+                          print('Value: ${options.value}');
+                          print(productTax);
+                          print(editProductTaxName);
+                          print(selectedProductTax);
+                          print('tax valuessss');
+                        }
+                      },
+                      networkConfig: NetworkConfig(
+                        url:
+                        "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
+                        method: RequestMethod.get,
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ),
+                      chipConfig: const ChipConfig(
+                        wrapType: WrapType.scroll,
+                        autoScroll: true,
+                      ),
+                      responseParser: (response) {
+                        debugPrint('Response: $response');
+
+                        final list =
+                        (response['records'] as List<dynamic>).map((e) {
+                          final item = e as Map<String, dynamic>;
+                          return ValueItem(
+                            label: item['name'],
+                            value: item['id'].toString(),
+                          );
+                        }).toList();
+
+                        return Future.value(list);
+                      },
+                      responseErrorBuilder: ((context, body) {
+                        print(body);
+                        print(token);
+                        return const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text('Error fetching the data'),
+                        );
+                      }),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                  child: TextFormField(
+                    style:  TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                    controller: productDescription,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+                        labelText: 'Description',
+                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Save & Close",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white,fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed:_isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  : () async{
+
+    if (_formKeyalert.currentState!.validate()) {
+      setState(() {
+        _isSavingData=true;
+      });
+
+
+      if( productType == "order") {
+        productUnitPrice.text == ""
+            ? productUnitPrice.text = "0"
+            : productUnitPrice.text =
+            productUnitPrice.text;
+
+        productQuantity.text == ""
+            ? productQuantity.text = "1"
+            : productQuantity.text =
+            productQuantity.text;
+
+
+        leadtime.text == ""?
+        leadtime.text = "0"
+            :leadtime.text = leadtime.text;
+
+
+
+        String productName =
+        productDescription.text.toString();
+        print(productName);
+        print("productnamee");
+
+        for (int i = 0; i < productTax.length; i++) {
+          String dataoTaxes =
+              '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+
+          Map<String, dynamic> jsondata =
+          jsonDecode(dataoTaxes);
+
+          selectedtaxesIdFinal.add(dataoTaxes);
+          print(selectedtaxesIdFinal);
+          print(editProductTaxName);
+          print("taxesssssss");
+        }
+
+        double quantity, price;
+
+        quantity = double.parse(productQuantity.text);
+        price = double.parse(productUnitPrice.text);
+
+        productSubTotal = price * quantity;
+
+        String dataone =
+            '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"customer_lead":${double.parse(leadtime.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal}}';
+
+        Map<String, dynamic> jsondata =
+        jsonDecode(dataone);
+        print(dataone);
+        print("demo datatatata");
+
+        type == -1 ?
+        orderLineProducts.add(jsondata) :
+
+        orderLineProducts[type] = jsondata;
+        print(productUomName['name']);
+        print("demo datatatata1");
+        // for app side
+
+        print(orderLineProducts);
+        print("orderLineProducts");
+
+
+
+        _isInitialized = false;
+        await productSum(orderLineProducts);
+
+
+      }
+
+
+
+      if( productType == "optionjal") {
+        productUnitPrice.text == ""
+            ? productUnitPrice.text = "0"
+            : productUnitPrice.text =
+            productUnitPrice.text;
+
+
+        productQuantity.text == ""
+            ? productQuantity.text = "1"
+            : productQuantity.text =
+            productQuantity.text;
+
+
+        leadtime.text == ""?
+        leadtime.text = "0"
+            :leadtime.text = leadtime.text;
+
+
+        String productName =
+        productDescription.text.toString();
+        print(productName);
+        print("productnamee");
+
+
+
+
+        String datatwo =
+            '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","quantity":${double.parse(productQuantity.text)},"uom_id":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)}}';
+
+
+        Map<String, dynamic> jsondatatwo =
+        jsonDecode(datatwo);
+        print(datatwo);
+        print("demo datatatatatwo");
+
+        type == -1 ?
+        optionalProducts.add(jsondatatwo) :
+
+        optionalProducts[type] = jsondatatwo;
+        print(productUomName['name']);
+        print("demo datatatata1");
+        // for app side
+
+        print(optionalProducts);
+        print("orderLineProducts");
+
+
+
+
+
+      }
+
+
+
+
+
+      setState(() {
+        _isSavingData=false;
+        productTiltleName = null;
+        productTiltleId = null;
+        productUomName = null;
+        productUomId = null;
+
+        productDescription.text = "";
+        productUnitPrice.text = "";
+        productQuantity.text = "";
+        leadtime.text = "";
+
+        productTax.clear();
+        selectedProductTax.clear();
+        editProductTaxName.clear();
+        selectedtaxesIdFinal.clear();
+      });
+
+      Navigator.pop(context);
+    }
+    else{
+
+    }
+
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF9246A),
+                              )),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Save & New",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white,fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed: _isSavingData
+                                  ? null // Disable the button if saving is in progress
+                                  :() async{
+
+
+
+    if (_formKeyalert.currentState!
+        .validate()) {
+
+
+      setState(() {
+        _isSavingData=true;
+      });
+      if (productType == "order") {
+        productUnitPrice.text == ""
+            ? productUnitPrice.text = "0"
+            : productUnitPrice.text =
+            productUnitPrice.text;
+
+        productQuantity.text == ""
+            ? productQuantity.text = "1"
+            : productQuantity.text =
+            productQuantity.text;
+
+
+        leadtime.text == ""?
+        leadtime.text = "0"
+            :leadtime.text = leadtime.text;
+
+
+
+
+        String productName =
+        productDescription.text.toString();
+        print(productName);
+        print("productnamee");
+        print(productTax.length);
+        print(editProductTaxName);
+        print(productTax);
+
+        for (int i = 0; i <
+            productTax.length; i++) {
+          String dataoTaxes =
+              '{"id":${editProductTaxName[i]
+              .value},"name":"${editProductTaxName[i]
+              .label}"}';
+
+          Map<String, dynamic> jsondata =
+          jsonDecode(dataoTaxes);
+
+          selectedtaxesIdFinal.add(dataoTaxes);
+          print(selectedtaxesIdFinal);
+          print(editProductTaxName);
+          print("taxesssssss");
+        }
+
+        double quantity, price;
+
+        quantity =
+            double.parse(productQuantity.text);
+        price =
+            double.parse(productUnitPrice.text);
+
+        productSubTotal = price * quantity;
+
+        String dataone =
+            '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
+            .text}","product_uom_qty":${double
+            .parse(productQuantity
+            .text)},"customer_lead":${double
+            .parse(
+            leadtime
+                .text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
+            .parse(productUnitPrice
+            .text)},"tax_id":${selectedtaxesIdFinal}}';
+
+        Map<String, dynamic> jsondata =
+        jsonDecode(dataone);
+        print(dataone);
+        print("demo datatatata");
+
+        type == -1 ?
+        orderLineProducts.add(jsondata) :
+
+        orderLineProducts[type] = jsondata;
+        print(productUomName['name']);
+        print("demo datatatata1");
+        // for app side
+
+        print(orderLineProducts);
+        print("orderLineProducts");
+
+
+        _isInitialized = false;
+        await productSum(orderLineProducts);
+      }
+
+
+      if (productType == "optionjal") {
+        productUnitPrice.text == ""
+            ? productUnitPrice.text = "0"
+            : productUnitPrice.text =
+            productUnitPrice.text;
+
+        productQuantity.text == ""
+            ? productQuantity.text = "1"
+            : productQuantity.text =
+            productQuantity.text;
+
+
+        leadtime.text == ""?
+        leadtime.text = "0"
+            :leadtime.text = leadtime.text;
+
+
+
+        String productName =
+        productDescription.text.toString();
+        print(productName);
+        print("productnamee");
+
+
+        String datatwo =
+            '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription
+            .text}","quantity":${double.parse(
+            productQuantity
+                .text)},"uom_id":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double
+            .parse(productUnitPrice.text)}}';
+
+
+        Map<String, dynamic> jsondatatwo =
+        jsonDecode(datatwo);
+        print(datatwo);
+        print("demo datatatatatwo");
+
+        type == -1 ?
+        optionalProducts.add(jsondatatwo) :
+
+        optionalProducts[type] = jsondatatwo;
+        print(productUomName['name']);
+        print("demo datatatata1");
+        // for app side
+
+        print(optionalProducts);
+        print("orderLineProducts");
+      }
+
+
+      setState(() {
+        _isSavingData=false;
+        productTiltleName = null;
+        productTiltleId = null;
+        productUomName = null;
+        productUomId = null;
+
+        productDescription.text = "";
+        productUnitPrice.text = "";
+        productQuantity.text = "";
+        leadtime.text = "0";
+
+        productTax.clear();
+        selectedProductTax.clear();
+        editProductTaxName.clear();
+        selectedtaxesIdFinal.clear();
+      });
+      Future.delayed(Duration(seconds: 2), () {
+
+        _formKeyalert.currentState?.reset();
+
+      });
+
+
+    }
+    else{
+      _formKeyalert.currentState!.reset();
+    }
+
+
+
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF9246A),
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40,bottom: 10),
+                  child: Center(
+                    child: SizedBox(
+                      width: 306,
+                      height: 38,
+                      child: ElevatedButton(
+                          child: Center(
+                            child: Text(
+                              "Discard",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Colors.black),
+                            ),
+                          ),
+                          onPressed: () {
+
+                            setState(() {
+                              productTiltleName = null;
+                              productTiltleId = null;
+                              productUomName = null;
+                              productUomId = null;
+
+                              productDescription.text = "";
+                              productUnitPrice.text = "";
+                              productQuantity.text = "";
+
+                              productTax.clear();
+                              selectedProductTax.clear();
+                              editProductTaxName.clear();
+                              selectedtaxesIdFinal.clear();
+                            });
+                            Navigator.pop(context);
+
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                          )),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -3109,8 +3194,8 @@ productDefaultDetails() async {
 
 productSum(List orderLineProductsData) async {
   productDatas.clear();
-  var data = await getProductSum(orderLineProductsData,pricelistId);
-
+ // var data = await getProductSum(orderLineProductsData,pricelistId);
+  var data = await getProductSum(orderLineProductsData,1);
  print(data);
  print("bug data");
 

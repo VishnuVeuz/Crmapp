@@ -107,7 +107,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
   List<dynamic> selectedtaxesIdFinal = [];
 
   bool optvisibility = false,ordervisibility = true;
-
+  final FocusNode _textFieldFocusNode = FocusNode();
+  @override
+  void dispose() {
+    _textFieldFocusNode.dispose();
+    productQuantity.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -2545,7 +2551,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               productTiltleId = value["id"];
                             });
                             await productDefaultDetails();
-
+                            FocusScope.of(context).requestFocus(_textFieldFocusNode);
 
                           },
 
@@ -2616,6 +2622,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                         child: TextFormField(
+                          focusNode: _textFieldFocusNode,
                           style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                           controller: productQuantity,
                           decoration: const InputDecoration(
