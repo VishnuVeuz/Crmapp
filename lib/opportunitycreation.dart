@@ -47,15 +47,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       mediumId,
       sourceName,
       sourceId,
-      pricelistName,pricelistId;
+      pricelistName,
+      pricelistId;
 
   dynamic productTiltleName, productTiltleId, productUomName, productUomId;
   double? productSubTotal;
   int? productId = null;
   bool _isSavingData = false;
 
-  String notificationCount="0";
-  String messageCount ="0";
+  String notificationCount = "0";
+  String messageCount = "0";
   TextEditingController opportunitynameController = TextEditingController();
   TextEditingController expectedrevenueController = TextEditingController();
   TextEditingController probabilityController = TextEditingController();
@@ -80,6 +81,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   TextEditingController productQuantity = TextEditingController();
   List orderLineProducts = [];
   final _formKey = GlobalKey<FormState>();
+  final _formKeyalert = GlobalKey<FormState>();
 
   Map<String, dynamic>? orderLineProductsData;
 
@@ -97,7 +99,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   List selectedProductTax = [];
   List<ValueItem> editProductTaxName = [];
   List<dynamic> selectedtaxesIdFinal = [];
-
 
   List productDatas = [];
 
@@ -152,68 +153,65 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
               return Row(
                 children: [
                   Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          Notifications()));
-                            },
+                    child: Stack(alignment: Alignment.center, children: [
+                      IconButton(
+                        icon: SvgPicture.asset("images/messages.svg"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Notifications()));
+                        },
+                      ),
+                      Positioned(
+                        bottom: 25,
+                        right: 28,
+                        child: Container(
+                          width: 18.0,
+                          height: 18.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFFA256B),
                           ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 18.0,
-                              height: 18.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
+                          child: Center(
+                              child: Text(
+                            messageCount,
+                            style: TextStyle(color: Colors.white, fontSize: 8),
+                          )),
+                        ),
+                      ),
+                    ]),
                   ),
                   Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ActivitiesNotification()));
-                            },
+                    child: Stack(alignment: Alignment.center, children: [
+                      IconButton(
+                        icon: SvgPicture.asset("images/clock2.svg"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ActivitiesNotification()));
+                        },
+                      ),
+                      Positioned(
+                        bottom: 25,
+                        right: 28,
+                        child: Container(
+                          width: 18.0,
+                          height: 18.0,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFFA256B),
                           ),
-                          Positioned(
-                            bottom: 25,
-                            right: 28,
-
-                            child: Container(
-                              width: 18.0,
-                              height: 18.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
-                            ),
-                          ),
-                        ]
-                    ),
+                          child: Center(
+                              child: Text(
+                            notificationCount,
+                            style: TextStyle(color: Colors.white, fontSize: 8),
+                          )),
+                        ),
+                      ),
+                    ]),
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.only(right: 0),
@@ -239,7 +237,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         ),
         body: Form(
           key: _formKey,
-
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -249,7 +246,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
+                    padding:
+                        const EdgeInsets.only(left: 25, top: 20, right: 25),
                     child: SizedBox(
                       width: 93,
                       height: 33,
@@ -259,7 +257,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Colors.white,fontFamily: 'Mulish'),
+                                color: Colors.white,
+                                fontFamily: 'Mulish'),
                           ),
                           onPressed: () async {
                             // if(opportunitynameController.text!=""){
@@ -268,65 +267,66 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             //   });
                             // }
 
-
-                            if (_formKey.currentState!.validate() && opportunitynameController.text.trim().isNotEmpty) {
-
-                            setState(() {
-                              _isInitialized = false;
-                            });
-                            String resmessage;
-                            print(opportunitynameController.text);
-                            print(probabilityController.text);
-                            print(companynameController.text);
-                            print(titleId);
-                            print(contactnameController.text);
-                            print(streetController.text);
-                            print(streettwoController.text);
-                            print(cityController.text);
-                            print(countryId);
-                            print(stateId);
-                            print(zipController.text);
-                            print(websiteController.text);
-                            print(languageId);
-                            print(emailController.text);
-                            print(emailccController.text);
-                            print(jobpositionController.text);
-                            print(phoneController.text);
-                            print(mobileController.text);
-                            print(pricelistId);
-                            print(companyId);
-                            print(salespersonId);
-                            print(salesteamId);
-                            print(rtaingValue);
-                            print(campaignId);
-                            print(mediumId);
-                            print(sourceId);
-                            print(internalnotesController.text);
-                            print(tags);
-
-                            //resmessage=await opportunityCreate();
-
-                            widget.opportunityId == 0
-                                ? resmessage = await opportunityCreate()
-                                : resmessage = await opportunityEdit();
-                            print(resmessage);
-                            int resmessagevalue = int.parse(resmessage);
-                            if (resmessagevalue != 0) {
+                            if (_formKey.currentState!.validate() &&
+                                opportunitynameController.text
+                                    .trim()
+                                    .isNotEmpty) {
                               setState(() {
-                                _isInitialized = true;
+                                _isInitialized = false;
                               });
-                              // Navigator.push(
-                              //   context,
-                              //   MaterialPageRoute(builder: (context) => LeadFirst()),);
+                              String resmessage;
+                              print(opportunitynameController.text);
+                              print(probabilityController.text);
+                              print(companynameController.text);
+                              print(titleId);
+                              print(contactnameController.text);
+                              print(streetController.text);
+                              print(streettwoController.text);
+                              print(cityController.text);
+                              print(countryId);
+                              print(stateId);
+                              print(zipController.text);
+                              print(websiteController.text);
+                              print(languageId);
+                              print(emailController.text);
+                              print(emailccController.text);
+                              print(jobpositionController.text);
+                              print(phoneController.text);
+                              print(mobileController.text);
+                              print(pricelistId);
+                              print(companyId);
+                              print(salespersonId);
+                              print(salesteamId);
+                              print(rtaingValue);
+                              print(campaignId);
+                              print(mediumId);
+                              print(sourceId);
+                              print(internalnotesController.text);
+                              print(tags);
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        OpportunityDetail(resmessagevalue)),
-                              );
+                              //resmessage=await opportunityCreate();
+
+                              widget.opportunityId == 0
+                                  ? resmessage = await opportunityCreate()
+                                  : resmessage = await opportunityEdit();
+                              print(resmessage);
+                              int resmessagevalue = int.parse(resmessage);
+                              if (resmessagevalue != 0) {
+                                setState(() {
+                                  _isInitialized = true;
+                                });
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(builder: (context) => LeadFirst()),);
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OpportunityDetail(resmessagevalue)),
+                                );
+                              }
                             }
-                          }
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -335,9 +335,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter the name';
@@ -353,15 +353,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Opportunity Name',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: expectedrevenueController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -371,15 +373,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Expected Revenue',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: probabilityController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -389,16 +393,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Probability',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       validator: (value) {
-                        if(value==null){
+                        if (value == null) {
                           return 'please select customer';
                         }
                         return null;
@@ -407,7 +413,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       value: customerName,
                       hint: Text(
                         "Customer",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -422,18 +431,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["display_name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["display_name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -462,17 +474,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         // print("customer data");
                         int nbResults = data["length"];
 
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["display_name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["display_name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -481,9 +493,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: companynameController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -495,8 +507,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                           // border: UnderlineInputBorder(),
                           labelText: 'Company Name',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
 
@@ -504,14 +518,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
 
                       value: titleName,
                       hint: Text(
                         "Title",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -525,18 +542,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -561,17 +581,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                         int nbResults = data["length"];
 
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -581,9 +601,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: contactnameController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -593,26 +613,29 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Contact Name',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 15),
                     child: Text(
                       "Address",
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF000000),fontFamily: 'Mulish'),
+                          color: Color(0xFF000000),
+                          fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: streetController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -622,15 +645,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Street',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: streettwoController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -640,15 +665,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Street2',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: cityController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -658,21 +685,26 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'City',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   //country
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: countryName,
                       hint: Text(
                         "Country",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -687,18 +719,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -734,17 +769,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -756,12 +791,15 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       value: stateName,
                       hint: Text(
                         "State",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
                       searchHint: null,
                       autofocus: false,
@@ -776,18 +814,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -824,17 +865,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -843,10 +884,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
                       keyboardType: TextInputType.number,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: zipController,
                       maxLength: 6,
                       decoration: const InputDecoration(
@@ -858,16 +899,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Zip',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: websiteController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -877,8 +920,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Website',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
 
@@ -886,13 +931,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: languageName,
                       hint: Text(
                         "Language",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -909,18 +957,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -959,18 +1010,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                              // "${item["capital"]} - ${item["country"]} - ${item["continent"]} - pop.: ${item["population"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                      // "${item["capital"]} - ${item["country"]} - ${item["continent"]} - pop.: ${item["population"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -979,9 +1030,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       decoration: const InputDecoration(
@@ -994,15 +1045,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                           // border: UnderlineInputBorder(),
                           labelText: 'Email',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: emailccController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1014,15 +1067,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                           // border: UnderlineInputBorder(),
                           labelText: 'EmailCc',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: jobpositionController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1032,15 +1087,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Job Position',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
@@ -1053,15 +1110,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Phone',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: mobileController,
                       keyboardType: TextInputType.phone,
                       maxLength: 10,
@@ -1074,20 +1133,27 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Mobile',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: SearchChoices.single(
                       //items: items,
 
                       value: pricelistName,
-                      hint: Text("Pricelist",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                      hint: Text(
+                        "Pricelist",
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
+                      ),
                       searchHint: null,
                       autofocus: false,
                       onChanged: (value) {
@@ -1099,40 +1165,38 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                       dialogBox: false,
                       isExpanded: true,
-                      menuConstraints: BoxConstraints.tight(
-                          const Size.fromHeight(350)),
+                      menuConstraints:
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(item["name"], style: TextStyle(
-                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
-                      futureSearchFn: (String? keyword, String? orderBy,
+                      futureSearchFn: (String? keyword,
+                          String? orderBy,
                           bool? orderAsc,
                           List<Tuple2<String, String>>? filters,
                           int? pageNb) async {
                         //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
-                        Response response = await get(Uri.parse(
-                            "${baseUrl}api/common_dropdowns?page_no=${pageNb ??
-                                1}&count=10${keyword == null
-                                ? ""
-                                : "&filter=$keyword${companyId == null
-                                ? ""
-                                : "&company_id=$companyId"}"}&model=product.pricelist"),
+                        Response response = await get(
+                          Uri.parse(
+                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
                           headers: {
-
                             'Authorization': 'Bearer $token',
-
                           },
-                        )
-                            .timeout(const Duration(
+                        ).timeout(const Duration(
                           seconds: 10,
                         ));
-
 
                         if (response.statusCode != 200) {
                           throw Exception("failed to get data from internet");
@@ -1143,40 +1207,37 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         // print("customer data");
                         int nbResults = data["length"];
 
-                        List<DropdownMenuItem> results = (data["record"] as List<
-                            dynamic>)
-                            .map<DropdownMenuItem>((item) =>
-                            DropdownMenuItem(
-                              value: item,
-                              child: Card(
-
-                                child: Padding(
-                                  padding: const EdgeInsets.all(0),
-                                  child: Text(
-                                      "${item["name"]}"),
-
-                                ),
-                              ),
-                            ))
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
+                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
                       },
-
-
                     ),
                   ),
 
                   //company
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: campanyName,
                       hint: Text(
                         "Company",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1193,18 +1254,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1241,17 +1305,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1260,13 +1324,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salespersonName,
                       hint: Text(
                         "Salesperson",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1283,18 +1350,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1330,17 +1400,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1352,13 +1422,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: salesteamName,
                       hint: Text(
                         "Sales Team",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1375,18 +1448,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1423,17 +1499,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1447,7 +1523,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
-                          color: Colors.black,fontFamily: 'Mulish'),
+                          color: Colors.black,
+                          fontFamily: 'Mulish'),
                     ),
                   ),
                   Padding(
@@ -1477,13 +1554,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Tags',
-                      hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
+                      hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
                       selectedOptions: editTagName
                           .map((tag) =>
-                          ValueItem(label: tag.label, value: tag.value))
+                              ValueItem(label: tag.label, value: tag.value))
                           .toList(),
                       onOptionSelected: (options) {
                         print(options);
@@ -1508,7 +1585,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         debugPrint('Response: $response');
 
                         final list =
-                        (response['records'] as List<dynamic>).map((e) {
+                            (response['records'] as List<dynamic>).map((e) {
                           final item = e as Map<String, dynamic>;
                           return ValueItem(
                             label: item['name'],
@@ -1533,13 +1610,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: campaignName,
                       hint: Text(
                         "Campaign",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1556,18 +1636,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1605,17 +1688,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1627,13 +1710,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   //medium
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: mediumName,
                       hint: Text(
                         "Medium",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1650,18 +1736,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1699,17 +1788,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1719,13 +1808,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   //source
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: SearchChoices.single(
                       //items: items,
                       value: sourceName,
                       hint: Text(
                         "Source",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                        style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
 
                       searchHint: null,
@@ -1742,18 +1834,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       dialogBox: false,
                       isExpanded: true,
                       menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
+                          BoxConstraints.tight(const Size.fromHeight(350)),
                       itemsPerPage: 10,
                       currentPage: currentPage,
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
+                          width: 320,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
                       },
                       futureSearchFn: (String? keyword,
                           String? orderBy,
@@ -1790,17 +1885,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         print("fjbnkdttt");
                         int nbResults = data["length"];
                         print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
+                        List<DropdownMenuItem> results = (data["record"]
+                                as List<dynamic>)
                             .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
                             .toList();
                         return (Tuple2<List<DropdownMenuItem>, int>(
                             results, nbResults));
@@ -1809,9 +1904,9 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: refferedbyController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1823,16 +1918,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                           // border: UnderlineInputBorder(),
                           labelText: 'Reffered by',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
 
                   Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                      style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
                       controller: internalnotesController,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -1844,8 +1941,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                           // border: UnderlineInputBorder(),
                           labelText: 'Internal Notes',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Mulish')),
                     ),
                   ),
                   Padding(
@@ -1860,10 +1959,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,
+                                  fontFamily: 'Mulish'),
                             ),
                             onPressed: () {
-
                               setState(() {
                                 productId = null;
                               });
@@ -1871,9 +1970,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) =>
-                                    _buildOrderPopupDialog(
-                                        context,-1
-                                    ),
+                                    _buildOrderPopupDialog(context, -1),
                               ).then((value) => setState(() {}));
                             },
                             style: ElevatedButton.styleFrom(
@@ -1899,43 +1996,58 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 print(index);
                                 print("listindex");
                                 print(orderLineProducts[index]);
-                                print(orderLineProducts[index]['product_id']["id"]);
+                                print(orderLineProducts[index]['product_id']
+                                    ["id"]);
                                 setState(() {
-                                  productTiltleName = orderLineProducts[index]['product_id'];
-                                  productTiltleId = orderLineProducts[index]['product_id']["id"];
-                                  productQuantity.text = (orderLineProducts[index]['product_uom_qty']??"0").toString();
-                                  productUnitPrice.text = (orderLineProducts[index]['price_unit']??"0").toString();
-                                  productUomName=orderLineProducts[index]['product_uom'];
-                                  productUomId = orderLineProducts[index]['product_uom']['id'];
-                                  productDescription.text = orderLineProducts[index]['name'];
+                                  productTiltleName =
+                                      orderLineProducts[index]['product_id'];
+                                  productTiltleId = orderLineProducts[index]
+                                      ['product_id']["id"];
+                                  productQuantity.text =
+                                      (orderLineProducts[index]
+                                                  ['product_uom_qty'] ??
+                                              "0")
+                                          .toString();
+                                  productUnitPrice.text =
+                                      (orderLineProducts[index]['price_unit'] ??
+                                              "0")
+                                          .toString();
+                                  productUomName =
+                                      orderLineProducts[index]['product_uom'];
+                                  productUomId = orderLineProducts[index]
+                                      ['product_uom']['id'];
+                                  productDescription.text =
+                                      orderLineProducts[index]['name'];
                                   productId = orderLineProducts[index]['id'];
                                   print(productId);
                                   print("productIdproductId");
 
-                                  for (int i = 0; i < orderLineProducts[index]['tax_id'].length; i++) {
-                                    selectedProductTax.add(orderLineProducts[index]['tax_id'][i]);
+                                  for (int i = 0;
+                                      i <
+                                          orderLineProducts[index]['tax_id']
+                                              .length;
+                                      i++) {
+                                    selectedProductTax.add(
+                                        orderLineProducts[index]['tax_id'][i]);
                                   }
 
-                                  for (int i = 0; i < selectedProductTax.length; i++) {
+                                  for (int i = 0;
+                                      i < selectedProductTax.length;
+                                      i++) {
                                     editProductTaxName.add(new ValueItem(
                                         label: selectedProductTax[i]['name'],
-                                        value: selectedProductTax[i]['id'].toString()));
+                                        value: selectedProductTax[i]['id']
+                                            .toString()));
                                   }
 
-                                  productTax = editProductTaxName.map((item) => item.value).toList();
-
-
-
-
-
-
-
+                                  productTax = editProductTaxName
+                                      .map((item) => item.value)
+                                      .toList();
                                 });
                                 showDialog(
                                   context: context,
                                   builder: (BuildContext context) =>
-                                      _buildOrderPopupDialog(
-                                          context,index),
+                                      _buildOrderPopupDialog(context, index),
                                 ).then((value) => setState(() {}));
 
                                 print("orderLineProducts[index];");
@@ -1945,7 +2057,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 0),
                                   child: Container(
-
                                       width: 490,
                                       // height:
                                       // MediaQuery.of(context).size.height / 7,
@@ -1955,169 +2066,196 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         children: [
                                           Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.spaceBetween,
                                             //crossAxisAlignment: CrossAxisAlignment.end,
                                             children: [
                                               Column(
                                                 crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                    CrossAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                        const EdgeInsets.only(
-                                                            top: 5,
-                                                            left: 25),
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 5,
+                                                                left: 25),
                                                         child: Container(
                                                           width: 230,
                                                           child: Text(
                                                             orderLineProductsData![
-                                                            'name'] ??
+                                                                    'name'] ??
                                                                 "",
                                                             style: TextStyle(
                                                                 fontWeight:
-                                                                FontWeight
-                                                                    .w600,
+                                                                    FontWeight
+                                                                        .w600,
                                                                 fontSize: 14,
-                                                                color:
-                                                                Colors.black,fontFamily: 'Mulish'),
+                                                                color: Colors
+                                                                    .black,
+                                                                fontFamily:
+                                                                    'Mulish'),
                                                           ),
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                        const EdgeInsets.only(
-                                                            top: 5,
-                                                            left: 30,
-                                                            right: 25),
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 5,
+                                                                left: 30,
+                                                                right: 25),
                                                         child: Text(
                                                           "sum: ${orderLineProductsData!['price_subtotal']}",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize: 12,
-                                                              color:
-                                                              Color(0xFF787878),fontFamily: 'Mulish'),
+                                                              color: Color(
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                                  'Mulish'),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                   Padding(
                                                     padding:
-                                                    const EdgeInsets.only(
-                                                        top: 5, left: 25),
+                                                        const EdgeInsets.only(
+                                                            top: 5, left: 25),
                                                     child: Row(
                                                       mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                          MainAxisAlignment
+                                                              .start,
                                                       children: [
                                                         Text(
                                                           "Quantity : ",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878),fontFamily: 'Mulish'),
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                                  'Mulish'),
                                                         ),
                                                         Text(
                                                           orderLineProductsData![
-                                                          "product_uom_qty"]
-                                                              .toString() ??
-                                                              "",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                              FontWeight.w600,
-                                                              fontSize: 12,
-                                                              color: Color(
-                                                                  0xFF787878),fontFamily: 'Mulish'),
-                                                        ),
-                                                        Text(
-                                                          " " +
-                                                              orderLineProductsData![
-                                                              "product_uom"]['name']
+                                                                      "product_uom_qty"]
                                                                   .toString() ??
                                                               "",
                                                           style: TextStyle(
                                                               fontWeight:
-                                                              FontWeight.w600,
+                                                                  FontWeight
+                                                                      .w600,
                                                               fontSize: 12,
                                                               color: Color(
-                                                                  0xFF787878),fontFamily: 'Mulish'),
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                                  'Mulish'),
+                                                        ),
+                                                        Text(
+                                                          " " +
+                                                                  orderLineProductsData![
+                                                                              "product_uom"]
+                                                                          [
+                                                                          'name']
+                                                                      .toString() ??
+                                                              "",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontSize: 12,
+                                                              color: Color(
+                                                                  0xFF787878),
+                                                              fontFamily:
+                                                                  'Mulish'),
                                                         ),
                                                       ],
                                                     ),
                                                   ),
                                                   Row(
                                                     mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                        const EdgeInsets.only(
-                                                            top: 0, left: 25),
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                top: 0,
+                                                                left: 25),
                                                         child: Row(
                                                           mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
+                                                              MainAxisAlignment
+                                                                  .start,
                                                           children: [
                                                             Text(
                                                               "Unit Price :",
                                                               style: TextStyle(
                                                                   fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                                      FontWeight
+                                                                          .w500,
                                                                   fontSize: 11,
                                                                   color: Color(
-                                                                      0xFF787878),fontFamily: 'Mulish'),
+                                                                      0xFF787878),
+                                                                  fontFamily:
+                                                                      'Mulish'),
                                                             ),
                                                             Text(
                                                               orderLineProductsData![
-                                                              'price_unit']
-                                                                  .toString() ??
+                                                                          'price_unit']
+                                                                      .toString() ??
                                                                   "",
                                                               style: TextStyle(
                                                                   fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                                      FontWeight
+                                                                          .w500,
                                                                   fontSize: 11,
                                                                   color: Color(
-                                                                      0xFF787878),fontFamily: 'Mulish'),
+                                                                      0xFF787878),
+                                                                  fontFamily:
+                                                                      'Mulish'),
                                                             ),
                                                           ],
                                                         ),
                                                       ),
                                                       Padding(
                                                         padding:
-                                                        const EdgeInsets.only(
-                                                            left: 200,
-                                                            right: 25,
-                                                            bottom: 0),
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 200,
+                                                                right: 25,
+                                                                bottom: 0),
                                                         child: Container(
                                                           width: 30,
                                                           height: 30,
                                                           //color: Colors.green,
                                                           child: IconButton(
-                                                            icon:SvgPicture.asset("images/trash.svg"),
-                                                            onPressed: () async{
+                                                            icon: SvgPicture.asset(
+                                                                "images/trash.svg"),
+                                                            onPressed:
+                                                                () async {
                                                               print(index);
 
                                                               orderLineProducts
                                                                   .removeAt(
-                                                                  index);
+                                                                      index);
 
-
-                                                              await productSum(orderLineProducts);
+                                                              await productSum(
+                                                                  orderLineProducts);
                                                               setState(() {});
                                                               // orderLineProductsData?.removeAt(index);
-                                                              print(
-                                                                  orderLineProducts[
-                                                                  index]
-                                                                      .toString());
+                                                              print(orderLineProducts[
+                                                                      index]
+                                                                  .toString());
                                                               print(
                                                                   orderLineProducts);
                                                               print(
@@ -2139,13 +2277,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         }),
                   ),
 
-
-
                   Padding(
-                    padding: const EdgeInsets.only(left: 160,right: 25,top: 10),
+                    padding:
+                        const EdgeInsets.only(left: 160, right: 25, top: 10),
                     child: Container(
-
-                      width: MediaQuery.of(context).size.width/1.5,
+                      width: MediaQuery.of(context).size.width / 1.5,
                       //height: MediaQuery.of(context).size.height / 1.8,
                       child: ListView.builder(
                           scrollDirection: Axis.vertical,
@@ -2153,27 +2289,23 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           shrinkWrap: true,
                           itemCount: productDatas.length,
                           itemBuilder: (BuildContext context, int index) {
-
-
                             return Card(
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 1),
                                 child: Container(
-                                  // width: 490,
-                                  // height:
-                                  // MediaQuery.of(context).size.height / 7,
+                                    // width: 490,
+                                    // height:
+                                    // MediaQuery.of(context).size.height / 7,
                                     color: Colors.white,
                                     child: Text(
-                                        productDatas[index].toString(),
+                                      productDatas[index].toString(),
                                       style: TextStyle(fontFamily: 'Mulish'),
                                     )),
                               ),
                             );
                           }),
                     ),
-
                   )
-
                 ],
               ),
             ),
@@ -2185,7 +2317,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void defaultvalues() async {
     token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
+    var notificationMessage = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
 
@@ -2286,15 +2418,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         expectedrevenueController.text == ""
             ? double.parse("0")
             : double.parse(expectedrevenueController.text),
-        orderLineProducts
-    );
+        orderLineProducts);
 
     return value;
   }
 
   void getOpportunityDetails() async {
     token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
+    var notificationMessage = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
 
@@ -2333,8 +2464,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       salesteamId = data['team_id']['id'] ?? null;
       campaignName = data['campaign_id'] ?? "";
       campaignId = data['campaign_id']['id'] ?? null;
-      pricelistName =data['pricelist_id']??"";
-      pricelistId = data['pricelist_id']['id']?? null;
+      pricelistName = data['pricelist_id'] ?? "";
+      pricelistId = data['pricelist_id']['id'] ?? null;
       campanyName = data['company_id'] ?? "";
       companyId = data['company_id']['id'] ?? null;
       mediumName = data['medium_id'] ?? "";
@@ -2371,14 +2502,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         productDatas.add("$key : $value");
       });
 
-
       _isInitialized = true;
     });
 
     print(token);
   }
 
-  _buildOrderPopupDialog(BuildContext context,int type) {
+  _buildOrderPopupDialog(BuildContext context, int type) {
     print(productId);
     print("idtype");
     return StatefulBuilder(builder: (context, setState) {
@@ -2386,589 +2516,835 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
-        content: Container(
-          width: MediaQuery.of(context).size.width,
-          // height: MediaQuery.of(context).size.height,
-          //color: Colors.green,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 260,right: 20),
-                  child: IconButton(
-                    icon: Image.asset(
-                      "images/cross.png",
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        productTiltleName = null;
-                        productTiltleId = null;
-                        productUomName = null;
-                        productUomId = null;
+        content: Form(
+          key: _formKeyalert,
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            // height: MediaQuery.of(context).size.height,
+            //color: Colors.green,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 260, right: 20),
+                    child: IconButton(
+                      icon: Image.asset(
+                        "images/cross.png",
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          productTiltleName = null;
+                          productTiltleId = null;
+                          productUomName = null;
+                          productUomId = null;
 
-                        productDescription.text = "";
-                        productUnitPrice.text = "";
-                        productQuantity.text = "";
+                          productDescription.text = "";
+                          productUnitPrice.text = "";
+                          productQuantity.text = "";
 
-                        productTax.clear();
-                        selectedProductTax.clear();
-                        editProductTaxName.clear();
-                      });
+                          productTax.clear();
+                          selectedProductTax.clear();
+                          editProductTaxName.clear();
+                        });
 
-
-
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                  child: SearchChoices.single(
-                    //items: items,
-
-                    value: productTiltleName,
-                    hint: Text(
-                      "Product",
-                      style: TextStyle(fontSize: 13.6, color: Colors.black,fontFamily: 'Mulish'),
-                    ),
-                    searchHint: null,
-                    autofocus: false,
-                    onChanged: (value) async {
-                      setState(() {
-                        print(value['capital']);
-
-                        // productTax.clear();
-                        // editProductTaxName.clear();
-                        // selectedProductTax.clear();
-                        print(productTax);
-                        print(editProductTaxName);
-                        print(selectedProductTax);
-                        print("product valursss");
-
-                        productTiltleName = value;
-                        productTiltleId = value["id"];
-                      });
-                      await productDefaultDetails();
-                    },
-
-                    dialogBox: false,
-                    isExpanded: true,
-                    menuConstraints:
-                    BoxConstraints.tight(const Size.fromHeight(300)),
-                    itemsPerPage: 10,
-                    currentPage: currentPage,
-                    selectedValueWidgetFn: (item) {
-                      return (Center(
-                          child: Container(
-                            width: 300,
-                            child: Text(
-                              item["display_name"],
-                              style: TextStyle(fontSize: 13.6, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                          )));
-                    },
-                    futureSearchFn: (String? keyword,
-                        String? orderBy,
-                        bool? orderAsc,
-                        List<Tuple2<String, String>>? filters,
-                        int? pageNb) async {
-                      Response response = await get(
-                        Uri.parse(
-                            "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
-                        headers: {
-                          'Authorization': 'Bearer $token',
-                        },
-                      ).timeout(const Duration(
-                        seconds: 10,
-                      ));
-
-                      if (response.statusCode != 200) {
-                        throw Exception("failed to get data from internet");
-                      }
-
-                      dynamic data = jsonDecode(response.body);
-
-                      int nbResults = data["length"];
-
-                      List<DropdownMenuItem> results =
-                      (data["records"] as List<dynamic>)
-                          .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                        value: item,
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Text("${item["display_name"]}"),
-                          ),
-                        ),
-                      ))
-                          .toList();
-                      return (Tuple2<List<DropdownMenuItem>, int>(
-                          results, nbResults));
-                    },
-                  ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                  child: TextFormField(
-                    controller: productQuantity,
-                    decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        labelText: 'Quantity',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 13.6,fontFamily: 'Mulish')),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                  child: TextFormField(
-                    controller: productUnitPrice,
-                    decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        labelText: 'Unit Price',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 13.6,fontFamily: 'Mulish')),
-                  ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                  child: SearchChoices.single(
-                    //items: items,
-
-                    value: productUomName,
-                    hint: Text(
-                      "Uom",
-                      style: TextStyle(fontSize: 13.6, color: Colors.black,fontFamily: 'Mulish'),
-                    ),
-                    searchHint: null,
-                    autofocus: false,
-                    onChanged: (value) {
-                      setState(() {
-                        print(value['capital']);
-                        print("value");
-                        productUomName = value;
-                        productUomId = value["id"];
-                      });
-                    },
-
-                    dialogBox: false,
-                    isExpanded: true,
-                    menuConstraints:
-                    BoxConstraints.tight(const Size.fromHeight(300)),
-                    itemsPerPage: 10,
-                    currentPage: currentPage,
-                    selectedValueWidgetFn: (item) {
-                      return (Center(
-                          child: Container(
-                            width: 300,
-                            child: Text(
-                              item["name"],
-                              style: TextStyle(fontSize: 13.6, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
-                          )));
-                    },
-                    futureSearchFn: (String? keyword,
-                        String? orderBy,
-                        bool? orderAsc,
-                        List<Tuple2<String, String>>? filters,
-                        int? pageNb) async {
-                      Response response = await get(
-                        Uri.parse(
-                            "${baseUrl}api/uom?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${productTiltleId == null ? "" : "&product_id=$productTiltleId"}"),
-                        headers: {
-                          'Authorization': 'Bearer $token',
-                        },
-                      ).timeout(const Duration(
-                        seconds: 10,
-                      ));
-
-                      if (response.statusCode != 200) {
-                        throw Exception("failed to get data from internet");
-                      }
-
-                      dynamic data = jsonDecode(response.body);
-
-                      int nbResults = data["length"];
-
-                      List<DropdownMenuItem> results =
-                      (data["records"] as List<dynamic>)
-                          .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                        value: item,
-                        child: Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(0),
-                            child: Text("${item["name"]}"),
-                          ),
-                        ),
-                      ))
-                          .toList();
-                      return (Tuple2<List<DropdownMenuItem>, int>(
-                          results, nbResults));
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                  child: MultiSelectDropDown.network(
-                    hint: 'Taxes',
-                    hintStyle: TextStyle(fontSize: 13.6,fontFamily: 'Mulish'),
-                    selectedOptions: editProductTaxName
-                        .map((tag) =>
-                        ValueItem(label: tag.label, value: tag.value))
-                        .toList(),
-                    onOptionSelected: (options) {
-                      print(options);
-                      productTax.clear();
-                      editProductTaxName.clear();
-
-                      for (var options in options) {
-
-                        productTax.add(options.value);
-
-                        editProductTaxName.add(new ValueItem(
-                            label: options.label,
-                            value: options.value.toString()));
-
-
-
-                        print('Label: ${options.label}');
-                        print('Value: ${options.value}');
-                        print(productTax);
-                        print(editProductTaxName);
-                        print(selectedProductTax);
-                        print('tax valuessss');
-                      }
-                    },
-                    networkConfig: NetworkConfig(
-                      url:
-                      "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
-                      method: RequestMethod.get,
-                      headers: {
-                        'Authorization': 'Bearer $token',
+                        Navigator.pop(context);
                       },
                     ),
-                    chipConfig: const ChipConfig(
-                      wrapType: WrapType.scroll,
-                      autoScroll: true,
-                    ),
-                    responseParser: (response) {
-                      debugPrint('Response: $response');
-
-                      final list =
-                      (response['records'] as List<dynamic>).map((e) {
-                        final item = e as Map<String, dynamic>;
-                        return ValueItem(
-                          label: item['name'],
-                          value: item['id'].toString(),
-                        );
-                      }).toList();
-
-                      return Future.value(list);
-                    },
-                    responseErrorBuilder: ((context, body) {
-                      print(body);
-                      print(token);
-                      return const Padding(
-                        padding: EdgeInsets.all(16.0),
-                        child: Text('Error fetching the data'),
-                      );
-                    }),
                   ),
-                ),
-                Padding(
-                  padding:
-                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                  child: TextFormField(
-                    controller: productDescription,
-                    decoration: const InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        ),
-                        labelText: 'Description',
-                        labelStyle: TextStyle(color: Colors.black, fontSize: 13.6,fontFamily: 'Mulish')),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20,left: 8),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Save & Close",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              onPressed: _isSavingData
-                                  ? null // Disable the button if saving is in progress
-                                  : () async{
-
-                                setState(() {
-                                  _isSavingData=true;
-                                });
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
-
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print(productTax.length);
-                                print(selectedtaxesIdFinal);
-                                print(editProductTaxName);
-                                print("productnamee");
-
-                                for (int i = 0; i < productTax.length; i++) {
-                                  String dataoTaxes =
-                                      '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
-
-                                  Map<String, dynamic> jsondata =
-                                  jsonDecode(dataoTaxes);
-
-                                  selectedtaxesIdFinal.add(dataoTaxes);
-                                  print(selectedtaxesIdFinal);
-                                  print(editProductTaxName);
-                                  print("taxesssssss");
-                                }
-
-                                double quantity, price;
-
-                                quantity = double.parse(productQuantity.text);
-                                price = double.parse(productUnitPrice.text);
-
-                                productSubTotal = price * quantity;
-
-
-                                String dataone =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
-
-                                Map<String, dynamic> jsondata =
-                                jsonDecode(dataone);
-                                print(dataone);
-                                print("demo datatatata");
-
-
-
-                                type == -1 ?
-                                orderLineProducts.add(jsondata) :
-
-                                orderLineProducts[type] = jsondata;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(orderLineProducts);
-                                print("orderLineProducts");
-
-                                await productSum(orderLineProducts);
-
-                                setState(() {
-                                  _isSavingData=false;
-                                  productTiltleName = null;
-                                  productTiltleId = null;
-                                  productUomName = null;
-                                  productUomId = null;
-
-                                  productDescription.text = "";
-                                  productUnitPrice.text = "";
-                                  productQuantity.text = "";
-
-                                  productTax.clear();
-                                  selectedProductTax.clear();
-                                  editProductTaxName.clear();
-                                  selectedtaxesIdFinal.clear();
-                                });
-
-                                Navigator.pop(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
-                              )),
-                        ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                    child: SearchChoices.single(
+                      //items: items,
+                      validator: (value) {
+                        if (value == null) {
+                          return 'please select product';
+                        }
+                        return null;
+                      },
+                      value: productTiltleName,
+                      hint: Text(
+                        "Product",
+                        style: TextStyle(
+                            fontSize: 13.6,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
                       ),
-                    ),
-                    SizedBox(width: 15,),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20,right: 8),
-                      child: Center(
-                        child: SizedBox(
-                          width: 146,
-                          height: 38,
-                          child: ElevatedButton(
-                              child: Center(
-                                child: Text(
-                                  "Save & New",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 13.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
-                                ),
-                              ),
-                              onPressed: _isSavingData
-                                  ? null // Disable the button if saving is in progress
-                                  : () async{
+                      searchHint: null,
+                      autofocus: false,
+                      onChanged: (value) async {
+                        setState(() {
+                          print(value['capital']);
 
-                                setState(() {
-                                  _isSavingData=true;
-                                });
+                          // productTax.clear();
+                          // editProductTaxName.clear();
+                          // selectedProductTax.clear();
+                          print(productTax);
+                          print(editProductTaxName);
+                          print(selectedProductTax);
+                          print("product valursss");
 
-                                productUnitPrice.text == ""
-                                    ? productUnitPrice.text = "0"
-                                    : productUnitPrice.text =
-                                    productUnitPrice.text;
+                          productTiltleName = value;
+                          productTiltleId = value["id"];
+                        });
+                        await productDefaultDetails();
+                      },
 
-                                String productName =
-                                productDescription.text.toString();
-                                print(productName);
-                                print(productTax.length);
-                                print(selectedtaxesIdFinal);
-                                print(editProductTaxName);
-                                print("productnamee");
-
-                                for (int i = 0; i < productTax.length; i++) {
-                                  String dataoTaxes =
-                                      '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
-
-                                  Map<String, dynamic> jsondata =
-                                  jsonDecode(dataoTaxes);
-
-                                  selectedtaxesIdFinal.add(dataoTaxes);
-                                  print(selectedtaxesIdFinal);
-                                  print(editProductTaxName);
-                                  print("taxesssssss");
-                                }
-
-                                double quantity, price;
-
-                                quantity = double.parse(productQuantity.text);
-                                price = double.parse(productUnitPrice.text);
-
-                                productSubTotal = price * quantity;
-
-
-                                String dataone =
-                                    '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
-
-                                Map<String, dynamic> jsondata =
-                                jsonDecode(dataone);
-                                print(dataone);
-                                print("demo datatatata");
-
-
-
-                                type == -1 ?
-                                orderLineProducts.add(jsondata) :
-
-                                orderLineProducts[type] = jsondata;
-                                print(productUomName['name']);
-                                print("demo datatatata1");
-                                // for app side
-
-                                print(orderLineProducts);
-                                print("orderLineProducts");
-
-                                await productSum(orderLineProducts);
-
-                                setState(() {
-                                  _isSavingData=false;
-                                  productTiltleName = null;
-                                  productTiltleId = null;
-                                  productUomName = null;
-                                  productUomId = null;
-
-                                  productDescription.text = "";
-                                  productUnitPrice.text = "";
-                                  productQuantity.text = "";
-
-                                  productTax.clear();
-                                  selectedProductTax.clear();
-                                  editProductTaxName.clear();
-                                  selectedtaxesIdFinal.clear();
-                                });
-
-                               // Navigator.pop(context);
-
-
-                              },
-                              style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 20,bottom: 10),
-                  child: Center(
-                    child: SizedBox(
-                      width: 306,
-                      height: 38,
-                      child: ElevatedButton(
-                          child: Center(
-                            child: Text(
-                              "Discard",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.black),
-                            ),
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints:
+                          BoxConstraints.tight(const Size.fromHeight(300)),
+                      itemsPerPage: 10,
+                      currentPage: currentPage,
+                      selectedValueWidgetFn: (item) {
+                        return (Center(
+                            child: Container(
+                          width: 300,
+                          child: Text(
+                            item["display_name"],
+                            style: TextStyle(
+                                fontSize: 13.6,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
                           ),
-                          onPressed: () {
-
-                            setState(() {
-                              productTiltleName = null;
-                              productTiltleId = null;
-                              productUomName = null;
-                              productUomId = null;
-
-                              productDescription.text = "";
-                              productUnitPrice.text = "";
-                              productQuantity.text = "";
-
-                              productTax.clear();
-                              selectedProductTax.clear();
-                              editProductTaxName.clear();
-                            });
-
-                            Navigator.pop(context);
+                        )));
+                      },
+                      futureSearchFn: (String? keyword,
+                          String? orderBy,
+                          bool? orderAsc,
+                          List<Tuple2<String, String>>? filters,
+                          int? pageNb) async {
+                        Response response = await get(
+                          Uri.parse(
+                              "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
+                          headers: {
+                            'Authorization': 'Bearer $token',
                           },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                          )),
+                        ).timeout(const Duration(
+                          seconds: 10,
+                        ));
+
+                        if (response.statusCode != 200) {
+                          throw Exception("failed to get data from internet");
+                        }
+
+                        dynamic data = jsonDecode(response.body);
+
+                        int nbResults = data["length"];
+
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
+                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["display_name"]}"),
+                                    ),
+                                  ),
+                                ))
+                            .toList();
+                        return (Tuple2<List<DropdownMenuItem>, int>(
+                            results, nbResults));
+                      },
                     ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: TextFormField(
+                      controller: productQuantity,
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          labelText: 'Quantity',
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13.6,
+                              fontFamily: 'Mulish')),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: TextFormField(
+                      controller: productUnitPrice,
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          labelText: 'Unit Price',
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13.6,
+                              fontFamily: 'Mulish')),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                    child: SearchChoices.single(
+                      //items: items,
+
+                      value: productUomName,
+                      hint: Text(
+                        "Uom",
+                        style: TextStyle(
+                            fontSize: 13.6,
+                            color: Colors.black,
+                            fontFamily: 'Mulish'),
+                      ),
+                      searchHint: null,
+                      autofocus: false,
+                      onChanged: (value) {
+                        setState(() {
+                          print(value['capital']);
+                          print("value");
+                          productUomName = value;
+                          productUomId = value["id"];
+                        });
+                      },
+
+                      dialogBox: false,
+                      isExpanded: true,
+                      menuConstraints:
+                          BoxConstraints.tight(const Size.fromHeight(300)),
+                      itemsPerPage: 10,
+                      currentPage: currentPage,
+                      selectedValueWidgetFn: (item) {
+                        return (Center(
+                            child: Container(
+                          width: 300,
+                          child: Text(
+                            item["name"],
+                            style: TextStyle(
+                                fontSize: 13.6,
+                                color: Colors.black,
+                                fontFamily: 'Mulish'),
+                          ),
+                        )));
+                      },
+                      futureSearchFn: (String? keyword,
+                          String? orderBy,
+                          bool? orderAsc,
+                          List<Tuple2<String, String>>? filters,
+                          int? pageNb) async {
+                        Response response = await get(
+                          Uri.parse(
+                              "${baseUrl}api/uom?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${productTiltleId == null ? "" : "&product_id=$productTiltleId"}"),
+                          headers: {
+                            'Authorization': 'Bearer $token',
+                          },
+                        ).timeout(const Duration(
+                          seconds: 10,
+                        ));
+
+                        if (response.statusCode != 200) {
+                          throw Exception("failed to get data from internet");
+                        }
+
+                        dynamic data = jsonDecode(response.body);
+
+                        int nbResults = data["length"];
+
+                        List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
+                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}"),
+                                    ),
+                                  ),
+                                ))
+                            .toList();
+                        return (Tuple2<List<DropdownMenuItem>, int>(
+                            results, nbResults));
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                    child: MultiSelectDropDown.network(
+                      hint: 'Taxes',
+                      hintStyle:
+                          TextStyle(fontSize: 13.6, fontFamily: 'Mulish'),
+                      selectedOptions: editProductTaxName
+                          .map((tag) =>
+                              ValueItem(label: tag.label, value: tag.value))
+                          .toList(),
+                      onOptionSelected: (options) {
+                        print(options);
+                        productTax.clear();
+                        editProductTaxName.clear();
+
+                        for (var options in options) {
+                          productTax.add(options.value);
+
+                          editProductTaxName.add(new ValueItem(
+                              label: options.label,
+                              value: options.value.toString()));
+
+                          print('Label: ${options.label}');
+                          print('Value: ${options.value}');
+                          print(productTax);
+                          print(editProductTaxName);
+                          print(selectedProductTax);
+                          print('tax valuessss');
+                        }
+                      },
+                      networkConfig: NetworkConfig(
+                        url:
+                            "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
+                        method: RequestMethod.get,
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ),
+                      chipConfig: const ChipConfig(
+                        wrapType: WrapType.scroll,
+                        autoScroll: true,
+                      ),
+                      responseParser: (response) {
+                        debugPrint('Response: $response');
+
+                        final list =
+                            (response['records'] as List<dynamic>).map((e) {
+                          final item = e as Map<String, dynamic>;
+                          return ValueItem(
+                            label: item['name'],
+                            value: item['id'].toString(),
+                          );
+                        }).toList();
+
+                        return Future.value(list);
+                      },
+                      responseErrorBuilder: ((context, body) {
+                        print(body);
+                        print(token);
+                        return const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text('Error fetching the data'),
+                        );
+                      }),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: TextFormField(
+                      controller: productDescription,
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                          ),
+                          labelText: 'Description',
+                          labelStyle: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13.6,
+                              fontFamily: 'Mulish')),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, left: 8),
+                        child: Center(
+                          child: SizedBox(
+                            width: 146,
+                            height: 38,
+                            child: ElevatedButton(
+                                child: Center(
+                                  child: Text(
+                                    "Save & Close",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 13.57,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                ),
+                                onPressed: _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    : () async {
+                                        print("clickkkkkkk");
+
+                                        if (_formKeyalert.currentState!
+                                            .validate()) {
+                                          setState(() {
+                                            _isSavingData = true;
+                                          });
+                                          productUnitPrice.text == ""
+                                              ? productUnitPrice.text = "0"
+                                              : productUnitPrice.text =
+                                                  productUnitPrice.text;
+
+                                          productQuantity.text == ""
+                                              ? productQuantity.text = "1"
+                                              : productQuantity.text =
+                                                  productQuantity.text;
+
+                                          String productName =
+                                              productDescription.text
+                                                  .toString();
+                                          print(productName);
+                                          print(productTax.length);
+                                          print(selectedtaxesIdFinal);
+                                          print(editProductTaxName);
+                                          print("productnamee");
+
+                                          for (int i = 0;
+                                              i < productTax.length;
+                                              i++) {
+                                            String dataoTaxes =
+                                                '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+
+                                            Map<String, dynamic> jsondata =
+                                                jsonDecode(dataoTaxes);
+
+                                            selectedtaxesIdFinal
+                                                .add(dataoTaxes);
+
+                                            print("taxesssssss");
+                                          }
+
+                                          double quantity, price;
+
+                                          quantity = double.parse(
+                                              productQuantity.text);
+                                          price = double.parse(
+                                              productUnitPrice.text);
+
+                                          productSubTotal = price * quantity;
+
+                                          String dataone =
+                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+
+                                          Map<String, dynamic> jsondata =
+                                              jsonDecode(dataone);
+                                          print(dataone);
+                                          print("demo datatatata");
+
+                                          type == -1
+                                              ? orderLineProducts.add(jsondata)
+                                              : orderLineProducts[type] =
+                                                  jsondata;
+                                          print(productUomName['name']);
+                                          print("demo datatatata1");
+                                          // for app side
+
+                                          print(orderLineProducts);
+                                          print("orderLineProducts");
+
+                                          await productSum(orderLineProducts);
+
+                                          setState(() {
+                                            _isSavingData = false;
+                                            productTiltleName = null;
+                                            productTiltleId = null;
+                                            productUomName = null;
+                                            productUomId = null;
+
+                                            productDescription.text = "";
+                                            productUnitPrice.text = "";
+                                            productQuantity.text = "";
+
+                                            productTax.clear();
+                                            selectedProductTax.clear();
+                                            editProductTaxName.clear();
+                                            selectedtaxesIdFinal.clear();
+                                          });
+
+                                          Navigator.pop(context);
+                                        } else {
+                                          print("not validate");
+                                        }
+                                      },
+
+                                // if(_formKeyalert.currentState!.validate() ) {
+                                //   print(_isSavingData);
+                                //   print("jkjdfkj");
+                                //
+                                //   if(_isSavingData == false){
+                                //     print("findal adfjsf");
+                                //   }
+                                //
+                                //
+                                //   _isSavingData
+                                //       ? null // Disable the button if saving is in progress
+                                //       : () async{
+                                //     print("clickkkkkkk");
+                                //
+                                //     setState(() {
+                                //       _isSavingData=true;
+                                //     });
+                                //     productUnitPrice.text == ""
+                                //         ? productUnitPrice.text = "0"
+                                //         : productUnitPrice.text =
+                                //         productUnitPrice.text;
+                                //
+                                //
+                                //
+                                //     productQuantity.text==""
+                                //         ? productQuantity.text = "1"
+                                //         : productQuantity.text =
+                                //         productQuantity.text;
+                                //
+                                //     String productName =
+                                //     productDescription.text.toString();
+                                //     print(productName);
+                                //     print(productTax.length);
+                                //     print(selectedtaxesIdFinal);
+                                //     print(editProductTaxName);
+                                //     print("productnamee");
+                                //
+                                //     for (int i = 0; i < productTax.length; i++) {
+                                //       String dataoTaxes =
+                                //           '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+                                //
+                                //       Map<String, dynamic> jsondata =
+                                //       jsonDecode(dataoTaxes);
+                                //
+                                //       selectedtaxesIdFinal.add(dataoTaxes);
+                                //       // print(selectedtaxesIdFinal);
+                                //       // print(editProductTaxName);
+                                //       print("taxesssssss");
+                                //     }
+                                //
+                                //     double quantity, price;
+                                //
+                                //     quantity = double.parse(productQuantity.text);
+                                //     price = double.parse(productUnitPrice.text);
+                                //
+                                //     productSubTotal = price * quantity;
+                                //
+                                //
+                                //     String dataone =
+                                //         '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+                                //
+                                //     Map<String, dynamic> jsondata =
+                                //     jsonDecode(dataone);
+                                //     print(dataone);
+                                //     print("demo datatatata");
+                                //
+                                //
+                                //
+                                //     type == -1 ?
+                                //     orderLineProducts.add(jsondata) :
+                                //
+                                //     orderLineProducts[type] = jsondata;
+                                //     print(productUomName['name']);
+                                //     print("demo datatatata1");
+                                //     // for app side
+                                //
+                                //     print(orderLineProducts);
+                                //     print("orderLineProducts");
+                                //
+                                //     await productSum(orderLineProducts);
+                                //
+                                //     setState(() {
+                                //       _isSavingData=false;
+                                //       productTiltleName = null;
+                                //       productTiltleId = null;
+                                //       productUomName = null;
+                                //       productUomId = null;
+                                //
+                                //       productDescription.text = "";
+                                //       productUnitPrice.text = "";
+                                //       productQuantity.text = "";
+                                //
+                                //       productTax.clear();
+                                //       selectedProductTax.clear();
+                                //       editProductTaxName.clear();
+                                //       selectedtaxesIdFinal.clear();
+                                //     });
+                                //
+                                //     Navigator.pop(context);
+                                //   };
+                                // }
+                                //
+
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFF9246A),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, right: 8),
+                        child: Center(
+                          child: SizedBox(
+                            width: 146,
+                            height: 38,
+                            child: ElevatedButton(
+                                child: Center(
+                                  child: Text(
+                                    "Save & New",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 13.57,
+                                        color: Colors.white,
+                                        fontFamily: 'Mulish'),
+                                  ),
+                                ),
+                                onPressed: _isSavingData
+                                    ? null // Disable the button if saving is in progress
+                                    : () async {
+                                  print(_formKeyalert.currentState!
+                                      .validate());
+                                  print("formkey validation");
+                                 // _formKeyalert.currentState!.reset();
+
+                                        if (_formKeyalert.currentState!
+                                            .validate()) {
+                                          setState(() {
+                                            _isSavingData = true;
+
+
+                                          });
+
+                                          productUnitPrice.text == ""
+                                              ? productUnitPrice.text = "0"
+                                              : productUnitPrice.text =
+                                                  productUnitPrice.text;
+
+
+                                          productQuantity.text == ""
+                                              ? productQuantity.text = "1"
+                                              : productQuantity.text =
+                                              productQuantity.text;
+
+
+                                          String productName =
+                                              productDescription.text
+                                                  .toString();
+                                          print(productName);
+                                          print(productTax.length);
+                                          print(selectedtaxesIdFinal);
+                                          print(editProductTaxName);
+                                          print("productnamee");
+
+                                          for (int i = 0;
+                                              i < productTax.length;
+                                              i++) {
+                                            String dataoTaxes =
+                                                '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+
+                                            Map<String, dynamic> jsondata =
+                                                jsonDecode(dataoTaxes);
+
+                                            selectedtaxesIdFinal
+                                                .add(dataoTaxes);
+                                            print(selectedtaxesIdFinal);
+                                            print(editProductTaxName);
+                                            print("taxesssssss");
+                                          }
+
+                                          double quantity, price;
+
+                                          quantity = double.parse(
+                                              productQuantity.text);
+                                          price = double.parse(
+                                              productUnitPrice.text);
+
+                                          productSubTotal = price * quantity;
+
+                                          String dataone =
+                                              '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+
+                                          Map<String, dynamic> jsondata =
+                                              jsonDecode(dataone);
+                                          print(dataone);
+                                          print("demo datatatata");
+
+                                          type == -1
+                                              ? orderLineProducts.add(jsondata)
+                                              : orderLineProducts[type] =
+                                                  jsondata;
+                                          print(productUomName['name']);
+                                          print("demo datatatata1");
+                                          // for app side
+
+                                          print(orderLineProducts);
+                                          print("orderLineProducts");
+
+                                          await productSum(orderLineProducts);
+
+                                          setState(() {
+                                            _isSavingData = false;
+                                            productTiltleName = null;
+                                            productTiltleId = null;
+                                            productUomName = null;
+                                            productUomId = null;
+
+                                            productDescription.text = "";
+                                            productUnitPrice.text = "";
+                                            productQuantity.text = "";
+
+                                            productTax.clear();
+                                            selectedProductTax.clear();
+                                            editProductTaxName.clear();
+                                            selectedtaxesIdFinal.clear();
+
+                                          });
+                                          _formKeyalert.currentState!.reset();
+
+                                        } else {
+                                          print("valid checkk");
+                                        }
+
+                                        // setState(() {
+                                        //   _isSavingData = true;
+                                        // });
+                                        //
+                                        // productUnitPrice.text == ""
+                                        //     ? productUnitPrice.text = "0"
+                                        //     : productUnitPrice.text =
+                                        //         productUnitPrice.text;
+                                        //
+                                        // String productName =
+                                        //     productDescription.text.toString();
+                                        // print(productName);
+                                        // print(productTax.length);
+                                        // print(selectedtaxesIdFinal);
+                                        // print(editProductTaxName);
+                                        // print("productnamee");
+                                        //
+                                        // for (int i = 0;
+                                        //     i < productTax.length;
+                                        //     i++) {
+                                        //   String dataoTaxes =
+                                        //       '{"id":${editProductTaxName[i].value},"name":"${editProductTaxName[i].label}"}';
+                                        //
+                                        //   Map<String, dynamic> jsondata =
+                                        //       jsonDecode(dataoTaxes);
+                                        //
+                                        //   selectedtaxesIdFinal.add(dataoTaxes);
+                                        //   print(selectedtaxesIdFinal);
+                                        //   print(editProductTaxName);
+                                        //   print("taxesssssss");
+                                        // }
+                                        //
+                                        // double quantity, price;
+                                        //
+                                        // quantity =
+                                        //     double.parse(productQuantity.text);
+                                        // price =
+                                        //     double.parse(productUnitPrice.text);
+                                        //
+                                        // productSubTotal = price * quantity;
+                                        //
+                                        // String dataone =
+                                        //     '{"id":${productId},"product_id":{"id":${productTiltleId},"display_name":"${productTiltleName['display_name']}"},"name":"${productDescription.text}","product_uom_qty":${double.parse(productQuantity.text)},"product_uom":{"id":${productUomId},"name":"${productUomName['name']}"},"price_unit":${double.parse(productUnitPrice.text)},"tax_id":${selectedtaxesIdFinal},"price_subtotal":${productSubTotal}}';
+                                        //
+                                        // Map<String, dynamic> jsondata =
+                                        //     jsonDecode(dataone);
+                                        // print(dataone);
+                                        // print("demo datatatata");
+                                        //
+                                        // type == -1
+                                        //     ? orderLineProducts.add(jsondata)
+                                        //     : orderLineProducts[type] =
+                                        //         jsondata;
+                                        // print(productUomName['name']);
+                                        // print("demo datatatata1");
+                                        // // for app side
+                                        //
+                                        // print(orderLineProducts);
+                                        // print("orderLineProducts");
+                                        //
+                                        // await productSum(orderLineProducts);
+                                        //
+                                        // setState(() {
+                                        //   _isSavingData = false;
+                                        //   productTiltleName = null;
+                                        //   productTiltleId = null;
+                                        //   productUomName = null;
+                                        //   productUomId = null;
+                                        //
+                                        //   productDescription.text = "";
+                                        //   productUnitPrice.text = "";
+                                        //   productQuantity.text = "";
+                                        //
+                                        //   productTax.clear();
+                                        //   selectedProductTax.clear();
+                                        //   editProductTaxName.clear();
+                                        //   selectedtaxesIdFinal.clear();
+                                        // });
+
+                                        // Navigator.pop(context);
+                                      },
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color(0xFFF9246A),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 10),
+                    child: Center(
+                      child: SizedBox(
+                        width: 306,
+                        height: 38,
+                        child: ElevatedButton(
+                            child: Center(
+                              child: Text(
+                                "Discard",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13.57,
+                                    color: Colors.black),
+                              ),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                productTiltleName = null;
+                                productTiltleId = null;
+                                productUomName = null;
+                                productUomId = null;
+
+                                productDescription.text = "";
+                                productUnitPrice.text = "";
+                                productQuantity.text = "";
+
+                                productTax.clear();
+                                selectedProductTax.clear();
+                                editProductTaxName.clear();
+                              });
+
+                              Navigator.pop(context);
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.white,
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -3008,10 +3384,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   productSum(List orderLineProductsData) async {
     productDatas.clear();
-    var data = await getProductSum(orderLineProductsData,1);
+    var data = await getProductSum(orderLineProductsData, 1);
     setState(() {
-
-
       data['result']["data"].forEach((key, value) {
         print('Key: $key, Value: $value');
         productDatas.add("$key : $value");
