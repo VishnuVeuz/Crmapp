@@ -2120,17 +2120,20 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                 top: 5,
                                                                 left: 30,
                                                                 right: 25),
-                                                        child: Text(
-                                                          "sum: ${orderLineProductsData!['price_subtotal']}",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontSize: 12,
-                                                              color: Color(
-                                                                  0xFF787878),
-                                                              fontFamily:
-                                                                  'Mulish'),
+                                                        child: Container(
+                                                          width: 72,
+                                                          child: Text(
+                                                            "sum: ${orderLineProductsData!['price_subtotal']}",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontSize: 12,
+                                                                color: Color(
+                                                                    0xFF787878),
+                                                                fontFamily:
+                                                                    'Mulish'),
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
