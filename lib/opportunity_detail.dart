@@ -1275,7 +1275,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: Container(
                         height: 50,
-                        color: Colors.red,
+                       // color: Colors.red,
                         child: ListView.builder(
                           // physics: NeverScrollableScrollPhysics(),
                           //shrinkWrap: true,
@@ -1295,23 +1295,25 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                           index == 0 ?
                                           stageColorIndex == index ?
+
                                           Image.asset(
-                                              'images/add.png'):
+                                              'images/bluebtn.png'):
                                           Image.asset(
-                                              'images/add.png'):
+                                              'images/greenbtnfirst.png'):
 
                                           stageColorIndex == index ?
                                           Image.asset(
-                                              'images/blueractangle.png'):
+                                              'images/bluebtn.png'):
                                           stageColorIndex! > index?Image.asset(
-                                              'images/whiterectangle.png')
+                                              'images/greenbtn.png')
                                               : Image.asset(
-                                                  'images/whiterectangle.png'),
+                                                  'images/greybtn.png'),
                                           Positioned.fill(
                                               child: Align(
                                                   alignment: Alignment.center,
                                                   child: stageColorIndex ==
-                                                          index
+                                                          index || stageColorIndex! >
+                                                      index
                                                       ? Text(
                                                           opportunityStageTypes[
                                                               index]['name'],
@@ -1339,7 +1341,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       print(
                                           opportunityStageTypes[index]['name']);
                                       print(opportunityStageTypes[index]['id']);
-                                      print(" print(opportunityStageTypes");
+                                      print("print(opportunityStageTypes");
                                       String resmessage =
                                           await StageChangeOpportunity(
                                               opportunityStageTypes[index]
