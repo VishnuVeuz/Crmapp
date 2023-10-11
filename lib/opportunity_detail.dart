@@ -1085,6 +1085,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontFamily: 'Mulish',
+
                                         fontSize: 10,
                                         color: Color(0xFF212121)),
                                   )),
