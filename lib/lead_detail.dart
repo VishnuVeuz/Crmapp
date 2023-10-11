@@ -170,6 +170,15 @@ class _LeadDetailState extends State<LeadDetail> {
 
   bool _isSavingData = false;
 
+  FocusNode _focusNode = FocusNode();
+  bool shouldFocus = false;
+
+  void focusEditText() {
+    setState(() {
+      shouldFocus = true;
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -1111,7 +1120,6 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ],
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
@@ -1473,7 +1481,6 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ],
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
@@ -1481,7 +1488,6 @@ class _LeadDetailState extends State<LeadDetail> {
                       thickness: 2,
                     ),
                   ),
-
                   Container(
                     color: Color(0xFFF6F6F6),
                     child: Row(
@@ -5567,6 +5573,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextFormField(
+                      focusNode: _focusNode,
+                      autofocus: shouldFocus,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                       ),
@@ -5577,6 +5585,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         fontFamily: 'Mulish',
                       ),
                       controller: bodyController,
+
                     ),
                   ),
                 ),
@@ -7247,6 +7256,7 @@ class _LeadDetailState extends State<LeadDetail> {
     // var img = await picker.pickMultiImage();
 
     if (img != null) {
+
       setState(
         () {
           if (imageData.isNotEmpty) {
@@ -7254,17 +7264,24 @@ class _LeadDetailState extends State<LeadDetail> {
             for (var i = 0; i < imageData.length; i++) {
               selectedImages.add(File(imageData[i].path));
             }
+
+
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Nothing is selected')));
           }
         },
       );
+
+
     }
     print(selectedImages);
     print("system 4");
 
     setState(() {
+      focusEditText();
+      print("aytofocuusss");
+      print(shouldFocus);
       isLoading = false;
     });
   }
@@ -7295,6 +7312,7 @@ class _LeadDetailState extends State<LeadDetail> {
       },
     );
   }
+
 
   Future getImageAttachment(ImageSource media) async {
     setState(() {

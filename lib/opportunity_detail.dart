@@ -1275,13 +1275,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: Container(
                         height: 50,
-                        //color: Colors.red,
+                        color: Colors.red,
                         child: ListView.builder(
                           // physics: NeverScrollableScrollPhysics(),
                           //shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemCount: opportunityStageTypes.length ?? 0,
                           itemBuilder: (context, index) {
+                            print(index);
+                            print("final indexxx");
                             return Padding(
                               padding: const EdgeInsets.only(left: 5, top: 10),
                               child: Row(
@@ -1290,9 +1292,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Container(
                                       child: Stack(
                                         children: [
-                                          stageColorIndex == index
-                                              ? Image.asset(
-                                                  'images/blueractangle.png')
+
+                                          index == 0 ?
+                                          stageColorIndex == index ?
+                                          Image.asset(
+                                              'images/add.png'):
+                                          Image.asset(
+                                              'images/add.png'):
+
+                                          stageColorIndex == index ?
+                                          Image.asset(
+                                              'images/blueractangle.png'):
+                                          stageColorIndex! > index?Image.asset(
+                                              'images/whiterectangle.png')
                                               : Image.asset(
                                                   'images/whiterectangle.png'),
                                           Positioned.fill(
