@@ -112,12 +112,12 @@ class _LeadMainPageState extends State<LeadMainPage> {
                             },
                           ),
                           Positioned(
-                            bottom: 25,
-                            right: 28,
+                            bottom: 24,
+                            right: 24,
 
                             child: Container(
-                              width: 18.0,
-                              height: 18.0,
+                              width: 17.0,
+                              height: 19.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape
                                     .circle,
@@ -144,12 +144,12 @@ class _LeadMainPageState extends State<LeadMainPage> {
                             },
                           ),
                           Positioned(
-                            bottom: 25,
-                            right: 28,
+                            bottom: 24,
+                            right: 24,
 
                             child: Container(
-                              width: 18.0,
-                              height: 18.0,
+                              width: 17.0,
+                              height: 19.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape
                                     .circle,
@@ -196,11 +196,14 @@ class _LeadMainPageState extends State<LeadMainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 5, right: 25),
+                padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
                 child: Text("Leads",
                   style: TextStyle(fontSize: 18,
+                       letterSpacing: 1,
+
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w600,
+
                       color: Color(0xFF101010)),
 
                 ),
@@ -317,7 +320,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 10, right: 25),
+                padding: const EdgeInsets.only(left: 18, top: 10, right: 25),
                 child: Text("Recent Leads",
                   style: TextStyle(fontSize: 18,
                       fontWeight: FontWeight.w600,
@@ -498,40 +501,43 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                                   Row(
                                                     mainAxisAlignment: MainAxisAlignment
-                                                        .spaceBetween,
+                                                        .spaceAround,
                                                     children: [
 
 
                                                       Padding(
                                                         padding: const EdgeInsets
                                                             .only(left: 10,bottom: 8,top: 2),
-                                                        child: RatingBar.builder(
-                                                          initialRating: double
-                                                              .parse(
-                                                              snapshot
-                                                                  .data![index]["priority"] ??
-                                                                  0),
-                                                          itemSize: 19,
-                                                          minRating: 0,
-                                                          direction: Axis
-                                                              .horizontal,
-                                                          allowHalfRating: false,
-                                                          itemCount: 3,
-                                                          itemPadding: EdgeInsets
-                                                              .symmetric(
-                                                              horizontal: 1.0),
-                                                          itemBuilder: (context,
-                                                              _) =>
-                                                              Icon(
-                                                                Icons.star,
-                                                                color: Colors.amber,
-                                                                size: 10,
-                                                              ),
-                                                          onRatingUpdate: (
-                                                              double value) {
+                                                        child: Container(
+                                                          width: MediaQuery.of(context).size.width/1.2,
+                                                          child: RatingBar.builder(
+                                                            initialRating: double
+                                                                .parse(
+                                                                snapshot
+                                                                    .data![index]["priority"] ??
+                                                                    0),
+                                                            itemSize: 19,
+                                                            minRating: 0,
+                                                            direction: Axis
+                                                                .horizontal,
+                                                            allowHalfRating: false,
+                                                            itemCount: 3,
+                                                            itemPadding: EdgeInsets
+                                                                .symmetric(
+                                                                horizontal: 1.0),
+                                                            itemBuilder: (context,
+                                                                _) =>
+                                                                Icon(
+                                                                  Icons.star,
+                                                                  color: Colors.amber,
+                                                                  size: 10,
+                                                                ),
+                                                            onRatingUpdate: (
+                                                                double value) {
 
-                                                          },
+                                                            },
 
+                                                          ),
                                                         ),
                                                       ),
                                                       // Padding(
@@ -543,78 +549,81 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                       //         color: Color(0xFF787878)),
                                                       //   ),
                                                       // ),
+                                                      snapshot
+                                                          .data![index]["image_1920"] !=
+                                                          "" ?
+
+
+
+
+
+                                                      Padding(
+                                                        padding: const EdgeInsets
+                                                            .only(right: 25,bottom:5,left: 0),
+                                                        child: Container(
+                                                          width: 25,
+                                                          height: 25,
+                                                          decoration: BoxDecoration(
+                                                            //color: Colors.red,
+                                                              border: Border.all(
+
+                                                              ),
+                                                              borderRadius: BorderRadius
+                                                                  .all(
+                                                                  Radius.circular(
+                                                                      20))
+                                                          ),
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(18),
+                                                              child:Image.network(
+                                                                  "${snapshot.data![index]["image_1920"]}?token=${token}"),
+
+                                                            ),
+
+
+                                                          ),
+                                                        ),
+                                                      ) :
+
+                                                      Padding(
+                                                        padding: const EdgeInsets
+                                                            .only(right: 25,bottom: 8,left: 0),
+                                                        child: Container(
+                                                          width: 25,
+                                                          height: 25,
+                                                          decoration: BoxDecoration(
+                                                              border: Border.all(
+                                                              ),
+                                                              borderRadius: BorderRadius
+                                                                  .all(
+                                                                  Radius.circular(
+                                                                      20))
+                                                          ),
+                                                          child: CircleAvatar(
+                                                            radius: 12,
+                                                            child: Icon(
+                                                              Icons.person,
+                                                              size: 20,
+                                                              // Adjust the size of the icon as per your requirements
+                                                              color: Colors
+                                                                  .white, // Adjust the color of the icon as per your requirements
+                                                            ),
+
+                                                          ),
+                                                        ),
+                                                      ),
 
                                                     ],
                                                   ),
                                                 ],
                                               ),
 
-                                              snapshot
-                                                  .data![index]["image_1920"] !=
-                                                  "" ?
 
-
-
-
-
-                                              Padding(
-                                                padding: const EdgeInsets
-                                                    .only(right: 25,bottom:5),
-                                                child: Container(
-                                                  width: 25,
-                                                  height: 25,
-                                                  decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                      ),
-                                                      borderRadius: BorderRadius
-                                                          .all(
-                                                          Radius.circular(
-                                                              20))
-                                                  ),
-                                                  child: CircleAvatar(
-                                                    radius: 12,
-                                                    child: ClipRRect(
-
-                                                      borderRadius:
-                                                      BorderRadius
-                                                          .circular(18),
-                                                      child:Image.network(
-                                                          "${snapshot.data![index]["image_1920"]}?token=${token}"),
-
-                                                    ),
-
-
-                                                  ),
-                                                ),
-                                              ) :
-
-                                              Padding(
-                                                padding: const EdgeInsets
-                                                    .only(right: 25,bottom: 8),
-                                                child: Container(
-                                                  width: 25,
-                                                  height: 25,
-                                                  decoration: BoxDecoration(
-                                                      border: Border.all(
-                                                      ),
-                                                      borderRadius: BorderRadius
-                                                          .all(
-                                                          Radius.circular(
-                                                              20))
-                                                  ),
-                                                  child: CircleAvatar(
-                                                    radius: 12,
-                                                    child: Icon(
-                                                      Icons.person,
-                                                      size: 20,
-                                                      // Adjust the size of the icon as per your requirements
-                                                      color: Colors
-                                                          .white, // Adjust the color of the icon as per your requirements
-                                                    ),
-
-                                                  ),
-                                                ),
-                                              ),
 
                                             ],
                                           ),

@@ -723,7 +723,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     // ),
 
                     Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 30),
+                      padding: const EdgeInsets.only(top: 20, bottom: 30),
                       child: Center(
                         child: ToggleSwitch(
                           radiusStyle: true,
@@ -769,7 +769,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 width: MediaQuery.of(context).size.width / 5,
 
                                 decoration: BoxDecoration(
-                                  //  color: Colors.red,
+                                  // color: Colors.red,
                                   border: Border.all(),
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(80)),

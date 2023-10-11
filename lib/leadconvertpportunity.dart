@@ -953,7 +953,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                       value: salespersonName,
                       hint: Text("Salesperson",
                         style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
-
+                      underline: SizedBox(),
                       searchHint: null,
                       autofocus: false,
                       onChanged: (value) {
@@ -1060,7 +1060,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                       value: salesteamName,
                       hint: Text("Sales Team",
                         style: TextStyle(fontSize: 12, color: Colors.black ,fontFamily: 'Mulish'),),
-
+                      underline: SizedBox(),
                       searchHint: null,
                       autofocus: false,
                       onChanged: (value) {
