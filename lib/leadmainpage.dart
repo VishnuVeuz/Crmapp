@@ -192,7 +192,9 @@ class _LeadMainPageState extends State<LeadMainPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+
                   Padding(
                     padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
                     child: Text("Leads",
@@ -206,7 +208,37 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25,top: 8),
+                    child: Container(
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LeadCreation(0)));
+                            },
+                            child: SvgPicture.asset(
+                              "images/create.svg",
+                              width: 28,
+                              height: 28,
+                            ),
+                          ),
+                          SizedBox(width: 5,),
+                          Text("New",      style: TextStyle(fontSize: 12,
+                              //letterSpacing: .5,
 
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w600,
+
+                              color: Color(0xFF212121)),)
+                        ],
+                      ),
+                    ),
+                  ),
+                  
                 ],
               ),
               // Padding(
@@ -323,8 +355,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 18, top: 10, right: 25),
                 child: Text("Recent Leads",
-                  style: TextStyle(fontSize: 18,
-                      fontWeight: FontWeight.w600,
+                  style: TextStyle(fontSize: 17,
+                      fontWeight: FontWeight.w500,
                       fontFamily: 'Mulish',
                       color: Color(0xFF101010)),
 
@@ -417,7 +449,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                       style: TextStyle(
                                                           fontFamily: 'Mulish',
                                                           fontWeight: FontWeight
-                                                              .w600,
+                                                              .w400,
                                                           fontSize: 14,
                                                           color: Colors.black),
                                                     ),
@@ -483,7 +515,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                                             color: Colors.black,
                                                                             fontFamily: 'Mulish',
                                                                             fontWeight: FontWeight.w600,
-                                                                            fontSize: 10),
+                                                                            fontSize: 12),
                                                                       ),
                                                                     ),
                                                                   ],
@@ -510,7 +542,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                         padding: const EdgeInsets
                                                             .only(left: 10,bottom: 8,top: 2),
                                                         child: Container(
-                                                          width: MediaQuery.of(context).size.width/1.3,
+                                                          width: MediaQuery.of(context).size.width/1.2,
                                                           child: RatingBar.builder(
                                                             initialRating: double
                                                                 .parse(
@@ -658,17 +690,17 @@ class _LeadMainPageState extends State<LeadMainPage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => LeadCreation(0)));
-            // Add your onPressed code here!
-          },
-          backgroundColor: Color(0xFF3D418E),
-          child: const Icon(Icons.add),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => LeadCreation(0)));
+        //     // Add your onPressed code here!
+        //   },
+        //   backgroundColor: Color(0xFF3D418E),
+        //   child: const Icon(Icons.add),
+        // ),
       );
     }
   }
