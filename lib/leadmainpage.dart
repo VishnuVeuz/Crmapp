@@ -97,69 +97,65 @@ class _LeadMainPageState extends State<LeadMainPage> {
             Builder(builder: (context){
               return Row(
                 children: [
-                  Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          Notifications()));
-                            },
-                          ),
-                          Positioned(
-                            bottom: 24,
-                            right: 24,
+                  Stack(
+                      alignment: Alignment
+                          .center,
+                      children: [
+                        IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Notifications()));
+                          },
+                        ),
+                        Positioned(
+                          bottom: 24,
+                          right: 24,
 
-                            child: Container(
-                              width: 17.0,
-                              height: 19.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                          child: Container(
+                            width: 17.0,
+                            height: 19.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape
+                                  .circle,
+                              color: Color(0xFFFA256B),
                             ),
+                            child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
-                        ]
-                    ),
+                        ),
+                      ]
                   ),
-                  Container(
-                    child: Stack(
-                        alignment: Alignment
-                            .center,
-                        children: [
-                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ActivitiesNotification()));
-                            },
-                          ),
-                          Positioned(
-                            bottom: 24,
-                            right: 24,
+                  Stack(
+                      alignment: Alignment
+                          .center,
+                      children: [
+                        IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ActivitiesNotification()));
+                          },
+                        ),
+                        Positioned(
+                          bottom: 24,
+                          right: 24,
 
-                            child: Container(
-                              width: 17.0,
-                              height: 19.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape
-                                    .circle,
-                                color: Color(0xFFFA256B),
-                              ),
-                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                          child: Container(
+                            width: 17.0,
+                            height: 19.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape
+                                  .circle,
+                              color: Color(0xFFFA256B),
                             ),
+                            child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
                           ),
-                        ]
-                    ),
+                        ),
+                      ]
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.only(right: 0),
@@ -195,18 +191,23 @@ class _LeadMainPageState extends State<LeadMainPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
-                child: Text("Leads",
-                  style: TextStyle(fontSize: 18,
-                       letterSpacing: 1,
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
+                    child: Text("Leads",
+                      style: TextStyle(fontSize: 18,
+                           //letterSpacing: .5,
 
-                      fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w600,
+                          fontFamily: 'Mulish',
+                          fontWeight: FontWeight.w600,
 
-                      color: Color(0xFF101010)),
+                          color: Color(0xFF101010)),
 
-                ),
+                    ),
+                  ),
+
+                ],
               ),
               // Padding(
               //   padding: const EdgeInsets.only(left: 25,top: 10,right: 25),
@@ -509,7 +510,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                         padding: const EdgeInsets
                                                             .only(left: 10,bottom: 8,top: 2),
                                                         child: Container(
-                                                          width: MediaQuery.of(context).size.width/1.2,
+                                                          width: MediaQuery.of(context).size.width/1.3,
                                                           child: RatingBar.builder(
                                                             initialRating: double
                                                                 .parse(
