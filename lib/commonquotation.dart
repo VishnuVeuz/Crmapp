@@ -120,7 +120,7 @@ class QuotationList extends StatelessWidget {
                                 // borderRadius: BorderRadius.all(Radius.circular(15)),
                                 color: Color(0xFF3D418E),
                               ),
-                              height: 18,
+                              height: 21,
                               width: 84,
 
                               child: Center(
