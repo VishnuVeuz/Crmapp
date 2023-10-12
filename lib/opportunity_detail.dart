@@ -2499,34 +2499,42 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 15, right: 10),
+                    padding: const EdgeInsets.only(top: 0, left: 25, right: 0),
                     child: Center(
                       child: Row(
                         children: [
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon: Image.asset("images/pin.png"),
-                              onPressed: () {
-                                setState(() {
-                                  attachmentVisibility == true
-                                      ? attachmentVisibility = false
-                                      : attachmentVisibility = true;
-                                });
-                              },
+                          InkWell(
+                            child: Container(
+                              width: 18,
+                              child: Image.asset(
+                                "images/pi.png",
+                                color: Colors.black,width: 0,),
+
+
                             ),
+                            onTap: (){
+                              setState(() {
+                                attachmentVisibility == true
+                                    ? attachmentVisibility = false
+                                    : attachmentVisibility = true;
+                              }
+                              );
+                            },
                           ),
                           Container(
-                            width: 30,
+                            width: 0,
+                            // color: Colors.green,
                             child: Text(
                               attachmentCount!,
-                              style:
-                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Mulish',
+                              ),
                             ),
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left: 100),
+                                  padding: const EdgeInsets.only(left: 215),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2568,7 +2576,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 100),
+                                  padding: const EdgeInsets.only(left: 215),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2609,11 +2617,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     ],
                                   ),
                                 ),
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/user.svg"),
-                              onPressed: () async {
+                          InkWell(
+                            child: Container(
+                                width: 20,
+                                child: SvgPicture.asset("images/user.svg")
+
+                            ),
+                            onTap: ()async{
                                 List followers = await getFollowers(
                                     widget.opportunityId, "crm.lead");
 
@@ -2623,16 +2633,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       _buildFollowPopupDialog(
                                           context, followers),
                                 ).then((value) => setState(() {}));
-                              },
-                            ),
+                            },
                           ),
+
                           Container(
-                            width: 30,
+                            width: 0,
                             //color: Colors.green,
                             child: Text(
                               followerCount!,
-                              style:
-                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Mulish',
+                              ),
                             ),
                           ),
                         ],
