@@ -723,8 +723,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              width: 30,
-                              height: 30,
+                              width: 20,
+                              height: 20,
                               decoration: BoxDecoration(
                                 border: Border.all(),
                                 borderRadius:
@@ -746,8 +746,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: Container(
-                              width: 30,
-                              height: 30,
+                              width: 20,
+                              height: 20,
                               decoration: BoxDecoration(
                                   border: Border.all(
                                     //  color: Colors.green
