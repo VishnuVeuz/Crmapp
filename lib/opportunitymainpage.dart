@@ -62,12 +62,15 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
           elevation: 0,
           title: Row(
             children: [
-              Text("Opportunity", style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Mulish',
-                  fontSize: 16,
-                  color: Colors.white,
-                  decoration: TextDecoration.none),)
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Text("Opportunity", style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Mulish',
+                    fontSize: 16,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),),
+              )
             ],
           ),
           // leading: Builder(

@@ -420,7 +420,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 10,right: 20),
+          padding: const EdgeInsets.only(left: 15,right: 20),
 
 
           child: MultiSelectBottomSheetField<LeadFilter?>(

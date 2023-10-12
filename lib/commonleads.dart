@@ -60,7 +60,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,top: 5),
+                          padding: const EdgeInsets.only(left: 20,top: 5),
                           child: Text(widget.name,
                             style: TextStyle(
                                 fontFamily: 'Mulish',
@@ -74,7 +74,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                         Visibility(
                           visible:widget.contactname==""?false:true ,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 5,left: 15),
+                            padding: const EdgeInsets.only(top: 5,left: 20),
                             child: Text(widget.contactname,
                               style:TextStyle(
                                   fontFamily: 'Mulish',
@@ -92,7 +92,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                         Visibility(
                           visible: widget.tags!.length >0 ? true : false,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding: const EdgeInsets.only(left: 20),
                             child: Container(
                               width: MediaQuery
                                   .of(context)
@@ -158,9 +158,9 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                           children: [
 
                             Padding(
-                              padding: const EdgeInsets.only(left: 10,bottom:8,top: 2),
+                              padding: const EdgeInsets.only(left: 15,bottom:8,top: 2),
                               child: Container(
-                                width: MediaQuery.of(context).size.width/1.2,
+                                width: MediaQuery.of(context).size.width/1.23,
 
                                 child: RatingBar.builder(
                                   initialRating: double.parse(widget.priority),

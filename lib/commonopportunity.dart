@@ -73,7 +73,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 14,top: 8),
+                          padding: const EdgeInsets.only(left: 20,top: 8),
                           child: Text(widget.name,
                             style: TextStyle(
                                 fontFamily: 'Mulish',
@@ -87,7 +87,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                         Visibility(
                           visible: widget.contactname == ""?false:true,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 5,left: 14),
+                            padding: const EdgeInsets.only(top: 5,left: 20),
                             child: Text(widget.contactname,
                               style: TextStyle(
                                   fontFamily: 'Mulish',
@@ -103,7 +103,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                         Visibility(
                           visible: widget.tags!.length >0 ? true : false,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding: const EdgeInsets.only(left: 21),
                             child: Container(
                               width: MediaQuery
                                   .of(context)
@@ -161,9 +161,9 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                           children: [
 
                             Padding(
-                              padding: const EdgeInsets.only(left: 10,bottom: 8,top: 2),
+                              padding: const EdgeInsets.only(left: 15,bottom: 8,top: 2),
                               child: Container(
-                                width: MediaQuery.of(context).size.width/1.2,
+                                width: MediaQuery.of(context).size.width/1.23,
 
                                 child: RatingBar.builder(
                                   initialRating: double.parse(widget.priority),
