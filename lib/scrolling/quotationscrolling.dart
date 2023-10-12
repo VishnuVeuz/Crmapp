@@ -200,7 +200,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
             Text("Quotations", style: TextStyle(
                 fontFamily: 'Mulish',
                 fontWeight: FontWeight.w600,
-                fontSize: 20,
+                fontSize: 16,
                 color: Color(0xFFFFFFFF),
                 decoration: TextDecoration.none),)
           ],
@@ -236,12 +236,12 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -268,12 +268,12 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -294,7 +294,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
                 //   ),
                 // ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 20),
+                  padding: const EdgeInsets.only(right: 15),
                   child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
                     onPressed: () {
                       Scaffold.of(context).openDrawer();

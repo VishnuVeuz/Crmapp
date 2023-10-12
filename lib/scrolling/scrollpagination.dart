@@ -257,7 +257,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     .width/4.5,
                 child: Text(username,style: TextStyle(
                     fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     fontSize: 16,
                     color: Colors.white,
                     decoration: TextDecoration.none),),
@@ -302,12 +302,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -334,12 +334,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -420,7 +420,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 10),
+          padding: const EdgeInsets.only(left: 10,right: 20),
 
 
           child: MultiSelectBottomSheetField<LeadFilter?>(

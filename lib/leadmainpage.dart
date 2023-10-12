@@ -67,7 +67,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       .width/4.5,
                   child: Text(username,style: TextStyle(
                       fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                       fontSize: 16,
                       color: Colors.white,
                       decoration: TextDecoration.none),),
@@ -191,55 +191,59 @@ class _LeadMainPageState extends State<LeadMainPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+              Container(
+                height:50,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
 
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
-                    child: Text("Leads",
-                      style: TextStyle(fontSize: 18,
-                           //letterSpacing: .5,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18, top: 5, right: 25),
+                      child: Text("Leads",
+                        style: TextStyle(fontSize: 18,
+                             //letterSpacing: .5,
 
-                          fontFamily: 'Mulish',
-                          fontWeight: FontWeight.w600,
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w600,
 
-                          color: Color(0xFF101010)),
+                            color: Color(0xFF101010)),
 
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 25,top: 8),
-                    child: Container(
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LeadCreation(0)));
-                            },
-                            child: SvgPicture.asset(
-                              "images/create.svg",
-                              width: 28,
-                              height: 28,
-                            ),
-                          ),
-                          SizedBox(width: 5,),
-                          Text("New",      style: TextStyle(fontSize: 12,
-                              //letterSpacing: .5,
-
-                              fontFamily: 'Mulish',
-                              fontWeight: FontWeight.w600,
-
-                              color: Color(0xFF212121)),)
-                        ],
                       ),
                     ),
-                  ),
-                  
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(right: 25,top: 8),
+                      child: Container(
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LeadCreation(0)));
+                              },
+                              child: SvgPicture.asset(
+                                "images/create.svg",
+                                width: 28,
+                                height: 28,
+                              ),
+                            ),
+                            SizedBox(width: 5,),
+                            Text("New",      style: TextStyle(fontSize: 12,
+                                //letterSpacing: .5,
+
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w600,
+
+                                color: Color(0xFF212121)),)
+                          ],
+                        ),
+                      ),
+                    ),
+
+                  ],
+                ),
               ),
               // Padding(
               //   padding: const EdgeInsets.only(left: 25,top: 10,right: 25),
@@ -250,7 +254,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
               // ),
               InkWell(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                  padding: const EdgeInsets.only(top: 2),
                   child: Container(
                     width: MediaQuery
                         .of(context)
@@ -262,6 +266,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
+
                           child: Row(
                             children: [
                               IconButton(
@@ -353,17 +358,30 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 18, top: 10, right: 25),
-                child: Text("Recent Leads",
-                  style: TextStyle(fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'Mulish',
-                      color: Color(0xFF101010)),
+                padding: const EdgeInsets.only(top: 10),
+                child: Container(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: 40,
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 18, top: 10, right: 25),
+                    child: Text("Recent Leads",
 
+                      style: TextStyle(fontSize: 17,
+                          wordSpacing: 4,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Mulish',
+                          color: Color(0xFF101010)),
+
+                    ),
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 0),
                 child: Container(
                   width: MediaQuery
                       .of(context)
@@ -372,7 +390,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 1.45,
+                      .height / 1.5,
 
                   child: FutureBuilder(
                       future: recentLead("recent"),
@@ -425,13 +443,27 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   children: [
                                     InkWell(
                                       child: Card(
+                                        //elevation:5,
+                                        //shadowColor: Colors.grey,
                                         child: Container(
+
                                           width: MediaQuery
                                               .of(context)
                                               .size
                                               .width,
                                          // height: 90,
-                                          child: Row(
+                                         // decoration: const BoxDecoration(
+                                         //   borderRadius: BorderRadius.all(Radius.circular(20)),
+                                         //   boxShadow: [
+                                         //     BoxShadow(
+                                         //       color: Colors.grey,
+                                         //       blurRadius: 25.0,
+                                         //       offset: Offset(0, -10)
+                                         //     )
+                                         //   ]
+                                         // ),
+
+                                         child: Row(
                                             mainAxisAlignment: MainAxisAlignment
                                                 .spaceBetween,
                                             children: [
@@ -448,8 +480,9 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                           "",
                                                       style: TextStyle(
                                                           fontFamily: 'Mulish',
+                                                         // wordSpacing: 5,
                                                           fontWeight: FontWeight
-                                                              .w400,
+                                                              .w600,
                                                           fontSize: 14,
                                                           color: Colors.black),
                                                     ),
@@ -512,7 +545,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                                                                         tags![index]["name"].toString(),
                                                                         style: TextStyle(
-                                                                            color: Colors.black,
+                                                                            color: Color(0xFF787878),
                                                                             fontFamily: 'Mulish',
                                                                             fontWeight: FontWeight.w600,
                                                                             fontSize: 12),

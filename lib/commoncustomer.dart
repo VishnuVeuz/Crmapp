@@ -66,7 +66,7 @@ class _CustomerListState extends State<CustomerList> {
 
                           Padding(
                             padding: const EdgeInsets
-                                .only(left: 15),
+                                .only(left: 25),
                             child: Container(
 
                               height: 80,
@@ -97,7 +97,7 @@ class _CustomerListState extends State<CustomerList> {
 
                           Padding(
                             padding: const EdgeInsets
-                                .only(left: 15),
+                                .only(left: 25),
                             child: Container(
 
                               height: 100,
@@ -140,7 +140,7 @@ class _CustomerListState extends State<CustomerList> {
                                   child: Text(widget.name,
                                     style: TextStyle(
                                         fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w700,
                                         fontSize: 14,
                                         color: Colors.black),
                                   ),
@@ -202,7 +202,7 @@ class _CustomerListState extends State<CustomerList> {
                                         fontFamily: 'Mulish',
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12,
-                                        color: Color(0xFF787878)),
+                                        color: Color(0xFF575757)),
                                   ),
                                 ),
                               ),
@@ -222,7 +222,7 @@ class _CustomerListState extends State<CustomerList> {
 
                                           Center(
                                               child: Padding(
-                                                padding: const EdgeInsets.only(left: 5),
+                                                padding: const EdgeInsets.only(left: 3),
                                                 child: Text(
                                                   widget.meetingcount,
                                                   style: TextStyle(
@@ -238,7 +238,7 @@ class _CustomerListState extends State<CustomerList> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 5),
+                                    padding: const EdgeInsets.only(left: 5,top: 3),
                                     child: Container(
                                       child: Row(
                                         children: [
@@ -250,7 +250,7 @@ class _CustomerListState extends State<CustomerList> {
 
                                           Center(
                                               child: Padding(
-                                                padding: const EdgeInsets.only(left: 5),
+                                                padding: const EdgeInsets.only(left: 3),
                                                 child: Text(
                                                   widget.opportunitycount,
                                                   style: TextStyle(
