@@ -49,7 +49,7 @@ class _CustomerListState extends State<CustomerList> {
         children: [
           InkWell(
             child: Padding(
-              padding: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(top: 5,bottom: 0),
               child: Card(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
