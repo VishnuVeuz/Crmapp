@@ -1641,25 +1641,30 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 15, right: 10),
+                    padding: const EdgeInsets.only(top: 0, left: 25, right: 0),
                     child: Center(
                       child: Row(
                         children: [
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon: Image.asset("images/pin.png"),
-                              onPressed: () {
-                                setState(() {
-                                  attachmentVisibility == true
-                                      ? attachmentVisibility = false
-                                      : attachmentVisibility = true;
-                                });
-                              },
+                          InkWell(
+                            child: Container(
+                              width: 18,
+                              child: Image.asset(
+                                "images/pi.png",
+                                color: Colors.black,width: 0,),
+
+
                             ),
+                            onTap: (){
+                              setState(() {
+                                      attachmentVisibility == true
+                                          ? attachmentVisibility = false
+                                          : attachmentVisibility = true;
+                                    }
+                                    );
+                            },
                           ),
                           Container(
-                            width: 30,
+                            width: 0,
                             // color: Colors.green,
                             child: Text(
                               attachmentCount!,
@@ -1671,7 +1676,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left: 100),
+                                  padding: const EdgeInsets.only(left: 215),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -1753,25 +1758,26 @@ class _LeadDetailState extends State<LeadDetail> {
                                     ],
                                   ),
                                 ),
-                          Container(
-                            width: 50,
-                            child: IconButton(
-                              icon: SvgPicture.asset("images/user.svg"),
-                              onPressed: () async {
-                                List followers = await getFollowers(
-                                    widget.leadId, "lead.lead");
+                          InkWell(
+                            child: Container(
+                              width: 20,
+                              child: SvgPicture.asset("images/user.svg")
 
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(
-                                          context, followers),
-                                ).then((value) => setState(() {}));
-                              },
                             ),
+                            onTap: ()async{
+                                  List followers = await getFollowers(
+                                      widget.leadId, "lead.lead");
+
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        _buildFollowPopupDialog(
+                                            context, followers),
+                                  ).then((value) => setState(() {}));
+                            },
                           ),
                           Container(
-                            width: 30,
+                            width: 0,
                             //color: Colors.green,
                             child: Text(
                               followerCount!,

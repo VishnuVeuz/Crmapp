@@ -196,12 +196,15 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         elevation: 0,
         title: Row(
           children: [
-            Text("Customers", style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Mulish',
-                fontSize: 20,
-                color: Colors.white,
-                decoration: TextDecoration.none),)
+            Padding(
+              padding: const EdgeInsets.only(left:20 ),
+              child: Text("Customers", style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Mulish',
+                  fontSize: 20,
+                  color: Colors.white,
+                  decoration: TextDecoration.none),),
+            )
           ],
         ),
         // leading: Builder(
