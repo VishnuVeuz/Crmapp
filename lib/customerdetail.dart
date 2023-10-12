@@ -530,7 +530,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         height: 39,
                         color: Color(0xFFF5F5F5),
                         child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Container(
                               child: Row(
@@ -562,9 +562,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       child: Text(
                                     "Meeting",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: 'Mulish',
-                                        fontSize: 10,
+                                        fontSize: 13,
                                         color: Color(0xFF212121)),
                                   )),
                                   Center(
@@ -573,8 +573,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Text(
                                       meetingCount.toString(),
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 10,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 13,
                                           color: Color(0xFFED2449)),
                                     ),
                                   )),
@@ -607,9 +607,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         child: Text(
                                       "Opportunity",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
-                                          fontSize: 10,
+                                          fontSize: 13,
                                           color: Color(0xFF212121)),
                                     )),
                                     Center(
@@ -618,8 +618,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       child: Text(
                                         opportunityCount.toString(),
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 10,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 13,
                                             color: Color(0xFFED2449)),
                                       ),
                                     )),
@@ -666,6 +666,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontSize: 12,
                                           color: Colors.white,
                                           fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w400
                                         ),
                                       )),
                                     ),
@@ -731,7 +732,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           changeOnTap: false,
                           initialLabelIndex: radioInput == "company" ? 1 : 0,
                           minWidth: 120,
-                          minHeight: 40,
+                          minHeight: 33,
 
                           fontSize: 15,
                           //iconSize: 25,
@@ -824,7 +825,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         padding: const EdgeInsets.only(top: 10, left: 0),
                         child: Text(customername!,
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Mulish',
                               fontSize: 16,
                               color: Colors.black,
@@ -962,22 +963,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 10),
                           child: Text("Tax ID",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              taxid!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                taxid!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -998,22 +1002,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Job Position",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              jobposition!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                jobposition!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1034,22 +1041,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Mobile",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              mobile!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                mobile!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1070,22 +1080,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Customer Rank",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              customerrank!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                customerrank!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1106,22 +1119,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Supplier Rank",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              supplierrank!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                supplierrank!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1142,22 +1158,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Email",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              email!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                email!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1178,22 +1197,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Website",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              website!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                website!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1214,22 +1236,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Title",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              title!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                title!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1247,7 +1272,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       padding: const EdgeInsets.only(left: 25, top: 0),
                       child: Text("Tags",
                           style: TextStyle(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Mulish',
                               fontSize: 12,
                               color: Color(0xFF666666))),
@@ -1311,22 +1336,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Salesperson",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              salesperson!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                salesperson!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1347,22 +1375,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Payment Terms",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              paymentterms!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                paymentterms!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1383,22 +1414,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Fiscal Position",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              "Fiscal Position",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                "Fiscal Position",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1419,22 +1453,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Reference",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              reference!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                reference!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1455,22 +1492,24 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Company",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              company!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              child: Text(
+                                company!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1491,22 +1530,25 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           padding: const EdgeInsets.only(left: 25, top: 0),
                           child: Text("Internal Notes",
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.3,
+                          width: MediaQuery.of(context).size.width / 2,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 10, top: 0),
-                            child: Text(
-                              internalnotes!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
+                            padding: const EdgeInsets.only(right: 25, top: 0),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                internalnotes!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000)),
+                              ),
                             ),
                           ),
                         ),
@@ -1533,8 +1575,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text(
                             "Contacts & Addresses",
                             style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
                                 color: Colors.black,
                                 fontFamily: 'Mulish'),
                           ),

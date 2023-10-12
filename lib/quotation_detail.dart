@@ -483,7 +483,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         const EdgeInsets.only(top: 20, left: 25, right: 25),
                     child: Text(quotationname!,
                         style: TextStyle(
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w400,
                           fontSize: 17,
                           color: Colors.black,
                         )),
@@ -502,22 +502,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Customer",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            customername!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              customername!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -537,22 +540,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Quotation Template",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            "Quotation Template",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "Quotation Template",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -572,22 +578,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Expiration",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            expiration!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              expiration!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -607,22 +616,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Pricelist",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            pricelist!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              pricelist!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -643,22 +655,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Payment Terms",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            paymentterms!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              paymentterms!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -675,7 +690,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Sales",
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Colors.black)),
@@ -699,64 +714,80 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
-                      salespersonimg != ""
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 110),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                ),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(18),
-                                    child: Image.network(
-                                        "${salespersonimg!}?token=${token}"),
-                                  ),
-                                ),
+
+
+                      Row(
+                        children: [  salespersonimg != ""
+                            ? Padding(
+                          padding: const EdgeInsets.only(left: 0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(20)),
                               ),
-                            )
-                          : Padding(
-                              padding: const EdgeInsets.only(left: 80),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                        //  color: Colors.green
-                                        ),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.person,
-                                    size: 20,
-                                    // Adjust the size of the icon as per your requirements
-                                    color: Colors
-                                        .white, // Adjust the color of the icon as per your requirements
-                                  ),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18),
+                                  child: Image.network(
+                                      "${salespersonimg!}?token=${token}"),
                                 ),
                               ),
                             ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3.5,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            salesperson!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          ),
+                        )
+                            : Padding(
+                          padding: const EdgeInsets.only(left: 80),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Container(
+                              width: 30,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    //  color: Colors.green
+                                  ),
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                              child: CircleAvatar(
+                                radius: 12,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 20,
+                                  // Adjust the size of the icon as per your requirements
+                                  color: Colors
+                                      .white, // Adjust the color of the icon as per your requirements
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                          SizedBox(width: 8,),
+                          Container(
+                            //width: MediaQuery.of(context).size.width / 3.5,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 25),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  salesperson!,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 12,
+                                      color: Color(0xFF000000)),
+                                ),
+                              ),
+                            ),
+                          ),],
+                      )
+
+
                     ],
                   ),
                   Padding(
@@ -773,22 +804,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Sales Teams",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            salesteam!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              salesteam!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -808,22 +842,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Company",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            company!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              company!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -843,22 +880,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Customer Reference",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            customerreference!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              customerreference!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -934,7 +974,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Delivery",
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Colors.black)),
@@ -953,22 +993,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Shipping Policy",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            shippingpolicy!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              shippingpolicy!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -988,22 +1031,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Delivery Date",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            deliverydate!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              deliverydate!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1020,7 +1066,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Invoicing",
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Colors.black)),
@@ -1039,22 +1085,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Fiscal Position",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            fiscalposition!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              fiscalposition!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1071,7 +1120,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Tracking",
                         style: TextStyle(
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Colors.black)),
@@ -1090,22 +1139,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Source Document",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            sourcedocument!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              sourcedocument!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1125,22 +1177,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Campaign",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            campaign!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              campaign!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1160,22 +1215,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Medium",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            medium!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              medium!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1195,22 +1253,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Source",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            source!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              source!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1231,22 +1292,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created by",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            createdby!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              createdby!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1266,22 +1330,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created on",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            createdon!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              createdon!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1301,22 +1368,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated by",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            lastupdatedby!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              lastupdatedby!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1336,22 +1406,25 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated on",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.4,
+                        width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: Text(
-                            lastupdatedon!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              lastupdatedon!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),

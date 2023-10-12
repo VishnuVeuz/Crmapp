@@ -832,9 +832,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             const EdgeInsets.only(top: 10, left: 25, right: 25),
                         child: Text(leadname!,
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Mulish',
-                              fontSize: 16,
+                              fontSize: 17,
                               color: Colors.black,
                             )),
                       ),
@@ -894,23 +894,26 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Company",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
+                        width: MediaQuery.of(context).size.width / 2,
                         // color: Colors.red,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 0),
-                          child: Text(
-                            company!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              company!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -930,7 +933,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Email",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -938,14 +941,17 @@ class _LeadDetailState extends State<LeadDetail> {
                       Container(
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 0),
-                          child: Text(
-                            email!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              email!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -965,7 +971,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Phone",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -973,64 +979,71 @@ class _LeadDetailState extends State<LeadDetail> {
                       Visibility(
                         visible:phone!="" ? true: false  ,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 34),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 3,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 45),
-                                  child: Text(
-                                    phone!,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 45),
+                                    child: Text(
+                                      phone!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF000000)),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  var smsResponce = await smsDataGet(
-                                      widget.leadId, "lead.lead");
+                                InkWell(
+                                  onTap: () async {
+                                    var smsResponce = await smsDataGet(
+                                        widget.leadId, "lead.lead");
 
-                                  var name, phone, smsId;
-                                  bool smsCondition;
-                                  name =
-                                      smsResponce['recipient_single_description'];
-                                  phone =
-                                      smsResponce['recipient_single_number_itf'];
-                                  smsId = smsResponce['id'];
-                                  smsCondition = smsResponce['invalid_tag'];
+                                    var name, phone, smsId;
+                                    bool smsCondition;
+                                    name =
+                                        smsResponce['recipient_single_description'];
+                                    phone =
+                                        smsResponce['recipient_single_number_itf'];
+                                    smsId = smsResponce['id'];
+                                    smsCondition = smsResponce['invalid_tag'];
 
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        _buildSendsmsPopupDialog(context, name,
-                                            phone, smsId, smsCondition, "phone"),
-                                  ).then((value) => setState(() {}));
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          _buildSendsmsPopupDialog(context, name,
+                                              phone, smsId, smsCondition, "phone"),
+                                    ).then((value) => setState(() {}));
 
-                                },
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.mobile_friendly_rounded,
-                                        size: 10,
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 10),
-                                        child: Text("SMS"),
-                                      )
-                                    ],
+                                  },
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.mobile_friendly_rounded,
+                                          size: 10,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 0),
+                                          child: Text("SMS",style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 12,
+                                              color: Color(0xFF000000)),),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -1050,7 +1063,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Mobile",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1058,63 +1071,70 @@ class _LeadDetailState extends State<LeadDetail> {
                       Visibility(
                         visible: mobile!=""? true : false,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 34),
-                          child: Row(
-                            children: [
-                              Container(
-                                width: MediaQuery.of(context).size.width / 3,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 45),
-                                  child: Text(
-                                    mobile!,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF000000)),
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 45),
+                                    child: Text(
+                                      mobile!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF000000)),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              InkWell(
-                                onTap: () async {
-                                  var smsResponce = await smsDataGet(
-                                      widget.leadId, "lead.lead");
+                                InkWell(
+                                  onTap: () async {
+                                    var smsResponce = await smsDataGet(
+                                        widget.leadId, "lead.lead");
 
-                                  var name, phone, smsId;
-                                  bool smsCondition;
-                                  name =
-                                      smsResponce['recipient_single_description'];
-                                  phone =
-                                      smsResponce['recipient_single_number_itf'];
-                                  smsId = smsResponce['id'];
-                                  smsCondition = smsResponce['invalid_tag'];
+                                    var name, phone, smsId;
+                                    bool smsCondition;
+                                    name =
+                                        smsResponce['recipient_single_description'];
+                                    phone =
+                                        smsResponce['recipient_single_number_itf'];
+                                    smsId = smsResponce['id'];
+                                    smsCondition = smsResponce['invalid_tag'];
 
-                                  showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        _buildSendsmsPopupDialog(context, name,
-                                            phone, smsId, smsCondition, ""),
-                                  ).then((value) => setState(() {}));
-                                },
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.mobile_friendly_rounded,
-                                        size: 10,
-                                      ),
-                                      SizedBox(
-                                        width: 3,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 10),
-                                        child: Text("SMS"),
-                                      )
-                                    ],
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          _buildSendsmsPopupDialog(context, name,
+                                              phone, smsId, smsCondition, ""),
+                                    ).then((value) => setState(() {}));
+                                  },
+                                  child: Container(
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.mobile_friendly_rounded,
+                                          size: 10,
+                                        ),
+                                        SizedBox(
+                                          width: 3,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 0),
+                                          child: Text("SMS",style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 12,
+                                              color: Color(0xFF000000)),),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -1134,69 +1154,87 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Salesperson",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
-                      salesperImg != ""
-                          ? Padding(
-                              padding: const EdgeInsets.only(left: 110),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                ),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(18),
-                                    child: Image.network(
-                                        "${salesperImg!}?token=${token}"),
+
+
+                      Row(
+                          children: [
+                            salesperImg != ""
+                                ? Padding(
+                              padding: const EdgeInsets.only(left: 0),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: CircleAvatar(
+                                    radius: 12,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(18),
+                                      child: Image.network(
+                                          "${salesperImg!}?token=${token}"),
+                                    ),
                                   ),
                                 ),
                               ),
                             )
-                          : Padding(
-                              padding: const EdgeInsets.only(left: 80),
-                              child: Container(
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                    border: Border.all(
+                                : Padding(
+                              padding: const EdgeInsets.only(left: 0),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
                                         //  color: Colors.green
-                                        ),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20))),
-                                child: CircleAvatar(
-                                  radius: 12,
-                                  child: Icon(
-                                    Icons.person,
-                                    size: 20,
-                                    // Adjust the size of the icon as per your requirements
-                                    color: Colors
-                                        .white, // Adjust the color of the icon as per your requirements
+                                      ),
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                                  child: CircleAvatar(
+                                    radius: 12,
+                                    child: Icon(
+                                      Icons.person,
+                                      size: 20,
+                                      // Adjust the size of the icon as per your requirements
+                                      color: Colors
+                                          .white, // Adjust the color of the icon as per your requirements
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Text(
-                            salesperson!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
-                          ),
-                        ),
-                      ),
+                            SizedBox(width: 8,),
+                            Container(
+                              // width: MediaQuery.of(context).size.width / 3,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 25),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    salesperson!,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF000000)),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                      )
+
+
                     ],
                   ),
                   Padding(
@@ -1213,7 +1251,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Priority",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1221,32 +1259,35 @@ class _LeadDetailState extends State<LeadDetail> {
                       Container(
                           width: MediaQuery.of(context).size.width / 2.3,
                           child: Padding(
-                            padding: const EdgeInsets.only(right: 24),
-                            child: RatingBar.builder(
-                              initialRating: double.parse(priority!),
-                              // initialRating: 0.0,
+                            padding: const EdgeInsets.only(right: 25),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: RatingBar.builder(
+                                initialRating: double.parse(priority!),
+                                // initialRating: 0.0,
 
-                              itemSize: 19,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: false,
-                              itemCount: 3,
+                                itemSize: 19,
+                                minRating: 0,
+                                direction: Axis.horizontal,
+                                allowHalfRating: false,
+                                itemCount: 3,
 
-                              itemPadding:
-                                  EdgeInsets.symmetric(horizontal: 1.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 10,
+                                itemPadding:
+                                    EdgeInsets.symmetric(horizontal: 1.0),
+                                itemBuilder: (context, _) => Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                  size: 10,
+                                ),
+                                onRatingUpdate: (double value) async {
+                                  print(value);
+                                  print("finallalala");
+
+                                  int prioritydata = value.toInt();
+                                  String valuess = await editLeadpriority(
+                                      prioritydata.toString(), widget.leadId);
+                                },
                               ),
-                              onRatingUpdate: (double value) async {
-                                print(value);
-                                print("finallalala");
-
-                                int prioritydata = value.toInt();
-                                String valuess = await editLeadpriority(
-                                    prioritydata.toString(), widget.leadId);
-                              },
                             ),
                           )),
                     ],
@@ -1262,7 +1303,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     padding: const EdgeInsets.only(left: 25),
                     child: Text("Tags",
                         style: TextStyle(
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w400,
                             fontFamily: 'Mulish',
                             fontSize: 12,
                             color: Color(0xFF666666))),
@@ -1324,7 +1365,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created by",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1333,13 +1374,16 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Text(
-                            createdby!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              createdby!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1359,7 +1403,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Created on",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1368,13 +1412,16 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Text(
-                            createdon!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              createdon!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1394,7 +1441,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated by",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1403,13 +1450,16 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Text(
-                            lastupdateby!,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF000000)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              lastupdateby!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF000000)),
+                            ),
                           ),
                         ),
                       ),
@@ -1429,7 +1479,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Last Updated on",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1438,12 +1488,15 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Text(lastupdateon!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000))),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(lastupdateon!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000))),
+                          ),
                         ),
                       ),
                     ],
@@ -1462,7 +1515,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Internal Notes",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -1471,12 +1524,15 @@ class _LeadDetailState extends State<LeadDetail> {
                         width: MediaQuery.of(context).size.width / 2.3,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
-                          child: Text(internalnotes!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000))),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(internalnotes!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF000000))),
+                          ),
                         ),
                       ),
                     ],
