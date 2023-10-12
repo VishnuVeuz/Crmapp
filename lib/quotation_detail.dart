@@ -36,6 +36,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   String? quotationname,
       customername,
+      quotationtemplate,
       expiration,
       pricelist,
       paymentterms,
@@ -548,11 +549,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       Container(
                         width: MediaQuery.of(context).size.width / 2,
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 10),
+                          padding: const EdgeInsets.only(right: 25),
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: Text(
-                              "Quotation Template",
+                              quotationtemplate!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
@@ -5307,6 +5308,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       quotationname = data['name'] ?? "";
 
       customername = data['partner_id']['display_name'] ?? "";
+      quotationtemplate = data['sale_order_template_id']['name'] ?? "";
       expiration = data['validity_date'].toString();
       pricelist = data['pricelist_id']['name'] ?? "";
 

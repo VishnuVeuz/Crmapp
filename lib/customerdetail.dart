@@ -1426,7 +1426,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             child: Align(
                               alignment: Alignment.centerRight,
                               child: Text(
-                                "Fiscal Position",
+                                fiscalposition!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Mulish',
@@ -1502,6 +1502,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 25, top: 0),
                             child: Align(
+                              alignment: Alignment.centerRight,
                               child: Text(
                                 company!,
                                 style: TextStyle(
@@ -5029,6 +5030,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
       title = data['title']['name'] ?? "";
       salesperson = data['user_id']['name'] ?? "";
       paymentterms = data['property_payment_term_id']['name'] ?? "";
+      fiscalposition = data['property_account_position_id']['name'] ?? "";
       reference = data['ref'].toString();
       company = data["company_id"]["name"].toString() ?? "";
       internalnotes = data['comment']
