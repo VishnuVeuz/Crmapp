@@ -368,16 +368,32 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Title',
+                                      isDense: true,
+                                        labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                       fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
 
                               value: titleName,
-                              hint: Text("Title",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Title",
+                              //   style: TextStyle(fontSize: 5, color: Colors.black,fontFamily: 'Mulish'),),
                               searchHint: null,
                               autofocus: false,
                               onChanged: (value) {
+
                                 setState(() {
                                   print(value['capital']);
                                   print("value");
@@ -395,6 +411,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
+
                                       width: 320,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
@@ -438,7 +455,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(0),
                                           child: Text(
-                                              "${item["name"]}"),
+                                              "${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),),
 
                                         ),
                                       ),
@@ -536,12 +553,28 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Country',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: countryName,
-                              hint: Text("Country",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Country",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
 
                               searchHint: null,
@@ -635,12 +668,27 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'State',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
 
                               value: stateName,
-                              hint: Text("State",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("State",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
 
                               searchHint: null,
@@ -779,12 +827,28 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Language',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: languageName,
-                              hint: Text("Language",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Language",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -975,12 +1039,28 @@ class _LeadCreationState extends State<LeadCreation> {
                           //company
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Company',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: campanyName,
-                              hint: Text("Company",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Company",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1072,12 +1152,28 @@ class _LeadCreationState extends State<LeadCreation> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Salesperson',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: salespersonName,
-                              hint: Text("Salesperson",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Salesperson",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1168,12 +1264,28 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Sales Team',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: salesteamName,
-                              hint: Text("Sales Team",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Sales Team",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1299,7 +1411,7 @@ class _LeadCreationState extends State<LeadCreation> {
                           SizedBox(height: 10,),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
+                                horizontal: 25, vertical: 5),
                             child: MultiSelectDropDown.network(
                                  hint: 'Tags',
                               hintStyle: TextStyle(fontFamily: 'Mulish',fontSize: 12),
@@ -1363,12 +1475,28 @@ class _LeadCreationState extends State<LeadCreation> {
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Campaign',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: campaignName,
-                              hint: Text("Campaign",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Campaign",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1462,12 +1590,28 @@ class _LeadCreationState extends State<LeadCreation> {
                           //medium
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Medium',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: mediumName,
-                              hint: Text("Medium",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Medium",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1558,12 +1702,28 @@ class _LeadCreationState extends State<LeadCreation> {
                           //source
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 0),
+                                horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Source',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
                               value: sourceName,
-                              hint: Text("Source",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                              // hint: Text("Source",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
