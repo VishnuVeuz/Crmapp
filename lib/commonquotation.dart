@@ -43,7 +43,7 @@ class QuotationList extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 15,top: 2),
+                          padding: const EdgeInsets.only(left: 20,top: 2),
                           child: Container(
                             width: MediaQuery.of(context).size.width/2,
 
@@ -58,7 +58,7 @@ class QuotationList extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 2,right: 40),
+                          padding: const EdgeInsets.only(top: 2,right: 25),
                           child: Text(amount.toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -73,44 +73,47 @@ class QuotationList extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 2),
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
 
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15,top: 0,bottom: 0),
-                                child: Text(quotationname,
-                                  style: TextStyle(
-                                      fontFamily: 'Mulish',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12,
-                                      color: Color(0xFF787878)),
+                          Container(
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20,top: 0,bottom: 0),
+                                  child: Text(quotationname,
+                                    style: TextStyle(
+                                        fontFamily: 'Mulish',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: Color(0xFF787878)),
+                                  ),
                                 ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 5,top:0,bottom:0),
-                                child: Text(date,
-                                  style:TextStyle(
-                                      fontFamily: 'Mulish',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12,
-                                      color: Color(0xFF787878)),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5,top:0,bottom:0),
+                                  child: Text(date,
+                                    style:TextStyle(
+                                        fontFamily: 'Mulish',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: Color(0xFF787878)),
+                                  ),
                                 ),
-                              ),
-                              // Padding(
-                              //   padding: const EdgeInsets.only(top: 0,bottom: 0),
-                              //   child: IconButton(icon: SvgPicture.asset("images/clock.svg",),
-                              //
-                              //     onPressed: () {
-                              //
-                              //     },
-                              //   ),
-                              // ),
+                                // Padding(
+                                //   padding: const EdgeInsets.only(top: 0,bottom: 0),
+                                //   child: IconButton(icon: SvgPicture.asset("images/clock.svg",),
+                                //
+                                //     onPressed: () {
+                                //
+                                //     },
+                                //   ),
+                                // ),
 
-                            ],
+                              ],
+                            ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 88,right: 20,bottom: 5,top: 5),
+                            padding: const EdgeInsets.only(left: 0,right: 25,bottom: 5,top: 5),
                             child: Container(
 
                               decoration: BoxDecoration(
