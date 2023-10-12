@@ -1371,7 +1371,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 5, bottom: 5, left: 20, right: 0),
+                              top: 5, bottom: 5, left: 17, right: 0),
                           child: Center(
                             child: TextButton(
                                 child: Text(
@@ -1445,7 +1445,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
-                                  color: Color(0xFF000000))),
+                                  color: Color(0xFF787878))),
                         ),
                       ),
                     ),
@@ -1617,7 +1617,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 5, bottom: 5, left: 20, right: 0),
+                              top: 5, bottom: 5, left: 17, right: 0),
                           child: Center(
                             child: TextButton(
                                 child: Text(
