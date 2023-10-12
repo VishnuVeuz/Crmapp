@@ -79,7 +79,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
                                 fontFamily: 'Mulish',
                                 // wordSpacing: 5,
                                 fontWeight: FontWeight
-                                    .w500,
+                                    .w600,
                                 fontSize: 14,
                                 color: Colors.black),
                           ),

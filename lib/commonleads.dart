@@ -66,7 +66,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                 fontFamily: 'Mulish',
                                 // wordSpacing: 5,
                                 fontWeight: FontWeight
-                                    .w500,
+                                    .w600,
                                 fontSize: 14,
                                 color: Colors.black),
                           ),

@@ -140,7 +140,7 @@ class _CustomerListState extends State<CustomerList> {
                                   child: Text(widget.name,
                                     style: TextStyle(
                                         fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w700,
                                         fontSize: 14,
                                         color: Colors.black),
                                   ),
