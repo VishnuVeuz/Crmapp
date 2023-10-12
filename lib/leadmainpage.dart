@@ -67,7 +67,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       .width/4.5,
                   child: Text(username,style: TextStyle(
                       fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w600,
                       fontSize: 16,
                       color: Colors.white,
                       decoration: TextDecoration.none),),

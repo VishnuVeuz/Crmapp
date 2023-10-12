@@ -64,7 +64,9 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                           child: Text(widget.name,
                             style: TextStyle(
                                 fontFamily: 'Mulish',
-                                fontWeight: FontWeight.w600,
+                                // wordSpacing: 5,
+                                fontWeight: FontWeight
+                                    .w500,
                                 fontSize: 14,
                                 color: Colors.black),
                           ),
@@ -74,9 +76,10 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                           child: Padding(
                             padding: const EdgeInsets.only(top: 5,left: 15),
                             child: Text(widget.contactname,
-                              style: TextStyle(
+                              style:TextStyle(
                                   fontFamily: 'Mulish',
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight
+                                      .w600,
                                   fontSize: 12,
                                   color: Color(0xFF787878)),
                             ),
@@ -124,10 +127,10 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
                                               widget.tags![index]["name"].toString(),
                                               style: TextStyle(
-                                                  color: Colors.black,
+                                                  color: Color(0xFF787878),
                                                   fontFamily: 'Mulish',
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: 10),
+                                                  fontSize: 12),
                                             ),
                                           ),
                                         ],
@@ -156,22 +159,26 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
 
                             Padding(
                               padding: const EdgeInsets.only(left: 10,bottom:8,top: 2),
-                              child: RatingBar.builder(
-                                initialRating: double.parse(widget.priority),
-                                itemSize: 19,
-                                minRating: 0,
-                                direction: Axis.horizontal,
-                                allowHalfRating: false,
-                                itemCount: 3,
-                                itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
-                                itemBuilder: (context, _) => Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
-                                  size: 10,
-                                ), onRatingUpdate: (double value) {
+                              child: Container(
+                                width: MediaQuery.of(context).size.width/1.2,
 
-                              },
+                                child: RatingBar.builder(
+                                  initialRating: double.parse(widget.priority),
+                                  itemSize: 19,
+                                  minRating: 0,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: false,
+                                  itemCount: 3,
+                                  itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                                  itemBuilder: (context, _) => Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                    size: 10,
+                                  ), onRatingUpdate: (double value) {
 
+                                },
+
+                                ),
                               ),
                             ),
                             // IconButton(icon: SvgPicture.asset("images/clock2.svg"),
@@ -184,7 +191,63 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                             //   },
                             // ),
 
+                            widget.leadimg!=""?
 
+
+                            Padding(
+                              padding: const EdgeInsets
+                                  .only(right: 25,bottom: 5),
+                              child: Container(
+                                width: 25,
+                                height: 25,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                    ),
+                                    borderRadius: BorderRadius
+                                        .all(
+                                        Radius.circular(
+                                            20))
+                                ),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: ClipRRect(
+
+                                    borderRadius:
+                                    BorderRadius
+                                        .circular(18),
+                                    child:Image.network("${widget.leadimg}?token=${token}"),
+
+                                  ),
+
+
+                                ),
+                              ),
+                            ) :
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(right: 25,bottom: 8),
+                              child: Container(
+                                width:25,
+                                height:25,
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                    ),
+                                    borderRadius: BorderRadius.all(Radius.circular(20))
+                                ),
+                                child: CircleAvatar(
+                                  radius: 12,
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 20,
+                                    // Adjust the size of the icon as per your requirements
+                                    color: Colors
+                                        .white, // Adjust the color of the icon as per your requirements
+                                  ),
+
+                                ),
+                              ),
+                            ),
 
                           ],
                         ),
@@ -195,63 +258,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                       ],
                     ),
 
-                    widget.leadimg!=""?
 
-
-                    Padding(
-                      padding: const EdgeInsets
-                          .only(right: 25,bottom: 5),
-                      child: Container(
-                        width: 25,
-                        height: 25,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                            ),
-                            borderRadius: BorderRadius
-                                .all(
-                                Radius.circular(
-                                    20))
-                        ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: ClipRRect(
-
-                            borderRadius:
-                            BorderRadius
-                                .circular(18),
-                            child:Image.network("${widget.leadimg}?token=${token}"),
-
-                          ),
-
-
-                        ),
-                      ),
-                    ) :
-
-
-                    Padding(
-                      padding: const EdgeInsets.only(right: 25,bottom: 8),
-                      child: Container(
-                        width:25,
-                        height:25,
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(20))
-                        ),
-                        child: CircleAvatar(
-                          radius: 12,
-                          child: Icon(
-                            Icons.person,
-                            size: 20,
-                            // Adjust the size of the icon as per your requirements
-                            color: Colors
-                                .white, // Adjust the color of the icon as per your requirements
-                          ),
-
-                        ),
-                      ),
-                    ),
 
                   ],
                 ),
