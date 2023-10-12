@@ -4789,18 +4789,13 @@ class _LeadDetailState extends State<LeadDetail> {
           //color: Colors.green,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 270, right: 10),
-                  child: IconButton(
-                    icon: Image.asset(
-                      "images/cross.png",
-                      color: Colors.black,
-                    ),
+                  padding: const EdgeInsets.only(left: 0, right: 8),
+                  child:  IconButton(
+                    icon: SvgPicture.asset("images/cr.svg"),
                     onPressed: () {
-                      setState(() {});
-
                       Navigator.pop(context);
                     },
                   ),

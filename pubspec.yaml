@@ -242,6 +242,7 @@ flutter:
     - images/greenbtnfirst.png
     - images/greenbtn.png
     - images/greybtn.png
+    - images/cr.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
