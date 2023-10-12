@@ -127,6 +127,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       scheduleVisibiltyToday = false,
       scheduleVisibiltyPlanned = false,
       attachmentVisibility = false,
+      internalVisibility = false,
+      otherinfoVisibility = false,
       smartbuttonVisible = true,
       starImage = false,
       lognoteoptions = true,
@@ -1961,198 +1963,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 22, right: 22),
-                    child: Divider(
-                      color: Color(0xFFF4F4F4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Text("Created by",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF666666))),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              createdby!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(
-                      color: Color(0xFFF4F4F4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Text("Created on",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF666666))),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              createdon!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(
-                      color: Color(0xFFF4F4F4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Text("Last Updated by",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF666666))),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              lastupdateby!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(
-                      color: Color(0xFFF4F4F4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Text("Last Updated on",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF666666))),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              lastupdateon!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
-                            ),
-                          //  textDirection: TextDirection.rtl,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                    child: Divider(
-                      color: Color(0xFFF4F4F4),
-                      thickness: 2,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 25),
-                        child: Text("Internal Notes",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
-                                color: Color(0xFF666666))),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.3,
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              internalnotes!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF000000)),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+
 
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -2400,6 +2211,262 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 ),
                               ));
                         }),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Container(
+                      color: Color(0xFFF6F6F6),
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, left: 17, right: 0),
+                            child: Center(
+                              child: TextButton(
+                                  child: Text(
+                                    "Internal Notes",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color: Color(0xFF212121)),
+                                  ),
+                                  onPressed: ()  {
+                                    setState(() {
+                                      internalVisibility == true
+                                          ? internalVisibility = false
+                                          : internalVisibility = true;
+
+                                      otherinfoVisibility == false
+                                          ? otherinfoVisibility = false
+                                          : otherinfoVisibility = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, left: 40, right: 0),
+                            child: Center(
+                              child: TextButton(
+                                  child: Text(
+                                    "Other Information",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color: Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      otherinfoVisibility == true
+                                          ? otherinfoVisibility = false
+                                          : otherinfoVisibility = true;
+                                      internalVisibility == false
+                                          ? internalVisibility = false
+                                          : internalVisibility = false;
+
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
+                          ),
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  Visibility(
+                    visible: internalVisibility,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 0,bottom: 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width ,
+                        //height: 40,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25),
+                          child: Text(internalnotes!,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 12,
+                                  color: Color(0xFF787878))),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Visibility(
+                    visible: otherinfoVisibility,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 0),
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 25),
+                                    child: Text("Created by",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF666666))),
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width / 2.3,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 25),
+                                      child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          createdby!,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 12,
+                                              color: Color(0xFF000000)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25),
+                                  child: Text("Created on",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF666666))),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2.3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        createdon!,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF000000)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25),
+                                  child: Text("Last Updated by",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF666666))),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2.3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        lastupdateby!,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF000000)),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 25),
+                                  child: Text("Last Updated on",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF666666))),
+                                ),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 2.3,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(lastupdateon!,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 12,
+                                              color: Color(0xFF000000))),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
 
                   Container(
