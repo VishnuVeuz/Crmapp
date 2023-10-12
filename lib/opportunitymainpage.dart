@@ -63,9 +63,9 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
           title: Row(
             children: [
               Text("Opportunity", style: TextStyle(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   fontFamily: 'Mulish',
-                  fontSize: 15,
+                  fontSize: 16,
                   color: Colors.white,
                   decoration: TextDecoration.none),)
             ],
@@ -101,12 +101,12 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                             },
                           ),
                           Positioned(
-                            bottom: 25,
-                            right: 28,
+                            bottom: 24,
+                            right: 24,
 
                             child: Container(
-                              width: 18.0,
-                              height: 18.0,
+                              width: 17.0,
+                              height: 19.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape
                                     .circle,
@@ -133,12 +133,13 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                             },
                           ),
                           Positioned(
-                            bottom: 25,
-                            right: 28,
+                            bottom: 24,
+                            right: 24,
+
 
                             child: Container(
-                              width: 18.0,
-                              height: 18.0,
+                              width: 17.0,
+                              height: 19.0,
                               decoration: BoxDecoration(
                                 shape: BoxShape
                                     .circle,
