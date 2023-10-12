@@ -247,1679 +247,1686 @@ class _CustomerCreationState extends State<CustomerCreation> {
         ),
         body: Form(
           key: _formKey,
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
-                    child: SizedBox(
-                      width: 93,
-                      height: 33,
-                      child: ElevatedButton(
-                          child: Text(
-                            "Save",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.white,fontFamily: 'Mulish'),
-                          ),
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
+                child: SizedBox(
+                  width: 93,
+                  height: 33,
+                  child: ElevatedButton(
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.57,
+                            color: Colors.white,fontFamily: 'Mulish'),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
 
 
 
 
-                              setState(() {
-                                _isInitialized = false;
-                              });
-                            String resmessage;
+                          setState(() {
+                            _isInitialized = false;
+                          });
+                          String resmessage;
 
-                            print("tagsss");
+                          print("tagsss");
 
-                            widget.customnerId == 0
-                                ? resmessage = await customerCreate()
-                                : resmessage = await customerEdit();
+                          widget.customnerId == 0
+                              ? resmessage = await customerCreate()
+                              : resmessage = await customerEdit();
 
-                            print(resmessage);
+                          print(resmessage);
 
-                            print("titleId");
+                          print("titleId");
 
-                            int resmessagevalue = int.parse(resmessage);
-                            if (resmessagevalue != 0) {
-                              setState(() {
-                                _isInitialized = true;
-                              });
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        CustomerDetail(resmessagevalue)),
-                              );
-                            }
+                          int resmessagevalue = int.parse(resmessage);
+                          if (resmessagevalue != 0) {
+                            setState(() {
+                              _isInitialized = true;
+                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CustomerDetail(resmessagevalue)),
+                            );
                           }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
-                          )),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF9246A),
+                      )),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        Row(
                           children: [
-                            RadioListTile(
-                              title: Text(
-                                "Individual",
-                                style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  RadioListTile(
+                                    title: Text(
+                                      "Individual",
+                                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                    ),
+                                    value: "person",
+                                    groupValue: radioInput,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        radioInput = value.toString();
+                                        cmpVisibility = true;
+                                      });
+                                    },
+                                  ),
+                                  RadioListTile(
+                                    title: Text(
+                                      "Company",
+                                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                    ),
+                                    value: "company",
+                                    groupValue: radioInput,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        radioInput = value.toString();
+                                        cmpVisibility = false;
+                                      });
+                                    },
+                                  ),
+                                ],
                               ),
-                              value: "person",
-                              groupValue: radioInput,
-                              onChanged: (value) {
-                                setState(() {
-                                  radioInput = value.toString();
-                                  cmpVisibility = true;
-                                });
-                              },
                             ),
-                            RadioListTile(
-                              title: Text(
-                                "Company",
-                                style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 40),
+                              child: Container(
+                                width: 80,
+                                height: 87,
+                                // color: Colors.black,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    border:
+                                    Border.all(color: Color(0xFFF5F5F5), width: 1)),
+                                child: Column(
+                                  children: [
+
+                                    personImg !=""
+                                        ?
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 1),
+                                      child: Container(
+                                        width: 70,
+                                        height: 55,
+
+                                        child: ClipRRect(
+                                          // borderRadius: BorderRadius
+                                          //     .circular(0),
+                                          child: Image.memory(
+                                            base64Decode(personImg!),
+                                            fit: BoxFit.cover,
+                                            width: MediaQuery
+                                                .of(context)
+                                                .size
+                                                .width,
+                                            height: 300,
+                                          ),
+                                        ),
+                                      ),
+                                    ):Padding(
+                                      padding: const EdgeInsets.only(top: 15),
+                                      child: Image.asset("images/cam.png"),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10),
+                                      child: Row(
+                                        children: [
+                                          SizedBox(
+                                              width: 37,
+                                              height: 18,
+                                              child: ElevatedButton(
+                                                child: Image.asset("images/pencil.png"),
+                                                onPressed: () {
+                                                  myAlert();
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                  primary: Color(0xFF3D418E),
+                                                ),
+                                              )),
+                                          SizedBox(
+                                              width: 41,
+                                              height: 18,
+                                              child: ElevatedButton(
+                                                  child: Image.asset("images/del.png"),
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      selectedImages.clear();
+                                                      personImg="";
+                                                    });
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: Color(0xFFB8000B),
+                                                  )))
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
-                              value: "company",
-                              groupValue: radioInput,
-                              onChanged: (value) {
-                                setState(() {
-                                  radioInput = value.toString();
-                                  cmpVisibility = false;
-                                });
-                              },
                             ),
                           ],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 40),
-                        child: Container(
-                          width: 80,
-                          height: 87,
-                          // color: Colors.black,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              border:
-                              Border.all(color: Color(0xFFF5F5F5), width: 1)),
-                          child: Column(
-                            children: [
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter the name';
+                              }
+                              return null;
+                            },
+                            controller: customerController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Customer Name',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Visibility(
+                          visible: cmpVisibility,
+                          child: Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                            child: SearchChoices.single(
+                              //items: items,
 
-                              personImg !=""
-                                  ?
-                              Padding(
-                                padding: const EdgeInsets.only(top: 1),
-                                child: Container(
-                                  width: 70,
-                                  height: 55,
+                              value: companyName,
+                              hint: Text(
+                                "Company Name",
+                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              ),
+                              searchHint: null,
+                              autofocus: false,
+                              onClear: () {
+                                setState(() {
+                                  cmpbasedVisible = true;
+                                });
+                              },
+                              onChanged: (value) async {
+                                setState(() {
+                                  cmpbasedVisible = false;
+                                  companyName = value;
+                                  companyId = value["id"];
+                                });
 
-                                  child: ClipRRect(
-                                    // borderRadius: BorderRadius
-                                    //     .circular(0),
-                                    child: Image.memory(
-                                      base64Decode(personImg!),
-                                      fit: BoxFit.cover,
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width,
-                                      height: 300,
+                                await getCustomerCompanyDetail(companyId);
+                              },
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      width: 320,
+                                      child: Text(
+                                        item["display_name"],
+                                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                token = await getUserJwt();
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+
+                                int nbResults = data["length"];
+
+                                List<DropdownMenuItem> results = (data["records"]
+                                as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["display_name"]}"),
                                     ),
                                   ),
-                                ),
-                              ):Padding(
-                                padding: const EdgeInsets.only(top: 15),
-                                child: Image.asset("images/cam.png"),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                        width: 37,
-                                        height: 18,
-                                        child: ElevatedButton(
-                                          child: Image.asset("images/pencil.png"),
-                                          onPressed: () {
-                                            myAlert();
-                                          },
-                                          style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFF3D418E),
-                                          ),
-                                        )),
-                                    SizedBox(
-                                        width: 41,
-                                        height: 18,
-                                        child: ElevatedButton(
-                                            child: Image.asset("images/del.png"),
-                                            onPressed: () {
-                                              setState(() {
-                                                selectedImages.clear();
-                                                personImg="";
-                                              });
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFFB8000B),
-                                            )))
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter the name';
-                        }
-                        return null;
-                      },
-                      controller: customerController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Customer Name',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Visibility(
-                    visible: cmpVisibility,
-                    child: Padding(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                      child: SearchChoices.single(
-                        //items: items,
-
-                        value: companyName,
-                        hint: Text(
-                          "Company Name",
-                          style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                        ),
-                        searchHint: null,
-                        autofocus: false,
-                        onClear: () {
-                          setState(() {
-                            cmpbasedVisible = true;
-                          });
-                        },
-                        onChanged: (value) async {
-                          setState(() {
-                            cmpbasedVisible = false;
-                            companyName = value;
-                            companyId = value["id"];
-                          });
-
-                          await getCustomerCompanyDetail(companyId);
-                        },
-
-                        dialogBox: false,
-                        isExpanded: true,
-                        menuConstraints:
-                        BoxConstraints.tight(const Size.fromHeight(350)),
-                        itemsPerPage: 10,
-                        currentPage: currentPage,
-                        selectedValueWidgetFn: (item) {
-                          return (Center(
-                              child: Container(
-                                width: 320,
-                                child: Text(
-                                  item["display_name"],
-                                  style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                                ),
-                              )));
-                        },
-                        futureSearchFn: (String? keyword,
-                            String? orderBy,
-                            bool? orderAsc,
-                            List<Tuple2<String, String>>? filters,
-                            int? pageNb) async {
-                          token = await getUserJwt();
-                          Response response = await get(
-                            Uri.parse(
-                                "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
-                            headers: {
-                              'Authorization': 'Bearer $token',
-                            },
-                          ).timeout(const Duration(
-                            seconds: 10,
-                          ));
-
-                          if (response.statusCode != 200) {
-                            throw Exception("failed to get data from internet");
-                          }
-
-                          dynamic data = jsonDecode(response.body);
-
-                          int nbResults = data["length"];
-
-                          List<DropdownMenuItem> results = (data["records"]
-                          as List<dynamic>)
-                              .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                            value: item,
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(0),
-                                child: Text("${item["display_name"]}"),
-                              ),
-                            ),
-                          ))
-                              .toList();
-                          return (Tuple2<List<DropdownMenuItem>, int>(
-                              results, nbResults));
-                        },
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                    child: Text(
-                      "Address",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000),fontFamily: 'Mulish'),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      enabled: cmpbasedVisible,
-                      controller: streetController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Street',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      enabled: cmpbasedVisible,
-                      controller: streettwoController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Street2',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      enabled: cmpbasedVisible,
-                      controller: cityController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'City',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-                      value: countryName,
-                      hint: Text(
-                        "Country",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: cmpbasedVisible
-                          ? (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          countryName = value;
-                          countryId = value['id'];
-                        });
-                      }
-                          : null,
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        print(keyword);
-                        print("lalalalalla");
-                        String filtersString = "";
-
-                        print(filters);
-                        print(filtersString);
-                        print(keyword);
-
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.country"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        print(response.toString());
-                        print("datatatapassss");
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-                        print("fjbnkdttthgfgyv");
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-                        print("fjbnkdttt");
-                        int nbResults = data["length"];
-                        print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      value: stateName,
-                      hint: Text(
-                        "State",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: cmpbasedVisible
-                          ? (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          stateName = value;
-                          stateId = value["id"];
-                        });
-                      }
-                          : null,
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        print(keyword);
-                        print("lalalalalla");
-                        String filtersString = "";
-
-                        print(filters);
-                        print(filtersString);
-                        print(keyword);
-                        print(countryId);
-                        print("afna");
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/states?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${countryId == null ? "" : "&country_id=$countryId"}"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        print(response.toString());
-                        print("datatatapassss");
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-                        print("fjbnkdttthgfgyv");
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-                        print("fjbnkdttt");
-                        int nbResults = data["length"];
-                        print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.number,
-                      enabled: cmpbasedVisible,
-                      controller: zipController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      maxLength: 6,
-                      decoration: const InputDecoration(
-                          counterText: "",
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Zip',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      enabled: cmpbasedVisible,
-                      controller: taxidController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Tax ID',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-                      value: customerCampanyName,
-                      hint: Text(
-                        "Company",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: cmpbasedVisible
-                          ? (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          customerCampanyName = value;
-                          customerCampanyId = value["id"];
-                        });
-                      }
-                          : null,
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        print(keyword);
-                        print("lalalalalla");
-                        String filtersString = "";
-
-                        print(filters);
-                        print(filtersString);
-                        print(keyword);
-                        print("afna");
-
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/companies?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&company_ids=[1]"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        print(response.toString());
-                        print("datatatapassss");
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-                        print("fjbnkdttthgfgyv");
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-                        print("fjbnkdttt");
-                        int nbResults = data["length"];
-                        print("fjbnkd");
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: jobpositionController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Job Position',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.phone,
-                      maxLength: 10,
-                      controller: phoneController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          counterText: "",
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Phone',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      keyboardType: TextInputType.phone,
-                      maxLength: 10,
-                      controller: mobileController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          counterText: "",
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Mobile',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: customerrankController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Customer Rank',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: supplierrankController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Supplier Rank',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: emailController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Email',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: websiteController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Website',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-
-                      value: languageName,
-                      hint: Text(
-                        "Language",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: cmpbasedVisible
-                          ? (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          languageName = value;
-                          languageId = value["id"];
-                        });
-                      }
-                          : null,
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        token = await getUserJwt();
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.lang"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-
-                        int nbResults = data["length"];
-
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-
-                      value: titleName,
-                      hint: Text(
-                        "Title",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          titleName = value;
-                          titleId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        token = await getUserJwt();
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-
-                        int nbResults = data["length"];
-
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: MultiSelectDropDown.network(
-                      hint: 'Tags',
-                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      selectedOptions: editTagName
-                          .map((tag) =>
-                          ValueItem(label: tag.label, value: tag.value))
-                          .toList(),
-                      onOptionSelected: (options) {
-                        print(options);
-                        tags.clear();
-                        for (var options in options) {
-                          tags.add(options.value);
-                          print('Label: ${options.label}');
-                          print('Value: ${options.value}');
-                          print(tags);
-                          print('---');
-                        }
-                      },
-                      networkConfig: NetworkConfig(
-                        url:
-                        "${baseUrl}api/common_dropdowns?model=res.partner.category",
-                        method: RequestMethod.get,
-                        headers: {
-                          'Authorization': 'Bearer $token',
-                        },
-                      ),
-                      chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-                      responseParser: (response) {
-                        debugPrint('Response: $response');
-
-                        final list =
-                        (response['record'] as List<dynamic>).map((e) {
-                          final item = e as Map<String, dynamic>;
-                          return ValueItem(
-                            label: item['name'],
-                            value: item['id'].toString(),
-                          );
-                        }).toList();
-
-                        return Future.value(list);
-                      },
-                      responseErrorBuilder: ((context, body) {
-                        print(body);
-                        print(token);
-                        return const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text('Error fetching the data'),
-                        );
-                      }),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                    child: Text(
-                      "Sales",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000),fontFamily: 'Mulish'),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-                      value: salespersonName,
-                      hint: Text(
-                        "Salesperson",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          salespersonName = value;
-                          salespersonId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        print(keyword);
-                        print("lalalalalla");
-                        String filtersString = "";
-
-                        print(filters);
-                        print(filtersString);
-                        print(keyword);
-                        print("afna");
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/salespersons?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        print(response.toString());
-
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-
-                        int nbResults = data["length"];
-
-                        List<DropdownMenuItem> results =
-                        (data["records"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-
-                      value: paymenttermsName,
-                      hint: Text(
-                        "Payment Terms",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          paymenttermsName = value;
-                          paymenttermsId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=account.payment.term"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-
-                        int nbResults = data["length"];
-
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-
-                      value: pricelistName,
-                      hint: Text(
-                        "Pricelist",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          pricelistName = value;
-                          pricelistId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
-                        Response response = await get(
-                          Uri.parse(
-                              "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
-                          headers: {
-                            'Authorization': 'Bearer $token',
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-                        // print(data);
-                        // print("customer data");
-                        int nbResults = data["length"];
-
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text("${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                    child: Text(
-                      "Fiscal Information",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000),fontFamily: 'Mulish'),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                    child: SearchChoices.single(
-                      //items: items,
-                      value: fiscalpositionName,
-                      hint: Text(
-                        "Fiscal Position",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                      ),
-
-                      searchHint: null,
-                      autofocus: false,
-                      onChanged: (value) {
-                        setState(() {
-                          print(value['capital']);
-                          print("value");
-                          fiscalpositionName = value;
-                          fiscalpositionId = value["id"];
-                        });
-                      },
-
-                      dialogBox: false,
-                      isExpanded: true,
-                      menuConstraints:
-                      BoxConstraints.tight(const Size.fromHeight(350)),
-                      itemsPerPage: 10,
-                      currentPage: currentPage,
-                      selectedValueWidgetFn: (item) {
-                        return (Center(
-                            child: Container(
-                              width: 320,
-                              child: Text(
-                                item["name"],
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
-                            )));
-                      },
-                      futureSearchFn: (String? keyword,
-                          String? orderBy,
-                          bool? orderAsc,
-                          List<Tuple2<String, String>>? filters,
-                          int? pageNb) async {
-                        Response response = await get(Uri.parse(
-                            "${baseUrl}api/common_dropdowns?page_no=${pageNb ??
-                                1}&count=10${keyword == null
-                                ? ""
-                                : "&filter=$keyword"}&model=account.fiscal.position&company_id=${companyId == null ? "" : "&company_id=$companyId"}"),
-                          headers: {
-
-                            'Authorization': 'Bearer $token',
-
-                          },
-                        ).timeout(const Duration(
-                          seconds: 10,
-                        ));
-                        if (response.statusCode != 200) {
-                          throw Exception("failed to get data from internet");
-                        }
-
-                        dynamic data = jsonDecode(response.body);
-                        print(data);
-                        int nbResults = data["length"];
-                        List<DropdownMenuItem> results =
-                        (data["record"] as List<dynamic>)
-                            .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                          value: item,
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(0),
-                              child: Text(" ${item["name"]}"),
-                            ),
-                          ),
-                        ))
-                            .toList();
-                        return (Tuple2<List<DropdownMenuItem>, int>(
-                            results, nbResults));
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                    child: Text(
-                      "Misc",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF000000),fontFamily: 'Mulish'),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: referenceController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Reference',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                    child: TextFormField(
-                      controller: internalnotesController,
-                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          ),
-                          labelText: 'Internal Notes',
-                          labelStyle:
-                          TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 30),
-                    child: Center(
-                      child: SizedBox(
-                        width: 346,
-                        height: 33,
-                        child: ElevatedButton(
-                            child: Text(
-                              "ADD",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
-                            ),
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    _buildSchedulePopupDialog(context, -1),
-                              ).then((value) => setState(() {}));
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
-                            )),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    color: Colors.white70,
-                    //height: MediaQuery.of(context).size.height / 1.8,
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: addNewCustomer.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          addNewCustomerData = addNewCustomer[index];
-                          return InkWell(
-                              onTap: () {
-                                print(index);
-                                print("listindex");
-
-                                setState(() {
-                                  addCustomerId = addNewCustomer[index]['id']??null;
-                                  alertradioSelect = addNewCustomer[index]['type']??"";
-                                  alertCompanyNameController.text = addNewCustomer[index]['name']??"";
-                                  alertStreetController.text = addNewCustomer[index]['street']??"";
-                                  alertStreetTwoController.text = addNewCustomer[index]['street2']??"".toString();
-                                  alertCityController.text = addNewCustomer[index]['city']??"".toString();
-                                  alertCountryName=addNewCustomer[index]['country_id']??"";
-                                  alertCountryId = addNewCustomer[index]['country_id']['id']??null;
-                                  alertStateName = addNewCustomer[index]['state_id']??"";
-                                  alertStateId = addNewCustomer[index]['state_id']['id']??null;
-                                  alertZipController.text = addNewCustomer[index]['zip']??"";
-                                  alerTitleName = addNewCustomer[index]['title']??"";
-                                  alertTitleId = addNewCustomer[index]['title']['id']??null;
-                                  alertJobController.text = addNewCustomer[index]['function']??"";
-                                  alertEmailController.text  = addNewCustomer[index]['email']??"";
-                                  alertMobileController.text =  addNewCustomer[index]['mobile']??"";
-                                  alertPhoneController.text = addNewCustomer[index]['phone']??"";
-                                  alertNotesController.text =  addNewCustomer[index]['comment']??"";
-
-
-
-
-
-
-
-                                });
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildSchedulePopupDialog(context, index),
-                                ).then((value) => setState(() {}));
-
-                                print("orderLineProducts[index];");
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
                               },
-                              child: Card(
-                                child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  //height: MediaQuery.of(context).size.height/8.5,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 10),
-                                        child: Row(
-                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            "Address",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF000000),fontFamily: 'Mulish'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            enabled: cmpbasedVisible,
+                            controller: streetController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Street',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            enabled: cmpbasedVisible,
+                            controller: streettwoController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Street2',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            enabled: cmpbasedVisible,
+                            controller: cityController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'City',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+                            value: countryName,
+                            hint: Text(
+                              "Country",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: cmpbasedVisible
+                                ? (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                countryName = value;
+                                countryId = value['id'];
+                              });
+                            }
+                                : null,
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              print(keyword);
+                              print("lalalalalla");
+                              String filtersString = "";
+
+                              print(filters);
+                              print(filtersString);
+                              print(keyword);
+
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.country"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              print(response.toString());
+                              print("datatatapassss");
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+                              print("fjbnkdttthgfgyv");
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+                              print("fjbnkdttt");
+                              int nbResults = data["length"];
+                              print("fjbnkd");
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(" ${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            value: stateName,
+                            hint: Text(
+                              "State",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: cmpbasedVisible
+                                ? (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                stateName = value;
+                                stateId = value["id"];
+                              });
+                            }
+                                : null,
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              print(keyword);
+                              print("lalalalalla");
+                              String filtersString = "";
+
+                              print(filters);
+                              print(filtersString);
+                              print(keyword);
+                              print(countryId);
+                              print("afna");
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/states?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${countryId == null ? "" : "&country_id=$countryId"}"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              print(response.toString());
+                              print("datatatapassss");
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+                              print("fjbnkdttthgfgyv");
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+                              print("fjbnkdttt");
+                              int nbResults = data["length"];
+                              print("fjbnkd");
+                              List<DropdownMenuItem> results =
+                              (data["records"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(" ${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            keyboardType: TextInputType.number,
+                            enabled: cmpbasedVisible,
+                            controller: zipController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            maxLength: 6,
+                            decoration: const InputDecoration(
+                                counterText: "",
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Zip',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            enabled: cmpbasedVisible,
+                            controller: taxidController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Tax ID',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+                            value: customerCampanyName,
+                            hint: Text(
+                              "Company",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: cmpbasedVisible
+                                ? (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                customerCampanyName = value;
+                                customerCampanyId = value["id"];
+                              });
+                            }
+                                : null,
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              print(keyword);
+                              print("lalalalalla");
+                              String filtersString = "";
+
+                              print(filters);
+                              print(filtersString);
+                              print(keyword);
+                              print("afna");
+
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/companies?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&company_ids=[1]"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              print(response.toString());
+                              print("datatatapassss");
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+                              print("fjbnkdttthgfgyv");
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+                              print("fjbnkdttt");
+                              int nbResults = data["length"];
+                              print("fjbnkd");
+                              List<DropdownMenuItem> results =
+                              (data["records"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(" ${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: jobpositionController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Job Position',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            maxLength: 10,
+                            controller: phoneController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                counterText: "",
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Phone',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            keyboardType: TextInputType.phone,
+                            maxLength: 10,
+                            controller: mobileController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                counterText: "",
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Mobile',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: customerrankController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Customer Rank',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: supplierrankController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Supplier Rank',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: emailController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Email',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: websiteController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Website',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+
+                            value: languageName,
+                            hint: Text(
+                              "Language",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: cmpbasedVisible
+                                ? (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                languageName = value;
+                                languageId = value["id"];
+                              });
+                            }
+                                : null,
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              token = await getUserJwt();
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.lang"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+
+                              int nbResults = data["length"];
+
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text("${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+
+                            value: titleName,
+                            hint: Text(
+                              "Title",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                titleName = value;
+                                titleId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              token = await getUserJwt();
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+
+                              int nbResults = data["length"];
+
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text("${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: MultiSelectDropDown.network(
+                            hint: 'Tags',
+                            hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            selectedOptions: editTagName
+                                .map((tag) =>
+                                ValueItem(label: tag.label, value: tag.value))
+                                .toList(),
+                            onOptionSelected: (options) {
+                              print(options);
+                              tags.clear();
+                              for (var options in options) {
+                                tags.add(options.value);
+                                print('Label: ${options.label}');
+                                print('Value: ${options.value}');
+                                print(tags);
+                                print('---');
+                              }
+                            },
+                            networkConfig: NetworkConfig(
+                              url:
+                              "${baseUrl}api/common_dropdowns?model=res.partner.category",
+                              method: RequestMethod.get,
+                              headers: {
+                                'Authorization': 'Bearer $token',
+                              },
+                            ),
+                            chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+                            responseParser: (response) {
+                              debugPrint('Response: $response');
+
+                              final list =
+                              (response['record'] as List<dynamic>).map((e) {
+                                final item = e as Map<String, dynamic>;
+                                return ValueItem(
+                                  label: item['name'],
+                                  value: item['id'].toString(),
+                                );
+                              }).toList();
+
+                              return Future.value(list);
+                            },
+                            responseErrorBuilder: ((context, body) {
+                              print(body);
+                              print(token);
+                              return const Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text('Error fetching the data'),
+                              );
+                            }),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            "Sales",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF000000),fontFamily: 'Mulish'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+                            value: salespersonName,
+                            hint: Text(
+                              "Salesperson",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                salespersonName = value;
+                                salespersonId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              print(keyword);
+                              print("lalalalalla");
+                              String filtersString = "";
+
+                              print(filters);
+                              print(filtersString);
+                              print(keyword);
+                              print("afna");
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/salespersons?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              print(response.toString());
+
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+
+                              int nbResults = data["length"];
+
+                              List<DropdownMenuItem> results =
+                              (data["records"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(" ${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+
+                            value: paymenttermsName,
+                            hint: Text(
+                              "Payment Terms",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                paymenttermsName = value;
+                                paymenttermsId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=account.payment.term"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+
+                              int nbResults = data["length"];
+
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text("${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+
+                            value: pricelistName,
+                            hint: Text(
+                              "Pricelist",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                pricelistName = value;
+                                pricelistId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
+                              Response response = await get(
+                                Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
+                                headers: {
+                                  'Authorization': 'Bearer $token',
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+                              // print(data);
+                              // print("customer data");
+                              int nbResults = data["length"];
+
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text("${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            "Fiscal Information",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF000000),fontFamily: 'Mulish'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          child: SearchChoices.single(
+                            //items: items,
+                            value: fiscalpositionName,
+                            hint: Text(
+                              "Fiscal Position",
+                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            ),
+
+                            searchHint: null,
+                            autofocus: false,
+                            onChanged: (value) {
+                              setState(() {
+                                print(value['capital']);
+                                print("value");
+                                fiscalpositionName = value;
+                                fiscalpositionId = value["id"];
+                              });
+                            },
+
+                            dialogBox: false,
+                            isExpanded: true,
+                            menuConstraints:
+                            BoxConstraints.tight(const Size.fromHeight(350)),
+                            itemsPerPage: 10,
+                            currentPage: currentPage,
+                            selectedValueWidgetFn: (item) {
+                              return (Center(
+                                  child: Container(
+                                    width: 320,
+                                    child: Text(
+                                      item["name"],
+                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                    ),
+                                  )));
+                            },
+                            futureSearchFn: (String? keyword,
+                                String? orderBy,
+                                bool? orderAsc,
+                                List<Tuple2<String, String>>? filters,
+                                int? pageNb) async {
+                              Response response = await get(Uri.parse(
+                                  "${baseUrl}api/common_dropdowns?page_no=${pageNb ??
+                                      1}&count=10${keyword == null
+                                      ? ""
+                                      : "&filter=$keyword"}&model=account.fiscal.position&company_id=${companyId == null ? "" : "&company_id=$companyId"}"),
+                                headers: {
+
+                                  'Authorization': 'Bearer $token',
+
+                                },
+                              ).timeout(const Duration(
+                                seconds: 10,
+                              ));
+                              if (response.statusCode != 200) {
+                                throw Exception("failed to get data from internet");
+                              }
+
+                              dynamic data = jsonDecode(response.body);
+                              print(data);
+                              int nbResults = data["length"];
+                              List<DropdownMenuItem> results =
+                              (data["record"] as List<dynamic>)
+                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                value: item,
+                                child: Card(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(0),
+                                    child: Text(" ${item["name"]}"),
+                                  ),
+                                ),
+                              ))
+                                  .toList();
+                              return (Tuple2<List<DropdownMenuItem>, int>(
+                                  results, nbResults));
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                          child: Text(
+                            "Misc",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xFF000000),fontFamily: 'Mulish'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: referenceController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Reference',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          child: TextFormField(
+                            controller: internalnotesController,
+                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            decoration: const InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                ),
+                                labelText: 'Internal Notes',
+                                labelStyle:
+                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, bottom: 30),
+                          child: Center(
+                            child: SizedBox(
+                              width: 346,
+                              height: 33,
+                              child: ElevatedButton(
+                                  child: Text(
+                                    "ADD",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 13.57,
+                                        color: Colors.white,fontFamily: 'Mulish'),
+                                  ),
+                                  onPressed: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          _buildSchedulePopupDialog(context, -1),
+                                    ).then((value) => setState(() {}));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF9246A),
+                                  )),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          color: Colors.white70,
+                          //height: MediaQuery.of(context).size.height / 1.8,
+                          child: ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: addNewCustomer.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                addNewCustomerData = addNewCustomer[index];
+                                return InkWell(
+                                    onTap: () {
+                                      print(index);
+                                      print("listindex");
+
+                                      setState(() {
+                                        addCustomerId = addNewCustomer[index]['id']??null;
+                                        alertradioSelect = addNewCustomer[index]['type']??"";
+                                        alertCompanyNameController.text = addNewCustomer[index]['name']??"";
+                                        alertStreetController.text = addNewCustomer[index]['street']??"";
+                                        alertStreetTwoController.text = addNewCustomer[index]['street2']??"".toString();
+                                        alertCityController.text = addNewCustomer[index]['city']??"".toString();
+                                        alertCountryName=addNewCustomer[index]['country_id']??"";
+                                        alertCountryId = addNewCustomer[index]['country_id']['id']??null;
+                                        alertStateName = addNewCustomer[index]['state_id']??"";
+                                        alertStateId = addNewCustomer[index]['state_id']['id']??null;
+                                        alertZipController.text = addNewCustomer[index]['zip']??"";
+                                        alerTitleName = addNewCustomer[index]['title']??"";
+                                        alertTitleId = addNewCustomer[index]['title']['id']??null;
+                                        alertJobController.text = addNewCustomer[index]['function']??"";
+                                        alertEmailController.text  = addNewCustomer[index]['email']??"";
+                                        alertMobileController.text =  addNewCustomer[index]['mobile']??"";
+                                        alertPhoneController.text = addNewCustomer[index]['phone']??"";
+                                        alertNotesController.text =  addNewCustomer[index]['comment']??"";
+
+
+
+
+
+
+
+                                      });
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            _buildSchedulePopupDialog(context, index),
+                                      ).then((value) => setState(() {}));
+
+                                      print("orderLineProducts[index];");
+                                    },
+                                    child: Card(
+                                      child: Container(
+                                        width: MediaQuery.of(context).size.width,
+                                        //height: MediaQuery.of(context).size.height/8.5,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            addNewCustomerData!['image_1920']!=""?
-
                                             Padding(
-                                              padding: const EdgeInsets
-                                                  .only(left: 10),
-                                              child: Container(
+                                              padding: const EdgeInsets.only(left: 10),
+                                              child: Row(
+                                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  addNewCustomerData!['image_1920']!=""?
 
-                                                height: 100,
-                                                width:MediaQuery.of(context).size.width/4 ,
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .only(left: 10),
+                                                    child: Container(
 
-                                                decoration: BoxDecoration(
-                                                  //  color: Colors.red,
-                                                  border: Border.all(
+                                                      height: 100,
+                                                      width:MediaQuery.of(context).size.width/4 ,
+
+                                                      decoration: BoxDecoration(
+                                                        //  color: Colors.red,
+                                                        border: Border.all(
+                                                        ),
+                                                        borderRadius: BorderRadius
+                                                            .all(
+                                                            Radius.circular(
+                                                                1)),
+
+                                                      ),
+                                                      child: ClipRRect(
+
+                                                        borderRadius:
+                                                        BorderRadius
+                                                            .circular(0),
+                                                        child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
+
+
+                                                      ),
+                                                    ),
+                                                  )
+                                                      :
+
+                                                  Container(
+                                                    height: 100,
+                                                    width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                        4,
+                                                    // color: Colors.red,
+                                                    child: Icon(
+                                                      Icons.person,
+                                                      size: 80,
+                                                    ),
                                                   ),
-                                                  borderRadius: BorderRadius
-                                                      .all(
-                                                      Radius.circular(
-                                                          1)),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Row(
+                                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                left: 15),
+                                                            child: Container(
+                                                              width:
+                                                              MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                                  2,
+                                                              //color: Colors.green,
+                                                              child: Text(
+                                                                addNewCustomerData!['name']??"",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                    FontWeight.w600,
+                                                                    fontSize: 14,
+                                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                left: 0, right: 20),
+                                                            child: InkWell(
+                                                              onTap: (){
+                                                                addNewCustomer
+                                                                    .removeAt(
+                                                                    index);
+                                                                setState(() {});
+                                                              },
+                                                              child: Container(
+                                                                width: 30,
+                                                                height: 30,
 
-                                                ),
-                                                child: ClipRRect(
-
-                                                  borderRadius:
-                                                  BorderRadius
-                                                      .circular(0),
-                                                  child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
-
-
-                                                ),
-                                              ),
-                                            )
-                                                :
-
-                                            Container(
-                                              height: 100,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                                  4,
-                                              // color: Colors.red,
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 80,
-                                              ),
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Row(
-                                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(
-                                                          left: 15),
-                                                      child: Container(
-                                                        width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width /
-                                                            2,
-                                                        //color: Colors.green,
+                                                                child: Icon(
+                                                                  Icons.delete,
+                                                                  size: 20,
+                                                                  color: Colors.black,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            left: 15, top: 4),
                                                         child: Text(
-                                                          addNewCustomerData!['name']??"",
+                                                          addNewCustomerData!['email']??"",
                                                           style: TextStyle(
-                                                              fontWeight:
-                                                              FontWeight.w600,
-                                                              fontSize: 14,
+                                                              fontWeight: FontWeight.w400,
+                                                              fontSize: 12,
                                                               color: Colors.black,  fontFamily: 'Mulish'),
                                                         ),
                                                       ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(
-                                                          left: 0, right: 20),
-                                                      child: InkWell(
-                                                        onTap: (){
-                                                          addNewCustomer
-                                                              .removeAt(
-                                                              index);
-                                                          setState(() {});
-                                                        },
-                                                        child: Container(
-                                                          width: 30,
-                                                          height: 30,
-
-                                                          child: Icon(
-                                                            Icons.delete,
-                                                            size: 20,
-                                                            color: Colors.black,
+                                                      Row(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                left: 15, top: 4),
+                                                            child: Text(
+                                                              addNewCustomerData!['state_id'][1]??"",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.w400,
+                                                                  fontSize: 12,
+                                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                                            ),
                                                           ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                left: 5, top: 4),
+                                                            child: Text(
+                                                              addNewCustomerData!['country_id'][1]??"",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                  FontWeight.w400,
+                                                                  fontSize: 12,
+                                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            left: 15, top: 4),
+                                                        child: Text(
+                                                          addNewCustomerData!['phone']??"",
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.w400,
+                                                              fontSize: 12,
+                                                              color: Colors.black,  fontFamily: 'Mulish'),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 15, top: 4),
-                                                  child: Text(
-                                                    addNewCustomerData!['email']??"",
-                                                    style: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,  fontFamily: 'Mulish'),
-                                                  ),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(
-                                                          left: 15, top: 4),
-                                                      child: Text(
-                                                        addNewCustomerData!['state_id'][1]??"",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                            FontWeight.w400,
-                                                            fontSize: 12,
-                                                            color: Colors.black,  fontFamily: 'Mulish'),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            left: 15, top: 4),
+                                                        child: Text(
+                                                          addNewCustomerData!['mobile']??"",
+                                                          style: TextStyle(
+                                                              fontWeight: FontWeight.w400,
+                                                              fontSize: 12,
+                                                              color: Colors.black,  fontFamily: 'Mulish'),
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(
-                                                          left: 5, top: 4),
-                                                      child: Text(
-                                                        addNewCustomerData!['country_id'][1]??"",
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                            FontWeight.w400,
-                                                            fontSize: 12,
-                                                            color: Colors.black,  fontFamily: 'Mulish'),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 15, top: 4),
-                                                  child: Text(
-                                                    addNewCustomerData!['phone']??"",
-                                                    style: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,  fontFamily: 'Mulish'),
+                                                    ],
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 15, top: 4),
-                                                  child: Text(
-                                                    addNewCustomerData!['mobile']??"",
-                                                    style: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,  fontFamily: 'Mulish'),
-                                                  ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ));
-                        }),
+                                    ));
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       );
