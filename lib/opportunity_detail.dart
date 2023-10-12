@@ -2534,7 +2534,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left: 215),
+                                  padding: const EdgeInsets.only(left: 205),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2576,7 +2576,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 215),
+                                  padding: const EdgeInsets.only(left: 205),
                                   child: Row(
                                     children: [
                                       Icon(

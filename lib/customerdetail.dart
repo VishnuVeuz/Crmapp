@@ -1904,7 +1904,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             ),
                             followerStatus == false
                                 ? Padding(
-                                    padding: const EdgeInsets.only(left: 215),
+                                    padding: const EdgeInsets.only(left: 205),
                                     child: Row(
                                       children: [
                                         Icon(
@@ -1947,7 +1947,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     ),
                                   )
                                 : Padding(
-                                    padding: const EdgeInsets.only(left:215),
+                                    padding: const EdgeInsets.only(left:205),
                                     child: Row(
                                       children: [
                                         Icon(

@@ -2058,7 +2058,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left:215),
+                                  padding: const EdgeInsets.only(left:205),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2100,7 +2100,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 215),
+                                  padding: const EdgeInsets.only(left: 205),
                                   child: Row(
                                     children: [
                                       Icon(

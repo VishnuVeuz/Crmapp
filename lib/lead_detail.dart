@@ -1644,40 +1644,49 @@ class _LeadDetailState extends State<LeadDetail> {
                     padding: const EdgeInsets.only(top: 0, left: 25, right: 0),
                     child: Center(
                       child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            child: Container(
-                              width: 18,
-                              child: Image.asset(
-                                "images/pi.png",
-                                color: Colors.black,width: 0,),
-
-
-                            ),
-                            onTap: (){
-                              setState(() {
-                                      attachmentVisibility == true
-                                          ? attachmentVisibility = false
-                                          : attachmentVisibility = true;
-                                    }
-                                    );
-
-                            },
-                          ),
                           Container(
-                            width: 0,
-                            // color: Colors.green,
-                            child: Text(
-                              attachmentCount!,
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Mulish',
-                              ),
+                            child: Row(
+                              children: [
+
+                                InkWell(
+                                  child: Container(
+                                    width: 18,
+                                    child: Image.asset(
+                                      "images/pi.png",
+                                      color: Colors.black,width: 0,),
+
+
+                                  ),
+                                  onTap: (){
+                                    setState(() {
+                                            attachmentVisibility == true
+                                                ? attachmentVisibility = false
+                                                : attachmentVisibility = true;
+                                          }
+                                          );
+
+                                  },
+                                ),
+                                Container(
+                                  width: 0,
+                                  // color: Colors.green,
+                                  child: Text(
+                                    attachmentCount!,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontFamily: 'Mulish',
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
+
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left: 215),
+                                  padding: const EdgeInsets.only(left:205),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -1719,7 +1728,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 80),
+                                  padding: const EdgeInsets.only(left: 205),
                                   child: Row(
                                     children: [
                                       Icon(
