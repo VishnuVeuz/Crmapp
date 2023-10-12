@@ -1661,6 +1661,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           : attachmentVisibility = true;
                                     }
                                     );
+
                             },
                           ),
                           Container(
