@@ -235,12 +235,12 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
@@ -267,12 +267,12 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                           },
                         ),
                         Positioned(
-                          bottom: 25,
-                          right: 28,
+                          bottom: 24,
+                          right: 24,
 
                           child: Container(
-                            width: 18.0,
-                            height: 18.0,
+                            width: 17.0,
+                            height: 19.0,
                             decoration: BoxDecoration(
                               shape: BoxShape
                                   .circle,
