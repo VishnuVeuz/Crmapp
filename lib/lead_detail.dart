@@ -107,7 +107,7 @@ class _LeadDetailState extends State<LeadDetail> {
       followersVisibility = false,
       lognoteVisibility = false,
       recipientsVisibility = false,
-      internalVisibility = false,
+      internalVisibility = true,
       otherinfoVisibility = false,
       starImage = false,
       lognoteoptions = true;
@@ -225,8 +225,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   leadname!,
                   style: TextStyle(
                       fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                       color: Colors.white,
                       decoration: TextDecoration.none),
                 ),
@@ -235,7 +235,7 @@ class _LeadDetailState extends State<LeadDetail> {
           ),
           leading: Builder(
             builder: (context) => Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 15),
               child: IconButton(
                 icon: Image.asset("images/back.png"),
                 onPressed: () {
@@ -831,7 +831,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsets.only(top: 10, left: 25, right: 25),
+                            const EdgeInsets.only(top: 10, left: 24, right: 25),
                         child: Text(leadname!,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
@@ -843,7 +843,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       leadType == true
                           ? Padding(
                               padding: const EdgeInsets.only(
-                                  top: 10, left: 25, right: 25),
+                                  top: 10, left: 24, right: 25),
                               child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -873,7 +873,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Text(
                                   "Lost",
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 15,
                                     color: Colors.white,
                                     fontFamily: 'Mulish',
                                   ),
@@ -1333,7 +1333,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   color:
                                       Color(int.parse(tags![index]["color"])),
                                 ),
-                                width: 60,
+                                width: 65,
                                 height: 20,
                                 child: Center(
                                   child: Text(
@@ -1341,8 +1341,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 8),
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 10),
                                   ),
                                 ),
                               ),
@@ -1377,20 +1377,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text(
                                   "Internal Notes",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
                                 onPressed: ()  {
                                   setState(() {
-                                    internalVisibility == true
-                                        ? internalVisibility = false
-                                        : internalVisibility = true;
-
-                                    otherinfoVisibility == false
-                                        ? otherinfoVisibility = false
-                                        : otherinfoVisibility = false;
+                                      internalVisibility = true;
+                                      otherinfoVisibility = false;
                                   });
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1406,19 +1401,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text(
                                   "Other Information",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    otherinfoVisibility == true
-                                        ? otherinfoVisibility = false
-                                        : otherinfoVisibility = true;
-                                    internalVisibility == false
-                                        ? internalVisibility = false
-                                        : internalVisibility = false;
+                                        internalVisibility = false;
+                                        otherinfoVisibility = true;
 
                                   });
                                 },
@@ -1438,14 +1429,17 @@ class _LeadDetailState extends State<LeadDetail> {
                       child: Container(
                         width: MediaQuery.of(context).size.width ,
                         //height: 40,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 25,right: 25),
-                          child: Text(internalnotes!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
-                                  color: Color(0xFF787878))),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 25,right: 25),
+                            child: Text(internalnotes!,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 12,
+                                    color: Color(0xFF787878))),
+                          ),
                         ),
                       ),
                     ),
@@ -1623,7 +1617,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text(
                                   "Send Message",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
@@ -1654,7 +1648,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text(
                                   "Log note",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
@@ -1682,7 +1676,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text(
                                   "Schedule Activity",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
@@ -1721,7 +1715,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     width: 18,
                                     child: Image.asset(
                                       "images/pi.png",
-                                      color: Colors.black,width: 0,),
+                                     ),
 
 
                                   ),
@@ -1735,6 +1729,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                   },
                                 ),
+                                SizedBox(width: 1,),
                                 Container(
                                   width: 0,
                                   // color: Colors.green,
@@ -1743,6 +1738,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                     style: TextStyle(
                                       fontSize: 15,
                                       fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w600,
+                                        color: Color(0xFF000000)
                                     ),
                                   ),
                                 ),
@@ -1752,7 +1749,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left:205),
+                                  padding: const EdgeInsets.only(left:200),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -1788,13 +1785,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                               color: Colors.green,
                                               fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w600
                                             ),
                                           )),
                                     ],
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 205),
+                                  padding: const EdgeInsets.only(left: 200),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -1829,6 +1827,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                               color: Colors.red,
                                               fontFamily: 'Mulish',
+                                                fontWeight: FontWeight.w600
                                             ),
                                           )),
                                     ],
@@ -1836,7 +1835,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 ),
                           InkWell(
                             child: Container(
-                              width: 20,
+                              width: 18,
                               child: SvgPicture.asset("images/user.svg")
 
                             ),
@@ -1858,8 +1857,10 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: Text(
                               followerCount!,
                               style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Mulish',
+                                  fontSize: 15,
+                                  fontFamily: 'Mulish',
+                                  fontWeight: FontWeight.w600,
+                                  color: Color(0xFF000000)
                               ),
                             ),
                           ),
@@ -2227,7 +2228,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 Container(
                                                                   width: 34,
                                                                   height: 20,
-                                                                  //color: Colors.green,
+                                                                 // color: Colors.green,
                                                                   child:
                                                                       IconButton(
                                                                     icon: Icon(Icons
@@ -2326,7 +2327,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         Visibility(
                           visible: followersVisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 78),
+                            padding: const EdgeInsets.only(left:25),
                             child: Container(
                               //color: Colors.red,
                               child: Row(
@@ -2334,17 +2335,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                   Text(
                                     "To:",
                                     style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.grey,
-                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF666666),
+                                      fontSize: 10,
                                       fontFamily: 'Mulish',
                                     ),
                                   ),
                                   Text(
                                     " Followers of",
                                     style: TextStyle(
-                                      color: Colors.grey[700],
-                                      fontSize: 11,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF666666),
+                                      fontSize: 10,
                                       fontFamily: 'Mulish',
                                     ),
                                   ),
@@ -2358,8 +2360,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                       child: Text(
                                         leadname!,
                                         style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF414141),
+                                          fontSize: 10,
                                           fontFamily: 'Mulish',
                                         ),
                                       )),
@@ -2384,15 +2387,16 @@ class _LeadDetailState extends State<LeadDetail> {
                               itemBuilder: (_, i) {
                                 isCheckedMail = sendMailData[i]['selected'];
                                 return Padding(
-                                  padding: const EdgeInsets.only(left: 65),
+                                  padding: const EdgeInsets.only(left: 8),
                                   child: Container(
-                                    height: 13,
+                                    height: 15,
                                     child: Row(
                                       children: [
                                         Transform.scale(
-                                          scale: 0.6,
+                                          scale: 0.7,
                                           child: Checkbox(
-                                            activeColor: Color(0xFFF9246A),
+                                            shape:CircleBorder(),
+                                            activeColor: Color(0xFF3D418E),
                                             value: isCheckedMail,
                                             onChanged: (bool? value) {
                                               print(value);
@@ -2408,9 +2412,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                         Text(
                                           sendMailData[i]['name'],
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Color(0xFF666666),
                                               fontSize: 11,
-                                              fontFamily: 'Mulish'),
+                                              fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w500),
                                         )
                                       ],
                                     ),
@@ -2434,7 +2439,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   salesperImg != ""
                                       ? Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 30),
+                                              const EdgeInsets.only(left: 23),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -2456,7 +2461,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         )
                                       : Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 30),
+                                              const EdgeInsets.only(left: 23),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -2483,7 +2488,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         left: 20, right: 20),
                                     child: Container(
                                       width: MediaQuery.of(context).size.width /
-                                          1.4,
+                                          1.35,
 
                                       //height: 46,
                                       decoration: BoxDecoration(
@@ -2493,89 +2498,89 @@ class _LeadDetailState extends State<LeadDetail> {
                                           border: Border.all(
                                             color: Color(0xFFEBEBEB),
                                           )),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                      child: Row(
                                         children: [
-                                          Container(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width /
-                                                1.4,
-
-                                            // height: 40,
-                                            //color: Colors.red,
-                                            child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10),
-                                              child: TextField(
-                                                  textAlignVertical:
-                                                      TextAlignVertical.top,
-                                                  //expands: true,
-                                                  maxLines: null,
-                                                  controller: lognoteController,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                          border:
-                                                              InputBorder.none,
-                                                          hintText:
-                                                              "Send a message to followers",
-                                                          hintStyle: TextStyle(
-                                                              //fontFamily: "inter",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              fontFamily:
-                                                                  'Mulish',
-                                                              fontSize: 12,
-                                                              color: Color(
-                                                                  0xFFAFAFAF)))),
-                                            ),
-                                          ),
-                                          Divider(
-                                            color: Colors.grey[350],
-                                            thickness: 1,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              IconButton(
-                                                icon: Image.asset(
-                                                    "images/pin.png"),
-                                                onPressed: () {
-                                                  myAlert("lognote");
-                                                },
-                                              ),
-                                              IconButton(
-                                                  onPressed: () async {
-                                                    recipient!.clear();
-                                                    await defaultSendmsgvalues();
-                                                    setState(() {
-                                                      recipientsVisibility ==
-                                                              true
-                                                          ? recipientsVisibility =
-                                                              false
-                                                          : recipientsVisibility =
-                                                              true;
-                                                    });
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    1.8,
 
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          _buildSendmessagePopupDialog(
-                                                              context, 0),
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.arrow_outward_rounded,
-                                                    size: 18,
-                                                    color: Colors.grey[700],
-                                                  ))
+                                                // height: 40,
+                                                //color: Colors.red,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      left: 10),
+                                                  child: TextField(
+                                                      textAlignVertical:
+                                                          TextAlignVertical.top,
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.w400,
+                                                          fontFamily: 'Mulish',
+                                                          fontSize: 11,
+                                                          color: Color(0xFF000000),
+                                                     ),
+
+
+                                                      maxLines: null,
+                                                      controller: lognoteController,
+                                                      decoration:
+                                                          const InputDecoration(
+                                                              border:
+                                                                  InputBorder.none,
+                                                              hintText:
+                                                                  "Send a message to followers",
+                                                              hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  fontFamily:
+                                                                      'Mulish',
+                                                                  fontSize: 11,
+                                                                  color: Color(
+                                                                      0xFFAFAFAF)))),
+                                                ),
+                                              ),
+                                              // Divider(
+                                              //   color: Colors.grey[350],
+                                              //   thickness: 1,
+                                              // ),
+
+
                                             ],
                                           ),
+                                          IconButton(
+                                              onPressed: () async {
+                                                recipient!.clear();
+                                                await defaultSendmsgvalues();
+                                                setState(() {
+                                                  recipientsVisibility ==
+                                                      true
+                                                      ? recipientsVisibility =
+                                                  false
+                                                      : recipientsVisibility =
+                                                  true;
+                                                });
+
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (BuildContext
+                                                  context) =>
+                                                      _buildSendmessagePopupDialog(
+                                                          context, 0),
+                                                ).then((value) =>
+                                                    setState(() {}));
+                                              },
+                                              icon: Icon(
+                                                Icons.arrow_outward_rounded,
+                                                size: 18,
+                                                color: Colors.grey[700],
+                                              )),
                                         ],
                                       ),
                                     ),
@@ -2689,94 +2694,111 @@ class _LeadDetailState extends State<LeadDetail> {
                                         ),
                                       ),
                                     ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 10, left: 80, top: 5),
-                                child: SizedBox(
-                                  width: 73,
-                                  height: 28,
-                                  child: ElevatedButton(
-                                      child: Center(
-                                        child: Text(
-                                          "Send",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 60),
+                                    child: Container(
+                                      child: IconButton(
+                                        icon: Image.asset(
+                                            "images/pi.png"),
+                                        onPressed: () {
+                                          myAlert("lognote");
+                                        },
                                       ),
-                                      onPressed: _isSavingData
-                                          ? null // Disable the button if saving is in progress
-                                          : () async {
-                                              setState(() {
-                                                _isSavingData = true;
-                                              });
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25,top: 3),
+                                    child: SizedBox(
+                                      width: 55,
+                                      height: 30,
+                                      child: ElevatedButton(
+                                          child: Center(
+                                            child:SvgPicture.asset("images/sendd.svg")
+                                            // Text(
+                                            //   "Send",
+                                            //   style: TextStyle(
+                                            //       fontWeight: FontWeight.w500,
+                                            //       fontFamily: 'Mulish',
+                                            //       fontSize: 10,
+                                            //       color: Colors.white),
+                                            // ),
+                                          ),
+                                          onPressed: _isSavingData
+                                              ? null // Disable the button if saving is in progress
+                                              : () async {
+                                                  setState(() {
+                                                    _isSavingData = true;
+                                                  });
 
-                                              for (int i = 0;
-                                                  i < selectedImages.length;
-                                                  i++) {
-                                                // print(selectedImages[i].path.split('/').last);
+                                                  for (int i = 0;
+                                                      i < selectedImages.length;
+                                                      i++) {
+                                                    // print(selectedImages[i].path.split('/').last);
 
-                                                //imagefilename=selectedImages[i].path.split('/').last;
+                                                    //imagefilename=selectedImages[i].path.split('/').last;
 
-                                                imagepath = selectedImages[i]
-                                                    .path
-                                                    .toString();
-                                                File imagefile =
-                                                    File(imagepath);
+                                                    imagepath = selectedImages[i]
+                                                        .path
+                                                        .toString();
+                                                    File imagefile =
+                                                        File(imagepath);
 
-                                                Uint8List imagebytes =
-                                                    await imagefile
-                                                        .readAsBytes(); //convert to bytes
-                                                base64string =
-                                                    base64.encode(imagebytes);
+                                                    Uint8List imagebytes =
+                                                        await imagefile
+                                                            .readAsBytes(); //convert to bytes
+                                                    base64string =
+                                                        base64.encode(imagebytes);
 
-                                                //
+                                                    //
 
-                                                String dataImages =
-                                                    '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                                    String dataImages =
+                                                        '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
-                                                Map<String, dynamic> jsondata =
-                                                    jsonDecode(dataImages);
-                                                myData1.add(jsondata);
-                                              }
-                                              print(followersVisibility);
-                                              print("final datatata");
+                                                    Map<String, dynamic> jsondata =
+                                                        jsonDecode(dataImages);
+                                                    myData1.add(jsondata);
+                                                  }
+                                                  print(followersVisibility);
+                                                  print("final datatata");
 
-                                              bodyController.text =
-                                                  lognoteController.text;
+                                                  bodyController.text =
+                                                      lognoteController.text;
 
-                                              var resMessage;
-                                              followersVisibility == false
-                                                  ? resMessage =
-                                                      await logNoteData(myData1)
-                                                  : resMessage =
-                                                      await createSendmessage(
-                                                          myData1);
+                                                  var resMessage;
+                                                  followersVisibility == false
+                                                      ? resMessage =
+                                                          await logNoteData(myData1)
+                                                      : resMessage =
+                                                          await createSendmessage(
+                                                              myData1);
 
-                                              if (resMessage['message'] == "success") {
-                                                print(resMessage['data']['att_count']);
-                                                print("attachment count ");
-                                                setState(() {
-                                                  _isSavingData = false;
-                                                  attachmentCount = resMessage['data']['att_count'].toString();
+                                                  if (resMessage['message'] == "success") {
+                                                    print(resMessage['data']['att_count']);
+                                                    print("attachment count ");
+                                                    setState(() {
+                                                      _isSavingData = false;
+                                                      attachmentCount = resMessage['data']['att_count'].toString();
 
-                                                  logDataHeader.clear();
-                                                  logDataTitle.clear();
-                                                  selectedImagesDisplay.clear();
+                                                      logDataHeader.clear();
+                                                      logDataTitle.clear();
+                                                      selectedImagesDisplay.clear();
 
-                                                  lognoteController.text = "";
-                                                  selectedImages.clear();
-                                                  myData1.clear();
-                                                  bodyController.text = "";
-                                                });
-                                              }
-                                            },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFFA256A),
-                                      )),
-                                ),
+                                                      lognoteController.text = "";
+                                                      selectedImages.clear();
+                                                      myData1.clear();
+                                                      bodyController.text = "";
+                                                    });
+                                                  }
+                                                },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFFA256A),
+                                          )),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
