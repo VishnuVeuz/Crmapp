@@ -1373,66 +1373,100 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Container(
-                        width: 450,
-                        height: 39,
-                        color: Color(0xFFF5F5F5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Container(
+                      // width: 450,
+                      // height: 39,
+                      color: Color(0xFFF5F5F5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
 
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 5, bottom: 5, left: 17, right: 0),
-                              child: Center(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, left: 17, right: 0),
+                            child: Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:contactsVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
+                                  ),
+                                ),
                                 child: TextButton(
                                   child: Text(
                                     "Contacts & Addresses",
                                     style:TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
-                                        color: Color(0xFF212121)),
+                                        color:contactsVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
                                   ),
                                   onPressed: (){
-                                    salesVisibility=false;
-                                    contactsVisibility=true;
-                                    internalVisibility=false;
+                                    setState(() {
+                                      salesVisibility=false;
+                                      contactsVisibility=true;
+                                      internalVisibility=false;
+                                    });
+
                                   },
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 5, bottom: 5, left: 0, right: 0),
-                              child: Center(
-                                child: TextButton(
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, left: 17, right: 0),
+                            child: Center(
+                              child: TextButton(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color:salesVisibility==true? Color(0XFFFA256B):
+                                          Colors.transparent,// Underline color
+                                          width: 2.0,        // Underline width
+                                        ),
+                                      ),
+                                    ),
                                     child: Text(
                                       "Sale & Purchase",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color: Color(0xFF212121)),
+                                          color:salesVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
                                     ),
-                                    onPressed: () {
-                                      setState(() {
-                                       salesVisibility=true;
-                                       contactsVisibility=false;
-                                       internalVisibility=false;
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
-                                    )),
-                              ),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                     salesVisibility=true;
+                                     contactsVisibility=false;
+                                     internalVisibility=false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 5, bottom: 5, left: 0, right: 20),
-                              child: Center(
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 5, bottom: 5, left: 0, right: 20),
+                            child: Center(
+                              child: Container(
+
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:internalVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
+                                  ),
+                                ),
                                 child: TextButton(
                                     child: Text(
                                       "Internal Notes",
@@ -1440,7 +1474,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontWeight: FontWeight.w600,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color: Color(0xFF212121)),
+                                          color:internalVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -1454,8 +1488,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     )),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
 
@@ -1880,59 +1914,81 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             padding: const EdgeInsets.only(
                                 top: 5, bottom: 5, left: 17, right: 0),
                             child: Center(
-                              child: TextButton(
-                                  child: Text(
-                                    "Send Message",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
-                                        color: Color(0xFF212121)),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:followersVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
                                   ),
-                                  onPressed: () async {
-                                    sendMailData = await sendMailsFollowers(
-                                        widget.customerId, "res.partner");
+                                ),
+                                child: TextButton(
+                                    child: Text(
+                                      "Send Message",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 13,
+                                          color: followersVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                    ),
+                                    onPressed: () async {
+                                      sendMailData = await sendMailsFollowers(
+                                          widget.customerId, "res.partner");
 
-                                    setState(() {
-                                      followersVisibility == true
-                                          ? followersVisibility = false
-                                          : followersVisibility = true;
-                                      lognoteVisibility==false
-                                          ? lognoteVisibility = false
-                                          : lognoteVisibility=false;
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
-                                  )),
+                                      setState(() {
+                                        followersVisibility == true
+                                            ? followersVisibility = false
+                                            : followersVisibility = true;
+                                        lognoteVisibility==false
+                                            ? lognoteVisibility = false
+                                            : lognoteVisibility=false;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF6F6F6),
+                                    )),
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 5, bottom: 5, left: 0, right: 0),
                             child: Center(
-                              child: TextButton(
-                                  child: Text(
-                                    "Log note",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
-                                        color: Color(0xFF212121)),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:lognoteVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      followersVisibility == false
-                                          ? followersVisibility = false
-                                          : followersVisibility = false;
-                                      lognoteVisibility==true
-                                          ? lognoteVisibility=false
-                                          : lognoteVisibility=true;
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
-                                  )),
+                                ),
+                                child: TextButton(
+                                    child: Text(
+                                      "Log note",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 13,
+                                          color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        followersVisibility == false
+                                            ? followersVisibility = false
+                                            : followersVisibility = false;
+                                        lognoteVisibility==true
+                                            ? lognoteVisibility=false
+                                            : lognoteVisibility=true;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF6F6F6),
+                                    )),
+                              ),
                             ),
                           ),
                           Padding(
