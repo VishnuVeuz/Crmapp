@@ -1378,7 +1378,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       // height: 39,
                       color: Color(0xFFF5F5F5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                         children: [
                           Padding(
@@ -1397,7 +1397,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 ),
                                 child: TextButton(
                                   child: Text(
-                                    "Contacts & Addresses",
+                                    "Contacts &\n Addresses",
                                     style:TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
@@ -1418,19 +1418,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left: 17, right: 0),
+                                top: 5, bottom: 5, left: 0, right: 0),
                             child: Center(
-                              child: TextButton(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color:salesVisibility==true? Color(0XFFFA256B):
-                                          Colors.transparent,// Underline color
-                                          width: 2.0,        // Underline width
-                                        ),
-                                      ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:salesVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
                                     ),
+                                  ),
+                                ),
+                                child: TextButton(
                                     child: Text(
                                       "Sale & Purchase",
                                       style: TextStyle(
@@ -1439,17 +1439,17 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontSize: 13,
                                           color:salesVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
                                     ),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                     salesVisibility=true;
-                                     contactsVisibility=false;
-                                     internalVisibility=false;
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
-                                  )),
+                                    onPressed: () {
+                                      setState(() {
+                                       salesVisibility=true;
+                                       contactsVisibility=false;
+                                       internalVisibility=false;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF6F6F6),
+                                    )),
+                              ),
                             ),
                           ),
                           Padding(
