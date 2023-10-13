@@ -1302,57 +1302,70 @@ class _LeadDetailState extends State<LeadDetail> {
                       thickness: 2,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: Text("Tags",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish',
-                            fontSize: 12,
-                            color: Color(0xFF666666))),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, right: 0, top: 5),
-                    child: Container(
-                      width: MediaQuery.of(context).size.width / 1.1,
-                      height: 20,
-                      //color: Colors.pinkAccent,
 
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: tags!.length ?? 0,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.only(right: 8.0, top: 4),
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                  color:
-                                      Color(int.parse(tags![index]["color"])),
-                                ),
-                                width: 65,
-                                height: 20,
-                                child: Center(
-                                  child: Text(
-                                    tags![index]["name"].toString(),
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 10),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        },
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 25),
+                        child: Text("Tags",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Mulish',
+                                fontSize: 12,
+                                color: Color(0xFF666666))),
                       ),
-                    ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25, top: 0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width /1.5,
+                            // height: 20,
+                          //  color: Colors.pinkAccent,
+
+
+
+                            child: Wrap(
+                              alignment: WrapAlignment.end,
+                              direction: Axis.horizontal, // Direction is horizontal
+                              spacing: 8.0, // Space between items
+                              runSpacing: 8.0, // Space between rows (if wrapping)
+                              children: List.generate(tags!.length ?? 0, (int index) {
+                                return FractionallySizedBox(
+                                    widthFactor: null,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                                      color: Color(int.parse(tags![index]["color"])),
+                                    ),
+                                    width: 59,
+                                    height: 19,
+                                    child: Center(
+                                      child: Text(
+                                        tags![index]["name"].toString(),
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 10,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+
+
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+
+
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
