@@ -581,17 +581,32 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 15, vertical: 0),
+                                        horizontal: 25, vertical: 0),
                                     child: SearchChoices.single(
-                                      //items: items,
+                                      //items: items
+                                      fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                        return Container(
+                                          padding: const EdgeInsets.all(0),
+                                          child: InputDecorator(
+                                            decoration: InputDecoration(
+                                              labelText:'Organizer',
+                                              isDense: true,
+                                              labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                              fillColor: Colors.white,
+
+                                            ),
+                                            child: fieldWidget,
+                                          ),
+                                        );
+                                      },
                                       value: orgnizerName,
-                                      hint: Text(
-                                        "Organizer",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            color: Colors.black,fontFamily: 'Mulish'),
-                                      ),
+                                      // hint: Text(
+                                      //   "Organizer",
+                                      //   style: TextStyle(
+                                      //       fontWeight: FontWeight.w400,
+                                      //       fontSize: 12,
+                                      //       color: Colors.black,fontFamily: 'Mulish'),
+                                      // ),
 
                                       searchHint: null,
                                       autofocus: false,
@@ -677,7 +692,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 22, vertical: 0),
+                                        horizontal: 25, vertical: 5),
                                     child: MultiSelectDropDown.network(
                                       hint: "Reminders",
                                       selectedOptions: editReminders
@@ -789,7 +804,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 22, vertical: 5),
+                                        horizontal: 25, vertical: 5),
                                     child: MultiSelectDropDown.network(
                                       hint: "Tags",
                                       selectedOptions: editTagName
@@ -881,18 +896,36 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 .size
                                 .width,
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding:
                                   const EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 0),
+                                      horizontal: 25, vertical: 0),
                                   child: SearchChoices.single(
-                                    hint: Text(
-                                      "Privacy",
-                                      style: TextStyle(fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
-                                    ),
+                                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                      return Container(
+                                        padding: const EdgeInsets.all(0),
+                                        child: InputDecorator(
+                                          decoration: InputDecoration(
+                                            labelText:'Privacy',
+                                            isDense: true,
+                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                            fillColor: Colors.white,
+
+                                          ),
+                                          child: fieldWidget,
+                                        ),
+                                      );
+                                    },
+
+
+                                    // hint: Text(
+                                    //   "Privacy",
+                                    //   style: TextStyle(fontWeight: FontWeight.w400,
+                                    //       fontSize: 12,
+                                    //       color: Colors.black,fontFamily: 'Mulish'),
+                                    // ),
                                     items: privacylist.map<DropdownMenuItem<String>>((
                                         String value) {
                                       return DropdownMenuItem<String>(
@@ -919,14 +952,31 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 Padding(
                                   padding:
                                   const EdgeInsets.symmetric(
-                                      horizontal: 15, vertical: 0),
+                                      horizontal: 25, vertical: 0),
                                   child: SearchChoices.single(
-                                    hint: Text(
-                                      "Show as",
-                                      style: TextStyle(fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
-                                    ),
+                                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                      return Container(
+                                        padding: const EdgeInsets.all(0),
+                                        child: InputDecorator(
+                                          decoration: InputDecoration(
+                                            labelText:'Show as',
+                                            isDense: true,
+                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                            fillColor: Colors.white,
+
+                                          ),
+                                          child: fieldWidget,
+                                        ),
+                                      );
+                                    },
+
+
+                                    // hint: Text(
+                                    //   "Show as",
+                                    //   style: TextStyle(fontWeight: FontWeight.w400,
+                                    //       fontSize: 12,
+                                    //       color: Colors.black,fontFamily: 'Mulish'),
+                                    // ),
                                     items: showaslist.map<DropdownMenuItem<String>>((
                                         String value) {
                                       return DropdownMenuItem<String>(

@@ -454,15 +454,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           visible: cmpVisibility,
                           child: Padding(
                             padding:
-                            const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
                               //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText:'Company Name',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
 
                               value: companyName,
-                              hint: Text(
-                                "Company Name",
-                                style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                              ),
+                              // hint: Text(
+                              //   "Company Name",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
                               searchHint: null,
                               autofocus: false,
                               onClear: () {
@@ -608,14 +623,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Country',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: countryName,
-                            hint: Text(
-                              "Country",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Country",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -699,13 +730,29 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'State',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: stateName,
-                            hint: Text(
-                              "State",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "State",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: cmpbasedVisible
@@ -829,14 +876,31 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Company',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
+
                             value: customerCampanyName,
-                            hint: Text(
-                              "Company",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Company",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1053,15 +1117,31 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Language',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
 
                             value: languageName,
-                            hint: Text(
-                              "Language",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Language",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: cmpbasedVisible
@@ -1134,15 +1214,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Title',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: titleName,
-                            hint: Text(
-                              "Title",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Title",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1216,7 +1311,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: MultiSelectDropDown.network(
                             hint: 'Tags',
                             hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
@@ -1281,14 +1376,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Salesperson',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: salespersonName,
-                            hint: Text(
-                              "Salesperson",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Salesperson",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1370,15 +1481,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Payment Terms',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: paymenttermsName,
-                            hint: Text(
-                              "Payment Terms",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Payment Terms",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1446,15 +1572,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Pricelist',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: pricelistName,
-                            hint: Text(
-                              "Pricelist",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Pricelist",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1535,14 +1676,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Fiscal Position',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: fiscalpositionName,
-                            hint: Text(
-                              "Fiscal Position",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Fiscal Position",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -2167,14 +2324,31 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 0),
+                            horizontal: 10, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  labelText:'Country',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
+
+
                           value: alertCountryName,
-                          hint: Text(
-                            "Country",
-                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
+                          // hint: Text(
+                          //   "Country",
+                          //   style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                          // ),
 
                           searchHint: null,
                           autofocus: false,
@@ -2263,13 +2437,29 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 0),
+                            horizontal: 10, vertical: 0),
                         child: SearchChoices.single(
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  labelText:'State',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
+
                           value: alertStateName,
-                          hint: Text(
-                            "State",
-                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
+                          // hint: Text(
+                          //   "State",
+                          //   style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {
@@ -2386,12 +2576,27 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 0, vertical: 5),
                         child: SearchChoices.single(
                           //items: items,
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  labelText:'Title',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
 
                           value: alerTitleName,
-                          hint: Text(
-                            "Title",
-                            style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
+                          // hint: Text(
+                          //   "Title",
+                          //   style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {

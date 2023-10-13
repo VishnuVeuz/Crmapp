@@ -349,7 +349,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
                             validator: (value) {
@@ -358,11 +358,29 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               }
                               return null;
                             },
+
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Customer',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
+
                             value: customerName,
-                            hint: Text(
-                              "Customer",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Customer",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) async {
@@ -442,15 +460,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Quotation Template',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: quotationtemplateName,
-                            hint: Text(
-                              "Quotation Template",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Quotation Template",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -542,7 +575,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
                             validator: (value) {
@@ -551,12 +584,27 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               }
                               return null;
                             },
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Pricelist',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: pricelistName,
-                            hint: Text(
-                              "Pricelist",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Pricelist",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -629,15 +677,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Payment Terms',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
 
                             value: paymenttermsName,
-                            hint: Text(
-                              "Payment Terms",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Payment Terms",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -716,14 +779,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Salesperson',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: salespersonName,
-                            hint: Text(
-                              "Salesperson",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Salesperson",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -792,13 +871,29 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Sales Team',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: salesteamName,
-                            hint: Text(
-                              "Sales Team",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Sales Team",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -865,7 +960,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             validator: (value) {
                               if(value==null){
@@ -873,11 +968,27 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               }
                               return null;
                             },
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Company',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: companyName,
-                            hint: Text(
-                              "Company",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Company",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1024,7 +1135,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: MultiSelectDropDown.network(
                             hint: 'Tags',
                             hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
@@ -1088,12 +1199,28 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
-                            hint: Text(
-                              "Shipping policy",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Shipping policy',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
+                            // hint: Text(
+                            //   "Shipping policy",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             items: list.map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -1148,14 +1275,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Fiscal Position',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: fiscalpositionName,
-                            hint: Text(
-                              "Fiscal Position",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Fiscal Position",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1235,14 +1378,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
                             //items: items,
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Campaign',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: campaignName,
-                            hint: Text(
-                              "Campaign",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Campaign",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1312,13 +1471,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Medium',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: mediumName,
-                            hint: Text(
-                              "Medium",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Medium",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1382,13 +1558,29 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                              return Container(
+                                padding: const EdgeInsets.all(0),
+                                child: InputDecorator(
+                                  decoration: InputDecoration(
+                                    labelText:'Source',
+                                    isDense: true,
+                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    fillColor: Colors.white,
+
+                                  ),
+                                  child: fieldWidget,
+                                ),
+                              );
+                            },
+
                             value: sourceName,
-                            hint: Text(
-                              "Source",
-                              style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            ),
+                            // hint: Text(
+                            //   "Source",
+                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                            // ),
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -2524,7 +2716,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       ),
                       Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
                           validator: (value) {
@@ -2533,11 +2725,27 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             }
                             return null;
                           },
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  labelText:'Product',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
+
                           value: productTiltleName,
-                          hint: Text(
-                            "Product",
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
+                          // hint: Text(
+                          //   "Product",
+                          //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) async {
@@ -2663,15 +2871,30 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       ),
                       Padding(
                         padding:
-                        const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  labelText:'Uom',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
 
                           value: productUomName,
-                          hint: Text(
-                            "Uom",
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                          ),
+                          // hint: Text(
+                          //   "Uom",
+                          //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {
@@ -2778,7 +3001,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         visible: tvisibility,
                         child: Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                           child: MultiSelectDropDown.network(
 
                             hint: 'Taxes',
