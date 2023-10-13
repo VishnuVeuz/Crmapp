@@ -2334,7 +2334,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     bottom: BorderSide(
                                       color:internalVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2374,7 +2374,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     bottom: BorderSide(
                                       color:otherinfoVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2610,7 +2610,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   bottom: BorderSide(
                                     color:followersVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2652,7 +2652,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   bottom: BorderSide(
                                     color:lognoteVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),

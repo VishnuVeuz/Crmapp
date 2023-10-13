@@ -1353,7 +1353,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     bottom: BorderSide(
                                       color:contactsVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1388,7 +1388,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     bottom: BorderSide(
                                       color:salesVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1425,7 +1425,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     bottom: BorderSide(
                                       color:internalVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1882,7 +1882,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     bottom: BorderSide(
                                       color:followersVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1924,7 +1924,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     bottom: BorderSide(
                                       color:lognoteVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
