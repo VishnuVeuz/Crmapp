@@ -101,7 +101,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
       attachmentVisibility = false,
       lognoteoptions = true,
       starImage = false,
-      followersVisibility = false,
+      followersVisibility = true,
       recipientsVisibility = false,
       otherinfoVisibility = false,
       lognoteVisibility = false;

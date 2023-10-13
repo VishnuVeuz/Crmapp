@@ -104,7 +104,7 @@ class _LeadDetailState extends State<LeadDetail> {
       scheduleVisibiltyToday = false,
       scheduleVisibiltyPlanned = false,
       attachmentVisibility = false,
-      followersVisibility = false,
+      followersVisibility = true,
       lognoteVisibility = false,
       recipientsVisibility = false,
       internalVisibility = true,

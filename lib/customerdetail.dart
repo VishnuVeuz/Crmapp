@@ -100,11 +100,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
       attachmentVisibility = false,
       starImage = false,
       lognoteoptions = true,
-      followersVisibility = false,
+      followersVisibility = true,
       recipientsVisibility = false,
       internalVisibility = false,
       salesVisibility = false,
-      contactsVisibility = false,
+      contactsVisibility = true,
        lognoteVisibility = false;
   bool isCheckedFollowers = false;
 

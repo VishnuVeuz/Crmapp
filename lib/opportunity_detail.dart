@@ -127,7 +127,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       scheduleVisibiltyToday = false,
       scheduleVisibiltyPlanned = false,
       attachmentVisibility = false,
-      internalVisibility = false,
+      internalVisibility = true,
       otherinfoVisibility = false,
       smartbuttonVisible = true,
       starImage = false,
@@ -135,7 +135,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       lognoteVisibility = false,
 
       recipientsVisibility = false,
-      followersVisibility = false;
+      followersVisibility = true;
 
   int? scheduleViewIndex;
 
