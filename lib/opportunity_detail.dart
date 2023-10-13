@@ -2224,58 +2224,80 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             padding: const EdgeInsets.only(
                                 top: 5, bottom: 5, left: 17, right: 0),
                             child: Center(
-                              child: TextButton(
-                                  child: Text(
-                                    "Internal Notes",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
-                                        color: Color(0xFF212121)),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:internalVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
                                   ),
-                                  onPressed: ()  {
-                                    setState(() {
-                                      internalVisibility == true
-                                          ? internalVisibility = false
-                                          : internalVisibility = true;
+                                ),
+                                child: TextButton(
+                                    child: Text(
+                                      "Internal Notes",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 13,
+                                          color:internalVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                    ),
+                                    onPressed: ()  {
+                                      setState(() {
+                                        internalVisibility == true
+                                            ? internalVisibility = false
+                                            : internalVisibility = true;
 
-                                      otherinfoVisibility == false
-                                          ? otherinfoVisibility = false
-                                          : otherinfoVisibility = false;
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
-                                  )),
+                                        otherinfoVisibility == false
+                                            ? otherinfoVisibility = false
+                                            : otherinfoVisibility = false;
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF6F6F6),
+                                    )),
+                              ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 5, bottom: 5, left: 40, right: 0),
                             child: Center(
-                              child: TextButton(
-                                  child: Text(
-                                    "Other Information",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
-                                        color: Color(0xFF212121)),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color:otherinfoVisibility==true? Color(0XFFFA256B):
+                                      Colors.transparent,// Underline color
+                                      width: 2.0,        // Underline width
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      otherinfoVisibility == true
-                                          ? otherinfoVisibility = false
-                                          : otherinfoVisibility = true;
-                                      internalVisibility == false
-                                          ? internalVisibility = false
-                                          : internalVisibility = false;
+                                ),
+                                child: TextButton(
+                                    child: Text(
+                                      "Other Information",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 13,
+                                          color: otherinfoVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        otherinfoVisibility == true
+                                            ? otherinfoVisibility = false
+                                            : otherinfoVisibility = true;
+                                        internalVisibility == false
+                                            ? internalVisibility = false
+                                            : internalVisibility = false;
 
-                                    });
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
-                                  )),
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      primary: Color(0xFFF6F6F6),
+                                    )),
+                              ),
                             ),
                           ),
 
@@ -2478,59 +2500,81 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Send Message",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:followersVisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () async {
-                                  sendMailData = await sendMailsFollowers(
-                                      widget.opportunityId, "crm.lead");
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Send Message",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color:followersVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                  ),
+                                  onPressed: () async {
+                                    sendMailData = await sendMailsFollowers(
+                                        widget.opportunityId, "crm.lead");
 
-                                  setState(() {
-                                    followersVisibility == true
-                                        ? followersVisibility = false
-                                        : followersVisibility = true;
-                                    lognoteVisibility==false
-                                        ? lognoteVisibility = false
-                                        : lognoteVisibility=false;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                                    setState(() {
+                                      followersVisibility == true
+                                          ? followersVisibility = false
+                                          : followersVisibility = true;
+                                      lognoteVisibility==false
+                                          ? lognoteVisibility = false
+                                          : lognoteVisibility=false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Log note",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:lognoteVisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    followersVisibility == false
-                                        ? followersVisibility = false
-                                        : followersVisibility = false;
-                                    lognoteVisibility==true
-                                        ? lognoteVisibility=false
-                                        : lognoteVisibility=true;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Log note",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      followersVisibility == false
+                                          ? followersVisibility = false
+                                          : followersVisibility = false;
+                                      lognoteVisibility==true
+                                          ? lognoteVisibility=false
+                                          : lognoteVisibility=true;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
