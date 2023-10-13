@@ -186,36 +186,27 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                   children: <Widget>[
                     ButtonsTabBar(
                       buttonMargin: const EdgeInsets.fromLTRB(10, 5, 2, 5),
-
                       contentPadding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                       physics: BouncingScrollPhysics(),
-                      backgroundColor: Colors.pinkAccent,
+                       backgroundColor: Colors.pinkAccent,
+
+                     // borderColor: Colors.red,
+                     //  borderWidth: 2,
+                      unselectedBorderColor: Colors.transparent,
                       unselectedBackgroundColor: const Color(0XFFEDF2FF),
+
+
                       unselectedLabelStyle:
                       const TextStyle(color: Color(0XFF3C3F4E)),
                       labelStyle: const TextStyle(
                           fontFamily: 'Mulish',
                           color: Colors.white, fontWeight: FontWeight.normal),
-                      // tabs: const [
-                      //   Tab(
-                      //     text: "In Progress",
-                      //   ),
-                      //   Tab(
-                      //     text: "Completed",
-                      //   ),
-                      //   Tab(
-                      //     text: "Cancelled",
-                      //   ),
-                      // ],
+
+
+
                         onTap: (index){
                          print(opportunityTypes[index]['name']);
-                         // setState(() {
-                         //   // opportunityTypesId= opportunityTypes[index]['id'];
-                         //  // opportunityTypesId= 4;
-                         //  print(opportunityTypesId);
-                         //    print("opportunityTypesId");
-                         //
-                         // });
+
                           },
                       tabs: List<Widget>.generate(
                         opportunityTypes.length,
@@ -232,6 +223,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
 
                     ),
+
                     Expanded(
                       child: TabBarView(
                        // controller: ,

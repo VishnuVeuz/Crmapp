@@ -1312,7 +1312,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           stageColorIndex == index ?
 
                                           Image.asset(
-                                              'images/bluebtn.png'):
+                                              'images/bluebtnfirst.png'):
                                           Image.asset(
                                               'images/greenbtnfirst.png'):
 
