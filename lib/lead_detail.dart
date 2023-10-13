@@ -1321,7 +1321,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Padding(
                           padding: const EdgeInsets.only(left: 25, right: 25, top: 0),
                           child: Container(
-                            width: MediaQuery.of(context).size.width /1.5,
+                            width: MediaQuery.of(context).size.width /1.8,
                             // height: 20,
                           //  color: Colors.pinkAccent,
 
