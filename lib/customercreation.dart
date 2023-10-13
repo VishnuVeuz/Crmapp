@@ -1800,25 +1800,68 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                         ),
                         Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: internalnotesController,
-                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Internal Notes',
-                                labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                          padding: const EdgeInsets.only(left: 25, top: 10),
+                          child: Text(
+
+                            "Internal Notes", style: TextStyle(fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,fontFamily: 'Mulish'),),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25),
+                          child: Container(
+                            width: MediaQuery.of(context)
+                                .size
+                                .width /
+                                1,
+
+                            // height: 40,
+                            //color: Colors.red,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 0),
+                              child: TextField(
+                                  textAlignVertical:
+                                  TextAlignVertical.top,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Mulish',
+                                    fontSize: 11,
+                                    color: Color(0xFF000000),
+                                  ),
+
+
+                                  maxLines: null,
+                                  controller: internalnotesController,
+                                  decoration:
+                                  const InputDecoration(
+                                      border:
+                                      InputBorder.none,
+                                      hintText:
+                                      "Internal Notes",
+                                      hintStyle: TextStyle(
+                                        //fontFamily: "inter",
+                                          fontWeight:
+                                          FontWeight
+                                              .w400,
+                                          fontFamily:
+                                          'Mulish',
+                                          fontSize: 11,
+                                          color: Color(
+                                              0xFFAFAFAF)))),
+                            ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 20, bottom: 30),
+                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 1,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0, bottom: 30),
                           child: Center(
                             child: SizedBox(
                               width: 346,
