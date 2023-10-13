@@ -116,6 +116,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   String? scheduleDays,
       scheduleactivityType,
+
       scheduleSummary,
       scheduleUser,
       scheduleCreateDate,
