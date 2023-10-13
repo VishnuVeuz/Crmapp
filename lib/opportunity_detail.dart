@@ -135,7 +135,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       lognoteVisibility = false,
 
       recipientsVisibility = false,
-      followersVisibility = true;
+      followersVisibility = false;
 
   int? scheduleViewIndex;
 
@@ -230,8 +230,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   opportunityname!,
                   style: TextStyle(
                       fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                       color: Colors.white,
                       decoration: TextDecoration.none),
                 ),
@@ -240,7 +240,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           ),
           leading: Builder(
             builder: (context) => Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left:15),
               child: IconButton(
                 icon: Image.asset("images/back.png"),
                 onPressed: () {
@@ -1061,7 +1061,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 10),
+                                    padding: const EdgeInsets.only(left:15),
                                     child: Container(
                                       width: 30,
                                       child: IconButton(
@@ -1976,7 +1976,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             left: 25, top: 13, bottom: 10),
                         child: Text("Optional Products",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                                 fontFamily: 'Mulish',
                                 fontSize: 13,
                                 color: Color(0xFF212121))),
@@ -2238,7 +2238,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Text(
                                       "Internal Notes",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
                                           color:internalVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
@@ -2278,7 +2278,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Text(
                                       "Other Information",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
                                           color: otherinfoVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
@@ -2316,9 +2316,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           padding: const EdgeInsets.only(left: 25,right: 25),
                           child: Text(internalnotes!,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w400,
+                                  fontWeight: FontWeight.w500,
                                   fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   color: Color(0xFF787878))),
                         ),
                       ),
@@ -2514,7 +2514,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   child: Text(
                                     "Send Message",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
                                         color:followersVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
@@ -2556,7 +2556,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   child: Text(
                                     "Log note",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
                                         color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
@@ -2585,7 +2585,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text(
                                   "Schedule Activity",
                                   style: TextStyle(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FontWeight.w500,
                                       fontFamily: 'Mulish',
                                       fontSize: 13,
                                       color: Color(0xFF212121)),
@@ -2645,7 +2645,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left: 205),
+                                  padding: const EdgeInsets.only(left: 200),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2687,7 +2687,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 205),
+                                  padding: const EdgeInsets.only(left: 200),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -3202,25 +3202,28 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Visibility(
                           visible: followersVisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 78),
+                            padding: const EdgeInsets.only(left:25),
                             child: Container(
                               // color: Colors.red,
                               child: Row(
                                 children: [
                                   Text(
                                     "To:",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey,
-                                        fontSize: 11,
-                                        fontFamily: 'Mulish'),
+                                    style:TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF666666),
+                                      fontSize: 10,
+                                      fontFamily: 'Mulish',
+                                    ),
                                   ),
                                   Text(
                                     " Followers of",
                                     style: TextStyle(
-                                        color: Colors.grey[700],
-                                        fontSize: 11,
-                                        fontFamily: 'Mulish'),
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF666666),
+                                      fontSize: 10,
+                                      fontFamily: 'Mulish',
+                                    ),
                                   ),
                                   SizedBox(
                                     width: 5,
@@ -3232,9 +3235,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       child: Text(
                                         opportunityname!,
                                         style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 11,
-                                            fontFamily: 'Mulish'),
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF414141),
+                                          fontSize: 10,
+                                          fontFamily: 'Mulish',
+                                        ),
                                       )),
                                 ],
                               ),
@@ -3257,15 +3262,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               itemBuilder: (_, i) {
                                 isCheckedMail = sendMailData[i]['selected'];
                                 return Padding(
-                                  padding: const EdgeInsets.only(left: 65),
+                                  padding: const EdgeInsets.only(left:8),
                                   child: Container(
-                                    height: 13,
+                                    height: 15,
                                     child: Row(
                                       children: [
                                         Transform.scale(
-                                          scale: 0.6,
+                                          scale: 0.7,
                                           child: Checkbox(
-                                            activeColor: Color(0xFFF9246A),
+                                            shape:CircleBorder(),
+                                            activeColor: Color(0xFF3D418E),
                                             value: isCheckedMail,
                                             onChanged: (bool? value) {
                                               print(value);
@@ -3280,10 +3286,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         ),
                                         Text(
                                           sendMailData[i]['name'],
-                                          style: TextStyle(
-                                              color: Colors.black,
+                                          style:  TextStyle(
+                                              color: Color(0xFF666666),
                                               fontSize: 11,
-                                              fontFamily: 'Mulish'),
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w500),
                                         )
                                       ],
                                     ),
@@ -3306,7 +3313,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 children: [
                                   salesperImg != ""
                                       ? Padding(
-                                          padding: const EdgeInsets.only(left: 30),
+                                          padding: const EdgeInsets.only(left:23),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -3327,7 +3334,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           ),
                                         )
                                       : Padding(
-                                          padding: const EdgeInsets.only(left: 30),
+                                          padding: const EdgeInsets.only(left:23),
                                           child: Container(
                                             width: 30,
                                             height: 30,
@@ -3351,9 +3358,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         ),
                                   Padding(
                                     padding:
-                                        const EdgeInsets.only(left: 20, right: 20),
+                                        const EdgeInsets.only(left:15, right: 20),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      width: MediaQuery.of(context).size.width / 1.34,
                                       //height: 46,
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -3361,78 +3368,77 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           color: Color(0xFFF6F6F6),
                                           border:
                                               Border.all(color: Color(0xFFEBEBEB))),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      child: Row(
                                         children: [
-                                          Container(
-                                            width: MediaQuery.of(context).size.width /
-                                                1.4,
-                                            // height: 40,
-                                            // color: Colors.red,
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.only(left: 10),
-                                              child: TextField(
-                                                  textAlignVertical:
-                                                      TextAlignVertical.top,
-                                                  //expands: true,
-                                                  maxLines: null,
-                                                  controller: lognoteController,
-                                                  decoration: const InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText:
-                                                          "Send a message to followers",
-                                                      hintStyle: TextStyle(
-
-                                                          //fontFamily: "inter",
-                                                          fontWeight: FontWeight.w400,
-                                                          fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color: Color(0xFFAFAFAF)))),
-                                            ),
-                                          ),
-                                          Divider(
-                                            color: Colors.grey[350],
-                                            thickness: 1,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              IconButton(
-                                                icon: Image.asset("images/pin.png"),
-                                                onPressed: () {
-                                                  myAlert("lognote");
-                                                },
+                                              Container(
+                                                width: MediaQuery.of(context).size.width /
+                                                    1.8,
+                                                // height: 40,
+                                                // color: Colors.red,
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(left: 10),
+                                                  child: TextField(
+                                                      textAlignVertical:
+                                                          TextAlignVertical.top,
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 11,
+                                                        color: Color(0xFF000000),
+                                                      ),
+                                                      //expands: true,
+                                                      maxLines: null,
+                                                      controller: lognoteController,
+                                                      decoration: const InputDecoration(
+                                                          border: InputBorder.none,
+                                                          hintText:
+                                                              "Send a message to followers",
+                                                          hintStyle:  TextStyle(
+                                                            //fontFamily: "inter",
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w400,
+                                                              fontFamily:
+                                                              'Mulish',
+                                                              fontSize: 11,
+                                                              color: Color(
+                                                                  0xFFAFAFAF)))),
+                                                ),
                                               ),
-                                              IconButton(
-                                                  onPressed: () async {
-                                                    recipient!.clear();
-                                                    await defaultSendmsgvalues();
-                                                    setState(() {
-                                                      recipientsVisibility == true
-                                                          ? recipientsVisibility = false
-                                                          : recipientsVisibility = true;
 
 
-                                                    });
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                              context) =>
-                                                          _buildSendmessagePopupDialog(
-                                                              context, 0),
-                                                    ).then(
-                                                        (value) => setState(() {}));
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.arrow_outward_rounded,
-                                                    size: 18,
-                                                    color: Colors.grey[700],
-                                                  ))
                                             ],
                                           ),
+                                          IconButton(
+                                              onPressed: () async {
+                                                recipient!.clear();
+                                                await defaultSendmsgvalues();
+                                                setState(() {
+                                                  recipientsVisibility == true
+                                                      ? recipientsVisibility = false
+                                                      : recipientsVisibility = true;
+
+
+                                                });
+
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (BuildContext
+                                                  context) =>
+                                                      _buildSendmessagePopupDialog(
+                                                          context, 0),
+                                                ).then(
+                                                        (value) => setState(() {}));
+                                              },
+                                              icon: Icon(
+                                                Icons.arrow_outward_rounded,
+                                                size: 18,
+                                                color: Colors.grey[700],
+                                              )),
                                         ],
                                       ),
                                     ),
@@ -3517,84 +3523,95 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 10, left: 80, top: 5),
-                                child: SizedBox(
-                                  width: 73,
-                                  height: 28,
-                                  child: ElevatedButton(
-                                      child: Center(
-                                        child: Text(
-                                          "Send",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 60),
+                                    child: Container(
+                                      child: IconButton(
+                                        icon: Image.asset("images/pin.png"),
+                                        onPressed: () {
+                                          myAlert("lognote");
+                                        },
                                       ),
-                                      onPressed:  _isSavingData
-                                          ? null // Disable the button if saving is in progress
-                                          :() async {
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25,top: 3),
+                                    child: SizedBox(
+                                      width: 55,
+                                      height: 30,
+                                      child: ElevatedButton(
+                                          child: Center(
+                                              child:SvgPicture.asset("images/sendd.svg")
 
-                                        setState(() {
-                                          _isSavingData=true;
-                                        });
-                                        for (int i = 0;
-                                        i < selectedImages.length;
-                                        i++) {
-                                          imagepath =
-                                              selectedImages[i].path.toString();
-                                          File imagefile =
-                                          File(imagepath); //convert Path to File
-                                          Uint8List imagebytes = await imagefile
-                                              .readAsBytes(); //convert to bytes
-                                          base64string = base64.encode(imagebytes);
+                                            // ),
+                                          ),
+                                          onPressed:  _isSavingData
+                                              ? null // Disable the button if saving is in progress
+                                              :() async {
 
-                                          // base64string1.add(
-                                          //     base64string);
-                                          //
+                                            setState(() {
+                                              _isSavingData=true;
+                                            });
+                                            for (int i = 0;
+                                            i < selectedImages.length;
+                                            i++) {
+                                              imagepath =
+                                                  selectedImages[i].path.toString();
+                                              File imagefile =
+                                              File(imagepath); //convert Path to File
+                                              Uint8List imagebytes = await imagefile
+                                                  .readAsBytes(); //convert to bytes
+                                              base64string = base64.encode(imagebytes);
 
-                                          String dataImages =
-                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                              // base64string1.add(
+                                              //     base64string);
+                                              //
 
-                                          Map<String, dynamic> jsondata =
-                                          jsonDecode(dataImages);
-                                          myData1.add(jsondata);
-                                        }
-                                        // print(myData1);
-                                        // print("final datatata");
+                                              String dataImages =
+                                                  '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
-                                        bodyController.text = lognoteController.text;
+                                              Map<String, dynamic> jsondata =
+                                              jsonDecode(dataImages);
+                                              myData1.add(jsondata);
+                                            }
+                                            // print(myData1);
+                                            // print("final datatata");
 
-                                        var resMessage;
-                                        followersVisibility == false
-                                            ? resMessage = await logNoteData(myData1)
-                                            : resMessage =
-                                        await createSendmessage(myData1);
+                                            bodyController.text = lognoteController.text;
 
-                                        if (resMessage['message']  == "success") {
-                                          setState(() {
+                                            var resMessage;
+                                            followersVisibility == false
+                                                ? resMessage = await logNoteData(myData1)
+                                                : resMessage =
+                                            await createSendmessage(myData1);
 
-                                            _isSavingData=false;
-                                            attachmentCount = resMessage['data']['att_count'].toString();
+                                            if (resMessage['message']  == "success") {
+                                              setState(() {
 
-                                            logDataHeader.clear();
-                                            logDataTitle.clear();
-                                            selectedImagesDisplay.clear();
-                                            lognoteController.text = "";
-                                            selectedImages.clear();
-                                            myData1.clear();
-                                            bodyController.text = "";
-                                          });
-                                        }
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFFA256A),
-                                      )),
-                                ),
+                                                _isSavingData=false;
+                                                attachmentCount = resMessage['data']['att_count'].toString();
+
+                                                logDataHeader.clear();
+                                                logDataTitle.clear();
+                                                selectedImagesDisplay.clear();
+                                                lognoteController.text = "";
+                                                selectedImages.clear();
+                                                myData1.clear();
+                                                bodyController.text = "";
+                                              });
+                                            }
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFFA256A),
+                                          )),
+                                    ),
+                                  ),
+                                ],
                               ),
+
                             ],
                           ),
                         ),
@@ -3608,7 +3625,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 children: [
                                   salesperImg != ""
                                       ? Padding(
-                                    padding: const EdgeInsets.only(left: 30),
+                                    padding: const EdgeInsets.only(left:25),
                                     child: Container(
                                       width: 30,
                                       height: 30,
@@ -3629,7 +3646,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     ),
                                   )
                                       : Padding(
-                                    padding: const EdgeInsets.only(left: 30),
+                                    padding: const EdgeInsets.only(left:25),
                                     child: Container(
                                       width: 30,
                                       height: 30,
@@ -3653,9 +3670,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                   Padding(
                                     padding:
-                                    const EdgeInsets.only(left: 20, right: 20),
+                                    const EdgeInsets.only(left:15, right: 20),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width / 1.4,
+                                      width: MediaQuery.of(context).size.width / 1.34,
                                       //height: 46,
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -3663,77 +3680,79 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           color: Color(0xFFF6F6F6),
                                           border:
                                           Border.all(color: Color(0xFFEBEBEB))),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      child: Row(
                                         children: [
-                                          Container(
-                                            width: MediaQuery.of(context).size.width /
-                                                1.4,
-                                            // height: 40,
-                                            // color: Colors.red,
-                                            child: Padding(
-                                              padding:
-                                              const EdgeInsets.only(left: 10),
-                                              child: TextField(
-                                                  textAlignVertical:
-                                                  TextAlignVertical.top,
-                                                  //expands: true,
-                                                  maxLines: null,
-                                                  controller: lognoteController,
-                                                  decoration: const InputDecoration(
-                                                      border: InputBorder.none,
-                                                      hintText:
-                                                      "Log an internal note",
-                                                      hintStyle: TextStyle(
-
-                                                        //fontFamily: "inter",
-                                                          fontWeight: FontWeight.w400,
-                                                          fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color: Color(0xFFAFAFAF)))),
-                                            ),
-                                          ),
-                                          Divider(
-                                            color: Colors.grey[350],
-                                            thickness: 1,
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              IconButton(
-                                                icon: Image.asset("images/pin.png"),
-                                                onPressed: () {
-                                                  myAlert("lognote");
-                                                },
+                                              Container(
+                                                width: MediaQuery.of(context).size.width /
+                                                    1.8,
+                                                // height: 40,
+                                                // color: Colors.red,
+                                                child: Padding(
+                                                  padding:
+                                                  const EdgeInsets.only(left: 10),
+                                                  child: TextField(
+                                                      textAlignVertical:
+                                                      TextAlignVertical.top,
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 11,
+                                                        color: Color(0xFF000000),
+                                                      ),
+                                                      //expands: true,
+                                                      maxLines: null,
+                                                      controller: lognoteController,
+                                                      decoration: const InputDecoration(
+                                                          border: InputBorder.none,
+                                                          hintText:
+                                                          "Log an internal note",
+                                                          hintStyle: TextStyle(
+                                                            //fontFamily: "inter",
+                                                              fontWeight:
+                                                              FontWeight
+                                                                  .w400,
+                                                              fontFamily:
+                                                              'Mulish',
+                                                              fontSize: 11,
+                                                              color: Color(
+                                                                  0xFFAFAFAF)))),
+                                                ),
                                               ),
-                                              IconButton(
-                                                  onPressed: () async {
-                                                    recipient!.clear();
-                                                    await defaultSendmsgvalues();
-                                                    setState(() {
-                                                      recipientsVisibility == false
-                                                          ? recipientsVisibility = false
-                                                          : recipientsVisibility = false;
 
 
-                                                    });
-
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (BuildContext
-                                                      context) =>
-                                                          _buildSendmessagePopupDialog(
-                                                              context, 0),
-                                                    ).then(
-                                                            (value) => setState(() {}));
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.arrow_outward_rounded,
-                                                    size: 18,
-                                                    color: Colors.grey[700],
-                                                  ))
                                             ],
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 20),
+                                            child: IconButton(
+                                                onPressed: () async {
+                                                  recipient!.clear();
+                                                  await defaultSendmsgvalues();
+                                                  setState(() {
+                                                    recipientsVisibility == false
+                                                        ? recipientsVisibility = false
+                                                        : recipientsVisibility = false;
+
+
+                                                  });
+
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext
+                                                    context) =>
+                                                        _buildSendmessagePopupDialog(
+                                                            context, 0),
+                                                  ).then(
+                                                          (value) => setState(() {}));
+                                                },
+                                                icon: Icon(
+                                                  Icons.arrow_outward_rounded,
+                                                  size: 18,
+                                                  color: Colors.grey[700],
+                                                )),
                                           ),
                                         ],
                                       ),
@@ -3819,84 +3838,94 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 10, left: 80, top: 5),
-                                child: SizedBox(
-                                  width: 73,
-                                  height: 28,
-                                  child: ElevatedButton(
-                                      child: Center(
-                                        child: Text(
-                                          "Send",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 10,
-                                              color: Colors.white),
-                                        ),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 60),
+                                    child: Container(
+                                      child: IconButton(
+                                        icon: Image.asset("images/pin.png"),
+                                        onPressed: () {
+                                          myAlert("lognote");
+                                        },
                                       ),
-                                      onPressed:  _isSavingData
-                                          ? null // Disable the button if saving is in progress
-                                          :() async {
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25,top: 3),
+                                    child: SizedBox(
+                                      width: 55,
+                                      height: 30,
+                                      child: ElevatedButton(
+                                          child: Center(
+                                              child:SvgPicture.asset("images/sendd.svg")
 
-                                        setState(() {
-                                          _isSavingData=true;
-                                        });
+                                            // ),
+                                          ),
+                                          onPressed:  _isSavingData
+                                              ? null // Disable the button if saving is in progress
+                                              :() async {
 
-                                        for (int i = 0;
-                                        i < selectedImages.length;
-                                        i++) {
-                                          imagepath =
-                                              selectedImages[i].path.toString();
-                                          File imagefile =
-                                          File(imagepath); //convert Path to File
-                                          Uint8List imagebytes = await imagefile
-                                              .readAsBytes(); //convert to bytes
-                                          base64string = base64.encode(imagebytes);
+                                            setState(() {
+                                              _isSavingData=true;
+                                            });
+                                            for (int i = 0;
+                                            i < selectedImages.length;
+                                            i++) {
+                                              imagepath =
+                                                  selectedImages[i].path.toString();
+                                              File imagefile =
+                                              File(imagepath); //convert Path to File
+                                              Uint8List imagebytes = await imagefile
+                                                  .readAsBytes(); //convert to bytes
+                                              base64string = base64.encode(imagebytes);
 
-                                          // base64string1.add(
-                                          //     base64string);
-                                          //
+                                              // base64string1.add(
+                                              //     base64string);
+                                              //
 
-                                          String dataImages =
-                                              '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
+                                              String dataImages =
+                                                  '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
 
-                                          Map<String, dynamic> jsondata =
-                                          jsonDecode(dataImages);
-                                          myData1.add(jsondata);
-                                        }
-                                        // print(myData1);
-                                        // print("final datatata");
+                                              Map<String, dynamic> jsondata =
+                                              jsonDecode(dataImages);
+                                              myData1.add(jsondata);
+                                            }
+                                            // print(myData1);
+                                            // print("final datatata");
 
-                                        bodyController.text = lognoteController.text;
+                                            bodyController.text = lognoteController.text;
 
-                                        var resMessage;
-                                        followersVisibility == false
-                                            ? resMessage = await logNoteData(myData1)
-                                            : resMessage =
-                                        await createSendmessage(myData1);
+                                            var resMessage;
+                                            followersVisibility == false
+                                                ? resMessage = await logNoteData(myData1)
+                                                : resMessage =
+                                            await createSendmessage(myData1);
 
-                                        if (resMessage['message']  == "success") {
-                                          setState(() {
+                                            if (resMessage['message']  == "success") {
+                                              setState(() {
 
-                                            _isSavingData=false;
-                                            attachmentCount = resMessage['data']['att_count'].toString();
+                                                _isSavingData=false;
+                                                attachmentCount = resMessage['data']['att_count'].toString();
 
-                                            logDataHeader.clear();
-                                            logDataTitle.clear();
-                                            selectedImagesDisplay.clear();
-                                            lognoteController.text = "";
-                                            selectedImages.clear();
-                                            myData1.clear();
-                                            bodyController.text = "";
-                                          });
-                                        }
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFFA256A),
-                                      )),
-                                ),
+                                                logDataHeader.clear();
+                                                logDataTitle.clear();
+                                                selectedImagesDisplay.clear();
+                                                lognoteController.text = "";
+                                                selectedImages.clear();
+                                                myData1.clear();
+                                                bodyController.text = "";
+                                              });
+                                            }
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFFA256A),
+                                          )),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
