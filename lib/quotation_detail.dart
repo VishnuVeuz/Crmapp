@@ -699,75 +699,108 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Orderlines",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:ordervisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    optvisibility = false;
-                                    ordervisibility = true;
-                                    otherinfoVisibility =false;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Orderlines",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color: ordervisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      optvisibility = false;
+                                      ordervisibility = true;
+                                      otherinfoVisibility =false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 0, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Optional products",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:optvisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    optvisibility = true;
-                                    ordervisibility = false;
-                                    otherinfoVisibility = false;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Optional products",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color: optvisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      optvisibility = true;
+                                      ordervisibility = false;
+                                      otherinfoVisibility = false;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 0, right: 20),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Other Info",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:otherinfoVisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    optvisibility = false;
-                                    ordervisibility = false;
-                                    otherinfoVisibility = true;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Other Info",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color: otherinfoVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      optvisibility = false;
+                                      ordervisibility = false;
+                                      otherinfoVisibility = true;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                       ],
@@ -1973,60 +2006,83 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 20, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Send Message",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:followersVisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () async {
-                                  sendMailData = await sendMailsFollowers(
-                                      widget.quotationId, "sale.order");
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Send Message",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color:followersVisibility==true? Color(0XFFFA256B):
+                                        Color(0xFF212121)),
+                                  ),
+                                  onPressed: () async {
+                                    sendMailData = await sendMailsFollowers(
+                                        widget.quotationId, "sale.order");
 
-                                  setState(() {
-                                    followersVisibility == true
-                                        ? followersVisibility = false
-                                        : followersVisibility = true;
-                                    lognoteVisibility==false
-                                        ? lognoteVisibility = false
-                                        : lognoteVisibility=false;
+                                    setState(() {
+                                      followersVisibility == true
+                                          ? followersVisibility = false
+                                          : followersVisibility = true;
+                                      lognoteVisibility==false
+                                          ? lognoteVisibility = false
+                                          : lognoteVisibility=false;
 
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
                               top: 5, bottom: 5, left: 0, right: 0),
                           child: Center(
-                            child: TextButton(
-                                child: Text(
-                                  "Log note",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 13,
-                                      color: Color(0xFF212121)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color:lognoteVisibility==true? Color(0XFFFA256B):
+                                    Colors.transparent,// Underline color
+                                    width: 2.0,        // Underline width
+                                  ),
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    followersVisibility == false
-                                        ? followersVisibility = false
-                                        : followersVisibility = false;
-                                    lognoteVisibility==true
-                                        ? lognoteVisibility=false
-                                        : lognoteVisibility=true;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
-                                )),
+                              ),
+                              child: TextButton(
+                                  child: Text(
+                                    "Log note",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 13,
+                                        color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      followersVisibility == false
+                                          ? followersVisibility = false
+                                          : followersVisibility = false;
+                                      lognoteVisibility==true
+                                          ? lognoteVisibility=false
+                                          : lognoteVisibility=true;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color(0xFFF6F6F6),
+                                  )),
+                            ),
                           ),
                         ),
                         Padding(
