@@ -135,7 +135,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       lognoteVisibility = false,
 
       recipientsVisibility = false,
-      followersVisibility = false;
+      followersVisibility = true;
 
   int? scheduleViewIndex;
 
@@ -1284,108 +1284,108 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     ),
                   ),
 
-                  Visibility(
-                    visible: smartbuttonVisible,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Container(
-                        height: 50,
-                       // color: Colors.red,
-                        child: ListView.builder(
-                          // physics: NeverScrollableScrollPhysics(),
-                          //shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: opportunityStageTypes.length ?? 0,
-                          itemBuilder: (context, index) {
-                            print(index);
-                            print("final indexxx");
-                            return Padding(
-                              padding: const EdgeInsets.only(left: 5, top: 10),
-                              child: Row(
-                                children: [
-                                  InkWell(
-                                    child: Container(
-                                      child: Stack(
-                                        children: [
-
-                                          index == 0 ?
-                                          stageColorIndex == index ?
-
-                                          Image.asset(
-                                              'images/bluebtnfirst.png'):
-                                          Image.asset(
-                                              'images/greenbtnfirst.png'):
-
-                                          stageColorIndex == index ?
-                                          Image.asset(
-                                              'images/bluebtn.png'):
-                                          stageColorIndex! > index?Image.asset(
-                                              'images/greenbtn.png')
-                                              : Image.asset(
-                                                  'images/greybtn.png'),
-                                          Positioned.fill(
-                                              child: Align(
-                                                  alignment: Alignment.center,
-                                                  child: stageColorIndex ==
-                                                          index || stageColorIndex! >
-                                                      index
-                                                      ? Text(
-                                                          opportunityStageTypes[
-                                                              index]['name'],
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Mulish',
-                                                          ),
-                                                        )
-                                                      : Text(
-                                                          opportunityStageTypes[
-                                                              index]['name'],
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Mulish',
-                                                          ),
-                                                        )))
-                                        ],
-                                      ),
-                                    ),
-                                    onTap: () async {
-                                      print(
-                                          opportunityStageTypes[index]['name']);
-                                      print(opportunityStageTypes[index]['id']);
-                                      print("print(opportunityStageTypes");
-                                      String resmessage =
-                                          await StageChangeOpportunity(
-                                              opportunityStageTypes[index]
-                                                  ['id']);
-                                      int resmessagevalue =
-                                          int.parse(resmessage);
-                                      if (resmessagevalue != 0) {
-                                        setState(() {
-                                          stageColorIndex = index;
-                                        });
-
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           OpportunityDetail(
-                                        //               resmessagevalue)),
-                                        // );
-                                      }
-                                    },
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Visibility(
+                  //   visible: smartbuttonVisible,
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.only(left: 20, right: 20),
+                  //     child: Container(
+                  //       height: 50,
+                  //      // color: Colors.red,
+                  //       child: ListView.builder(
+                  //         // physics: NeverScrollableScrollPhysics(),
+                  //         //shrinkWrap: true,
+                  //         scrollDirection: Axis.horizontal,
+                  //         itemCount: opportunityStageTypes.length ?? 0,
+                  //         itemBuilder: (context, index) {
+                  //           print(index);
+                  //           print("final indexxx");
+                  //           return Padding(
+                  //             padding: const EdgeInsets.only(left: 5, top: 10),
+                  //             child: Row(
+                  //               children: [
+                  //                 InkWell(
+                  //                   child: Container(
+                  //                     child: Stack(
+                  //                       children: [
+                  //
+                  //                         index == 0 ?
+                  //                         stageColorIndex == index ?
+                  //
+                  //                         Image.asset(
+                  //                             'images/bluebtnfirst.png'):
+                  //                         Image.asset(
+                  //                             'images/greenbtnfirst.png'):
+                  //
+                  //                         stageColorIndex == index ?
+                  //                         Image.asset(
+                  //                             'images/bluebtn.png'):
+                  //                         stageColorIndex! > index?Image.asset(
+                  //                             'images/greenbtn.png')
+                  //                             : Image.asset(
+                  //                                 'images/greybtn.png'),
+                  //                         Positioned.fill(
+                  //                             child: Align(
+                  //                                 alignment: Alignment.center,
+                  //                                 child: stageColorIndex ==
+                  //                                         index || stageColorIndex! >
+                  //                                     index
+                  //                                     ? Text(
+                  //                                         opportunityStageTypes[
+                  //                                             index]['name'],
+                  //                                         style: TextStyle(
+                  //                                           color: Colors.white,
+                  //                                           fontSize: 12,
+                  //                                           fontFamily:
+                  //                                               'Mulish',
+                  //                                         ),
+                  //                                       )
+                  //                                     : Text(
+                  //                                         opportunityStageTypes[
+                  //                                             index]['name'],
+                  //                                         style: TextStyle(
+                  //                                           color: Colors.black,
+                  //                                           fontSize: 12,
+                  //                                           fontFamily:
+                  //                                               'Mulish',
+                  //                                         ),
+                  //                                       )))
+                  //                       ],
+                  //                     ),
+                  //                   ),
+                  //                   onTap: () async {
+                  //                     print(
+                  //                         opportunityStageTypes[index]['name']);
+                  //                     print(opportunityStageTypes[index]['id']);
+                  //                     print("print(opportunityStageTypes");
+                  //                     String resmessage =
+                  //                         await StageChangeOpportunity(
+                  //                             opportunityStageTypes[index]
+                  //                                 ['id']);
+                  //                     int resmessagevalue =
+                  //                         int.parse(resmessage);
+                  //                     if (resmessagevalue != 0) {
+                  //                       setState(() {
+                  //                         stageColorIndex = index;
+                  //                       });
+                  //
+                  //                       // Navigator.push(
+                  //                       //   context,
+                  //                       //   MaterialPageRoute(
+                  //                       //       builder: (context) =>
+                  //                       //           OpportunityDetail(
+                  //                       //               resmessagevalue)),
+                  //                       // );
+                  //                     }
+                  //                   },
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           );
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -1962,6 +1962,110 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                       ),
                     ],
+                  ),
+
+
+                  Visibility(
+                    visible: smartbuttonVisible,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: Container(
+                        height: 50,
+                        // color: Colors.red,
+                        child: ListView.builder(
+                          // physics: NeverScrollableScrollPhysics(),
+                          //shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: opportunityStageTypes.length ?? 0,
+                          itemBuilder: (context, index) {
+                            print(index);
+                            print("final indexxx");
+                            return Padding(
+                              padding: const EdgeInsets.only(left: 5, top: 10),
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                    child: Container(
+                                      child: Stack(
+                                        children: [
+
+                                          index == 0 ?
+                                          stageColorIndex == index ?
+
+                                          Image.asset(
+                                              'images/bluebtnfirst.png'):
+                                          Image.asset(
+                                              'images/greenbtnfirst.png'):
+
+                                          stageColorIndex == index ?
+                                          Image.asset(
+                                              'images/bluebtn.png'):
+                                          stageColorIndex! > index?Image.asset(
+                                              'images/greenbtn.png')
+                                              : Image.asset(
+                                              'images/greybtn.png'),
+                                          Positioned.fill(
+                                              child: Align(
+                                                  alignment: Alignment.center,
+                                                  child: stageColorIndex ==
+                                                      index || stageColorIndex! >
+                                                      index
+                                                      ? Text(
+                                                    opportunityStageTypes[
+                                                    index]['name'],
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontFamily:
+                                                      'Mulish',
+                                                    ),
+                                                  )
+                                                      : Text(
+                                                    opportunityStageTypes[
+                                                    index]['name'],
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontSize: 12,
+                                                      fontFamily:
+                                                      'Mulish',
+                                                    ),
+                                                  )))
+                                        ],
+                                      ),
+                                    ),
+                                    onTap: () async {
+                                      print(
+                                          opportunityStageTypes[index]['name']);
+                                      print(opportunityStageTypes[index]['id']);
+                                      print("print(opportunityStageTypes");
+                                      String resmessage =
+                                      await StageChangeOpportunity(
+                                          opportunityStageTypes[index]
+                                          ['id']);
+                                      int resmessagevalue =
+                                      int.parse(resmessage);
+                                      if (resmessagevalue != 0) {
+                                        setState(() {
+                                          stageColorIndex = index;
+                                        });
+
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           OpportunityDetail(
+                                        //               resmessagevalue)),
+                                        // );
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
                   ),
 
 
