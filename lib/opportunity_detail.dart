@@ -1968,7 +1968,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   Visibility(
                     visible: smartbuttonVisible,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left:18, right: 20),
                       child: Container(
                         height: 50,
                         // color: Colors.red,
@@ -1981,7 +1981,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             print(index);
                             print("final indexxx");
                             return Padding(
-                              padding: const EdgeInsets.only(left: 5, top: 10),
+                              padding: const EdgeInsets.only(left:5, top: 10),
                               child: Row(
                                 children: [
                                   InkWell(
