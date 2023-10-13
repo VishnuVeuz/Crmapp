@@ -2942,6 +2942,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   child: TextField(
                                                       textAlignVertical:
                                                           TextAlignVertical.top,
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 11,
+                                                        color: Color(0xFF000000),
+                                                      ),
                                                       //expands: true,
                                                       maxLines: null,
                                                       controller: lognoteController,
