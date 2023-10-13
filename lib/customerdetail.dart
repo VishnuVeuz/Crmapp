@@ -3365,97 +3365,100 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
 
-                    Container(
-                      // width: 104,
-                      // height: 16,
-                      color: Color(0xFFF6F6F6),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextButton.icon(
-                              // <-- TextButton
-                              onPressed: () {
-                                setState(() {
-                                  scheduleActivityVisibility == true
-                                      ? scheduleActivityVisibility = false
-                                      : scheduleActivityVisibility = true;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.arrow_drop_down_rounded,
-                                size: 30.0,
-                                color: Colors.black54,
-                              ),
-                              label: Text(
-                                'Planned Activities',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'Mulish',
+                    Visibility(
+                      visible:scheduleLength==0? false: true,
+                      child: Container(
+                        // width: 104,
+                        // height: 16,
+                        color: Color(0xFFF6F6F6),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextButton.icon(
+                                // <-- TextButton
+                                onPressed: () {
+                                  setState(() {
+                                    scheduleActivityVisibility == true
+                                        ? scheduleActivityVisibility = false
+                                        : scheduleActivityVisibility = true;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.arrow_drop_down_rounded,
+                                  size: 30.0,
+                                  color: Colors.black54,
                                 ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: scheduleVisibiltyOverdue,
-                              child: Container(
-                                width: 15,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.red,
-                                ),
-                                child: Center(
-                                    child: Text(
-                                  scheduleOverdue.toString(),
+                                label: Text(
+                                  'Planned Activities',
                                   style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Mulish',
-                                      color: Colors.white),
-                                )),
-                              ),
-                            ),
-                            Visibility(
-                              visible: scheduleVisibiltyToday,
-                              child: Container(
-                                width: 15,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.yellow,
+                                    fontSize: 15,
+                                    color: Color(0xFF000000),
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Mulish',
+                                  ),
                                 ),
-                                child: Center(
-                                    child: Text(
-                                  scheduleToday.toString(),
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      //fontWeight: FontWeight.bold,
-                                      fontFamily: 'Mulish',
-                                      color: Colors.black),
-                                )),
                               ),
-                            ),
-                            Visibility(
-                              visible: scheduleVisibiltyPlanned,
-                              child: Container(
-                                width: 15,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.green,
+                              Visibility(
+                                visible: scheduleVisibiltyOverdue,
+                                child: Container(
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.red,
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    scheduleOverdue.toString(),
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Mulish',
+                                        color: Colors.white),
+                                  )),
                                 ),
-                                child: Center(
-                                    child: Text(
-                                  schedulePlanned.toString(),
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Mulish',
-                                      color: Colors.white),
-                                )),
                               ),
-                            ),
-                          ],
+                              Visibility(
+                                visible: scheduleVisibiltyToday,
+                                child: Container(
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.yellow,
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    scheduleToday.toString(),
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        //fontWeight: FontWeight.bold,
+                                        fontFamily: 'Mulish',
+                                        color: Colors.black),
+                                  )),
+                                ),
+                              ),
+                              Visibility(
+                                visible: scheduleVisibiltyPlanned,
+                                child: Container(
+                                  width: 15,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.green,
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    schedulePlanned.toString(),
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Mulish',
+                                        color: Colors.white),
+                                  )),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
