@@ -2555,33 +2555,36 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                             ],
                                           ),
-                                          IconButton(
-                                              onPressed: () async {
-                                                recipient!.clear();
-                                                await defaultSendmsgvalues();
-                                                setState(() {
-                                                  recipientsVisibility ==
-                                                      true
-                                                      ? recipientsVisibility =
-                                                  false
-                                                      : recipientsVisibility =
-                                                  true;
-                                                });
+                                          Padding(
+                                            padding: const EdgeInsets.only(left: 20),
+                                            child: IconButton(
+                                                onPressed: () async {
+                                                  recipient!.clear();
+                                                  await defaultSendmsgvalues();
+                                                  setState(() {
+                                                    recipientsVisibility ==
+                                                        true
+                                                        ? recipientsVisibility =
+                                                    false
+                                                        : recipientsVisibility =
+                                                    true;
+                                                  });
 
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (BuildContext
-                                                  context) =>
-                                                      _buildSendmessagePopupDialog(
-                                                          context, 0),
-                                                ).then((value) =>
-                                                    setState(() {}));
-                                              },
-                                              icon: Icon(
-                                                Icons.arrow_outward_rounded,
-                                                size: 18,
-                                                color: Colors.grey[700],
-                                              )),
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext
+                                                    context) =>
+                                                        _buildSendmessagePopupDialog(
+                                                            context, 0),
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
+                                                icon: Icon(
+                                                  Icons.arrow_outward_rounded,
+                                                  size: 18,
+                                                  color: Colors.grey[700],
+                                                )),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -2913,10 +2916,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   0xFFAFAFAF)))),
                                             ),
                                           ),
-                                          Divider(
-                                            color: Colors.grey[350],
-                                            thickness: 1,
-                                          ),
+
                                           Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
