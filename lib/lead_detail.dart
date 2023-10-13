@@ -1394,7 +1394,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   bottom: BorderSide(
                                     color:internalVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -1429,7 +1429,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                   bottom: BorderSide(
                                     color:otherinfoVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,
+
+                                    // Underline width
                                   ),
                                 ),
                               ),
@@ -1656,7 +1658,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   bottom: BorderSide(
                                     color:followersVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -1698,7 +1700,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   bottom: BorderSide(
                                     color:lognoteVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2955,6 +2957,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   child: TextField(
                                                       textAlignVertical:
                                                           TextAlignVertical.top,
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Mulish',
+                                                        fontSize: 11,
+                                                        color: Color(0xFF000000),
+                                                      ),
                                                       //expands: true,
                                                       maxLines: null,
                                                       controller: lognoteController,

@@ -1976,7 +1976,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   Visibility(
                     visible: smartbuttonVisible,
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      padding: const EdgeInsets.only(left:18, right: 20),
                       child: Container(
                         height: 50,
                         // color: Colors.red,
@@ -1989,7 +1989,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             print(index);
                             print("final indexxx");
                             return Padding(
-                              padding: const EdgeInsets.only(left: 5, top: 10),
+                              padding: const EdgeInsets.only(left:5, top: 10),
                               child: Row(
                                 children: [
                                   InkWell(
@@ -2342,7 +2342,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     bottom: BorderSide(
                                       color:internalVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2382,7 +2382,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     bottom: BorderSide(
                                       color:otherinfoVisibility==true? Color(0XFFFA256B):
                                       Colors.transparent,// Underline color
-                                      width: 2.0,        // Underline width
+                                      width: 1.0,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2618,7 +2618,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   bottom: BorderSide(
                                     color:followersVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2660,7 +2660,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   bottom: BorderSide(
                                     color:lognoteVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),

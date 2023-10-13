@@ -705,7 +705,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   bottom: BorderSide(
                                     color:ordervisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -741,7 +741,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   bottom: BorderSide(
                                     color:optvisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -777,7 +777,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   bottom: BorderSide(
                                     color:otherinfoVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2017,7 +2017,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   bottom: BorderSide(
                                     color:followersVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2061,7 +2061,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   bottom: BorderSide(
                                     color:lognoteVisibility==true? Color(0XFFFA256B):
                                     Colors.transparent,// Underline color
-                                    width: 2.0,        // Underline width
+                                    width: 1.0,        // Underline width
                                   ),
                                 ),
                               ),
