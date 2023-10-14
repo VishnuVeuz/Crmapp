@@ -247,7 +247,9 @@ flutter:
     - images/bluebtnfirst.png
     - images/send.svg
     - images/sendd.svg
-
+    - images/schedulecheck.png
+    - images/schedulecancel.png
+    - images/schedulecalendar.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
