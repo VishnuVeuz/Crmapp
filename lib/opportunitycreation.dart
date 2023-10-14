@@ -262,7 +262,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                         "Save",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 13.57,
+                            fontSize: 15.57,
                             color: Colors.white,
                             fontFamily: 'Mulish'),
                       ),
@@ -351,7 +351,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Please enter the name';
@@ -361,56 +361,50 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             controller: opportunitynameController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Opportunity Name',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: expectedrevenueController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Expected Revenue',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: probabilityController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Probability',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
@@ -430,9 +424,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Customer',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -472,9 +469,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["display_name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -512,7 +507,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text("${item["display_name"]}"),
+                                            child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -526,11 +521,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: companynameController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -539,9 +534,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Company Name',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
@@ -557,9 +550,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Title',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -598,9 +594,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -634,7 +628,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text("${item["name"]}"),
+                                            child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -649,20 +643,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: contactnameController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Contact Name',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
@@ -671,70 +663,63 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             "Address",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xFF000000),
-                                fontFamily: 'Mulish'),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xFF000000),fontFamily: 'Mulish'),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: streetController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Street',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: streettwoController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Street2',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: cityController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'City',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         //country
@@ -749,9 +734,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Country',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -791,9 +779,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -838,7 +824,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -861,9 +847,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'State',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -903,9 +892,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -951,7 +938,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -966,22 +953,20 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
                             keyboardType: TextInputType.number,
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: zipController,
                             maxLength: 6,
                             decoration: const InputDecoration(
                                 counterText: "",
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Zip',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
@@ -989,20 +974,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: websiteController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Website',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
@@ -1018,9 +1001,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Language',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1062,9 +1048,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1112,7 +1096,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                             // "${item["capital"]} - ${item["country"]} - ${item["continent"]} - pop.: ${item["population"]}"),
                                           ),
                                         ),
@@ -1127,12 +1111,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             keyboardType: TextInputType.emailAddress,
                             controller: emailController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -1141,20 +1125,18 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Email',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: emailccController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -1163,75 +1145,67 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'EmailCc',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: jobpositionController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Job Position',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: phoneController,
                             keyboardType: TextInputType.phone,
                             maxLength: 10,
                             decoration: const InputDecoration(
                                 counterText: "",
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Phone',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: mobileController,
                             keyboardType: TextInputType.phone,
                             maxLength: 10,
                             decoration: const InputDecoration(
                                 counterText: "",
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                                 ),
                                 labelText: 'Mobile',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
@@ -1245,9 +1219,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Pricelist',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1286,9 +1263,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1324,7 +1299,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text("${item["name"]}"),
+                                            child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -1346,9 +1321,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Company',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1390,9 +1368,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1438,7 +1414,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -1458,9 +1434,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Salesperson',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1503,9 +1482,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1550,7 +1527,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -1573,9 +1550,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Sales Team',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1617,9 +1597,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1665,7 +1643,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -1680,10 +1658,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             "Priority",
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black,
-                                fontFamily: 'Mulish'),
+                                color: Color(0xFF666666), fontSize: 11,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                           ),
                         ),
                         Padding(
@@ -1709,14 +1684,21 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             )),
 
                         SizedBox(
-                          height: 10,
+                          height: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
+                          ),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: MultiSelectDropDown.network(
                             hint: 'Tags',
-                            hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                            hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                             selectedOptions: editTagName
                                 .map((tag) =>
                                     ValueItem(label: tag.label, value: tag.value))
@@ -1764,7 +1746,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             }),
                           ),
                         ),
-
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
+                          ),
+                        ),
                         //campaign
 
                         Padding(
@@ -1777,9 +1765,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Campaign',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1821,9 +1812,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1870,7 +1859,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -1893,9 +1882,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Medium',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1937,9 +1929,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -1986,7 +1976,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -2007,9 +1997,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Source',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -2051,9 +2044,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.black,
-                                      fontFamily: 'Mulish'),
+                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               )));
                             },
@@ -2099,7 +2090,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         child: Card(
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
-                                            child: Text(" ${item["name"]}"),
+                                            child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                           ),
                                         ),
                                       ))
@@ -2113,11 +2104,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: refferedbyController,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -2126,9 +2117,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Reffered by',
                                 labelStyle: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish')),
+                                    color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
@@ -2190,7 +2179,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
                           child: Divider(
                             color: Colors.grey,
-                            thickness: 1,
+                            thickness: 0.5,
                           ),
                         ),
                         Padding(
@@ -2824,7 +2813,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             decoration: InputDecoration(
                               labelText:'Product',
                               isDense: true,
-                              labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                               fillColor: Colors.white,
 
                             ),
@@ -2972,7 +2961,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             decoration: InputDecoration(
                               labelText:'Uom',
                               isDense: true,
-                              labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                               fillColor: Colors.white,
 
                             ),
