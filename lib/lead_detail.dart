@@ -4187,8 +4187,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      //padding: const EdgeInsets.all(25.0),
+                                      padding: const EdgeInsets.all(0.0),
                                       child: Container(
+                                        margin: EdgeInsets.fromLTRB(25,0,25,0),
                                         // group20525KqJ (1112:1365)
                                         // margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
                                         // padding: EdgeInsets.fromLTRB(0*fem, 9*fem, 0*fem, 0*fem),
@@ -4196,24 +4198,26 @@ class _LeadDetailState extends State<LeadDetail> {
                                         decoration: BoxDecoration (
                                            border: Border.all(color: Color(0xffebebeb)),
                                           color: Color(0xfffcfcfc),
+                                         // color: Colors.blue,
                                           borderRadius: BorderRadius.circular(4),
                                         ),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Container(
-                                              //  color:Colors.green,
+                                              margin: EdgeInsets.fromLTRB(0,0,0,0),
+                                               // color:Colors.green,
                                               // autogroupfosqpn4 (7u5yFZfWQQE3crdUqnfoSQ)
                                               // margin: EdgeInsets.fromLTRB(9*fem, 0*fem, 17*fem, 9*fem),
-                                              width: MediaQuery.of(context).size.width,
+                                              width: MediaQuery.of(context).size.width/1,
                                               height: 40,
                                               child: Row(
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
                                                   Container(
-
+                                                    //color:Colors.pink,
                                                     // ellipse121x7a (1112:1367)
-                                                    margin: EdgeInsets.fromLTRB(2,0,9,2),
+                                                    margin: EdgeInsets.fromLTRB(9,0,9,2),
                                                     width: 20,
                                                     height: 20,
                                                     child: Stack(
@@ -4260,131 +4264,136 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       ],
                                                     ),
                                                   ),
-                                                  Container(
-                                                    //  color: Colors.red,
-                                                    // group205294RW (1112:1393)
-                                                    height: double.infinity,
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Container(
-                                                          // autogrouprwrccT2 (7u5yPeGNvuuGAuKdPZrWrc)
-                                                          margin: EdgeInsets.fromLTRB(0,1,1,2),
-                                                          width: MediaQuery.of(context).size.width/2,
-                                                          height: double.infinity,
-                                                          child: Stack(
-                                                            children: [
-                                                              Positioned(
-                                                                // marcdemoLP2 (1112:1368)
-                                                                left: 1,
-                                                                top: 1,
-                                                                child: Align(
-                                                                  child: Text(
-                                                                    scheduleData['records']
-                                                                    [index]
-                                                                    ['user_id'][1]
-                                                                        .toString() ??
-                                                                        "",
-                                                                    style: TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 12,
-                                                                      fontWeight: FontWeight.w600,
-                                                                      // height: 1.255*ffem/fem,
-                                                                      color: Color(0xff202020),
+                                                  Expanded(
+                                                    child: Container(
+                                                      margin: EdgeInsets.fromLTRB(0,0,9,0),
+                                                      //color: Colors.yellow,
+                                                      //  color: Colors.red,
+                                                      // group205294RW (1112:1393)
+                                                      width: MediaQuery.of(context).size.width/1.3,
+                                                      height: double.infinity,
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            // autogrouprwrccT2 (7u5yPeGNvuuGAuKdPZrWrc)
+                                                            margin: EdgeInsets.fromLTRB(0,1,1,2),
+                                                            width: MediaQuery.of(context).size.width/2,
+                                                            height: double.infinity,
+                                                            child: Stack(
+                                                              children: [
+                                                                Positioned(
+                                                                  // marcdemoLP2 (1112:1368)
+                                                                  left: 1,
+                                                                  top: 1,
+                                                                  child: Align(
+                                                                    child: Text(
+                                                                      scheduleData['records']
+                                                                      [index]
+                                                                      ['user_id'][1]
+                                                                          .toString() ??
+                                                                          "",
+                                                                      style: TextStyle (
+                                                                        fontFamily: 'Mulish',
+                                                                        fontSize: 12,
+                                                                        fontWeight: FontWeight.w600,
+                                                                        // height: 1.255*ffem/fem,
+                                                                        color: Color(0xff202020),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Positioned(
-                                                                // goodqag (1112:1369)
-                                                                left: 2,
-                                                                top: 15,
-                                                                child: Align(
-                                                                  child: Text(
-                                                                    scheduleData['records'][index]
-                                                                    ['note']
-                                                                        .replaceAll(
-                                                                        RegExp(
-                                                                            r'<[^>]*>|&[^;]+;'),
-                                                                        ' ')
-                                                                        .toString() ??
-                                                                        "",
-                                                                    style: TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 10,
-                                                                      fontWeight: FontWeight.w500,
-                                                                      //height: 1.255*ffem/fem,
-                                                                      color: Color(0xff666666),
+                                                                Positioned(
+                                                                  // goodqag (1112:1369)
+                                                                  left: 2,
+                                                                  top: 15,
+                                                                  child: Align(
+                                                                    child: Text(
+                                                                      scheduleData['records'][index]
+                                                                      ['note']
+                                                                          .replaceAll(
+                                                                          RegExp(
+                                                                              r'<[^>]*>|&[^;]+;'),
+                                                                          ' ')
+                                                                          .toString() ??
+                                                                          "",
+                                                                      style: TextStyle (
+                                                                        fontFamily: 'Mulish',
+                                                                        fontSize: 10,
+                                                                        fontWeight: FontWeight.w500,
+                                                                        //height: 1.255*ffem/fem,
+                                                                        color: Color(0xff666666),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Container(
-                                                           //color: Colors.yellow,
-                                                          // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
-                                                          margin: EdgeInsets.fromLTRB(0,1,1,2),
-                                                          //width: MediaQuery.of(context).size.width,
-                                                           width: MediaQuery.of(context).size.width/3,
-                                                          //height: double.infinity,
-                                                          child: Stack(
+                                                          Container(
+                                                            // color: Colors.red,
+                                                            // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
+                                                            margin: EdgeInsets.fromLTRB(0,1,1,2),
+                                                            //width: MediaQuery.of(context).size.width,
+                                                             width: MediaQuery.of(context).size.width/5,
+                                                            //height: double.infinity,
+                                                            child: Stack(
 
-                                                            children: [
-                                                              Positioned(
-                                                                right: 1,
-                                                                top: 1,
-                                                                child: Align(
+                                                              children: [
+                                                                Positioned(
+                                                                  right: 1,
+                                                                  top: 1,
+                                                                  child: Align(
 
-                                                                  child: Text(
-                                                                    scheduleData['records']
-                                                                    [index]
-                                                                    ['delay_label']
-                                                                        .toString() ??
-                                                                        "",
-                                                                    style: TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 12,
-                                                                      fontWeight: FontWeight.w600,
-                                                                      // height: 1.255*ffem/fem,
-                                                                      color: Color(int.parse(
-                                                                          scheduleData[
-                                                                          'records']
-                                                                          [index][
-                                                                          'label_color']))
+                                                                    child: Text(
+                                                                      scheduleData['records']
+                                                                      [index]
+                                                                      ['delay_label']
+                                                                          .toString() ??
+                                                                          "",
+                                                                      style: TextStyle (
+                                                                        fontFamily: 'Mulish',
+                                                                        fontSize: 12,
+                                                                        fontWeight: FontWeight.w600,
+                                                                        // height: 1.255*ffem/fem,
+                                                                        color: Color(int.parse(
+                                                                            scheduleData[
+                                                                            'records']
+                                                                            [index][
+                                                                            'label_color']))
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Positioned(
-                                                                // meetingzbz (1112:1394)
-                                                                right: 1,
-                                                                 top: 15,
-                                                                child: Align(
+                                                                Positioned(
+                                                                  // meetingzbz (1112:1394)
+                                                                  right: 1,
+                                                                   top: 15,
+                                                                  child: Align(
 
-                                                                  child: Text(
-                                                                    scheduleData['records']
-                                                                    [index][
-                                                                    'activity_type_id'][1]
-                                                                        .toString() ??
-                                                                        "",
-                                                                    textAlign: TextAlign.right,
-                                                                    style:  TextStyle (
-                                                                      fontFamily:  'Mulish',
-                                                                      fontSize: 12,
-                                                                      fontWeight: FontWeight.w600,
-                                                                      //  height: 1.255*ffem/fem,
-                                                                      color: Color(0xff202020),
+                                                                    child: Text(
+                                                                      scheduleData['records']
+                                                                      [index][
+                                                                      'activity_type_id'][1]
+                                                                          .toString() ??
+                                                                          "",
+                                                                      textAlign: TextAlign.right,
+                                                                      style:  TextStyle (
+                                                                        fontFamily:  'Mulish',
+                                                                        fontSize: 12,
+                                                                        fontWeight: FontWeight.w600,
+                                                                        //  height: 1.255*ffem/fem,
+                                                                        color: Color(0xff202020),
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
+                                                              ],
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ],
@@ -4409,65 +4418,136 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Container(
+                                                  Expanded(
+                                                    child: Container(
+
+                                                   //   color:Colors.pink,
+
+                                                     // width:MediaQuery.of(context).size.width/1.18,
+
+                                                      //padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
+
+                                                      height: double.infinity,
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                        children: [
+                                                          Expanded(
+                                                            child: Container(
 
 
-                                                    width:MediaQuery.of(context).size.width/1.05,
+                                                              padding: EdgeInsets.fromLTRB(10, 0, 2, 0),
+                                                              // height: 14*fem,
+                                                              child: InkWell(
+                                                                onTap: ()async{
+                                                                  int datasIds =
+                                                                  scheduleData[
+                                                                  'records']
+                                                                  [index]['id'];
 
-                                                    //padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
-
-                                                    height: double.infinity,
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-
-                                                      children: [
-                                                        Expanded(
-                                                          child: Container(
-
-
-                                                            padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
-                                                            // height: 14*fem,
-                                                            child: InkWell(
-                                                              onTap: ()async{
-                                                                int datasIds =
-                                                                scheduleData[
-                                                                'records']
-                                                                [index]['id'];
-
-                                                                showDialog(
-                                                                  context: context,
-                                                                  builder: (BuildContext
-                                                                  context) =>
-                                                                      _buildMarkDoneDialog(
-                                                                          context,
-                                                                          datasIds),
-                                                                ).then((value) =>
-                                                                    setState(() {}));
-                                                              },
-                                                              child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                                children: [
-                                                                  Container(
-                                                                    // checkd2g (1112:1371)
-                                                                    margin: EdgeInsets.fromLTRB(0, 0,2,0),
-                                                                    width: 10,
-                                                                    height: 10,
-                                                                    child: Image.asset(
-                                                                      'images/schedulecheck.png',
+                                                                  showDialog(
+                                                                    context: context,
+                                                                    builder: (BuildContext
+                                                                    context) =>
+                                                                        _buildMarkDoneDialog(
+                                                                            context,
+                                                                            datasIds),
+                                                                  ).then((value) =>
+                                                                      setState(() {}));
+                                                                },
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                  children: [
+                                                                    Container(
+                                                                      // checkd2g (1112:1371)
+                                                                      margin: EdgeInsets.fromLTRB(0, 0,2,0),
                                                                       width: 10,
                                                                       height: 10,
+                                                                      child: Image.asset(
+                                                                        'images/schedulecheck.png',
+                                                                        width: 10,
+                                                                        height: 10,
+                                                                      ),
                                                                     ),
-                                                                  ),
-                                                                  Container(
-                                                                    // markdoneYQY (1112:1373)
-                                                                    margin: EdgeInsets.fromLTRB(0,0,4,0),
-                                                                    child: Text(
+                                                                    Container(
+                                                                      // markdoneYQY (1112:1373)
+                                                                      margin: EdgeInsets.fromLTRB(0,0,4,0),
+                                                                      child: Text(
+                                                                        scheduleData['records']
+                                                                        [index][
+                                                                        'buttons'][0]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style: TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 10,
+                                                                          fontWeight: FontWeight.w500,
+                                                                          // height: 1.255*ffem/fem,
+                                                                          color: Color(0xff707070),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+                                                          Expanded(
+                                                            child: Container(
+
+                                                              padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+
+                                                              // height: double.infinity,
+                                                              child: InkWell(
+                                                                onTap: ()async{
+                                                                  DateTime
+                                                                  dateTime =
+                                                                  DateTime.parse(
                                                                       scheduleData['records']
-                                                                      [index][
-                                                                      'buttons'][0]
+                                                                      [
+                                                                      index]
+                                                                      [
+                                                                      'date_deadline']);
+
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      MaterialPageRoute(
+                                                                          builder: (context) => Calender(
+                                                                              null,
+                                                                              "",
+                                                                              dateTime,
+                                                                              null,
+                                                                              [],
+                                                                              "")));
+                                                                },
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  children: [
+                                                                    Container(
+                                                                      // iconsaxlinearcalendarPvx (1112:1377)
+                                                                      margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                                                      width: 10,
+                                                                      height: 10,
+                                                                      child: Image.asset(
+                                                                        'images/schedulecalendar.png',
+                                                                        width: 10,
+                                                                        height: 10,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      // rescheduleJo2 (1112:1376)
+                                                                      //'Reschedule',
+                                                                      scheduleData['records']
+                                                                      [
+                                                                      index]
+                                                                      [
+                                                                      'buttons'][1]
                                                                           .toString() ??
                                                                           "",
-                                                                      style: TextStyle (
+                                                                      style:  TextStyle (
                                                                         fontFamily: 'Mulish',
                                                                         fontSize: 10,
                                                                         fontWeight: FontWeight.w500,
@@ -4475,148 +4555,80 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         color: Color(0xff707070),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
 
-                                                        Expanded(
-                                                          child: Container(
+                                                          Expanded(
+                                                            child: Container(
+                                                             // color:Colors.red,
 
-                                                            padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+                                                              padding: EdgeInsets.fromLTRB(2, 0, 10,0),
+                                                            //  height: double.infinity,
+                                                              child: InkWell(
+                                                                onTap: ()async{
+                                                                  var data =
+                                                                  await deleteScheduleData(
+                                                                      scheduleData[
+                                                                      'records']
+                                                                      [
+                                                                      index]['id']);
 
-                                                            // height: double.infinity,
-                                                            child: InkWell(
-                                                              onTap: ()async{
-                                                                DateTime
-                                                                dateTime =
-                                                                DateTime.parse(
-                                                                    scheduleData['records']
-                                                                    [
-                                                                    index]
-                                                                    [
-                                                                    'date_deadline']);
+                                                                  if (data['message'] ==
+                                                                      "Success") {
+                                                                    print("responce");
+                                                                    setState(() {
+                                                                      getScheduleDetails();
+                                                                    });
+                                                                  }
 
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) => Calender(
-                                                                            null,
-                                                                            "",
-                                                                            dateTime,
-                                                                            null,
-                                                                            [],
-                                                                            "")));
-                                                              },
-                                                              child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment.center,
-
-                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                children: [
-                                                                  Container(
-                                                                    // iconsaxlinearcalendarPvx (1112:1377)
-                                                                    margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
-                                                                    width: 10,
-                                                                    height: 10,
-                                                                    child: Image.asset(
-                                                                      'images/schedulecalendar.png',
-                                                                      width: 10,
-                                                                      height: 10,
-                                                                    ),
-                                                                  ),
-                                                                  Text(
-                                                                    // rescheduleJo2 (1112:1376)
-                                                                    //'Reschedule',
-                                                                    scheduleData['records']
-                                                                    [
-                                                                    index]
-                                                                    [
-                                                                    'buttons'][1]
-                                                                        .toString() ??
-                                                                        "",
-                                                                    style:  TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 10,
-                                                                      fontWeight: FontWeight.w500,
-                                                                      // height: 1.255*ffem/fem,
-                                                                      color: Color(0xff707070),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-
-                                                        Expanded(
-                                                          child: Container(
-                                                           // color:Colors.white,
-
-                                                            padding: EdgeInsets.fromLTRB(2, 0, 10,0),
-                                                          //  height: double.infinity,
-                                                            child: InkWell(
-                                                              onTap: ()async{
-                                                                var data =
-                                                                await deleteScheduleData(
-                                                                    scheduleData[
-                                                                    'records']
-                                                                    [
-                                                                    index]['id']);
-
-                                                                if (data['message'] ==
-                                                                    "Success") {
-                                                                  print("responce");
-                                                                  setState(() {
-                                                                    getScheduleDetails();
-                                                                  });
-                                                                }
-
-                                                                print("demo datataaa");
-                                                              },
-                                                              child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                                children: [
-                                                                  Align(
-                                                                    alignment: Alignment.centerRight,
-                                                                    child: Container(
-                                                                      //color:Colors.blue,
-                                                                      // xcircleBrp (1112:1386)
-                                                                      margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
-                                                                      width: 10,
-                                                                      height: 10,
-                                                                      child: Image.asset(
-                                                                        'images/schedulecancel.png',
+                                                                  print("demo datataaa");
+                                                                },
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                  mainAxisAlignment: MainAxisAlignment.end,
+                                                                  children: [
+                                                                    Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: Container(
+                                                                        //color:Colors.blue,
+                                                                        // xcircleBrp (1112:1386)
+                                                                        margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
                                                                         width: 10,
                                                                         height: 10,
+                                                                        child: Image.asset(
+                                                                          'images/schedulecancel.png',
+                                                                          width: 10,
+                                                                          height: 10,
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                  Align(
-                                                                    alignment: Alignment.centerRight,
-                                                                    child: Text(
-                                                                      scheduleData['records']
-                                                                      [index][
-                                                                      'buttons'][2]
-                                                                          .toString() ??
-                                                                          "",
-                                                                      style:  TextStyle (
-                                                                        fontFamily: 'Mulish',
-                                                                        fontSize: 10,
-                                                                        fontWeight: FontWeight.w500,
-                                                                        //height: 1.255*ffem/fem,
-                                                                        color: Color(0xff707070),
+                                                                    Align(
+                                                                      alignment: Alignment.centerRight,
+                                                                      child: Text(
+                                                                        scheduleData['records']
+                                                                        [index][
+                                                                        'buttons'][2]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style:  TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 10,
+                                                                          fontWeight: FontWeight.w500,
+                                                                          //height: 1.255*ffem/fem,
+                                                                          color: Color(0xff707070),
+                                                                        ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
 
