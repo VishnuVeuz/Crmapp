@@ -3353,7 +3353,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   Visibility(
                     visible: scheduleActivityVisibility,
                     child: Container(
-                      color: Colors.white70,
+                      //color: Colors.green,
                       //height: MediaQuery.of(context).size.height/1.8,
                       child: scheduleLength == 0
                           ? Container()
@@ -3433,7 +3433,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   children: [
                                     Padding(
                                       //padding: const EdgeInsets.all(25.0),
-                                      padding: const EdgeInsets.all(0.0),
+                                      padding: const EdgeInsets.only(top: 5,bottom: 5),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
                                         // group20525KqJ (1112:1365)
