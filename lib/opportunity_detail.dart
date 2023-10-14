@@ -4443,7 +4443,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         fontFamily: 'Mulish',
                                                         color: Colors.grey,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -4456,7 +4456,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       style: TextStyle(
                                                           fontSize: 12,
                                                           fontFamily: 'Mulish',
-                                                          color: Colors.grey),
+                                                          color: Colors.grey,
+                                                        fontWeight: FontWeight.w500,),
                                                     ),
                                                     SizedBox(
                                                       height: 3,
@@ -4468,7 +4469,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         fontFamily: 'Mulish',
                                                         color: Colors.grey,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -4486,6 +4487,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               "",
                                                           style: TextStyle(
                                                               fontSize: 12,
+                                                              fontWeight: FontWeight.w500,
                                                               fontFamily:
                                                                   'Mulish',
                                                               color:
@@ -4524,7 +4526,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 'Mulish',
                                                             color: Colors.grey,
                                                             fontWeight:
-                                                                FontWeight.w600,
+                                                                FontWeight.w500,
                                                           ),
                                                         ),
                                                       ],
@@ -4536,10 +4538,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                       "Assigned to",
                                                       style: TextStyle(
                                                         fontSize: 12,
+
                                                         fontFamily: 'Mulish',
                                                         color: Colors.grey,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -4575,6 +4578,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               fontSize: 12,
                                                               fontFamily:
                                                                   'Mulish',
+                                                              fontWeight: FontWeight.w500,
                                                               color:
                                                                   Colors.grey),
                                                         ),
@@ -4589,7 +4593,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         fontSize: 12,
                                                         color: Colors.grey,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -4603,6 +4607,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           "",
                                                       style: TextStyle(
                                                           fontSize: 12,
+                                                          fontWeight:FontWeight.w500,
                                                           fontFamily: 'Mulish',
                                                           color: Colors.grey),
                                                     ),

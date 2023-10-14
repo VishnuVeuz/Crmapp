@@ -60,6 +60,7 @@ dependencies:
   flutter_file_downloader: ^1.1.0+1
   flutter_downloader: ^1.10.5
   file_picker: ^4.2.1
+  just_the_tooltip: ^0.0.12
 
 
 
@@ -251,6 +252,7 @@ flutter:
     - images/schedulecancel.png
     - images/schedulecalendar.png
     - images/scheduleedit.png
+    - images/alertcircle.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
