@@ -1388,8 +1388,8 @@ class _LeadDetailState extends State<LeadDetail> {
                               top: 5, bottom: 5, left: 17, right: 0),
                           child: Center(
                             child: Container(
-
                               decoration: BoxDecoration(
+                                //color: Colors.blue,
                                 border: Border(
                                   bottom: BorderSide(
                                     color:internalVisibility==true? Color(0XFFFA256B):
@@ -1425,6 +1425,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(
+                                //color: Colors.blue,
                                 border: Border(
                                   bottom: BorderSide(
                                     color:otherinfoVisibility==true? Color(0XFFFA256B):
