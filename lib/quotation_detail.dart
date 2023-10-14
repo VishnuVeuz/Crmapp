@@ -848,7 +848,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              top: 5, left: 25),
+                                                              top: 5, left: 23),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
@@ -887,7 +887,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 5, left: 25),
+                                                          top: 5, left: 23),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
@@ -945,7 +945,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       padding:
                                                           const EdgeInsets.only(
                                                               top: 5,
-                                                              left: 25,
+                                                              left: 23,
                                                               bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
@@ -1070,7 +1070,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              top: 5, left: 25),
+                                                              top: 5, left: 23),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
@@ -1094,7 +1094,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 5, left: 25),
+                                                          top: 5, left: 23),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
@@ -1152,7 +1152,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       padding:
                                                           const EdgeInsets.only(
                                                               top: 5,
-                                                              left: 25,
+                                                              left: 23,
                                                               bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
@@ -2092,7 +2092,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 5, bottom: 5, left: 0, right: 20),
+                              top: 5, bottom: 5, left: 0, right: 23),
                           child: Center(
                             child: TextButton(
                                 child: Text(
@@ -2868,7 +2868,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     padding:
                                         const EdgeInsets.only(left: 15, right: 20),
                                     child: Container(
-                                      width: MediaQuery.of(context).size.width / 1.34,
+                                      width: MediaQuery.of(context).size.width / 1.33,
                                       //height: 46,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
@@ -2922,7 +2922,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                             ],
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 20),
+                                            padding: const EdgeInsets.only(left: 10),
                                             child: IconButton(
                                                 onPressed: () async {
                                                   recipient!.clear();
@@ -3050,7 +3050,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 25,top: 3),
+                                    padding: const EdgeInsets.only(right: 27,top: 3),
                                     child: SizedBox(
                                       width: 55,
                                       height: 30,

@@ -1521,8 +1521,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                             "",
                                                         style: TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w600,
-                                                            fontSize: 14,
+                                                                FontWeight.w500,
+                                                            fontSize: 13,
                                                             color: Colors.black,
                                                             fontFamily: 'Mulish'),
                                                       ),
@@ -1542,8 +1542,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,
+                                                        fontSize: 11,
+                                                        color: Color(0xFF666666),
                                                         fontFamily: 'Mulish'),
                                                   ),
                                                 ),
@@ -1553,7 +1553,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            left: 15, top: 4),
+                                                            left: 10, top: 4),
                                                     child: Container(
                                                       //color: Colors.red,
                                                       child: Text(
@@ -1564,8 +1564,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w400,
-                                                            fontSize: 12,
-                                                            color: Colors.black,
+                                                            fontSize: 11,
+                                                            color: Color(0xFF666666),
                                                             fontFamily: 'Mulish'),
                                                       ),
                                                     ),
@@ -1585,7 +1585,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontSize: 12,
-                                                            color: Colors.black,
+                                                            color: Color(0xFF666666),
                                                             fontFamily: 'Mulish'),
                                                       ),
                                                     ),
@@ -1604,8 +1604,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,
+                                                        fontSize: 11,
+                                                        color: Color(0xFF666666),
                                                         fontFamily: 'Mulish'),
                                                   ),
                                                 ),
@@ -1622,8 +1622,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontSize: 12,
-                                                        color: Colors.black,
+                                                        fontSize: 11,
+                                                        color: Color(0xFF666666),
                                                         fontFamily: 'Mulish'),
                                                   ),
                                                 ),
@@ -1961,7 +1961,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left: 0, right: 20),
+                                top: 5, bottom: 5, left: 0, right: 23),
                             child: Center(
                               child: TextButton(
                                   child: Text(
@@ -2752,7 +2752,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           const EdgeInsets.only(left:15, right: 20),
                                       child: Container(
                                         width:
-                                            MediaQuery.of(context).size.width / 1.34,
+                                            MediaQuery.of(context).size.width / 1.33,
 
                                         //height: 46,
                                         decoration: BoxDecoration(
@@ -2811,7 +2811,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               ],
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.only(left: 20),
+                                              padding: const EdgeInsets.only(left: 10),
                                               child: IconButton(
                                                   onPressed: () async {
                                                     recipient!.clear();
@@ -2943,7 +2943,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(right: 25,top: 3),
+                                      padding: const EdgeInsets.only(right: 27,top: 3),
                                       child: SizedBox(
                                         width: 55,
                                         height: 30,

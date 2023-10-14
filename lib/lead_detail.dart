@@ -2546,10 +2546,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                         ),
                                   Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 15, right: 20),
+                                        left: 15, right: 25),
                                     child: Container(
                                       width: MediaQuery.of(context).size.width /
-                                          1.34,
+                                          1.32,
 
                                       //height: 46,
                                       decoration: BoxDecoration(
@@ -2616,7 +2616,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             ],
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(left: 20),
+                                            padding: const EdgeInsets.only(left: 10),
                                             child: IconButton(
                                                 onPressed: () async {
                                                   recipient!.clear();
@@ -2774,7 +2774,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 25,top: 3),
+                                    padding: const EdgeInsets.only(right: 27,top: 3),
                                     child: SizedBox(
                                       width: 55,
                                       height: 30,
