@@ -584,6 +584,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 ],
                               ),
                             ),
+                            VerticalDivider(color: Colors.grey,
+                            thickness: 0.5,),
                             InkWell(
                               onTap: () {
                                 print(widget.customerId);
@@ -599,6 +601,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 "",
                                                 "customer")));
                               },
+
                               child: Container(
                                 child: Row(
                                   children: [
@@ -630,11 +633,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 ),
                               ),
                             ),
+                            VerticalDivider(color: Colors.grey,
+                              thickness: 0.5,),
                             customerType == true
                                 ? Padding(
                                     padding: const EdgeInsets.only(
                                         top: 10,
-                                        left: 55,
+                                        left: 10,
                                         right: 25,
                                         bottom: 10),
                                     child: Container(
@@ -653,7 +658,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 : Padding(
                                     padding: const EdgeInsets.only(
                                         top: 10,
-                                        left: 55,
+                                        left: 10,
                                         right: 25,
                                         bottom: 10),
                                     child: Container(
@@ -666,7 +671,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           child: Text(
                                         "ARCHIVED",
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 10,
                                           color: Colors.white,
                                           fontFamily: 'Mulish',
                                           fontWeight: FontWeight.w400
@@ -1644,6 +1649,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       child: Container(
                         child: Column(
                           children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

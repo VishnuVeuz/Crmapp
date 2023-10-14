@@ -2445,6 +2445,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Column(
                           children: [
                             Padding(
+                              padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                              child: Divider(
+                                color: Color(0xFFF4F4F4),
+                                thickness: 2,
+                              ),
+                            ),
+                            Padding(
                               padding: const EdgeInsets.only(top: 5),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
