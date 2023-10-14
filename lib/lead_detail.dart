@@ -4494,7 +4494,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             ),
                                                           ),
 
-                                                          Expanded(
+                                                          scheduleData['records'][index]
+                                                          ['buttons'][1] ==
+                                                              "Reschedule"?    Expanded(
                                                             child: Container(
 
                                                               padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
@@ -4534,6 +4536,165 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       height: 10,
                                                                       child: Image.asset(
                                                                         'images/schedulecalendar.png',
+                                                                        width: 10,
+                                                                        height: 10,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      // rescheduleJo2 (1112:1376)
+                                                                      //'Reschedule',
+                                                                      scheduleData['records']
+                                                                      [
+                                                                      index]
+                                                                      [
+                                                                      'buttons'][1]
+                                                                          .toString() ??
+                                                                          "",
+                                                                      style:  TextStyle (
+                                                                        fontFamily: 'Mulish',
+                                                                        fontSize: 10,
+                                                                        fontWeight: FontWeight.w500,
+                                                                        // height: 1.255*ffem/fem,
+                                                                        color: Color(0xff707070),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ):
+
+                                                          Expanded(
+                                                            child: Container(
+
+                                                              padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+
+                                                              // height: double.infinity,
+                                                              child: InkWell(
+                                                                onTap: ()async{
+                                                                  int idType =
+                                                                  scheduleData[
+                                                                  'records']
+                                                                  [
+                                                                  index]['id'];
+
+                                                                  var data = await editDefaultScheduleData(
+                                                                      scheduleData[
+                                                                      'records']
+                                                                      [
+                                                                      index]['id']);
+
+                                                                  setState(() {
+                                                                    activityTypeName =
+                                                                        data['activity_type_id'] ??
+                                                                            null;
+                                                                    activityTypeId =
+                                                                        data['activity_type_id']
+                                                                        [
+                                                                        'id'] ??
+                                                                            null;
+                                                                    activityTypeNameCategory =
+                                                                        data['activity_type_id']
+                                                                        [
+                                                                        'category'] ??
+                                                                            "";
+                                                                    assignedToname =
+                                                                        data['user_id'] ??
+                                                                            null;
+                                                                    assignedToid =
+                                                                        data['user_id']
+                                                                        [
+                                                                        'id'] ??
+                                                                            null;
+                                                                    DuedateTime
+                                                                        .text =
+                                                                        data['date_deadline'] ??
+                                                                            "";
+                                                                    summaryController
+                                                                        .text =
+                                                                        data['summary'] ??
+                                                                            "";
+                                                                    commandsController
+                                                                        .text = data[
+                                                                    'note']
+                                                                        .replaceAll(
+                                                                        RegExp(
+                                                                            r'<[^>]*>|&[^;]+;'),
+                                                                        ' ')
+                                                                        .toString();
+                                                                    // DuedateTime.text == "default" ?
+                                                                    if (activityTypeNameCategory ==
+                                                                        "default") {
+                                                                      scheduleBtn =
+                                                                      true;
+                                                                      opencalendarBtn =
+                                                                      false;
+                                                                      btntext =
+                                                                      "Schedule";
+                                                                      meetingColum =
+                                                                      true;
+                                                                    } else if (activityTypeNameCategory ==
+                                                                        "phonecall") {
+                                                                      scheduleBtn =
+                                                                      true;
+                                                                      opencalendarBtn =
+                                                                      true;
+                                                                      btntext =
+                                                                      "Save";
+                                                                      meetingColum =
+                                                                      true;
+                                                                    } else if (activityTypeNameCategory ==
+                                                                        "meeting") {
+                                                                      scheduleBtn =
+                                                                      false;
+                                                                      opencalendarBtn =
+                                                                      true;
+                                                                      btntext =
+                                                                      "Schedule";
+                                                                      meetingColum =
+                                                                      false;
+                                                                    } else if (activityTypeNameCategory ==
+                                                                        "upload_file") {
+                                                                      scheduleBtn =
+                                                                      true;
+                                                                      opencalendarBtn =
+                                                                      false;
+                                                                      btntext =
+                                                                      "Schedule";
+                                                                      meetingColum =
+                                                                      true;
+                                                                    }
+
+                                                                    print(
+                                                                        activityTypeNameCategory);
+                                                                    print(
+                                                                        "jhbvjbvsvj");
+                                                                  });
+
+                                                                  showDialog(
+                                                                    context:
+                                                                    context,
+                                                                    builder: (BuildContext
+                                                                    context) =>
+                                                                        _buildOrderPopupDialog(
+                                                                            context,
+                                                                            idType),
+                                                                  ).then((value) =>
+                                                                      setState(
+                                                                              () {}));
+                                                                },
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  children: [
+                                                                    Container(
+                                                                      // iconsaxlinearcalendarPvx (1112:1377)
+                                                                      margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                                                      width: 10,
+                                                                      height: 10,
+                                                                      child: Image.asset(
+                                                                        'images/scheduleedit.png',
                                                                         width: 10,
                                                                         height: 10,
                                                                       ),
