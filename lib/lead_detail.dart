@@ -4371,7 +4371,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               Colors.grey,
                                                                           width:
                                                                               .5,
-                                                                        )),
+                                                                        )
+                                                                    ),
                                                                     child: Row(
                                                                       mainAxisAlignment:
                                                                           MainAxisAlignment
@@ -4551,7 +4552,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsets.only(left: 20.0, right: 15),
+                                                                                  padding: const EdgeInsets.only(left:13.0, right: 10),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
                                                                                     child: Stack(
@@ -4584,22 +4585,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               ],
                                                                             ),
                                                                             Padding(
-                                                                              padding: const EdgeInsets.only(left: 10),
+                                                                              padding: const EdgeInsets.only(left: 8),
                                                                               child: Row(
                                                                                 children: [
                                                                                   Container(
-                                                                                      // color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                       //color: Colors.green,
+                                                                                      width: MediaQuery.of(context).size.width / 5,
                                                                                       child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                           style: TextStyle(
                                                                                             fontSize: 12,
                                                                                             color: Colors.black,
                                                                                             fontFamily: 'Mulish',
-                                                                                            fontWeight: FontWeight.w600,
+                                                                                            fontWeight: FontWeight.w500,
                                                                                           ))),
                                                                                   Container(
                                                                                       //color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      width: MediaQuery.of(context).size.width / 4.7,
                                                                                       child: Text(logDataTitle[indexx][indexs]["period"],
                                                                                           style: TextStyle(
                                                                                             fontSize: 12,
@@ -4621,7 +4622,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             padding:
                                                                                 const EdgeInsets.only(left: 68),
                                                                             child: Container(
-                                                                                //color: Colors.green,
+                                                                                //color: Colors.red,
                                                                                 width: MediaQuery.of(context).size.width / 4,
                                                                                 child: Text(logDataTitle[indexx][indexs]['subject'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "",
                                                                                     style: TextStyle(
@@ -4638,9 +4639,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           child:
                                                                               Padding(
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 62, bottom: 0),
+                                                                                const EdgeInsets.only(left:47, bottom: 0),
                                                                             child: Container(
-                                                                                //color: Colors.green,
+                                                                               // color: Colors.green,
                                                                                 // height: 10,
                                                                                 width: MediaQuery.of(context).size.width / 2,
                                                                                 child: Html(
@@ -4658,7 +4659,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         ),
                                                                         selectedImagesDisplay.isEmpty
                                                                             ? Padding(
-                                                                                padding: const EdgeInsets.only(left: 40),
+                                                                                padding: const EdgeInsets.only(left:26),
                                                                                 child: Container(
                                                                                   color: Colors.blue,
                                                                                   width: MediaQuery.of(context).size.width / 3,
@@ -4666,7 +4667,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 ),
                                                                               )
                                                                             : Padding(
-                                                                                padding: const EdgeInsets.only(left: 40, right: 0),
+                                                                                padding: const EdgeInsets.only(left:26, right: 0),
                                                                                 child: Container(
                                                                                   //color: Colors.green,
 
@@ -4785,7 +4786,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             Container(
                                                                                                               width: 30,
                                                                                                               height: 30,
-                                                                                                              //color: Colors.green,
+                                                                                                             // color: Colors.green,
                                                                                                               child: IconButton(
                                                                                                                 icon: SvgPicture.asset("images/trash.svg"),
                                                                                                                 onPressed: () async {
@@ -4951,7 +4952,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         emojiSet.length >
                                                                                 0
                                                                             ? Padding(
-                                                                                padding: const EdgeInsets.only(left: 65),
+                                                                                padding: const EdgeInsets.only(left:56,top: 2),
                                                                                 child: GridView.builder(
                                                                                   shrinkWrap: true, // Avoid scrolling
                                                                                   physics: NeverScrollableScrollPhysics(),

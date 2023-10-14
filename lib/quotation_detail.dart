@@ -769,7 +769,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 5, bottom: 5, left: 0, right: 20),
+                              top: 5, bottom: 5, left: 0, right: 23),
                           child: Center(
                             child: Container(
                               decoration: BoxDecoration(
@@ -848,7 +848,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              top: 5, left: 23),
+                                                              top: 5, left: 21),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
@@ -887,7 +887,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 5, left: 23),
+                                                          top: 5, left: 21),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
@@ -945,7 +945,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       padding:
                                                           const EdgeInsets.only(
                                                               top: 5,
-                                                              left: 23,
+                                                              left: 21,
                                                               bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
@@ -1070,7 +1070,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     Padding(
                                                       padding:
                                                           const EdgeInsets.only(
-                                                              top: 5, left: 23),
+                                                              top: 5, left: 21),
                                                       child: Container(
                                                         width: 230,
                                                         child: Text(
@@ -1094,7 +1094,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          top: 5, left: 23),
+                                                          top: 5, left: 21),
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment.start,
@@ -1152,7 +1152,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                       padding:
                                                           const EdgeInsets.only(
                                                               top: 5,
-                                                              left: 23,
+                                                              left: 21,
                                                               bottom: 5),
                                                       child: Row(
                                                         mainAxisAlignment:
@@ -4977,7 +4977,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                               crossAxisAlignment: CrossAxisAlignment.start,
                                                                               children: [
                                                                                 Padding(
-                                                                                  padding: const EdgeInsets.only(left: 15.0, right: 15),
+                                                                                  padding: const EdgeInsets.only(left: 13.0, right: 10),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
                                                                                     child: Stack(
@@ -5010,12 +5010,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                               ],
                                                                             ),
                                                                             Padding(
-                                                                              padding: const EdgeInsets.only(left: 15),
+                                                                              padding: const EdgeInsets.only(left:8),
                                                                               child: Row(
                                                                                 children: [
                                                                                   Container(
                                                                                       // color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      width: MediaQuery.of(context).size.width /5,
                                                                                       child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
                                                                                           style: TextStyle(
                                                                                             fontSize: 13,
@@ -5024,7 +5024,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                           ))),
                                                                                   Container(
                                                                                       //color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4.5,
+                                                                                      width: MediaQuery.of(context).size.width / 4.8,
                                                                                       child: Text(logDataTitle[indexx][indexs]["period"],
                                                                                           style: TextStyle(
                                                                                             fontSize: 11,
@@ -5056,7 +5056,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         ),
                                                                         Padding(
                                                                           padding:
-                                                                              const EdgeInsets.only(left: 62),
+                                                                              const EdgeInsets.only(left:47),
                                                                           child: Container(
                                                                               // color: Colors.green,
                                                                               width: MediaQuery.of(context).size.width / 2,
@@ -5071,14 +5071,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         ),
                                                                         selectedImagesDisplay.isEmpty
                                                                             ? Padding(
-                                                                                padding: const EdgeInsets.only(left: 40),
+                                                                                padding: const EdgeInsets.only(left:26),
                                                                                 child: Container(
                                                                                   width: MediaQuery.of(context).size.width / 3,
                                                                                   // height: 40,
                                                                                 ),
                                                                               )
                                                                             : Padding(
-                                                                                padding: const EdgeInsets.only(left: 40, right: 0),
+                                                                                padding: const EdgeInsets.only(left:26, right: 0),
                                                                                 child: Container(
                                                                                   //color: Colors.green,
 
@@ -5371,7 +5371,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         emojiSet.length>0?
 
                                                                         Padding(
-                                                                          padding: const EdgeInsets.only(left: 65,top: 5),
+                                                                          padding: const EdgeInsets.only(left:56,top: 2),
                                                                           child: GridView.builder(
                                                                             shrinkWrap: true, // Avoid scrolling
                                                                             physics: NeverScrollableScrollPhysics(),

@@ -4698,7 +4698,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                                                 children: [
                                                                                   Padding(
-                                                                                    padding: const EdgeInsets.only(left: 25.0, right: 15),
+                                                                                    padding: const EdgeInsets.only(left:15.0, right: 10),
                                                                                     child: Container(
                                                                                       //color: Colors.green,
                                                                                       child: Stack(
@@ -4730,29 +4730,32 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                   ),
                                                                                 ],
                                                                               ),
-                                                                              Row(
-                                                                                children: [
-                                                                                  Container(
-                                                                                      // color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4,
-                                                                                      child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 12,
-                                                                                            color: Colors.black,
-                                                                                            fontFamily: 'Mulish',
-                                                                                            fontWeight: FontWeight.w600,
-                                                                                          ))),
-                                                                                  Container(
-                                                                                      //color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4,
-                                                                                      child: Text(logDataTitle[indexx][indexs]["period"],
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 12,
-                                                                                            fontFamily: 'Mulish',
-                                                                                            color: Colors.grey[700],
-                                                                                          ))),
-                                                                                  Container(child: logNoteIcon),
-                                                                                ],
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.only(left:8),
+                                                                                child: Row(
+                                                                                  children: [
+                                                                                    Container(
+                                                                                        // color: Colors.green,
+                                                                                        width: MediaQuery.of(context).size.width / 5,
+                                                                                        child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                                            style: TextStyle(
+                                                                                              fontSize: 12,
+                                                                                              color: Colors.black,
+                                                                                              fontFamily: 'Mulish',
+                                                                                              fontWeight: FontWeight.w600,
+                                                                                            ))),
+                                                                                    Container(
+                                                                                        //color: Colors.green,
+                                                                                        width: MediaQuery.of(context).size.width / 4.7,
+                                                                                        child: Text(logDataTitle[indexx][indexs]["period"],
+                                                                                            style: TextStyle(
+                                                                                              fontSize: 12,
+                                                                                              fontFamily: 'Mulish',
+                                                                                              color: Colors.grey[700],
+                                                                                            ))),
+                                                                                    Container(child: logNoteIcon),
+                                                                                  ],
+                                                                                ),
                                                                               ),
                                                                             ],
                                                                           ),
@@ -4776,7 +4779,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           ),
                                                                           Padding(
                                                                             padding:
-                                                                                const EdgeInsets.only(left: 62),
+                                                                                const EdgeInsets.only(left:49),
                                                                             child: Container(
                                                                                 //color: Colors.green,
                                                                                 width: MediaQuery.of(context).size.width / 2,
@@ -4794,14 +4797,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           ),
                                                                           selectedImagesDisplay.isEmpty
                                                                               ? Padding(
-                                                                                  padding: const EdgeInsets.only(left: 40),
+                                                                                  padding: const EdgeInsets.only(left:26),
                                                                                   child: Container(
                                                                                     width: MediaQuery.of(context).size.width / 3,
                                                                                     // height: 40,
                                                                                   ),
                                                                                 )
                                                                               : Padding(
-                                                                                  padding: const EdgeInsets.only(left: 40, right: 0),
+                                                                                  padding: const EdgeInsets.only(left: 26, right: 0),
                                                                                   child: Container(
                                                                                     //color: Colors.green,
 
@@ -5094,7 +5097,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           emojiSet.length>0?
 
                                                                           Padding(
-                                                                            padding: const EdgeInsets.only(left: 65,top: 5),
+                                                                            padding: const EdgeInsets.only(left:56,top: 2),
                                                                             child: GridView.builder(
                                                                               shrinkWrap: true, // Avoid scrolling
                                                                               physics: NeverScrollableScrollPhysics(),
