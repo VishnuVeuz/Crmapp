@@ -223,7 +223,7 @@ CRM made easy.
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              OpportunityMainPage(null,"","","","")));
+                                          LeadMainPage()));
 
                                 }
 
