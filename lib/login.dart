@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'api.dart';
 import 'leadcreation.dart';
 import 'leadmainpage.dart';
+import 'opportunitymainpage.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -212,10 +213,18 @@ CRM made easy.
                                   print("test1");
 
 
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => LeadMainPage()));
+                                  //
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LeadMainPage()));
+                                          builder: (context) =>
+                                              OpportunityMainPage(null,"","","","")));
+
                                 }
 
 

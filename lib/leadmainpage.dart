@@ -760,8 +760,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   MaterialPageRoute(
                       builder: (context) =>
                           OpportunityMainPage(
-                              null, "", "notification",
-                              "[assigned_to_me]", "")));
+                              null, "", "",
+                              "", "")));
             }
             else if(index==3){
               Scaffold.of(context).openDrawer();
