@@ -93,6 +93,18 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
 
+
+  TextEditingController sendphoneController = TextEditingController();
+  TextEditingController sendmobileController = TextEditingController();
+  TextEditingController sendjobController = TextEditingController();
+  TextEditingController sendemailController = TextEditingController();
+  TextEditingController sendnameController = TextEditingController();
+  String radioInput = "person";
+  dynamic schedulecompanyName,
+      schedulecompanyId;
+  int? scheduleCustcreateId;
+
+
   bool smsVisible = true;
   bool isCheckedEmail = false;
   bool isCheckedFollowers = false;
@@ -2476,13 +2488,29 @@ class _LeadDetailState extends State<LeadDetail> {
                                             onChanged: (bool? value) {
                                               print(value);
                                               print("check box issues");
+
+                                              String emails = sendMailData[i]['name']??"";
+                                              value == true && sendMailData[i]['id'] == null?
                                               showDialog(
                                                 context: context,
                                                 builder: (BuildContext context) =>
-                                                    _buildMailPopupDialog(context, 0),
-                                              ).then((value) => setState(() {}));
+                                                    _buildMailPopupDialog(context, 0,emails),
+                                              ).then((value) => setState(() {
+
+
+                                                sendMailData[i]['id']=
+                                                    scheduleCustcreateId;
+
+                                              }))
+                                                  : null;
                                               setState(() {
+                                                print(scheduleCustcreateId);
+                                                print("scheduleCustcreateId");
+
+
                                                 isCheckedMail = value!;
+                                                sendMailData[i]['id']=
+                                                    scheduleCustcreateId;
                                                 sendMailData[i]['selected'] =
                                                     value;
                                               });
@@ -7896,10 +7924,15 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   defaultSendmsgvalues() async {
+    print(sendMailData);
+    print("sendMailData");
     List<int> selectedIds = sendMailData
         .where((item) => item["selected"] == true)
         .map((item) => item["id"] as int)
         .toList();
+
+    print(selectedIds);
+    print("selectedIds");
 
     recipient!.clear();
     token = await getUserJwt();
@@ -8323,9 +8356,13 @@ class _LeadDetailState extends State<LeadDetail> {
       );
     }
   }
-  _buildMailPopupDialog(BuildContext context, int typeIds) {
+  _buildMailPopupDialog(BuildContext context, int typeIds,String emails) {
     return StatefulBuilder(builder: (context, setState) {
+
+    sendemailController.text = emails.toString();
+    sendnameController.text = emails.toString();
       return AlertDialog(
+
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
@@ -8350,13 +8387,56 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 ),
 
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height:30,
+                      child: RadioListTile(
+                        title: Text(
+                          "Individual",
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                        ),
+                        value: "person",
+                        groupValue: radioInput,
+                        onChanged: (value) {
+                          setState(() {
+                            radioInput = value.toString();
+                           // cmpVisibility = true;
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      height:30,
+                      child: RadioListTile(
+                        title: Text(
+                          "Company",
+                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                        ),
+                        value: "company",
+                        groupValue: radioInput,
+                        onChanged: (value) {
+                          setState(() {
+                            radioInput = value.toString();
+                         //   cmpVisibility = false;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+
+                SizedBox(height: 10,),
+
                 Padding(
                   padding:
                   const EdgeInsets.symmetric(horizontal:15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                     keyboardType: TextInputType.emailAddress,
-                   // controller: emailController,
+                    controller: sendnameController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
@@ -8366,7 +8446,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
 
                         // border: UnderlineInputBorder(),
-                        labelText: 'Email',
+                        labelText: 'Name',
                         labelStyle: TextStyle(
                             color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                   ),
@@ -8392,7 +8472,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       );
                     },
 
-                    value: companyName,
+                    value: schedulecompanyName,
                     // hint: Text(
                     //   "Company Name",
                     //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -8407,8 +8487,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     onChanged: (value) async {
                       setState(() {
                         //cmpbasedVisible = false;
-                        companyName = value;
-                        companyId = value["id"];
+                        schedulecompanyName = value;
+                        schedulecompanyId = value["id"];
                       });
 
                       //await getCustomerCompanyDetail(companyId);
@@ -8476,7 +8556,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                    controller: jobpositionController,
+                    controller: sendjobController,
                     decoration: const InputDecoration(
                         enabledBorder:  UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
@@ -8490,13 +8570,35 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ),),
                 Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal:15, vertical: 0),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: sendemailController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Email',
+                        labelStyle: TextStyle(
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                  ),
+                ),
+
+                Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
-                    controller: phoneController,
+                    controller: sendphoneController,
                     decoration: const InputDecoration(
                         counterText: "",
                         enabledBorder:  UnderlineInputBorder(
@@ -8535,7 +8637,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
-                    controller: mobileController,
+                    controller: sendmobileController,
                     decoration: const InputDecoration(
                         counterText: "",
                         enabledBorder:  UnderlineInputBorder(
@@ -8587,7 +8689,35 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed: (){},
+                              onPressed: ()async{
+
+
+                                scheduleCustcreateId = await schedulecreateCustomer(
+                                radioInput,
+                                sendnameController.text,
+                                  sendemailController.text,
+                                  sendjobController.text,
+                                  sendphoneController.text,
+                                  sendmobileController.text,
+                                  schedulecompanyId);
+
+                                print(scheduleCustcreateId);
+                                print("final responce");
+
+                                if(scheduleCustcreateId!=0){
+                                  setState((){
+                                    sendnameController.text="";
+                                    sendemailController.text="";
+                                    sendjobController.text="";
+                                    sendphoneController.text="";
+                                    sendmobileController.text="";
+                                    schedulecompanyId=null;
+                                  });
+                                  Navigator.pop(context);
+                                }
+
+
+                              },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9246A),
                               )),

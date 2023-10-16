@@ -2102,6 +2102,77 @@ deleteQuotationData(int quotationId) async {
 
 // customer
 
+
+schedulecreateCustomer(String company_type, name, email, function,phone,mobile,
+    int? company_id) async {
+
+
+  String token = await getUserJwt();
+
+  print("tocken responece");
+  String? authresponce, resMessage;
+      var resMessageText;
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "company_type": company_type,
+        "name": name,
+        "email": email,
+        "function": function,
+        "parent_id": company_id,
+        "phone": phone,
+        "mobile": mobile,
+      }
+    });
+
+    Response response = await post(
+      Uri.parse('${baseUrl}api/contact'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    print("demo message");
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      print("finalstring");
+      authresponce = data['result'].toString();
+
+      resMessage = data['result']['message'];
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = data['result']['data']['id'];
+      }
+
+      if (resMessage == "error") {
+        resMessageText = 0;
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+  print(authresponce);
+
+  print(resMessage);
+  print(resMessageText);
+  print("bhgvhb");
+
+
+  print(resMessageText);
+  print("dataaa");
+  return resMessageText;
+}
+
+
+
+
 createCustomer(String company_type, name, street, street2, city, website, email, function, ref, comment,zip,
     vat,phone,mobile,
     int? parent_id,company_id,title,state_id,country_id,customer_rank,supplier_rank,
@@ -2791,7 +2862,7 @@ sendMailsFollowers(int id, String value) async {
 
   print(id);
   print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message");
-  print("lead dataaa final");
+  print("lead dataaa finalsshshs");
 
   var data;
   String? authresponce;
