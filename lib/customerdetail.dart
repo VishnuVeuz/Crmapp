@@ -2075,7 +2075,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               }
                                             },
                                             child: Text(
-                                              "Following",
+                                              "Follow",
                                               style: TextStyle(
                                                 color: Colors.green,
                                                 fontFamily: 'Mulish',

@@ -2199,7 +2199,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                             }
                                           },
                                           child: Text(
-                                            "Following",
+                                            "Follow",
                                             style: TextStyle(
                                                 color: Colors.green,
                                                 fontFamily: 'Mulish'),
