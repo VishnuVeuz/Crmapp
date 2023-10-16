@@ -5560,757 +5560,761 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   itemCount: logDataHeader.length,
                                   itemBuilder:
                                       (BuildContext context, int indexx) {
-                                    return Card(
-                                      elevation: 1,
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 10, bottom: 10),
+                                    return Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 10, bottom: 10),
+                                          child: Container(
+                                            width: MediaQuery.of(context).size.width,
+                                            height: 42,
+                                            color: Color(0xff3D418E),
                                             child: Center(
                                                 child: Text(
                                               logDataHeader[indexx],
                                               style: TextStyle(
-                                                  fontSize: 12,
-                                                  color: Colors.black),
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                                fontFamily: 'Mulish',),
                                             )),
                                           ),
-                                          ListView.builder(
-                                              scrollDirection: Axis.vertical,
-                                              physics:
-                                                  NeverScrollableScrollPhysics(),
-                                              shrinkWrap: true,
-                                              itemCount:
-                                                  logDataTitle[indexx].length,
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                      int indexs) {
-                                                selectedImagesDisplay =
-                                                    logDataTitle[indexx][indexs]
-                                                        ['attachment_ids'];
-                                                lognoteoptions =
-                                                    logDataTitle[indexx][indexs]
-                                                            ['is_editable'] ??
-                                                        true;
-                                                starImage = logDataTitle[indexx]
-                                                        [indexs]['starred'] ??
-                                                    false;
+                                        ),
+                                        ListView.builder(
+                                            scrollDirection: Axis.vertical,
+                                            physics:
+                                                NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemCount:
+                                                logDataTitle[indexx].length,
+                                            itemBuilder:
+                                                (BuildContext context,
+                                                    int indexs) {
+                                              selectedImagesDisplay =
+                                                  logDataTitle[indexx][indexs]
+                                                      ['attachment_ids'];
+                                              lognoteoptions =
+                                                  logDataTitle[indexx][indexs]
+                                                          ['is_editable'] ??
+                                                      true;
+                                              starImage = logDataTitle[indexx]
+                                                      [indexs]['starred'] ??
+                                                  false;
 
-                                                logDataTitle[indexx][indexs]
-                                                            ['icon'] ==
-                                                        "envelope"
-                                                    ? logNoteIcon = const Icon(
-                                                        Icons.email,
-                                                        color: Colors.red,
-                                                        size: 15,
-                                                      )
-                                                    : logDataTitle[indexx]
-                                                                    [indexs]
-                                                                ['icon'] ==
-                                                            "ad_units"
-                                                        ? logNoteIcon = Icon(
-                                                            Icons.phone,
-                                                            color: Colors.red,
-                                                            size: 15,
-                                                          )
-                                                        : logDataTitle[indexx]
-                                                                        [indexs]
-                                                                    ['icon'] ==
-                                                                "telegram"
-                                                            ? logNoteIcon =
-                                                                Icon(
-                                                                Icons.telegram,
-                                                                color:
-                                                                    Colors.red,
-                                                                size: 15,
-                                                              )
-                                                            : Icon(
-                                                                Icons.circle,
-                                                                color: Colors
-                                                                    .white,
-                                                                size: 8,
-                                                              );
+                                              logDataTitle[indexx][indexs]
+                                                          ['icon'] ==
+                                                      "envelope"
+                                                  ? logNoteIcon = const Icon(
+                                                      Icons.email,
+                                                      color: Colors.red,
+                                                      size: 15,
+                                                    )
+                                                  : logDataTitle[indexx]
+                                                                  [indexs]
+                                                              ['icon'] ==
+                                                          "ad_units"
+                                                      ? logNoteIcon = Icon(
+                                                          Icons.phone,
+                                                          color: Colors.red,
+                                                          size: 15,
+                                                        )
+                                                      : logDataTitle[indexx]
+                                                                      [indexs]
+                                                                  ['icon'] ==
+                                                              "telegram"
+                                                          ? logNoteIcon =
+                                                              Icon(
+                                                              Icons.telegram,
+                                                              color:
+                                                                  Colors.red,
+                                                              size: 15,
+                                                            )
+                                                          : Icon(
+                                                              Icons.circle,
+                                                              color: Colors
+                                                                  .white,
+                                                              size: 8,
+                                                            );
 
-                                                List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
+                                              List  emojiSet = logDataTitle[indexx][indexs]['reaction_ids'];
 
-                                                return Card(
-                                                  elevation: 1,
-                                                  child: Column(
-                                                    children: [
-                                                      Container(
-                                                        color: Colors.white70,
-                                                        child: Column(
-                                                          children: [
-                                                            Stack(
-                                                              alignment:
-                                                                  Alignment
-                                                                      .center,
-                                                              children: [
-                                                                // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                                Padding(
-                                                                  padding: const EdgeInsets
-                                                                          .only(
-                                                                      left: 210,
-                                                                      right:
-                                                                          50),
-                                                                  child:
-                                                                      Container(
-                                                                    //color: Colors.cyan,
-                                                                    height: 30,
-                                                                    width: 102,
-                                                                  ),
+                                              return Card(
+                                                elevation: 1,
+                                                child: Column(
+                                                  children: [
+                                                    Container(
+                                                      color: Colors.white70,
+                                                      child: Column(
+                                                        children: [
+                                                          Stack(
+                                                            alignment:
+                                                                Alignment
+                                                                    .center,
+                                                            children: [
+                                                              // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                              Padding(
+                                                                padding: const EdgeInsets
+                                                                        .only(
+                                                                    left: 210,
+                                                                    right:
+                                                                        50),
+                                                                child:
+                                                                    Container(
+                                                                  //color: Colors.cyan,
+                                                                  height: 30,
+                                                                  width: 102,
                                                                 ),
-                                                                Positioned(
-                                                                  bottom: 0,
-                                                                  right: 0,
-                                                                  //left: 20,
-                                                                  child:
+                                                              ),
+                                                              Positioned(
+                                                                bottom: 0,
+                                                                right: 0,
+                                                                //left: 20,
+                                                                child:
+                                                                    Container(
+                                                                  width: 102.0,
+                                                                  height:
+                                                                      30.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                          borderRadius: BorderRadius.all(
+                                                                              Radius.circular(5)),
+                                                                          color:
+                                                                              Colors.white,
+                                                                          border: Border.all(
+                                                                            color: Colors.grey,
+                                                                            width: .5,
+                                                                          )),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceAround,
+                                                                    children: [
                                                                       Container(
-                                                                    width: 102.0,
-                                                                    height:
-                                                                        30.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                            borderRadius: BorderRadius.all(
-                                                                                Radius.circular(5)),
-                                                                            color:
-                                                                                Colors.white,
-                                                                            border: Border.all(
-                                                                              color: Colors.grey,
-                                                                              width: .5,
-                                                                            )),
-                                                                    child: Row(
-                                                                      mainAxisAlignment:
-                                                                          MainAxisAlignment
-                                                                              .spaceAround,
-                                                                      children: [
-                                                                        Container(
-                                                                          height: 25,
-                                                                          width: 25,
-                                                                          //color: Colors.red,
-                                                                          child: Align(
-                                                                            alignment: Alignment
-                                                                                .topRight,
-                                                                            child: IconButton(
-                                                                              icon: Icon(
-                                                                                  Icons
-                                                                                      .add_reaction_outlined,
-                                                                                  size: 15.0),
-                                                                              onPressed: () {
-                                                                                logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
-                                                                                showDialog(
-                                                                                  context: context,
-                                                                                  builder: (BuildContext context) =>
-                                                                                      _buildEmojiPopupDialog(
-                                                                                          context),
-                                                                                ).then((value) => setState(() {}));
-                                                                              },
-                                                                            ),
+                                                                        height: 25,
+                                                                        width: 25,
+                                                                        //color: Colors.red,
+                                                                        child: Align(
+                                                                          alignment: Alignment
+                                                                              .topRight,
+                                                                          child: IconButton(
+                                                                            icon: Icon(
+                                                                                Icons
+                                                                                    .add_reaction_outlined,
+                                                                                size: 15.0),
+                                                                            onPressed: () {
+                                                                              logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
+                                                                              showDialog(
+                                                                                context: context,
+                                                                                builder: (BuildContext context) =>
+                                                                                    _buildEmojiPopupDialog(
+                                                                                        context),
+                                                                              ).then((value) => setState(() {}));
+                                                                            },
                                                                           ),
                                                                         ),
-                                                                        StatefulBuilder(builder: (BuildContext
-                                                                                context,
-                                                                            StateSetter
-                                                                                setState) {
-                                                                          return Container(
-                                                                            height:
-                                                                                25,
-                                                                            width:
-                                                                                25,
-                                                                            child:
-                                                                                Align(
-                                                                              alignment: Alignment.topRight,
-                                                                              child: starImage == true
-                                                                                  ? IconButton(
-                                                                                      icon: Icon(
-                                                                                        Icons.star_rate,
-                                                                                        size: 15.0,
-                                                                                        color: Colors.yellow[700],
-                                                                                      ),
-                                                                                      onPressed: () async {
-                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                        var data = await logStarChange(lodDataId, false);
-
-                                                                                        if (data['result']['message'] == "success") {
-                                                                                          print("startrue");
-                                                                                          setState(() {
-                                                                                            starImage = false;
-                                                                                          });
-                                                                                        }
-
-                                                                                        print(data);
-                                                                                        print(" ");
-                                                                                      },
-                                                                                    )
-                                                                                  : IconButton(
-                                                                                      icon: Icon(
-                                                                                        Icons.star_rate,
-                                                                                        size: 15.0,
-                                                                                      ),
-                                                                                      onPressed: () async {
-                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                        var data = await logStarChange(lodDataId, true);
-
-                                                                                        if (data['result']['message'] == "success") {
-                                                                                          print("starfalse");
-                                                                                          setState(() {
-                                                                                            starImage = true;
-                                                                                          });
-                                                                                        }
-
-                                                                                        print(data);
-                                                                                        print("hfghavjhcvjsch2");
-                                                                                      },
-                                                                                    ),
-                                                                            ),
-                                                                          );
-                                                                        }),
-                                                                        Visibility(
-                                                                          visible:
-                                                                              lognoteoptions,
+                                                                      ),
+                                                                      StatefulBuilder(builder: (BuildContext
+                                                                              context,
+                                                                          StateSetter
+                                                                              setState) {
+                                                                        return Container(
+                                                                          height:
+                                                                              25,
+                                                                          width:
+                                                                              25,
                                                                           child:
-                                                                              Row(
-                                                                            children: [
-                                                                              Container(
-                                                                                height: 25,
-                                                                                width: 25,
-                                                                                //color: Colors.red,
-                                                                                child: Align(
-                                                                                  alignment: Alignment.topRight,
-                                                                                  child: IconButton(
-                                                                                    icon: Icon(Icons.edit, size: 15.0),
-                                                                                    onPressed: () {
-                                                                                      int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                      Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salespersonimg!, token!, widget.quotationId, logdata,"sale.order")));
-
-                                                                                      print("emojiVisibility");
-                                                                                    },
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                              Container(
-                                                                                height: 25,
-                                                                                width: 25,
-                                                                                //color: Colors.red,
-                                                                                child: Align(
-                                                                                  alignment: Alignment.center,
-                                                                                  child: IconButton(
-                                                                                    icon: Icon(Icons.delete_outline_outlined, size: 15.0),
+                                                                              Align(
+                                                                            alignment: Alignment.topRight,
+                                                                            child: starImage == true
+                                                                                ? IconButton(
+                                                                                    icon: Icon(
+                                                                                      Icons.star_rate,
+                                                                                      size: 15.0,
+                                                                                      color: Colors.yellow[700],
+                                                                                    ),
                                                                                     onPressed: () async {
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                      var data = await deleteLogData(lodDataId);
 
-                                                                                      if (data['message'] == "Success") {
-                                                                                        print("final11");
-                                                                                        await getQuotationDetails();
+                                                                                      var data = await logStarChange(lodDataId, false);
+
+                                                                                      if (data['result']['message'] == "success") {
+                                                                                        print("startrue");
                                                                                         setState(() {
-                                                                                          logDataHeader.clear();
-                                                                                          logDataTitle.clear();
-                                                                                          selectedImagesDisplay.clear();
+                                                                                          starImage = false;
                                                                                         });
                                                                                       }
+
+                                                                                      print(data);
+                                                                                      print(" ");
+                                                                                    },
+                                                                                  )
+                                                                                : IconButton(
+                                                                                    icon: Icon(
+                                                                                      Icons.star_rate,
+                                                                                      size: 15.0,
+                                                                                    ),
+                                                                                    onPressed: () async {
+                                                                                      int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                      var data = await logStarChange(lodDataId, true);
+
+                                                                                      if (data['result']['message'] == "success") {
+                                                                                        print("starfalse");
+                                                                                        setState(() {
+                                                                                          starImage = true;
+                                                                                        });
+                                                                                      }
+
+                                                                                      print(data);
+                                                                                      print("hfghavjhcvjsch2");
                                                                                     },
                                                                                   ),
-                                                                                ),
-                                                                              )
-                                                                            ],
                                                                           ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            ListView.builder(
-                                                                scrollDirection:
-                                                                    Axis
-                                                                        .vertical,
-                                                                physics:
-                                                                    NeverScrollableScrollPhysics(),
-                                                                shrinkWrap:
-                                                                    true,
-                                                                itemCount: 1,
-                                                                itemBuilder:
-                                                                    (BuildContext
-                                                                            context,
-                                                                        int index) {
-                                                                  return Card(
-                                                                    elevation:
-                                                                        0,
-                                                                    child:
-                                                                        Column(
-                                                                      crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                      children: [
-                                                                        Row(
+                                                                        );
+                                                                      }),
+                                                                      Visibility(
+                                                                        visible:
+                                                                            lognoteoptions,
+                                                                        child:
+                                                                            Row(
                                                                           children: [
-                                                                            Column(
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: [
-                                                                                Padding(
-                                                                                  padding: const EdgeInsets.only(left: 13.0, right: 10),
-                                                                                  child: Container(
-                                                                                    //color: Colors.green,
-                                                                                    child: Stack(
-                                                                                      alignment: Alignment.center,
-                                                                                      children: [
-                                                                                        // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                                                        CircleAvatar(
-                                                                                          radius: 12,
-                                                                                          child: ClipRRect(
-                                                                                            borderRadius: BorderRadius.circular(18),
-                                                                                            child: Image.network("${logDataTitle[indexx][indexs]['image']}?token=${token}"),
-                                                                                          ),
-                                                                                        ),
-                                                                                        Positioned(
-                                                                                          bottom: 0,
-                                                                                          right: 0,
-                                                                                          child: Container(
-                                                                                            width: 10.0,
-                                                                                            height: 10.0,
-                                                                                            decoration: BoxDecoration(
-                                                                                              shape: BoxShape.circle,
-                                                                                              color: Colors.green,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
+                                                                            Container(
+                                                                              height: 25,
+                                                                              width: 25,
+                                                                              //color: Colors.red,
+                                                                              child: Align(
+                                                                                alignment: Alignment.topRight,
+                                                                                child: IconButton(
+                                                                                  icon: Icon(Icons.edit, size: 15.0),
+                                                                                  onPressed: () {
+                                                                                    int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                    String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salespersonimg!, token!, widget.quotationId, logdata,"sale.order")));
+
+                                                                                    print("emojiVisibility");
+                                                                                  },
                                                                                 ),
-                                                                              ],
-                                                                            ),
-                                                                            Padding(
-                                                                              padding: const EdgeInsets.only(left:8),
-                                                                              child: Row(
-                                                                                children: [
-                                                                                  Container(
-                                                                                      // color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width /5,
-                                                                                      child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 13,
-                                                                                            color: Colors.black,
-                                                                                            fontWeight: FontWeight.bold,
-                                                                                          ))),
-                                                                                  Container(
-                                                                                      //color: Colors.green,
-                                                                                      width: MediaQuery.of(context).size.width / 4.8,
-                                                                                      child: Text(logDataTitle[indexx][indexs]["period"],
-                                                                                          style: TextStyle(
-                                                                                            fontSize: 11,
-                                                                                            color: Colors.grey[700],
-                                                                                          ))),
-                                                                                  Container(child: logNoteIcon),
-                                                                                ],
                                                                               ),
                                                                             ),
+                                                                            Container(
+                                                                              height: 25,
+                                                                              width: 25,
+                                                                              //color: Colors.red,
+                                                                              child: Align(
+                                                                                alignment: Alignment.center,
+                                                                                child: IconButton(
+                                                                                  icon: Icon(Icons.delete_outline_outlined, size: 15.0),
+                                                                                  onPressed: () async {
+                                                                                    int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                    var data = await deleteLogData(lodDataId);
+
+                                                                                    if (data['message'] == "Success") {
+                                                                                      print("final11");
+                                                                                      await getQuotationDetails();
+                                                                                      setState(() {
+                                                                                        logDataHeader.clear();
+                                                                                        logDataTitle.clear();
+                                                                                        selectedImagesDisplay.clear();
+                                                                                      });
+                                                                                    }
+                                                                                  },
+                                                                                ),
+                                                                              ),
+                                                                            )
                                                                           ],
                                                                         ),
-                                                                        Visibility(
-                                                                          visible: logDataTitle[indexx][indexs]['subject'] == ""
-                                                                              ? false
-                                                                              : true,
-                                                                          child:
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          ListView.builder(
+                                                              scrollDirection:
+                                                                  Axis
+                                                                      .vertical,
+                                                              physics:
+                                                                  NeverScrollableScrollPhysics(),
+                                                              shrinkWrap:
+                                                                  true,
+                                                              itemCount: 1,
+                                                              itemBuilder:
+                                                                  (BuildContext
+                                                                          context,
+                                                                      int index) {
+                                                                return Card(
+                                                                  elevation:
+                                                                      0,
+                                                                  child:
+                                                                      Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Row(
+                                                                        children: [
+                                                                          Column(
+                                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                                            children: [
                                                                               Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.only(left: 68),
-                                                                            child: Container(
-                                                                                //color: Colors.green,
-                                                                                width: MediaQuery.of(context).size.width / 4.5,
-                                                                                child: Text(logDataTitle[indexx][indexs]['subject'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "",
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 11,
-                                                                                      color: Colors.black,
-                                                                                    ))),
-                                                                          ),
-                                                                        ),
-                                                                        Padding(
-                                                                          padding:
-                                                                              const EdgeInsets.only(left:47),
-                                                                          child: Container(
-                                                                              // color: Colors.green,
-                                                                              width: MediaQuery.of(context).size.width / 2,
-                                                                              child: Html(
-                                                                                data: logDataTitle[indexx][indexs]['body'],
-                                                                                style: {
-                                                                                  'p': Style(fontSize: FontSize.small),
-                                                                                  // Customize the font size for <p> elements
-                                                                                  // Customize the font size for <strong> elements
-                                                                                },
-                                                                              )),
-                                                                        ),
-                                                                        selectedImagesDisplay.isEmpty
-                                                                            ? Padding(
-                                                                                padding: const EdgeInsets.only(left:26),
-                                                                                child: Container(
-                                                                                  width: MediaQuery.of(context).size.width / 3,
-                                                                                  // height: 40,
-                                                                                ),
-                                                                              )
-                                                                            : Padding(
-                                                                                padding: const EdgeInsets.only(left:26, right: 0),
+                                                                                padding: const EdgeInsets.only(left: 13.0, right: 10),
                                                                                 child: Container(
                                                                                   //color: Colors.green,
+                                                                                  child: Stack(
+                                                                                    alignment: Alignment.center,
+                                                                                    children: [
+                                                                                      // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                                                      CircleAvatar(
+                                                                                        radius: 12,
+                                                                                        child: ClipRRect(
+                                                                                          borderRadius: BorderRadius.circular(18),
+                                                                                          child: Image.network("${logDataTitle[indexx][indexs]['image']}?token=${token}"),
+                                                                                        ),
+                                                                                      ),
+                                                                                      Positioned(
+                                                                                        bottom: 0,
+                                                                                        right: 0,
+                                                                                        child: Container(
+                                                                                          width: 10.0,
+                                                                                          height: 10.0,
+                                                                                          decoration: BoxDecoration(
+                                                                                            shape: BoxShape.circle,
+                                                                                            color: Colors.green,
+                                                                                          ),
+                                                                                        ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          Padding(
+                                                                            padding: const EdgeInsets.only(left:8),
+                                                                            child: Row(
+                                                                              children: [
+                                                                                Container(
+                                                                                    // color: Colors.green,
+                                                                                    width: MediaQuery.of(context).size.width /5,
+                                                                                    child: Text(logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                                        style: TextStyle(
+                                                                                          fontSize: 13,
+                                                                                          color: Colors.black,
+                                                                                          fontWeight: FontWeight.bold,
+                                                                                        ))),
+                                                                                Container(
+                                                                                    //color: Colors.green,
+                                                                                    width: MediaQuery.of(context).size.width / 4.8,
+                                                                                    child: Text(logDataTitle[indexx][indexs]["period"],
+                                                                                        style: TextStyle(
+                                                                                          fontSize: 11,
+                                                                                          color: Colors.grey[700],
+                                                                                        ))),
+                                                                                Container(child: logNoteIcon),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                      Visibility(
+                                                                        visible: logDataTitle[indexx][indexs]['subject'] == ""
+                                                                            ? false
+                                                                            : true,
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.only(left: 68),
+                                                                          child: Container(
+                                                                              //color: Colors.green,
+                                                                              width: MediaQuery.of(context).size.width / 4.5,
+                                                                              child: Text(logDataTitle[indexx][indexs]['subject'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "",
+                                                                                  style: TextStyle(
+                                                                                    fontSize: 11,
+                                                                                    color: Colors.black,
+                                                                                  ))),
+                                                                        ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.only(left:47),
+                                                                        child: Container(
+                                                                            // color: Colors.green,
+                                                                            width: MediaQuery.of(context).size.width / 2,
+                                                                            child: Html(
+                                                                              data: logDataTitle[indexx][indexs]['body'],
+                                                                              style: {
+                                                                                'p': Style(fontSize: FontSize.small),
+                                                                                // Customize the font size for <p> elements
+                                                                                // Customize the font size for <strong> elements
+                                                                              },
+                                                                            )),
+                                                                      ),
+                                                                      selectedImagesDisplay.isEmpty
+                                                                          ? Padding(
+                                                                              padding: const EdgeInsets.only(left:26),
+                                                                              child: Container(
+                                                                                width: MediaQuery.of(context).size.width / 3,
+                                                                                // height: 40,
+                                                                              ),
+                                                                            )
+                                                                          : Padding(
+                                                                              padding: const EdgeInsets.only(left:26, right: 0),
+                                                                              child: Container(
+                                                                                //color: Colors.green,
 
-                                                                                  width: MediaQuery.of(context).size.width / 1.5,
-                                                                                  // height: 140,
-                                                                                  child: GridView.builder(
-                                                                                    shrinkWrap: true,
-                                                                                    // Avoid scrolling
-                                                                                    physics: NeverScrollableScrollPhysics(),
-                                                                                    itemCount: selectedImagesDisplay.length,
-                                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
-                                                                                      mainAxisSpacing: 10.0,
-                                                                                      crossAxisSpacing: 10.0,
-                                                                                      childAspectRatio: 3.5,
+                                                                                width: MediaQuery.of(context).size.width / 1.5,
+                                                                                // height: 140,
+                                                                                child: GridView.builder(
+                                                                                  shrinkWrap: true,
+                                                                                  // Avoid scrolling
+                                                                                  physics: NeverScrollableScrollPhysics(),
+                                                                                  itemCount: selectedImagesDisplay.length,
+                                                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,
+                                                                                    mainAxisSpacing: 10.0,
+                                                                                    crossAxisSpacing: 10.0,
+                                                                                    childAspectRatio: 3.5,
 
-                                                                                    ),
-                                                                                    itemBuilder: (BuildContext context, int index) {
-                                                                                      print(selectedImagesDisplay.length);
-                                                                                      print(selectedImagesDisplay[index]["datas"]);
-                                                                                      print("selectedImagesDisplay.length,");
+                                                                                  ),
+                                                                                  itemBuilder: (BuildContext context, int index) {
+                                                                                    print(selectedImagesDisplay.length);
+                                                                                    print(selectedImagesDisplay[index]["datas"]);
+                                                                                    print("selectedImagesDisplay.length,");
 
-                                                                                      return
-                                                                                        (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
-                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/zip")
-                                                                                            ? Padding(
-                                                                                          padding: const EdgeInsets.only(left: 25),
-                                                                                          child: Container(
-                                                                                            margin: const EdgeInsets.all(5.0),
-                                                                                            //padding: const EdgeInsets.all(10.0),
-                                                                                            //color: Colors.white,
-                                                                                            decoration: BoxDecoration(
-                                                                                                borderRadius: BorderRadius.circular(5),
-                                                                                                color: Colors.grey[350], border: Border.all(color: Colors.grey)),
-                                                                                            width: MediaQuery.of(context).size.width,
-                                                                                            // height: MediaQuery.of(context).size.height/18,
-                                                                                            child: Column(
-                                                                                              children: [
-                                                                                                Row(
-                                                                                                  children: [
-                                                                                                    Padding(
-                                                                                                      padding: const EdgeInsets.only(top: 10, left: 5),
-                                                                                                      child: FittedBox(
-                                                                                                        child: SizedBox(
-                                                                                                          width: 45,
-                                                                                                          height: 45,
-                                                                                                          child: DecoratedBox(
-                                                                                                            decoration: BoxDecoration(
-                                                                                                              color:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                              Color(0xFFEF5350):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/msword"?
-                                                                                                              Color(0xFF2196F3):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                                                              Color(0xFF4CAF50):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?
-                                                                                                              Color(0xFF0277BD):
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?
-                                                                                                              Color(0xFFFDD835):
-                                                                                                              Color(0xFFFFFFFF),
+                                                                                    return
+                                                                                      (selectedImagesDisplay[index]["mimetype"] == "application/pdf" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/msword" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/xml" ||
+                                                                                          selectedImagesDisplay[index]["mimetype"] == "application/zip")
+                                                                                          ? Padding(
+                                                                                        padding: const EdgeInsets.only(left: 25),
+                                                                                        child: Container(
+                                                                                          margin: const EdgeInsets.all(5.0),
+                                                                                          //padding: const EdgeInsets.all(10.0),
+                                                                                          //color: Colors.white,
+                                                                                          decoration: BoxDecoration(
+                                                                                              borderRadius: BorderRadius.circular(5),
+                                                                                              color: Colors.grey[350], border: Border.all(color: Colors.grey)),
+                                                                                          width: MediaQuery.of(context).size.width,
+                                                                                          // height: MediaQuery.of(context).size.height/18,
+                                                                                          child: Column(
+                                                                                            children: [
+                                                                                              Row(
+                                                                                                children: [
+                                                                                                  Padding(
+                                                                                                    padding: const EdgeInsets.only(top: 10, left: 5),
+                                                                                                    child: FittedBox(
+                                                                                                      child: SizedBox(
+                                                                                                        width: 45,
+                                                                                                        height: 45,
+                                                                                                        child: DecoratedBox(
+                                                                                                          decoration: BoxDecoration(
+                                                                                                            color:
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                            Color(0xFFEF5350):
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                            Color(0xFF2196F3):
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                            Color(0xFF4CAF50):
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                            Color(0xFF0277BD):
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                            Color(0xFFFDD835):
+                                                                                                            Color(0xFFFFFFFF),
 
-                                                                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                                                            ),
-                                                                                                            child: Center(
-                                                                                                              child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                              Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
+                                                                                                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                                                          ),
+                                                                                                          child: Center(
+                                                                                                            child: Icon(selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                            Icons.picture_as_pdf_sharp:selectedImagesDisplay[index]["mimetype"] == "application/msword"? Icons.article_outlined:
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?Icons.clear:
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/xml"?Icons.code_off:
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/zip"?Icons.folder_zip_outlined:Icons.access_time_filled_outlined,
 
-                                                                                                                color: Colors.white,
-                                                                                                                size: 25,
-                                                                                                              ),
+                                                                                                              color: Colors.white,
+                                                                                                              size: 25,
                                                                                                             ),
                                                                                                           ),
                                                                                                         ),
                                                                                                       ),
                                                                                                     ),
-                                                                                                    SizedBox(
-                                                                                                      width: 10,
-                                                                                                    ),
-                                                                                                    Column(
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                            //color: Colors.blue,
-                                                                                                            child: Text(
+                                                                                                  ),
+                                                                                                  SizedBox(
+                                                                                                    width: 10,
+                                                                                                  ),
+                                                                                                  Column(
+                                                                                                    children: [
+                                                                                                      Container(
+                                                                                                          width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                          //color: Colors.blue,
+                                                                                                          child: Text(
 
 
-                                                                                                              selectedImagesDisplay[index]["name"],
-                                                                                                              style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
-                                                                                                            )),
-                                                                                                        SizedBox(
-                                                                                                          height: 10,
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                            width: MediaQuery.of(context).size.width / 3.8,
-                                                                                                            // color: Colors.green,
-                                                                                                            child: Text(
+                                                                                                            selectedImagesDisplay[index]["name"],
+                                                                                                            style: TextStyle(color: Colors.black, fontSize: 12, fontFamily: 'Mulish'),
+                                                                                                          )),
+                                                                                                      SizedBox(
+                                                                                                        height: 10,
+                                                                                                      ),
+                                                                                                      Container(
+                                                                                                          width: MediaQuery.of(context).size.width / 3.8,
+                                                                                                          // color: Colors.green,
+                                                                                                          child: Text(
 
 
-                                                                                                              selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
-                                                                                                              "PDF":selectedImagesDisplay[index]["mimetype"] == "application/msword"?
-                                                                                                              "WORD": selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
-                                                                                                              "EXCEL": selectedImagesDisplay[index]["mimetype"] == "application/xml"?
-                                                                                                              "XML":selectedImagesDisplay[index]["mimetype"] == "application/zip"?
-                                                                                                              "ZIP":"",
-                                                                                                              style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
-                                                                                                            )),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                    SizedBox(
-                                                                                                      width: 20,
-                                                                                                    ),
-                                                                                                    Column(
-                                                                                                      children: [
-                                                                                                        Container(
-                                                                                                          width: 30,
-                                                                                                          height: 30,
-                                                                                                          //color: Colors.green,
-                                                                                                          child: IconButton(
-                                                                                                            icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                            onPressed: ()  async {
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                              int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                              var data = await deleteLogAttachment(lodAttachmentId);
-
-                                                                                                              if (data['message'] == "Success") {
-                                                                                                                print("jhbdndsjbv");
-                                                                                                                await getQuotationDetails();
-                                                                                                                setState(() {
-                                                                                                                  logDataHeader.clear();
-                                                                                                                  logDataTitle.clear();
-                                                                                                                  selectedImagesDisplay.clear();
-                                                                                                                });
-                                                                                                              }
-
-                                                                                                              print(data);
-                                                                                                              print("delete testststs");
-                                                                                                            },
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                        Container(
-                                                                                                          width: 34,
-                                                                                                          height: 20,
-                                                                                                          //color: Colors.green,
-                                                                                                          child: IconButton(
-                                                                                                            icon: Icon(Icons.download),
-                                                                                                            onPressed: () async {
-                                                                                                              //await getExternalStorageDirectory();
-
-                                                                                                              print(selectedImagesDisplay);
-                                                                                                              print("dbjfnkdfbjsjfbdsvbkdsvkdj");
-
-                                                                                                              //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-                                                                                                              String mimetypes =logDataTitle[indexx][indexs]
-                                                                                                              ['attachment_ids'][index]["mimetype"];
-                                                                                                              //String mimetypes = "application/pdf";
-
-                                                                                                              String itemName, itemNamefinal;
-
-                                                                                                              itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
-
-                                                                                                              mimetypes == "application/pdf"
-                                                                                                                  ? itemNamefinal = "${itemName}.pdf"
-                                                                                                                  : mimetypes == "application/msword"
-                                                                                                                  ? itemNamefinal = "${itemName}.doc"
-                                                                                                                  : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                                  ? itemNamefinal = "${itemName}.xlsx"
-                                                                                                                  : mimetypes == "application/xml"
-                                                                                                                  ? itemNamefinal = "${itemName}.xml"
-                                                                                                                  : mimetypes == "application/zip"
-                                                                                                                  ? itemNamefinal = "${itemName}.zip"
-                                                                                                                  : mimetypes == "image/jpeg"
-                                                                                                                  ? itemNamefinal = "${itemName}.jpeg"
-                                                                                                                  : mimetypes == "image/png"
-                                                                                                                  ? itemNamefinal = "${itemName}.png"
-                                                                                                                  : itemNamefinal = "${itemName}";
-
-                                                                                                              print(index);
-
-                                                                                                              print(selectedImagesDisplay);
-                                                                                                              // print(selectedImagesDisplay[index]["datas"]);
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
-                                                                                                              print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-                                                                                                              print(itemNamefinal);
-                                                                                                              print(mimetypes);
-                                                                                                              print("final print dataaa");
-
-                                                                                                              FlutterDownloader.registerCallback(downloadCallback);
-
-                                                                                                              requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-
-                                                                                                             // _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-
-                                                                                                              // FileDownloader.downloadFile(
-                                                                                                              //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
-                                                                                                              //     name: itemNamefinal,
-                                                                                                              //     onProgress: (name, progress) {
-                                                                                                              //
-                                                                                                              //
-                                                                                                              //       print(name);
-                                                                                                              //       print("name");
-                                                                                                              //
-                                                                                                              //       setState(() {
-                                                                                                              //         //_progress = progress;
-                                                                                                              //       });
-                                                                                                              //     },
-                                                                                                              //
-                                                                                                              //     onDownloadCompleted: (value) {
-                                                                                                              //       print('path  $value ');
-                                                                                                              //       setState(() {
-                                                                                                              //        // _progress = null;
-                                                                                                              //       });
-                                                                                                              //     });
-                                                                                                              //
-                                                                                                              //
-                                                                                                            },
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ],
-                                                                                                    ),
-                                                                                                  ],
-                                                                                                )
-                                                                                              ],
-                                                                                            ),
-                                                                                          ),
-                                                                                        )
-                                                                                            :
-
-                                                                                        (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
-
-
-                                                                                        Padding(
-                                                                                        padding: const EdgeInsets.only(left: 20),
-                                                                                        child: Container(
-                                                                                          child: Stack(
-                                                                                            children: [
-                                                                                              ClipRRect(
-                                                                                                child: Image.network(
-                                                                                                  "${selectedImagesDisplay[index]["datas"]}?token=${token}",
-                                                                                                  height: 100,
-                                                                                                  width: 80,
-                                                                                                ),
-                                                                                              ),
-                                                                                              Positioned(
-                                                                                                  left: 40,
-                                                                                                  right: 175,
-                                                                                                  bottom: 50,
-                                                                                                  top: 0,
-                                                                                                  child: Container(
+                                                                                                            selectedImagesDisplay[index]["mimetype"] == "application/pdf"?
+                                                                                                            "PDF":selectedImagesDisplay[index]["mimetype"] == "application/msword"?
+                                                                                                            "WORD": selectedImagesDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                                                            "EXCEL": selectedImagesDisplay[index]["mimetype"] == "application/xml"?
+                                                                                                            "XML":selectedImagesDisplay[index]["mimetype"] == "application/zip"?
+                                                                                                            "ZIP":"",
+                                                                                                            style: TextStyle(color: Colors.blue, fontSize: 11, fontFamily: 'Mulish'),
+                                                                                                          )),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                  SizedBox(
                                                                                                     width: 20,
-                                                                                                    height: 20,
-                                                                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
-                                                                                                    child: IconButton(
-                                                                                                      icon: SvgPicture.asset("images/trash.svg"),
-                                                                                                      onPressed: () async {
-                                                                                                        print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
-                                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
+                                                                                                  ),
+                                                                                                  Column(
+                                                                                                    children: [
+                                                                                                      Container(
+                                                                                                        width: 30,
+                                                                                                        height: 30,
+                                                                                                        //color: Colors.green,
+                                                                                                        child: IconButton(
+                                                                                                          icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                          onPressed: ()  async {
+                                                                                                            print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                            int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                            var data = await deleteLogAttachment(lodAttachmentId);
 
-                                                                                                        if (data['message'] == "Success") {
-                                                                                                          print("jhbdndsjbv");
-                                                                                                          await getQuotationDetails();
-                                                                                                          setState(() {
-                                                                                                            logDataHeader.clear();
-                                                                                                            logDataTitle.clear();
-                                                                                                            selectedImagesDisplay.clear();
-                                                                                                          });
-                                                                                                        }
+                                                                                                            if (data['message'] == "Success") {
+                                                                                                              print("jhbdndsjbv");
+                                                                                                              await getQuotationDetails();
+                                                                                                              setState(() {
+                                                                                                                logDataHeader.clear();
+                                                                                                                logDataTitle.clear();
+                                                                                                                selectedImagesDisplay.clear();
+                                                                                                              });
+                                                                                                            }
 
-                                                                                                        print(data);
-                                                                                                        print("delete testststs");
-                                                                                                      },
-                                                                                                    ),
-                                                                                                  ))
+                                                                                                            print(data);
+                                                                                                            print("delete testststs");
+                                                                                                          },
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                      Container(
+                                                                                                        width: 34,
+                                                                                                        height: 20,
+                                                                                                        //color: Colors.green,
+                                                                                                        child: IconButton(
+                                                                                                          icon: Icon(Icons.download),
+                                                                                                          onPressed: () async {
+                                                                                                            //await getExternalStorageDirectory();
+
+                                                                                                            print(selectedImagesDisplay);
+                                                                                                            print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                                                            //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                                                            String mimetypes =logDataTitle[indexx][indexs]
+                                                                                                            ['attachment_ids'][index]["mimetype"];
+                                                                                                            //String mimetypes = "application/pdf";
+
+                                                                                                            String itemName, itemNamefinal;
+
+                                                                                                            itemName = logDataTitle[indexx][indexs]['attachment_ids'][index]["name"];
+
+                                                                                                            mimetypes == "application/pdf"
+                                                                                                                ? itemNamefinal = "${itemName}.pdf"
+                                                                                                                : mimetypes == "application/msword"
+                                                                                                                ? itemNamefinal = "${itemName}.doc"
+                                                                                                                : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                                ? itemNamefinal = "${itemName}.xlsx"
+                                                                                                                : mimetypes == "application/xml"
+                                                                                                                ? itemNamefinal = "${itemName}.xml"
+                                                                                                                : mimetypes == "application/zip"
+                                                                                                                ? itemNamefinal = "${itemName}.zip"
+                                                                                                                : mimetypes == "image/jpeg"
+                                                                                                                ? itemNamefinal = "${itemName}.jpeg"
+                                                                                                                : mimetypes == "image/png"
+                                                                                                                ? itemNamefinal = "${itemName}.png"
+                                                                                                                : itemNamefinal = "${itemName}";
+
+                                                                                                            print(index);
+
+                                                                                                            print(selectedImagesDisplay);
+                                                                                                            // print(selectedImagesDisplay[index]["datas"]);
+                                                                                                            print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                            print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
+                                                                                                            print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+                                                                                                            print(itemNamefinal);
+                                                                                                            print(mimetypes);
+                                                                                                            print("final print dataaa");
+
+                                                                                                            FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                                                            requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
+                                                                                                           // _startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
+                                                                                                            // FileDownloader.downloadFile(
+                                                                                                            //     url: logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"],
+                                                                                                            //     name: itemNamefinal,
+                                                                                                            //     onProgress: (name, progress) {
+                                                                                                            //
+                                                                                                            //
+                                                                                                            //       print(name);
+                                                                                                            //       print("name");
+                                                                                                            //
+                                                                                                            //       setState(() {
+                                                                                                            //         //_progress = progress;
+                                                                                                            //       });
+                                                                                                            //     },
+                                                                                                            //
+                                                                                                            //     onDownloadCompleted: (value) {
+                                                                                                            //       print('path  $value ');
+                                                                                                            //       setState(() {
+                                                                                                            //        // _progress = null;
+                                                                                                            //       });
+                                                                                                            //     });
+                                                                                                            //
+                                                                                                            //
+                                                                                                          },
+                                                                                                        ),
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  ),
+                                                                                                ],
+                                                                                              )
                                                                                             ],
                                                                                           ),
                                                                                         ),
-                                                                                      ):
-                                                                                        Container();
-                                                                                    },
-                                                                                  ),
+                                                                                      )
+                                                                                          :
+
+                                                                                      (selectedImagesDisplay[index]["mimetype"] == "image/jpeg" || selectedImagesDisplay[index]["mimetype"] == "image/png")?
+
+
+                                                                                      Padding(
+                                                                                      padding: const EdgeInsets.only(left: 20),
+                                                                                      child: Container(
+                                                                                        child: Stack(
+                                                                                          children: [
+                                                                                            ClipRRect(
+                                                                                              child: Image.network(
+                                                                                                "${selectedImagesDisplay[index]["datas"]}?token=${token}",
+                                                                                                height: 100,
+                                                                                                width: 80,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Positioned(
+                                                                                                left: 40,
+                                                                                                right: 175,
+                                                                                                bottom: 50,
+                                                                                                top: 0,
+                                                                                                child: Container(
+                                                                                                  width: 20,
+                                                                                                  height: 20,
+                                                                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Color(0xFFFFFFFF)),
+                                                                                                  child: IconButton(
+                                                                                                    icon: SvgPicture.asset("images/trash.svg"),
+                                                                                                    onPressed: () async {
+                                                                                                      print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
+                                                                                                      int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids'][index]["id"];
+                                                                                                      var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                                      if (data['message'] == "Success") {
+                                                                                                        print("jhbdndsjbv");
+                                                                                                        await getQuotationDetails();
+                                                                                                        setState(() {
+                                                                                                          logDataHeader.clear();
+                                                                                                          logDataTitle.clear();
+                                                                                                          selectedImagesDisplay.clear();
+                                                                                                        });
+                                                                                                      }
+
+                                                                                                      print(data);
+                                                                                                      print("delete testststs");
+                                                                                                    },
+                                                                                                  ),
+                                                                                                ))
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                    ):
+                                                                                      Container();
+                                                                                  },
                                                                                 ),
                                                                               ),
+                                                                            ),
 
-                                                                        emojiSet.length>0?
+                                                                      emojiSet.length>0?
 
-                                                                        Padding(
-                                                                          padding: const EdgeInsets.only(left:56,top: 2),
-                                                                          child: GridView.builder(
-                                                                            shrinkWrap: true, // Avoid scrolling
-                                                                            physics: NeverScrollableScrollPhysics(),
-                                                                            itemCount: emojiSet.length,
-                                                                            gridDelegate:
-                                                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                              crossAxisCount: 8,
-                                                                              mainAxisSpacing: 5.0,
-                                                                              crossAxisSpacing: 5.0,
-                                                                              childAspectRatio: 1.5,),
-                                                                            itemBuilder: (BuildContext context, int index) {
-                                                                              return InkWell(
-                                                                                child: Container(
-                                                                                  width: 30,
-                                                                                  // color: Colors.red,
-                                                                                  decoration: BoxDecoration(
-                                                                                    borderRadius: BorderRadius.circular(3),
-                                                                                    color: Colors.grey[200],
-                                                                                    border: Border.all(color: Colors.grey, width: 0.3,),
+                                                                      Padding(
+                                                                        padding: const EdgeInsets.only(left:56,top: 2),
+                                                                        child: GridView.builder(
+                                                                          shrinkWrap: true, // Avoid scrolling
+                                                                          physics: NeverScrollableScrollPhysics(),
+                                                                          itemCount: emojiSet.length,
+                                                                          gridDelegate:
+                                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                            crossAxisCount: 8,
+                                                                            mainAxisSpacing: 5.0,
+                                                                            crossAxisSpacing: 5.0,
+                                                                            childAspectRatio: 1.5,),
+                                                                          itemBuilder: (BuildContext context, int index) {
+                                                                            return InkWell(
+                                                                              child: Container(
+                                                                                width: 30,
+                                                                                // color: Colors.red,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(3),
+                                                                                  color: Colors.grey[200],
+                                                                                  border: Border.all(color: Colors.grey, width: 0.3,),
 
 
-                                                                                  ),
-                                                                                  child: Row(
-                                                                                    children: [
-                                                                                      Text(emojiSet[index]['emoji']),
-                                                                                      SizedBox(width: 5),
-                                                                                      Text(emojiSet[index]['count'].toString()),
-                                                                                    ],
-                                                                                  ),
                                                                                 ),
-                                                                                  onTap: () async {
-                                                                                    var data = await deleteEmoji(
-                                                                                        emojiSet[index]['emoji'],
-                                                                                        logDataTitle[indexx][indexs]['id']);
+                                                                                child: Row(
+                                                                                  children: [
+                                                                                    Text(emojiSet[index]['emoji']),
+                                                                                    SizedBox(width: 5),
+                                                                                    Text(emojiSet[index]['count'].toString()),
+                                                                                  ],
+                                                                                ),
+                                                                              ),
+                                                                                onTap: () async {
+                                                                                  var data = await deleteEmoji(
+                                                                                      emojiSet[index]['emoji'],
+                                                                                      logDataTitle[indexx][indexs]['id']);
 
-                                                                                    if (data['result']['message'] ==
-                                                                                        "success") {
-                                                                                      setState(() {});
-
-                                                                                    }
+                                                                                  if (data['result']['message'] ==
+                                                                                      "success") {
+                                                                                    setState(() {});
 
                                                                                   }
-                                                                              );
-                                                                            },
-                                                                          ),
-                                                                        ) :
 
-                                                                        Container(),
+                                                                                }
+                                                                            );
+                                                                          },
+                                                                        ),
+                                                                      ) :
 
-                                                                      ],
-                                                                    ),
-                                                                  );
-                                                                }),
-                                                          ],
-                                                        ),
-                                                        //color: Colors.red,
+                                                                      Container(),
+
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              }),
+                                                        ],
                                                       ),
-                                                    ],
-                                                  ),
-                                                );
-                                              })
-                                        ],
-                                      ),
+                                                      //color: Colors.red,
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            })
+                                      ],
                                     );
                                   });
                             } else {
