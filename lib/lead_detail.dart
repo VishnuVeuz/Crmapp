@@ -8382,6 +8382,14 @@ class _LeadDetailState extends State<LeadDetail> {
                   child:  IconButton(
                     icon: SvgPicture.asset("images/cr.svg"),
                     onPressed: () {
+                      setState((){
+                        sendnameController.text="";
+                        sendemailController.text="";
+                        sendjobController.text="";
+                        sendphoneController.text="";
+                        sendmobileController.text="";
+                        schedulecompanyId=null;
+                      });
                       Navigator.pop(context);
                     },
                   ),
@@ -8744,7 +8752,16 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed:(){},
+                              onPressed:(){
+                                setState((){
+                                  sendnameController.text="";
+                                  sendemailController.text="";
+                                  sendjobController.text="";
+                                  sendphoneController.text="";
+                                  sendmobileController.text="";
+                                  schedulecompanyId=null;
+                                });
+                              },
 
 
                               style: ElevatedButton.styleFrom(
