@@ -1856,7 +1856,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             }
                                           },
                                           child: Text(
-                                            "Following",
+                                            "Follow",
                                             style: TextStyle(
                                               color: Colors.green,
                                               fontFamily: 'Mulish',

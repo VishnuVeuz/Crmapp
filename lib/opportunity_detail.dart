@@ -2798,7 +2798,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             }
                                           },
                                           child: Text(
-                                            "Following",
+                                            "Follow",
                                             style: TextStyle(
                                                 color: Colors.green,
                                                 fontFamily: 'Mulish'),
@@ -2816,6 +2816,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         color: Colors.red,
                                       ),
                                       TextButton(
+
                                           onPressed: () async {
                                             String resMessage =
                                                 await followerUnFollow(
