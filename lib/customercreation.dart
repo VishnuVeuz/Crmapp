@@ -1340,60 +1340,92 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 0,
                         ),
+
                         Padding(
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: MultiSelectDropDown.network(
-                            hint: 'Tags',
-                            hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                            selectedOptions: editTagName
-                                .map((tag) =>
-                                ValueItem(label: tag.label, value: tag.value))
-                                .toList(),
-                            onOptionSelected: (options) {
-                              print(options);
-                              tags.clear();
-                              for (var options in options) {
-                                tags.add(options.value);
-                                print('Label: ${options.label}');
-                                print('Value: ${options.value}');
-                                print(tags);
-                                print('---');
-                              }
-                            },
-                            networkConfig: NetworkConfig(
-                              url:
-                              "${baseUrl}api/common_dropdowns?model=res.partner.category",
-                              method: RequestMethod.get,
-                              headers: {
-                                'Authorization': 'Bearer $token',
-                              },
-                            ),
-                            chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-                            responseParser: (response) {
-                              debugPrint('Response: $response');
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tags',
+                                style: TextStyle(
+                                  color: Color(0xFF666666),
+                                  fontSize: 12,
+                                  fontFamily: 'Mulish',
+                                  fontWeight: FontWeight.w500,
 
-                              final list =
-                              (response['record'] as List<dynamic>).map((e) {
-                                final item = e as Map<String, dynamic>;
-                                return ValueItem(
-                                  label: item['name'],
-                                  value: item['id'].toString(),
-                                );
-                              }).toList();
+                                ),
+                              ),
 
-                              return Future.value(list);
-                            },
-                            responseErrorBuilder: ((context, body) {
-                              print(body);
-                              print(token);
-                              return const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text('Error fetching the data'),
-                              );
-                            }),
+                              Container(
+                                height:30,
+                                child: MultiSelectDropDown.network(
+                                  hint: '',
+                                  borderColor: Colors.transparent,
+
+                                  borderWidth: 0,
+
+                                  hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                  selectedOptions: editTagName
+                                      .map((tag) =>
+                                      ValueItem(label: tag.label, value: tag.value))
+                                      .toList(),
+                                  onOptionSelected: (options) {
+                                    print(options);
+                                    tags.clear();
+                                    for (var options in options) {
+                                      tags.add(options.value);
+                                      print('Label: ${options.label}');
+                                      print('Value: ${options.value}');
+                                      print(tags);
+                                      print('---');
+                                    }
+                                  },
+                                  networkConfig: NetworkConfig(
+                                    url:
+                                    "${baseUrl}api/common_dropdowns?model=res.partner.category",
+                                    method: RequestMethod.get,
+                                    headers: {
+                                      'Authorization': 'Bearer $token',
+                                    },
+                                  ),
+                                  chipConfig: const ChipConfig(wrapType: WrapType.scroll),
+                                  responseParser: (response) {
+                                    debugPrint('Response: $response');
+
+                                    final list =
+                                    (response['record'] as List<dynamic>).map((e) {
+                                      final item = e as Map<String, dynamic>;
+                                      return ValueItem(
+                                        label: item['name'],
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList();
+
+                                    return Future.value(list);
+                                  },
+                                  responseErrorBuilder: ((context, body) {
+                                    print(body);
+                                    print(token);
+                                    return const Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Text('Error fetching the data'),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
                           ),
                         ),
                         Padding(
