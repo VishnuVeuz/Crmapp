@@ -366,7 +366,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Customer',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -405,7 +405,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["display_name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -470,7 +470,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Quotation Template',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -505,7 +505,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -591,7 +591,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Pricelist',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -629,7 +629,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -687,7 +687,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Payment Terms',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -722,7 +722,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -789,7 +789,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Salesperson',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -827,7 +827,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -880,7 +880,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Sales Team',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -916,7 +916,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -975,7 +975,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Company',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1011,7 +1011,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -1208,7 +1208,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Shipping policy',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1226,7 +1226,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                  style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                 ),
                               );
                             }).toList(),
@@ -1285,7 +1285,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Fiscal Position',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1323,7 +1323,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -1388,7 +1388,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Campaign',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1426,7 +1426,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -1481,7 +1481,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Medium',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1515,7 +1515,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -1567,7 +1567,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   decoration: InputDecoration(
                                     labelText:'Source',
                                     isDense: true,
-                                    labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1601,7 +1601,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   )));
                             },
@@ -2729,7 +2729,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 decoration: InputDecoration(
                                   labelText:'Product',
                                   isDense: true,
-                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                   fillColor: Colors.white,
 
                                 ),
@@ -2779,7 +2779,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   child: Text(
                                     item["display_name"],
                                     style: TextStyle(
-                                        fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                   ),
                                 )));
                           },
@@ -2878,7 +2878,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 decoration: InputDecoration(
                                   labelText:'Uom',
                                   isDense: true,
-                                  labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                  labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                   fillColor: Colors.white,
 
                                 ),

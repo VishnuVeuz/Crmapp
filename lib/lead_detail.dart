@@ -41,6 +41,8 @@ class LeadDetail extends StatefulWidget {
 
 class _LeadDetailState extends State<LeadDetail> {
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
+  dynamic companyName,
+          companyId;
   String notificationCount = "0";
   String messageCount = "0";
   String? leadname,
@@ -87,6 +89,9 @@ class _LeadDetailState extends State<LeadDetail> {
   TextEditingController phonenumberController = TextEditingController();
   TextEditingController subject2Controller = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController jobpositionController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController mobileController = TextEditingController();
 
   bool smsVisible = true;
   bool isCheckedEmail = false;
@@ -2471,6 +2476,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                             onChanged: (bool? value) {
                                               print(value);
                                               print("check box issues");
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext context) =>
+                                                    _buildMailPopupDialog(context, 0),
+                                              ).then((value) => setState(() {}));
                                               setState(() {
                                                 isCheckedMail = value!;
                                                 sendMailData[i]['selected'] =
@@ -8312,5 +8322,314 @@ class _LeadDetailState extends State<LeadDetail> {
         ),
       );
     }
+  }
+  _buildMailPopupDialog(BuildContext context, int typeIds) {
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        insetPadding: EdgeInsets.all(10),
+        content: Container(
+          width: MediaQuery.of(context).size.width,
+          // height: MediaQuery
+          //     .of(context)
+          //     .size
+          //     .height,
+          //color: Colors.green,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 0, right: 8),
+                  child:  IconButton(
+                    icon: SvgPicture.asset("images/cr.svg"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal:15, vertical: 0),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    keyboardType: TextInputType.emailAddress,
+                   // controller: emailController,
+                    decoration: const InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                        ),
+
+                        // border: UnderlineInputBorder(),
+                        labelText: 'Email',
+                        labelStyle: TextStyle(
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                  ),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                  child: SearchChoices.single(
+                    //items: items,
+                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            labelText:'Company Name',
+                            isDense: true,
+                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
+
+                    value: companyName,
+                    // hint: Text(
+                    //   "Company Name",
+                    //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                    // ),
+                    searchHint: null,
+                    autofocus: false,
+                    onClear: () {
+                      setState(() {
+                        //cmpbasedVisible = true;
+                      });
+                    },
+                    onChanged: (value) async {
+                      setState(() {
+                        //cmpbasedVisible = false;
+                        companyName = value;
+                        companyId = value["id"];
+                      });
+
+                      //await getCustomerCompanyDetail(companyId);
+                    },
+
+                    dialogBox: false,
+                    isExpanded: true,
+                    menuConstraints:
+                    BoxConstraints.tight(const Size.fromHeight(350)),
+                    itemsPerPage: 10,
+                    currentPage: currentPage,
+                    selectedValueWidgetFn: (item) {
+                      return (Center(
+                          child: Container(
+                            width: 320,
+                            child: Text(
+                              item["display_name"],
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                            ),
+                          )));
+                    },
+                    futureSearchFn: (String? keyword,
+                        String? orderBy,
+                        bool? orderAsc,
+                        List<Tuple2<String, String>>? filters,
+                        int? pageNb) async {
+                      token = await getUserJwt();
+                      Response response = await get(
+                        Uri.parse(
+                            "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
+                        headers: {
+                          'Authorization': 'Bearer $token',
+                        },
+                      ).timeout(const Duration(
+                        seconds: 10,
+                      ));
+
+                      if (response.statusCode != 200) {
+                        throw Exception("failed to get data from internet");
+                      }
+
+                      dynamic data = jsonDecode(response.body);
+
+                      int nbResults = data["length"];
+
+                      List<DropdownMenuItem> results = (data["records"]
+                      as List<dynamic>)
+                          .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                        value: item,
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                          ),
+                        ),
+                      ))
+                          .toList();
+                      return (Tuple2<List<DropdownMenuItem>, int>(
+                          results, nbResults));
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15, vertical: 0),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    controller: jobpositionController,
+                    decoration: const InputDecoration(
+                        enabledBorder:  UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+
+                        labelText: 'Job Position',
+                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                    ),
+                  ),),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15, vertical: 0),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    keyboardType: TextInputType.phone,
+                    // maxLength: 10,
+                    controller: phoneController,
+                    decoration: const InputDecoration(
+                        counterText: "",
+                        enabledBorder:  UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+
+                        labelText: 'Phone',
+                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return null;
+                      }
+
+                      if (int.tryParse(value) == null) {
+                        return 'Phone number should only contain digits';
+                      }
+
+                      if (value.length < 10) {
+                        return 'Phone number should contain at least 10 digits';
+                      }
+
+                      return null;
+                    },
+
+
+
+                  ),),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15, vertical: 0),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    keyboardType: TextInputType.phone,
+                    // maxLength: 10,
+                    controller: mobileController,
+                    decoration: const InputDecoration(
+                        counterText: "",
+                        enabledBorder:  UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+
+                        labelText: 'Mobile',
+                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                    ),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return null;
+                      }
+
+                      if (int.tryParse(value) == null) {
+                        return 'Mobile number should only contain digits';
+                      }
+
+                      if (value.length < 10) {
+                        return 'Mobile number should contain at least 10 digits';
+                      }
+
+                      return null;
+                    },
+
+                  ),),
+
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Save",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white,
+                                      fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed: (){},
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF9246A),
+                              )),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: SizedBox(
+                          width: 146,
+                          height: 38,
+                          child: ElevatedButton(
+                              child: Center(
+                                child: Text(
+                                  "Discard",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.57,
+                                      color: Colors.white,
+                                      fontFamily: 'Mulish'),
+                                ),
+                              ),
+                              onPressed:(){},
+
+
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF9246A),
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    });
   }
 }
