@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:multi_dropdown/models/value_item.dart';
 import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:path_provider/path_provider.dart';
@@ -3557,786 +3558,1648 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                       .white,
                                                                   size: 8,
                                                                 );
-                                  return Card(
-                                    elevation: 1,
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 25.0,
-                                                          right: 15,
-                                                          top: 5),
-                                                  child: Container(
-                                                    child: Stack(
-                                                      alignment:
-                                                          Alignment.center,
-                                                      children: [
-                                                        // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                        CircleAvatar(
-                                                          radius: 12,
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        18),
-                                                            child: Image.network(
-                                                                "${scheduleData['records'][index]['image']!}?token=${token}"),
-                                                          ),
-                                                        ),
 
-                                                        Positioned(
-                                                          bottom: 0,
-                                                          right: 0,
-                                                          child: Container(
-                                                            width: 10.0,
-                                                            height: 10.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color: Color(int.parse(
-                                                                  scheduleData[
-                                                                              'records']
-                                                                          [
-                                                                          index]
-                                                                      [
-                                                                      'label_color'])),
-                                                            ),
-                                                            child: Center(
-                                                              child:
-                                                                  scheduleIcon,
-                                                              // child: Icon(
-                                                              //   Icons.image,
-                                                              //   color: Colors.white,
-                                                              //   size: 8,
-                                                              // ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(
-                                                  top: 8.0,
-                                                  left: 12,
-                                                  right: 10),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            5.5,
-                                                    // color: Colors.red,
 
-                                                    child: Text(
-                                                      scheduleData['records']
-                                                                      [index][
-                                                                  'delay_label']
-                                                              .toString() ??
-                                                          "",
-                                                      style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontFamily: 'Mulish',
-                                                          color: Color(int.parse(
-                                                              scheduleData[
-                                                                          'records']
-                                                                      [index][
-                                                                  'label_color']))),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5,
-                                                  ),
-                                                  Container(
-                                                    // color: Colors.red,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            5.5,
-
-                                                    child: Text(
-                                                      scheduleData['records']
-                                                                      [index][
-                                                                  'activity_type_id'][1]
-                                                              .toString() ??
-                                                          "",
-                                                      style: TextStyle(
-                                                        fontSize: 12,
-                                                        color:
-                                                            Color(0xFF212121),
-                                                        fontFamily: 'Mulish',
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5,
-                                                  ),
-                                                  Container(
-                                                    //color: Colors.red,
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width /
-                                                            4.5,
-
-                                                    child: Text(
-                                                      scheduleData['records']
-                                                                      [index]
-                                                                  ['user_id'][1]
-                                                              .toString() ??
-                                                          "",
-                                                      style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontFamily: 'Mulish',
-                                                          color: Color(
-                                                              0xFF212121)),
-                                                    ),
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        print(scheduleView);
-                                                        print("final data ");
-                                                        scheduleViewIndex = index;
-                                                        scheduleView == false
-                                                            ? scheduleView =
-                                                                true
-                                                            : scheduleView ==
-                                                                    true
-                                                                ? scheduleView =
-                                                                    false
-                                                                : false;
-                                                        print(scheduleView);
-                                                      });
-                                                    },
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 20,
-                                                              right: 20),
-                                                      child: Container(
-                                                        width: 10,
-                                                        height: 15,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          color: Colors.black,
-                                                        ),
-                                                        child: Center(
-                                                          child: Text(
-                                                            "i",
-                                                            style: TextStyle(
-                                                                fontSize: 12,
-                                                                color: Colors
-                                                                    .white,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w800),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(left: 60),
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        //padding: const EdgeInsets.all(25.0),
+                                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(25,0,25,5),
+                                          // group20525KqJ (1112:1365)
+                                          // margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
+                                          // padding: EdgeInsets.fromLTRB(0*fem, 9*fem, 0*fem, 0*fem),
+                                          width: double.infinity,
+                                          decoration: BoxDecoration (
+                                            border: Border.all(color: Color(0xffebebeb)),
+                                            color: Color(0xfffcfcfc),
+                                            // color: Colors.blue,
+                                            borderRadius: BorderRadius.circular(4),
+                                          ),
                                           child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Visibility(
-                                                visible:scheduleView?index==scheduleViewIndex:false,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 5, left: 17),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                    children: [
-                                                      Text(
-                                                        "Activity type",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color: Colors.grey,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Text(
-                                                        scheduleData['records']
-                                                                [index][
-                                                            'activity_type_id'][1],
-                                                        style: TextStyle(
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Mulish',
-                                                            color: Colors.grey),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Text(
-                                                        "Created",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color: Colors.grey,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Text(
-                                                            scheduleData['records']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'create_date']
-                                                                    .toString() ??
-                                                                "",
-                                                            style: TextStyle(
-                                                                fontSize: 12,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                color: Colors
-                                                                    .grey),
-                                                          ),
-                                                          SizedBox(
-                                                            width: 3,
-                                                          ),
-                                                          Container(
-                                                            child: CircleAvatar(
-                                                              radius: 12,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12),
-                                                                child: Image
-                                                                    .network(
-                                                                        "${scheduleData['records'][index]['image2']!}?token=${token}"),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            width: 3,
-                                                          ),
-                                                          Text(
-                                                            scheduleData['records']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'create_uid'][1]
-                                                                    .toString() ??
-                                                                "",
-                                                            style: TextStyle(
-                                                              fontSize: 12,
-                                                              fontFamily:
-                                                                  'Mulish',
-                                                              color:
-                                                                  Colors.grey,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Text(
-                                                        "Assigned to",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          fontFamily: 'Mulish',
-                                                          color: Colors.grey,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Container(
-                                                            child: CircleAvatar(
-                                                              radius: 12,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12),
-                                                                child: Image
-                                                                    .network(
-                                                                        "${scheduleData['records'][index]['image']!}?token=${token}"),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            width: 3,
-                                                          ),
-                                                          Text(
-                                                            scheduleData['records']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'user_id'][1]
-                                                                    .toString() ??
-                                                                "",
-                                                            style: TextStyle(
-                                                                fontSize: 12,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                color: Colors
-                                                                    .grey),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                      Text(
-                                                        "Due on",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                          color: Colors.grey,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 5,
-                                                      ),
-                                                      Text(
-                                                        scheduleData['records']
-                                                                        [index][
-                                                                    'date_deadline']
-                                                                .toString() ??
-                                                            "",
-                                                        style: TextStyle(
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Mulish',
-                                                            color: Colors.grey),
-                                                      ),
-                                                      SizedBox(
-                                                        height: 3,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 0,
-                                                    left: 14,
-                                                    right: 10),
-                                                child: Container(
-                                                  //color: Colors.red,
-
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width /
-                                                      1.5,
-                                                  child: Text(
-                                                    scheduleData['records']
-                                                                [index]['note']
-                                                            .replaceAll(
-                                                                RegExp(
-                                                                    r'<[^>]*>|&[^;]+;'),
-                                                                ' ')
-                                                            .toString() ??
-                                                        "",
-                                                    style: TextStyle(
-                                                        fontSize: 12,
-                                                        fontFamily: 'Mulish',
-                                                        color: Colors.black),
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                  left: 7,
-                                                ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(0,0,0,0),
+                                                // color:Colors.green,
+                                                // autogroupfosqpn4 (7u5yFZfWQQE3crdUqnfoSQ)
+                                                // margin: EdgeInsets.fromLTRB(9*fem, 0*fem, 17*fem, 9*fem),
+                                                width: MediaQuery.of(context).size.width/1,
+                                                height: 40,
                                                 child: Row(
-                                                  // mainAxisAlignment: MainAxisAlignment.end,
-
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
                                                   children: [
                                                     Container(
-                                                      //color: Colors.red,
-                                                      // height: 25,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              4.3,
-                                                      child: TextButton.icon(
-                                                        // <-- TextButton
-                                                        onPressed: () async {
-                                                          int datasIds =
-                                                              scheduleData[
-                                                                      'records']
-                                                                  [index]['id'];
-
-                                                          showDialog(
-                                                            context: context,
-                                                            builder: (BuildContext
-                                                                    context) =>
-                                                                _buildMarkDoneDialog(
-                                                                    context,
-                                                                    datasIds),
-                                                          ).then((value) =>
-                                                              setState(() {}));
-                                                        },
-                                                        icon: Icon(
-                                                          Icons.check,
-                                                          size: 13.0,
-                                                          color: Colors.black54,
-                                                        ),
-                                                        label: Text(
-                                                          scheduleData['records']
-                                                                          [
-                                                                          index]
-                                                                      [
-                                                                      'buttons'][0]
-                                                                  .toString() ??
-                                                              "",
-                                                          style: TextStyle(
-                                                              fontSize: 10,
-                                                              fontFamily:
-                                                                  'Mulish',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              color: Color(
-                                                                  0xFF717171)),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 0,
-                                                    ),
-                                                    scheduleData['records']
-                                                                        [index]
-                                                                    ['buttons']
-                                                                [1] ==
-                                                            "Reschedule"
-                                                        ? Container(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width /
-                                                                4.3,
-                                                            child:
-                                                                TextButton.icon(
-                                                              // <-- TextButton
-                                                              onPressed:
-                                                                  () async {
-                                                                //  int idType = scheduleData['records'][index]['id'];
-                                                                //
-                                                                // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
-                                                                //
-                                                                //
-                                                                // String textType =  scheduleData['records'][index]['buttons'][1].toString();
-
-                                                                DateTime
-                                                                    dateTime =
-                                                                    DateTime.parse(scheduleData['records']
-                                                                            [
-                                                                            index]
-                                                                        [
-                                                                        'date_deadline']);
-
-                                                                Navigator.push(
-                                                                    context,
-                                                                    MaterialPageRoute(
-                                                                        builder: (context) => Calender(
-                                                                            null,
-                                                                            "",
-                                                                            dateTime,
-                                                                            null,
-                                                                            [],
-                                                                            "")));
-                                                              },
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .calendar_month,
-                                                                size: 13.0,
-                                                                color: Color(
-                                                                    0xFF717171),
-                                                              ),
-                                                              label: Text(
-                                                                scheduleData['records'][index]
-                                                                            [
-                                                                            'buttons'][1]
-                                                                        .toString() ??
-                                                                    "",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        10,
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    color: Color(
-                                                                        0xFF717171)),
-                                                              ),
+                                                      //color:Colors.pink,
+                                                      // ellipse121x7a (1112:1367)
+                                                      margin: EdgeInsets.fromLTRB(9,0,9,2),
+                                                      width: 20,
+                                                      height: 20,
+                                                      child: Stack(
+                                                        alignment: Alignment.center,
+                                                        children: [
+                                                          // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                          CircleAvatar(
+                                                            radius: 12,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                              BorderRadius
+                                                                  .circular(18),
+                                                              child: Image.network(
+                                                                  "${scheduleData['records'][index]['image']!}?token=${token}"),
                                                             ),
-                                                          )
-                                                        : Container(
-                                                            width: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .width /
-                                                                4.3,
-                                                            child:
-                                                                TextButton.icon(
-                                                              // <-- TextButton
-                                                              onPressed:
-                                                                  () async {
-                                                                int idType =
+                                                          ),
+
+                                                          Positioned(
+                                                            bottom: 0,
+                                                            right: 0,
+                                                            child: Container(
+                                                              width: 10.0,
+                                                              height: 10.0,
+                                                              decoration:
+                                                              BoxDecoration(
+                                                                shape:
+                                                                BoxShape.circle,
+                                                                color: Color(int.parse(
                                                                     scheduleData[
-                                                                            'records']
-                                                                        [
-                                                                        index]['id'];
-
-                                                                var data = await editDefaultScheduleData(
-                                                                    scheduleData['records']
-                                                                            [
-                                                                            index]
-                                                                        ['id']);
-
-                                                                setState(() {
-                                                                  activityTypeName =
-                                                                      data['activity_type_id'] ??
-                                                                          null;
-                                                                  activityTypeId =
-                                                                      data['activity_type_id']
-                                                                              [
-                                                                              'id'] ??
-                                                                          null;
-                                                                  activityTypeNameCategory =
-                                                                      data['activity_type_id']
-                                                                              [
-                                                                              'category'] ??
-                                                                          "";
-                                                                  assignedToname =
-                                                                      data['user_id'] ??
-                                                                          null;
-                                                                  assignedToid =
-                                                                      data['user_id']
-                                                                              [
-                                                                              'id'] ??
-                                                                          null;
-                                                                  DuedateTime
-                                                                          .text =
-                                                                      data['date_deadline'] ??
-                                                                          "";
-                                                                  summaryController
-                                                                          .text =
-                                                                      data['summary'] ??
-                                                                          "";
-                                                                  commandsController
-                                                                      .text = data[
-                                                                          'note']
-                                                                      .replaceAll(
-                                                                          RegExp(
-                                                                              r'<[^>]*>|&[^;]+;'),
-                                                                          ' ')
-                                                                      .toString();
-                                                                  // DuedateTime.text == "default" ?
-                                                                  if (activityTypeNameCategory ==
-                                                                      "default") {
-                                                                    scheduleBtn =
-                                                                        true;
-                                                                    opencalendarBtn =
-                                                                        false;
-                                                                    btntext =
-                                                                        "Schedule";
-                                                                    meetingColum =
-                                                                        true;
-                                                                  } else if (activityTypeNameCategory ==
-                                                                      "phonecall") {
-                                                                    scheduleBtn =
-                                                                        true;
-                                                                    opencalendarBtn =
-                                                                        true;
-                                                                    btntext =
-                                                                        "Save";
-                                                                    meetingColum =
-                                                                        true;
-                                                                  } else if (activityTypeNameCategory ==
-                                                                      "meeting") {
-                                                                    scheduleBtn =
-                                                                        false;
-                                                                    opencalendarBtn =
-                                                                        true;
-                                                                    btntext =
-                                                                        "Schedule";
-                                                                    meetingColum =
-                                                                        false;
-                                                                  } else if (activityTypeNameCategory ==
-                                                                      "upload_file") {
-                                                                    scheduleBtn =
-                                                                        true;
-                                                                    opencalendarBtn =
-                                                                        false;
-                                                                    btntext =
-                                                                        "Schedule";
-                                                                    meetingColum =
-                                                                        true;
-                                                                  }
-
-                                                                  print(
-                                                                      activityTypeNameCategory);
-                                                                  print(
-                                                                      "jhbvjbvsvj");
-                                                                });
-
-                                                                showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder: (BuildContext
-                                                                          context) =>
-                                                                      _buildOrderPopupDialog(
-                                                                          context,
-                                                                          idType),
-                                                                ).then((value) =>
-                                                                    setState(
-                                                                        () {}));
-                                                              },
-                                                              icon: Icon(
-                                                                Icons.edit,
-                                                                size: 13.0,
-                                                                color: Color(
-                                                                    0xFF717171),
+                                                                    'records']
+                                                                    [index][
+                                                                    'label_color'])),
                                                               ),
-                                                              label: Text(
-                                                                scheduleData['records'][index]
-                                                                            [
-                                                                            'buttons'][1]
-                                                                        .toString() ??
-                                                                    "",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        10,
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    color: Color(
-                                                                        0xFF717171)),
+                                                              child: Center(
+                                                                child: scheduleIcon,
+                                                                // child: Icon(
+                                                                //   Icons.image,
+                                                                //   color: Colors.white,
+                                                                //   size: 8,
+                                                                // ),
                                                               ),
                                                             ),
                                                           ),
-                                                    SizedBox(
-                                                      width: 0,
+                                                        ],
+                                                      ),
                                                     ),
-                                                    Container(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              5,
-                                                      child: TextButton.icon(
-                                                        // <-- TextButton
-                                                        onPressed: () async {
-                                                          var data = await deleteScheduleData(
-                                                              scheduleData[
-                                                                      'records']
-                                                                  [
-                                                                  index]['id']);
+                                                    Expanded(
+                                                      child: Container(
+                                                        margin: EdgeInsets.fromLTRB(0,0,9,0),
+                                                        //color: Colors.yellow,
+                                                        //  color: Colors.red,
+                                                        // group205294RW (1112:1393)
+                                                        width: MediaQuery.of(context).size.width/1.3,
+                                                        height: double.infinity,
+                                                        child: Row(
+                                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            Container(
+                                                              // autogrouprwrccT2 (7u5yPeGNvuuGAuKdPZrWrc)
+                                                              margin: EdgeInsets.fromLTRB(0,1,1,2),
+                                                              width: MediaQuery.of(context).size.width/2,
+                                                              height: double.infinity,
+                                                              child: Stack(
+                                                                children: [
+                                                                  Positioned(
+                                                                    // marcdemoLP2 (1112:1368)
+                                                                    left: 1,
+                                                                    top: 1,
+                                                                    child: Align(
+                                                                      child: Text(
+                                                                        scheduleData['records']
+                                                                        [index]
+                                                                        ['user_id'][1]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style: TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 12,
+                                                                          fontWeight: FontWeight.w600,
+                                                                          // height: 1.255*ffem/fem,
+                                                                          color: Color(0xff202020),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Positioned(
+                                                                    // goodqag (1112:1369)
+                                                                    left: 2,
+                                                                    top: 15,
+                                                                    child: Align(
+                                                                      child: Text(
+                                                                        scheduleData['records'][index]
+                                                                        ['note']
+                                                                            .replaceAll(
+                                                                            RegExp(
+                                                                                r'<[^>]*>|&[^;]+;'),
+                                                                            ' ')
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style: TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 10,
+                                                                          fontWeight: FontWeight.w500,
+                                                                          //height: 1.255*ffem/fem,
+                                                                          color: Color(0xff666666),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                            Container(
+                                                              // color: Colors.red,
+                                                              // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
+                                                              margin: EdgeInsets.fromLTRB(0,1,1,2),
+                                                              //width: MediaQuery.of(context).size.width,
+                                                              width: MediaQuery.of(context).size.width/5,
+                                                              //height: double.infinity,
+                                                              child: Stack(
 
-                                                          if (data['message'] ==
-                                                              "Success") {
-                                                            print("responce");
-                                                            setState(() {
-                                                              getScheduleDetails();
-                                                            });
-                                                          }
+                                                                children: [
+                                                                  Positioned(
+                                                                    right: 1,
+                                                                    top: 1,
+                                                                    child: Align(
 
-                                                          print(
-                                                              "demo datataaa");
-                                                        },
-                                                        icon: Icon(
-                                                          Icons.cancel_outlined,
-                                                          size: 13.0,
-                                                          color:
-                                                              Color(0xFF717171),
-                                                        ),
-                                                        label: Text(
-                                                          scheduleData['records']
-                                                                          [
-                                                                          index]
-                                                                      [
-                                                                      'buttons'][2]
-                                                                  .toString() ??
-                                                              "",
-                                                          style: TextStyle(
-                                                              fontSize: 10,
-                                                              fontFamily:
-                                                                  'Mulish',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              color: Color(
-                                                                  0xFF717171)),
+                                                                      child: Text(
+                                                                        scheduleData['records']
+                                                                        [index]
+                                                                        ['delay_label']
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style: TextStyle (
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 12,
+                                                                            fontWeight: FontWeight.w600,
+                                                                            // height: 1.255*ffem/fem,
+                                                                            color: Color(int.parse(
+                                                                                scheduleData[
+                                                                                'records']
+                                                                                [index][
+                                                                                'label_color']))
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Positioned(
+                                                                    // meetingzbz (1112:1394)
+                                                                    right: 1,
+                                                                    top: 15,
+                                                                    child: Align(
+
+                                                                      child: Text(
+                                                                        scheduleData['records']
+                                                                        [index][
+                                                                        'activity_type_id'][1]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        textAlign: TextAlign.right,
+                                                                        style:  TextStyle (
+                                                                          fontFamily:  'Mulish',
+                                                                          fontSize: 12,
+                                                                          fontWeight: FontWeight.w600,
+                                                                          //  height: 1.255*ffem/fem,
+                                                                          color: Color(0xff202020),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                     ),
                                                   ],
                                                 ),
-                                              )
+                                              ),
+                                              Container(
+                                                // line27thN (1112:1370)
+                                                margin: EdgeInsets.fromLTRB(0,0,0,6),
+                                                //width: double.infinity,
+                                                height: 1,
+                                                decoration: BoxDecoration (
+                                                  color: Color(0xffebebeb),
+
+                                                ),
+                                              ),
+                                              Container(
+
+                                                // color: Colors.green,
+                                                width: MediaQuery.of(context).size.width,
+                                                height: 30,
+                                                child: Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Container(
+
+                                                        //   color:Colors.pink,
+
+                                                        // width:MediaQuery.of(context).size.width/1.18,
+
+                                                        //padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
+
+                                                        height: double.infinity,
+                                                        child: Row(
+                                                          crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                          children: [
+                                                            Expanded(
+                                                              flex:2,
+                                                              child: Container(
+
+
+                                                                padding: EdgeInsets.fromLTRB(10, 0, 2, 0),
+                                                                // height: 14*fem,
+                                                                child: InkWell(
+                                                                  onTap: ()async{
+                                                                    int datasIds =
+                                                                    scheduleData[
+                                                                    'records']
+                                                                    [index]['id'];
+
+                                                                    showDialog(
+                                                                      context: context,
+                                                                      builder: (BuildContext
+                                                                      context) =>
+                                                                          _buildMarkDoneDialog(
+                                                                              context,
+                                                                              datasIds),
+                                                                    ).then((value) =>
+                                                                        setState(() {}));
+                                                                  },
+                                                                  child: Row(
+                                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                                    children: [
+                                                                      Container(
+                                                                        // checkd2g (1112:1371)
+                                                                        margin: EdgeInsets.fromLTRB(0, 0,2,0),
+                                                                        width: 12,
+                                                                        height: 12,
+                                                                        child: Image.asset(
+                                                                          'images/schedulecheck.png',
+                                                                          width: 10,
+                                                                          height: 10,
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+
+                                                                        margin: EdgeInsets.fromLTRB(0,0,0,0),
+                                                                        child: Text(
+                                                                          scheduleData['records']
+                                                                          [index][
+                                                                          'buttons'][0]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle (
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 11,
+                                                                            fontWeight: FontWeight.w500,
+                                                                            // height: 1.255*ffem/fem,
+                                                                            color: Color(0xff707070),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+                                                            scheduleData['records'][index]
+                                                            ['buttons'][1] ==
+                                                                "Reschedule"?
+                                                            Expanded(
+                                                              flex:2,
+                                                              child: Container(
+
+                                                                padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+
+                                                                // height: double.infinity,
+                                                                child: InkWell(
+                                                                  onTap: ()async{
+                                                                    DateTime
+                                                                    dateTime =
+                                                                    DateTime.parse(
+                                                                        scheduleData['records']
+                                                                        [
+                                                                        index]
+                                                                        [
+                                                                        'date_deadline']);
+
+                                                                    Navigator.push(
+                                                                        context,
+                                                                        MaterialPageRoute(
+                                                                            builder: (context) => Calender(
+                                                                                null,
+                                                                                "",
+                                                                                dateTime,
+                                                                                null,
+                                                                                [],
+                                                                                "")));
+                                                                  },
+                                                                  child: Row(
+                                                                    crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                    children: [
+                                                                      Container(
+                                                                        // iconsaxlinearcalendarPvx (1112:1377)
+                                                                        margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                                                        width: 12,
+                                                                        height: 12,
+                                                                        child: Image.asset(
+                                                                          'images/schedulecalendar.png',
+                                                                          width: 10,
+                                                                          height: 10,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        // rescheduleJo2 (1112:1376)
+                                                                        //'Reschedule',
+                                                                        scheduleData['records']
+                                                                        [
+                                                                        index]
+                                                                        [
+                                                                        'buttons'][1]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style:  TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 11,
+                                                                          fontWeight: FontWeight.w500,
+                                                                          // height: 1.255*ffem/fem,
+                                                                          color: Color(0xff707070),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ):
+
+                                                            Expanded(
+                                                              flex:2,
+                                                              child: Container(
+
+                                                                padding: EdgeInsets.fromLTRB(2, 0, 2, 0),
+
+                                                                // height: double.infinity,
+                                                                child: InkWell(
+                                                                  onTap: ()async{
+                                                                    int idType =
+                                                                    scheduleData[
+                                                                    'records']
+                                                                    [
+                                                                    index]['id'];
+
+                                                                    var data = await editDefaultScheduleData(
+                                                                        scheduleData[
+                                                                        'records']
+                                                                        [
+                                                                        index]['id']);
+
+                                                                    setState(() {
+                                                                      activityTypeName =
+                                                                          data['activity_type_id'] ??
+                                                                              null;
+                                                                      activityTypeId =
+                                                                          data['activity_type_id']
+                                                                          [
+                                                                          'id'] ??
+                                                                              null;
+                                                                      activityTypeNameCategory =
+                                                                          data['activity_type_id']
+                                                                          [
+                                                                          'category'] ??
+                                                                              "";
+                                                                      assignedToname =
+                                                                          data['user_id'] ??
+                                                                              null;
+                                                                      assignedToid =
+                                                                          data['user_id']
+                                                                          [
+                                                                          'id'] ??
+                                                                              null;
+                                                                      DuedateTime
+                                                                          .text =
+                                                                          data['date_deadline'] ??
+                                                                              "";
+                                                                      summaryController
+                                                                          .text =
+                                                                          data['summary'] ??
+                                                                              "";
+                                                                      commandsController
+                                                                          .text = data[
+                                                                      'note']
+                                                                          .replaceAll(
+                                                                          RegExp(
+                                                                              r'<[^>]*>|&[^;]+;'),
+                                                                          ' ')
+                                                                          .toString();
+                                                                      // DuedateTime.text == "default" ?
+                                                                      if (activityTypeNameCategory ==
+                                                                          "default") {
+                                                                        scheduleBtn =
+                                                                        true;
+                                                                        opencalendarBtn =
+                                                                        false;
+                                                                        btntext =
+                                                                        "Schedule";
+                                                                        meetingColum =
+                                                                        true;
+                                                                      } else if (activityTypeNameCategory ==
+                                                                          "phonecall") {
+                                                                        scheduleBtn =
+                                                                        true;
+                                                                        opencalendarBtn =
+                                                                        true;
+                                                                        btntext =
+                                                                        "Save";
+                                                                        meetingColum =
+                                                                        true;
+                                                                      } else if (activityTypeNameCategory ==
+                                                                          "meeting") {
+                                                                        scheduleBtn =
+                                                                        false;
+                                                                        opencalendarBtn =
+                                                                        true;
+                                                                        btntext =
+                                                                        "Schedule";
+                                                                        meetingColum =
+                                                                        false;
+                                                                      } else if (activityTypeNameCategory ==
+                                                                          "upload_file") {
+                                                                        scheduleBtn =
+                                                                        true;
+                                                                        opencalendarBtn =
+                                                                        false;
+                                                                        btntext =
+                                                                        "Schedule";
+                                                                        meetingColum =
+                                                                        true;
+                                                                      }
+
+                                                                      print(
+                                                                          activityTypeNameCategory);
+                                                                      print(
+                                                                          "jhbvjbvsvj");
+                                                                    });
+
+                                                                    showDialog(
+                                                                      context:
+                                                                      context,
+                                                                      builder: (BuildContext
+                                                                      context) =>
+                                                                          _buildOrderPopupDialog(
+                                                                              context,
+                                                                              idType),
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                                () {}));
+                                                                  },
+                                                                  child: Row(
+                                                                    crossAxisAlignment: CrossAxisAlignment.center,
+
+                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                    children: [
+                                                                      Container(
+                                                                        // iconsaxlinearcalendarPvx (1112:1377)
+                                                                        margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                                                        width: 12,
+                                                                        height: 12,
+                                                                        child: Image.asset(
+                                                                          'images/scheduleedit.png',
+                                                                          width: 10,
+                                                                          height: 10,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        // rescheduleJo2 (1112:1376)
+                                                                        // 'Reschedule',
+                                                                        scheduleData['records']
+                                                                        [
+                                                                        index]
+                                                                        [
+                                                                        'buttons'][1]
+                                                                            .toString() ??
+                                                                            "",
+                                                                        style:  TextStyle (
+                                                                          fontFamily: 'Mulish',
+                                                                          fontSize: 11,
+                                                                          fontWeight: FontWeight.w500,
+                                                                          // height: 1.255*ffem/fem,
+                                                                          color: Color(0xff707070),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+                                                            Expanded(
+                                                              flex:2,
+                                                              child: Container(
+                                                                // color:Colors.red,
+
+                                                                padding: EdgeInsets.fromLTRB(2, 0, 10,0),
+                                                                //  height: double.infinity,
+                                                                child: InkWell(
+                                                                  onTap: ()async{
+                                                                    var data =
+                                                                    await deleteScheduleData(
+                                                                        scheduleData[
+                                                                        'records']
+                                                                        [
+                                                                        index]['id']);
+
+                                                                    if (data['message'] ==
+                                                                        "Success") {
+                                                                      print("responce");
+                                                                      setState(() {
+                                                                        getScheduleDetails();
+                                                                      });
+                                                                    }
+
+                                                                    print("demo datataaa");
+                                                                  },
+                                                                  child: Row(
+                                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                                    children: [
+                                                                      Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: Container(
+                                                                          //color:Colors.blue,
+                                                                          // xcircleBrp (1112:1386)
+                                                                          margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
+                                                                          width: 12,
+                                                                          height: 12,
+                                                                          child: Image.asset(
+                                                                            'images/schedulecancel.png',
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      Align(
+                                                                        alignment: Alignment.centerRight,
+                                                                        child: Text(
+                                                                          scheduleData['records']
+                                                                          [index][
+                                                                          'buttons'][2]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style:  TextStyle (
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 11,
+                                                                            fontWeight: FontWeight.w500,
+                                                                            //height: 1.255*ffem/fem,
+                                                                            color: Color(0xff707070),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+
+
+                                                            Expanded(
+
+                                                              flex:1,                                                            child: Row(
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              mainAxisAlignment: MainAxisAlignment.end,
+
+                                                              children: [
+                                                                JustTheTooltip(
+                                                                  margin: EdgeInsets.only(left: 25,right: 25),
+                                                                  // showDuration:  const Duration(seconds: 10),
+                                                                  preferredDirection: AxisDirection.up,
+                                                                  isModal: true,
+                                                                  child: Material(
+                                                                    //color: Colors.grey.shade800,
+                                                                    shape: const CircleBorder(),
+                                                                    //elevation: 4.0,
+                                                                    child:  Container(
+                                                                      // iconsaxlinearcalendarPvx (1112:1377)
+                                                                      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                                                      width: 12,
+                                                                      height: 12,
+                                                                      child: Image.asset(
+                                                                        'images/alertcircle.png',
+                                                                        width: 10,
+                                                                        height: 10,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  content:  Container(
+                                                                    margin: EdgeInsets.only(left: 25,right: 25),
+                                                                    height:150,
+                                                                    child: Padding(
+                                                                      padding: const EdgeInsets.only(
+                                                                          top: 5, left: 9),
+                                                                      child: Column(
+                                                                        crossAxisAlignment:
+                                                                        CrossAxisAlignment.start,
+                                                                        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                        children: [
+                                                                          Text(
+                                                                            "Activity type",
+                                                                            style: TextStyle(
+                                                                              fontSize: 10,
+                                                                              fontFamily: 'Mulish',
+                                                                              color: Colors.grey,
+                                                                              fontWeight:
+                                                                              FontWeight.w500,
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Text(
+                                                                            scheduleData['records']
+                                                                            [index][
+                                                                            'activity_type_id'][1],
+                                                                            style: TextStyle(
+                                                                              fontSize: 10,
+                                                                              fontFamily: 'Mulish',
+                                                                              color: Colors.grey,
+                                                                              fontWeight: FontWeight.w500,),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Text(
+                                                                            "Created",
+                                                                            style: TextStyle(
+                                                                              fontSize: 10,
+                                                                              fontFamily: 'Mulish',
+                                                                              color: Colors.grey,
+                                                                              fontWeight:
+                                                                              FontWeight.w500,
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Row(
+                                                                            children: [
+                                                                              Text(
+                                                                                scheduleData['records']
+                                                                                [
+                                                                                index]
+                                                                                [
+                                                                                'create_date']
+                                                                                    .toString() ??
+                                                                                    "",
+                                                                                style: TextStyle(
+                                                                                    fontSize: 10,
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                    fontFamily:
+                                                                                    'Mulish',
+                                                                                    color:
+                                                                                    Colors.grey),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                width: 5,
+                                                                              ),
+                                                                              Container(
+                                                                                child: CircleAvatar(
+                                                                                  radius: 10,
+                                                                                  child: ClipRRect(
+                                                                                    borderRadius:
+                                                                                    BorderRadius
+                                                                                        .circular(
+                                                                                        12),
+                                                                                    child: Image.network(
+                                                                                        "${scheduleData['records'][index]['image2']!}?token=${token}"),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                width: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                scheduleData['records']
+                                                                                [
+                                                                                index]
+                                                                                [
+                                                                                'create_uid'][1]
+                                                                                    .toString() ??
+                                                                                    "",
+                                                                                style: TextStyle(
+                                                                                  fontSize: 10,
+                                                                                  fontFamily:
+                                                                                  'Mulish',
+                                                                                  color: Colors.grey,
+                                                                                  fontWeight:
+                                                                                  FontWeight.w500,
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Text(
+                                                                            "Assigned to",
+                                                                            style: TextStyle(
+                                                                              fontSize: 10,
+
+                                                                              fontFamily: 'Mulish',
+                                                                              color: Colors.grey,
+                                                                              fontWeight:
+                                                                              FontWeight.w500,
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Row(
+                                                                            children: [
+                                                                              Container(
+                                                                                child: CircleAvatar(
+                                                                                  radius: 10,
+                                                                                  child: ClipRRect(
+                                                                                    borderRadius:
+                                                                                    BorderRadius
+                                                                                        .circular(
+                                                                                        18),
+                                                                                    child: Image.network(
+                                                                                        "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                width: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                scheduleData['records']
+                                                                                [
+                                                                                index]
+                                                                                [
+                                                                                'user_id'][1]
+                                                                                    .toString() ??
+                                                                                    "",
+                                                                                style: TextStyle(
+                                                                                    fontSize: 10,
+                                                                                    fontFamily:
+                                                                                    'Mulish',
+                                                                                    fontWeight: FontWeight.w500,
+                                                                                    color:
+                                                                                    Colors.grey),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Text(
+                                                                            "Due on",
+                                                                            style: TextStyle(
+                                                                              fontSize: 10,
+                                                                              color: Colors.grey,
+                                                                              fontWeight:
+                                                                              FontWeight.w500,
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                          Text(
+                                                                            scheduleData['records']
+                                                                            [index][
+                                                                            'date_deadline']
+                                                                                .toString() ??
+                                                                                "",
+                                                                            style: TextStyle(
+                                                                                fontSize: 10,
+                                                                                fontWeight:FontWeight.w500,
+                                                                                fontFamily: 'Mulish',
+                                                                                color: Colors.grey),
+                                                                          ),
+                                                                          SizedBox(
+                                                                            height: 3,
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            )
+                                                          ],
+                                                        ),
+
+
+                                                      ),
+
+                                                    ),
+
+
+
+
+                                                  ],
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
-                                      ],
-                                    ),
+                                      ),
+
+                                    ],
                                   );
+
+                                  // return Card(
+                                  //   elevation: 1,
+                                  //   child: Column(
+                                  //     children: [
+                                  //       Row(
+                                  //         children: [
+                                  //           Column(
+                                  //             crossAxisAlignment:
+                                  //                 CrossAxisAlignment.start,
+                                  //             children: [
+                                  //               Padding(
+                                  //                 padding:
+                                  //                     const EdgeInsets.only(
+                                  //                         left: 25.0,
+                                  //                         right: 15,
+                                  //                         top: 5),
+                                  //                 child: Container(
+                                  //                   child: Stack(
+                                  //                     alignment:
+                                  //                         Alignment.center,
+                                  //                     children: [
+                                  //                       // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                  //                       CircleAvatar(
+                                  //                         radius: 12,
+                                  //                         child: ClipRRect(
+                                  //                           borderRadius:
+                                  //                               BorderRadius
+                                  //                                   .circular(
+                                  //                                       18),
+                                  //                           child: Image.network(
+                                  //                               "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                  //                         ),
+                                  //                       ),
+                                  //
+                                  //                       Positioned(
+                                  //                         bottom: 0,
+                                  //                         right: 0,
+                                  //                         child: Container(
+                                  //                           width: 10.0,
+                                  //                           height: 10.0,
+                                  //                           decoration:
+                                  //                               BoxDecoration(
+                                  //                             shape: BoxShape
+                                  //                                 .circle,
+                                  //                             color: Color(int.parse(
+                                  //                                 scheduleData[
+                                  //                                             'records']
+                                  //                                         [
+                                  //                                         index]
+                                  //                                     [
+                                  //                                     'label_color'])),
+                                  //                           ),
+                                  //                           child: Center(
+                                  //                             child:
+                                  //                                 scheduleIcon,
+                                  //                             // child: Icon(
+                                  //                             //   Icons.image,
+                                  //                             //   color: Colors.white,
+                                  //                             //   size: 8,
+                                  //                             // ),
+                                  //                           ),
+                                  //                         ),
+                                  //                       ),
+                                  //                     ],
+                                  //                   ),
+                                  //                 ),
+                                  //               ),
+                                  //             ],
+                                  //           ),
+                                  //           Padding(
+                                  //             padding: const EdgeInsets.only(
+                                  //                 top: 8.0,
+                                  //                 left: 12,
+                                  //                 right: 10),
+                                  //             child: Row(
+                                  //               mainAxisAlignment:
+                                  //                   MainAxisAlignment
+                                  //                       .spaceBetween,
+                                  //               children: [
+                                  //                 Container(
+                                  //                   width:
+                                  //                       MediaQuery.of(context)
+                                  //                               .size
+                                  //                               .width /
+                                  //                           5.5,
+                                  //                   // color: Colors.red,
+                                  //
+                                  //                   child: Text(
+                                  //                     scheduleData['records']
+                                  //                                     [index][
+                                  //                                 'delay_label']
+                                  //                             .toString() ??
+                                  //                         "",
+                                  //                     style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                         fontFamily: 'Mulish',
+                                  //                         color: Color(int.parse(
+                                  //                             scheduleData[
+                                  //                                         'records']
+                                  //                                     [index][
+                                  //                                 'label_color']))),
+                                  //                   ),
+                                  //                 ),
+                                  //                 SizedBox(
+                                  //                   width: 5,
+                                  //                 ),
+                                  //                 Container(
+                                  //                   // color: Colors.red,
+                                  //                   width:
+                                  //                       MediaQuery.of(context)
+                                  //                               .size
+                                  //                               .width /
+                                  //                           5.5,
+                                  //
+                                  //                   child: Text(
+                                  //                     scheduleData['records']
+                                  //                                     [index][
+                                  //                                 'activity_type_id'][1]
+                                  //                             .toString() ??
+                                  //                         "",
+                                  //                     style: TextStyle(
+                                  //                       fontSize: 12,
+                                  //                       color:
+                                  //                           Color(0xFF212121),
+                                  //                       fontFamily: 'Mulish',
+                                  //                       fontWeight:
+                                  //                           FontWeight.w600,
+                                  //                     ),
+                                  //                   ),
+                                  //                 ),
+                                  //                 SizedBox(
+                                  //                   width: 5,
+                                  //                 ),
+                                  //                 Container(
+                                  //                   //color: Colors.red,
+                                  //                   width:
+                                  //                       MediaQuery.of(context)
+                                  //                               .size
+                                  //                               .width /
+                                  //                           4.5,
+                                  //
+                                  //                   child: Text(
+                                  //                     scheduleData['records']
+                                  //                                     [index]
+                                  //                                 ['user_id'][1]
+                                  //                             .toString() ??
+                                  //                         "",
+                                  //                     style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                         fontFamily: 'Mulish',
+                                  //                         color: Color(
+                                  //                             0xFF212121)),
+                                  //                   ),
+                                  //                 ),
+                                  //                 InkWell(
+                                  //                   onTap: () {
+                                  //                     setState(() {
+                                  //                       print(scheduleView);
+                                  //                       print("final data ");
+                                  //                       scheduleViewIndex = index;
+                                  //                       scheduleView == false
+                                  //                           ? scheduleView =
+                                  //                               true
+                                  //                           : scheduleView ==
+                                  //                                   true
+                                  //                               ? scheduleView =
+                                  //                                   false
+                                  //                               : false;
+                                  //                       print(scheduleView);
+                                  //                     });
+                                  //                   },
+                                  //                   child: Padding(
+                                  //                     padding:
+                                  //                         const EdgeInsets.only(
+                                  //                             left: 20,
+                                  //                             right: 20),
+                                  //                     child: Container(
+                                  //                       width: 10,
+                                  //                       height: 15,
+                                  //                       decoration:
+                                  //                           BoxDecoration(
+                                  //                         shape:
+                                  //                             BoxShape.circle,
+                                  //                         color: Colors.black,
+                                  //                       ),
+                                  //                       child: Center(
+                                  //                         child: Text(
+                                  //                           "i",
+                                  //                           style: TextStyle(
+                                  //                               fontSize: 12,
+                                  //                               color: Colors
+                                  //                                   .white,
+                                  //                               fontWeight:
+                                  //                                   FontWeight
+                                  //                                       .w800),
+                                  //                         ),
+                                  //                       ),
+                                  //                     ),
+                                  //                   ),
+                                  //                 ),
+                                  //               ],
+                                  //             ),
+                                  //           ),
+                                  //         ],
+                                  //       ),
+                                  //       Padding(
+                                  //         padding:
+                                  //             const EdgeInsets.only(left: 60),
+                                  //         child: Column(
+                                  //           crossAxisAlignment:
+                                  //               CrossAxisAlignment.start,
+                                  //           children: [
+                                  //             Visibility(
+                                  //               visible:scheduleView?index==scheduleViewIndex:false,
+                                  //               child: Padding(
+                                  //                 padding:
+                                  //                     const EdgeInsets.only(
+                                  //                         top: 5, left: 17),
+                                  //                 child: Column(
+                                  //                   crossAxisAlignment:
+                                  //                       CrossAxisAlignment
+                                  //                           .start,
+                                  //                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  //                   children: [
+                                  //                     Text(
+                                  //                       "Activity type",
+                                  //                       style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         fontFamily: 'Mulish',
+                                  //                         color: Colors.grey,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                       ),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       scheduleData['records']
+                                  //                               [index][
+                                  //                           'activity_type_id'][1],
+                                  //                       style: TextStyle(
+                                  //                           fontSize: 12,
+                                  //                           fontFamily:
+                                  //                               'Mulish',
+                                  //                           color: Colors.grey),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       "Created",
+                                  //                       style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         fontFamily: 'Mulish',
+                                  //                         color: Colors.grey,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                       ),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Row(
+                                  //                       children: [
+                                  //                         Text(
+                                  //                           scheduleData['records']
+                                  //                                           [
+                                  //                                           index]
+                                  //                                       [
+                                  //                                       'create_date']
+                                  //                                   .toString() ??
+                                  //                               "",
+                                  //                           style: TextStyle(
+                                  //                               fontSize: 12,
+                                  //                               fontFamily:
+                                  //                                   'Mulish',
+                                  //                               color: Colors
+                                  //                                   .grey),
+                                  //                         ),
+                                  //                         SizedBox(
+                                  //                           width: 3,
+                                  //                         ),
+                                  //                         Container(
+                                  //                           child: CircleAvatar(
+                                  //                             radius: 12,
+                                  //                             child: ClipRRect(
+                                  //                               borderRadius:
+                                  //                                   BorderRadius
+                                  //                                       .circular(
+                                  //                                           12),
+                                  //                               child: Image
+                                  //                                   .network(
+                                  //                                       "${scheduleData['records'][index]['image2']!}?token=${token}"),
+                                  //                             ),
+                                  //                           ),
+                                  //                         ),
+                                  //                         SizedBox(
+                                  //                           width: 3,
+                                  //                         ),
+                                  //                         Text(
+                                  //                           scheduleData['records']
+                                  //                                           [
+                                  //                                           index]
+                                  //                                       [
+                                  //                                       'create_uid'][1]
+                                  //                                   .toString() ??
+                                  //                               "",
+                                  //                           style: TextStyle(
+                                  //                             fontSize: 12,
+                                  //                             fontFamily:
+                                  //                                 'Mulish',
+                                  //                             color:
+                                  //                                 Colors.grey,
+                                  //                             fontWeight:
+                                  //                                 FontWeight
+                                  //                                     .w600,
+                                  //                           ),
+                                  //                         ),
+                                  //                       ],
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       "Assigned to",
+                                  //                       style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         fontFamily: 'Mulish',
+                                  //                         color: Colors.grey,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                       ),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Row(
+                                  //                       children: [
+                                  //                         Container(
+                                  //                           child: CircleAvatar(
+                                  //                             radius: 12,
+                                  //                             child: ClipRRect(
+                                  //                               borderRadius:
+                                  //                                   BorderRadius
+                                  //                                       .circular(
+                                  //                                           12),
+                                  //                               child: Image
+                                  //                                   .network(
+                                  //                                       "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                  //                             ),
+                                  //                           ),
+                                  //                         ),
+                                  //                         SizedBox(
+                                  //                           width: 3,
+                                  //                         ),
+                                  //                         Text(
+                                  //                           scheduleData['records']
+                                  //                                           [
+                                  //                                           index]
+                                  //                                       [
+                                  //                                       'user_id'][1]
+                                  //                                   .toString() ??
+                                  //                               "",
+                                  //                           style: TextStyle(
+                                  //                               fontSize: 12,
+                                  //                               fontFamily:
+                                  //                                   'Mulish',
+                                  //                               color: Colors
+                                  //                                   .grey),
+                                  //                         ),
+                                  //                       ],
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       "Due on",
+                                  //                       style: TextStyle(
+                                  //                         fontSize: 12,
+                                  //                         color: Colors.grey,
+                                  //                         fontWeight:
+                                  //                             FontWeight.w600,
+                                  //                       ),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 5,
+                                  //                     ),
+                                  //                     Text(
+                                  //                       scheduleData['records']
+                                  //                                       [index][
+                                  //                                   'date_deadline']
+                                  //                               .toString() ??
+                                  //                           "",
+                                  //                       style: TextStyle(
+                                  //                           fontSize: 12,
+                                  //                           fontFamily:
+                                  //                               'Mulish',
+                                  //                           color: Colors.grey),
+                                  //                     ),
+                                  //                     SizedBox(
+                                  //                       height: 3,
+                                  //                     ),
+                                  //                   ],
+                                  //                 ),
+                                  //               ),
+                                  //             ),
+                                  //             Padding(
+                                  //               padding: const EdgeInsets.only(
+                                  //                   top: 0,
+                                  //                   left: 14,
+                                  //                   right: 10),
+                                  //               child: Container(
+                                  //                 //color: Colors.red,
+                                  //
+                                  //                 width: MediaQuery.of(context)
+                                  //                         .size
+                                  //                         .width /
+                                  //                     1.5,
+                                  //                 child: Text(
+                                  //                   scheduleData['records']
+                                  //                               [index]['note']
+                                  //                           .replaceAll(
+                                  //                               RegExp(
+                                  //                                   r'<[^>]*>|&[^;]+;'),
+                                  //                               ' ')
+                                  //                           .toString() ??
+                                  //                       "",
+                                  //                   style: TextStyle(
+                                  //                       fontSize: 12,
+                                  //                       fontFamily: 'Mulish',
+                                  //                       color: Colors.black),
+                                  //                 ),
+                                  //               ),
+                                  //             ),
+                                  //             Padding(
+                                  //               padding: const EdgeInsets.only(
+                                  //                 left: 7,
+                                  //               ),
+                                  //               child: Row(
+                                  //                 // mainAxisAlignment: MainAxisAlignment.end,
+                                  //
+                                  //                 children: [
+                                  //                   Container(
+                                  //                     //color: Colors.red,
+                                  //                     // height: 25,
+                                  //                     width:
+                                  //                         MediaQuery.of(context)
+                                  //                                 .size
+                                  //                                 .width /
+                                  //                             4.3,
+                                  //                     child: TextButton.icon(
+                                  //                       // <-- TextButton
+                                  //                       onPressed: () async {
+                                  //                         int datasIds =
+                                  //                             scheduleData[
+                                  //                                     'records']
+                                  //                                 [index]['id'];
+                                  //
+                                  //                         showDialog(
+                                  //                           context: context,
+                                  //                           builder: (BuildContext
+                                  //                                   context) =>
+                                  //                               _buildMarkDoneDialog(
+                                  //                                   context,
+                                  //                                   datasIds),
+                                  //                         ).then((value) =>
+                                  //                             setState(() {}));
+                                  //                       },
+                                  //                       icon: Icon(
+                                  //                         Icons.check,
+                                  //                         size: 13.0,
+                                  //                         color: Colors.black54,
+                                  //                       ),
+                                  //                       label: Text(
+                                  //                         scheduleData['records']
+                                  //                                         [
+                                  //                                         index]
+                                  //                                     [
+                                  //                                     'buttons'][0]
+                                  //                                 .toString() ??
+                                  //                             "",
+                                  //                         style: TextStyle(
+                                  //                             fontSize: 10,
+                                  //                             fontFamily:
+                                  //                                 'Mulish',
+                                  //                             fontWeight:
+                                  //                                 FontWeight
+                                  //                                     .w500,
+                                  //                             color: Color(
+                                  //                                 0xFF717171)),
+                                  //                       ),
+                                  //                     ),
+                                  //                   ),
+                                  //                   SizedBox(
+                                  //                     width: 0,
+                                  //                   ),
+                                  //                   scheduleData['records']
+                                  //                                       [index]
+                                  //                                   ['buttons']
+                                  //                               [1] ==
+                                  //                           "Reschedule"
+                                  //                       ? Container(
+                                  //                           width: MediaQuery.of(
+                                  //                                       context)
+                                  //                                   .size
+                                  //                                   .width /
+                                  //                               4.3,
+                                  //                           child:
+                                  //                               TextButton.icon(
+                                  //                             // <-- TextButton
+                                  //                             onPressed:
+                                  //                                 () async {
+                                  //                               //  int idType = scheduleData['records'][index]['id'];
+                                  //                               //
+                                  //                               // var data =  await editDefaultScheduleData(scheduleData['records'][index]['id']);
+                                  //                               //
+                                  //                               //
+                                  //                               // String textType =  scheduleData['records'][index]['buttons'][1].toString();
+                                  //
+                                  //                               DateTime
+                                  //                                   dateTime =
+                                  //                                   DateTime.parse(scheduleData['records']
+                                  //                                           [
+                                  //                                           index]
+                                  //                                       [
+                                  //                                       'date_deadline']);
+                                  //
+                                  //                               Navigator.push(
+                                  //                                   context,
+                                  //                                   MaterialPageRoute(
+                                  //                                       builder: (context) => Calender(
+                                  //                                           null,
+                                  //                                           "",
+                                  //                                           dateTime,
+                                  //                                           null,
+                                  //                                           [],
+                                  //                                           "")));
+                                  //                             },
+                                  //                             icon: Icon(
+                                  //                               Icons
+                                  //                                   .calendar_month,
+                                  //                               size: 13.0,
+                                  //                               color: Color(
+                                  //                                   0xFF717171),
+                                  //                             ),
+                                  //                             label: Text(
+                                  //                               scheduleData['records'][index]
+                                  //                                           [
+                                  //                                           'buttons'][1]
+                                  //                                       .toString() ??
+                                  //                                   "",
+                                  //                               style: TextStyle(
+                                  //                                   fontSize:
+                                  //                                       10,
+                                  //                                   fontFamily:
+                                  //                                       'Mulish',
+                                  //                                   fontWeight:
+                                  //                                       FontWeight
+                                  //                                           .w500,
+                                  //                                   color: Color(
+                                  //                                       0xFF717171)),
+                                  //                             ),
+                                  //                           ),
+                                  //                         )
+                                  //                       : Container(
+                                  //                           width: MediaQuery.of(
+                                  //                                       context)
+                                  //                                   .size
+                                  //                                   .width /
+                                  //                               4.3,
+                                  //                           child:
+                                  //                               TextButton.icon(
+                                  //                             // <-- TextButton
+                                  //                             onPressed:
+                                  //                                 () async {
+                                  //                               int idType =
+                                  //                                   scheduleData[
+                                  //                                           'records']
+                                  //                                       [
+                                  //                                       index]['id'];
+                                  //
+                                  //                               var data = await editDefaultScheduleData(
+                                  //                                   scheduleData['records']
+                                  //                                           [
+                                  //                                           index]
+                                  //                                       ['id']);
+                                  //
+                                  //                               setState(() {
+                                  //                                 activityTypeName =
+                                  //                                     data['activity_type_id'] ??
+                                  //                                         null;
+                                  //                                 activityTypeId =
+                                  //                                     data['activity_type_id']
+                                  //                                             [
+                                  //                                             'id'] ??
+                                  //                                         null;
+                                  //                                 activityTypeNameCategory =
+                                  //                                     data['activity_type_id']
+                                  //                                             [
+                                  //                                             'category'] ??
+                                  //                                         "";
+                                  //                                 assignedToname =
+                                  //                                     data['user_id'] ??
+                                  //                                         null;
+                                  //                                 assignedToid =
+                                  //                                     data['user_id']
+                                  //                                             [
+                                  //                                             'id'] ??
+                                  //                                         null;
+                                  //                                 DuedateTime
+                                  //                                         .text =
+                                  //                                     data['date_deadline'] ??
+                                  //                                         "";
+                                  //                                 summaryController
+                                  //                                         .text =
+                                  //                                     data['summary'] ??
+                                  //                                         "";
+                                  //                                 commandsController
+                                  //                                     .text = data[
+                                  //                                         'note']
+                                  //                                     .replaceAll(
+                                  //                                         RegExp(
+                                  //                                             r'<[^>]*>|&[^;]+;'),
+                                  //                                         ' ')
+                                  //                                     .toString();
+                                  //                                 // DuedateTime.text == "default" ?
+                                  //                                 if (activityTypeNameCategory ==
+                                  //                                     "default") {
+                                  //                                   scheduleBtn =
+                                  //                                       true;
+                                  //                                   opencalendarBtn =
+                                  //                                       false;
+                                  //                                   btntext =
+                                  //                                       "Schedule";
+                                  //                                   meetingColum =
+                                  //                                       true;
+                                  //                                 } else if (activityTypeNameCategory ==
+                                  //                                     "phonecall") {
+                                  //                                   scheduleBtn =
+                                  //                                       true;
+                                  //                                   opencalendarBtn =
+                                  //                                       true;
+                                  //                                   btntext =
+                                  //                                       "Save";
+                                  //                                   meetingColum =
+                                  //                                       true;
+                                  //                                 } else if (activityTypeNameCategory ==
+                                  //                                     "meeting") {
+                                  //                                   scheduleBtn =
+                                  //                                       false;
+                                  //                                   opencalendarBtn =
+                                  //                                       true;
+                                  //                                   btntext =
+                                  //                                       "Schedule";
+                                  //                                   meetingColum =
+                                  //                                       false;
+                                  //                                 } else if (activityTypeNameCategory ==
+                                  //                                     "upload_file") {
+                                  //                                   scheduleBtn =
+                                  //                                       true;
+                                  //                                   opencalendarBtn =
+                                  //                                       false;
+                                  //                                   btntext =
+                                  //                                       "Schedule";
+                                  //                                   meetingColum =
+                                  //                                       true;
+                                  //                                 }
+                                  //
+                                  //                                 print(
+                                  //                                     activityTypeNameCategory);
+                                  //                                 print(
+                                  //                                     "jhbvjbvsvj");
+                                  //                               });
+                                  //
+                                  //                               showDialog(
+                                  //                                 context:
+                                  //                                     context,
+                                  //                                 builder: (BuildContext
+                                  //                                         context) =>
+                                  //                                     _buildOrderPopupDialog(
+                                  //                                         context,
+                                  //                                         idType),
+                                  //                               ).then((value) =>
+                                  //                                   setState(
+                                  //                                       () {}));
+                                  //                             },
+                                  //                             icon: Icon(
+                                  //                               Icons.edit,
+                                  //                               size: 13.0,
+                                  //                               color: Color(
+                                  //                                   0xFF717171),
+                                  //                             ),
+                                  //                             label: Text(
+                                  //                               scheduleData['records'][index]
+                                  //                                           [
+                                  //                                           'buttons'][1]
+                                  //                                       .toString() ??
+                                  //                                   "",
+                                  //                               style: TextStyle(
+                                  //                                   fontSize:
+                                  //                                       10,
+                                  //                                   fontFamily:
+                                  //                                       'Mulish',
+                                  //                                   fontWeight:
+                                  //                                       FontWeight
+                                  //                                           .w500,
+                                  //                                   color: Color(
+                                  //                                       0xFF717171)),
+                                  //                             ),
+                                  //                           ),
+                                  //                         ),
+                                  //                   SizedBox(
+                                  //                     width: 0,
+                                  //                   ),
+                                  //                   Container(
+                                  //                     width:
+                                  //                         MediaQuery.of(context)
+                                  //                                 .size
+                                  //                                 .width /
+                                  //                             5,
+                                  //                     child: TextButton.icon(
+                                  //                       // <-- TextButton
+                                  //                       onPressed: () async {
+                                  //                         var data = await deleteScheduleData(
+                                  //                             scheduleData[
+                                  //                                     'records']
+                                  //                                 [
+                                  //                                 index]['id']);
+                                  //
+                                  //                         if (data['message'] ==
+                                  //                             "Success") {
+                                  //                           print("responce");
+                                  //                           setState(() {
+                                  //                             getScheduleDetails();
+                                  //                           });
+                                  //                         }
+                                  //
+                                  //                         print(
+                                  //                             "demo datataaa");
+                                  //                       },
+                                  //                       icon: Icon(
+                                  //                         Icons.cancel_outlined,
+                                  //                         size: 13.0,
+                                  //                         color:
+                                  //                             Color(0xFF717171),
+                                  //                       ),
+                                  //                       label: Text(
+                                  //                         scheduleData['records']
+                                  //                                         [
+                                  //                                         index]
+                                  //                                     [
+                                  //                                     'buttons'][2]
+                                  //                                 .toString() ??
+                                  //                             "",
+                                  //                         style: TextStyle(
+                                  //                             fontSize: 10,
+                                  //                             fontFamily:
+                                  //                                 'Mulish',
+                                  //                             fontWeight:
+                                  //                                 FontWeight
+                                  //                                     .w500,
+                                  //                             color: Color(
+                                  //                                 0xFF717171)),
+                                  //                       ),
+                                  //                     ),
+                                  //                   ),
+                                  //                 ],
+                                  //               ),
+                                  //             )
+                                  //           ],
+                                  //         ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // );
                                 }),
                       ),
                     ),
