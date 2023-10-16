@@ -3047,7 +3047,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Visibility(
                         visible: tvisibility,
