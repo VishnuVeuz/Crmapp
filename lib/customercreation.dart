@@ -1020,6 +1020,23 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 labelText: 'Phone',
                                 labelStyle:
                                 TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return null;
+                              }
+
+                              if (int.tryParse(value) == null) {
+                                return 'Phone number should only contain digits';
+                              }
+
+                              if (value.length < 10) {
+                                return 'Phone number should contain at least 10 digits';
+                              }
+
+                              return null;
+                            },
+
+
                           ),
                         ),
                         Padding(
@@ -1027,7 +1044,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
                             keyboardType: TextInputType.phone,
-                            maxLength: 10,
+                            //maxLength: 10,
                             controller: mobileController,
                             style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                             decoration: const InputDecoration(
@@ -1041,6 +1058,22 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 labelText: 'Mobile',
                                 labelStyle:
                                 TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return null;
+                              }
+
+                              if (int.tryParse(value) == null) {
+                                return 'Mobile number should only contain digits';
+                              }
+
+                              if (value.length < 10) {
+                                return 'Mobile number should contain at least 10 digits';
+                              }
+
+                              return null;
+                            },
+
                           ),
                         ),
                         Padding(
@@ -2759,7 +2792,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     controller: alertPhoneController,
                     style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     keyboardType: TextInputType.phone,
-                    maxLength: 10,
+                   // maxLength: 10,
                     decoration: const InputDecoration(
                         counterText: "",
                         enabledBorder: UnderlineInputBorder(
@@ -2771,6 +2804,22 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         labelText: 'Phone',
                         labelStyle:
                         TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return null;
+                      }
+
+                      if (int.tryParse(value) == null) {
+                        return 'Phone number should only contain digits';
+                      }
+
+                      if (value.length < 10) {
+                        return 'Phone number should contain at least 10 digits';
+                      }
+
+                      return null;
+                    },
+
                   ),
                 ),
                 Padding(
@@ -2778,7 +2827,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     keyboardType: TextInputType.phone,
-                    maxLength: 10,
+                   // maxLength: 10,
                     controller: alertMobileController,
                     style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                     decoration: const InputDecoration(
@@ -2792,6 +2841,24 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         labelText: 'Mobile',
                         labelStyle:
                         TextStyle(color: Colors.black, fontSize: 10,fontFamily: 'Mulish')),
+
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return null;
+                      }
+
+                      if (int.tryParse(value) == null) {
+                        return 'Mobile number should only contain digits';
+                      }
+
+                      if (value.length < 10) {
+                        return 'Mobile number should contain at least 10 digits';
+                      }
+
+                      return null;
+                    },
+
+
                   ),
                 ),
                 Padding(

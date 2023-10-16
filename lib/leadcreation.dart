@@ -1011,7 +1011,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             child: TextFormField(
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                               keyboardType: TextInputType.phone,
-                              maxLength: 10,
+                             // maxLength: 10,
                               controller: phoneController,
                               decoration: const InputDecoration(
                                   counterText: "",
@@ -1025,6 +1025,24 @@ class _LeadCreationState extends State<LeadCreation> {
                                   labelText: 'Phone',
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return null;
+                                }
+
+                                if (int.tryParse(value) == null) {
+                                  return 'Phone number should only contain digits';
+                                }
+
+                                if (value.length < 10) {
+                                  return 'Phone number should contain at least 10 digits';
+                                }
+
+                                return null;
+                              },
+
+
+
                             ),),
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -1032,7 +1050,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             child: TextFormField(
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                               keyboardType: TextInputType.phone,
-                              maxLength: 10,
+                             // maxLength: 10,
                               controller: mobileController,
                               decoration: const InputDecoration(
                                   counterText: "",
@@ -1045,6 +1063,22 @@ class _LeadCreationState extends State<LeadCreation> {
                                   labelText: 'Mobile',
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return null;
+                                }
+
+                                if (int.tryParse(value) == null) {
+                                  return 'Mobile number should only contain digits';
+                                }
+
+                                if (value.length < 10) {
+                                  return 'Mobile number should contain at least 10 digits';
+                                }
+
+                                return null;
+                              },
+
                             ),),
 
 
