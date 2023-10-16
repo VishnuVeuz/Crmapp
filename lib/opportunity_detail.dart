@@ -9726,6 +9726,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child:  IconButton(
                     icon: SvgPicture.asset("images/cr.svg"),
                     onPressed: () {
+                      setState((){
+                        sendnameController.text="";
+                        sendemailController.text="";
+                        sendjobController.text="";
+                        sendphoneController.text="";
+                        sendmobileController.text="";
+                        schedulecompanyId=null;
+                      });
                       Navigator.pop(context);
                     },
                   ),
@@ -10088,7 +10096,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontFamily: 'Mulish'),
                                 ),
                               ),
-                              onPressed:(){},
+                              onPressed:(){
+                                setState((){
+                                  sendnameController.text="";
+                                  sendemailController.text="";
+                                  sendjobController.text="";
+                                  sendphoneController.text="";
+                                  sendmobileController.text="";
+                                  schedulecompanyId=null;
+                                });
+                              },
 
 
                               style: ElevatedButton.styleFrom(
