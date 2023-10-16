@@ -1365,7 +1365,6 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 child: MultiSelectDropDown.network(
                                   hint: '',
                                   borderColor: Colors.transparent,
-
                                   borderWidth: 0,
 
                                   hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
