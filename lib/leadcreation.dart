@@ -1471,66 +1471,103 @@ class _LeadCreationState extends State<LeadCreation> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
-                            child: MultiSelectDropDown.network(
-                                 hint: 'Tags',
-                              hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                              selectedOptions: editTagName
-                                  .map((tag) => ValueItem( label: tag.label,value: tag.value))
-                                  .toList(),
-                              onOptionSelected: (options) {
-                                print(options);
-                                tags.clear();
-                                for (var options in options) {
+                                horizontal: 25, vertical: 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Tags',
+                                  style: TextStyle(
+                                    color: Color(0xFF666666),
+                                    fontSize: 12,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
 
-                                  tags.add(options.value);
-                                  print('Label: ${options.label}');
-                                  print('Value: ${options.value}');
-                                  print(tags);
-                                  print('---');
-                                }
-
-                              },
-                              networkConfig: NetworkConfig(
+                                  ),
+                                ),
+                                Container(
+                                  height: 30,
+                                  child: MultiSelectDropDown.network(
+                                       hint: '',
 
 
-                                url: "${baseUrl}api/tags",
-                                method: RequestMethod.get,
-                                headers: {
+
+                                    borderColor: Colors.transparent,
+
+                                    borderWidth: 0,
 
 
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ),
-                              chipConfig: const ChipConfig(wrapType: WrapType.wrap),
 
-                              responseParser: (response) {
-                                debugPrint('Response: $response');
+                                    hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                    selectedOptions: editTagName
+                                        .map((tag) => ValueItem( label: tag.label,value: tag.value))
+                                        .toList(),
+                                    onOptionSelected: (options) {
+                                      print(options);
+                                      tags.clear();
+                                      for (var options in options) {
 
-                                final list = (response['records'] as List<
-                                    dynamic>).map((e) {
-                                  final item = e as Map<String, dynamic>;
-                                  return ValueItem(
+                                        tags.add(options.value);
+                                        print('Label: ${options.label}');
+                                        print('Value: ${options.value}');
+                                        print(tags);
+                                        print('---');
+                                      }
 
-                                    label: item['name'],
-                                    value: item['id'].toString(),
-                                  );
-                                }).toList();
+                                    },
+                                    networkConfig: NetworkConfig(
 
-                                return Future.value(list);
-                              },
-                              responseErrorBuilder: ((context, body) {
-                                print(body);
-                                print(token);
-                                return const Padding(
-                                  padding: EdgeInsets.all(16.0),
-                                  child: Text('Error fetching the data'),
-                                );
-                              }),
+
+                                      url: "${baseUrl}api/tags",
+                                      method: RequestMethod.get,
+                                      headers: {
+
+
+                                        'Authorization': 'Bearer $token',
+                                      },
+                                    ),
+
+                                    responseParser: (response) {
+                                      debugPrint('Response: $response');
+
+                                      final list = (response['records'] as List<
+                                          dynamic>).map((e) {
+                                        final item = e as Map<String, dynamic>;
+                                        return ValueItem(
+
+                                          label: item['name'],
+                                          value: item['id'].toString(),
+
+                                        );
+                                      }).toList();
+
+                                      return Future.value(list);
+                                    },
+
+
+                                    chipConfig: const ChipConfig(wrapType: WrapType.scroll,
+
+
+
+                                    ),
+
+                                    responseErrorBuilder: ((context, body) {
+                                      print(body);
+                                      print(token);
+                                      return const Padding(
+                                        padding: EdgeInsets.all(16.0),
+                                        child: Text('Error fetching the data'),
+                                      );
+                                    }),
+
+
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
+                            padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
                             child: Divider(
                               color: Colors.grey,
                               thickness: 0.5,
