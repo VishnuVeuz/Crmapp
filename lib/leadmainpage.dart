@@ -25,6 +25,13 @@ class LeadMainPage extends StatefulWidget {
 }
 
 class _LeadMainPageState extends State<LeadMainPage> {
+  void _onItemTapped(int index) {
+    setState(() {
+      //_selectedIndex = index;
+    });
+  }
+
+
   String username="";
   List tags = [];
   bool _isInitialized = false;
@@ -390,7 +397,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 1.5,
+                      .height / 1.8,
 
                   child: FutureBuilder(
                       future: recentLead("recent"),
@@ -724,16 +731,81 @@ class _LeadMainPageState extends State<LeadMainPage> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => LeadCreation(0)));
-            // Add your onPressed code here!
+        bottomNavigationBar: NavigationBar(
+          onDestinationSelected: (int index) {
+            setState(() {
+             // currentPageIndex = index;
+            });
           },
-          backgroundColor: Color(0xFF3D418E),
-          child: const Icon(Icons.add),
+          backgroundColor: Colors.white,
+         // indicatorColor: Colors.amber[800],
+          //selectedIndex: currentPageIndex,
+          destinations: [
+            NavigationDestination(
+              selectedIcon: Icon(Icons.home),
+              icon: SvgPicture.asset("images/ho.svg"),
+              label: 'Home',
+
+            ),
+            NavigationDestination(
+              icon: SvgPicture.asset("images/leadd.svg"),
+              label: 'Leads',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.school),
+              icon: SvgPicture.asset("images/oppo.svg"),
+              label: 'Opportunity',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.school),
+              icon:  SvgPicture.asset("images/mo.svg"),
+              label: 'More',
+
+            ),
+          ],
+        ),
+        // bottomNavigationBar: BottomNavigationBar(
+        //   items: [
+        //     BottomNavigationBarItem(
+        //       icon: SvgPicture.asset("images/ho.svg"),
+        //       //icon: Icon(Icons.home),
+        //       label: 'Home',
+        //       backgroundColor: Colors.white,
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: SvgPicture.asset("images/leadd.svg"),
+        //       label: 'Leads',
+        //       backgroundColor: Colors.white,
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: SvgPicture.asset("images/oppo.svg"),
+        //       label: 'Opportunity',
+        //
+        //       backgroundColor: Colors.white,
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: SvgPicture.asset("images/mo.svg"),
+        //       label: 'More',
+        //       backgroundColor: Colors.white,
+        //     ),
+        //   ],
+        //   //currentIndex: _selectedIndex,
+        //   selectedItemColor: Color(0xFFF9246A),
+        //   onTap: _onItemTapped,
+        // ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 0),
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LeadCreation(0)));
+              // Add your onPressed code here!
+            },
+            backgroundColor: Color(0xFF3D418E),
+            child: const Icon(Icons.add),
+          ),
         ),
       );
     }
