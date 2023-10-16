@@ -15,6 +15,7 @@ import 'commonleads.dart';
 import 'lead_detail.dart';
 import 'globals.dart' as globals;
 import 'notification.dart';
+import 'opportunitymainpage.dart';
 
 
 class LeadMainPage extends StatefulWidget {
@@ -733,6 +734,38 @@ class _LeadMainPageState extends State<LeadMainPage> {
         ),
         bottomNavigationBar: NavigationBar(
           onDestinationSelected: (int index) {
+
+            print(index);
+            print("final data");
+            if(index==0){
+              // Navigator.push(context,
+              //     MaterialPageRoute(
+              //         builder: (context) =>
+              //             LeadScrolling(
+              //                 '', "notification",
+              //                 "[assigned_to_me]")));
+            }
+            else if(index==1){
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          LeadScrolling(
+                              '', "notification",
+                              "[assigned_to_me]")));
+
+            }
+            else if (index==2) {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          OpportunityMainPage(
+                              null, "", "notification",
+                              "[assigned_to_me]", "")));
+            }
+            else if(index==3){
+              Scaffold.of(context).openDrawer();
+            }
             setState(() {
              // currentPageIndex = index;
             });
