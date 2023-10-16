@@ -1471,96 +1471,105 @@ class _LeadCreationState extends State<LeadCreation> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
+                                horizontal: 17, vertical: 5),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Tags',
-                                  style: TextStyle(
-                                    color: Color(0xFF666666),
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Tags',
+                                    style: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 12,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
 
+                                    ),
                                   ),
                                 ),
-                                Container(
-                                  height: 30,
-                                  child: MultiSelectDropDown.network(
-                                       hint: '',
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Container(
+                                    height: 30,
+                                    // color: Colors.red,
+                                    child: MultiSelectDropDown.network(
+                                         hint: '',
 
 
 
-                                    borderColor: Colors.transparent,
-
-                                    borderWidth: 0,
-
+                                      borderColor: Colors.transparent,
+                                      backgroundColor: Colors.grey[50],
 
 
-                                    hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    selectedOptions: editTagName
-                                        .map((tag) => ValueItem( label: tag.label,value: tag.value))
-                                        .toList(),
-                                    onOptionSelected: (options) {
-                                      print(options);
-                                      tags.clear();
-                                      for (var options in options) {
-
-                                        tags.add(options.value);
-                                        print('Label: ${options.label}');
-                                        print('Value: ${options.value}');
-                                        print(tags);
-                                        print('---');
-                                      }
-
-                                    },
-                                    networkConfig: NetworkConfig(
+                                      borderWidth: 0,
 
 
-                                      url: "${baseUrl}api/tags",
-                                      method: RequestMethod.get,
-                                      headers: {
 
+                                      hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      selectedOptions: editTagName
+                                          .map((tag) => ValueItem( label: tag.label,value: tag.value))
+                                          .toList(),
+                                      onOptionSelected: (options) {
+                                        print(options);
+                                        tags.clear();
+                                        for (var options in options) {
 
-                                        'Authorization': 'Bearer $token',
+                                          tags.add(options.value);
+                                          print('Label: ${options.label}');
+                                          print('Value: ${options.value}');
+                                          print(tags);
+                                          print('---');
+                                        }
+
                                       },
-                                    ),
+                                      networkConfig: NetworkConfig(
 
-                                    responseParser: (response) {
-                                      debugPrint('Response: $response');
 
-                                      final list = (response['records'] as List<
-                                          dynamic>).map((e) {
-                                        final item = e as Map<String, dynamic>;
-                                        return ValueItem(
+                                        url: "${baseUrl}api/tags",
+                                        method: RequestMethod.get,
+                                        headers: {
 
-                                          label: item['name'],
-                                          value: item['id'].toString(),
 
+                                          'Authorization': 'Bearer $token',
+                                        },
+                                      ),
+
+                                      responseParser: (response) {
+                                        debugPrint('Response: $response');
+
+                                        final list = (response['records'] as List<
+                                            dynamic>).map((e) {
+                                          final item = e as Map<String, dynamic>;
+                                          return ValueItem(
+
+                                            label: item['name'],
+                                            value: item['id'].toString(),
+
+                                          );
+                                        }).toList();
+
+                                        return Future.value(list);
+                                      },
+
+
+                                      chipConfig: const ChipConfig(wrapType: WrapType.scroll,
+
+
+
+                                      ),
+
+                                      responseErrorBuilder: ((context, body) {
+                                        print(body);
+                                        print(token);
+                                        return const Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Text('Error fetching the data'),
                                         );
-                                      }).toList();
-
-                                      return Future.value(list);
-                                    },
-
-
-                                    chipConfig: const ChipConfig(wrapType: WrapType.scroll,
-
+                                      }),
 
 
                                     ),
-
-                                    responseErrorBuilder: ((context, body) {
-                                      print(body);
-                                      print(token);
-                                      return const Padding(
-                                        padding: EdgeInsets.all(16.0),
-                                        child: Text('Error fetching the data'),
-                                      );
-                                    }),
-
-
                                   ),
                                 ),
                               ],

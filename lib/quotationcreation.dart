@@ -1150,72 +1150,79 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal:17, vertical: 5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Tags',
-                                style: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontSize: 12,
-                                  fontFamily: 'Mulish',
-                                  fontWeight: FontWeight.w500,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text(
+                                  'Tags',
+                                  style: TextStyle(
+                                    color: Color(0xFF666666),
+                                    fontSize: 12,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
 
+                                  ),
                                 ),
                               ),
-                              Container(
-                                height:30,
-                                child: MultiSelectDropDown.network(
-                                  hint: '',
-                                  borderColor: Colors.transparent,
-                                  borderWidth: 0,
-                                  hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                  selectedOptions: editTagName
-                                      .map((tag) =>
-                                      ValueItem(label: tag.label, value: tag.value))
-                                      .toList(),
-                                  onOptionSelected: (options) {
-                                    print(options);
-                                    tags.clear();
-                                    for (var options in options) {
-                                      tags.add(options.value);
-                                      print('Label: ${options.label}');
-                                      print('Value: ${options.value}');
-                                      print(tags);
-                                      print('---');
-                                    }
-                                  },
-                                  networkConfig: NetworkConfig(
-                                    url: "${baseUrl}api/tags",
-                                    method: RequestMethod.get,
-                                    headers: {
-                                      'Authorization': 'Bearer $token',
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Container(
+                                  height:30,
+                                  child: MultiSelectDropDown.network(
+                                    hint: '',
+                                    borderColor: Colors.transparent,
+                                    backgroundColor: Colors.grey[50],
+                                    borderWidth: 0,
+                                    hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                    selectedOptions: editTagName
+                                        .map((tag) =>
+                                        ValueItem(label: tag.label, value: tag.value))
+                                        .toList(),
+                                    onOptionSelected: (options) {
+                                      print(options);
+                                      tags.clear();
+                                      for (var options in options) {
+                                        tags.add(options.value);
+                                        print('Label: ${options.label}');
+                                        print('Value: ${options.value}');
+                                        print(tags);
+                                        print('---');
+                                      }
                                     },
-                                  ),
-                                  chipConfig: const ChipConfig(wrapType: WrapType.scroll),
-                                  responseParser: (response) {
-                                    debugPrint('Response: $response');
+                                    networkConfig: NetworkConfig(
+                                      url: "${baseUrl}api/tags",
+                                      method: RequestMethod.get,
+                                      headers: {
+                                        'Authorization': 'Bearer $token',
+                                      },
+                                    ),
+                                    chipConfig: const ChipConfig(wrapType: WrapType.scroll),
+                                    responseParser: (response) {
+                                      debugPrint('Response: $response');
 
-                                    final list =
-                                    (response['records'] as List<dynamic>).map((e) {
-                                      final item = e as Map<String, dynamic>;
-                                      return ValueItem(
-                                        label: item['name'],
-                                        value: item['id'].toString(),
+                                      final list =
+                                      (response['records'] as List<dynamic>).map((e) {
+                                        final item = e as Map<String, dynamic>;
+                                        return ValueItem(
+                                          label: item['name'],
+                                          value: item['id'].toString(),
+                                        );
+                                      }).toList();
+
+                                      return Future.value(list);
+                                    },
+                                    responseErrorBuilder: ((context, body) {
+                                      print(body);
+                                      print(token);
+                                      return const Padding(
+                                        padding: EdgeInsets.all(16.0),
+                                        child: Text('Error fetching the data'),
                                       );
-                                    }).toList();
-
-                                    return Future.value(list);
-                                  },
-                                  responseErrorBuilder: ((context, body) {
-                                    print(body);
-                                    print(token);
-                                    return const Padding(
-                                      padding: EdgeInsets.all(16.0),
-                                      child: Text('Error fetching the data'),
-                                    );
-                                  }),
+                                    }),
+                                  ),
                                 ),
                               ),
                             ],
