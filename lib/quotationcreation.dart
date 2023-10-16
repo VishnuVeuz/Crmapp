@@ -262,7 +262,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
                 child: SizedBox(
                   width: 93,
                   height: 33,
@@ -271,7 +271,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         "Save",
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
-                            fontSize: 13.57,
+                            fontSize: 15.57,
                             color: Colors.white,fontFamily: 'Mulish'),
                       ),
                       onPressed: () async {
@@ -364,9 +364,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Customer',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -405,7 +408,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["display_name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -441,7 +444,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text("${item["display_name"]}"),
+                                    child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -455,7 +458,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: Container(
-                            child: Text(dropdownCustomerData!),
+                            child: Text(dropdownCustomerData!,style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                           ),
                         ),
                         Padding(
@@ -468,9 +471,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Quotation Template',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -505,7 +511,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -540,7 +546,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}"),
+                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -561,15 +567,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               child: TextField(
                                   enabled: false,
                                   controller: expirationDateTime,
-                                  style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "Expiration Date",
                                       hintStyle: TextStyle(
                                         //fontFamily: "inter",
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'))),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500))),
                             ),
                           ),
                         ),
@@ -589,9 +593,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Pricelist',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -629,7 +636,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -665,7 +672,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}"),
+                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -685,9 +692,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Payment Terms',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -722,7 +732,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -756,7 +766,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}"),
+                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -768,12 +778,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                          const EdgeInsets.symmetric(horizontal: 25, vertical:10),
                           child: Text(
                             "Sales",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xFF000000),fontFamily: 'Mulish'),
                           ),
                         ),
@@ -787,9 +797,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Salesperson',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -827,7 +840,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -859,7 +872,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -878,9 +891,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Sales Team',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -916,7 +932,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -948,7 +964,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -973,9 +989,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Company',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1011,7 +1030,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -1043,7 +1062,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -1062,13 +1081,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               child: Text(
                                 "Online Signature",
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                    color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 25),
+                              padding: const EdgeInsets.only(right: 17),
                               child: Checkbox(
                                 activeColor:  Color(0xFFF9246A),
                                 value: isCheckedSignature,
@@ -1091,13 +1108,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               child: Text(
                                 "Online Payment",
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                    color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(right: 25),
+                              padding: const EdgeInsets.only(right:17),
                               child: Checkbox(
                                 activeColor:  Color(0xFFF9246A),
                                 value: isCheckedPayment,
@@ -1114,20 +1129,20 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: customerreference,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),),
                                 ),
 
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Customer Reference',
                                 labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         SizedBox(
@@ -1138,7 +1153,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: MultiSelectDropDown.network(
                             hint: 'Tags',
-                            hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                             selectedOptions: editTagName
                                 .map((tag) =>
                                 ValueItem(label: tag.label, value: tag.value))
@@ -1192,8 +1207,8 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           child: Text(
                             "Delivery",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xFF000000),fontFamily: 'Mulish'),
                           ),
                         ),
@@ -1206,9 +1221,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Shipping policy',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1226,7 +1244,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 value: value,
                                 child: Text(
                                   value,
-                                  style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                 ),
                               );
                             }).toList(),
@@ -1250,15 +1268,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               child: TextField(
                                   enabled: false,
                                   controller: deliveryDateTime,
-                                  style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                  style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                   decoration: const InputDecoration(
                                       border: InputBorder.none,
                                       hintText: "Delivery Date",
                                       hintStyle: TextStyle(
                                         //fontFamily: "inter",
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'))),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500))),
                             ),
                           ),
                         ),
@@ -1268,8 +1284,8 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           child: Text(
                             "Invoicing",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xFF000000),fontFamily: 'Mulish'),
                           ),
                         ),
@@ -1283,9 +1299,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Fiscal Position',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1323,7 +1342,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -1355,7 +1374,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -1371,8 +1390,8 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           child: Text(
                             "Tracking",
                             style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
                                 color: Color(0xFF000000),fontFamily: 'Mulish'),
                           ),
                         ),
@@ -1386,9 +1405,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Campaign',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1426,7 +1448,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -1459,7 +1481,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -1479,9 +1501,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Medium',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1515,7 +1540,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -1546,7 +1571,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -1565,9 +1590,12 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 padding: const EdgeInsets.all(0),
                                 child: InputDecorator(
                                   decoration: InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
                                     labelText:'Source',
                                     isDense: true,
-                                    labelStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     fillColor: Colors.white,
 
                                   ),
@@ -1601,7 +1629,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                     width: 320,
                                     child: Text(
                                       item["name"],
-                                      style: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                     ),
                                   )));
                             },
@@ -1633,7 +1661,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 child: Card(
                                   child: Padding(
                                     padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}"),
+                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
                                 ),
                               ))
@@ -1657,7 +1685,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: TextFormField(
-                            style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: sourcedocument,
                             decoration: const InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
@@ -1670,7 +1698,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Source Document',
                                 labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
 
