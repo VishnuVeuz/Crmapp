@@ -1151,54 +1151,81 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         Padding(
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: MultiSelectDropDown.network(
-                            hint: 'Tags',
-                            hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                            selectedOptions: editTagName
-                                .map((tag) =>
-                                ValueItem(label: tag.label, value: tag.value))
-                                .toList(),
-                            onOptionSelected: (options) {
-                              print(options);
-                              tags.clear();
-                              for (var options in options) {
-                                tags.add(options.value);
-                                print('Label: ${options.label}');
-                                print('Value: ${options.value}');
-                                print(tags);
-                                print('---');
-                              }
-                            },
-                            networkConfig: NetworkConfig(
-                              url: "${baseUrl}api/tags",
-                              method: RequestMethod.get,
-                              headers: {
-                                'Authorization': 'Bearer $token',
-                              },
-                            ),
-                            chipConfig: const ChipConfig(wrapType: WrapType.wrap),
-                            responseParser: (response) {
-                              debugPrint('Response: $response');
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tags',
+                                style: TextStyle(
+                                  color: Color(0xFF666666),
+                                  fontSize: 12,
+                                  fontFamily: 'Mulish',
+                                  fontWeight: FontWeight.w500,
 
-                              final list =
-                              (response['records'] as List<dynamic>).map((e) {
-                                final item = e as Map<String, dynamic>;
-                                return ValueItem(
-                                  label: item['name'],
-                                  value: item['id'].toString(),
-                                );
-                              }).toList();
+                                ),
+                              ),
+                              Container(
+                                height:30,
+                                child: MultiSelectDropDown.network(
+                                  hint: '',
+                                  borderColor: Colors.transparent,
+                                  borderWidth: 0,
+                                  hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  selectedOptions: editTagName
+                                      .map((tag) =>
+                                      ValueItem(label: tag.label, value: tag.value))
+                                      .toList(),
+                                  onOptionSelected: (options) {
+                                    print(options);
+                                    tags.clear();
+                                    for (var options in options) {
+                                      tags.add(options.value);
+                                      print('Label: ${options.label}');
+                                      print('Value: ${options.value}');
+                                      print(tags);
+                                      print('---');
+                                    }
+                                  },
+                                  networkConfig: NetworkConfig(
+                                    url: "${baseUrl}api/tags",
+                                    method: RequestMethod.get,
+                                    headers: {
+                                      'Authorization': 'Bearer $token',
+                                    },
+                                  ),
+                                  chipConfig: const ChipConfig(wrapType: WrapType.scroll),
+                                  responseParser: (response) {
+                                    debugPrint('Response: $response');
 
-                              return Future.value(list);
-                            },
-                            responseErrorBuilder: ((context, body) {
-                              print(body);
-                              print(token);
-                              return const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text('Error fetching the data'),
-                              );
-                            }),
+                                    final list =
+                                    (response['records'] as List<dynamic>).map((e) {
+                                      final item = e as Map<String, dynamic>;
+                                      return ValueItem(
+                                        label: item['name'],
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList();
+
+                                    return Future.value(list);
+                                  },
+                                  responseErrorBuilder: ((context, body) {
+                                    print(body);
+                                    print(token);
+                                    return const Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Text('Error fetching the data'),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
+                          child: Divider(
+                            color: Colors.grey,
+                            thickness: 0.5,
                           ),
                         ),
                         Padding(
@@ -3024,73 +3051,105 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       ),
                       Visibility(
                         visible: tvisibility,
-                        child: Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                          child: MultiSelectDropDown.network(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Taxes',
+                                    style: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 12,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
 
-                            hint: 'Taxes',
-                            hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                            selectedOptions: editProductTaxName
-                                .map((tag) =>
-                                ValueItem(label: tag.label, value: tag.value))
-                                .toList(),
-                            onOptionSelected: (options) {
-                              print(options);
-                              productTax.clear();
-                              editProductTaxName.clear();
-                              for (var options in options) {
-                                productTax.add(options.value);
-                                editProductTaxName.add(new ValueItem(
-                                    label: options.label,
-                                    value: options.value.toString()));
-                                //editProductTaxName.add(options.value);
-                                print('Label: ${options.label}');
-                                print('Value: ${options.value}');
-                                print(productTax);
-                                print(editProductTaxName);
-                                print(selectedProductTax);
-                                print('tax valuessss');
-                              }
-                            },
-                            networkConfig: NetworkConfig(
-                              url:
-                              "${baseUrl}api/tax?${companyId == null
-                                  ? ""
-                                  : "&company_id=$companyId"}",
-                              method: RequestMethod.get,
-                              headers: {
-                                'Authorization': 'Bearer $token',
-                              },
+                                    ),
+                                  ),
+                                  Container(
+                                    height:30,
+                                    child: MultiSelectDropDown.network(
+
+                                      hint: '',
+                                      borderColor: Colors.transparent,
+                                      borderWidth: 0,
+                                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                      selectedOptions: editProductTaxName
+                                          .map((tag) =>
+                                          ValueItem(label: tag.label, value: tag.value))
+                                          .toList(),
+                                      onOptionSelected: (options) {
+                                        print(options);
+                                        productTax.clear();
+                                        editProductTaxName.clear();
+                                        for (var options in options) {
+                                          productTax.add(options.value);
+                                          editProductTaxName.add(new ValueItem(
+                                              label: options.label,
+                                              value: options.value.toString()));
+                                          //editProductTaxName.add(options.value);
+                                          print('Label: ${options.label}');
+                                          print('Value: ${options.value}');
+                                          print(productTax);
+                                          print(editProductTaxName);
+                                          print(selectedProductTax);
+                                          print('tax valuessss');
+                                        }
+                                      },
+                                      networkConfig: NetworkConfig(
+                                        url:
+                                        "${baseUrl}api/tax?${companyId == null
+                                            ? ""
+                                            : "&company_id=$companyId"}",
+                                        method: RequestMethod.get,
+                                        headers: {
+                                          'Authorization': 'Bearer $token',
+                                        },
+                                      ),
+                                      chipConfig: const ChipConfig(
+                                        wrapType: WrapType.scroll,
+                                        autoScroll: true,
+                                      ),
+                                      responseParser: (response) {
+                                        debugPrint('Response: $response');
+
+                                        final list =
+                                        (response['records'] as List<dynamic>).map((e) {
+                                          final item = e as Map<String, dynamic>;
+                                          return ValueItem(
+                                            label: item['name'],
+                                            value: item['id'].toString(),
+                                          );
+                                        }).toList();
+
+                                        return Future.value(list);
+                                      },
+                                      responseErrorBuilder: ((context, body) {
+                                        print(body);
+                                        print(token);
+                                        return const Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Text('Error fetching the data'),
+                                        );
+                                      }),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            chipConfig: const ChipConfig(
-                              wrapType: WrapType.scroll,
-                              autoScroll: true,
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15,right: 15,bottom: 0),
+                              child: Divider(
+                                color:  Color(0xFFAFAFAF),
+                                thickness: 1,
+                              ),
                             ),
-                            responseParser: (response) {
-                              debugPrint('Response: $response');
-
-                              final list =
-                              (response['records'] as List<dynamic>).map((e) {
-                                final item = e as Map<String, dynamic>;
-                                return ValueItem(
-                                  label: item['name'],
-                                  value: item['id'].toString(),
-                                );
-                              }).toList();
-
-                              return Future.value(list);
-                            },
-                            responseErrorBuilder: ((context, body) {
-                              print(body);
-                              print(token);
-                              return const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text('Error fetching the data'),
-                              );
-                            }),
-                          ),
+                          ],
                         ),
+
                       ),
                       Padding(
                         padding:
