@@ -1471,30 +1471,36 @@ class _LeadCreationState extends State<LeadCreation> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 5),
+                                horizontal: 17, vertical: 5),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Tags',
-                                  style: TextStyle(
-                                    color: Color(0xFF666666),
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Tags',
+                                    style: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 12,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
 
+                                    ),
                                   ),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 10),
                                   child: Container(
                                     height: 30,
+                                    // color: Colors.red,
                                     child: MultiSelectDropDown.network(
                                          hint: '',
 
 
 
                                       borderColor: Colors.transparent,
+                                      backgroundColor: Colors.grey[50],
+
 
                                       borderWidth: 0,
 

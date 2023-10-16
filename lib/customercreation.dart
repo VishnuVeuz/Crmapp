@@ -1363,18 +1363,21 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical:5),
+                          const EdgeInsets.symmetric(horizontal:17, vertical:5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Tags',
-                                style: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontSize: 12,
-                                  fontFamily: 'Mulish',
-                                  fontWeight: FontWeight.w500,
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Text(
+                                  'Tags',
+                                  style: TextStyle(
+                                    color: Color(0xFF666666),
+                                    fontSize: 12,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
 
+                                  ),
                                 ),
                               ),
 
@@ -1385,6 +1388,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: MultiSelectDropDown.network(
                                     hint: '',
                                     borderColor: Colors.transparent,
+                                    backgroundColor: Colors.grey[50],
                                     borderWidth: 0,
 
                                     hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
