@@ -2805,10 +2805,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   Padding(
                     padding: const EdgeInsets.only(left: 260, right: 20),
                     child: IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           productTiltleName = null;
