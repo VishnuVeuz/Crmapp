@@ -184,7 +184,7 @@ class _CalendarAddState extends State<CalendarAdd> {
 
 
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 20, right: 25),
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
                 child: SizedBox(
                   width: 93,
                   height: 33,
@@ -283,11 +283,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                               }
                               return null;
                             },
-                            style: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                             controller: meetingsubjectController,
                             decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                enabledBorder:  UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Color(0xFFAFAFAF)),
@@ -296,7 +296,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Meeting Subject',
                                 labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')),
+                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
                         SizedBox(height: 0,),
@@ -444,9 +444,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     child: Text(
                                       "Starting at",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                   InkWell(
@@ -466,9 +464,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         decoration: InputDecoration(
                                           //border: OutlineInputBorder(),
                                           hintText: "choose date & time",
-                                          hintStyle: TextStyle(fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish')
+                                          hintStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
                                         ),
                                       ),
                                     ),
@@ -482,9 +478,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     child: Text(
                                       "Stopping at",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                   InkWell(
@@ -504,9 +498,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         decoration: InputDecoration(
                                           //border: OutlineInputBorder(),
                                           hintText: "choose date & time",
-                                          hintStyle: TextStyle(fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish')
+                                          hintStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
                                         ),
                                       ),
                                     ),
@@ -522,14 +514,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       const EdgeInsets.symmetric(
                                           horizontal: 25, vertical: 0),
                                       child: TextFormField(
-                                        style: TextStyle(fontWeight: FontWeight.w400,
-                                            fontSize: 12,
-                                            color: Colors.black,fontFamily: 'Mulish'),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                         controller: meeting_duration,
                                         decoration: const InputDecoration(
-                                            enabledBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color: Color(0xFFAFAFAF)),
+                                            enabledBorder:  UnderlineInputBorder(
+                                              borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                             ),
                                             focusedBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
@@ -539,9 +528,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                             // border: UnderlineInputBorder(),
                                             labelText: 'Duration',
                                             labelStyle:
-                                            TextStyle(fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: Colors.black,fontFamily: 'Mulish')),
+                                            TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ),
@@ -554,9 +541,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         child: Text(
                                           "All day",
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish'),
+                                              color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                         ),
                                       ),
                                       Padding(
@@ -589,9 +574,12 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           padding: const EdgeInsets.all(0),
                                           child: InputDecorator(
                                             decoration: InputDecoration(
+                                              enabledBorder:  UnderlineInputBorder(
+                                                borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                              ),
                                               labelText:'Organizer',
                                               isDense: true,
-                                              labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                               fillColor: Colors.white,
 
                                             ),
@@ -633,9 +621,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                               child: Text(
                                                 item["name"],
                                                 style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 12,
-                                                    color: Colors.black,fontFamily: 'Mulish'),
+                                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                               ),
                                             )));
                                       },
@@ -676,7 +662,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                               child: Card(
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(0),
-                                                  child: Text(" ${item["name"]}"),
+                                                  child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                                 ),
                                               ),
                                             ))
@@ -692,7 +678,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 0),
+                                        horizontal: 25, vertical: 10),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -706,59 +692,62 @@ class _CalendarAddState extends State<CalendarAdd> {
 
                                           ),
                                         ),
-                                        Container(
-                                          height:30,
-                                          child: MultiSelectDropDown.network(
-                                            hint: "",
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0,
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Container(
+                                            height:30,
+                                            child: MultiSelectDropDown.network(
+                                              hint: "",
+                                              borderColor: Colors.transparent,
+                                              borderWidth: 0,
 
-                                            selectedOptions: editReminders
-                                                .map((tag) =>
-                                                ValueItem(label: tag.label, value: tag.value))
-                                                .toList(),
-                                            onOptionSelected: (options) {
-                                              print(options);
-                                              reminders.clear();
-                                              for (var options in options) {
-                                                reminders.add(options.value);
-                                                print('Label: ${options.label}');
-                                                print('Value: ${options.value}');
-                                                print(reminders);
-                                                print('---');
-                                              }
-                                            },
-                                            networkConfig: NetworkConfig(
-                                              url: "${baseUrl}api/common_dropdowns?model=calendar.alarm",
-                                              method: RequestMethod.get,
-                                              headers: {
-                                                'Authorization': 'Bearer $token',
+                                              selectedOptions: editReminders
+                                                  .map((tag) =>
+                                                  ValueItem(label: tag.label, value: tag.value))
+                                                  .toList(),
+                                              onOptionSelected: (options) {
+                                                print(options);
+                                                reminders.clear();
+                                                for (var options in options) {
+                                                  reminders.add(options.value);
+                                                  print('Label: ${options.label}');
+                                                  print('Value: ${options.value}');
+                                                  print(reminders);
+                                                  print('---');
+                                                }
                                               },
-                                            ),
-                                            chipConfig: const ChipConfig(
-                                                wrapType: WrapType.scroll),
-                                            responseParser: (response) {
-                                              debugPrint('Response: $response');
+                                              networkConfig: NetworkConfig(
+                                                url: "${baseUrl}api/common_dropdowns?model=calendar.alarm",
+                                                method: RequestMethod.get,
+                                                headers: {
+                                                  'Authorization': 'Bearer $token',
+                                                },
+                                              ),
+                                              chipConfig: const ChipConfig(
+                                                  wrapType: WrapType.scroll),
+                                              responseParser: (response) {
+                                                debugPrint('Response: $response');
 
-                                              final list =
-                                              (response['record'] as List<dynamic>).map((e) {
-                                                final item = e as Map<String, dynamic>;
-                                                return ValueItem(
-                                                  label: item['name'],
-                                                  value: item['id'].toString(),
+                                                final list =
+                                                (response['record'] as List<dynamic>).map((e) {
+                                                  final item = e as Map<String, dynamic>;
+                                                  return ValueItem(
+                                                    label: item['name'],
+                                                    value: item['id'].toString(),
+                                                  );
+                                                }).toList();
+
+                                                return Future.value(list);
+                                              },
+                                              responseErrorBuilder: ((context, body) {
+                                                print(body);
+                                                print(token);
+                                                return const Padding(
+                                                  padding: EdgeInsets.all(16.0),
+                                                  child: Text('Error fetching the data'),
                                                 );
-                                              }).toList();
-
-                                              return Future.value(list);
-                                            },
-                                            responseErrorBuilder: ((context, body) {
-                                              print(body);
-                                              print(token);
-                                              return const Padding(
-                                                padding: EdgeInsets.all(16.0),
-                                                child: Text('Error fetching the data'),
-                                              );
-                                            }),
+                                              }),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -776,14 +765,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                       controller: locationController,
                                       decoration: const InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xFFAFAFAF)),
+                                          enabledBorder:  UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -793,9 +779,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Location',
                                           labelStyle:
-                                          TextStyle(fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish')),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                   Padding(
@@ -803,14 +787,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                       controller: meetingurlController,
                                       decoration: const InputDecoration(
-                                          enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xFFAFAFAF)),
+                                          enabledBorder:  UnderlineInputBorder(
+                                            borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -820,9 +801,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Meeting URL',
                                           labelStyle:
-                                          TextStyle(fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish')),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                   SizedBox(
@@ -831,7 +810,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 0),
+                                        horizontal: 25, vertical: 10),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -846,59 +825,62 @@ class _CalendarAddState extends State<CalendarAdd> {
 
                                           ),
                                         ),
-                                        Container(
-                                          height:30,
-                                          child: MultiSelectDropDown.network(
-                                            hint: "",
-                                            borderColor: Colors.transparent,
-                                            borderWidth: 0,
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 10),
+                                          child: Container(
+                                            height:30,
+                                            child: MultiSelectDropDown.network(
+                                              hint: "",
+                                              borderColor: Colors.transparent,
+                                              borderWidth: 0,
 
-                                            selectedOptions: editTagName
-                                                .map((tag) =>
-                                                ValueItem(label: tag.label, value: tag.value))
-                                                .toList(),
-                                            onOptionSelected: (options) {
-                                              print(options);
-                                              tags.clear();
-                                              for (var options in options) {
-                                                tags.add(options.value);
-                                                print('Label: ${options.label}');
-                                                print('Value: ${options.value}');
-                                                print(tags);
-                                                print('---');
-                                              }
-                                            },
-                                            networkConfig: NetworkConfig(
-                                              url: "${baseUrl}api/common_dropdowns?model=calendar.event.type",
-                                              method: RequestMethod.get,
-                                              headers: {
-                                                'Authorization': 'Bearer $token',
+                                              selectedOptions: editTagName
+                                                  .map((tag) =>
+                                                  ValueItem(label: tag.label, value: tag.value))
+                                                  .toList(),
+                                              onOptionSelected: (options) {
+                                                print(options);
+                                                tags.clear();
+                                                for (var options in options) {
+                                                  tags.add(options.value);
+                                                  print('Label: ${options.label}');
+                                                  print('Value: ${options.value}');
+                                                  print(tags);
+                                                  print('---');
+                                                }
                                               },
-                                            ),
-                                            chipConfig: const ChipConfig(
-                                                wrapType: WrapType.scroll),
-                                            responseParser: (response) {
-                                              debugPrint('Response: $response');
+                                              networkConfig: NetworkConfig(
+                                                url: "${baseUrl}api/common_dropdowns?model=calendar.event.type",
+                                                method: RequestMethod.get,
+                                                headers: {
+                                                  'Authorization': 'Bearer $token',
+                                                },
+                                              ),
+                                              chipConfig: const ChipConfig(
+                                                  wrapType: WrapType.scroll),
+                                              responseParser: (response) {
+                                                debugPrint('Response: $response');
 
-                                              final list =
-                                              (response['record'] as List<dynamic>).map((e) {
-                                                final item = e as Map<String, dynamic>;
-                                                return ValueItem(
-                                                  label: item['name'],
-                                                  value: item['id'].toString(),
+                                                final list =
+                                                (response['record'] as List<dynamic>).map((e) {
+                                                  final item = e as Map<String, dynamic>;
+                                                  return ValueItem(
+                                                    label: item['name'],
+                                                    value: item['id'].toString(),
+                                                  );
+                                                }).toList();
+
+                                                return Future.value(list);
+                                              },
+                                              responseErrorBuilder: ((context, body) {
+                                                print(body);
+                                                print(token);
+                                                return const Padding(
+                                                  padding: EdgeInsets.all(16.0),
+                                                  child: Text('Error fetching the data'),
                                                 );
-                                              }).toList();
-
-                                              return Future.value(list);
-                                            },
-                                            responseErrorBuilder: ((context, body) {
-                                              print(body);
-                                              print(token);
-                                              return const Padding(
-                                                padding: EdgeInsets.all(16.0),
-                                                child: Text('Error fetching the data'),
-                                              );
-                                            }),
+                                              }),
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -916,9 +898,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Colors.black,fontFamily: 'Mulish'),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                       controller: meeting_discription,
                                       decoration: const InputDecoration(
                                           enabledBorder: UnderlineInputBorder(
@@ -933,9 +913,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Description',
                                           labelStyle:
-                                          TextStyle(fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish')),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ],
