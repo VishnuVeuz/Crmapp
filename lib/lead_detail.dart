@@ -5219,7 +5219,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             enabledBorder:  UnderlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                             ),
-                            labelText:'Product',
+                            labelText:'Activity Type',
                             isDense: true,
                             labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
@@ -5527,7 +5527,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 11.57,
+                                    fontSize: 13.57,
                                     color: Colors.white,
                                     fontFamily: 'Mulish'),
                               ),
@@ -5591,7 +5591,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
+                                        fontSize: 13.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -5643,7 +5643,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     "Mark As Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
+                                        fontSize: 13.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -5695,7 +5695,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
+                                      fontSize: 13.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),
@@ -5747,7 +5747,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
+                                      fontSize: 13.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),

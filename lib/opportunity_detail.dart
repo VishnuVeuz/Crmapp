@@ -6858,10 +6858,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     hint: Text(
                       "Activity Type",
                       style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF212121),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Mulish'),
+                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                     ),
                     searchHint: null,
                     autofocus: false,
@@ -6914,10 +6911,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: Text(
                           item["name"],
                           style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF212121),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish'),
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                         ),
                       )));
                     },
@@ -6951,7 +6945,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["name"]}"),
+                                        child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                       ),
                                     ),
                                   ))
@@ -6966,10 +6960,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xFF212121),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Mulish'),
+                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -6980,10 +6971,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF212121),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish')),
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Visibility(
@@ -6999,16 +6987,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               _selectDate(context);
                             },
                             child: TextField(
+                                style: TextStyle(
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
+                                ),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                        fontSize: 12,
-                                        color: Color(0xFF212121),
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish'))),
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500))),
                           ),
                         ),
                       ),
@@ -7022,10 +7010,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           hint: Text(
                             "Assigned To",
                             style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF212121),
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish'),
+                                color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                           ),
                           searchHint: null,
                           autofocus: false,
@@ -7052,10 +7037,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Text(
                                 item["name"],
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF212121),
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish'),
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                               ),
                             )));
                           },
@@ -7093,7 +7075,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}"),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                             ),
                                           ),
                                         ))
@@ -7108,10 +7090,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(
-                              fontSize: 12,
-                              color: Color(0xFF212121),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish'),
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -7124,10 +7103,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF212121),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish')),
+                                  color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                         ),
                       ),
                     ],

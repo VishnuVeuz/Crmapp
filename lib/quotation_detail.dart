@@ -6499,9 +6499,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     hint: Text(
                       "Activity Type",
                       style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black,
-                        fontFamily: 'Mulish',
+                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                       ),
                     ),
                     searchHint: null,
@@ -6555,9 +6553,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         child: Text(
                           item["name"],
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                         ),
                       )));
@@ -6592,7 +6588,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["name"]}"),
+                                        child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                       ),
                                     ),
                                   ))
@@ -6607,9 +6603,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                     ),
                     controller: summaryController,
                     decoration: const InputDecoration(
@@ -6621,9 +6615,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                          fontFamily: 'Mulish',
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                         )),
                   ),
                 ),
@@ -6640,6 +6632,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               _selectDate(context);
                             },
                             child: TextField(
+                                style: TextStyle(
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
+                                ),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
@@ -6647,8 +6642,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
                                       //fontFamily: "inter",
-                                      color: Colors.black,
-                                      fontSize: 12, fontFamily: 'Mulish',
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                                     ))),
                           ),
                         ),
@@ -6663,9 +6657,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           hint: Text(
                             "Assigned To",
                             style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'Mulish',
+                                color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                             ),
                           ),
                           searchHint: null,
@@ -6693,9 +6685,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               child: Text(
                                 item["name"],
                                 style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontFamily: 'Mulish',
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                                 ),
                               ),
                             )));
@@ -6734,7 +6724,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}"),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                             ),
                                           ),
                                         ))
@@ -6749,9 +6739,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                           controller: commandsController,
                           decoration: const InputDecoration(
@@ -6765,9 +6753,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'Mulish',
+                                  color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                               )),
                         ),
                       ),

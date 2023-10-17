@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'drawer.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
@@ -241,6 +242,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
               ),
 
         ),
+        bottomNavigationBar:MyBottomNavigationBar(),
       );
     }
   }

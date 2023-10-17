@@ -399,7 +399,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 1.63,
+                      .height / 1.67,
 
                   child: FutureBuilder(
                       future: recentLead("recent"),
@@ -819,7 +819,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
             child: const Icon(Icons.add),
           ),
         ),
-        bottomNavigationBar: bottomNavigationBar(context),
+        bottomNavigationBar:MyBottomNavigationBar(),
       );
     }
   }

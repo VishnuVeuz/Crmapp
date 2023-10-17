@@ -221,7 +221,8 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: bottomNavigationBar(context),
+     // bottomNavigationBar:MyBottomNavigationBar(),
+      //bottomNavigationBar: bottomNavigationBar(context),
     );
   }
 

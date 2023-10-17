@@ -6236,20 +6236,30 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
+                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            enabledBorder:  UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
+                            labelText:'Activity Type',
+                            isDense: true,
+                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
                     //items: items,
 
                     value: activityTypeName,
-                    hint: Text(
-                      "Activity Type",
-                      style: TextStyle(
-                        fontSize: 13.6,
-                        color: Color(0xFFAFAFAF),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Mulish',
-                      ),
-                    ),
+
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async {
@@ -6301,10 +6311,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text(
                           item["name"],
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                         ),
                       )));
@@ -6339,7 +6346,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["name"]}"),
+                                        child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                       ),
                                     ),
                                   ))
@@ -6354,10 +6361,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF000000),
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Mulish',
+                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                     ),
                     controller: summaryController,
                     decoration: const InputDecoration(
@@ -6370,10 +6374,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF000000),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Mulish',
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                         )),
                   ),
                 ),
@@ -6391,10 +6392,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             },
                             child: TextField(
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                                 ),
                                 enabled: false,
                                 controller: DuedateTime,
@@ -6402,10 +6400,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF000000),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                                     ))),
                           ),
                         ),
@@ -6420,10 +6415,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           hint: Text(
                             "Assigned To",
                             style: TextStyle(
-                              fontSize: 13.6,
-                              color: Color(0xFFAFAFAF),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish',
+                                color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                             ),
                           ),
                           searchHint: null,
@@ -6451,10 +6443,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               child: Text(
                                 item["name"],
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                                 ),
                               ),
                             )));
@@ -6493,7 +6482,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}"),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                             ),
                                           ),
                                         ))
@@ -6508,10 +6497,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(
-                            fontSize: 13.6,
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                           controller: commandsController,
                           decoration: const InputDecoration(
@@ -6525,10 +6511,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                fontSize: 13.6,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
+                                  color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                               )),
                         ),
                       ),
@@ -6549,7 +6532,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 "Open Calendar",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 13.57,
+                                    fontSize: 14.57,
                                     color: Colors.white,
                                     fontFamily: 'Mulish'),
                               ),
@@ -6613,7 +6596,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     btntext,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
+                                        fontSize: 13.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -6664,7 +6647,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Mark as Done",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 11.57,
+                                        fontSize: 13.57,
                                         color: Colors.white,
                                         fontFamily: 'Mulish'),
                                   ),
@@ -6716,7 +6699,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Done & Schedule\n next",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
+                                      fontSize: 13.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),
@@ -6767,7 +6750,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Discard",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 11.57,
+                                      fontSize: 13.57,
                                       color: Colors.white,
                                       fontFamily: 'Mulish'),
                                 ),

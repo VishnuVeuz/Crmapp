@@ -397,7 +397,8 @@ class _LeadScrollingState extends State<LeadScrolling> {
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: bottomNavigationBar(context),
+      bottomNavigationBar:MyBottomNavigationBar(),
+     // bottomNavigationBar: bottomNavigationBar(context),
     );
   }
 
