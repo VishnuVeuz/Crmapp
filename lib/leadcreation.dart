@@ -970,24 +970,24 @@ class _LeadCreationState extends State<LeadCreation> {
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
                             ),),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 25, vertical: 0),
-                            child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                              controller: emailccController,
-                              decoration: const InputDecoration(
-                                  enabledBorder:  UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
-
-                                  // border: UnderlineInputBorder(),
-                                  labelText: 'Email cc',
-                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
-                              ),
-                            ),),
+                          // Padding(
+                          //   padding: const EdgeInsets.symmetric(
+                          //       horizontal: 25, vertical: 0),
+                          //   child: TextFormField(
+                          //     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          //     controller: emailccController,
+                          //     decoration: const InputDecoration(
+                          //         enabledBorder:  UnderlineInputBorder(
+                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                          //         ),
+                          //         focusedBorder: UnderlineInputBorder(
+                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
+                          //
+                          //         // border: UnderlineInputBorder(),
+                          //         labelText: 'Email cc',
+                          //         labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                          //     ),
+                          //   ),),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
