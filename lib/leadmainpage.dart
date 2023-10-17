@@ -399,7 +399,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   height: MediaQuery
                       .of(context)
                       .size
-                      .height / 1.8,
+                      .height / 1.63,
 
                   child: FutureBuilder(
                       future: recentLead("recent"),

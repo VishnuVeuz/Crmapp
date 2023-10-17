@@ -51,7 +51,7 @@ import 'opportunitymainpage.dart';
          label: 'Home',
        ),
        BottomNavigationBarItem(
-         icon: SvgPicture.asset("images/lead.svg"),
+         icon: SvgPicture.asset("images/leadd.svg"),
          label: 'Leads',
        ),
        BottomNavigationBarItem(
