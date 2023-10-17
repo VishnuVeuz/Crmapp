@@ -1579,7 +1579,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                            left: 10, top: 4),
+                                                            left: 15, top: 4),
                                                     child: Container(
                                                       //color: Colors.red,
                                                       child: Text(

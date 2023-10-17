@@ -73,7 +73,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         currentIndex==1?
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/leadColor.svg"),
-          label: 'Home',
+          label: 'Leads',
         ):
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/leadd.svg"),
