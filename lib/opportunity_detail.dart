@@ -4298,8 +4298,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     //color:Colors.pink,
                                                     // ellipse121x7a (1112:1367)
                                                     margin: EdgeInsets.fromLTRB(9,0,9,2),
-                                                    width: 20,
-                                                    height: 20,
+                                                    width: 25,
+                                                    height: 25,
                                                     child: Stack(
                                                       alignment: Alignment.center,
                                                       children: [
@@ -4873,6 +4873,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               ),
                                                             ),
                                                           ),
+                                                          VerticalDivider(),
 
 
 
@@ -4906,7 +4907,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 ),
                                                                 content:  Container(
                                                                   margin: EdgeInsets.only(left: 25,right: 25),
-                                                                  height:150,
+                                                                  height:165,
                                                                   child: Padding(
                                                                     padding: const EdgeInsets.only(
                                                                         top: 5, left: 9),
@@ -4918,9 +4919,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         Text(
                                                                           "Activity type",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color:  Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4933,9 +4934,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           [index][
                                                                           'activity_type_id'][1],
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color:  Color(0xFF666666),
                                                                             fontWeight: FontWeight.w500,),
                                                                         ),
                                                                         SizedBox(
@@ -4944,9 +4945,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         Text(
                                                                           "Created",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color:  Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4965,12 +4966,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                  fontSize: 10,
+                                                                                  fontSize: 11,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   fontFamily:
                                                                                   'Mulish',
                                                                                   color:
-                                                                                  Colors.grey),
+                                                                                  Color(0xFF666666)),
                                                                             ),
                                                                             SizedBox(
                                                                               width: 5,
@@ -5000,10 +5001,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                fontSize: 10,
+                                                                                fontSize: 11,
                                                                                 fontFamily:
                                                                                 'Mulish',
-                                                                                color: Colors.grey,
+                                                                                color:  Color(0xFF666666),
                                                                                 fontWeight:
                                                                                 FontWeight.w500,
                                                                               ),
@@ -5016,10 +5017,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         Text(
                                                                           "Assigned to",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
 
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color:  Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -5054,12 +5055,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                  fontSize: 10,
+                                                                                  fontSize: 11,
                                                                                   fontFamily:
                                                                                   'Mulish',
                                                                                   fontWeight: FontWeight.w500,
                                                                                   color:
-                                                                                  Colors.grey),
+                                                                                  Color(0xFF666666)),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -5069,8 +5070,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         Text(
                                                                           "Due on",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
-                                                                            color: Colors.grey,
+                                                                            fontSize: 11,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -5085,10 +5086,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               .toString() ??
                                                                               "",
                                                                           style: TextStyle(
-                                                                              fontSize: 10,
+                                                                              fontSize: 11,
                                                                               fontWeight:FontWeight.w500,
                                                                               fontFamily: 'Mulish',
-                                                                              color: Colors.grey),
+                                                                              color:  Color(0xFF666666)),
                                                                         ),
                                                                         SizedBox(
                                                                           height: 3,

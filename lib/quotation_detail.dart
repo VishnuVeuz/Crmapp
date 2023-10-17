@@ -3966,8 +3966,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                     //color:Colors.pink,
                                                     // ellipse121x7a (1112:1367)
                                                     margin: EdgeInsets.fromLTRB(9,0,9,2),
-                                                    width: 20,
-                                                    height: 20,
+                                                    width: 25,
+                                                    height: 25,
                                                     child: Stack(
                                                       alignment: Alignment.center,
                                                       children: [
@@ -4541,6 +4541,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                               ),
                                                             ),
                                                           ),
+                                                          VerticalDivider(),
 
 
 
@@ -4574,7 +4575,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 ),
                                                                 content:  Container(
                                                                   margin: EdgeInsets.only(left: 25,right: 25),
-                                                                  height:150,
+                                                                  height:165,
                                                                   child: Padding(
                                                                     padding: const EdgeInsets.only(
                                                                         top: 5, left: 9),
@@ -4586,9 +4587,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         Text(
                                                                           "Activity type",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4601,9 +4602,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           [index][
                                                                           'activity_type_id'][1],
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight: FontWeight.w500,),
                                                                         ),
                                                                         SizedBox(
@@ -4612,9 +4613,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         Text(
                                                                           "Created",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4633,12 +4634,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                  fontSize: 10,
+                                                                                  fontSize: 11,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   fontFamily:
                                                                                   'Mulish',
                                                                                   color:
-                                                                                  Colors.grey),
+                                                                                  Color(0xFF666666)),
                                                                             ),
                                                                             SizedBox(
                                                                               width: 5,
@@ -4668,10 +4669,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                fontSize: 10,
+                                                                                fontSize: 11,
                                                                                 fontFamily:
                                                                                 'Mulish',
-                                                                                color: Colors.grey,
+                                                                                color:Color(0xFF666666),
                                                                                 fontWeight:
                                                                                 FontWeight.w500,
                                                                               ),
@@ -4684,10 +4685,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         Text(
                                                                           "Assigned to",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
+                                                                            fontSize: 11,
 
                                                                             fontFamily: 'Mulish',
-                                                                            color: Colors.grey,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4722,12 +4723,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                   .toString() ??
                                                                                   "",
                                                                               style: TextStyle(
-                                                                                  fontSize: 10,
+                                                                                  fontSize: 11,
                                                                                   fontFamily:
                                                                                   'Mulish',
                                                                                   fontWeight: FontWeight.w500,
                                                                                   color:
-                                                                                  Colors.grey),
+                                                                                  Color(0xFF666666)),
                                                                             ),
                                                                           ],
                                                                         ),
@@ -4737,8 +4738,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         Text(
                                                                           "Due on",
                                                                           style: TextStyle(
-                                                                            fontSize: 10,
-                                                                            color: Colors.grey,
+                                                                            fontSize: 11,
+                                                                            color: Color(0xFF666666),
                                                                             fontWeight:
                                                                             FontWeight.w500,
                                                                           ),
@@ -4753,10 +4754,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                               .toString() ??
                                                                               "",
                                                                           style: TextStyle(
-                                                                              fontSize: 10,
+                                                                              fontSize: 11,
                                                                               fontWeight:FontWeight.w500,
                                                                               fontFamily: 'Mulish',
-                                                                              color: Colors.grey),
+                                                                              color: Color(0xFF666666)),
                                                                         ),
                                                                         SizedBox(
                                                                           height: 3,
