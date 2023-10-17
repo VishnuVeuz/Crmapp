@@ -1924,7 +1924,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(0),
                                           child: Text(
-                                              " ${item["name"]}"),
+                                              " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
 
                                         ),
                                       ),
@@ -2030,7 +2030,8 @@ class _LeadCreationState extends State<LeadCreation> {
                              color: Colors.grey,
                              thickness: 0.5,
                            ),
-                         )
+                         ),
+
 
           //listview
                         ],

@@ -2925,9 +2925,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             item["display_name"],
                             style: TextStyle(
-                                fontSize: 13.6,
-                                color: Colors.black,
-                                fontFamily: 'Mulish'),
+                                fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                           ),
                         )));
                       },
@@ -2961,7 +2959,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["display_name"]}"),
+                                      child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                     ),
                                   ),
                                 ))
@@ -2975,6 +2973,8 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
+                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+
                       focusNode: _textFieldFocusNode,
                       controller: productQuantity,
                       decoration: const InputDecoration(
@@ -2986,15 +2986,15 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           ),
                           labelText: 'Quantity',
                           labelStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 13.6,
-                              fontFamily: 'Mulish')),
+                              color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                     ),
                   ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
+                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+
                       controller: productUnitPrice,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -3005,9 +3005,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           ),
                           labelText: 'Unit Price',
                           labelStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 13.6,
-                              fontFamily: 'Mulish')),
+                              color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                     ),
                   ),
                   Padding(
@@ -3063,9 +3061,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             item["name"],
                             style: TextStyle(
-                                fontSize: 13.6,
-                                color: Colors.black,
-                                fontFamily: 'Mulish'),
+                                fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                           ),
                         )));
                       },
@@ -3099,7 +3095,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}"),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                     ),
                                   ),
                                 ))
