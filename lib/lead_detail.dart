@@ -2464,6 +2464,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         Visibility(
                           visible: followersVisibility,
+
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             //height: 100,
@@ -2490,7 +2491,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               print(value);
                                               print("check box issues");
 
-                                              String emails = sendMailData[i]['name']??"";
+                                              String emails = sendMailData[i]['email']??"";
                                               value == true && sendMailData[i]['id'] == null?
                                               showDialog(
                                                 context: context,
