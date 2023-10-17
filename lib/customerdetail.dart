@@ -845,13 +845,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10, left: 0),
-                        child: Text(customername!,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish',
-                              fontSize: 16,
-                              color: Colors.black,
-                            )),
+                        child: Container(
+                          width:MediaQuery.of(context).size.width/2,
+                          //color: Colors.red,
+                          child: Center(
+                            child: Text(customername!,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Mulish',
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                )),
+                          ),
+                        ),
                       ),
                     ),
 

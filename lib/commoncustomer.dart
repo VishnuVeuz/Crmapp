@@ -197,12 +197,15 @@ class _CustomerListState extends State<CustomerList> {
                                 visible:widget.email==""?false:true ,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 15,top: 4),
-                                  child: Text(widget.email,
-                                    style: TextStyle(
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12,
-                                        color: Color(0xFF575757)),
+                                  child: Container(
+                                    width:MediaQuery.of(context).size.width/1.6,
+                                    child: Text(widget.email,
+                                      style: TextStyle(
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12,
+                                          color: Color(0xFF575757)),
+                                    ),
                                   ),
                                 ),
                               ),

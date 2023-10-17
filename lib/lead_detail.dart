@@ -5208,20 +5208,35 @@ class _LeadDetailState extends State<LeadDetail> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
+                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            enabledBorder:  UnderlineInputBorder(
+                              borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
+                            labelText:'Product',
+                            isDense: true,
+                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
 
                     value: activityTypeName,
-                    hint: Text(
-                      "Activity Type",
-                      style: TextStyle(
-                        fontSize: 13.6,
-                        color: Color(0xFFAFAFAF),
-                        fontWeight: FontWeight.w400,
-                        fontFamily: 'Mulish',
-                      ),
-                    ),
+                    // hint: Text(
+                    //   "Activity Type",
+                    //   style: TextStyle(
+                    //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
+                    //   ),
+                    // ),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async {
@@ -5273,10 +5288,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Text(
                           item["name"],
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                         ),
                       )));
@@ -5311,7 +5323,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["name"]}"),
+                                        child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                       ),
                                     ),
                                   ))
@@ -5326,10 +5338,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
                     style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xFF000000),
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'Mulish',
+                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                     ),
                     controller: summaryController,
                     decoration: const InputDecoration(
@@ -5342,10 +5351,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xFF000000),
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'Mulish',
+                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                         )),
                   ),
                 ),
@@ -5363,10 +5369,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             },
                             child: TextField(
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                                 ),
                                 enabled: false,
                                 controller: DuedateTime,
@@ -5374,30 +5377,42 @@ class _LeadDetailState extends State<LeadDetail> {
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF000000),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                                     ))),
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 0),
+                            horizontal: 15, vertical: 0),
                         child: SearchChoices.single(
+                          fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  enabledBorder:  UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText:'Assigned To',
+                                  isDense: true,
+                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  fillColor: Colors.white,
+
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
                           //items: items,
 
                           value: assignedToname,
-                          hint: Text(
-                            "Assigned To",
-                            style: TextStyle(
-                              fontSize: 13.6,
-                              color: Color(0xFFAFAFAF),
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish',
-                            ),
-                          ),
+                          // hint: Text(
+                          //   "Assigned To",
+                          //   style: TextStyle(
+                          //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
+                          //   ),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) async {
@@ -5423,10 +5438,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               child: Text(
                                 item["name"],
                                 style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color(0xFF000000),
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
+                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                                 ),
                               ),
                             )));
@@ -5465,7 +5477,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}"),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                             ),
                                           ),
                                         ))
@@ -5480,10 +5492,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(
-                            fontSize: 13.6,
-                            color: Color(0xFF000000),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Mulish',
+                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
                           ),
                           controller: commandsController,
                           decoration: const InputDecoration(
@@ -5497,10 +5506,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                fontSize: 13.6,
-                                color: Color(0xFF000000),
-                                fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
+                                  color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
                               )),
                         ),
                       ),

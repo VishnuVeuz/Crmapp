@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:crm_project/opportunitymainpage.dart';
+import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
+import '../bottomnavigation.dart';
 import '../notificationactivity.dart';
 import '../commoncustomer.dart';
 import '../customercreation.dart';
@@ -310,6 +313,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
       ),
       // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -321,6 +325,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: bottomNavigationBar(context),
     );
   }
 

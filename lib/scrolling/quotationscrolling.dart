@@ -1,6 +1,9 @@
 import 'dart:convert';
 
+import 'package:crm_project/bottomnavigation.dart';
 import 'package:crm_project/drawer.dart';
+import 'package:crm_project/opportunitymainpage.dart';
+import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
@@ -309,6 +312,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
       ),
       // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -320,6 +324,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
       ),
+      bottomNavigationBar: bottomNavigationBar(context),
     );
   }
 
