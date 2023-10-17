@@ -3412,7 +3412,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               print(value);
                                               print("check box issues");
 
-                                              String emails = sendMailData[i]['name']??"";
+                                              String emails = sendMailData[i]['email']??"";
                                               value == true && sendMailData[i]['id'] == null?
                                               showDialog(
                                                 context: context,
@@ -6683,6 +6683,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     notificationCount = notificationMessage['activity_count'].toString();
 
     messageCount = notificationMessage['message_count'].toString();
+
+    sendMailData = await sendMailsFollowers(
+        widget.opportunityId, "crm.lead");
+
+
     var data = await getOpportunityData(widget.opportunityId, "");
 
     setState(() {

@@ -2807,7 +2807,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                               print(value);
                                               print("check box issues");
 
-                                              String emails = sendMailData[i]['name']??"";
+                                              String emails = sendMailData[i]['email']??"";
                                               value == true && sendMailData[i]['id'] == null?
                                               showDialog(
                                                 context: context,
@@ -6376,6 +6376,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
     notificationCount = notificationMessage['activity_count'].toString();
 
     messageCount = notificationMessage['message_count'].toString();
+
+    sendMailData = await sendMailsFollowers(
+        widget.quotationId, "sale.order");
+
+
     var data = await getQuotationData(widget.quotationId, "");
 
     print(data);

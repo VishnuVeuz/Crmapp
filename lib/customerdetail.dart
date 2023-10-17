@@ -2701,7 +2701,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 print(value);
                                                 print("check box issues");
 
-                                                String emails = sendMailData[i]['name']??"";
+                                                String emails = sendMailData[i]['email']??"";
                                                 value == true && sendMailData[i]['id'] == null?
                                                 showDialog(
                                                   context: context,
@@ -6108,6 +6108,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
     notificationCount = notificationMessage['activity_count'].toString();
 
     messageCount = notificationMessage['message_count'].toString();
+
+    sendMailData = await sendMailsFollowers(
+        widget.customerId, "res.partner");
+
+
     var data = await getCustomerData(widget.customerId, "");
 
     print(data);

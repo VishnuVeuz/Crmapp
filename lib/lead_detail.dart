@@ -2464,11 +2464,10 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         Visibility(
                           visible: followersVisibility,
-
                           child: Container(
                             width: MediaQuery.of(context).size.width,
-                            //height: 100,
-                            //color: Colors.red,
+                            // height: 100,
+                            // color: Colors.red,
                             child: ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
@@ -7802,6 +7801,10 @@ class _LeadDetailState extends State<LeadDetail> {
 
     messageCount = notificationMessage['message_count'].toString();
 
+    sendMailData = await sendMailsFollowers(
+        widget.leadId, "lead.lead");
+
+
     var data = await getLeadData(widget.leadId, "");
     setState(() {
       leadname = data['name'].toString() ?? "";
@@ -7844,50 +7847,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
     await getScheduleDetails();
 
-    //  var datas = await getScheduleActivityData(widget.leadId, "lead.lead");
-    //
-    //  String scheduleIcpnValue;
-    //  print(scheduleData);
-    //  print("jhvhbfxfxfgx");
-    //  setState(() {
-    //      scheduleLength = datas['length']??0 ;
-    //      scheduleData = datas;
-    //      scheduleOverdue = datas['overdue']??0 ;
-    //      scheduleToday = datas['today']??0 ;
-    //      schedulePlanned = datas['planned']??0 ;
-    //     // scheduleIcpnValue = datas['planned']??0
-    //
-    //      scheduleOverdue!=0 ? scheduleVisibiltyOverdue = true :scheduleVisibiltyOverdue=false;
-    //      scheduleToday!=0 ? scheduleVisibiltyToday=true :scheduleVisibiltyToday=false;
-    //
-    //      schedulePlanned!=0 ? scheduleVisibiltyPlanned=true : scheduleVisibiltyPlanned=false;
-    //
-    //
-    //
-    //      scheduleIcon= Icon(Icons.add,
-    //        color: Colors.white,
-    //        size: 8,
-    //
-    //      );
-    //
-    //
-    //      _isInitialized = true;
-    //  });
-    //
-    //
-    //
-    //
-    //  print(scheduleData);
-    //  print("final dataaa");
-    //
-    //
-    // // lognotedatass();
-    //
-    //
-    //  print("test2");
-    // return scheduleData;
-    //
-    //
+
+
   }
 
   defaultScheduleValues() async {
