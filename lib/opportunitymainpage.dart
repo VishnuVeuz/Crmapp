@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'api.dart';
 import 'bottomnavigation.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
 
@@ -47,7 +48,6 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
     if (!_isInitialized) {
       // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
-
         body: Center(
           child: CircularProgressIndicator(),
         ),
@@ -242,7 +242,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
               ),
 
         ),
-        bottomNavigationBar:MyBottomNavigationBar(),
+        bottomNavigationBar:MyBottomNavigationBar(2),
       );
     }
   }

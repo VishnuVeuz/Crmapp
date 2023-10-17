@@ -6,12 +6,24 @@ import 'opportunitymainpage.dart';
 import 'scrolling/scrollpagination.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
+  int indexvalue;
+
+  MyBottomNavigationBar(this.indexvalue);
   @override
   _MyBottomNavigationBarState createState() => _MyBottomNavigationBarState();
 }
 
-class _MyBottomNavigationBarState extends State {
-  int currentIndex = 0; // Add this variable to keep track of the current index
+class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+  int? currentIndex;
+  //int? currentIndex1;// Add this variable to keep track of the current index
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    currentIndex= widget.indexvalue;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +31,21 @@ class _MyBottomNavigationBarState extends State {
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(color: Colors.pinkAccent),
       selectedLabelStyle: TextStyle(
-          fontSize: 14, fontFamily: 'Mulish', color: Color(0xFFF9246A), fontWeight: FontWeight.w600),
+          fontSize: 12, fontFamily: 'Mulish', color: Color(0xFFF9246A), fontWeight: FontWeight.w300),
       unselectedLabelStyle: TextStyle(
-          fontSize: 14, fontFamily: 'Mulish', color: Colors.black, fontWeight: FontWeight.w600),
-      currentIndex: currentIndex, // Set the currentIndex
+          fontSize: 12, fontFamily: 'Mulish', color: Colors.black, fontWeight: FontWeight.w300),
+      currentIndex: currentIndex==null?0:currentIndex!,
+      // Set the currentIndex
       onTap: (int index) {
         setState(() {
-          currentIndex = index; // Update the currentIndex when a tab is tapped
+
+          currentIndex = index;// Update the currentIndex when a tab is tapped
         });
 
         if (index == 0) {
 // Handle the first tab
         } else if (index == 1) {
+
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -45,24 +60,50 @@ class _MyBottomNavigationBarState extends State {
         }
       },
       items: [
+        currentIndex==0?
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset("images/hoColor.svg"),
+          label: 'Home',
+        ):
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/ho.svg"),
           label: 'Home',
         ),
+
+        currentIndex==1?
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset("images/leadColor.svg"),
+          label: 'Home',
+        ):
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/leadd.svg"),
           label: 'Leads',
         ),
+
+        currentIndex==2?
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset("images/oppoColor.svg"),
+          label: 'Opportunity',
+        ):
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/oppo.svg"),
           label: 'Opportunity',
         ),
+
+        currentIndex==3?
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset("images/moColor.svg"),
+          label: 'More',
+        ):
         BottomNavigationBarItem(
           icon: SvgPicture.asset("images/mo.svg"),
           label: 'More',
         ),
       ],
-      selectedItemColor: Colors.amber[800],
+      selectedItemColor: Color(0xFFF9246A),
+
+
+      unselectedItemColor: Colors.black,
     );
   }
 }

@@ -30,9 +30,6 @@ class _SplashPageState extends State<SplashPage> {
         Duration(seconds: 3),
             () =>
 
-
-
-
                 Navigator.pushReplacement(
             context,
             MaterialPageRoute(

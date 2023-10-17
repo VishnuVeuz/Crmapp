@@ -22,6 +22,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 
+import 'globals.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';

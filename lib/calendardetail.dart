@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
+import 'globals.dart';
 
 class CalencerFullDetail extends StatefulWidget {
   var calendarId;

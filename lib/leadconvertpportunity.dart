@@ -8,6 +8,7 @@ import 'package:http/http.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
+import 'globals.dart';
 import 'leadmainpage.dart';
 import 'model/mergeopportunity.dart';
 import 'opportunity_detail.dart';

@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'notification.dart';
 import 'opportunitymainpage.dart';
 

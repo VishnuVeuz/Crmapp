@@ -819,7 +819,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
             child: const Icon(Icons.add),
           ),
         ),
-        bottomNavigationBar:MyBottomNavigationBar(),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

@@ -8,6 +8,7 @@ import 'calendartype/calendarmonth.dart';
 import 'calendartype/calendarweek.dart';
 import 'calendartype/calendaryear.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'leadmainpage.dart';
 
 class Calender extends StatelessWidget {

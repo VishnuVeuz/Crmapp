@@ -253,10 +253,13 @@ flutter:
     - images/schedulecalendar.png
     - images/scheduleedit.png
     - images/alertcircle.png
-    - images/lead.svg
+    - images/leadColor.svg
     - images/oppo.svg
+    - images/oppoColor.svg
     - images/mo.svg
+    - images/moColor.svg
     - images/ho.svg
+    - images/hoColor.svg
     - images/leadd.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see

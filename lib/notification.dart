@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'api.dart';
 import 'chatpage.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'notificationactivity.dart';
 
 class Notifications extends StatefulWidget {

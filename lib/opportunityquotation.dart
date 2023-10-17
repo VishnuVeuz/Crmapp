@@ -12,6 +12,7 @@ import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
 class OpportunityQuotation extends StatefulWidget {

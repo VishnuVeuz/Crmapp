@@ -21,6 +21,7 @@ import 'package:search_choices/search_choices.dart';
 
 import 'calendarmainpage.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'lognoteedit.dart';
 import 'globals.dart' as globals;
 import 'notification.dart';

@@ -10,6 +10,7 @@ import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
 import 'drawer.dart';
+import 'globals.dart';
 import 'lead_detail.dart';
 import 'leadmainpage.dart';
 import 'globals.dart' as globals;
