@@ -415,7 +415,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           width: MediaQuery
                               .of(context)
                               .size
-                              .width / 2.5,
+                              .width / 2.2,
                           child: ElevatedButton(
                               child: Text(
                                 "Options",
@@ -745,13 +745,16 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 25),
-                                    child: Text(
-                                      location!,
-                                      style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        location!,
+                                        style:  TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF212121)),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -785,15 +788,18 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 25),
-                                    child: Text(
-                                      meetingurl!,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color((0xFF212121)),
-                                    ),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        meetingurl!,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color((0xFF212121)),
+                                      ),
                                   ),
+                                    ),
                                 ),
                                 )
                               ],
@@ -900,13 +906,16 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                                   child: Padding(
                                     padding: const EdgeInsets.only(right: 25),
-                                    child: Text(
-                                      description!,
-                                      style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Text(
+                                        description!,
+                                        style:  TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF212121)),
+                                      ),
                                     ),
                                   ),
                                 ),

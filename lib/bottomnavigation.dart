@@ -97,8 +97,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         ):
         BottomNavigationBarItem(
           icon: Container(
-            width: 18,
-              height: 18,
+            width: 20,
+              height: 20,
               child: SvgPicture.asset("images/mo.svg")),
           label: 'More',
         ),
