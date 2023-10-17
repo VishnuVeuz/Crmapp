@@ -1,6 +1,7 @@
 import 'package:crm_project/lead_detail.dart';
 import 'package:crm_project/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 
 import 'leadcreation.dart';
@@ -13,7 +14,15 @@ void main() async{
   await FlutterDownloader.initialize( // Initialize flutter_downloader
     debug: true, // Set this to true for debugging purposes
   );
-  runApp(const MyApp());
+
+
+
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(MyApp());
+  });
+ // runApp(const MyApp());
 
 
 
