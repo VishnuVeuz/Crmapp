@@ -5,6 +5,7 @@ import 'package:crm_project/drawer.dart';
 import 'package:crm_project/leadcreation.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -187,550 +188,553 @@ class _LeadMainPageState extends State<LeadMainPage> {
             })
           ],
         ),
-        body: Container(
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          //color: Colors.green,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                height:50,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+        body: WillPopScope(
+          onWillPop: () => _goBack(context),
+          child: Container(
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height,
+            //color: Colors.green,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height:50,
+                  color: Colors.white,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 24, top: 5, right: 25),
-                      child: Text("Leads",
-                        style: TextStyle(fontSize: 18,
-                             //letterSpacing: .5,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 24, top: 5, right: 25),
+                        child: Text("Leads",
+                          style: TextStyle(fontSize: 18,
+                               //letterSpacing: .5,
 
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w600,
+
+                              color: Color(0xFF101010)),
+
+                        ),
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 25,top: 8),
+                      //   child: Container(
+                      //     child: Row(
+                      //       children: [
+                      //         InkWell(
+                      //           onTap: () {
+                      //             Navigator.push(
+                      //                 context,
+                      //                 MaterialPageRoute(
+                      //                     builder: (context) => LeadCreation(0)));
+                      //           },
+                      //           child: SvgPicture.asset(
+                      //             "images/create.svg",
+                      //             width: 28,
+                      //             height: 28,
+                      //           ),
+                      //         ),
+                      //         SizedBox(width: 5,),
+                      //         Text("New",      style: TextStyle(fontSize: 12,
+                      //             //letterSpacing: .5,
+                      //
+                      //             fontFamily: 'Mulish',
+                      //             fontWeight: FontWeight.w600,
+                      //
+                      //             color: Color(0xFF212121)),)
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
+
+                    ],
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 25,top: 10,right: 25),
+                //   child: Text("Lists",
+                //     style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Color(0xFF101010)),
+                //
+                //   ),
+                // ),
+                InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 2,left: 8),
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      height: 35,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: Image.asset("images/list.png"),
+                                  onPressed: () {},
+                                ),
+                                Text("My Leads",
+                                  style: TextStyle(fontSize: 14,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF414141)),
+
+                                ),
+                              ],
+                            ),
+
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Container(
+                              child: IconButton(
+                                icon: Image.asset("images/Vector7.png"),
+                                onPressed: () {},
+
+
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => LeadScrolling('my',"","")));
+                  },
+                ),
+                InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 5,left: 8),
+                    child: Container(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      height: 35,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            child: Row(
+                              children: [
+                                IconButton(
+                                  icon: Image.asset("images/list.png"),
+                                  onPressed: () {},
+                                ),
+                                Text("All Lists",
+                                  style: TextStyle(fontSize: 14,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xFF414141)),
+
+                                ),
+                              ],
+                            ),
+
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Container(
+                              child: IconButton(
+                                icon: Image.asset("images/Vector7.png"),
+                                onPressed: () {},
+
+
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => LeadScrolling('',"","")));
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Container(
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
+                    height: 40,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 24, top: 10, right: 25),
+                      child: Text("Recent Leads",
+
+                        style: TextStyle(fontSize: 17,
+                            wordSpacing: 4,
+                            fontWeight: FontWeight.w500,
                             fontFamily: 'Mulish',
-                            fontWeight: FontWeight.w600,
-
                             color: Color(0xFF101010)),
 
                       ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(right: 25,top: 8),
-                    //   child: Container(
-                    //     child: Row(
-                    //       children: [
-                    //         InkWell(
-                    //           onTap: () {
-                    //             Navigator.push(
-                    //                 context,
-                    //                 MaterialPageRoute(
-                    //                     builder: (context) => LeadCreation(0)));
-                    //           },
-                    //           child: SvgPicture.asset(
-                    //             "images/create.svg",
-                    //             width: 28,
-                    //             height: 28,
-                    //           ),
-                    //         ),
-                    //         SizedBox(width: 5,),
-                    //         Text("New",      style: TextStyle(fontSize: 12,
-                    //             //letterSpacing: .5,
-                    //
-                    //             fontFamily: 'Mulish',
-                    //             fontWeight: FontWeight.w600,
-                    //
-                    //             color: Color(0xFF212121)),)
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-
-                  ],
+                  ),
                 ),
-              ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 25,top: 10,right: 25),
-              //   child: Text("Lists",
-              //     style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Color(0xFF101010)),
-              //
-              //   ),
-              // ),
-              InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 2,left: 8),
+                Padding(
+                  padding: const EdgeInsets.only(top: 0),
                   child: Container(
                     width: MediaQuery
                         .of(context)
                         .size
                         .width,
-                    height: 35,
-                    color: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-
-                          child: Row(
-                            children: [
-                              IconButton(
-                                icon: Image.asset("images/list.png"),
-                                onPressed: () {},
-                              ),
-                              Text("My Leads",
-                                style: TextStyle(fontSize: 14,
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF414141)),
-
-                              ),
-                            ],
-                          ),
-
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            child: IconButton(
-                              icon: Image.asset("images/Vector7.png"),
-                              onPressed: () {},
-
-
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-
-                  ),
-                ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => LeadScrolling('my',"","")));
-                },
-              ),
-              InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 5,left: 8),
-                  child: Container(
-                    width: MediaQuery
+                    height: MediaQuery
                         .of(context)
                         .size
-                        .width,
-                    height: 35,
-                    color: Colors.white,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          child: Row(
-                            children: [
-                              IconButton(
-                                icon: Image.asset("images/list.png"),
-                                onPressed: () {},
-                              ),
-                              Text("All Lists",
-                                style: TextStyle(fontSize: 14,
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xFF414141)),
+                        .height / 1.67,
 
-                              ),
-                            ],
-                          ),
+                    child: FutureBuilder(
+                        future: recentLead("recent"),
+                        builder: (context, AsyncSnapshot snapshot) {
+                          print(snapshot.data);
+                          print("snap data final ");
+                          if (snapshot.hasError) {
+                            print(snapshot.hasError);
+                            print("snap error");
+                          }
+                          if (snapshot.connectionState == ConnectionState.done) {
+                            if (snapshot.hasData) {
+                              if (snapshot.data == null) {
+                                print("dfffdfdf");
+                                //print(snapshot.data!.length);
+                                return const Center(child: Text(
+                                    'Something went wrong'));
+                              }
+                              print("dajkdnm1");
+                             // print(snapshot.data[0]["tag_ids"].length);
+                              print("dajkdnm");
+                              print(snapshot.data?.length);
+                              // if (snapshot.data[0]["tag_ids"].length > 0) {
+                              //   //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
+                              //   tags = snapshot.data[0]["tag_ids"];
+                              // } else {
+                              //   tags = [];
+                              // }
+                          return    snapshot.data?.length == 0 ?  Center(child: Text("No data found", style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight
+                                  .w600,
+                              fontSize: 14,
+                              color: Colors.black))):
 
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Container(
-                            child: IconButton(
-                              icon: Image.asset("images/Vector7.png"),
-                              onPressed: () {},
+                               ListView.builder(
+                                // physics: NeverScrollableScrollPhysics(),
+                                //shrinkWrap: true,
+                                itemCount: snapshot.data?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  if (snapshot.data[index]["tag_ids"].length > 0) {
+                                    //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
+                                    tags = snapshot.data[index]["tag_ids"];
+                                  } else {
+                                    tags = [];
+                                  }
 
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      InkWell(
+                                        child: Card(
+                                          //elevation:5,
+                                          //shadowColor: Colors.grey,
+                                          child: Container(
 
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                                            width: MediaQuery
+                                                .of(context)
+                                                .size
+                                                .width,
+                                           // height: 90,
+                                           // decoration: const BoxDecoration(
+                                           //   borderRadius: BorderRadius.all(Radius.circular(20)),
+                                           //   boxShadow: [
+                                           //     BoxShadow(
+                                           //       color: Colors.grey,
+                                           //       blurRadius: 25.0,
+                                           //       offset: Offset(0, -10)
+                                           //     )
+                                           //   ]
+                                           // ),
 
-                  ),
-                ),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context) => LeadScrolling('',"","")));
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: 40,
-                  color: Colors.white,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 10, right: 25),
-                    child: Text("Recent Leads",
-
-                      style: TextStyle(fontSize: 17,
-                          wordSpacing: 4,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'Mulish',
-                          color: Color(0xFF101010)),
-
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0),
-                child: Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height / 1.67,
-
-                  child: FutureBuilder(
-                      future: recentLead("recent"),
-                      builder: (context, AsyncSnapshot snapshot) {
-                        print(snapshot.data);
-                        print("snap data final ");
-                        if (snapshot.hasError) {
-                          print(snapshot.hasError);
-                          print("snap error");
-                        }
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          if (snapshot.hasData) {
-                            if (snapshot.data == null) {
-                              print("dfffdfdf");
-                              //print(snapshot.data!.length);
-                              return const Center(child: Text(
-                                  'Something went wrong'));
-                            }
-                            print("dajkdnm1");
-                           // print(snapshot.data[0]["tag_ids"].length);
-                            print("dajkdnm");
-                            print(snapshot.data?.length);
-                            // if (snapshot.data[0]["tag_ids"].length > 0) {
-                            //   //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
-                            //   tags = snapshot.data[0]["tag_ids"];
-                            // } else {
-                            //   tags = [];
-                            // }
-                        return    snapshot.data?.length == 0 ?  Center(child: Text("No data found", style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontWeight: FontWeight
-                                .w600,
-                            fontSize: 14,
-                            color: Colors.black))):
-
-                             ListView.builder(
-                              // physics: NeverScrollableScrollPhysics(),
-                              //shrinkWrap: true,
-                              itemCount: snapshot.data?.length ?? 0,
-                              itemBuilder: (context, index) {
-                                if (snapshot.data[index]["tag_ids"].length > 0) {
-                                  //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
-                                  tags = snapshot.data[index]["tag_ids"];
-                                } else {
-                                  tags = [];
-                                }
-
-                                return Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    InkWell(
-                                      child: Card(
-                                        //elevation:5,
-                                        //shadowColor: Colors.grey,
-                                        child: Container(
-
-                                          width: MediaQuery
-                                              .of(context)
-                                              .size
-                                              .width,
-                                         // height: 90,
-                                         // decoration: const BoxDecoration(
-                                         //   borderRadius: BorderRadius.all(Radius.circular(20)),
-                                         //   boxShadow: [
-                                         //     BoxShadow(
-                                         //       color: Colors.grey,
-                                         //       blurRadius: 25.0,
-                                         //       offset: Offset(0, -10)
-                                         //     )
-                                         //   ]
-                                         // ),
-
-                                         child: Row(
-                                            mainAxisAlignment: MainAxisAlignment
-                                                .spaceBetween,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment: CrossAxisAlignment
-                                                    .start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        left: 20, top: 5),
-                                                    child: Text(
-                                                      snapshot
-                                                          .data![index]["name"] ??
-                                                          "",
-                                                      style: TextStyle(
-                                                          fontFamily: 'Mulish',
-                                                         // wordSpacing: 5,
-                                                          fontWeight: FontWeight
-                                                              .w600,
-                                                          fontSize: 14,
-                                                          color: Colors.black),
-                                                    ),
-                                                  ),
-                                                  Visibility(
-                                                    visible: snapshot.data![index]["contact_name"]==""?false:true,
-                                                    child: Padding(
+                                           child: Row(
+                                              mainAxisAlignment: MainAxisAlignment
+                                                  .spaceBetween,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment: CrossAxisAlignment
+                                                      .start,
+                                                  children: [
+                                                    Padding(
                                                       padding: const EdgeInsets.only(
-                                                          top: 5, left: 20),
-                                                      child: Text(snapshot
-                                                          .data![index]["contact_name"] ??
-                                                          "",
+                                                          left: 20, top: 5),
+                                                      child: Text(
+                                                        snapshot
+                                                            .data![index]["name"] ??
+                                                            "",
                                                         style: TextStyle(
                                                             fontFamily: 'Mulish',
+                                                           // wordSpacing: 5,
                                                             fontWeight: FontWeight
                                                                 .w600,
-                                                            fontSize: 12,
-                                                            color: Color(0xFF787878)),
+                                                            fontSize: 14,
+                                                            color: Colors.black),
                                                       ),
+                                                    ),
+                                                    Visibility(
+                                                      visible: snapshot.data![index]["contact_name"]==""?false:true,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets.only(
+                                                            top: 5, left: 20),
+                                                        child: Text(snapshot
+                                                            .data![index]["contact_name"] ??
+                                                            "",
+                                                          style: TextStyle(
+                                                              fontFamily: 'Mulish',
+                                                              fontWeight: FontWeight
+                                                                  .w600,
+                                                              fontSize: 12,
+                                                              color: Color(0xFF787878)),
+                                                        ),
 
+                                                      ),
+                                                    ),
+
+                                                  Visibility(
+                                                    visible: tags!.length >0 ? true : false,
+                                                    child: Padding(
+                                                      padding: const EdgeInsets.only(left: 20),
+                                                      child: Container(
+                                                          width: MediaQuery
+                                                              .of(context)
+                                                              .size
+                                                              .width/1.4 ,
+                                                          height: 20,
+                                                          //color: Colors.pinkAccent,
+
+                                                          child: ListView.builder(
+                                                            scrollDirection: Axis.horizontal,
+                                                            shrinkWrap: true,
+                                                            itemCount: tags!.length ?? 0,
+                                                            itemBuilder: (BuildContext context, int index) {
+                                                              return Padding(
+                                                                padding:
+                                                                const EdgeInsets.only(right: 8.0, top: 4),
+                                                                child: SingleChildScrollView(
+                                                                  scrollDirection: Axis.horizontal,
+
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        height: 5,
+                                                                        width: 5,
+                                                                        color:  Color(int.parse(tags![index]["color"])),
+                                                                        // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+
+                                                                      ),
+                                                                      SizedBox(width: 4,),
+
+                                                                      Center(
+                                                                        child: Text(
+
+                                                                          tags![index]["name"].toString(),
+                                                                          style: TextStyle(
+                                                                              color: Color(0xFF787878),
+                                                                              fontFamily: 'Mulish',
+                                                                              fontWeight: FontWeight.w600,
+                                                                              fontSize: 12),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ),
+                                                        ),
                                                     ),
                                                   ),
 
-                                                Visibility(
-                                                  visible: tags!.length >0 ? true : false,
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(left: 20),
-                                                    child: Container(
-                                                        width: MediaQuery
-                                                            .of(context)
-                                                            .size
-                                                            .width/1.4 ,
-                                                        height: 20,
-                                                        //color: Colors.pinkAccent,
 
-                                                        child: ListView.builder(
-                                                          scrollDirection: Axis.horizontal,
-                                                          shrinkWrap: true,
-                                                          itemCount: tags!.length ?? 0,
-                                                          itemBuilder: (BuildContext context, int index) {
-                                                            return Padding(
-                                                              padding:
-                                                              const EdgeInsets.only(right: 8.0, top: 4),
-                                                              child: SingleChildScrollView(
-                                                                scrollDirection: Axis.horizontal,
 
-                                                                child: Row(
-                                                                  children: [
-                                                                    Container(
-                                                                      height: 5,
-                                                                      width: 5,
-                                                                      color:  Color(int.parse(tags![index]["color"])),
-                                                                      // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
 
-                                                                    ),
-                                                                    SizedBox(width: 4,),
 
-                                                                    Center(
-                                                                      child: Text(
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment
+                                                          .spaceBetween,
+                                                      children: [
 
-                                                                        tags![index]["name"].toString(),
-                                                                        style: TextStyle(
-                                                                            color: Color(0xFF787878),
-                                                                            fontFamily: 'Mulish',
-                                                                            fontWeight: FontWeight.w600,
-                                                                            fontSize: 12),
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
+
+                                                        Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(left: 15,bottom: 8,top: 2),
+                                                          child: Container(
+                                                            //color:Colors.green,
+                                                            width: MediaQuery.of(context).size.width/1.23,
+                                                            child: RatingBar.builder(
+                                                              initialRating: double
+                                                                  .parse(
+                                                                  snapshot
+                                                                      .data![index]["priority"] ??
+                                                                      0),
+                                                              itemSize: 19,
+                                                              minRating: 0,
+                                                              direction: Axis
+                                                                  .horizontal,
+                                                              allowHalfRating: false,
+                                                              itemCount: 3,
+                                                              itemPadding: EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal: 1.0),
+                                                              itemBuilder: (context,
+                                                                  _) =>
+                                                                  Icon(
+                                                                    Icons.star,
+                                                                    color: Colors.amber,
+                                                                    size: 10,
+                                                                  ),
+                                                              onRatingUpdate: (
+                                                                  double value) {
+
+                                                              },
+
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                  ),
+                                                        // Padding(
+                                                        //   padding: const EdgeInsets.only(top: 0,left: 15),
+                                                        //   child: Text("Ratingbar",
+                                                        //     style: TextStyle(
+                                                        //         fontWeight: FontWeight.w600,
+                                                        //         fontSize: 12,
+                                                        //         color: Color(0xFF787878)),
+                                                        //   ),
+                                                        // ),
+                                                        snapshot
+                                                            .data![index]["image_1920"] !=
+                                                            "" ?
+
+
+
+
+
+                                                        Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(right: 25,bottom:5,left: 0),
+                                                          child: Container(
+                                                            width: 25,
+                                                            height: 25,
+                                                            decoration: BoxDecoration(
+                                                              //color: Colors.red,
+                                                                border: Border.all(
+
+                                                                ),
+                                                                borderRadius: BorderRadius
+                                                                    .all(
+                                                                    Radius.circular(
+                                                                        20))
+                                                            ),
+                                                            child: CircleAvatar(
+                                                              radius: 12,
+                                                              child: ClipRRect(
+
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(18),
+                                                                child:Image.network(
+                                                                    "${snapshot.data![index]["image_1920"]}?token=${token}"),
+
+                                                              ),
+
+
+                                                            ),
+                                                          ),
+                                                        ) :
+
+                                                        Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(right: 25,bottom: 8,left: 0),
+                                                          child: Container(
+                                                            width: 25,
+                                                            height: 25,
+                                                            decoration: BoxDecoration(
+                                                                border: Border.all(
+                                                                ),
+                                                                borderRadius: BorderRadius
+                                                                    .all(
+                                                                    Radius.circular(
+                                                                        20))
+                                                            ),
+                                                            child: CircleAvatar(
+                                                              radius: 12,
+                                                              child: Icon(
+                                                                Icons.person,
+                                                                size: 20,
+                                                                // Adjust the size of the icon as per your requirements
+                                                                color: Colors
+                                                                    .white, // Adjust the color of the icon as per your requirements
+                                                              ),
+
+                                                            ),
+                                                          ),
+                                                        ),
+
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
 
 
 
+                                              ],
+                                            ),
 
-
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment
-                                                        .spaceBetween,
-                                                    children: [
-
-
-                                                      Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(left: 15,bottom: 8,top: 2),
-                                                        child: Container(
-                                                          //color:Colors.green,
-                                                          width: MediaQuery.of(context).size.width/1.23,
-                                                          child: RatingBar.builder(
-                                                            initialRating: double
-                                                                .parse(
-                                                                snapshot
-                                                                    .data![index]["priority"] ??
-                                                                    0),
-                                                            itemSize: 19,
-                                                            minRating: 0,
-                                                            direction: Axis
-                                                                .horizontal,
-                                                            allowHalfRating: false,
-                                                            itemCount: 3,
-                                                            itemPadding: EdgeInsets
-                                                                .symmetric(
-                                                                horizontal: 1.0),
-                                                            itemBuilder: (context,
-                                                                _) =>
-                                                                Icon(
-                                                                  Icons.star,
-                                                                  color: Colors.amber,
-                                                                  size: 10,
-                                                                ),
-                                                            onRatingUpdate: (
-                                                                double value) {
-
-                                                            },
-
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      // Padding(
-                                                      //   padding: const EdgeInsets.only(top: 0,left: 15),
-                                                      //   child: Text("Ratingbar",
-                                                      //     style: TextStyle(
-                                                      //         fontWeight: FontWeight.w600,
-                                                      //         fontSize: 12,
-                                                      //         color: Color(0xFF787878)),
-                                                      //   ),
-                                                      // ),
-                                                      snapshot
-                                                          .data![index]["image_1920"] !=
-                                                          "" ?
-
-
-
-
-
-                                                      Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(right: 25,bottom:5,left: 0),
-                                                        child: Container(
-                                                          width: 25,
-                                                          height: 25,
-                                                          decoration: BoxDecoration(
-                                                            //color: Colors.red,
-                                                              border: Border.all(
-
-                                                              ),
-                                                              borderRadius: BorderRadius
-                                                                  .all(
-                                                                  Radius.circular(
-                                                                      20))
-                                                          ),
-                                                          child: CircleAvatar(
-                                                            radius: 12,
-                                                            child: ClipRRect(
-
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(18),
-                                                              child:Image.network(
-                                                                  "${snapshot.data![index]["image_1920"]}?token=${token}"),
-
-                                                            ),
-
-
-                                                          ),
-                                                        ),
-                                                      ) :
-
-                                                      Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(right: 25,bottom: 8,left: 0),
-                                                        child: Container(
-                                                          width: 25,
-                                                          height: 25,
-                                                          decoration: BoxDecoration(
-                                                              border: Border.all(
-                                                              ),
-                                                              borderRadius: BorderRadius
-                                                                  .all(
-                                                                  Radius.circular(
-                                                                      20))
-                                                          ),
-                                                          child: CircleAvatar(
-                                                            radius: 12,
-                                                            child: Icon(
-                                                              Icons.person,
-                                                              size: 20,
-                                                              // Adjust the size of the icon as per your requirements
-                                                              color: Colors
-                                                                  .white, // Adjust the color of the icon as per your requirements
-                                                            ),
-
-                                                          ),
-                                                        ),
-                                                      ),
-
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-
-
-
-                                            ],
+                                            //color: Colors.green,
                                           ),
-
-                                          //color: Colors.green,
                                         ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LeadDetail(snapshot
-                                                        .data![index]["id"])));
-                                      },
-                                    )
-                                  ],
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LeadDetail(snapshot
+                                                          .data![index]["id"])));
+                                        },
+                                      )
+                                    ],
 
-                                );
-                              },
-                            );
+                                  );
+                                },
+                              );
+                            }
                           }
+                          return Center(child: const CircularProgressIndicator());
                         }
-                        return Center(child: const CircularProgressIndicator());
-                      }
+                    ),
+
+
                   ),
-
-
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
 
@@ -857,6 +861,31 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
   profilePreference() async{
     username = await getStringValuesSF() as String;
+
+  }
+
+  Future<bool> _goBack(BuildContext context) async {
+
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Do you want to exit'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('No'),
+              ),
+              TextButton(
+                onPressed: () {
+                  SystemNavigator.pop();
+                },
+                child: Text('Yes'),
+              ),
+            ],
+          ));
+      return Future.value(true);
 
   }
 
