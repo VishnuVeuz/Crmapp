@@ -869,19 +869,19 @@ class _LeadMainPageState extends State<LeadMainPage> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Do you want to exit'),
+            title: Text('Do you want to exit',style:TextStyle(fontSize: 18,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('No'),
+                child: Text('No',style: TextStyle(color: Color(0xFFF9246A))),
               ),
               TextButton(
                 onPressed: () {
                   SystemNavigator.pop();
                 },
-                child: Text('Yes'),
+                child: Text('Yes',style: TextStyle(color: Color(0xFFF9246A)),),
               ),
             ],
           ));

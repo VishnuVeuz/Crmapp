@@ -252,23 +252,23 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 20),
+                                padding: const EdgeInsets.only(left: 20,top: 10),
                                 child: Text(notificationData[i]["name"]),
                               ),
-                              IconButton(
-
-                                icon: SvgPicture.asset("images/clock.svg"),
-                                onPressed: () {
-
-                                },
-                              ),
+                              // IconButton(
+                              //
+                              //   icon: SvgPicture.asset("images/clock.svg"),
+                              //   onPressed: () {
+                              //
+                              //   },
+                              // ),
                             ],
                           ),
                         ),
                         Row(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.only(left:20,bottom: 20),
+                              padding: const EdgeInsets.only(left:20,bottom: 20,top: 10),
                               child: InkWell(
                                 child: Container(
                                   child: Row(
@@ -334,7 +334,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left:50,bottom: 20),
+                              padding: const EdgeInsets.only(left:50,bottom: 20,top: 10),
                               child: InkWell(
                                 child: Container(
                                   child: Row(
@@ -398,7 +398,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 50,bottom: 20),
+                              padding: const EdgeInsets.only(left: 50,bottom: 20,top: 10),
                               child: InkWell(
                                 child: Container(
                                   child: Row(
