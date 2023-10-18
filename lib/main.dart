@@ -12,11 +12,8 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
 
   await FlutterDownloader.initialize( // Initialize flutter_downloader
-    debug: true, // Set this to true for debugging purposes
+   // debug: true, // Set this to true for debugging purposes
   );
-
-
-
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -40,7 +37,8 @@ class MyApp extends StatelessWidget {
       //title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Color(0xFF3D418E)
+          primaryColor: Color(0xFF3D418E),
+        //scaffoldBackgroundColor: Colors.transparent,
         //primarySwatch: Colors.blue,
       ),
       //home:LeadDetail(267),
