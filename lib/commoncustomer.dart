@@ -152,6 +152,7 @@ class _CustomerListState extends State<CustomerList> {
                                   visible: widget.jobposition==""?false:true,
                                   child: Container(
                                     width:MediaQuery.of(context).size.width/1.6,
+                                    //color: Colors.red,
                                     child: Text(widget.jobposition,
                                       style: TextStyle(
                                           fontFamily: 'Mulish',
@@ -163,35 +164,37 @@ class _CustomerListState extends State<CustomerList> {
                                 ),
                               ),
 
-                              Row(
-                                children: [
-                                  Visibility(
-                                    visible:widget.state == ""?false:true ,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 15,top: 4),
-                                      child: Text(widget.state,
-                                        style: TextStyle(
-                                            fontFamily: 'Mulish',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 12,
-                                            color: Color(0xFF787878)),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 15,top: 4),
+                                child: Container(
+                                  width:MediaQuery.of(context).size.width/1.6,
+                                  //color: Colors.red,
+                                  child: Row(
+                                    children: [
+                                      Visibility(
+                                        visible:widget.state == ""?false:true ,
+                                        child: Text(widget.state,
+                                          style: TextStyle(
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12,
+                                              color: Color(0xFF787878)),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible:widget.country ==""?false:true ,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 15,top: 4),
-                                      child: Text(widget.country,
-                                        style:  TextStyle(
-                                            fontFamily: 'Mulish',
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 12,
-                                            color: Color(0xFF787878)),
+                                      SizedBox(width: 4,),
+                                      Visibility(
+                                        visible:widget.country ==""?false:true ,
+                                        child: Text(widget.country,
+                                          style:  TextStyle(
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12,
+                                              color: Color(0xFF787878)),
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                               Visibility(
                                 visible:widget.email==""?false:true ,
