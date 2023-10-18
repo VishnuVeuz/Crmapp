@@ -869,6 +869,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0))),
             title: Text('Do you want to exit',style:TextStyle(fontSize: 18,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)),
             actions: <Widget>[
               TextButton(
