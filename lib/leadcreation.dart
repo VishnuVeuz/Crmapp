@@ -1977,7 +1977,7 @@ class _LeadCreationState extends State<LeadCreation> {
                           //   ),),
 
                           Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
+                            padding: const EdgeInsets.only(left: 25,right: 25,bottom: 10),
                             child: Container(
                               width: MediaQuery.of(context)
                                   .size
