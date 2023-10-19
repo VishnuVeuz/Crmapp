@@ -1901,12 +1901,12 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25, top: 10),
-                          child: Text(
-
-                            "Internal Notes", style: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 25, top: 10),
+                        //   child: Text(
+                        //
+                        //     "Internal Notes", style: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),),
+                        // ),
 
                         Padding(
                           padding: const EdgeInsets.only(left: 25,right: 25),
@@ -1931,34 +1931,30 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                                   maxLines: null,
                                   controller: internalnotesController,
-                                  decoration:
-                                  const InputDecoration(
-                                      border:
-                                      InputBorder.none,
-                                      hintText:
-                                      "Internal Notes",
-                                      hintStyle: TextStyle(
-                                        //fontFamily: "inter",
-                                          fontWeight:
-                                          FontWeight
-                                              .w400,
-                                          fontFamily:
-                                          'Mulish',
-                                          fontSize: 11,
-                                          color: Color(
-                                              0xFFAFAFAF)))),
+                                decoration: const InputDecoration(
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                    ),
+
+                                    // border: UnderlineInputBorder(),
+                                    labelText: 'Internal Notes',
+                                    labelStyle: TextStyle(
+                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),),
                             ),
                           ),
                         ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
+                        //   child: Divider(
+                        //     color: Colors.grey,
+                        //     thickness: 0.5,
+                        //   ),
+                        // ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
-                          child: Divider(
-                            color: Colors.grey,
-                            thickness: 0.5,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0, bottom: 30),
+                          padding: const EdgeInsets.only(top: 10, bottom: 30),
                           child: Center(
                             child: SizedBox(
                               width: 346,
