@@ -1345,9 +1345,6 @@ class _LeadDetailState extends State<LeadDetail> {
                             width: MediaQuery.of(context).size.width /1.8,
                             // height: 20,
                           //  color: Colors.pinkAccent,
-
-
-
                             child: Wrap(
                               alignment: WrapAlignment.end,
                               direction: Axis.horizontal, // Direction is horizontal
@@ -1358,23 +1355,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                     widthFactor: null,
                                   child: InkWell(
                                     onTap: ()async{
-                                      // 0xFFEE4B39s
-                                      print(tags![index]["color"].toString());
-                                      print(tags![index]["id"].toString());
-                                      print("clicked tag");
-                                      // setState(() {
-                                      //   tags![index]["color"]="0xFFEE4B39";
-                                      // });
-
-
                                  var colors =   await getColors();
 
-
                                  int selectedtagId = tags![index]["id"];
-
-
-
-
                                       showDialog(
                                         context: context,
                                         builder: (BuildContext context) => _buildColorPopupDialog(context,colors,selectedtagId),
@@ -1382,8 +1365,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                         tagChangeColoir == null? tags![index]["color"] = tags![index]["color"]:
                                         tags![index]["color"] =  tagChangeColoir;
                                       }));
-
-
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
