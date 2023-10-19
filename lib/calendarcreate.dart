@@ -678,7 +678,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 10),
+                                        horizontal: 25, vertical: 1),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -693,7 +693,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding: const EdgeInsets.only(top: 2),
                                           child: Container(
                                             height:30,
                                             child: MultiSelectDropDown.network(
@@ -810,7 +810,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 10),
+                                        horizontal: 25, vertical: 1),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -826,7 +826,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 10),
+                                          padding: const EdgeInsets.only(top: 2),
                                           child: Container(
                                             height:30,
                                             child: MultiSelectDropDown.network(

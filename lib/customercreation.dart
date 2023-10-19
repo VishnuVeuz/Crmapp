@@ -1364,12 +1364,12 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal:17, vertical:5),
+                          const EdgeInsets.symmetric(horizontal:17, vertical:1),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left: 8),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Text(
                                   'Tags',
                                   style: TextStyle(
@@ -1383,7 +1383,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.only(top: 10),
+                                padding: const EdgeInsets.only(top: 2),
                                 child: Container(
                                   height:30,
                                   child: MultiSelectDropDown.network(

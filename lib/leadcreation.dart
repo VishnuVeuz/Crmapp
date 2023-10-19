@@ -1472,7 +1472,7 @@ class _LeadCreationState extends State<LeadCreation> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 17, vertical: 5),
+                                horizontal: 17, vertical: 1),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -1490,7 +1490,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 2),
                                   child: Container(
                                     height: 30,
                                     // color: Colors.red,

@@ -1147,11 +1147,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           ),
                         ),
                         SizedBox(
-                          height: 10,
+                          height: 0,
                         ),
                         Padding(
                           padding:
-                          const EdgeInsets.symmetric(horizontal:17, vertical: 5),
+                          const EdgeInsets.symmetric(horizontal:17, vertical: 1),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -1169,7 +1169,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 10),
+                                padding: const EdgeInsets.only(top: 2),
                                 child: Container(
                                   height:30,
                                   child: MultiSelectDropDown.network(
