@@ -192,6 +192,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
   bool _isSavingData = false;
 
+  String? tagChangeColoir;
+
   FocusNode _focusNode = FocusNode();
   bool shouldFocus = false;
 
@@ -1354,21 +1356,50 @@ class _LeadDetailState extends State<LeadDetail> {
                               children: List.generate(tags!.length ?? 0, (int index) {
                                 return FractionallySizedBox(
                                     widthFactor: null,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                                      color: Color(int.parse(tags![index]["color"])),
-                                    ),
-                                    width: 59,
-                                    height: 19,
-                                    child: Center(
-                                      child: Text(
-                                        tags![index]["name"].toString(),
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 10,
+                                  child: InkWell(
+                                    onTap: ()async{
+                                      // 0xFFEE4B39
+                                      print(tags![index]["color"].toString());
+                                      print(tags![index]["id"].toString());
+                                      print("clicked tag");
+                                      // setState(() {
+                                      //   tags![index]["color"]="0xFFEE4B39";
+                                      // });
+
+
+                                 var colors =   await getColors();
+
+
+                                 int selectedtagId = tags![index]["id"];
+
+
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) => _buildColorPopupDialog(context,colors,selectedtagId),
+                                      ).then((value) => setState(() {
+                                        tagChangeColoir == null? tags![index]["color"] = tags![index]["color"]:
+                                        tags![index]["color"] =  tagChangeColoir;
+                                      }));
+
+
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                                        color: Color(int.parse(tags![index]["color"])),
+                                      ),
+                                      width: 59,
+                                      height: 19,
+                                      child: Center(
+                                        child: Text(
+                                          tags![index]["name"].toString(),
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 10,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -8748,6 +8779,98 @@ class _LeadDetailState extends State<LeadDetail> {
         ),
       );
     });
+  }
+
+  _buildColorPopupDialog(BuildContext context,var colors,int selectedtagId) {
+    print(colors.length);
+    print(selectedtagId);
+    print("final colorss");
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          content: Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width / 1.5,
+           // height: MediaQuery.of(context).size.height / 2.7,
+             child: Wrap(
+            alignment: WrapAlignment.start,
+            direction: Axis.horizontal, // Direction is horizontal
+            spacing: 8.0, // Space between items
+            runSpacing: 8.0, // Space between rows (if wrapping)
+            children: List.generate(colors.length ?? 0, (int index) {
+              return FractionallySizedBox(
+                widthFactor: null,
+                child: InkWell(
+                  onTap: ()async{
+
+                    int selectedColorId = colors[index]["color"];
+
+                    String value = await colorChange(selectedtagId,selectedColorId);
+
+                    print(value);
+                    print("finalidididid");
+                   if( value == "success"){
+                     setState((){
+                       tagChangeColoir = colors[index]["code"];
+                     });
+
+                   }
+
+
+
+
+                    Navigator.pop(context);
+                    print(colors[index]["code"]);
+                    print(colors[index]["color"]);
+                    print("color code");
+                    
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Color(int.parse(colors[index]["code"])),
+                    ),
+                    width: 30,
+                    height: 30,
+                    // child: Center(
+                    //   child: Text(
+                    //     "hello",
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontFamily: 'Mulish',
+                    //       fontWeight: FontWeight.w500,
+                    //       fontSize: 10,
+                    //     ),
+                    //   ),
+                    // ),
+                  ),
+                ),
+              );
+            }),
+          ),
+          ));
+    });
+
+  }
+
+  getColors() async{
+
+    var data =
+        await colorsData();
+
+    print(data['records']);
+    print("lastlast");
+    print(data.length);
+
+    data.length==0? data=[]:
+        data=data['records'];
+
+
+return data;
+
+
+
   }
 
 }

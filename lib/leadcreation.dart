@@ -1499,6 +1499,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
 
+
                                       borderColor: Colors.transparent,
                                       backgroundColor: Colors.grey[50],
 
@@ -1506,11 +1507,11 @@ class _LeadCreationState extends State<LeadCreation> {
                                       borderWidth: 0,
 
 
-
                                       hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                       selectedOptions: editTagName
                                           .map((tag) => ValueItem( label: tag.label,value: tag.value))
                                           .toList(),
+
                                       onOptionSelected: (options) {
                                         print(options);
                                         tags.clear();
@@ -1541,7 +1542,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                                         final list = (response['records'] as List<
                                             dynamic>).map((e) {
-                                          final item = e as Map<String, dynamic>;
+                                          var item = e as Map<String, dynamic>;
                                           return ValueItem(
 
                                             label: item['name'],
@@ -1554,11 +1555,18 @@ class _LeadCreationState extends State<LeadCreation> {
                                       },
 
 
-                                      chipConfig: const ChipConfig(wrapType: WrapType.scroll,
+                                 chipConfig:  ChipConfig(wrapType: WrapType.scroll,
+
+                                   //
 
 
 
-                                      ),
+                                   //      backgroundColor: Colors.transparent,
+                                   // radius: 15,
+                                   // deleteIconColor: Colors.black,
+                                   // labelStyle:TextStyle(color: Colors.white, backgroundColor: Colors.pinkAccent,fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+
+                                 ),
 
                                       responseErrorBuilder: ((context, body) {
                                         print(body);

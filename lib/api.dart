@@ -2824,6 +2824,90 @@ defaultScheduleData(int id, String value) async {
   return data;
 }
 
+
+// tag colors
+colorsData()  async {
+  String token = await getUserJwt();
+
+
+  var data;
+  String? authresponce;
+
+  Response response = await get(
+    Uri.parse("${baseUrl}api/colors"),
+    headers: {
+      'Authorization': 'Bearer $token',
+    },
+  ).timeout(const Duration(
+    seconds: 10,
+  ));
+
+  if (response.statusCode != 200) {
+    data=[];
+    throw Exception("failed to get data from internet");
+
+  } else {
+    data = jsonDecode(response.body);
+  }
+
+  print(data);
+  print("data");
+
+  return data;
+}
+
+colorChange(int tagId,colorId) async {
+
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "color":colorId,
+
+      }
+    });
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/tag/${tagId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+    print(msg);
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      print(data);
+      print("finalstring");
+      resMessage = data['result']['message'];
+      print(resMessage);
+      print("leadeditresponce");
+
+      if (data['result']['message'].toString() == "success") {
+        print("121212121212");
+        resMessageText = "success";
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "error";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+
+  print(resMessageText);
+  print("dataaa");
+  return resMessageText;
+}
+
+
+// tag colors
+
 //send message
 
 defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
