@@ -4924,8 +4924,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 Container(),
                                                           ),
 
-
-
                                                                 SizedBox(height:5),
                                                                 Container(
                                                                   width: MediaQuery.of(context)
