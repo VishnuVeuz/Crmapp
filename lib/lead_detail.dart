@@ -469,41 +469,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             )
                           ],
                         ),
-                        Column(
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                print(widget.leadId);
-                                var data = await deleteLeadData(widget.leadId);
 
-                                if (data['message'] == "Success") {
-                                  print("responce");
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            LeadScrolling("", "", "")),
-                                  );
-                                }
-                              },
-                              child: SvgPicture.asset(
-                                "images/delete.svg",
-                                width: 28,
-                                height: 28,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5),
-                              child: Text("Delete",
-                                  style: TextStyle(
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                    color: Color(0xFF212121),
-                                  )),
-                            )
-                          ],
-                        ),
+
+
                         Column(
                           children: [
                             InkWell(
@@ -520,6 +488,41 @@ class _LeadDetailState extends State<LeadDetail> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      print(widget.leadId);
+                                                      var data = await deleteLeadData(widget.leadId);
+
+                                                      if (data['message'] == "Success") {
+                                                        print("responce");
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  LeadScrolling("", "", "")),
+                                                        );
+                                                      }
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/delete.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Delete",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              ),
                                               Column(
                                                 children: [
                                                   InkWell(
@@ -850,6 +853,13 @@ class _LeadDetailState extends State<LeadDetail> {
                           ],
                         )
                       ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
                     ),
                   ),
                   Row(
@@ -1349,6 +1359,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             width: MediaQuery.of(context).size.width /1.8,
                             // height: 20,
                           //  color: Colors.pinkAccent,
+
+
+
                             child: Wrap(
                               alignment: WrapAlignment.end,
                               direction: Axis.horizontal, // Direction is horizontal
@@ -1359,7 +1372,22 @@ class _LeadDetailState extends State<LeadDetail> {
                                     widthFactor: null,
                                   child: InkWell(
                                     onTap: ()async{
+                                      // 0xFFEE4B39s
+                                      print(tags![index]["color"].toString());
+                                      print(tags![index]["id"].toString());
+                                      print("clicked tag");
+                                      // setState(() {
+                                      //   tags![index]["color"]="0xFFEE4B39";
+                                      // });
+
+
                                  var colors =   await getColors();
+
+                                // int selectedtagId = tags![index]["id"];
+
+
+
+
 
                                  int selectedtagId = tags![index]["id"];
                                       showDialog(
@@ -1369,6 +1397,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                         tagChangeColoir == null? tags![index]["color"] = tags![index]["color"]:
                                         tags![index]["color"] =  tagChangeColoir;
                                       }));
+
+
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -1403,7 +1433,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22,bottom: 20),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
                       thickness: 2,
@@ -1415,7 +1445,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                   Container(
-                    color: Color(0xFFF6F6F6),
+                    color: Color(0xFFF5F5F5),
                     child: Row(
                       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1511,7 +1541,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             padding: const EdgeInsets.only(left: 25,right: 25),
                             child: Text(internalnotes!,
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w400,
+                                    fontWeight: FontWeight.w500,
                                     fontFamily: 'Mulish',
                                     fontSize: 12,
                                     color: Color(0xFF787878))),
@@ -1527,7 +1557,7 @@ class _LeadDetailState extends State<LeadDetail> {
                  child: Column(
                      children: [
                        Padding(
-                         padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                         padding: const EdgeInsets.only(top: 20, left: 22, right: 22),
                          child: Divider(
                            color: Color(0xFFF4F4F4),
                            thickness: 2,
@@ -1677,7 +1707,7 @@ class _LeadDetailState extends State<LeadDetail> {
                          ],
                        ),
                        Padding(
-                         padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                         padding: const EdgeInsets.only(top: 0, left: 22, right: 22,bottom: 20),
                          child: Divider(
                            color: Color(0xFFF4F4F4),
                            thickness: 2,
@@ -1688,7 +1718,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ),
                   Container(
-                    color: Color(0xFFF6F6F6),
+                    color: Color(0xFFF5F5F5),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -1973,6 +2003,14 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 0, right: 0,bottom: 10),
+                    child: Divider(
+                      color: Color(0xFFEBEBEB),
+                      thickness: 2,
+                    ),
+                  ),
+
 
                   // code for attchments
 
@@ -4624,7 +4662,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       ),
                                                                       Text(
                                                                         // testflutterdemoAZv (1636:34)
-                                                                       logDataTitle[indexx][indexs]['body'],
+                                                                       logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                                           .toString() ??
+                                                                           "",
                                                                         style: TextStyle (
                                                                           fontFamily: 'Mulish',
                                                                           fontSize: 9,
