@@ -2185,19 +2185,19 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             },
                           ),
                           Container(
-                            width: 0,
+                            width: 25,
                             // color: Colors.green,
                             child: Text(
                               attachmentCount!,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 13,
                                 fontFamily: 'Mulish',
                               ),
                             ),
                           ),
                           followerStatus == false
                               ? Padding(
-                                  padding: const EdgeInsets.only(left:200),
+                                  padding: const EdgeInsets.only(left:180),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2239,7 +2239,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   ),
                                 )
                               : Padding(
-                                  padding: const EdgeInsets.only(left: 200),
+                                  padding: const EdgeInsets.only(left: 180),
                                   child: Row(
                                     children: [
                                       Icon(
@@ -2300,12 +2300,12 @@ class _QuotationDetailState extends State<QuotationDetail> {
                            ),
 
                           Container(
-                            width: 30,
+                            width: 25,
                             //color: Colors.green,
                             child: Text(
                               followerCount!,
                               style:
-                                  TextStyle(fontSize: 15, fontFamily: 'Mulish'),
+                                  TextStyle(fontSize: 13, fontFamily: 'Mulish'),
                             ),
                           ),
                         ],
@@ -2317,420 +2317,380 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                   Visibility(
                     visible: attachmentVisibility,
-                    child: Column(
-                      children: [
-                        FutureBuilder(
-                            future: getattchmentData(
-                                widget.quotationId, "sale.order"),
-                            builder: (context, AsyncSnapshot snapshot) {
-                              if (snapshot.hasError) {}
-                              if (snapshot.connectionState ==
-                                  ConnectionState.done) {
-                                if (snapshot.hasData) {
-                                  if (snapshot.data == null) {
-                                    return const Center(
-                                        child: Text('Something went wrong'));
-                                  }
-                                  if (snapshot.data.length != 0) {
-                                    attachmentImagesDisplay = snapshot.data['images'];
-                                    attachmentFileDisplay = snapshot.data['files'];
-                                    return Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 0, right: 0),
-                                          child: Container(
-                                            //color: Colors.green,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25,right: 25),
+                      child: Column(
+                        children: [
+                          FutureBuilder(
+                              future: getattchmentData(
+                                  widget.quotationId, "sale.order"),
+                              builder: (context, AsyncSnapshot snapshot) {
+                                if (snapshot.hasError) {}
+                                if (snapshot.connectionState ==
+                                    ConnectionState.done) {
+                                  if (snapshot.hasData) {
+                                    if (snapshot.data == null) {
+                                      return const Center(
+                                          child: Text('Something went wrong'));
+                                    }
+                                    if (snapshot.data.length != 0) {
+                                      attachmentImagesDisplay = snapshot.data['images'];
+                                      attachmentFileDisplay = snapshot.data['files'];
+                                      return Column(
+                                        children: [
+                                          Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child:attachmentImagesDisplay.length>0?  GridView.builder(
+                                                  shrinkWrap: true,
+                                                  // Avoid scrolling
+                                                  physics: NeverScrollableScrollPhysics(),
+                                                  itemCount: attachmentImagesDisplay.length,
+                                                  // itemCount: 15,
+                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                    crossAxisCount: 4,
+                                                    mainAxisSpacing: 1.0,
+                                                    crossAxisSpacing: 1.0,
+                                                    childAspectRatio: 1,
+                                                  ),
+                                                  itemBuilder: (BuildContext context, int index) {
+                                                    return Container(
 
-                                            width:
-                                                MediaQuery.of(context).size.width,
-
-                                            child: GridView.builder(
-                                              shrinkWrap: true,
-                                              physics:
-                                                  NeverScrollableScrollPhysics(),
-                                              itemCount:
-                                                  attachmentImagesDisplay.length,
-                                              gridDelegate:
-                                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                                      crossAxisCount: 4),
-                                              itemBuilder: (BuildContext context,
-                                                  int index) {
-                                                return Center(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        left: 15, right: 15),
-                                                    child: Container(
+                                                      margin: EdgeInsets.fromLTRB(2, 0, 2, 0),
+                                                      width: 80,
+                                                      height: double.infinity,
                                                       child: Stack(
                                                         children: [
-                                                          ClipRRect(
-                                                            child: Image.network(
-                                                              "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                                                              height: 100,
-                                                              width: 80,
-                                                            ),
-                                                          ),
                                                           Positioned(
-                                                              left: 37,
-                                                              right: 0,
-                                                              bottom: 70,
-                                                              top: 1,
-                                                              child: Container(
-                                                                width: 20,
-                                                                height: 20,
-                                                                decoration: BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(
-                                                                                20),
-                                                                    color: Color(
-                                                                        0xFFFFFFFF)),
-                                                                child: IconButton(
-                                                                  icon: SvgPicture
-                                                                      .asset(
-                                                                          "images/trash.svg"),
-                                                                  onPressed:
-                                                                      () async {
-                                                                    print(attachmentImagesDisplay[
-                                                                            index]
-                                                                        ['id']);
-                                                                    print(
-                                                                        "idvaluevalue");
-                                                                    // print(
-                                                                    //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                    int lodAttachmentId =
-                                                                        attachmentImagesDisplay[
-                                                                                index]
-                                                                            ['id'];
-                                                                    var data =
-                                                                        await deleteLogAttachment(
-                                                                            lodAttachmentId);
-
-                                                                    if (data[
-                                                                            'message'] ==
-                                                                        "Success") {
-                                                                      print(
-                                                                          "jhbdndsjbv");
-                                                                      await getQuotationDetails();
-                                                                      setState(() {
-                                                                        attachmentImagesDisplay
-                                                                            .clear();
-                                                                      });
-                                                                    }
-
-                                                                    // print(
-                                                                    //     data);
-                                                                    print(
-                                                                        "delete testststs");
-                                                                  },
-                                                                ),
-                                                              ))
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 0, right: 0),
-                                          child: Container(
-                                            //color: Colors.green,
-
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-
-                                            child: attachmentFileDisplay.length>0? GridView.builder(
-                                              shrinkWrap: true,
-                                              physics:
-                                              NeverScrollableScrollPhysics(),
-                                              itemCount:
-                                              attachmentFileDisplay.length,
-                                              gridDelegate:
-                                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 1,
-                                                mainAxisSpacing: 5.0,
-                                                crossAxisSpacing: 5.0,
-                                                childAspectRatio: 5,
-                                              ),
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                  int index) {
-                                                print(
-                                                    attachmentFileDisplay[index]
-                                                    ['id']);
-                                                print("demodatatatata");
-
-                                                return Center(
-                                                    child: Padding(
-                                                      padding:
-                                                      const EdgeInsets.only(
-                                                          left: 25, right: 25),
-                                                      child: Container(
-                                                        margin:
-                                                        const EdgeInsets.all(
-                                                            5.0),
-                                                        //padding: const EdgeInsets.all(10.0),
-                                                        //color: Colors.white,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                            color: Colors.grey[350],
-                                                            border: Border.all(
-                                                                color:
-                                                                Colors.grey)),
-                                                        width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                        // height: MediaQuery.of(context).size.height/18,
-                                                        child: Column(
-                                                          children: [
-                                                            Row(
-                                                              children: [
-                                                                Padding(
-                                                                  padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      top: 10,
-                                                                      left: 5),
-                                                                  child: FittedBox(
-                                                                    child: SizedBox(
-                                                                      width: 45,
-                                                                      height: 45,
-                                                                      child:
-                                                                      DecoratedBox(
-                                                                        decoration:
-                                                                        BoxDecoration(
-                                                                          color: attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/pdf"
-                                                                              ? Color(
-                                                                              0xFFEF5350)
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/msword"
-                                                                              ? Color(0xFF2196F3)
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                              ? Color(0xFF4CAF50)
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/xml"
-                                                                              ? Color(0xFF0277BD)
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/zip"
-                                                                              ? Color(0xFFFDD835)
-                                                                              : Color(0xFFFFFFFF),
-                                                                          borderRadius:
-                                                                          BorderRadius.all(
-                                                                              Radius.circular(10)),
-                                                                        ),
-                                                                        child:
-                                                                        Center(
-                                                                          child:
-                                                                          Icon(
-                                                                            attachmentFileDisplay[index]["mimetype"] ==
-                                                                                "application/pdf"
-                                                                                ? Icons.picture_as_pdf_sharp
-                                                                                : attachmentFileDisplay[index]["mimetype"] == "application/msword"
-                                                                                ? Icons.article_outlined
-                                                                                : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                ? Icons.clear
-                                                                                : attachmentFileDisplay[index]["mimetype"] == "application/xml"
-                                                                                ? Icons.code_off
-                                                                                : attachmentFileDisplay[index]["mimetype"] == "application/zip"
-                                                                                ? Icons.folder_zip_outlined
-                                                                                : Icons.access_time_filled_outlined,
-                                                                            color: Colors
-                                                                                .white,
-                                                                            size:
-                                                                            25,
-                                                                          ),
-                                                                        ),
+                                                            // rectangle4756kQ (1652:322)
+                                                            left: 0,
+                                                            top: 6,
+                                                            child: Align(
+                                                              child: SizedBox(
+                                                                width: 75,
+                                                                height: 71,
+                                                                child: Container(
+                                                                  decoration: BoxDecoration (
+                                                                    borderRadius: BorderRadius.circular(3),
+                                                                    color: Color(0xffd9d9d9),
+                                                                    image: DecorationImage (
+                                                                      fit: BoxFit.cover,
+                                                                      image: NetworkImage (
+                                                                          "${attachmentImagesDisplay[index]['url']}?token=${token}"
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                                SizedBox(
-                                                                  width: 10,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Positioned(
+                                                            // group20514mrY (1652:323)
+                                                            left: 60,
+                                                            top: 0,
+                                                            child: Align(
+                                                              child: SizedBox(
+                                                                width: 20,
+                                                                height: 20,
+                                                                child: Image.asset(
+                                                                  'images/logimagedelete.png',
+                                                                  width: 20,
+                                                                  height: 20,
                                                                 ),
-                                                                Column(
-                                                                  children: [
-                                                                    Container(
-                                                                        width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width /
-                                                                            3.8,
-                                                                        //color: Colors.blue,
-                                                                        child: Text(
-                                                                          attachmentFileDisplay[
-                                                                          index]
-                                                                          [
-                                                                          "name"],
-                                                                          style: TextStyle(
-                                                                              color: Colors
-                                                                                  .black,
-                                                                              fontSize:
-                                                                              12,
-                                                                              fontFamily:
-                                                                              'Mulish'),
-                                                                        )),
-                                                                    SizedBox(
-                                                                      height: 10,
-                                                                    ),
-                                                                    Container(
-                                                                        width: MediaQuery.of(context)
-                                                                            .size
-                                                                            .width /
-                                                                            3.8,
-                                                                        // color: Colors.green,
-                                                                        child: Text(
-                                                                          attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/pdf"
-                                                                              ? "PDF"
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/msword"
-                                                                              ? "WORD"
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                              ? "EXCEL"
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/xml"
-                                                                              ? "XML"
-                                                                              : attachmentFileDisplay[index]["mimetype"] == "application/zip"
-                                                                              ? "ZIP"
-                                                                              : "",
-                                                                          style: TextStyle(
-                                                                              color: Colors
-                                                                                  .blue,
-                                                                              fontSize:
-                                                                              11,
-                                                                              fontFamily:
-                                                                              'Mulish'),
-                                                                        )),
-                                                                  ],
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 120,
-                                                                ),
-                                                                Column(
-                                                                  children: [
-                                                                    Container(
-                                                                      width: 30,
-                                                                      height: 30,
-                                                                      //color: Colors.green,
-                                                                      child:
-                                                                      IconButton(
-                                                                        icon: SvgPicture
-                                                                            .asset(
-                                                                            "images/trash.svg"),
-                                                                        onPressed:
-                                                                            () async {
-                                                                              int lodAttachmentId =
-                                                                              attachmentFileDisplay[
-                                                                              index]
-                                                                              ['id'];
-                                                                              var data =
-                                                                              await deleteLogAttachment(
-                                                                                  lodAttachmentId);
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Positioned(
+                                                            // trash2G2c (1652:325)
+                                                            left: 65,
+                                                            top: 5,
+                                                            child: Align(
+                                                              child: InkWell(
+                                                                onTap: ()async{
+                                                                  int lodAttachmentId =
+                                                                  attachmentImagesDisplay[index]['id'];
+                                                                  var data =
+                                                                  await deleteLogAttachment(
+                                                                      lodAttachmentId);
 
-                                                                              if (data[
-                                                                              'message'] ==
-                                                                                  "Success") {
-                                                                                print(
-                                                                                    "jhbdndsjbv");
-                                                                                await getQuotationDetails();
-                                                                                setState(() {
-                                                                                  attachmentFileDisplay
-                                                                                      .clear();
-                                                                                });
-                                                                              }
+                                                                  if (data['message'] == "Success") {
 
-                                                                        },
+                                                                    await getQuotationDetails();
+                                                                    setState(() {
+                                                                      attachmentImagesDisplay.clear();
+                                                                    });
+                                                                  }
+
+                                                                },
+                                                                child: SizedBox(
+                                                                  width: 9,
+                                                                  height: 10,
+                                                                  child: Image.asset(
+                                                                    'images/logtrash.png',
+                                                                    width: 9,
+                                                                    height: 10,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+
+
+
+
+
+
+
+
+
+                                                        ],
+                                                      ),
+                                                    );
+                                                  }
+                                              ):
+                                              Container(),
+                                          ),
+
+                                          SizedBox(height:5),
+
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+
+                                            child:attachmentFileDisplay.length>0? GridView.builder(
+                                                shrinkWrap: true,
+                                                // Avoid scrolling
+                                                physics: NeverScrollableScrollPhysics(),
+                                                itemCount: attachmentFileDisplay.length,
+                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 1,
+                                                  //mainAxisSpacing: 5.0,
+                                                  crossAxisSpacing: 1.0,
+                                                  childAspectRatio: 5.5,
+                                                ),
+                                                itemBuilder: (BuildContext context, int index) {
+
+                                                  return
+                                                    Container(
+                                                      margin: EdgeInsets.fromLTRB(2, 0, 2, 0),
+                                                      // group20585QEc (1652:502)
+                                                      width: double.infinity,
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        children: [
+                                                          Container(
+                                                            // group20565Yrc (1652:364)
+                                                            padding: EdgeInsets.fromLTRB(14, 11, 18, 9),
+                                                            width: double.infinity,
+                                                            height: 52,
+                                                            decoration: BoxDecoration (
+                                                              border: Border.all(color: Color(0xffebebeb)),
+                                                              borderRadius: BorderRadius.circular(6),
+                                                            ),
+                                                            child: Row(
+                                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                                              children: [
+                                                                Container(
+                                                                  // pdffile21FW8 (1652:378)
+                                                                  margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
+                                                                  width: 23,
+                                                                  height: 29,
+                                                                  child: Image.asset(
+                                                                    attachmentFileDisplay[index]["mimetype"] == "application/pdf"
+                                                                        ? 'images/logpdf.png'
+                                                                        : attachmentFileDisplay[index]["mimetype"] == "application/msword"
+                                                                        ? 'images/logword.png'
+                                                                        : attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                        ? 'images/logexcel.png'
+                                                                        : attachmentFileDisplay[index]["mimetype"] == "application/xml"
+                                                                        ? 'images/logxml.png'
+                                                                        : attachmentFileDisplay[index]["mimetype"] == "application/zip"
+                                                                        ? 'images/logzip.png'
+                                                                        : '',
+
+
+                                                                    width: 23,
+                                                                    height: 29,
+                                                                  ),
+                                                                ),
+                                                                Container(
+                                                                  width: MediaQuery.of(context).size.width/2,
+                                                                  //height: double.infinity,
+                                                                  child: Stack(
+                                                                    children: [
+                                                                      Positioned(
+                                                                        // pdfnamearea1tc (1652:376)
+                                                                        left: 0,
+                                                                        top: 00,
+                                                                        child: Align(
+                                                                          child: SizedBox(
+                                                                            width: MediaQuery.of(context).size.width/2,
+                                                                            child: Text(
+                                                                              attachmentFileDisplay[index]["name"],
+                                                                              style: TextStyle (
+                                                                                fontFamily: 'Mulish',
+                                                                                fontSize: 12,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                color: Color(0xff202020),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                    Container(
-                                                                      width: 34,
-                                                                      height: 20,
-                                                                      //color: Colors.green,
-                                                                      child:
-                                                                      IconButton(
-                                                                        icon: Icon(Icons
-                                                                            .download),
-                                                                        onPressed:
-                                                                            () async {
-                                                                          await getExternalStorageDirectory();
+                                                                      Positioned(
+                                                                        // pdfuDJ (1652:377)
+                                                                        left: 0,
+                                                                        top: 18,
+                                                                        child: Align(
+                                                                          child: SizedBox(
+                                                                            width: 50,
+                                                                            // height: 15,
+                                                                            child: Text(
+                                                                              attachmentFileDisplay[index]["mimetype"] == "application/pdf"?
+                                                                              "PDF":attachmentFileDisplay[index]["mimetype"] == "application/msword"?
+                                                                              "WORD": attachmentFileDisplay[index]["mimetype"] == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"?
+                                                                              "EXCEL": attachmentFileDisplay[index]["mimetype"] == "application/xml"?
+                                                                              "XML":attachmentFileDisplay[index]["mimetype"] == "application/zip"?
+                                                                              "ZIP":"",
 
-                                                                          print(selectedImagesDisplay);
-                                                                          print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+                                                                              style: TextStyle (
+                                                                                fontFamily: 'Mulish',
+                                                                                fontSize: 9,
+                                                                                fontWeight: FontWeight.w500,
 
-                                                                          //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-                                                                          String mimetypes = attachmentFileDisplay[index]['mimetype'];
-                                                                          //String mimetypes = "application/pdf";
-
-                                                                          String itemName, itemNamefinal;
-
-                                                                          itemName = attachmentFileDisplay[index]['name'];
-
-                                                                          mimetypes == "application/pdf"
-                                                                              ? itemNamefinal = "${itemName}.pdf"
-                                                                              : mimetypes == "application/msword"
-                                                                              ? itemNamefinal = "${itemName}.doc"
-                                                                              : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                              ? itemNamefinal = "${itemName}.xlsx"
-                                                                              : mimetypes == "application/xml"
-                                                                              ? itemNamefinal = "${itemName}.xml"
-                                                                              : mimetypes == "application/zip"
-                                                                              ? itemNamefinal = "${itemName}.zip"
-                                                                              : mimetypes == "image/jpeg"
-                                                                              ? itemNamefinal = "${itemName}.jpeg"
-                                                                              : mimetypes == "image/png"
-                                                                              ? itemNamefinal = "${itemName}.png"
-                                                                              : itemNamefinal = "${itemName}";
-
-
-                                                                          FlutterDownloader.registerCallback(downloadCallback);
-
-                                                                          requestPermission(itemNamefinal, attachmentFileDisplay[index]['url']);
-
-                                                                          //_startDownload(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-
-                                                                        },
+                                                                                color: Color(0xff666666),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
                                                                       ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                InkWell(
+                                                                  child: Container(
+                                                                    // trash2Qvk (1652:366)
+                                                                    margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
+                                                                    width: 15,
+                                                                    height: 16,
+                                                                    child: Image.asset(
+                                                                      'images/logtrash.png',
+                                                                      width: 15,
+                                                                      height: 16,
                                                                     ),
-                                                                  ],
+                                                                  ),
+                                                                  onTap: ()async{
+                                                                    int lodAttachmentId =
+                                                                    attachmentFileDisplay[index]
+                                                                    [
+                                                                    'id'];
+                                                                    var data =
+                                                                    await deleteLogAttachment(
+                                                                        lodAttachmentId);
+
+                                                                    if (data[
+                                                                    'message'] ==
+                                                                        "Success") {
+                                                                      print(
+                                                                          "jhbdndsjbv");
+                                                                      await getQuotationDetails();
+                                                                      setState(
+                                                                              () {
+                                                                            attachmentFileDisplay
+                                                                                .clear();
+                                                                          });
+                                                                    }
+
+                                                                  },
+                                                                ),
+                                                                InkWell(
+                                                                  child: Container(
+                                                                    // download6oa (1652:371)
+                                                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
+                                                                    width: 14,
+                                                                    height: 14,
+                                                                    child: Image.asset(
+                                                                      'images/logdownload.png',
+                                                                      width: 14,
+                                                                      height: 14,
+                                                                    ),
+                                                                  ),
+                                                                  onTap: ()async{
+                                                                    await getExternalStorageDirectory();
+
+                                                                    print(selectedImagesDisplay);
+                                                                    print("dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                    //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                    String mimetypes = attachmentFileDisplay[index]['mimetype'];
+                                                                    //String mimetypes = "application/pdf";
+
+                                                                    String itemName, itemNamefinal;
+
+                                                                    itemName = attachmentFileDisplay[index]['name'];
+
+                                                                    mimetypes == "application/pdf"
+                                                                        ? itemNamefinal = "${itemName}.pdf"
+                                                                        : mimetypes == "application/msword"
+                                                                        ? itemNamefinal = "${itemName}.doc"
+                                                                        : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                        ? itemNamefinal = "${itemName}.xlsx"
+                                                                        : mimetypes == "application/xml"
+                                                                        ? itemNamefinal = "${itemName}.xml"
+                                                                        : mimetypes == "application/zip"
+                                                                        ? itemNamefinal = "${itemName}.zip"
+                                                                        : mimetypes == "image/jpeg"
+                                                                        ? itemNamefinal = "${itemName}.jpeg"
+                                                                        : mimetypes == "image/png"
+                                                                        ? itemNamefinal = "${itemName}.png"
+                                                                        : itemNamefinal = "${itemName}";
+
+
+                                                                    FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                    requestPermission(itemNamefinal, attachmentFileDisplay[index]['url']);
+
+                                                                  },
                                                                 ),
                                                               ],
-                                                            )
-                                                          ],
-                                                        ),
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 9,
+                                                          ),
+
+
+                                                        ],
                                                       ),
-                                                    ));
-                                              },
+                                                    );
+                                                }
                                             ):
                                             Container(),
                                           ),
-                                        ),
 
-                                      ],
-                                    );
-                                  } else {
-                                    return Container();
+                                        ],
+                                      );
+                                    } else {
+                                      return Container();
+                                    }
                                   }
                                 }
-                              }
-                              return Center(
-                                  child: const CircularProgressIndicator());
-                            }),
-                        TextButton(
-                            onPressed: () {
-                              myAlert("attachment");
-                            },
-                            child: Text(
-                              "Select Attachments",
-                              style: TextStyle(
-                                  color: Colors.black, fontFamily: 'Mulish'),
-                            )),
-                      ],
+                                return Center(
+                                    child: const CircularProgressIndicator());
+                              }),
+                          TextButton(
+                              onPressed: () {
+                                myAlert("attachment");
+                              },
+                              child: Text(
+                                "Select Attachments",
+                                style: TextStyle(
+                                    color: Colors.black, fontFamily: 'Mulish'),
+                              )),
+                        ],
+                      ),
                     ),
                   ),
                   //
