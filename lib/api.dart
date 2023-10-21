@@ -8,8 +8,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'globals.dart' as globals;
 import 'model/calendarmodel.dart';
  //String baseUrl = "http://10.10.10.123:8030/";
-//server
-  String baseUrl = "http://165.22.30.188:8040/";
+//server amar
+//   String baseUrl = "http://165.22.30.188:8040/";
+
+  // server jithin
+String baseUrl = "http://207.154.229.85:8080/";
+
 
 //live server bibpin
 //String baseUrl = "http://207.154.229.85:8069/";
@@ -39,6 +43,7 @@ login(String email, password, dbId) async {
     var data = jsonDecode(response.body.toString());
 
     authresponce = data['result'].toString();
+    print(authresponce);
 
     resMessage = data['result']['message'].toString();
 

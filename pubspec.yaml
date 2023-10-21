@@ -262,6 +262,21 @@ flutter:
     - images/ho.svg
     - images/hoColor.svg
     - images/leadd.svg
+    - images/edit2.png
+    - images/delete2.png
+    - images/starr.png
+    - images/starr1.png
+    - images/smile2.png
+    - images/logdownload.png
+    - images/logtrash.png
+    - images/logpdf.png
+    - images/logimagedelete.png
+    - images/logzip.png
+    - images/logword.png
+    - images/logexcel.png
+    - images/logxml.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

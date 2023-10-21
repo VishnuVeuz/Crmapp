@@ -3160,6 +3160,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   SizedBox(
                                                                     width: 10,
                                                                   ),
+
                                                                   Column(
                                                                     children: [
                                                                       Container(
@@ -3181,6 +3182,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 fontFamily:
                                                                                 'Mulish'),
                                                                           )),
+
                                                                       SizedBox(
                                                                         height: 10,
                                                                       ),
@@ -6341,6 +6343,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               },
                                                                             )),
                                                                       ),
+
                                                                       selectedImagesDisplay.isEmpty
                                                                           ? Padding(
                                                                               padding: const EdgeInsets.only(left:26),
