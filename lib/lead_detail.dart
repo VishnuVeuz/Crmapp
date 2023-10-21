@@ -4513,14 +4513,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 elevation: 1,
                                                 child: Column(
                                                   children: [
-
-
-
-
-
-
                                                     Container(
-
+                                                      margin: EdgeInsets.only(top: 20),
                                                       width: 340,
                                                       height: 35,
                                                       child: Row(
@@ -4820,8 +4814,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             // itemCount: 15,
                                                             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                                               crossAxisCount: 4,
-                                                              mainAxisSpacing: 10.0,
-                                                              crossAxisSpacing: 10.0,
+                                                              mainAxisSpacing: 1.0,
+                                                              crossAxisSpacing: 1.0,
                                                               childAspectRatio: 1,
                                                             ),
                                                             itemBuilder: (BuildContext context, int index) {
@@ -4831,7 +4825,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               print("selectedImagesDisplay.length,");
                                                               return Container(
 
-                                                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                                                    margin: EdgeInsets.fromLTRB(10, 0, 2, 0),
                                                                     width: 80,
                                                                     height: double.infinity,
                                                                     child: Stack(
@@ -5140,118 +5134,130 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       Container(),
                                                                 ),
 
-
                                                             ],
                                                           ),
-
-
-
-                                                          //pdfffff
-
-
-
                                                           emojiSet.length > 0 ?
-                                                          GridView.builder(
-                                                              shrinkWrap: true, // Avoid scrolling
-                                                              physics: NeverScrollableScrollPhysics(),
-                                                              itemCount: emojiSet.length,
-                                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                crossAxisCount: 8,
-                                                                mainAxisSpacing: 5.0,
-                                                                crossAxisSpacing: 5.0,
-                                                                childAspectRatio: 1.5,
-                                                              ),
-                                                              itemBuilder: (BuildContext context, int index) {
-                                                            // return Container(
-                                                            //   width: MediaQuery.of(context).size.width,
-                                                            //   height: 14,
-                                                            //   child: Row(
-                                                            //     crossAxisAlignment: CrossAxisAlignment.center,
-                                                            //     children: [
-                                                            //       Container(
-                                                            //
-                                                            //
-                                                            //
-                                                            //         // group20582xtx (1652:504)
-                                                            //         margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                            //       //  padding: EdgeInsets.fromLTRB(5, 3, 5, 2),
-                                                            //         width:35,
-                                                            //         height: 30,
-                                                            //         decoration: BoxDecoration (
-                                                            //           border: Border.all(color: Color(0xffebebeb)),
-                                                            //          // color: Color(0xffffffff),
-                                                            //           color:Colors.green,
-                                                            //           borderRadius: BorderRadius.circular(2),
-                                                            //         ),
-                                                            //         child: Container(
-                                                            //           // group20586bh2 (1652:1136)
-                                                            //           width: double.infinity,
-                                                            //           height: double.infinity,
-                                                            //           child: Row(
-                                                            //             crossAxisAlignment: CrossAxisAlignment.center,
-                                                            //             children: [
-                                                            //               Container(
-                                                            //                 color:Colors.red,
-                                                            //                 // image258kZv (1652:1139)
-                                                            //                 margin: EdgeInsets.fromLTRB(0, 0, 2, 0),
-                                                            //                 width: 30,
-                                                            //                 height: 20,
-                                                            //                 child:  Text("5"),
-                                                            //                 // child:  Text(emojiSet[index]['emoji']),
-                                                            //               ),
-                                                            //               Text(
-                                                            //                 // 5cC (1652:1138)
-                                                            //                 emojiSet[index]['count'].toString(),
-                                                            //                 style: TextStyle (
-                                                            //                   fontFamily: 'Mulish',
-                                                            //                   fontSize: 5,
-                                                            //                   fontWeight: FontWeight.w600,
-                                                            //
-                                                            //                   color: Color(0xff000000),
-                                                            //                 ),
-                                                            //               ),
-                                                            //             ],
-                                                            //           ),
-                                                            //         ),
-                                                            //       ),
-                                                            //
-                                                            //
-                                                            //     ],
-                                                            //   ),
-                                                            // );
+                                                          Container(
+                                                            width: MediaQuery.of(context)
+                                                                .size
+                                                                .width,
 
-                                                            return InkWell(
-
-                                                                child: Container(
-                                                                  width: 30,
-                                                                  height: 15,
-                                                                  decoration: BoxDecoration(color: Colors.white,
-                                                                      borderRadius: BorderRadius.all(Radius.circular(3)),
-                                                                      border: Border.all(color: Color(0XFFEBEBEB), width: 1)),
-                                                                  // color: Colors.red,
-                                                                  child: Row(
-
-                                                                    children: [
-                                                                      Text(emojiSet[index]['emoji']),
-                                                                      SizedBox(width: 5),
-                                                                      Text(emojiSet[index]['count'].toString()),
-                                                                    ],
-                                                                  ),
+                                                            child: GridView.builder(
+                                                                shrinkWrap: true, // Avoid scrolling
+                                                                physics: NeverScrollableScrollPhysics(),
+                                                                itemCount: emojiSet.length,
+                                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  crossAxisCount: 6,
+                                                                  mainAxisSpacing: 5.0,
+                                                                  crossAxisSpacing: 5.0,
+                                                                  childAspectRatio: 2,
                                                                 ),
-                                                                onTap: () async {
-                                                                  var data = await deleteEmoji(
-                                                                      emojiSet[index]['emoji'],
-                                                                      logDataTitle[indexx][indexs]['id']);
+                                                                itemBuilder: (BuildContext context, int index) {
+                                                              // return Container(
+                                                              //   width: MediaQuery.of(context).size.width,
+                                                              //   height: 14,
+                                                              //   child: Row(
+                                                              //     crossAxisAlignment: CrossAxisAlignment.center,
+                                                              //     children: [
+                                                              //       Container(
+                                                              //
+                                                              //
+                                                              //
+                                                              //         // group20582xtx (1652:504)
+                                                              //         margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                              //       //  padding: EdgeInsets.fromLTRB(5, 3, 5, 2),
+                                                              //         width:35,
+                                                              //         height: 30,
+                                                              //         decoration: BoxDecoration (
+                                                              //           border: Border.all(color: Color(0xffebebeb)),
+                                                              //          // color: Color(0xffffffff),
+                                                              //           color:Colors.green,
+                                                              //           borderRadius: BorderRadius.circular(2),
+                                                              //         ),
+                                                              //         child: Container(
+                                                              //           // group20586bh2 (1652:1136)
+                                                              //           width: double.infinity,
+                                                              //           height: double.infinity,
+                                                              //           child: Row(
+                                                              //             crossAxisAlignment: CrossAxisAlignment.center,
+                                                              //             children: [
+                                                              //               Container(
+                                                              //                 color:Colors.red,
+                                                              //                 // image258kZv (1652:1139)
+                                                              //                 margin: EdgeInsets.fromLTRB(0, 0, 2, 0),
+                                                              //                 width: 30,
+                                                              //                 height: 20,
+                                                              //                 child:  Text("5"),
+                                                              //                 // child:  Text(emojiSet[index]['emoji']),
+                                                              //               ),
+                                                              //               Text(
+                                                              //                 // 5cC (1652:1138)
+                                                              //                 emojiSet[index]['count'].toString(),
+                                                              //                 style: TextStyle (
+                                                              //                   fontFamily: 'Mulish',
+                                                              //                   fontSize: 5,
+                                                              //                   fontWeight: FontWeight.w600,
+                                                              //
+                                                              //                   color: Color(0xff000000),
+                                                              //                 ),
+                                                              //               ),
+                                                              //             ],
+                                                              //           ),
+                                                              //         ),
+                                                              //       ),
+                                                              //
+                                                              //
+                                                              //     ],
+                                                              //   ),
+                                                              // );
 
-                                                                  if (data['result']['message'] ==
-                                                                      "success") {
-                                                                    setState(() {});
+                                                              return InkWell(
+
+                                                                  child: Container(
+
+                                                                    margin: EdgeInsets.fromLTRB(10, 0, 0, 2),
+                                                                   // width: 40,
+                                                                    height: 15,
+                                                                    decoration: BoxDecoration(color: Colors.white,
+                                                                        borderRadius: BorderRadius.all(Radius.circular(3)),
+                                                                        border: Border.all(
+                                                                            color: Color(0XFFEBEBEB),
+
+                                                                            width: 1)),
+                                                                    // color: Colors.red,
+                                                                    child: Row(
+
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: const EdgeInsets.only(left: 5),
+                                                                          child: Container(
+                                                                             // width:18,
+                                                                              height: 15,
+                                                                              child: Text(emojiSet[index]['emoji'])),
+                                                                        ),
+                                                                        SizedBox(width: 3),
+
+                                                                        Text(emojiSet[index]['count'].toString(),style:TextStyle(
+                                                                          fontSize: 10
+                                                                        ),),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  onTap: () async {
+                                                                    var data = await deleteEmoji(
+                                                                        emojiSet[index]['emoji'],
+                                                                        logDataTitle[indexx][indexs]['id']);
+
+                                                                    if (data['result']['message'] ==
+                                                                        "success") {
+                                                                      setState(() {});
+
+                                                                    }
 
                                                                   }
-
-                                                                }
-                                                            );
+                                                              );
                                                 }
+                                                            ),
                                                           ):
                                                           Container(),
                                                         ],
