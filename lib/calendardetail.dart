@@ -235,63 +235,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     ],
                   ),
                 ),
-                // Row(
-                //   children: [
-                //     Padding(
-                //       padding: const EdgeInsets.only(left: 25, top: 20),
-                //       child: SizedBox(
-                //         width: 93,
-                //         height: 33,
-                //         child: ElevatedButton(
-                //             child: Text(
-                //               "Edit",
-                //               style: TextStyle(
-                //                   fontWeight: FontWeight.w700,
-                //                   fontSize: 13.57,
-                //                   color: Colors.white),
-                //             ),
-                //             onPressed: () {
-                //               Navigator.push(
-                //                   context,
-                //                   MaterialPageRoute(
-                //                       builder: (context) =>
-                //                           CalendarAdd(widget.calendarId,null,"",DateTime.now(),null,[])));
-                //
-                //
-                //
-                //
-                //             },
-                //             style: ElevatedButton.styleFrom(
-                //               primary: Color(0xFFF9246A),
-                //             )),
-                //       ),
-                //     ),
-                //     Padding(
-                //       padding: const EdgeInsets.only(left: 10, top: 20),
-                //       child: SizedBox(
-                //         width: 93,
-                //         height: 33,
-                //         child: ElevatedButton(
-                //             child: Text(
-                //               "Create",
-                //               style: TextStyle(
-                //                   fontWeight: FontWeight.w700,
-                //                   fontSize: 13.57,
-                //                   color: Colors.black),
-                //             ),
-                //             onPressed: () {
-                //               // Navigator.push(
-                //               //   context,
-                //               //   MaterialPageRoute(builder: (context) => CalendarAdd(0)),
-                //               // );
-                //             },
-                //             style: ElevatedButton.styleFrom(
-                //               primary: Colors.white,
-                //             )),
-                //       ),
-                //     ),
-                //   ],
-                // ),
+
                 Padding(
                   padding: const EdgeInsets.only(top: 20),
                   child: Row(
@@ -579,38 +523,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(color: Color(0xFFEBEBEB)),
                           ),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //   children: [
-                          //     Padding(
-                          //       padding: const EdgeInsets.symmetric(
-                          //           horizontal: 25, vertical: 0),
-                          //       child: Text(
-                          //         "All day",
-                          //         style: TextStyle(
-                          //             fontWeight: FontWeight.w600,
-                          //             fontSize: 13,
-                          //             color: Color(0xFF666666)),
-                          //       ),
-                          //     ),
-                          //     Padding(
-                          //       padding: const EdgeInsets.only(right: 70),
-                          //       child: Checkbox(
-                          //         value: isCheckedAllday,
-                          //         onChanged: (bool? value) {
-                          //           setState(() {
-                          //             isCheckedAllday = value!;
-                          //           });
-                          //         },
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          // Padding(
-                          //   padding: const EdgeInsets.only(
-                          //       top: 0, left: 22, right: 22),
-                          //   child: Divider(color: Color(0xFFEBEBEB)),
-                          // ),
+
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

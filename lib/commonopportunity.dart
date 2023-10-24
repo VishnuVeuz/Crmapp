@@ -247,15 +247,7 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
 
 
 
-                        // Padding(
-                        //   padding: const EdgeInsets.only(top: 10,left: 15),
-                        //   child: Text(contactname,
-                        //     style: TextStyle(
-                        //         fontWeight: FontWeight.w600,
-                        //         fontSize: 12,
-                        //         color: Color(0xFF787878)),
-                        //   ),
-                        // ),
+
                       ],
                     ),
 

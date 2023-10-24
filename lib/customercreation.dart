@@ -2948,65 +2948,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                   ),
                 ),
-                // TextButton(
-                //     onPressed: () {
-                //       print(alertCountryName);
-                //       print(alertCountryId);
-                //       print(alertStateName);
-                //       print(alertStateId);
-                //       print(alerTitleName);
-                //       print(alertTitleId);
-                //
-                //       print(alertCompanyNameController.text);
-                //       print(alertStreetController.text);
-                //       print(alertStreetTwoController.text);
-                //       print(alertCityController.text);
-                //       print(alertZipController.text);
-                //       print(alertEmailController.text);
-                //
-                //       print(alertPhoneController.text);
-                //       print(alertMobileController.text);
-                //       print(alertNotesController.text);
-                //       print(alertJobController.text);
-                //
-                //       print("alertdataaaa");
-                //
-                //       String dataone =
-                //           '{"id":${addCustomerId},"type":"${alertradioSelect}","name":"${alertCompanyNameController.text}","street":"${alertStreetController.text}","street2":"${alertStreetTwoController.text}","city":"${alertCityController.text}","function":"${alertJobController.text}","email":"${alertEmailController.text}","mobile":"${alertMobileController.text}","phone":"${alertPhoneController.text}","title":{"id":${alertTitleId},"name":"${alerTitleName != null ? alerTitleName['name'] : ""}"},"state_id":{"id":${alertStateId},"name":"${alertStateName != null ? alertStateName['name'] : ""}"},"zip":"${alertZipController.text}","country_id":{"id":${alertCountryId},"name":"${alertCountryName != null ? alertCountryName['name'] : ""}"},"comment":"${alertNotesController.text}"}';
-                //
-                //       Map<String, dynamic> jsondata = jsonDecode(dataone);
-                //       print(dataone);
-                //       print("demodatatatata");
-                //
-                //       type == -1
-                //           ? addNewCustomer.add(jsondata)
-                //           : addNewCustomer[type] = jsondata;
-                //
-                //       print(addNewCustomer);
-                //       print("orderLineProducts");
-                //
-                //       setState((){
-                //         alertCompanyNameController.text = "";
-                //         alertStreetController.text = "";
-                //         alertStreetTwoController.text = "";
-                //         alertCityController.text = "";
-                //         alertCountryName = null;
-                //         alertCountryId = null;
-                //         alertStateName = null;
-                //         alertStateId = null;
-                //         alertZipController.text ="";
-                //         alertEmailController.text = "";
-                //         alertPhoneController.text = "";
-                //         alertMobileController.text= "";
-                //         alertNotesController.text="";
-                //         alertJobController.text = "";
-                //
-                //       });
-                //
-                //         Navigator.pop(context);
-                //
-                //     },
-                //     child: Text("Save")),
+
 
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
@@ -3362,24 +3304,6 @@ print("addNewCustomer");
         });
   }
 
-  // Future getImages() async {
-  //   final pickedFile = await picker.pickMultiImage(
-  //       imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
-  //   List<XFile> xfilePick = pickedFile;
-  //
-  //   setState(
-  //         () {
-  //       if (xfilePick.isNotEmpty) {
-  //         for (var i = 0; i < xfilePick.length; i++) {
-  //           selectedImages[0] = (File(xfilePick[i].path));
-  //         }
-  //       } else {
-  //         ScaffoldMessenger.of(context).showSnackBar(
-  //             const SnackBar(content: Text('Nothing is selected')));
-  //       }
-  //     },
-  //   );
-  // }
 
 
   Future getImages() async {
@@ -3411,21 +3335,7 @@ print("addNewCustomer");
       }
 
 
-      //   final pickedFile = await picker.pickImage(
-      //     imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
-      // List<XFile> xfilePick = pickedFile;
-      //
-      // setState(
-      //       () {
-      //     if (xfilePick.isNotEmpty) {
-      //       for (var i = 0; i < xfilePick.length; i++) {
-      //         selectedImages[0] = (File(xfilePick[i].path));
-      //       }
-      //     } else {
-      //       ScaffoldMessenger.of(context).showSnackBar(
-      //           const SnackBar(content: Text('Nothing is selected')));
-      //     }
-      // },
+
     }
 
   }
@@ -3474,26 +3384,7 @@ print("addNewCustomer");
 
 
 
-    // if (img != null) {
-    //   setState(
-    //     () {
-    //       if (imageData.isNotEmpty) {
-    //         selectedImages.insert(0, (File(img.path)));
-    //         //  selectedImages[1]=(File(img.path));
-    //
-    //         print("system 3");
-    //         // for (var i = 0; i < imageData.length; i++) {
-    //         //   selectedImages[1]=(File(imageData[i].path));
-    //         //
-    //         // }
-    //         //
-    //       } else {
-    //         ScaffoldMessenger.of(context).showSnackBar(
-    //             const SnackBar(content: Text('Nothing is selected')));
-    //       }
-    //     },
-    //   );
-    // }
+
     print("system 4");
 
     setState(() {

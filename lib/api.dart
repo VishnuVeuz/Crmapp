@@ -212,14 +212,6 @@ leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
           ? customerId = null
           : customerId = customerId);
 
-  print(id);
-  print(modeltype);
-  print(salespersonId);
-  print(salesTeamId);
-  print(action);
-  print(customerId);
-  print(leadTableData);
-  print("tocken responece");
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -260,9 +252,7 @@ leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
       var data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
-      print(data);
-      print(authresponce);
-      print("finalstring");
+
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
@@ -303,9 +293,6 @@ deleteLeadData(int leadId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
-
   return data;
 }
 
@@ -339,41 +326,7 @@ createLead(
   source_id,
   campaign_id,
 ) async {
-  print(tag_ids);
-  print('tag idsssscreate');
-  print(name.toString());
-  print(companyname.toString());
-  print(title_id.toString());
 
-  print(contactname.toString());
-
-  print(email_from.toString());
-  print(email_cc.toString());
-  print(phone.toString());
-  //print(expected_revenue.toString());
-  print(priority.toString());
-  print(company_id.toString());
-  print(country_id.toString());
-  //print(title.toString());
-  print(lang_id.toString());
-  print(user_id.toString());
-  print(team_id.toString());
-  print(probability.toString());
-  print("probability proobability");
-
-  print(street.toString());
-  print(street2.toString());
-  print(city.toString());
-  print(state_id.toString());
-  print(zip.toString());
-  print(website.toString());
-  print(function.toString());
-  print(mobile.toString());
-  print(refferedby.toString());
-  print(description.toString());
-  print(medium_id.toString());
-  print(source_id.toString());
-  print(campaign_id.toString());
 
   String token = await getUserJwt();
 
@@ -425,18 +378,16 @@ createLead(
       body: msg,
     );
 
-    print(msg);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -447,11 +398,7 @@ createLead(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
 
   name = "";
   email_from = "";
@@ -469,8 +416,7 @@ createLead(
   refferedby = "";
   description = "";
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -505,45 +451,10 @@ editLead(
   campaign_id,
   leadid,
 ) async {
-  print(tag_ids);
-  print('tag idssss');
-  print(name.toString());
-  print(companyname.toString());
-  print(title_id.toString());
-
-  print(contactname.toString());
-
-  print(email_from.toString());
-  print(email_cc.toString());
-  print(phone.toString());
-  //print(expected_revenue.toString());
-  print(priority.toString());
-  print(company_id.toString());
-  print(country_id.toString());
-  //print(title.toString());
-  print(lang_id.toString());
-  print(user_id.toString());
-  print(team_id.toString());
-  print(probability.toString());
-  print("probability proobability");
-
-  print(street.toString());
-  print(street2.toString());
-  print(city.toString());
-  print(state_id.toString());
-  print(zip.toString());
-  print(website.toString());
-  print(function.toString());
-  print(mobile.toString());
-  print(refferedby.toString());
-  print(description.toString());
-  print(medium_id.toString());
-  print(source_id.toString());
-  print(campaign_id.toString());
 
   String token = await getUserJwt();
 
-  print("tocken responece");
+
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -591,20 +502,18 @@ editLead(
       body: msg,
     );
 
-    print(msg);
+
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -615,11 +524,6 @@ editLead(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
-
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
 
   name = "";
   email_from = "";
@@ -637,8 +541,7 @@ editLead(
   refferedby = "";
   description = "";
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -654,7 +557,7 @@ editLeadpriority(
 
   String token = await getUserJwt();
 
-  print("tocken responece");
+
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -675,20 +578,17 @@ editLeadpriority(
       body: msg,
     );
 
-    print(msg);
+
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -699,15 +599,7 @@ editLeadpriority(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
-
-
-  print(resMessageText);
-  print("dataaa");
   return resMessageText;
 }
 
@@ -731,19 +623,16 @@ lostLead(int id, bool value) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       //authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -755,18 +644,14 @@ lostLead(int id, bool value) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
 Future<List<dynamic>> recentLead(String model) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
 
-  print("${baseUrl}api/leads?count=10&page_no=1&key_word=&company_ids=${globals.selectedIds}&filters=[$model]");
-  print("fsfsdfsf");
   try {
     final response = await get(
       Uri.parse(
@@ -775,17 +660,13 @@ Future<List<dynamic>> recentLead(String model) async {
         'Authorization': 'Bearer $token',
       },
     );
-    //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
-    //List responseList = json.decode(response.body);
-    responseList = jsonDecode(response.body);
-    print("company_ids");
-    print(responseList['records']);
-    print("c");
+       responseList = jsonDecode(response.body);
+
   } catch (e) {
     print("error --> $e");
   }
 
-  print("company_ids11");
+
   return responseList['records'];
 }
 
@@ -824,41 +705,10 @@ createOpportunity(
     partner_id,
     double expected_revenue,
     List orderLineProducts) async {
-  print(tag_ids);
-  print(name.toString());
-  print(companyname.toString());
-  print(title_id.toString());
-  print(contactname.toString());
-  print(email_from.toString());
-  print(email_cc.toString());
-  print(phone.toString());
-  print(priority.toString());
-  print(pricelist_id.toString());
-  print(company_id.toString());
-  print(country_id.toString());
-  print(lang_id.toString());
-  print(user_id.toString());
-  print(team_id.toString());
-  print(probability.toString());
-  print(street.toString());
-  print(street2.toString());
-  print(city.toString());
-  print(state_id.toString());
-  print(zip.toString());
-  print(website.toString());
-  print(function.toString());
-  print(mobile.toString());
-  print(refferedby.toString());
-  print(description.toString());
-  print(medium_id.toString());
-  print(source_id.toString());
-  print(campaign_id.toString());
-  print(partner_id.toString());
-  print(expected_revenue.toString());
 
   String token = await getUserJwt();
 
-  print("tocken responece");
+
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -909,18 +759,17 @@ createOpportunity(
       body: msg,
     );
 
-    print(msg);
+
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -931,11 +780,6 @@ createOpportunity(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
-
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
 
   name = "";
   email_from = "";
@@ -954,8 +798,7 @@ createOpportunity(
   description = "";
   expected_revenue = 0.0;
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -997,37 +840,7 @@ editOpportunity(
     opportunityid,
     double expected_revenue,
     List orderLineProducts) async {
-  print(name.toString());
-  print(companyname.toString());
-  print(title_id.toString());
-  print(contactname.toString());
-  print(email_from.toString());
-  print(email_cc.toString());
-  print(phone.toString());
-  print(priority.toString());
-  print(pricelist_id.toString());
-  print(company_id.toString());
-  print(country_id.toString());
-  print(lang_id.toString());
-  print(user_id.toString());
-  print(team_id.toString());
-  print(expected_revenue.toString());
-  print(probability.toString());
-  print(street.toString());
-  print(street2.toString());
-  print(city.toString());
-  print(state_id.toString());
-  print(zip.toString());
-  print(website.toString());
-  print(function.toString());
-  print(mobile.toString());
-  print(refferedby.toString());
-  print(description.toString());
-  print(medium_id.toString());
-  print(source_id.toString());
-  print(campaign_id.toString());
-  print(partner_id.toString());
-  print(tag_ids);
+
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
 
@@ -1079,18 +892,17 @@ editOpportunity(
       body: msg,
     );
 
-    print(msg);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
-      print(resMessage);
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -1101,10 +913,6 @@ editOpportunity(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
-
-  print(resMessage);
-  print(resMessageText);
 
   name = "";
   email_from = "";
@@ -1123,7 +931,7 @@ editOpportunity(
   description = "";
   expected_revenue = 0.0;
 
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -1158,18 +966,17 @@ editOppertunitypriority(
       body: msg,
     );
 
-    print(msg);
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
-      print(resMessage);
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -1180,14 +987,7 @@ editOppertunitypriority(
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-
-
-
-  print(resMessageText);
   return resMessageText;
 }
 
@@ -1215,19 +1015,18 @@ deleteOpportunityData(int opportunityId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
+
   return data;
 }
 
 getOpportunityData(int opportunityId, String value) async {
   String token = await getUserJwt();
 
-  print(opportunityId);
+
   var data;
   String? authresponce="${baseUrl}api/opportunity/${opportunityId}?action=${value}";
 
-print(authresponce);
-print("jsfhdvjdsv");
+
   Response response = await get(
     Uri.parse("${baseUrl}api/opportunity/${opportunityId}?action=${value}"),
     headers: {
@@ -1243,8 +1042,7 @@ print("jsfhdvjdsv");
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("demooooooo");
+
   return data;
 }
 
@@ -1271,8 +1069,7 @@ getOpportunityTypes() async {
     // authresponce = data['result'].toString();
   }
 
-  print(data['records']);
-  print("data");
+
 
   return data['records'];
 }
@@ -1280,9 +1077,6 @@ getOpportunityTypes() async {
 Future<List<dynamic>> getOpportunityTypesData(int type) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
-  print(type);
-  print("datatypeee");
 
   try {
     final response = await get(
@@ -1295,14 +1089,12 @@ Future<List<dynamic>> getOpportunityTypesData(int type) async {
     //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
     //List responseList = json.decode(response.body);
     responseList = jsonDecode(response.body);
-    print("company_ids");
-    print(responseList['records']);
-    print("c");
+
   } catch (e) {
     print("error --> $e");
   }
 
-  print("company_ids11");
+
   return responseList['records'];
 }
 
@@ -1324,7 +1116,7 @@ lostOpportunity(int id, opportunitylostId, String action) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
 
@@ -1342,7 +1134,7 @@ lostOpportunity(int id, opportunitylostId, String action) async {
     print(e.toString());
   }
 
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -1366,7 +1158,7 @@ restoreWonOpportunity(int id, opportunitylostId, String action) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
 
@@ -1384,7 +1176,7 @@ restoreWonOpportunity(int id, opportunitylostId, String action) async {
     print(e.toString());
   }
 
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -1408,7 +1200,7 @@ archiveOpportunity(int id, opportunitylostId, bool action) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
 
@@ -1426,7 +1218,7 @@ archiveOpportunity(int id, opportunitylostId, bool action) async {
     print(e.toString());
   }
 
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -1450,7 +1242,7 @@ opportunityStageChange(int stateId, opportunityId) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
 
@@ -1468,7 +1260,7 @@ opportunityStageChange(int stateId, opportunityId) async {
     print(e.toString());
   }
 
-  print(resMessage);
+
   return resMessageText;
 }
 
@@ -1476,12 +1268,11 @@ opportunityStageChange(int stateId, opportunityId) async {
 getOpportunityQuotationData(int opportunityId, String value) async {
   String token = await getUserJwt();
 
-  print(opportunityId);
+
   var data;
   String? authresponce;
 
-  print("${baseUrl}api/opportunity/${opportunityId}/quotation");
-  print("finalnaknsk");
+
   Response response = await get(
 
     Uri.parse("${baseUrl}api/opportunity/${opportunityId}/quotation"),
@@ -1498,8 +1289,7 @@ getOpportunityQuotationData(int opportunityId, String value) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("quatationedit");
+
   return data;
 }
 
@@ -1507,7 +1297,6 @@ getOpportunityQuotationData(int opportunityId, String value) async {
 getOpportunityProductDefaultData(int opportunityProductId) async {
   String token = await getUserJwt();
 
-  print("lead dataaa");
 
   var data;
   String? authresponce;
@@ -1529,8 +1318,6 @@ getOpportunityProductDefaultData(int opportunityProductId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
 
   return data;
 }
@@ -1562,7 +1349,7 @@ createQuotation(
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-  print(token);
+
 
   try {
     final msg = jsonEncode({
@@ -1601,9 +1388,7 @@ createQuotation(
       body: msg,
     );
 
-    print(msg);
 
-    print("printtttttt");
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
@@ -1612,14 +1397,13 @@ createQuotation(
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
-        print(resMessageText);
-        print("suuuuuuu");
+
       }
 
       if (resMessage == "error") {
         resMessageText = '0';
       }
-      print("lakkkkkk");
+
     } else {}
   } catch (e) {
     print(e.toString());
@@ -1629,8 +1413,7 @@ createQuotation(
   expiration_date = "";
   delivery_date = "";
 
-  print(resMessage);
-  print(" resMessageText");
+
   return resMessageText;
 }
 
@@ -1661,22 +1444,6 @@ createQuotationOpp(
     List orderLineProducts,
     optionalProducts,
     opportunity_id) async {
-  print(customer_id);
-  print(quotation_template_id);
-  print(pricelist_id);
-  print(payment_terms_id);
-  print(salesperson_id);
-  print(team_id);
-  print(company_id);
-  print(tags_id);
-  print(fiscal_position_id);
-  print(campaign_id);
-  print(medium_id);
-  print(source_id);
-  print(customer_reference.toString());
-  print(source_document.toString());
-  print(expiration_date.toString());
-  print(delivery_date.toString());
 
   String token = await getUserJwt();
   String?  resMessage, resMessageText;
@@ -1720,27 +1487,23 @@ createQuotationOpp(
       body: msg,
     );
 
-    print(msg);
-
-    print("printtttttt");
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       // authresponce = data['result'].toString();
       authresponce = data;
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
-        print(resMessageText);
-        print("suuuuuuu");
+
       }
 
       if (resMessage == "error") {
         resMessageText = data['result']['data'];
       }
-      print("lakkkkkk");
+
     } else {}
   } catch (e) {
     print(e.toString());
@@ -1750,8 +1513,7 @@ createQuotationOpp(
   expiration_date = "";
   delivery_date = "";
 
-  print(resMessage);
-  print(" resMessageText");
+
   return authresponce;
 }
 
@@ -1779,26 +1541,6 @@ editQuotation(
     List orderLineProducts,
     optionalProducts,
    ) async {
-  print(customer_id);
-  print(quotation_template_id);
-  print(pricelist_id);
-  print(payment_terms_id);
-  print(salesperson_id);
-  print(team_id);
-  print(company_id);
-  print(tags_id);
-  print(fiscal_position_id);
-  print(campaign_id);
-  print(medium_id);
-  print(source_id);
-  //print(customer_reference.toString());
-  print(source_document.toString());
-  print(expiration_date.toString());
-  print(delivery_date);
-  print(orderLineProducts);
-  print(optionalProducts);
-
-  print("demo datatata");
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
@@ -1832,8 +1574,6 @@ editQuotation(
       }
     });
 
-    print(msg);
-    print("datapapapa");
 
     Response response = await put(
       Uri.parse('${baseUrl}api/quotation/${quotationid}'),
@@ -1844,9 +1584,6 @@ editQuotation(
       body: msg,
     );
 
-    print(msg);
-
-    print(jsonDecode(response.body.toString()));
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
@@ -1865,18 +1602,17 @@ editQuotation(
     print(e.toString());
   }
 
-  print(resMessageText);
+
   return resMessageText;
 }
 
 getQuotationData(int quotationId, String value) async {
   String token = await getUserJwt();
 
-  print(quotationId);
+
   var data;
   String? authresponce=   "${baseUrl}api/quotation/${quotationId}?action=${value}";
-  print(authresponce);
-  print("final responceee");
+
 
   Response response = await get(
     Uri.parse("${baseUrl}api/quotation/${quotationId}?action=${value}"),
@@ -1893,8 +1629,7 @@ getQuotationData(int quotationId, String value) async {
     data = jsonDecode(response.body);
   }
 
-  print(data["tax_totals_json"]);
-  print("quatationedit");
+
   return data;
 }
 
@@ -1902,7 +1637,7 @@ getQuotationData(int quotationId, String value) async {
 
 getProductSum(List orderLineProductsData,int pricelistId) async {
   String token = await getUserJwt();
-  print("pricelisttt");
+
 
   String? authresponce, resMessage, resMessageText;
  var data;
@@ -1914,9 +1649,6 @@ getProductSum(List orderLineProductsData,int pricelistId) async {
       }
     });
 
-print(orderLineProductsData);
-print("orderLineProductsData");
-
     Response response = await post(
       Uri.parse('${baseUrl}api/total'),
       headers: {
@@ -1926,8 +1658,6 @@ print("orderLineProductsData");
       body: msg,
     );
 
-    print(msg);
-    print("datatatata");
 
     if (response.statusCode != 200) {
       throw Exception("failed to get data from internet");
@@ -1938,63 +1668,15 @@ print("orderLineProductsData");
   } catch (e) {
     print(e.toString());
   }
-  print(data);
-  // print(data['result']["data"]['data']);
-  // print(data['result']['data']["total"]);
-  // print("quatationedit");
-
 
   return data;
 }
 
 
-
-
-
-//
-// getProductSum(List orderLineProductsData) async {
-//   String token = await getUserJwt();
-//
-//   print(orderLineProductsData);
-//   print("final data");
-//   var data;
-//   String? authresponce;
-//
-//
-//   Map<String, String> queryParams = {
-//   // "params": {
-//     'order_line': orderLineProductsData.toString(),
-//   // }
-//   };
-//
-//   Response response = await get(
-//     Uri.parse("${baseUrl}api/total?${orderLineProductsData}"),
-//     headers: {
-//       'Authorization': 'Bearer $token',
-//     },
-//   ).timeout(const Duration(
-//     seconds: 10,
-//   ));
-//   print(response);
-//   print("final responceeee");
-//
-//   if (response.statusCode != 200) {
-//     throw Exception("failed to get data from internet");
-//   } else {
-//     data = jsonDecode(response.body);
-//   }
-//
-//   print(data);
-//   print("quatationedit");
-//   return data;
-// }
-//
-
-
 getQuotationCustomerData(int quoatationcustomerId) async {
   String token = await getUserJwt();
 
-  print(quoatationcustomerId);
+
   var data;
   String? authresponce;
 
@@ -2013,8 +1695,7 @@ getQuotationCustomerData(int quoatationcustomerId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("responce datatatatat");
+
   return data;
 }
 
@@ -2022,7 +1703,7 @@ getQuotationCustomerData(int quoatationcustomerId) async {
 getCustomerCompanyData(int customerId) async {
   String token = await getUserJwt();
 
-  print(customerId);
+
   var data;
   String? authresponce;
 
@@ -2042,8 +1723,7 @@ getCustomerCompanyData(int customerId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("responce datatatatat");
+
   return data;
 }
 
@@ -2095,7 +1775,7 @@ deleteQuotationData(int quotationId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
+
 
   return data;
 }
@@ -2135,19 +1815,16 @@ schedulecreateCustomer(String company_type, name, email, function,phone,mobile,
       body: msg,
     );
 
-    print(msg);
-    print("demo message");
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'];
       }
 
@@ -2158,15 +1835,7 @@ schedulecreateCustomer(String company_type, name, email, function,phone,mobile,
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
-
-
-  print(resMessageText);
-  print("dataaa");
   return resMessageText;
 }
 
@@ -2181,7 +1850,7 @@ createCustomer(String company_type, name, street, street2, city, website, email,
 
   String token = await getUserJwt();
 
-  print("tocken responece");
+
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -2228,19 +1897,16 @@ createCustomer(String company_type, name, street, street2, city, website, email,
       body: msg,
     );
 
-    print(msg);
-    print("demo message");
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -2251,15 +1917,7 @@ createCustomer(String company_type, name, street, street2, city, website, email,
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
-
-
-  print(resMessageText);
-  print("dataaa");
   return resMessageText;
 }
 
@@ -2272,8 +1930,7 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
 
 
   String token = await getUserJwt();
-print(addNewCustomer);
-  print("tocken responece");
+
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -2320,19 +1977,15 @@ print(addNewCustomer);
       body: msg,
     );
 
-    print(msg);
-    print("demo message");
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -2343,15 +1996,7 @@ print(addNewCustomer);
   } catch (e) {
     print(e.toString());
   }
-  print(authresponce);
 
-  print(resMessage);
-  print(resMessageText);
-  print("bhgvhb");
-
-
-  print(resMessageText);
-  print("dataaa");
   return resMessageText;
 }
 
@@ -2364,7 +2009,7 @@ getCustomerData(int customerId,String value) async {
 
   var data;
   String? authresponce="${baseUrl}api/contact/${customerId}?action=${value}";
-  print(authresponce);
+
 
   Response response = await get(Uri.parse(
       "${baseUrl}api/contact/${customerId}?action=${value}"),
@@ -2384,7 +2029,7 @@ getCustomerData(int customerId,String value) async {
   else{
     data = jsonDecode(response.body);
   }
-  print(data);
+
   return data;
 }
 
@@ -2412,7 +2057,7 @@ deleteCustomerData(int customerId) async {
   else{
     data = jsonDecode(response.body);
   }
-  print(data);
+
 
   return data;
 }
@@ -2436,12 +2081,12 @@ archiveCustomer(int id, bool value) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       resMessage = data['result']['message'];
-      print(resMessage);
+
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
       }
@@ -2463,7 +2108,7 @@ archiveCustomer(int id, bool value) async {
 getCustomerDefaultData(int customerId, String value) async {
   String token = await getUserJwt();
 
-  print(customerId);
+
   var data;
   String? authresponce;
 
@@ -2482,7 +2127,7 @@ getCustomerDefaultData(int customerId, String value) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
+
   return data;
 }
 
@@ -2505,14 +2150,8 @@ getCalenders() async {
 
     },);
 
-  print("calendar datatata");
-  print(jsonDecode(response.body)['records']);
-
 
   var convertData = jsonDecode(response.body)['records'];
-  print(convertData);
-  print("asdfgdemooo");
-
 
 
   for (var u in convertData) {
@@ -2521,15 +2160,9 @@ getCalenders() async {
     calendersDetailss.add(calendersDetails);
     calenders.add(calendersDetails);
 
-    // setState(() {
-    //   calenders.add(calendersDetails);
-    //
-    // });
 
   }
-  print(calendersDetailss);
-  print("demodemo");
-  print(calenders);
+
   return calendersDetailss;
 }
 
@@ -2540,7 +2173,7 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-  print(token);
+
 
   try {
     final msg = jsonEncode({
@@ -2573,7 +2206,7 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
       authresponce = data['result'].toString();
@@ -2581,14 +2214,12 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
-        print(resMessageText);
-        print("ssuuuuuu");
 
       }
 
       if (resMessage == "error") {
         resMessageText = '0';
-        print("dddddd");
+
       }
 
     } else {}
@@ -2596,8 +2227,7 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
     print(e.toString());
   }
 
-  print(resMessage);
-  print(" resMessageText");
+
   return resMessageText;
 }
 
@@ -2609,9 +2239,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-  print(partnerName);
-  print("partnerName");
-  print(token);
+
 
   try {
     final msg = jsonEncode({
@@ -2645,18 +2273,16 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("dasfsf");
+
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
-        print(resMessageText);
-        print("ssuuuuuu");
+
 
       }
 
@@ -2670,8 +2296,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
     print(e.toString());
   }
 
-  print(resMessage);
-  print(" resMessageText");
+
   return resMessageText;
 }
 
@@ -2698,9 +2323,6 @@ deleteCalendar(int calendarId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
-
   return data;
 }
 
@@ -2724,8 +2346,7 @@ defaultDropdownCalendar() async {
   if (response.statusCode != 200) {
     throw Exception("failed to get data from internet");
   } else {
-    print(response.body);
-    print("responce dataa");
+
     data = jsonDecode(response.body);
 
     authresponce = data.toString();
@@ -2755,7 +2376,7 @@ deleteCalendarData(int calendarId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
+
 
 
   return data;
@@ -2764,7 +2385,7 @@ deleteCalendarData(int calendarId) async {
 getCalendarData(int calendarId) async {
   String token = await getUserJwt();
 
-  print(calendarId);
+
   var data;
   String? authresponce;
 
@@ -2783,8 +2404,7 @@ getCalendarData(int calendarId) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("finalllalalalala");
+
   return data;
 }
 
@@ -2794,9 +2414,6 @@ getCalendarData(int calendarId) async {
 defaultScheduleData(int id, String value) async {
   String token = await getUserJwt();
 
-  print(id);
-  print("${baseUrl}api/activity?res_model=${value}&res_id=${id}");
-  print("lead dataaatttt");
 
   var data;
   String? authresponce;
@@ -2818,8 +2435,6 @@ defaultScheduleData(int id, String value) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
 
   return data;
 }
@@ -2850,8 +2465,7 @@ colorsData()  async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("data");
+
 
   return data;
 }
@@ -2878,17 +2492,16 @@ colorChange(int tagId,colorId) async {
       body: msg,
     );
 
-    print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
       print(data);
-      print("finalstring");
+      print("fiiiiinallll");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = "success";
       }
 
@@ -2901,8 +2514,7 @@ colorChange(int tagId,colorId) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -2914,9 +2526,6 @@ colorChange(int tagId,colorId) async {
 defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
   String token = await getUserJwt();
 
-  print(id);
-  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message&partner_ids=${selectedIds}");
-  print("lead dataaa final");
 
   var data;
   String? authresponce;
@@ -2936,8 +2545,6 @@ defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("data");
 
   return data;
 }
@@ -2945,9 +2552,6 @@ defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
 sendMailsFollowers(int id, String value) async {
   String token = await getUserJwt();
 
-  print(id);
-  print("${baseUrl}api/log?res_model=${value}&res_id=${id}&type=send_message");
-  print("lead dataaa finalsshshs");
 
   var data;
   String? authresponce;
@@ -2967,8 +2571,6 @@ sendMailsFollowers(int id, String value) async {
     data = jsonDecode(response.body);
   }
 
-  print(data);
-  print("datafinalsssss");
 
   return data;
 }
@@ -3006,17 +2608,15 @@ scheduleActivity(int activity_type_id,user_id,res_id,
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
         resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -3028,8 +2628,7 @@ scheduleActivity(int activity_type_id,user_id,res_id,
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -3043,8 +2642,6 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-  print(scheduleId);
-  print("asjfbvjsbf");
 
 
 
@@ -3074,14 +2671,11 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstring");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -3093,8 +2687,7 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaa");
+
   return resMessageText;
 }
 
@@ -3103,8 +2696,6 @@ markDoneScheduleActivity(String notes,int scheduleId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-  print(scheduleId);
-  print("asjfbvjsbf");
 
 
 
@@ -3129,14 +2720,11 @@ markDoneScheduleActivity(String notes,int scheduleId) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -3148,8 +2736,7 @@ markDoneScheduleActivity(String notes,int scheduleId) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaaa");
+
   return resMessageText;
 }
 
@@ -3157,14 +2744,10 @@ markDoneScheduleActivity(String notes,int scheduleId) async {
 getScheduleActivityData(int dataId, String activityModel) async {
   String token = await getUserJwt();
 
-  print(dataId);
-  print("lead dataaa");
 
   var data;
   String? authresponce= "${baseUrl}api/activities?res_model=${activityModel}&res_id=${dataId}";
 
-  print(authresponce);
-  print("authresponce");
 
   Response response = await get(
 
@@ -3186,8 +2769,6 @@ getScheduleActivityData(int dataId, String activityModel) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
 
   return data;
 }
@@ -3214,8 +2795,6 @@ deleteScheduleData(int scheduleId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("datadaasf");
 
   return data;
 }
@@ -3227,8 +2806,6 @@ deleteScheduleData(int scheduleId) async {
 editDefaultScheduleData(int dataId) async {
   String token = await getUserJwt();
 
-  print(dataId);
-  print("lead dataaa");
 
   var data;
   String? authresponce;
@@ -3253,8 +2830,6 @@ editDefaultScheduleData(int dataId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("dataegrfsbfhjsbfjh");
 
   return data;
 }
@@ -3268,8 +2843,6 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
   String? resMessage;
       var resMessageText;
 
-  print(resId);
-  print("asjfbvjsbf");
 
 
 
@@ -3300,14 +2873,11 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result'];
       }
 
@@ -3319,8 +2889,7 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaaa");
+
   return resMessageText;
 }
 
@@ -3328,9 +2897,6 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
-
-  print(resId);
-  print("asjfbvjsbf");
 
 
 
@@ -3361,14 +2927,12 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
+
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -3380,8 +2944,7 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaaa");
+
   return resMessageText;
 }
 
@@ -3391,14 +2954,10 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
 getlogNoteData(int dataId, String activityModel) async {
   String token = await getUserJwt();
 
-  print(dataId);
-  print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
-  print("lead dataaaaaaaa");
 
   var data;
   String? authresponce;
-  print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
-  print("finallllaaa");
+
   Response response = await get(
 
 
@@ -3419,8 +2978,6 @@ getlogNoteData(int dataId, String activityModel) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data.length);
-  print("datapasssssssdemoooo");
 
   return data;
 }
@@ -3449,8 +3006,6 @@ deleteLogData(int logId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("datadeleteeee");
 
   return data;
 }
@@ -3468,8 +3023,7 @@ deleteEmoji(String emoji,int logId) async {
         "reaction": emoji
       }
     });
-    print(msg);
-    print("finedata");
+
     Response response = await delete(
       Uri.parse("${baseUrl}api/reaction/${logId}"),
       headers: {
@@ -3478,7 +3032,7 @@ deleteEmoji(String emoji,int logId) async {
       },
       body: msg,
     );
-print(msg);
+
 
     if (response.statusCode != 200) {
       throw Exception("failed to get data from internet");
@@ -3491,8 +3045,6 @@ print(msg);
   catch(e) {
     print(e.toString());
   }
-  print(data);
-  print("datadeleteeee");
 
   return data;
 }
@@ -3530,8 +3082,7 @@ logStarChange(int logId, bool value) async {
     print(e.toString());
   }
 
-  print(data);
-  print("dataaa");
+
   return data;
 }
 
@@ -3558,8 +3109,6 @@ deleteLogAttachment(int attachmentId) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("datadeleteeeedelete");
 
   return data;
 }
@@ -3594,14 +3143,11 @@ attchmentDataCreate(List myData1) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+
         resMessageText = data['result']['data']['att_count'].toString();
       }
 
@@ -3613,8 +3159,7 @@ attchmentDataCreate(List myData1) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaaa");
+
   return resMessageText;
 }
 
@@ -3623,13 +3168,10 @@ attchmentDataCreate(List myData1) async {
 getattchmentData(int dataId, String activityModel) async {
   String token = await getUserJwt();
 
-  print(dataId);
-  print("lead dataaa");
 
   var data;
   String? authresponce;
-  print("${baseUrl}api/attachments?res_model=${activityModel}&res_id=${dataId}");
-  print("finallllaaa");
+
   Response response = await get(
 
 
@@ -3650,9 +3192,6 @@ getattchmentData(int dataId, String activityModel) async {
     // authresponce = data['result'].toString();
   }
 
-  print(data.length);
-  print(data);
-  print("datapasssssssdemoooo111");
 
   return data;
 }
@@ -3679,14 +3218,6 @@ getattchmentData(int dataId, String activityModel) async {
     var responseList = jsonDecode(response.body);
 
      quotationId = responseList['records'][0]["id"];
-     print(quotationId);
-    print(responseList['records']);
-
-
-
-    print("company_ids");
-
-
 
   } catch (e) {
     print("error --> $e");
@@ -3703,8 +3234,6 @@ getattchmentData(int dataId, String activityModel) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-  print(resId);
-  print("laakkkkk");
   try {
     final msg = jsonEncode({
       "params": {
@@ -3730,12 +3259,12 @@ getattchmentData(int dataId, String activityModel) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       resMessage = data['result']['message'];
-      print(resMessage);
+
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
       }
@@ -3747,7 +3276,7 @@ getattchmentData(int dataId, String activityModel) async {
   } catch (e) {
     print(e.toString());
   }
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -3755,10 +3284,7 @@ getattchmentData(int dataId, String activityModel) async {
  templateSelectionData(int dropdownId,int resId,String model) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
 
-
-  print( "${baseUrl}api/message_template/${27}?model=${model}&res_id=${resId}");
   try {
 
     final response = await get(Uri.parse(
@@ -3773,13 +3299,6 @@ getattchmentData(int dataId, String activityModel) async {
     );
 
      responseList = jsonDecode(response.body);
-
-    print(responseList);
-    print("responseList");
-
-
-
-
 
   } catch (e) {
     print("error --> $e");
@@ -3800,8 +3319,7 @@ getattchmentData(int dataId, String activityModel) async {
   String? resMessage;
   var resMessageText;
 
-  print(partnerId);
-  print("laakkkkk");
+
   try {
     final msg = jsonEncode({
       "params": {
@@ -3831,9 +3349,9 @@ getattchmentData(int dataId, String activityModel) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       resMessage = data['result']['message'];
-      print(resMessage);
+
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result'];
       }
@@ -3845,7 +3363,7 @@ getattchmentData(int dataId, String activityModel) async {
   } catch (e) {
     print(e.toString());
   }
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -3857,10 +3375,7 @@ getattchmentData(int dataId, String activityModel) async {
 smsDataGet(int resId,String resmodel) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
 
-
-  print( "${baseUrl}/api/sms?res_model=${resmodel}&res_id=${resId}");
   try {
 
     final response = await get(Uri.parse(
@@ -3876,13 +3391,6 @@ smsDataGet(int resId,String resmodel) async {
 
     responseList = jsonDecode(response.body);
 
-    print(responseList);
-    print("responseList");
-
-
-
-
-
   } catch (e) {
     print("error --> $e");
 
@@ -3895,7 +3403,7 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
   String? resMessage, resMessageText;
 
   final msg;
-  print("laakkkkk");
+
   try {
 
     numberType == "phone" ?
@@ -3924,13 +3432,12 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
       body: msg,
     );
 
-    print(msg);
-    print("final messages");
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       resMessage = data['result']['message'];
-      print(resMessage);
+
       if (data['result']['message'].toString() == "success") {
         resMessageText = "success";
       }
@@ -3942,7 +3449,7 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
   } catch (e) {
     print(e.toString());
   }
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -3950,10 +3457,6 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
 followerDefaultDataGet(int resId,String resmodel) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
-
-
-  print( "${baseUrl}api/follower?res_model=${resmodel}&res_id=${resId}");
   try {
 
     final response = await get(Uri.parse(
@@ -3969,13 +3472,6 @@ followerDefaultDataGet(int resId,String resmodel) async {
 
     responseList = jsonDecode(response.body);
 
-    print(responseList);
-    print("responseList");
-
-
-
-
-
   } catch (e) {
     print("error --> $e");
 
@@ -3986,10 +3482,7 @@ followerDefaultDataGet(int resId,String resmodel) async {
 getFollowers(int resId,String resmodel) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
 
-
-  print( "${baseUrl}api/follower?res_model=${resmodel}&res_id=${resId}");
   try {
 
     final response = await get(Uri.parse(
@@ -4006,13 +3499,6 @@ getFollowers(int resId,String resmodel) async {
 
     responseList = jsonDecode(response.body);
 
-    print(responseList);
-    print("responseList");
-
-
-
-
-
   } catch (e) {
     print("error --> $e");
 
@@ -4024,10 +3510,7 @@ getFollowers(int resId,String resmodel) async {
 followerSubscription(int followerId) async {
   String token = await getUserJwt();
   var responseList;
-  print(token);
 
-
-  print( "${baseUrl}api/follower/${followerId}");
   try {
 
     final response = await get(Uri.parse(
@@ -4043,13 +3526,6 @@ followerSubscription(int followerId) async {
     );
 
     responseList = jsonDecode(response.body);
-
-    print(responseList);
-    print("responseList");
-
-
-
-
 
   } catch (e) {
     print("error --> $e");
@@ -4089,12 +3565,12 @@ followerSubscriptionAdding(int followerId,List selectedIds) async {
       body: msg,
     );
 
-    print(msg);
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
+
       resMessage = data['result']['message'];
-      print(resMessage);
+
       if (data['result']['message'].toString() == "success") {
         resMessageText = "success";
       }
@@ -4106,7 +3582,7 @@ followerSubscriptionAdding(int followerId,List selectedIds) async {
   } catch (e) {
     print(e.toString());
   }
-  print(resMessageText);
+
   return resMessageText;
 }
 
@@ -4335,9 +3811,6 @@ getNotificationActivity() async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
-
   return data;
 }
 
@@ -4367,9 +3840,6 @@ getNotificationMessageActivity() async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print("data");
-
   return data;
 }
 
@@ -4397,9 +3867,6 @@ getNotificationCount() async {
     // authresponce = data['result'].toString();
   }
 
-  print(data);
-  print(data['activity_count']);
-  print("datajfhejbfjbj");
 
   return data;
 }
@@ -4409,8 +3876,6 @@ EmojiReaction(String reaction,int logId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-  print(logId);
-  print("asjfbvjsbf");
 
   try {
     final msg = jsonEncode({
@@ -4432,11 +3897,8 @@ EmojiReaction(String reaction,int logId) async {
     print(msg);
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body.toString());
-      print(data);
-      print("finalstringdataaa");
+
       resMessage = data['result']['message'];
-      print(resMessage);
-      print("leadeditresponce");
 
       if (data['result']['message'].toString() == "success") {
         print("121212121212");
@@ -4451,61 +3913,10 @@ EmojiReaction(String reaction,int logId) async {
     print(e.toString());
   }
 
-  print(resMessageText);
-  print("dataaaa");
+
   return resMessageText;
 }
-//
-// deleteEmojiReaction(String reaction,int logId) async {
-//   String token = await getUserJwt();
-//   String? resMessage, resMessageText;
-//
-//   print(logId);
-//   print("asjfbvjsbf");
-//
-//   try {
-//     final msg = jsonEncode({
-//       "params": {
-//         "reaction":"🤩"
-//       }
-//
-//     });
-//
-//     Response response = await delete(
-//       Uri.parse('${baseUrl}api/reaction/${logId}'),
-//       headers: {
-//         "Content-Type": "application/json",
-//         'Authorization': 'Bearer $token',
-//       },
-//       body: msg,
-//     );
-//
-//     print(msg);
-//     if (response.statusCode == 200) {
-//       var data = jsonDecode(response.body.toString());
-//       print(data);
-//       print("finalstringdataaa");
-//       resMessage = data['result']['message'];
-//       print(resMessage);
-//       print("leadeditresponce");
-//
-//       if (data['result']['message'].toString() == "success") {
-//         print("121212121212");
-//         resMessageText = data['result']['data']['id'].toString();
-//       }
-//
-//       if (resMessage == "error") {
-//         resMessageText = "0";
-//       }
-//     } else {}
-//   } catch (e) {
-//     print(e.toString());
-//   }
-//
-//   print(resMessageText);
-//   print("dataaaa");
-//   return resMessageText;
-// }
+
 
 
 addMultiCmpnySF(String jsonListmultiCompany) async {

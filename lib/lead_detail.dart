@@ -5139,63 +5139,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   childAspectRatio: 2,
                                                                 ),
                                                                 itemBuilder: (BuildContext context, int index) {
-                                                              // return Container(
-                                                              //   width: MediaQuery.of(context).size.width,
-                                                              //   height: 14,
-                                                              //   child: Row(
-                                                              //     crossAxisAlignment: CrossAxisAlignment.center,
-                                                              //     children: [
-                                                              //       Container(
-                                                              //
-                                                              //
-                                                              //
-                                                              //         // group20582xtx (1652:504)
-                                                              //         margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                              //       //  padding: EdgeInsets.fromLTRB(5, 3, 5, 2),
-                                                              //         width:35,
-                                                              //         height: 30,
-                                                              //         decoration: BoxDecoration (
-                                                              //           border: Border.all(color: Color(0xffebebeb)),
-                                                              //          // color: Color(0xffffffff),
-                                                              //           color:Colors.green,
-                                                              //           borderRadius: BorderRadius.circular(2),
-                                                              //         ),
-                                                              //         child: Container(
-                                                              //           // group20586bh2 (1652:1136)
-                                                              //           width: double.infinity,
-                                                              //           height: double.infinity,
-                                                              //           child: Row(
-                                                              //             crossAxisAlignment: CrossAxisAlignment.center,
-                                                              //             children: [
-                                                              //               Container(
-                                                              //                 color:Colors.red,
-                                                              //                 // image258kZv (1652:1139)
-                                                              //                 margin: EdgeInsets.fromLTRB(0, 0, 2, 0),
-                                                              //                 width: 30,
-                                                              //                 height: 20,
-                                                              //                 child:  Text("5"),
-                                                              //                 // child:  Text(emojiSet[index]['emoji']),
-                                                              //               ),
-                                                              //               Text(
-                                                              //                 // 5cC (1652:1138)
-                                                              //                 emojiSet[index]['count'].toString(),
-                                                              //                 style: TextStyle (
-                                                              //                   fontFamily: 'Mulish',
-                                                              //                   fontSize: 5,
-                                                              //                   fontWeight: FontWeight.w600,
-                                                              //
-                                                              //                   color: Color(0xff000000),
-                                                              //                 ),
-                                                              //               ),
-                                                              //             ],
-                                                              //           ),
-                                                              //         ),
-                                                              //       ),
-                                                              //
-                                                              //
-                                                              //     ],
-                                                              //   ),
-                                                              // );
+
 
                                                               return InkWell(
 
@@ -6209,116 +6153,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                         ),
                       ),
-                // FutureBuilder(
-                //     future: getattchmentData(widget.leadId, "lead.lead"),
-                //     builder: (context, AsyncSnapshot snapshot) {
-                //
-                //       if (snapshot.hasError) {
-                //
-                //       }
-                //       if (snapshot.connectionState == ConnectionState.done) {
-                //         if (snapshot.hasData) {
-                //           if (snapshot.data == null) {
-                //
-                //             return const Center(
-                //                 child: Text('Something went wrong'));
-                //           }
-                //           if (snapshot.data.length != 0) {
-                //             attachmentImagesDisplay = snapshot.data;
-                //
-                //             return Padding(
-                //               padding:
-                //               const EdgeInsets.only(left: 0, right: 100),
-                //               child:
-                //               Container(
-                //                 //color: Colors.green,
-                //
-                //                 width: MediaQuery.of(context).size.width / 3,
-                //
-                //                 child: GridView.builder(
-                //                   shrinkWrap: true,
-                //
-                //                   physics: NeverScrollableScrollPhysics(),
-                //                   itemCount: attachmentImagesDisplay.length,
-                //                   gridDelegate:
-                //                   const SliverGridDelegateWithFixedCrossAxisCount(
-                //                       crossAxisCount: 1),
-                //                   itemBuilder:
-                //                       (BuildContext context, int index) {
-                //
-                //
-                //                     return Center(
-                //                       child: Container(
-                //                         child: Stack(
-                //                           children: [
-                //                             ClipRRect(
-                //                               child: Image.network(
-                //                                 "${attachmentImagesDisplay[index]['url']}?token=${token}",
-                //                                 height: 120,
-                //                                 width: 80,
-                //                               ),
-                //                             ),
-                //                             Positioned(
-                //                                 left: 57,
-                //                                 right: 0,
-                //                                 bottom: 85,
-                //                                 top: 1,
-                //                                 child: Container(
-                //                                   width: 15,
-                //                                   // height: 15,
-                //                                   color: Colors.grey[200],
-                //                                   child: IconButton(
-                //                                     icon: Icon(
-                //                                       Icons
-                //                                           .delete_outline_outlined,
-                //                                       size: 15.0,
-                //                                       color: Colors.grey[800],
-                //                                     ),
-                //                                     onPressed: () async {
-                //                                       print(
-                //                                           attachmentImagesDisplay[
-                //                                           index]['id']);
-                //                                       print("idvaluevalue");
-                //                                       // print(
-                //                                       //     logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                //                                       int lodAttachmentId = attachmentImagesDisplay[index]['id'];
-                //                                       var data = await deleteLogAttachment(
-                //                                           lodAttachmentId);
-                //
-                //                                       if (data['message'] ==
-                //                                           "Success") {
-                //                                         print(
-                //                                             "jhbdndsjbv");
-                //                                         await getLeadDetails();
-                //                                         setState(() {
-                //                                           attachmentImagesDisplay
-                //                                               .clear();
-                //                                         });
-                //                                       }
-                //
-                //                                       // print(
-                //                                       //     data);
-                //                                       print(
-                //                                           "delete testststs");
-                //                                     },
-                //                                   ),
-                //                                 ))
-                //                           ],
-                //                         ),
-                //                       ),
-                //                     );
-                //                   },
-                //                 ),
-                //               ),
-                //
-                //             );
-                //           } else {
-                //             return Container();
-                //           }
-                //         }
-                //       }
-                //       return Center(child: const CircularProgressIndicator());
-                //     }),
+
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -6697,25 +6532,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     },
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //       horizontal: 5, vertical: 5),
-                //   child: TextFormField(
-                //     style: TextStyle(fontSize: 12),
-                //     controller: subjectController,
-                //     decoration: const InputDecoration(
-                //         enabledBorder: UnderlineInputBorder(
-                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                //         ),
-                //         focusedBorder: UnderlineInputBorder(
-                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
-                //
-                //         // border: UnderlineInputBorder(),
-                //         labelText: 'Subject',
-                //         labelStyle: TextStyle(color: Colors.black, fontSize: 10)
-                //     ),
-                //   ),),
-                // SizedBox(height: 5,),
+
                 Container(
                   //color: Colors.red,
                   decoration:
@@ -6954,30 +6771,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                   ),
                 ),
-                // SizedBox(width: 15,),
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 40),
-                //   child: Center(
-                //     child: SizedBox(
-                //       width: 146,
-                //       height: 38,
-                //       child: ElevatedButton(
-                //           child: Center(
-                //             child: Text(
-                //               "Cancel",
-                //               style: TextStyle(
-                //                   fontWeight: FontWeight.w700,
-                //                   fontSize: 13.57,
-                //                   color: Colors.black),
-                //             ),
-                //           ),
-                //           onPressed: () {},
-                //           style: ElevatedButton.styleFrom(
-                //             primary: Colors.white,
-                //           )),
-                //     ),
-                //   ),
-                // ),
+
                 SizedBox(
                   height: 5,
                 ),
@@ -8352,44 +8146,7 @@ class _LeadDetailState extends State<LeadDetail> {
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
 
-  // Future<void> requestPermission() async {
-  //   var status =  await Permission.storage.request();
-  //   print(status);
-  //   print("storage status ");
-  //
-  //   if (status.isGranted) {
-  //     // Permission granted; you can proceed with file operations
-  //     // For example, you can start downloading a file here
-  //     //  _startDownload();
-  //   }
-  //
-  //
-  //   else {
-  //     // Permission denied; you may want to handle this gracefully or show an error message
-  //     // You can show a message to the user explaining why the permission is necessary
-  //
-  //   // Permission.storage.request();
-  //
-  //     showDialog(
-  //       context: context,
-  //       builder: (context) => AlertDialog(
-  //         title: Text('Permission Required'),
-  //         content: Text(
-  //             'Please grant permission to access storage for downloading files.'),
-  //         actions: [
-  //           TextButton(
-  //             onPressed: () => Navigator.pop(context), // Close the dialog
-  //
-  //
-  //
-  //             child: Text('OK'),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   }
 
-  // }
 
   Future<void> requestPermission(String name, String urldata) async {
     var status = await Permission.mediaLibrary.request();

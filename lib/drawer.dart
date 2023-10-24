@@ -405,50 +405,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               ),
                             ],
                           ),
-                          // child: ListView.builder(
-                          //   shrinkWrap: true,
-                          //   physics: ScrollPhysics(),
-                          //   itemCount:2,
-                          //   itemBuilder: (BuildContext context, int index) {
-                          //     return CheckboxListTile(
-                          //       activeColor: Colors.white,
-                          //       checkColor: Colors.black,
-                          //       title: InkWell(
-                          //         onTap: () {
-                          //           print(
-                          //               "selected company ${companyList![index].name}");
-                          //         },
-                          //         child: Text(
-                          //           companyList![index].name,
-                          //           style: TextStyle(
-                          //               fontWeight: FontWeight.w600,
-                          //               fontSize: 15,
-                          //               color: Colors.white),
-                          //         ),
-                          //       ),
-                          //       value: companyList![index].selected,
-                          //       onChanged: (newValue) {
-                          //         setState(() {
-                          //           companyList![index].selected =
-                          //               newValue ?? false;
-                          //
-                          //
-                          //           companyList![index].selected=newValue!;
-                          //
-                          //           final jsonListmultiCompany = json.encode(companyList);
-                          //           addMultiCmpnySF(jsonListmultiCompany);
-                          //
-                          //           companyData();
-                          //
-                          //           print(jsonListmultiCompany!);
-                          //           print(companyList![1].name);
-                          //           print(companyList![1].selected);
-                          //           print("Demo");
-                          //         });
-                          //       },
-                          //     );
-                          //   },
-                          // ),
+
                         ),
                       ],
                     ),

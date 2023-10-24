@@ -67,25 +67,7 @@ class Calender extends StatelessWidget {
 
           ],
         ),
-        // leading: Builder(
-        //     builder: (context) => Padding(
-        //       padding: const EdgeInsets.only(top: 10, left: 20),
-        //       child: IconButton(
-        //         icon: Image.asset("images/back.png"),
-        //         onPressed: () {
-        //           Navigator.pop(context);
-        //         },
-        //       ),
-        //     )
-        //   // IconButton(
-        //   //   icon: Image.asset("images/man2.png"),
-        //   //   onPressed: () {},
-        //   // ),
-        // ),
 
-
-
-        //backgroundColor: Color(0xFF3D418E),
         automaticallyImplyLeading: false,
         actions: [
 

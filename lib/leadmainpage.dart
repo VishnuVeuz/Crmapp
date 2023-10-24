@@ -738,75 +738,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
           ),
         ),
 
-        // bottomNavigationBar: NavigationBar(
-        //   onDestinationSelected: (int index) {
-        //
-        //
-        //     print(index);
-        //     print("final data");
-        //     if(index==0){
-        //       // Navigator.push(context,
-        //       //     MaterialPageRoute(
-        //       //         builder: (context) =>
-        //       //             LeadScrolling(
-        //       //                 '', "notification",
-        //       //                 "[assigned_to_me]")));
-        //     }
-        //     else if(index==1){
-        //       Navigator.push(context,
-        //           MaterialPageRoute(
-        //               builder: (context) =>
-        //                   LeadScrolling(
-        //                       '', "",
-        //                       "")));
-        //
-        //     }
-        //     else if (index==2) {
-        //       Navigator.push(
-        //           context,
-        //           MaterialPageRoute(
-        //               builder: (context) =>
-        //                   OpportunityMainPage(
-        //                       null, "", "",
-        //                       "", "")));
-        //     }
-        //     else if(index==3){
-        //       Scaffold.of(context).openDrawer();
-        //     }
-        //     setState(() {
-        //      // currentPageIndex = index;
-        //     });
-        //   },
-        //
-        //   backgroundColor: Colors.white,
-        //  // indicatorColor: Colors.amber[800],
-        //   //selectedIndex: currentPageIndex,
-        //
-        //   destinations: [
-        //     NavigationDestination(
-        //       selectedIcon: Icon(Icons.home),
-        //       icon: SvgPicture.asset("images/ho.svg"),
-        //       label: 'Home',
-        //
-        //     ),
-        //     NavigationDestination(
-        //       icon: SvgPicture.asset("images/leadd.svg"),
-        //       label: 'Leads',
-        //     ),
-        //     NavigationDestination(
-        //       selectedIcon: Icon(Icons.school),
-        //       icon: SvgPicture.asset("images/oppo.svg"),
-        //       label: 'Opportunity',
-        //
-        //     ),
-        //     NavigationDestination(
-        //       selectedIcon: Icon(Icons.school),
-        //       icon:  SvgPicture.asset("images/mo.svg"),
-        //       label: 'More',
-        //
-        //     ),
-        //   ],
-        // ),
+
 
 
         floatingActionButton: Padding(

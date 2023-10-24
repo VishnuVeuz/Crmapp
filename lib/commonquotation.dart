@@ -99,15 +99,7 @@ class QuotationList extends StatelessWidget {
                                         color: Color(0xFF787878)),
                                   ),
                                 ),
-                                // Padding(
-                                //   padding: const EdgeInsets.only(top: 0,bottom: 0),
-                                //   child: IconButton(icon: SvgPicture.asset("images/clock.svg",),
-                                //
-                                //     onPressed: () {
-                                //
-                                //     },
-                                //   ),
-                                // ),
+
 
                               ],
                             ),
