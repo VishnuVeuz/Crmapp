@@ -9674,12 +9674,15 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   Future<void> requestPermission(String name, String urldata) async {
-    var status = await Permission.manageExternalStorage.request();
+    var status = await Permission.mediaLibrary.request();
+    print(status);
 
-    if (status.isGranted|| await Permission.storage.request().isGranted) {
+    if (status.isGranted || await Permission.storage.request().isGranted) {
+
+
       // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
-      _startDownload(name,urldata);
+      _startDownload(name, urldata);
     } else {
       // Permission denied; you may want to handle this gracefully or show an error message
       // You can show a message to the user explaining why the permission is necessary
@@ -9688,15 +9691,21 @@ class _CustomerDetailState extends State<CustomerDetail> {
         builder: (context) => AlertDialog(
           title: Text('Permission Required'),
           content: Text(
-              'Please grant permission to access storage for downloading files.'),
+            'Please grant permission to access storage for downloading files.',
+          ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context), // Close the dialog
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+                Permission.mediaLibrary.request();
+              },
               child: Text('OK'),
             ),
           ],
         ),
       );
+
+
     }
   }
 

@@ -181,11 +181,11 @@ class _NotificationsState extends State<Notifications> {
                 itemBuilder: (_, i) {
                   return InkWell(
                     onTap: (){
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                              ChatPage()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) =>
+                      //         ChatPage()));
 
 
                     },
@@ -354,10 +354,10 @@ class _NotificationsState extends State<Notifications> {
 
                       ),
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ChatPage()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => ChatPage()),
+                        // );
                       },
                     ),
                   ),

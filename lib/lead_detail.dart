@@ -4547,6 +4547,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   height: double.infinity,
                                                                   child: Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                                                    mainAxisAlignment: MainAxisAlignment.center,
                                                                     children: [
                                                                       Container(
                                                                         // administrator17daysago19J (1636:14)
@@ -4607,7 +4608,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         ),
                                                                       ),
                                                                       Text(
-                                                                        // testflutterdemoAZv (1636:34)
                                                                        logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
                                                                            .toString() ??
                                                                            "",
@@ -4615,7 +4615,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           fontFamily: 'Mulish',
                                                                           fontSize: 9,
                                                                           fontWeight: FontWeight.w600,
-                                                                          height: 1.5,
+                                                                          // height: 1.5,
                                                                           color: Color(0xff787878),
                                                                         ),
 
@@ -8392,11 +8392,13 @@ class _LeadDetailState extends State<LeadDetail> {
   // }
 
   Future<void> requestPermission(String name, String urldata) async {
-    var status = await Permission.manageExternalStorage.request();
+    var status = await Permission.mediaLibrary.request();
     print(status);
 
     if (status.isGranted || await Permission.storage.request().isGranted) {
-      // Permission granted; you can proceed with file operations
+
+
+        // Permission granted; you can proceed with file operations
       // For example, you can start downloading a file here
       _startDownload(name, urldata);
     } else {
@@ -8413,15 +8415,20 @@ class _LeadDetailState extends State<LeadDetail> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
-                Permission.manageExternalStorage.request();
+                Permission.mediaLibrary.request();
               },
               child: Text('OK'),
             ),
           ],
         ),
       );
+
+
     }
   }
+
+
+
   _buildMailPopupDialog(BuildContext context, int typeIds,String emails) {
     return StatefulBuilder(builder: (context, setState) {
 
@@ -8740,9 +8747,6 @@ class _LeadDetailState extends State<LeadDetail> {
                     },
 
                   ),),
-
-
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
