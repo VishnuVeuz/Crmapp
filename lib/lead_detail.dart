@@ -4945,6 +4945,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 ),
                                                                               ),
                                                                               Container(
+
                                                                                 width: MediaQuery.of(context).size.width/2,
                                                                                 //height: double.infinity,
                                                                                 child: Stack(
@@ -4998,8 +4999,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   ],
                                                                                 ),
                                                                               ),
-                                                                              Padding(
-                                                                                padding: const EdgeInsets.only(left: 20),
+                                                                              Spacer(),
+                                                                              Container(
+
                                                                                 child: InkWell(
                                                                                   child: Container(
                                                                                     // trash2Qvk (1652:366)
@@ -5030,55 +5032,57 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   },
                                                                                 ),
                                                                               ),
-                                                                              InkWell(
-                                                                                child: Container(
-                                                                                  // download6oa (1652:371)
-                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
-                                                                                  width: 14,
-                                                                                  height: 14,
-                                                                                  child: Image.asset(
-                                                                                    'images/logdownload.png',
+                                                                              Container(
+                                                                                child: InkWell(
+                                                                                  child: Container(
+                                                                                    // download6oa (1652:371)
+                                                                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                                                                                     width: 14,
                                                                                     height: 14,
+                                                                                    child: Image.asset(
+                                                                                      'images/logdownload.png',
+                                                                                      width: 14,
+                                                                                      height: 14,
+                                                                                    ),
                                                                                   ),
+                                                                                  onTap: (){
+                                                                                    String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
+                                                                                    //String mimetypes = "application/pdf";
+
+                                                                                    String itemName, itemNamefinal;
+
+                                                                                    itemName = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
+
+                                                                                    mimetypes == "application/pdf"
+                                                                                        ? itemNamefinal = "${itemName}.pdf"
+                                                                                        : mimetypes == "application/msword"
+                                                                                        ? itemNamefinal = "${itemName}.doc"
+                                                                                        : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                        ? itemNamefinal = "${itemName}.xlsx"
+                                                                                        : mimetypes == "application/xml"
+                                                                                        ? itemNamefinal = "${itemName}.xml"
+                                                                                        : mimetypes == "application/zip"
+                                                                                        ? itemNamefinal = "${itemName}.zip"
+                                                                                        : mimetypes == "image/jpeg"
+                                                                                        ? itemNamefinal = "${itemName}.jpeg"
+                                                                                        : mimetypes == "image/png"
+                                                                                        ? itemNamefinal = "${itemName}.png"
+                                                                                        : itemNamefinal = "${itemName}";
+
+                                                                                    print(index);
+
+                                                                                    print(logattachmentFileDisplay);
+
+                                                                                    print(itemNamefinal);
+                                                                                    print(mimetypes);
+                                                                                    print("final print dataaa");
+
+                                                                                    FlutterDownloader.registerCallback(downloadCallback);
+
+                                                                                    requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
+
+                                                                                  },
                                                                                 ),
-                                                                                onTap: (){
-                                                                                  String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
-                                                                                  //String mimetypes = "application/pdf";
-
-                                                                                  String itemName, itemNamefinal;
-
-                                                                                  itemName = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
-
-                                                                                  mimetypes == "application/pdf"
-                                                                                      ? itemNamefinal = "${itemName}.pdf"
-                                                                                      : mimetypes == "application/msword"
-                                                                                      ? itemNamefinal = "${itemName}.doc"
-                                                                                      : mimetypes == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                      ? itemNamefinal = "${itemName}.xlsx"
-                                                                                      : mimetypes == "application/xml"
-                                                                                      ? itemNamefinal = "${itemName}.xml"
-                                                                                      : mimetypes == "application/zip"
-                                                                                      ? itemNamefinal = "${itemName}.zip"
-                                                                                      : mimetypes == "image/jpeg"
-                                                                                      ? itemNamefinal = "${itemName}.jpeg"
-                                                                                      : mimetypes == "image/png"
-                                                                                      ? itemNamefinal = "${itemName}.png"
-                                                                                      : itemNamefinal = "${itemName}";
-
-                                                                                  print(index);
-
-                                                                                  print(logattachmentFileDisplay);
-
-                                                                                  print(itemNamefinal);
-                                                                                  print(mimetypes);
-                                                                                  print("final print dataaa");
-
-                                                                                  FlutterDownloader.registerCallback(downloadCallback);
-
-                                                                                  requestPermission(itemNamefinal, logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
-
-                                                                                },
                                                                               ),
                                                                             ],
                                                                           ),
