@@ -4611,7 +4611,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           width: 13,
                                                                           height: 13,
                                                                           child: SvgPicture.asset(
-                                                                            'images/sm.svg',
+                                                                            'images/emoji6.svg',
                                                                             // 'assets/page-1/images/group-20576.png',
 
                                                                           ),
@@ -4667,7 +4667,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                             },
                                                                             child: SvgPicture.asset(
-                                                                              'images/star.svg',
+                                                                              'images/star6.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4685,7 +4685,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             height: 13,
                                                                             //color:Colors.red,
                                                                             child: SvgPicture.asset(
-                                                                              'images/ed.svg',
+                                                                              'images/edit6.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4707,7 +4707,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             width: 13,
                                                                             height: 13,
                                                                             child: SvgPicture.asset(
-                                                                              'images/de.svg',
+                                                                              'images/delete6.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),

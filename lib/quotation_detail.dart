@@ -4676,13 +4676,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                   ),
                                                                   child: Row(
                                                                     children: [
+                                                                      SizedBox(width: 3,),
                                                                       InkWell(
                                                                         child: Container(
                                                                           margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                          width: 20,
-                                                                          height: 20,
-                                                                          child: Image.asset(
-                                                                            'images/smile2.png',
+                                                                          width: 13,
+                                                                          height: 13,
+                                                                          child:  SvgPicture.asset(
+                                                                            'images/emoji6.svg',
                                                                             // 'assets/page-1/images/group-20576.png',
 
                                                                           ),
@@ -4695,14 +4696,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           ).then((value) => setState(() {}));
                                                                         },
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       StatefulBuilder(builder: (BuildContext
                                                                       context,
                                                                           StateSetter
                                                                           setState) {
                                                                         return   Container(
                                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                            width: 20,
-                                                                            height: 20,
+                                                                            width: 13,
+                                                                            height: 13,
                                                                             child: starImage == true? InkWell(
                                                                               onTap: ()async{
                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
@@ -4716,8 +4718,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                   });
                                                                                 }
                                                                               },
-                                                                              child: Image.asset(
-                                                                                'images/starr.png',
+                                                                              child: SvgPicture.asset(
+                                                                                'images/st3.svg',
                                                                                 // 'assets/page-1/images/group-20576.png',
 
                                                                               ),
@@ -4736,8 +4738,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
 
                                                                               },
-                                                                              child: Image.asset(
-                                                                                'images/starr1.png',
+                                                                              child:  SvgPicture.asset(
+                                                                                'images/star6.svg',
                                                                                 // 'assets/page-1/images/group-20576.png',
 
                                                                               ),
@@ -4745,15 +4747,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                         );
                                                                       }
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       Visibility(
                                                                         visible: lognoteoptions,
                                                                         child: InkWell(
                                                                           child: Container(
                                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                            width: 20,
-                                                                            height: 20,
-                                                                            child: Image.asset(
-                                                                              'images/edit2.png',
+                                                                            width: 13,
+                                                                            height: 13,
+                                                                            child: SvgPicture.asset(
+                                                                              'images/edit6.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4766,15 +4769,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           },
                                                                         ),
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       Visibility(
                                                                         visible: lognoteoptions,
                                                                         child: InkWell(
                                                                           child: Container(
                                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                            width: 20,
-                                                                            height: 20,
-                                                                            child: Image.asset(
-                                                                              'images/delete2.png',
+                                                                            width: 13,
+                                                                            height: 13,
+                                                                            child:  SvgPicture.asset(
+                                                                              'images/delete6.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4795,6 +4799,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                           },
                                                                         ),
                                                                       ),
+                                                                      SizedBox(width: 3,),
                                                                     ],
                                                                   ),
                                                                 ),

@@ -276,12 +276,12 @@ flutter:
     - images/logword.png
     - images/logexcel.png
     - images/logxml.png
-    - images/sm.svg
-    - images/ed.svg
-    - images/de.svg
+    - images/emoji6.svg
+    - images/edit6.svg
+    - images/delete6.svg
     - images/st2.svg
     - images/st3.svg
-    - images/star.svg
+    - images/star6.svg
 
 
 
