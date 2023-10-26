@@ -1972,7 +1972,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 13.57,
-                                            color: Colors.white,fontFamily: 'Mulish'),
+                                            color: Color(0xFF212121),fontFamily: 'Mulish'),
                                       ),
                                       onPressed: () {
                                         showDialog(
@@ -1982,7 +1982,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                         ).then((value) => setState(() {}));
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF9246A),
+                                        primary: Color(0xFFF6F6F6),
                                       )),
                                 ),
                               ),

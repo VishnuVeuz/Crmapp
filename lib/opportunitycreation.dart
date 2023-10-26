@@ -2142,7 +2142,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 15.57,
-                                            color: Colors.white,
+                                            color: Color(0xFF212121),
                                             fontFamily: 'Mulish'),
                                       ),
                                       onPressed: () {
@@ -2157,7 +2157,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         ).then((value) => setState(() {}));
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF9246A),
+                                        primary: Color(0xFFF6F6F6),
                                       )),
                                 ),
                               ),
