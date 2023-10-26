@@ -276,6 +276,9 @@ flutter:
     - images/logword.png
     - images/logexcel.png
     - images/logxml.png
+    - images/sm.svg
+    - images/ed.svg
+    - images/de.svg
 
 
 

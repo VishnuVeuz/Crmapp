@@ -393,7 +393,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                   builder: (context) => LeadCreation(0)));
           // Add your onPressed code here!
         },
-        backgroundColor: Color(0xFF3D418E),
+        backgroundColor: Color(0xFFFA256B),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar:MyBottomNavigationBar(1),
