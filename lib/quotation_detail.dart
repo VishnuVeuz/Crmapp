@@ -8309,7 +8309,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                       int selectedColorId = colors[index]["color"];
 
-                      String value = await colorChange(selectedtagId,selectedColorId);
+                      String value = await colorChange(selectedtagId,selectedColorId,"crm.tag");
 
                       print(value);
                       print("finalidididid");

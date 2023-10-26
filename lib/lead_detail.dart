@@ -1376,19 +1376,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                       print(tags![index]["color"].toString());
                                       print(tags![index]["id"].toString());
                                       print("clicked tag");
-                                      // setState(() {
-                                      //   tags![index]["color"]="0xFFEE4B39";
-                                      // });
-
 
                                  var colors =   await getColors();
-
-                                // int selectedtagId = tags![index]["id"];
-
-
-
-
-
                                  int selectedtagId = tags![index]["id"];
                                       showDialog(
                                         context: context,
@@ -8588,7 +8577,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                     int selectedColorId = colors[index]["color"];
 
-                    String value = await colorChange(selectedtagId,selectedColorId);
+                    String value = await colorChange(selectedtagId,selectedColorId,"crm.tag");
 
                     print(value);
                     print("finalidididid");

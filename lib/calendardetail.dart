@@ -31,6 +31,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
   bool isCheckedAllday = false;
   bool _isInitialized = false;
 
+  String? tagChangeColoir;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -755,16 +757,17 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       return InkWell(
 
                                         onTap: ()async{
-                                          // var colors =   await getColors();
-                                          //
-                                          // int selectedtagId = tags![index]["id"];
-                                          // showDialog(
-                                          //   context: context,
-                                          //   builder: (BuildContext context) => _buildColorPopupDialog(context,colors,selectedtagId),
-                                          // ).then((value) => setState(() {
-                                          //   tagChangeColoir == null? tags![index]["color"] = tags![index]["color"]:
-                                          //   tags![index]["color"] =  tagChangeColoir;
-                                          // }));
+                                          var colors =   await getColors();
+                                          int selectedtagId = tags![index]["id"];
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) => _buildColorPopupDialog(context,colors,selectedtagId),
+                                          ).then((value) => setState(() {
+                                            tagChangeColoir == null? tags![index]["color"] = tags![index]["color"]:
+                                            tags![index]["color"] =  tagChangeColoir;
+                                          }));
+
+
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -991,5 +994,87 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
 
   }
+  getColors() async{
+
+    var data =
+    await colorsData();
+
+    print(data['records']);
+    print("lastlast");
+    print(data.length);
+
+    data.length==0? data=[]:
+    data=data['records'];
+
+
+    return data;
+
+
+
+  }
+
+  _buildColorPopupDialog(BuildContext context,var colors,int selectedtagId) {
+    print(colors.length);
+    print(selectedtagId);
+    print("final colorss");
+    return StatefulBuilder(builder: (context, setState) {
+      return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          content: Container(
+            color: Colors.white,
+            width: MediaQuery.of(context).size.width / 1.5,
+            // height: MediaQuery.of(context).size.height / 2.7,
+            child: Wrap(
+              alignment: WrapAlignment.start,
+              direction: Axis.horizontal,
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: List.generate(colors.length ?? 0, (int index) {
+                return FractionallySizedBox(
+                  widthFactor: null,
+                  child: InkWell(
+                    onTap: ()async{
+
+                      int selectedColorId = colors[index]["color"];
+
+                      String value = await colorChange(selectedtagId,selectedColorId,"calendar.event.type");
+
+                      print(value);
+                      print("finalidididid");
+                      if( value == "success"){
+                        setState((){
+                          tagChangeColoir = colors[index]["code"];
+                        });
+
+                      }
+
+
+
+
+                      Navigator.pop(context);
+                      print(colors[index]["code"]);
+                      print(colors[index]["color"]);
+                      print("color code");
+
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        color: Color(int.parse(colors[index]["code"])),
+                      ),
+                      width: 30,
+                      height: 30,
+
+                    ),
+                  ),
+                );
+              }),
+            ),
+          ));
+    });
+
+  }
+
 }
 

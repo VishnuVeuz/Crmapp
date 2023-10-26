@@ -2474,7 +2474,7 @@ colorsData()  async {
   return data;
 }
 
-colorChange(int tagId,colorId) async {
+colorChange(int tagId,colorId,String model) async {
 
   String token = await getUserJwt();
   String? resMessage, resMessageText;
@@ -2482,6 +2482,7 @@ colorChange(int tagId,colorId) async {
   try {
     final msg = jsonEncode({
       "params": {
+        "model": model,
         "color":colorId,
 
       }

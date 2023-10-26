@@ -8287,7 +8287,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                       int selectedColorId = colors[index]["color"];
 
-                      String value = await colorChange(selectedtagId,selectedColorId);
+                      String value = await colorChange(selectedtagId,selectedColorId,"res.partner.category");
 
                       print(value);
                       print("finalidididid");
