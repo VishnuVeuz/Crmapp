@@ -1163,7 +1163,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         color: Color(
                                             int.parse(tagss![index]["color"])),
                                       ),
-                                      width: 70,
+                                      width: 80,
                                       height: 19,
                                       child: Center(
                                         child: Text(
@@ -1172,7 +1172,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'Mulish',
-                                              fontSize: 10),
+                                              fontSize: 8),
                                         ),
                                       ),
                                     ),
