@@ -3476,9 +3476,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       padding: const EdgeInsets.only(top: 5,bottom: 5),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
-                                        // group20525KqJ (1112:1365)
-                                        // margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
-                                        // padding: EdgeInsets.fromLTRB(0*fem, 9*fem, 0*fem, 0*fem),
+
                                         width: double.infinity,
                                         decoration: BoxDecoration (
                                            border: Border.all(color: Color(0xffebebeb)),
@@ -3491,9 +3489,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           children: [
                                             Container(
                                               margin: EdgeInsets.fromLTRB(0,0,0,0),
-                                               // color:Colors.green,
-                                              // autogroupfosqpn4 (7u5yFZfWQQE3crdUqnfoSQ)
-                                              // margin: EdgeInsets.fromLTRB(9*fem, 0*fem, 17*fem, 9*fem),
+
                                               width: MediaQuery.of(context).size.width/1,
                                               height: 40,
                                               child: Row(
@@ -3552,9 +3548,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.fromLTRB(0,0,9,0),
-                                                      //color: Colors.yellow,
-                                                      //  color: Colors.red,
-                                                      // group205294RW (1112:1393)
                                                       width: MediaQuery.of(context).size.width/1.3,
                                                       height: double.infinity,
                                                       child: Row(
@@ -3583,14 +3576,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         fontFamily: 'Mulish',
                                                                         fontSize: 12,
                                                                         fontWeight: FontWeight.w600,
-                                                                        // height: 1.255*ffem/fem,
+
                                                                         color: Color(0xff202020),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                                 Positioned(
-                                                                  // goodqag (1112:1369)
                                                                   left: 2,
                                                                   top: 15,
                                                                   child: Align(
@@ -3607,7 +3599,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         fontFamily: 'Mulish',
                                                                         fontSize: 10,
                                                                         fontWeight: FontWeight.w500,
-                                                                        //height: 1.255*ffem/fem,
+
                                                                         color: Color(0xff666666),
                                                                       ),
                                                                     ),
@@ -3617,8 +3609,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // color: Colors.red,
-                                                            // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
+
                                                             margin: EdgeInsets.fromLTRB(0,1,1,2),
                                                             //width: MediaQuery.of(context).size.width,
                                                              width: MediaQuery.of(context).size.width/5,
@@ -3641,7 +3632,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         fontFamily: 'Mulish',
                                                                         fontSize: 12,
                                                                         fontWeight: FontWeight.w600,
-                                                                        // height: 1.255*ffem/fem,
+
                                                                         color: Color(int.parse(
                                                                             scheduleData[
                                                                             'records']
@@ -3652,7 +3643,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   ),
                                                                 ),
                                                                 Positioned(
-                                                                  // meetingzbz (1112:1394)
                                                                   right: 1,
                                                                    top: 15,
                                                                   child: Align(
@@ -3668,7 +3658,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         fontFamily:  'Mulish',
                                                                         fontSize: 12,
                                                                         fontWeight: FontWeight.w600,
-                                                                        //  height: 1.255*ffem/fem,
                                                                         color: Color(0xff202020),
                                                                       ),
                                                                     ),
@@ -3685,9 +3674,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               ),
                                             ),
                                             Container(
-                                              // line27thN (1112:1370)
                                               margin: EdgeInsets.fromLTRB(0,0,0,6),
-                                              //width: double.infinity,
                                               height: 1,
                                               decoration: BoxDecoration (
                                                 color: Color(0xffebebeb),
@@ -3705,12 +3692,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 children: [
                                                   Expanded(
                                                     child: Container(
-
-                                                   //   color:Colors.pink,
-
-                                                     // width:MediaQuery.of(context).size.width/1.18,
-
-                                                      //padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
 
                                                       height: double.infinity,
                                                       child: Row(
@@ -3745,7 +3726,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                                   children: [
                                                                     Container(
-                                                                      // checkd2g (1112:1371)
                                                                       margin: EdgeInsets.fromLTRB(0, 0,2,0),
                                                                       width: 12,
                                                                       height: 12,
@@ -3768,7 +3748,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           fontFamily: 'Mulish',
                                                                           fontSize: 11,
                                                                           fontWeight: FontWeight.w500,
-                                                                          // height: 1.255*ffem/fem,
                                                                           color: Color(0xff707070),
                                                                         ),
                                                                       ),
@@ -3828,8 +3807,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      // rescheduleJo2 (1112:1376)
-                                                                      //'Reschedule',
+
                                                                       scheduleData['records']
                                                                       [
                                                                       index]
@@ -3988,8 +3966,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      // rescheduleJo2 (1112:1376)
-                                                                     // 'Reschedule',
+
                                                                       scheduleData['records']
                                                                       [
                                                                       index]
@@ -4044,8 +4021,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                     Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: Container(
-                                                                        //color:Colors.blue,
-                                                                        // xcircleBrp (1112:1386)
+
                                                                         margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
                                                                         width: 12,
                                                                         height: 12,
@@ -4091,7 +4067,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               children: [
                                                                 JustTheTooltip(
                                                                   margin: EdgeInsets.only(left: 25,right: 25),
-                                                                  // showDuration:  const Duration(seconds: 10),
+
                                                                   preferredDirection: AxisDirection.up,
                                                                   isModal: true,
                                                                   child: Material(
@@ -4365,15 +4341,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 print("ddd1.length");
                               });
 
-                              // print(logDataHeader.length);
-                              // print(logDataTitle.length);
-                              // print("ddd2.length");
-                              //
-                              // print(logDataHeader[0]);
-                              // print(logDataTitle[0][0]['id']);
-                              // print("ddd2.lengthssss");
-                              //
-                              //
+
 
                               return ListView.builder(
                                   scrollDirection: Axis.vertical,
@@ -4541,8 +4509,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
                                                                 Container(
-                                                                  // color: Colors.blue,
-                                                                  // group20587t4g (1652:519)
+
                                                                   margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
                                                                   height: double.infinity,
                                                                   child: Column(
@@ -4805,8 +4772,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               childAspectRatio: 1,
                                                             ),
                                                             itemBuilder: (BuildContext context, int index) {
-                                                              // print(logattachmentImagesDisplay.length);
-                                                              // print("selectedImagesDisplay.length,");
+
                                                               print(logattachmentImagesDisplay[index]["datas"]);
                                                               print("selectedImagesDisplay.length,");
                                                               return Container(
@@ -4922,9 +4888,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         childAspectRatio: 5.5,
                                                                       ),
                                                                       itemBuilder: (BuildContext context, int index) {
-                                                                        // print(selectedImagesDisplay.length);
-                                                                        // print(selectedImagesDisplay[index]["datas"]);
-                                                                        // print("selectedImagesDisplay.length,");
+
                                                                         return
                                                                   Container(
                                                                     margin: EdgeInsets.fromLTRB(10, 0, 0, 2),
@@ -5090,10 +5054,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   print(index);
 
                                                                                   print(logattachmentFileDisplay);
-                                                                                  // print(selectedImagesDisplay[index]["datas"]);
-                                                                                  // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                  // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
-                                                                                  // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
+
                                                                                   print(itemNamefinal);
                                                                                   print(mimetypes);
                                                                                   print("final print dataaa");
@@ -6444,8 +6405,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 SizedBox(
                   height: 5,
                 ),
-                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
-                // SizedBox(height: 10,),
+
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -8140,8 +8100,6 @@ class _LeadDetailState extends State<LeadDetail> {
 
   // Callback to handle download events
   static void downloadCallback(String id, int status, int progress) {
-    // Handle download status and progress updates here
-    // You can use this callback to update UI elements as needed.
 
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
@@ -8155,12 +8113,10 @@ class _LeadDetailState extends State<LeadDetail> {
     if (status.isGranted || await Permission.storage.request().isGranted) {
 
 
-        // Permission granted; you can proceed with file operations
-      // For example, you can start downloading a file here
+
       _startDownload(name, urldata);
     } else {
-      // Permission denied; you may want to handle this gracefully or show an error message
-      // You can show a message to the user explaining why the permission is necessary
+
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -8621,9 +8577,9 @@ class _LeadDetailState extends State<LeadDetail> {
            // height: MediaQuery.of(context).size.height / 2.7,
              child: Wrap(
             alignment: WrapAlignment.start,
-            direction: Axis.horizontal, // Direction is horizontal
-            spacing: 8.0, // Space between items
-            runSpacing: 8.0, // Space between rows (if wrapping)
+            direction: Axis.horizontal,
+            spacing: 8.0,
+            runSpacing: 8.0,
             children: List.generate(colors.length ?? 0, (int index) {
               return FractionallySizedBox(
                 widthFactor: null,
@@ -8659,17 +8615,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     ),
                     width: 30,
                     height: 30,
-                    // child: Center(
-                    //   child: Text(
-                    //     "hello",
-                    //     style: TextStyle(
-                    //       color: Colors.white,
-                    //       fontFamily: 'Mulish',
-                    //       fontWeight: FontWeight.w500,
-                    //       fontSize: 10,
-                    //     ),
-                    //   ),
-                    // ),
+
                   ),
                 ),
               );

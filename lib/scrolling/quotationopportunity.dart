@@ -66,8 +66,6 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
 
         },
       );
-      //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
-      //List responseList = json.decode(response.body);
       var responseList = jsonDecode(response.body);
       print("company_ids");
       print(globals.selectedIds);

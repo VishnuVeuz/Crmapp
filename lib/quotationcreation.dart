@@ -277,8 +277,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          // If the form is valid, display a snackbar. In the real world,
-                          // you'd often call a server or save the information in a database.
+
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Processing Data')),
@@ -381,10 +380,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                             value: customerName,
-                            // hint: Text(
-                            //   "Customer",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) async {
@@ -434,8 +430,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
                               dynamic data = jsonDecode(response.body);
 
-                              // print(data);
-                              // print("customer data");
+
                               int nbResults = data["length"];
 
                               List<DropdownMenuItem> results =
@@ -487,10 +482,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: quotationtemplateName,
-                            // hint: Text(
-                            //   "Quotation Template",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -609,10 +601,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: pricelistName,
-                            // hint: Text(
-                            //   "Pricelist",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -662,8 +651,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               }
 
                               dynamic data = jsonDecode(response.body);
-                              // print(data);
-                              // print("customer data");
+
                               int nbResults = data["length"];
 
                               List<DropdownMenuItem> results =
@@ -708,10 +696,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: paymenttermsName,
-                            // hint: Text(
-                            //   "Payment Terms",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -813,10 +798,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: salespersonName,
-                            // hint: Text(
-                            //   "Salesperson",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
 
                             searchHint: null,
                             autofocus: false,
@@ -907,10 +889,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: salesteamName,
-                            // hint: Text(
-                            //   "Sales Team",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1005,10 +984,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: companyName,
-                            // hint: Text(
-                            //   "Company",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1270,10 +1246,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               );
                             },
 
-                            // hint: Text(
-                            //   "Shipping policy",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             items: list.map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -1349,10 +1322,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: fiscalpositionName,
-                            // hint: Text(
-                            //   "Fiscal Position",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
 
                             searchHint: null,
                             autofocus: false,
@@ -1455,10 +1425,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: campaignName,
-                            // hint: Text(
-                            //   "Campaign",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
 
                             searchHint: null,
                             autofocus: false,
@@ -1551,10 +1518,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: mediumName,
-                            // hint: Text(
-                            //   "Medium",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1640,10 +1604,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             },
 
                             value: sourceName,
-                            // hint: Text(
-                            //   "Source",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1918,9 +1879,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 1),
                                           child: Container(
-                                            // width: 490,
-                                            // height:
-                                            // MediaQuery.of(context).size.height / 7,
+
                                               color: Colors.white,
                                               child: Column(
                                                 // crossAxisAlignment: CrossAxisAlignment.start,
@@ -2224,9 +2183,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                         child: Padding(
                                           padding: const EdgeInsets.only(top: 1),
                                           child: Container(
-                                            // width: 490,
-                                            // height:
-                                            // MediaQuery.of(context).size.height / 7,
+
                                               color: Colors.white,
                                               child: Column(
                                                 // crossAxisAlignment: CrossAxisAlignment.start,
@@ -2422,9 +2379,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                       child: Padding(
                                         padding: const EdgeInsets.only(top: 1),
                                         child: Container(
-                                          // width: 490,
-                                          // height:
-                                          // MediaQuery.of(context).size.height / 7,
+
                                             color: Colors.white,
                                             child: Text(
                                                 productDatas[index].toString()
@@ -2740,11 +2695,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     .of(context)
                     .size
                     .width,
-                // height: MediaQuery
-                //     .of(context)
-                //     .size
-                //     .height,
-                //color: Colors.green,
+
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -2802,24 +2753,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           },
 
                           value: productTiltleName,
-                          // hint: Text(
-                          //   "Product",
-                          //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                          // ),
+
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) async {
                             setState(() {
-                              print(value['capital']);
-
-                              print("xfgchvjbknm");
-                              // productTax.clear();
-                              // editProductTaxName.clear();
-                              // selectedProductTax.clear();
-                              print(productTax);
-                              print(editProductTaxName);
-                              print(selectedProductTax);
-                              print("product valursss");
 
                               productTiltleName = value;
                               productTiltleId = value["id"];
@@ -2951,10 +2889,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           },
 
                           value: productUomName,
-                          // hint: Text(
-                          //   "Uom",
-                          //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                          // ),
+
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) {

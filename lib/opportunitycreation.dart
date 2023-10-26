@@ -123,7 +123,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   Widget build(BuildContext context) {
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
+
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -440,13 +440,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: customerName,
-                            // hint: Text(
-                            //   "Customer",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -479,7 +473,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 bool? orderAsc,
                                 List<Tuple2<String, String>>? filters,
                                 int? pageNb) async {
-                              //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
 
                               Response response = await get(
                                 Uri.parse(
@@ -497,8 +490,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
                               dynamic data = jsonDecode(response.body);
 
-                              // print(data);
-                              // print("customer data");
+
                               int nbResults = data["length"];
 
                               List<DropdownMenuItem> results = (data["records"]
@@ -566,13 +558,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: titleName,
-                            // hint: Text(
-                            //   "Title",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -750,13 +736,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: countryName,
-                            // hint: Text(
-                            //   "Country",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
 
                             searchHint: null,
                             autofocus: false,
@@ -863,13 +843,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: stateName,
-                            // hint: Text(
-                            //   "State",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1017,13 +991,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: languageName,
-                            // hint: Text(
-                            //   "Language",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1129,26 +1096,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
                           ),
                         ),
-                        // Padding(
-                        //   padding:
-                        //       const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                        //   child: TextFormField(
-                        //     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                        //     controller: emailccController,
-                        //     decoration: const InputDecoration(
-                        //         enabledBorder: UnderlineInputBorder(
-                        //           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                        //         ),
-                        //         focusedBorder: UnderlineInputBorder(
-                        //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                        //         ),
-                        //
-                        //         // border: UnderlineInputBorder(),
-                        //         labelText: 'EmailCc',
-                        //         labelStyle: TextStyle(
-                        //             color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                        //   ),
-                        // ),
+
                         Padding(
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
@@ -1270,13 +1218,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: pricelistName,
-                            // hint: Text(
-                            //   "Pricelist",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
                             searchHint: null,
                             autofocus: false,
                             onChanged: (value) {
@@ -1324,8 +1266,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               }
 
                               dynamic data = jsonDecode(response.body);
-                              // print(data);
-                              // print("customer data");
+
                               int nbResults = data["length"];
 
                               List<DropdownMenuItem> results = (data["record"]
@@ -1372,13 +1313,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: campanyName,
-                            // hint: Text(
-                            //   "Company",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1486,13 +1420,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
 
                             value: salespersonName,
-                            // hint: Text(
-                            //   "Salesperson",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1601,13 +1528,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: salesteamName,
-                            // hint: Text(
-                            //   "Sales Team",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1844,13 +1764,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: campaignName,
-                            // hint: Text(
-                            //   "Campaign",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -1961,13 +1874,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: mediumName,
-                            // hint: Text(
-                            //   "Medium",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
+
 
                             searchHint: null,
                             autofocus: false,
@@ -2076,13 +1983,6 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             },
 
                             value: sourceName,
-                            // hint: Text(
-                            //   "Source",
-                            //   style: TextStyle(
-                            //       fontSize: 12,
-                            //       color: Colors.black,
-                            //       fontFamily: 'Mulish'),
-                            // ),
 
                             searchHint: null,
                             autofocus: false,
@@ -2195,8 +2095,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 .width /
                                 1,
 
-                            // height: 40,
-                            //color: Colors.red,
+
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   left: 0),
@@ -2228,13 +2127,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             ),
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
-                        //   child: Divider(
-                        //     color: Colors.grey,
-                        //     thickness: 0.5,
-                        //   ),
-                        // ),
+
                         Padding(
                           padding: const EdgeInsets.only(top: 10, bottom: 30),
                           child: Center(
@@ -2584,9 +2477,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 1),
                                       child: Container(
-                                          // width: 490,
-                                          // height:
-                                          // MediaQuery.of(context).size.height / 7,
+
                                           color: Colors.white,
                                           child: Text(
                                             productDatas[index].toString(),
@@ -2814,8 +2705,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
           key: _formKeyalert,
           child: Container(
             width: MediaQuery.of(context).size.width,
-            // height: MediaQuery.of(context).size.height,
-            //color: Colors.green,
+
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -2873,26 +2763,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       },
 
                       value: productTiltleName,
-                      // hint: Text(
-                      //   "Product",
-                      //   style: TextStyle(
-                      //       fontSize: 13.6,
-                      //       color: Colors.black,
-                      //       fontFamily: 'Mulish'),
-                      // ),
+
                       searchHint: null,
                       autofocus: false,
                       onChanged: (value) async {
                         setState(() {
-                          print(value['capital']);
-
-                          // productTax.clear();
-                          // editProductTaxName.clear();
-                          // selectedProductTax.clear();
-                          print(productTax);
-                          print(editProductTaxName);
-                          print(selectedProductTax);
-                          print("product valursss");
 
                           productTiltleName = value;
                           productTiltleId = value["id"];
@@ -3019,13 +2894,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       },
 
                       value: productUomName,
-                      // hint: Text(
-                      //   "Uom",
-                      //   style: TextStyle(
-                      //       fontSize: 13.6,
-                      //       color: Colors.black,
-                      //       fontFamily: 'Mulish'),
-                      // ),
+
                       searchHint: null,
                       autofocus: false,
                       onChanged: (value) {

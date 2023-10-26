@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primaryColor: Color(0xFF3D418E),
-        //scaffoldBackgroundColor: Colors.transparent,
-        //primarySwatch: Colors.blue,
+
       ),
       //home:LeadDetail(267),
       home:SplashPage(),

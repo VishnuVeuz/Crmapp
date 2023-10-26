@@ -83,7 +83,6 @@ class _LeadCreationState extends State<LeadCreation> {
   Widget build(BuildContext context) {
 
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -359,7 +358,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
-                                  // border: UnderlineInputBorder(),
+
                                   labelText: 'Company Name',
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
@@ -697,9 +696,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: stateName,
-                              // hint: Text("State",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
-
 
                               searchHint: null,
                               autofocus: false,
@@ -860,8 +856,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: languageName,
-                              // hint: Text("Language",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -970,24 +964,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
                             ),),
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(
-                          //       horizontal: 25, vertical: 0),
-                          //   child: TextFormField(
-                          //     style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                          //     controller: emailccController,
-                          //     decoration: const InputDecoration(
-                          //         enabledBorder:  UnderlineInputBorder(
-                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                          //         ),
-                          //         focusedBorder: UnderlineInputBorder(
-                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
-                          //
-                          //         // border: UnderlineInputBorder(),
-                          //         labelText: 'Email cc',
-                          //         labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
-                          //     ),
-                          //   ),),
+
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
@@ -1109,8 +1086,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: campanyName,
-                              // hint: Text("Company",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1225,8 +1200,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: salespersonName,
-                              // hint: Text("Salesperson",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1340,8 +1313,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: salesteamName,
-                              // hint: Text("Sales Team",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1557,15 +1528,6 @@ class _LeadCreationState extends State<LeadCreation> {
 
                                  chipConfig:  ChipConfig(wrapType: WrapType.scroll,
 
-                                   //
-
-
-
-                                   //      backgroundColor: Colors.transparent,
-                                   // radius: 15,
-                                   // deleteIconColor: Colors.black,
-                                   // labelStyle:TextStyle(color: Colors.white, backgroundColor: Colors.pinkAccent,fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-
                                  ),
 
                                       responseErrorBuilder: ((context, body) {
@@ -1619,8 +1581,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: campaignName,
-                              // hint: Text("Campaign",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1738,8 +1698,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: mediumName,
-                              // hint: Text("Medium",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1853,8 +1811,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               },
 
                               value: sourceName,
-                              // hint: Text("Source",
-                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                               searchHint: null,
                               autofocus: false,
@@ -1965,24 +1921,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             ),),
 
 
-                          // Padding(
-                          //   padding: const EdgeInsets.symmetric(
-                          //       horizontal: 25, vertical: 0),
-                          //   child: TextFormField(
-                          //     style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                          //     controller: internalnotesController,
-                          //     decoration: const InputDecoration(
-                          //         enabledBorder: UnderlineInputBorder(
-                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                          //         ),
-                          //         focusedBorder: UnderlineInputBorder(
-                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
-                          //
-                          //         // border: UnderlineInputBorder(),
-                          //         labelText: 'Internal Notes',
-                          //         labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish')
-                          //     ),
-                          //   ),),
+
 
                           Padding(
                             padding: const EdgeInsets.only(left: 25,right: 25,bottom: 10),
@@ -1992,8 +1931,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   .width /
                                   1,
 
-                              // height: 40,
-                              //color: Colors.red,
+
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     left: 0),
@@ -2140,13 +2078,6 @@ class _LeadCreationState extends State<LeadCreation> {
       }
 
       tags = editTagName.map((item) => item.value).toList();
-
-
-      print(editTagName);
-      print(campanyName);
-      print(tags);
-      print(countryName);
-      print("datatatatta");
 
 
 

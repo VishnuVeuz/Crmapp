@@ -38,7 +38,6 @@ class _NotificationsState extends State<Notifications> {
 
 
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -204,7 +203,7 @@ class _NotificationsState extends State<Notifications> {
                       child: Container(
                         width: 50,
                         height: 50,
-                        //color: Colors.red,
+
                         decoration: BoxDecoration(
                             border: Border.all(
                             ),
@@ -253,7 +252,7 @@ class _NotificationsState extends State<Notifications> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 20),
                                     child: Container(
-                                        //color: Colors.red,
+
                                         width: MediaQuery
                                             .of(context)
                                             .size
@@ -272,12 +271,12 @@ class _NotificationsState extends State<Notifications> {
                                           left: 60,
                                           right: 20),
                                       child: Container(
-                                          //color: Colors.red,
+
                                           width: MediaQuery
                                               .of(context)
                                               .size
                                               .width / 4.1,
-                                          //color: Colors.red,
+
                                           child: Text(notificationMessageData[i]["period"],
                                             style: TextStyle(
                                                 color: Colors.grey[800],
@@ -298,7 +297,7 @@ class _NotificationsState extends State<Notifications> {
                                         .of(context)
                                         .size
                                         .width / 1.5,
-                                    //color: Colors.red,
+
                                     child: Text(notificationMessageData[i]["body"],
                                       style: TextStyle(color: Colors.grey,
                                           fontFamily: 'Mulish',
@@ -320,14 +319,14 @@ class _NotificationsState extends State<Notifications> {
             ),
             Card(),
             Spacer(),
-            // Divider(color: Colors.grey[800],),
+
             Container(
-              // width: MediaQuery.of(context).size.width,
+
               height: MediaQuery
                   .of(context)
                   .size
                   .height / 13.5,
-              //color: Colors.blue,
+
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey
                   )
@@ -382,26 +381,7 @@ class _NotificationsState extends State<Notifications> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //
-      //       icon: Icon(Icons.business),
-      //       label: 'Business',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.school),
-      //       label: 'School',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Colors.amber[800],
-      //   onTap: _onItemTapped,
-      // ),
+
     );
   }
 

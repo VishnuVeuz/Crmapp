@@ -30,14 +30,14 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Theme.of(context).primaryColor,
 
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.start,
+
         children: [
           Container(
             width: MediaQuery.of(context).size.width/1,
             height: MediaQuery.of(context).size.height/2,
             color: Color(0xFF3D418E),
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.start,
+
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 62, left: 49),

@@ -191,8 +191,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                       physics: BouncingScrollPhysics(),
                        backgroundColor: Colors.pinkAccent,
 
-                     // borderColor: Colors.red,
-                     //  borderWidth: 2,
+
                       unselectedBorderColor: Colors.transparent,
                       unselectedBackgroundColor: const Color(0XFFEDF2FF),
 
@@ -273,9 +272,7 @@ setState(() {
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
             title: InkWell(
               child: Container(
-               // width: 20,
-                //color: Colors.red,
-                //width: 40,
+
                 child: Center(
                   child: Text(
                     "Lost",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),

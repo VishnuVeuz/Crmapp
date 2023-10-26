@@ -41,15 +41,7 @@ class OpportunityDetail extends StatefulWidget {
 }
 
 class _OpportunityDetailState extends State<OpportunityDetail> {
-  // String imgNew='images/whiterectangle.png',
-  //     imgQualified='images/whiterectangle.png',
-  //     imgProposition='images/whiterectangle.png',
-  //     imgWon='images/whiterectangle.png';
-  //
-  // Color colorNew = Colors.black,
-  //     colorQualified = Colors.black,
-  //     colorProposition = Colors.black,
-  //     colorWon = Colors.black;
+
 
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   dynamic lostreasonName, lostreasonId;
@@ -229,7 +221,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   String? _localPath;
   Widget build(BuildContext context) {
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -1700,7 +1691,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     child: Icon(
                                       Icons.person,
                                       size: 20,
-                                      // Adjust the size of the icon as per your requirements
                                       color: Colors
                                           .white, // Adjust the color of the icon as per your requirements
                                     ),
@@ -2220,31 +2210,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           ],
                                                         ),
                                                       ),
-                                                      // Padding(
-                                                      //   padding: const EdgeInsets.only(left: 200,right: 25,bottom: 10),
-                                                      //   child: Container(
-                                                      //     width: 20,
-                                                      //     height: 20,
-                                                      //
-                                                      //     child: IconButton(
-                                                      //       icon: Icon(Icons.delete),
-                                                      //       onPressed: () {
-                                                      //         print(index);
-                                                      //
-                                                      //         orderLineProducts.removeAt(index);
-                                                      //         setState(() {
-                                                      //
-                                                      //         });
-                                                      //         // orderLineProductsData?.removeAt(index);
-                                                      //         print(orderLineProducts[index].toString());
-                                                      //         print(orderLineProducts);
-                                                      //         print("datatatatatattata");
-                                                      //
-                                                      //       },
-                                                      //
-                                                      //     ),
-                                                      //   ),
-                                                      // )
+
                                                     ],
                                                   ),
                                                 ],
@@ -2866,7 +2832,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         child: Stack(
                                                           children: [
                                                             Positioned(
-                                                              // rectangle4756kQ (1652:322)
+
                                                               left: 0,
                                                               top: 6,
                                                               child: Align(
@@ -2889,7 +2855,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               ),
                                                             ),
                                                             Positioned(
-                                                              // group20514mrY (1652:323)
+
                                                               left: 60,
                                                               top: 0,
                                                               child: Align(
@@ -2978,13 +2944,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     return
                                                       Container(
                                                         margin: EdgeInsets.fromLTRB(2, 0, 2, 0),
-                                                        // group20585QEc (1652:502)
+
                                                         width: double.infinity,
                                                         child: Column(
                                                           crossAxisAlignment: CrossAxisAlignment.center,
                                                           children: [
                                                             Container(
-                                                              // group20565Yrc (1652:364)
+
                                                               padding: EdgeInsets.fromLTRB(14, 11, 18, 9),
                                                               width: double.infinity,
                                                               height: 52,
@@ -2996,7 +2962,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                                 children: [
                                                                   Container(
-                                                                    // pdffile21FW8 (1652:378)
+
                                                                     margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
                                                                     width: 23,
                                                                     height: 29,
@@ -3043,7 +3009,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           ),
                                                                         ),
                                                                         Positioned(
-                                                                          // pdfuDJ (1652:377)
+
                                                                           left: 0,
                                                                           top: 18,
                                                                           child: Align(
@@ -3074,7 +3040,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   ),
                                                                   InkWell(
                                                                     child: Container(
-                                                                      // trash2Qvk (1652:366)
+
                                                                       margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                       width: 15,
                                                                       height: 16,
@@ -3110,7 +3076,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   ),
                                                                   InkWell(
                                                                     child: Container(
-                                                                      // download6oa (1652:371)
+
                                                                       margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                                                                       width: 14,
                                                                       height: 14,
@@ -3126,9 +3092,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       print(selectedImagesDisplay);
                                                                       print("dbjfnkdfbjsjfbdsvbkdsvkdj");
 
-                                                                      //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+
                                                                       String mimetypes = attachmentFileDisplay[index]['mimetype'];
-                                                                      //String mimetypes = "application/pdf";
 
                                                                       String itemName, itemNamefinal;
 
@@ -3203,8 +3168,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   Container(
                     width: MediaQuery.of(context).size.width,
 
-                    //height: MediaQuery.of(context).size.height/6,
-                    // color: Colors.green,
+
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -3262,8 +3226,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           visible: followersVisibility,
                           child: Container(
                             width: MediaQuery.of(context).size.width,
-                            //height: 100,
-                            //color: Colors.red,
+
                             child: ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
@@ -3596,9 +3559,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   .readAsBytes(); //convert to bytes
                                               base64string = base64.encode(imagebytes);
 
-                                              // base64string1.add(
-                                              //     base64string);
-                                              //
 
                                               String dataImages =
                                                   '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
@@ -3607,8 +3567,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               jsonDecode(dataImages);
                                               myData1.add(jsondata);
                                             }
-                                            // print(myData1);
-                                            // print("final datatata");
+
 
                                             bodyController.text = lognoteController.text;
 
@@ -3912,9 +3871,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   .readAsBytes(); //convert to bytes
                                               base64string = base64.encode(imagebytes);
 
-                                              // base64string1.add(
-                                              //     base64string);
-                                              //
 
                                               String dataImages =
                                                   '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
@@ -3923,8 +3879,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               jsonDecode(dataImages);
                                               myData1.add(jsondata);
                                             }
-                                            // print(myData1);
-                                            // print("final datatata");
 
                                             bodyController.text = lognoteController.text;
 
@@ -4146,9 +4100,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       padding: const EdgeInsets.only(top: 5,bottom: 5),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
-                                        // group20525KqJ (1112:1365)
-                                        // margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
-                                        // padding: EdgeInsets.fromLTRB(0*fem, 9*fem, 0*fem, 0*fem),
+
                                         width: double.infinity,
                                         decoration: BoxDecoration (
                                           border: Border.all(color: Color(0xffebebeb)),
@@ -4161,9 +4113,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           children: [
                                             Container(
                                               margin: EdgeInsets.fromLTRB(0,0,0,0),
-                                              // color:Colors.green,
-                                              // autogroupfosqpn4 (7u5yFZfWQQE3crdUqnfoSQ)
-                                              // margin: EdgeInsets.fromLTRB(9*fem, 0*fem, 17*fem, 9*fem),
+
                                               width: MediaQuery.of(context).size.width/1,
                                               height: 40,
                                               child: Row(
@@ -4208,11 +4158,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             ),
                                                             child: Center(
                                                               child: scheduleIcon,
-                                                              // child: Icon(
-                                                              //   Icons.image,
-                                                              //   color: Colors.white,
-                                                              //   size: 8,
-                                                              // ),
+
                                                             ),
                                                           ),
                                                         ),
@@ -4222,9 +4168,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   Expanded(
                                                     child: Container(
                                                       margin: EdgeInsets.fromLTRB(0,0,9,0),
-                                                      //color: Colors.yellow,
-                                                      //  color: Colors.red,
-                                                      // group205294RW (1112:1393)
+
                                                       width: MediaQuery.of(context).size.width/1.3,
                                                       height: double.infinity,
                                                       child: Row(
@@ -4287,8 +4231,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            // color: Colors.red,
-                                                            // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
+
                                                             margin: EdgeInsets.fromLTRB(0,1,1,2),
                                                             //width: MediaQuery.of(context).size.width,
                                                             width: MediaQuery.of(context).size.width/5,
@@ -4355,9 +4298,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               ),
                                             ),
                                             Container(
-                                              // line27thN (1112:1370)
+
                                               margin: EdgeInsets.fromLTRB(0,0,0,6),
-                                              //width: double.infinity,
+
                                               height: 1,
                                               decoration: BoxDecoration (
                                                 color: Color(0xffebebeb),
@@ -4375,12 +4318,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 children: [
                                                   Expanded(
                                                     child: Container(
-
-                                                      //   color:Colors.pink,
-
-                                                      // width:MediaQuery.of(context).size.width/1.18,
-
-                                                      //padding: EdgeInsets.fromLTRB(0, 1, 0, 0),
 
                                                       height: double.infinity,
                                                       child: Row(
@@ -4498,8 +4435,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      // rescheduleJo2 (1112:1376)
-                                                                      //'Reschedule',
+
                                                                       scheduleData['records']
                                                                       [
                                                                       index]
@@ -4511,7 +4447,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         fontFamily: 'Mulish',
                                                                         fontSize: 11,
                                                                         fontWeight: FontWeight.w500,
-                                                                        // height: 1.255*ffem/fem,
+
                                                                         color: Color(0xff707070),
                                                                       ),
                                                                     ),
@@ -4647,7 +4583,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                                   children: [
                                                                     Container(
-                                                                      // iconsaxlinearcalendarPvx (1112:1377)
+
                                                                       margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
                                                                       width: 12,
                                                                       height: 12,
@@ -4658,8 +4594,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       ),
                                                                     ),
                                                                     Text(
-                                                                      // rescheduleJo2 (1112:1376)
-                                                                      // 'Reschedule',
+
                                                                       scheduleData['records']
                                                                       [
                                                                       index]
@@ -4714,8 +4649,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                     Align(
                                                                       alignment: Alignment.centerRight,
                                                                       child: Container(
-                                                                        //color:Colors.blue,
-                                                                        // xcircleBrp (1112:1386)
+
                                                                         margin: EdgeInsets.fromLTRB(0, 0, 4, 0),
                                                                         width: 12,
                                                                         height: 12,
@@ -5153,7 +5087,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         crossAxisAlignment: CrossAxisAlignment.center,
                                                         children: [
                                                           Container(
-                                                            // group20507jZA (1636:7)
+
                                                             padding: EdgeInsets.fromLTRB(25, 27, 3, 0),
                                                             width: 35,
                                                             height: double.infinity,
@@ -5182,15 +5116,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           ),
                                                           Container(
 
-                                                            // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
+
                                                             padding: EdgeInsets.fromLTRB(19, 2, 2, 2),
                                                             height: double.infinity,
                                                             child: Row(
                                                               crossAxisAlignment: CrossAxisAlignment.center,
                                                               children: [
                                                                 Container(
-                                                                  // color: Colors.blue,
-                                                                  // group20587t4g (1652:519)
+
                                                                   margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
                                                                   height: double.infinity,
                                                                   child: Column(
@@ -5255,7 +5188,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                         ),
                                                                       ),
                                                                       Text(
-                                                                        // testflutterdemoAZv (1636:34)
+
                                                                         logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
                                                                             .toString() ??
                                                                             "",
@@ -5453,8 +5386,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       childAspectRatio: 1,
                                                                     ),
                                                                     itemBuilder: (BuildContext context, int index) {
-                                                                      // print(logattachmentImagesDisplay.length);
-                                                                      // print("selectedImagesDisplay.length,");
+
                                                                       print(logattachmentImagesDisplay[index]["datas"]);
                                                                       print("selectedImagesDisplay.length,");
                                                                       return Container(
@@ -5570,19 +5502,17 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       childAspectRatio: 5.5,
                                                                     ),
                                                                     itemBuilder: (BuildContext context, int index) {
-                                                                      // print(selectedImagesDisplay.length);
-                                                                      // print(selectedImagesDisplay[index]["datas"]);
-                                                                      // print("selectedImagesDisplay.length,");
+
                                                                       return
                                                                         Container(
                                                                           margin: EdgeInsets.fromLTRB(10, 0, 0, 2),
-                                                                          // group20585QEc (1652:502)
+
                                                                           width: double.infinity,
                                                                           child: Column(
                                                                             crossAxisAlignment: CrossAxisAlignment.center,
                                                                             children: [
                                                                               Container(
-                                                                                // group20565Yrc (1652:364)
+
                                                                                 padding: EdgeInsets.fromLTRB(14, 11, 18, 9),
                                                                                 width: double.infinity,
                                                                                 height: 52,
@@ -5594,7 +5524,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   crossAxisAlignment: CrossAxisAlignment.center,
                                                                                   children: [
                                                                                     Container(
-                                                                                      // pdffile21FW8 (1652:378)
+
                                                                                       margin: EdgeInsets.fromLTRB(0, 0, 12, 0),
                                                                                       width: 23,
                                                                                       height: 29,
@@ -5618,11 +5548,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     ),
                                                                                     Container(
                                                                                       width: MediaQuery.of(context).size.width/2,
-                                                                                      //height: double.infinity,
+
                                                                                       child: Stack(
                                                                                         children: [
                                                                                           Positioned(
-                                                                                            // pdfnamearea1tc (1652:376)
+
                                                                                             left: 0,
                                                                                             top: 00,
                                                                                             child: Align(
@@ -5641,7 +5571,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             ),
                                                                                           ),
                                                                                           Positioned(
-                                                                                            // pdfuDJ (1652:377)
+
                                                                                             left: 0,
                                                                                             top: 18,
                                                                                             child: Align(
@@ -5672,7 +5602,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     ),
                                                                                     InkWell(
                                                                                       child: Container(
-                                                                                        // trash2Qvk (1652:366)
                                                                                         margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                                         width: 15,
                                                                                         height: 16,
@@ -5713,7 +5642,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       ),
                                                                                       onTap: (){
                                                                                         String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
-                                                                                        //String mimetypes = "application/pdf";
+
 
                                                                                         String itemName, itemNamefinal;
 
@@ -5735,16 +5664,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             ? itemNamefinal = "${itemName}.png"
                                                                                             : itemNamefinal = "${itemName}";
 
-                                                                                        print(index);
-
-                                                                                        print(logattachmentFileDisplay);
-                                                                                        // print(selectedImagesDisplay[index]["datas"]);
-                                                                                        // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["id"]);
-                                                                                        // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["name"]);
-                                                                                        // print(logDataTitle[indexx][indexs]['attachment_ids'][index]["datas"]);
-                                                                                        print(itemNamefinal);
-                                                                                        print(mimetypes);
-                                                                                        print("final print dataaa");
 
                                                                                         FlutterDownloader.registerCallback(downloadCallback);
 
@@ -6031,11 +5950,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          // height: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .height,
-          //color: Colors.green,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -6887,7 +6802,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Color(0xFF212121)))),
-                    //if user click this button, user can upload image from gallery
                     onPressed: () {
                       Navigator.pop(context);
                       modelType == "lognote"
@@ -6917,7 +6831,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             fontFamily: 'Mulish',
                             fontSize: 14,
                             color: Color(0xFF212121)))),
-                    //if user click this button. user can upload image from camera
                     onPressed: () {
                       Navigator.pop(context);
                       print("system 2");
@@ -6951,12 +6864,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       isLoading = true;
     });
     print("system 1");
-    // var img = await picker.pickImage(source: media));
+
     XFile? img = await picker.pickImage(source: ImageSource.camera);
     List imageData = [];
     imageData.add(img);
     print("system 2");
-    // var img = await picker.pickMultiImage();
 
     if (img != null) {
       setState(
@@ -7053,7 +6965,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         Map<String, dynamic> jsondata = jsonDecode(dataImages);
         myData1.add(jsondata);
 
-        //attachmentSelectedImages.add(File(xfilePick[i].path));
+
       }
       String attachCount = await attchmentDataCreate(myData1);
       setState(() {
@@ -7085,8 +6997,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     smsVisible = smsCondition;
 
     return StatefulBuilder(builder: (context, setState) {
-      // nameController.text = name;
-      // phonenumberController.text = phone;
 
       return AlertDialog(
         shape: RoundedRectangleBorder(
@@ -7094,10 +7004,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          // height: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .height,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -7144,7 +7051,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 SizedBox(
                   height: 0,
                 ),
-                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
@@ -7190,7 +7096,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
 
-                        // border: UnderlineInputBorder(),
+
                         labelText: 'Phone Number',
                         labelStyle: TextStyle(
                             color: Color(0xFF212121),
@@ -7223,7 +7129,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                             ),
 
-                            // border: UnderlineInputBorder(),
+
                             labelText: 'Subject',
                             labelStyle:
                                 TextStyle(color: Colors.black, fontSize: 10)),
@@ -7362,11 +7268,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: Container(
                               width: 30,
                               height: 25,
-                              //color: Colors.green,
-                              // decoration: BoxDecoration(
-                              //   border: Border.all(),
-                              //
-                              // ),
+
                               child: CircleAvatar(
                                 radius: 12,
                                 child: ClipRRect(
@@ -7382,18 +7284,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: Container(
                               width: 30,
                               height: 25,
-                              // decoration: BoxDecoration(
-                              //     border: Border.all(
-                              //       //  color: Colors.green
-                              //     ),
-                              //
-                              // ),
+
                               child: CircleAvatar(
                                 radius: 12,
                                 child: Icon(
                                   Icons.person,
                                   size: 20,
-                                  // Adjust the size of the icon as per your requirements
+
                                   color: Colors
                                       .grey, // Adjust the color of the icon as per your requirements
                                 ),
@@ -7426,14 +7323,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             )),
                         IconButton(
                             onPressed: () async {
-                              print(followers[i]['id']);
-                              print("ghkjdghjh");
-
-                              // "res_model": "lead.lead",
-                              //
-                              // "res_id": 197,
-                              //
-                              // "follower_id": 1822
 
                               String resMessage = await unFollowing(
                                   widget.opportunityId,
@@ -7474,10 +7363,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          // height: MediaQuery
-          //     .of(context)
-          //    .s ize
-          //     .height,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -7525,8 +7411,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 SizedBox(
                   height: 5,
                 ),
-                // Text("Followers of the document and",style: TextStyle(color: Colors.black,fontSize: 12),),
-                // SizedBox(height: 10,),
+
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -7613,25 +7498,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     },
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //       horizontal: 5, vertical: 5),
-                //   child: TextFormField(
-                //     style: TextStyle(fontSize: 12),
-                //     controller: subjectController,
-                //     decoration: const InputDecoration(
-                //         enabledBorder: UnderlineInputBorder(
-                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                //         ),
-                //         focusedBorder: UnderlineInputBorder(
-                //           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
-                //
-                //         // border: UnderlineInputBorder(),
-                //         labelText: 'Subject',
-                //         labelStyle: TextStyle(color: Colors.black, fontSize: 10)
-                //     ),
-                //   ),),
-                // SizedBox(height: 5,),
+
                 Container(
                   //color: Colors.red,
                   decoration:
@@ -7641,8 +7508,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Container(
-                      //color: Colors.red,
-                      //width: MediaQuery.of(context).size.width/4,
+
                       child: TextField(
                         textAlignVertical: TextAlignVertical.top,
                         expands: true,
@@ -7733,14 +7599,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
         content: Container(
-          // width: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .width,
-          // height: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .height,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -7943,10 +7802,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          // height: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .height,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -8118,14 +7974,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   height: 5,
                 ),
                 Container(
-                  //color: Colors.red,
+
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.grey)),
                   width: MediaQuery.of(context).size.width,
-                  // height: MediaQuery
-                  //     .of(context)
-                  //     .size
-                  //     .height/6,
+
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10),
                     child: TextFormField(
@@ -8249,7 +8102,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: SearchChoices.single(
-                    //items: items,
 
                     value: templateName,
                     hint: Text(
@@ -8398,10 +8250,6 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               Uint8List imagebytes = await imagefile
                                   .readAsBytes(); //convert to bytes
                               base64string = base64.encode(imagebytes);
-
-                              // base64string1.add(
-                              //     base64string);
-                              //
 
                               String dataImages =
                                   '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
@@ -8726,13 +8574,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       print("finaldata11");
       // Notification permissions granted
     } else if (status.isDenied) {
-      // Notification permissions denied
-      // Notification permissions denied
+
       await openAppSettings();
       print("finaldata12");
     } else if (status.isPermanentlyDenied) {
       print("finaldata13");
-      // Notification permissions permanently denied, open app settings
+
       await openAppSettings();
     }
   }
@@ -8775,10 +8622,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     }
   }
 
-  // Callback to handle download events
+
   static void downloadCallback(String id, int status, int progress) {
-    // Handle download status and progress updates here
-    // You can use this callback to update UI elements as needed.
+
     print('Download task ($id) is in status ($status) and $progress% complete');
   }
 
@@ -8789,12 +8635,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     if (status.isGranted || await Permission.storage.request().isGranted) {
 
 
-      // Permission granted; you can proceed with file operations
-      // For example, you can start downloading a file here
+
       _startDownload(name, urldata);
     } else {
-      // Permission denied; you may want to handle this gracefully or show an error message
-      // You can show a message to the user explaining why the permission is necessary
+
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -8830,11 +8674,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
-          // height: MediaQuery
-          //     .of(context)
-          //     .size
-          //     .height,
-          //color: Colors.green,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -8915,7 +8755,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
 
-                        // border: UnderlineInputBorder(),
+
                         labelText: 'Name',
                         labelStyle: TextStyle(
                             color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
@@ -8943,10 +8783,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     },
 
                     value: schedulecompanyName,
-                    // hint: Text(
-                    //   "Company Name",
-                    //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                    // ),
+
                     searchHint: null,
                     autofocus: false,
                     onClear: () {
@@ -8956,12 +8793,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     },
                     onChanged: (value) async {
                       setState(() {
-                        //cmpbasedVisible = false;
+
                         schedulecompanyName = value;
                         schedulecompanyId = value["id"];
                       });
 
-                      //await getCustomerCompanyDetail(companyId);
+
                     },
 
                     dialogBox: false,
@@ -9253,7 +9090,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           content: Container(
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.5,
-            // height: MediaQuery.of(context).size.height / 2.7,
+
             child: Wrap(
               alignment: WrapAlignment.start,
               direction: Axis.horizontal, // Direction is horizontal
@@ -9294,17 +9131,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                       width: 30,
                       height: 30,
-                      // child: Center(
-                      //   child: Text(
-                      //     "hello",
-                      //     style: TextStyle(
-                      //       color: Colors.white,
-                      //       fontFamily: 'Mulish',
-                      //       fontWeight: FontWeight.w500,
-                      //       fontSize: 10,
-                      //     ),
-                      //   ),
-                      // ),
+
                     ),
                   ),
                 );

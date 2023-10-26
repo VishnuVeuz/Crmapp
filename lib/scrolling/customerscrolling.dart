@@ -358,8 +358,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
           if (index == _CustomerModel.length - _nextPageTrigger) {
             fetchData();
           }
-          // when the user gets to the last item in the list, check whether
-          // there is an error, otherwise, render a progress indicator.
+
           if (index == _CustomerModel.length) {
             if (_error) {
               return Center(

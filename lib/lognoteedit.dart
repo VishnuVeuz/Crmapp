@@ -67,11 +67,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
         elevation: 0,
         title: Row(
           children: [
-            // Text("New", style: TextStyle(
-            //     fontWeight: FontWeight.w700,
-            //     fontSize: 15,
-            //     color: Colors.white,
-            //     decoration: TextDecoration.none),)
+
           ],
         ),
         leading: Builder(
@@ -161,7 +157,6 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                       child: Icon(
                         Icons.person,
                         size: 20,
-                        // Adjust the size of the icon as per your requirements
                         color: Colors
                             .white, // Adjust the color of the icon as per your requirements
                       ),
@@ -184,8 +179,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                       children: [
                         Container(
                           width: MediaQuery.of(context).size.width/1.5,
-                          // height: 40,
-                          // color: Colors.red,
+
                           child:Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: TextField(
@@ -307,9 +301,6 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                         Uint8List imagebytes = await imagefile.readAsBytes(); //convert to bytes
                         base64string = base64.encode(imagebytes);
 
-                        // base64string1.add(
-                        //     base64string);
-                        //
 
                         String dataImages =
                             '{"name":"name","type":"binary","datas":"${base64string.toString()}"}';
@@ -318,8 +309,6 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                         myData1.add(jsondata);
 
                       }
-                      // print(myData1);
-                      // print("final datatata");
 
                       String resMessage = await logNoteData(myData1);
 
@@ -385,11 +374,10 @@ class _LogNoteEditState extends State<LogNoteEdit> {
               child: Column(
                 children: [
                   ElevatedButton(
-                    //if user click this button, user can upload image from gallery
                     onPressed: () {
                       Navigator.pop(context);
                       getImages();
-                      //getImage(ImageSource.gallery);
+
                     },
                     child: Row(
                       children: [
@@ -402,13 +390,12 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                       )
                   ),
                   ElevatedButton(
-                    //if user click this button. user can upload image from camera
                     onPressed: () {
                       Navigator.pop(context);
                       print("system 2");
                       getImage(ImageSource.camera);
 
-                      //getImages();
+
                     },
                     child: Row(
                       children: [
@@ -435,12 +422,12 @@ class _LogNoteEditState extends State<LogNoteEdit> {
       isLoading = true;
     });
     print("system 1");
-    // var img = await picker.pickImage(source: media));
+
     XFile? img = await picker.pickImage(source: ImageSource.camera);
     List imageData = [];
     imageData.add(img);
     print("system 2");
-    // var img = await picker.pickMultiImage();
+
 
     if (img != null) {
       setState(
@@ -498,15 +485,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
     return value;
 
   }
-  // reactionEmoji(List reaction) async{
-  //
-  //   String value = await EmojiReaction(reaction,widget.lognoteId);
-  //
-  //   print(value);
-  //   print("valuesssdemooooo");
-  //   return value;
-  //
-  // }
+
 
 }
 

@@ -93,7 +93,6 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 child: Icon(
                   Icons.person,
                   size: 20,
-                  // Adjust the size of the icon as per your requirements
                   color: Colors
                       .white, // Adjust the color of the icon as per your requirements
                 ),
@@ -223,47 +222,11 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.only(right: 25,top: 8),
-                      //   child: Container(
-                      //     child: Row(
-                      //       children: [
-                      //         InkWell(
-                      //           onTap: () {
-                      //             Navigator.push(
-                      //                 context,
-                      //                 MaterialPageRoute(
-                      //                     builder: (context) => LeadCreation(0)));
-                      //           },
-                      //           child: SvgPicture.asset(
-                      //             "images/create.svg",
-                      //             width: 28,
-                      //             height: 28,
-                      //           ),
-                      //         ),
-                      //         SizedBox(width: 5,),
-                      //         Text("New",      style: TextStyle(fontSize: 12,
-                      //             //letterSpacing: .5,
-                      //
-                      //             fontFamily: 'Mulish',
-                      //             fontWeight: FontWeight.w600,
-                      //
-                      //             color: Color(0xFF212121)),)
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
 
                     ],
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(left: 25,top: 10,right: 25),
-                //   child: Text("Lists",
-                //     style:TextStyle(fontSize: 18,fontWeight:FontWeight.w500,color: Color(0xFF101010)),
-                //
-                //   ),
-                // ),
+
                 InkWell(
                   child: Padding(
                     padding: const EdgeInsets.only(top: 2,left: 8),
@@ -425,12 +388,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                              // print(snapshot.data[0]["tag_ids"].length);
                               print("dajkdnm");
                               print(snapshot.data?.length);
-                              // if (snapshot.data[0]["tag_ids"].length > 0) {
-                              //   //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();
-                              //   tags = snapshot.data[0]["tag_ids"];
-                              // } else {
-                              //   tags = [];
-                              // }
+
                           return    snapshot.data?.length == 0 ?  Center(child: Text("No data found", style: TextStyle(
                               fontFamily: 'Mulish',
                               fontWeight: FontWeight
@@ -463,17 +421,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                 .of(context)
                                                 .size
                                                 .width,
-                                           // height: 90,
-                                           // decoration: const BoxDecoration(
-                                           //   borderRadius: BorderRadius.all(Radius.circular(20)),
-                                           //   boxShadow: [
-                                           //     BoxShadow(
-                                           //       color: Colors.grey,
-                                           //       blurRadius: 25.0,
-                                           //       offset: Offset(0, -10)
-                                           //     )
-                                           //   ]
-                                           // ),
+
 
                                            child: Row(
                                               mainAxisAlignment: MainAxisAlignment
@@ -619,15 +567,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                             ),
                                                           ),
                                                         ),
-                                                        // Padding(
-                                                        //   padding: const EdgeInsets.only(top: 0,left: 15),
-                                                        //   child: Text("Ratingbar",
-                                                        //     style: TextStyle(
-                                                        //         fontWeight: FontWeight.w600,
-                                                        //         fontSize: 12,
-                                                        //         color: Color(0xFF787878)),
-                                                        //   ),
-                                                        // ),
+
                                                         snapshot
                                                             .data![index]["image_1920"] !=
                                                             "" ?

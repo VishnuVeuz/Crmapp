@@ -48,7 +48,6 @@ class _LeadConvertState extends State<LeadConvert> {
     print("daaaataaaaaaaa");
 
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -106,15 +105,6 @@ class _LeadConvertState extends State<LeadConvert> {
                       //mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
-                       // Divider(),
-
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 25),
-                        //   child: Text("Conversion Action",
-                        //     style: TextStyle(fontSize: 15),),
-                        // ),
-
 
                         SingleChildScrollView(
                           child: Container(
@@ -183,24 +173,16 @@ class _LeadConvertState extends State<LeadConvert> {
 
                                         children: <Widget>[
                                           Center(
-                                            // child:  ConvertToOpportunity(widget.leadId,conversionType!,custType!),
                                             child: ConvertToOpportunity(
                                                 widget.leadId),
                                           ),
                                           Center(
-                                            //child: MergeOpportunity(widget.leadId,conversionType!,custType!),
-                                            //child: MergeOpportunity(widget.leadId,"",""),
+
                                               child: MergeOpportunity(
                                                   widget.leadId),
 
-                                            // child: Container(
-                                            //   child: Text("namesss"),
-                                            // ),
 
                                           ),
-                                          // Center(
-                                          //   child: ScheduleActivity(),
-                                          // ),
 
 
                                         ],
@@ -244,11 +226,6 @@ class ConvertToOpportunity extends StatefulWidget {
 
   int leadId;
 
-  // String tabOpt;
-  // String custOpt;
-
-
-   // ConvertToOpportunity(this.leadId,this.tabOpt,this.custOpt);
   ConvertToOpportunity(this.leadId);
 
 
@@ -281,7 +258,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
   void initState() {
     super.initState();
 
-    // print(widget.customerAction);
+
     print("jbvjdvhdjebdvh");
 
     if(widget.leadId != 0){
@@ -613,9 +590,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                               horizontal: 0, vertical:0),
                           child: SearchChoices.single(
 
-                            //items: items,
-                            // label: 'Customer',
-                            // style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14,color: Colors.black),
+
                             value: customerName,
                             hint: Text("Customer",
                               style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14),),
@@ -828,18 +803,7 @@ class MergeOpportunity extends StatefulWidget {
 
 
 class _MergeOpportunityState extends State<MergeOpportunity> {
-  // bool isLoading = true;
-  // int? mainId;
-  //
-  // List results = [];
-  // var salesTeam;
-  // var salespersonTeam;
-  // late int ?salesId;
-  // late int? salespersonId;
-  // String? salespersonTeamTitle = "Sales Person", salesTeamTitle = "Sales Team";
 
-
-  // new code
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   List companyIdData = [];
   dynamic salespersonName,salespersonId,salesteamName,
@@ -946,11 +910,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 0, vertical: 0),
                     child: SearchChoices.single(
-                      // searchInputDecoration: InputDecoration(
-                      //   enabledBorder: InputBorder.none,
-                      // ),
 
-                      //items: items,
                       value: salespersonName,
                       hint: Text("Salesperson",
                         style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
@@ -1301,10 +1261,6 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
           salesTeamName:u["team_id"][1].toString(),
 
         );
-        // salespersonTeam = u["name"];
-        // salespersonId = u["id"];
-        // print(salespersonTeam);
-        // print("datatatatatatat");
 
         leadDuplicateIdData.add(leadDuplicateId);
 

@@ -207,7 +207,6 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
 
       floatingActionButton: FloatingActionButton(
@@ -221,8 +220,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
       ),
-     // bottomNavigationBar:MyBottomNavigationBar(),
-      //bottomNavigationBar: bottomNavigationBar(context),
+
     );
   }
 

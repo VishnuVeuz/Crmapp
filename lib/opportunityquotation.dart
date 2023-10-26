@@ -122,7 +122,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
   @override
   Widget build(BuildContext context) {
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
+
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),
@@ -283,9 +283,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                           print(isCheckedSignature);
                           print(isCheckedPayment);
 
-                          //resmessage=await quotationCreate() ;
 
-                          print("lakshmiiiiiii");
 
                           resmessage = await quotationCreate();
 
@@ -379,8 +377,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
 
                       dynamic data = jsonDecode(response.body);
 
-                      // print(data);
-                      // print("customer data");
+
                       int nbResults = data["length"];
 
                       List<DropdownMenuItem> results =
@@ -547,7 +544,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                         bool? orderAsc,
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
-                      //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
+
                       Response response = await get(
                         Uri.parse(
                             "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
@@ -563,8 +560,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                       }
 
                       dynamic data = jsonDecode(response.body);
-                      // print(data);
-                      // print("customer data");
+
                       int nbResults = data["length"];
 
                       List<DropdownMenuItem> results =
@@ -1611,9 +1607,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 1),
                                   child: Container(
-                                    // width: 490,
-                                    // height:
-                                    // MediaQuery.of(context).size.height / 7,
+
                                       color: Colors.white,
                                       child: Column(
                                         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -1653,22 +1647,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                                           ),
                                                         ),
                                                       ),
-                                                      // Padding(
-                                                      //   padding:
-                                                      //   const EdgeInsets.only(
-                                                      //       top: 10,
-                                                      //       left: 40,
-                                                      //       right: 25),
-                                                      //   child: Text(
-                                                      //     "sum: ${orderLineProductsData!['price_subtotal']}",
-                                                      //     style: TextStyle(
-                                                      //         fontWeight:
-                                                      //         FontWeight.w500,
-                                                      //         fontSize: 11,
-                                                      //         color:
-                                                      //         Colors.black),
-                                                      //   ),
-                                                      // ),
+
                                                     ],
                                                   ),
                                                   Padding(
@@ -1880,22 +1859,6 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                   print(productId);
                                   print("productIdproductId");
 
-                                  // for (int i = 0; i < optionalProducts[index]['tax_id'].length; i++) {
-                                  //   selectedProductTax.add(optionalProducts[index]['tax_id'][i]);
-                                  // }
-                                  //
-                                  // for (int i = 0; i < selectedProductTax.length; i++) {
-                                  //   editProductTaxName.add(new ValueItem(
-                                  //       label: selectedProductTax[i]['name'],
-                                  //       value: selectedProductTax[i]['id'].toString()));
-                                  // }
-                                  //
-                                  // productTax = editProductTaxName.map((item) => item.value).toList();
-                                  //
-                                  //
-
-
-
 
 
                                 });
@@ -1912,9 +1875,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 1),
                                   child: Container(
-                                    // width: 490,
-                                    // height:
-                                    // MediaQuery.of(context).size.height / 7,
+
                                       color: Colors.white,
                                       child: Column(
                                         // crossAxisAlignment: CrossAxisAlignment.start,
@@ -2110,9 +2071,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                               child: Padding(
                                 padding: const EdgeInsets.only(top: 1),
                                 child: Container(
-                                  // width: 490,
-                                  // height:
-                                  // MediaQuery.of(context).size.height / 7,
+
                                     color: Colors.white,
                                     child: Text(
                                         productDatas[index].toString()
@@ -2377,8 +2336,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
         key: _formKeyalert,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          //height: MediaQuery.of(context).size.height,
-          //color: Colors.green,
+
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

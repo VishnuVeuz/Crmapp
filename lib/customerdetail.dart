@@ -19,6 +19,7 @@ import 'package:search_choices/search_choices.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'globals.dart';
+import 'lead_detail.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';

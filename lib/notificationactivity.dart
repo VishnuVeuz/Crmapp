@@ -37,7 +37,6 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
   @override
   Widget build(BuildContext context) {
     if (!_isInitialized) {
-      // Show a loading indicator or any other placeholder widget while waiting for initialization
       return Scaffold(
         body: Center(
           child: CircularProgressIndicator(),

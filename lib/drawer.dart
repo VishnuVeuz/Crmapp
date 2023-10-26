@@ -28,12 +28,7 @@ class MainDrawer extends StatefulWidget {
 class _MainDrawerState extends State<MainDrawer> {
   bool _isInitialized = false;
   List<multiCompany>? companyList;
-  // List<ExpansionItem> companyList = [
-  //   ExpansionItem(name: 'Item 1', selected: true),
-  //   ExpansionItem(name: 'Item 2', selected: false),
-  //   ExpansionItem(name: 'Item 3', selected: false),
-  //   // Add more items here as needed
-  // ];
+
 
   @override
   void initState() {
@@ -86,9 +81,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               color: Colors.white),
                         ),
                         children: <Widget>[
-                          // Your ListView.builder goes here
+
                           Container(
-                           // height: MediaQuery.of(context).size.height/2.5,
 
                             child: ListView.builder(
                               shrinkWrap: true,
@@ -348,7 +342,7 @@ class _MainDrawerState extends State<MainDrawer> {
                             color: Colors.white),
                       ),
                       children: <Widget>[
-                        // Your ListView.builder goes here
+
                         Container(
                          // height: MediaQuery.of(context).size.height/2.5,
                          child: Column(

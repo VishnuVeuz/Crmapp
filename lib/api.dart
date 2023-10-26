@@ -203,6 +203,9 @@ convertleadDataGet(int leadId, String value) async {
   return data;
 }
 
+
+
+
 leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
     String action, int? customerId, List leadTableData) async {
   String token = await getUserJwt();
@@ -270,6 +273,7 @@ leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
 
   return resMessageText;
 }
+
 
 deleteLeadData(int leadId) async {
   String token = await getUserJwt();
