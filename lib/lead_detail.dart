@@ -1394,7 +1394,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         borderRadius: BorderRadius.all(Radius.circular(30)),
                                         color: Color(int.parse(tags![index]["color"])),
                                       ),
-                                      width: 59,
+                                      width: 70,
                                       height: 19,
                                       child: Center(
                                         child: Text(
@@ -2262,41 +2262,44 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                                InkWell(
-                                                                  child: Container(
-                                                                    // trash2Qvk (1652:366)
-                                                                    margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                    width: 15,
-                                                                    height: 16,
-                                                                    child: Image.asset(
-                                                                      'images/logtrash.png',
+                                                                Padding(
+                                                                  padding: const EdgeInsets.only(left: 35),
+                                                                  child: InkWell(
+                                                                    child: Container(
+                                                                      // trash2Qvk (1652:366)
+                                                                      margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                       width: 15,
                                                                       height: 16,
+                                                                      child: Image.asset(
+                                                                        'images/logtrash.png',
+                                                                        width: 15,
+                                                                        height: 16,
+                                                                      ),
                                                                     ),
+                                                                    onTap: ()async{
+                                                                      int lodAttachmentId =
+                                                                      attachmentFileDisplay[index]
+                                                                      [
+                                                                      'id'];
+                                                                      var data =
+                                                                      await deleteLogAttachment(
+                                                                          lodAttachmentId);
+
+                                                                      if (data[
+                                                                      'message'] ==
+                                                                          "Success") {
+                                                                        print(
+                                                                            "jhbdndsjbv");
+                                                                        await getLeadDetails();
+                                                                        setState(
+                                                                                () {
+                                                                              attachmentFileDisplay
+                                                                                  .clear();
+                                                                            });
+                                                                      }
+
+                                                                    },
                                                                   ),
-                                                                  onTap: ()async{
-                                                                    int lodAttachmentId =
-                                                                    attachmentFileDisplay[index]
-                                                                    [
-                                                                    'id'];
-                                                                    var data =
-                                                                    await deleteLogAttachment(
-                                                                        lodAttachmentId);
-
-                                                                    if (data[
-                                                                    'message'] ==
-                                                                        "Success") {
-                                                                      print(
-                                                                          "jhbdndsjbv");
-                                                                      await getLeadDetails();
-                                                                      setState(
-                                                                              () {
-                                                                            attachmentFileDisplay
-                                                                                .clear();
-                                                                          });
-                                                                    }
-
-                                                                  },
                                                                 ),
                                                                 InkWell(
                                                                   child: Container(
@@ -4601,13 +4604,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   ),
                                                                   child: Row(
                                                                     children: [
+                                                                      SizedBox(width: 3,),
                                                                       InkWell(
                                                                         child: Container(
                                                                           margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                          width: 20,
-                                                                          height: 20,
-                                                                          child: Image.asset(
-                                                                            'images/smile2.png',
+                                                                          width: 13,
+                                                                          height: 13,
+                                                                          child: SvgPicture.asset(
+                                                                            'images/sm.svg',
                                                                             // 'assets/page-1/images/group-20576.png',
 
                                                                           ),
@@ -4620,14 +4624,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           ).then((value) => setState(() {}));
                                                                         },
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       StatefulBuilder(builder: (BuildContext
                                                                       context,
                                                                           StateSetter
                                                                           setState) {
                                                                        return   Container(
                                                                           margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                          width: 20,
-                                                                          height: 20,
+                                                                          width: 13,
+                                                                          height: 13,
                                                                           child: starImage == true? InkWell(
                                                                             onTap: ()async{
                                                                               int lodDataId = logDataTitle[indexx][indexs]['id'];
@@ -4641,8 +4646,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 });
                                                                               }
                                                                             },
-                                                                            child: Image.asset(
-                                                                              'images/starr.png',
+                                                                            child: SvgPicture.asset(
+                                                                              'images/st3.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4661,8 +4666,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                                                                             },
-                                                                            child: Image.asset(
-                                                                              'images/starr1.png',
+                                                                            child: SvgPicture.asset(
+                                                                              'images/star.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4670,15 +4675,17 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         );
                                                                        }
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       Visibility(
                                                                         visible: lognoteoptions,
                                                                         child: InkWell(
                                                                           child: Container(
                                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                            width: 20,
-                                                                            height: 20,
-                                                                            child: Image.asset(
-                                                                              'images/edit2.png',
+                                                                            width: 13,
+                                                                            height: 13,
+                                                                            //color:Colors.red,
+                                                                            child: SvgPicture.asset(
+                                                                              'images/ed.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4691,15 +4698,16 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           },
                                                                         ),
                                                                       ),
+                                                                      SizedBox(width: 5,),
                                                                       Visibility(
                                                                         visible: lognoteoptions,
                                                                         child: InkWell(
                                                                           child: Container(
                                                                             margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                            width: 20,
-                                                                            height: 20,
-                                                                            child: Image.asset(
-                                                                              'images/delete2.png',
+                                                                            width: 13,
+                                                                            height: 13,
+                                                                            child: SvgPicture.asset(
+                                                                              'images/de.svg',
                                                                               // 'assets/page-1/images/group-20576.png',
 
                                                                             ),
@@ -4720,6 +4728,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           },
                                                                         ),
                                                                       ),
+                                                                      SizedBox(width: 3,),
                                                                     ],
                                                                   ),
                                                                 ),
@@ -4975,34 +4984,37 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   ],
                                                                                 ),
                                                                               ),
-                                                                              InkWell(
-                                                                                child: Container(
-                                                                                  // trash2Qvk (1652:366)
-                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                                  width: 15,
-                                                                                  height: 16,
-                                                                                  child: Image.asset(
-                                                                                    'images/logtrash.png',
+                                                                              Padding(
+                                                                                padding: const EdgeInsets.only(left: 20),
+                                                                                child: InkWell(
+                                                                                  child: Container(
+                                                                                    // trash2Qvk (1652:366)
+                                                                                    margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                                     width: 15,
                                                                                     height: 16,
+                                                                                    child: Image.asset(
+                                                                                      'images/logtrash.png',
+                                                                                      width: 15,
+                                                                                      height: 16,
+                                                                                    ),
                                                                                   ),
+                                                                                  onTap: ()async{
+                                                                                    int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
+                                                                                    var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                    if (data['message'] == "Success") {
+                                                                                      print("jhbdndsjbv");
+                                                                                      await getLeadDetails();
+                                                                                      setState(() {
+                                                                                        logDataHeader.clear();
+                                                                                        logDataTitle.clear();
+                                                                                        selectedImagesDisplay.clear();
+                                                                                      });
+                                                                                    }
+
+
+                                                                                  },
                                                                                 ),
-                                                                                onTap: ()async{
-                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
-                                                                                  var data = await deleteLogAttachment(lodAttachmentId);
-
-                                                                                  if (data['message'] == "Success") {
-                                                                                    print("jhbdndsjbv");
-                                                                                    await getLeadDetails();
-                                                                                    setState(() {
-                                                                                      logDataHeader.clear();
-                                                                                      logDataTitle.clear();
-                                                                                      selectedImagesDisplay.clear();
-                                                                                    });
-                                                                                  }
-
-
-                                                                                },
                                                                               ),
                                                                               InkWell(
                                                                                 child: Container(

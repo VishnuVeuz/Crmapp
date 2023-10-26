@@ -1163,7 +1163,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         color: Color(
                                             int.parse(tagss![index]["color"])),
                                       ),
-                                      width: 80,
+                                      width: 70,
                                       height: 19,
                                       child: Center(
                                         child: Text(
@@ -1172,7 +1172,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               color: Colors.white,
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'Mulish',
-                                              fontSize: 8),
+                                              fontSize: 10),
                                         ),
                                       ),
                                     ),
@@ -2261,41 +2261,44 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                       ],
                                                                     ),
                                                                   ),
-                                                                  InkWell(
-                                                                    child: Container(
-                                                                      // trash2Qvk (1652:366)
-                                                                      margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                      width: 15,
-                                                                      height: 16,
-                                                                      child: Image.asset(
-                                                                        'images/logtrash.png',
+                                                                  Padding(
+                                                                    padding: const EdgeInsets.only(left: 35),
+                                                                    child: InkWell(
+                                                                      child: Container(
+                                                                        // trash2Qvk (1652:366)
+                                                                        margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                         width: 15,
                                                                         height: 16,
+                                                                        child: Image.asset(
+                                                                          'images/logtrash.png',
+                                                                          width: 15,
+                                                                          height: 16,
+                                                                        ),
                                                                       ),
+                                                                      onTap: ()async{
+                                                                        int lodAttachmentId =
+                                                                        attachmentFileDisplay[index]
+                                                                        [
+                                                                        'id'];
+                                                                        var data =
+                                                                        await deleteLogAttachment(
+                                                                            lodAttachmentId);
+
+                                                                        if (data[
+                                                                        'message'] ==
+                                                                            "Success") {
+                                                                          print(
+                                                                              "jhbdndsjbv");
+                                                                          await getCustomerDetails();
+                                                                          setState(
+                                                                                  () {
+                                                                                attachmentFileDisplay
+                                                                                    .clear();
+                                                                              });
+                                                                        }
+
+                                                                      },
                                                                     ),
-                                                                    onTap: ()async{
-                                                                      int lodAttachmentId =
-                                                                      attachmentFileDisplay[index]
-                                                                      [
-                                                                      'id'];
-                                                                      var data =
-                                                                      await deleteLogAttachment(
-                                                                          lodAttachmentId);
-
-                                                                      if (data[
-                                                                      'message'] ==
-                                                                          "Success") {
-                                                                        print(
-                                                                            "jhbdndsjbv");
-                                                                        await getCustomerDetails();
-                                                                        setState(
-                                                                                () {
-                                                                              attachmentFileDisplay
-                                                                                  .clear();
-                                                                            });
-                                                                      }
-
-                                                                    },
                                                                   ),
                                                                   InkWell(
                                                                     child: Container(
@@ -4930,34 +4933,37 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                           ],
                                                                                         ),
                                                                                       ),
-                                                                                      InkWell(
-                                                                                        child: Container(
-                                                                                          // trash2Qvk (1652:366)
-                                                                                          margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                                          width: 15,
-                                                                                          height: 16,
-                                                                                          child: Image.asset(
-                                                                                            'images/logtrash.png',
+                                                                                      Padding(
+                                                                                        padding: const EdgeInsets.only(left: 20),
+                                                                                        child: InkWell(
+                                                                                          child: Container(
+                                                                                            // trash2Qvk (1652:366)
+                                                                                            margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                                             width: 15,
                                                                                             height: 16,
+                                                                                            child: Image.asset(
+                                                                                              'images/logtrash.png',
+                                                                                              width: 15,
+                                                                                              height: 16,
+                                                                                            ),
                                                                                           ),
+                                                                                          onTap: ()async{
+                                                                                            int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
+                                                                                            var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                            if (data['message'] == "Success") {
+                                                                                              print("jhbdndsjbv");
+                                                                                              await getCustomerDetails();
+                                                                                              setState(() {
+                                                                                                logDataHeader.clear();
+                                                                                                logDataTitle.clear();
+                                                                                                selectedImagesDisplay.clear();
+                                                                                              });
+                                                                                            }
+
+
+                                                                                          },
                                                                                         ),
-                                                                                        onTap: ()async{
-                                                                                          int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
-                                                                                          var data = await deleteLogAttachment(lodAttachmentId);
-
-                                                                                          if (data['message'] == "Success") {
-                                                                                            print("jhbdndsjbv");
-                                                                                            await getCustomerDetails();
-                                                                                            setState(() {
-                                                                                              logDataHeader.clear();
-                                                                                              logDataTitle.clear();
-                                                                                              selectedImagesDisplay.clear();
-                                                                                            });
-                                                                                          }
-
-
-                                                                                        },
                                                                                       ),
                                                                                       InkWell(
                                                                                         child: Container(

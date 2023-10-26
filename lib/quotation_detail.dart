@@ -1454,7 +1454,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                             color:
                                             Color(int.parse(tagss![index]["color"])),
                                           ),
-                                          width: 59,
+                                          width: 70,
                                           height: 19,
                                           child: Center(
                                             child: Text(
@@ -1463,7 +1463,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                   color: Colors.white,
                                                   fontFamily: 'Mulish',
                                                   fontWeight: FontWeight.w600,
-                                                  fontSize: 8),
+                                                  fontSize: 10),
                                             ),
                                           ),
                                         ),
@@ -2485,41 +2485,44 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                                InkWell(
-                                                                  child: Container(
+                                                                Padding(
+                                                                  padding: const EdgeInsets.only(left: 35),
+                                                                  child: InkWell(
+                                                                    child: Container(
 
-                                                                    margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                    width: 15,
-                                                                    height: 16,
-                                                                    child: Image.asset(
-                                                                      'images/logtrash.png',
+                                                                      margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                       width: 15,
                                                                       height: 16,
+                                                                      child: Image.asset(
+                                                                        'images/logtrash.png',
+                                                                        width: 15,
+                                                                        height: 16,
+                                                                      ),
                                                                     ),
+                                                                    onTap: ()async{
+                                                                      int lodAttachmentId =
+                                                                      attachmentFileDisplay[index]
+                                                                      [
+                                                                      'id'];
+                                                                      var data =
+                                                                      await deleteLogAttachment(
+                                                                          lodAttachmentId);
+
+                                                                      if (data[
+                                                                      'message'] ==
+                                                                          "Success") {
+                                                                        print(
+                                                                            "jhbdndsjbv");
+                                                                        await getQuotationDetails();
+                                                                        setState(
+                                                                                () {
+                                                                              attachmentFileDisplay
+                                                                                  .clear();
+                                                                            });
+                                                                      }
+
+                                                                    },
                                                                   ),
-                                                                  onTap: ()async{
-                                                                    int lodAttachmentId =
-                                                                    attachmentFileDisplay[index]
-                                                                    [
-                                                                    'id'];
-                                                                    var data =
-                                                                    await deleteLogAttachment(
-                                                                        lodAttachmentId);
-
-                                                                    if (data[
-                                                                    'message'] ==
-                                                                        "Success") {
-                                                                      print(
-                                                                          "jhbdndsjbv");
-                                                                      await getQuotationDetails();
-                                                                      setState(
-                                                                              () {
-                                                                            attachmentFileDisplay
-                                                                                .clear();
-                                                                          });
-                                                                    }
-
-                                                                  },
                                                                 ),
                                                                 InkWell(
                                                                   child: Container(
@@ -5047,34 +5050,37 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                         ],
                                                                                       ),
                                                                                     ),
-                                                                                    InkWell(
-                                                                                      child: Container(
-                                                                                        // trash2Qvk (1652:366)
-                                                                                        margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
-                                                                                        width: 15,
-                                                                                        height: 16,
-                                                                                        child: Image.asset(
-                                                                                          'images/logtrash.png',
+                                                                                    Padding(
+                                                                                      padding: const EdgeInsets.only(left: 20),
+                                                                                      child: InkWell(
+                                                                                        child: Container(
+                                                                                          // trash2Qvk (1652:366)
+                                                                                          margin: EdgeInsets.fromLTRB(0, 0, 15, 1),
                                                                                           width: 15,
                                                                                           height: 16,
+                                                                                          child: Image.asset(
+                                                                                            'images/logtrash.png',
+                                                                                            width: 15,
+                                                                                            height: 16,
+                                                                                          ),
                                                                                         ),
+                                                                                        onTap: ()async{
+                                                                                          int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
+                                                                                          var data = await deleteLogAttachment(lodAttachmentId);
+
+                                                                                          if (data['message'] == "Success") {
+                                                                                            print("jhbdndsjbv");
+                                                                                            await getQuotationDetails();
+                                                                                            setState(() {
+                                                                                              logDataHeader.clear();
+                                                                                              logDataTitle.clear();
+                                                                                              selectedImagesDisplay.clear();
+                                                                                            });
+                                                                                          }
+
+
+                                                                                        },
                                                                                       ),
-                                                                                      onTap: ()async{
-                                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
-                                                                                        var data = await deleteLogAttachment(lodAttachmentId);
-
-                                                                                        if (data['message'] == "Success") {
-                                                                                          print("jhbdndsjbv");
-                                                                                          await getQuotationDetails();
-                                                                                          setState(() {
-                                                                                            logDataHeader.clear();
-                                                                                            logDataTitle.clear();
-                                                                                            selectedImagesDisplay.clear();
-                                                                                          });
-                                                                                        }
-
-
-                                                                                      },
                                                                                     ),
                                                                                     InkWell(
                                                                                       child: Container(
