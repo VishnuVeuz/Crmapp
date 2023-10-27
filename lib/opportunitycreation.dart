@@ -11,6 +11,7 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'drawer.dart';
 import 'globals.dart';
 import 'notification.dart';
@@ -2393,7 +2394,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                 children: [
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 25, top: 20, right:5,bottom: 10),
+                    const EdgeInsets.only(left: 25, top: 20, right:5,bottom: 30),
                     child: SizedBox(
                       width: 180,
                       height: 47,
@@ -2480,7 +2481,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 20, right:25,bottom: 10),
+                    padding: const EdgeInsets.only(left: 5, top: 20, right:25,bottom: 30),
                     child: Center(
                       child: SizedBox(
                         width: 171,
@@ -2517,6 +2518,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
             ],
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

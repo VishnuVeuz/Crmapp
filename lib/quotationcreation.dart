@@ -9,6 +9,7 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 import 'package:intl/intl.dart';
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'drawer.dart';
 import 'globals.dart';
 import 'notification.dart';
@@ -2338,7 +2339,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
               ),
 
               Padding(
-                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 30),
                 child: SizedBox(
                   width: 360,
                   height: 47,
@@ -2417,6 +2418,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
             ],
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

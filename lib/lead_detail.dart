@@ -20,6 +20,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 
+import 'bottomnavigation.dart';
 import 'globals.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
@@ -5367,6 +5368,7 @@ class _LeadDetailState extends State<LeadDetail> {
             //color: Colors.green,
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

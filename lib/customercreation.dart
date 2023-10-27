@@ -10,6 +10,7 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'customerdetail.dart';
 import 'drawer.dart';
 import 'globals.dart';
@@ -2428,7 +2429,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
               Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 20),
+                    padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 30),
                     child: SizedBox(
                       width: 180,
                       height: 47,
@@ -2481,7 +2482,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 20,left: 5,right: 25),
+                    padding: const EdgeInsets.only(top: 20, bottom: 30,left: 5,right: 25),
                     child: Center(
                       child: SizedBox(
                         width: 171,
@@ -2512,6 +2513,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
             ],
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

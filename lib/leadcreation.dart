@@ -9,6 +9,7 @@ import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'drawer.dart';
 import 'globals.dart';
 import 'lead_detail.dart';
@@ -1939,7 +1940,7 @@ class _LeadCreationState extends State<LeadCreation> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 10),
+                  padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 30),
                   child: SizedBox(
                     width: 360,
                     height: 47,
@@ -2004,6 +2005,7 @@ class _LeadCreationState extends State<LeadCreation> {
             ),
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

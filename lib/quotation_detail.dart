@@ -19,6 +19,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 
+import 'bottomnavigation.dart';
 import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'globals.dart';
@@ -5281,6 +5282,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
             ),
           ),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
   }

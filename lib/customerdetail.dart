@@ -18,6 +18,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:search_choices/search_choices.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'bottomnavigation.dart';
 import 'globals.dart';
 import 'lead_detail.dart';
 import 'notificationactivity.dart';
@@ -5177,6 +5178,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
               ),
             ),
           ),
+          bottomNavigationBar:MyBottomNavigationBar(1),
         ),
       );
     }
