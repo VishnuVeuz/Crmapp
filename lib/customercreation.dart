@@ -677,6 +677,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             padding:
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -849,6 +850,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -959,6 +961,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
                                 padding: const EdgeInsets.all(0),
@@ -1108,6 +1111,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1385,6 +1389,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1485,6 +1490,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1688,6 +1694,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1796,6 +1803,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1890,6 +1898,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1997,6 +2006,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(

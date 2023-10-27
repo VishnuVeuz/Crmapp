@@ -452,40 +452,81 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             )
                           ],
                         ),
+
                         Column(
                           children: [
                             InkWell(
                               onTap: () async {
-                                var data = await getQuotationData(
-                                    widget.quotationId, "duplicate");
-                                String resMessageText;
+                                showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return SizedBox(
+                                        height: 70,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 10, bottom: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      var data = await getQuotationData(
+                                                          widget.quotationId, "duplicate");
+                                                      String resMessageText;
 
-                                if (data['message'].toString() == "success") {
-                                  resMessageText =
-                                      data['data']['id'].toString();
-                                  int resmessagevalue =
-                                      int.parse(resMessageText);
-                                  if (resmessagevalue != 0) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              QuotationCreation(
-                                                  resmessagevalue)),
-                                    );
-                                  }
-                                }
-                                ;
+                                                      if (data['message'].toString() == "success") {
+                                                        resMessageText =
+                                                            data['data']['id'].toString();
+                                                        int resmessagevalue =
+                                                        int.parse(resMessageText);
+                                                        if (resmessagevalue != 0) {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    QuotationCreation(
+                                                                        resmessagevalue)),
+                                                          );
+                                                        }
+                                                      }
+                                                      ;
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/duplicatee.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Duplicate",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    });
                               },
                               child: SvgPicture.asset(
-                                "images/duplicatee.svg",
+                                "images/moree.svg",
                                 width: 28,
                                 height: 28,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("Duplicate",
+                              child: Text("More",
                                   style: TextStyle(
                                     fontFamily: 'Mulish',
                                     fontWeight: FontWeight.w400,
@@ -494,7 +535,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   )),
                             )
                           ],
-                        ),
+                        )
+
                       ],
                     ),
                   ),
@@ -3553,7 +3595,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   children: [
                                     Padding(
                                       //padding: const EdgeInsets.all(25.0),
-                                      padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                      padding: const EdgeInsets.only(top: 10,bottom: 10),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
 

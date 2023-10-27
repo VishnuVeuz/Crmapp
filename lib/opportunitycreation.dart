@@ -325,6 +325,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             validator: (value) {
                               if (value == null) {
                                 return 'please select customer';
@@ -450,6 +451,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -628,6 +630,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -735,6 +738,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
 
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -883,6 +887,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1110,6 +1115,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1205,6 +1211,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1311,6 +1318,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1420,6 +1428,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1656,6 +1665,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1766,6 +1776,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1875,6 +1886,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           padding:
                               const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(

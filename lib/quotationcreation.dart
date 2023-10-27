@@ -275,6 +275,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             validator: (value) {
                               if(value==null){
@@ -385,6 +386,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -498,6 +500,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             validator: (value) {
                               if(value==null){
@@ -599,6 +602,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -701,6 +705,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -793,6 +798,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
                                 padding: const EdgeInsets.all(0),
@@ -882,6 +888,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             validator: (value) {
                               if(value==null){
                                 return 'please select company';
@@ -1151,6 +1158,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
                                 padding: const EdgeInsets.all(0),
@@ -1225,6 +1233,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1328,6 +1337,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             //items: items,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1421,6 +1431,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
 
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
@@ -1508,6 +1519,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           padding:
                           const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                           child: SearchChoices.single(
+                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                             fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                               return Container(
                                 padding: const EdgeInsets.all(0),

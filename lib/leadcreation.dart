@@ -309,6 +309,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -498,6 +499,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -616,6 +619,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
                                   padding: const EdgeInsets.all(0),
@@ -775,6 +780,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1005,6 +1012,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1119,6 +1128,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1232,6 +1243,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1406,7 +1419,10 @@ class _LeadCreationState extends State<LeadCreation> {
                                     height: 30,
                                     // color: Colors.red,
                                     child: MultiSelectDropDown.network(
-                                         hint: '',
+                                     suffixIcon: Icons.arrow_drop_down,
+
+
+                                      hint: '',
 
 
 
@@ -1500,6 +1516,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1617,6 +1635,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(
@@ -1730,6 +1750,8 @@ class _LeadCreationState extends State<LeadCreation> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                               //items: items,
                               fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                 return Container(

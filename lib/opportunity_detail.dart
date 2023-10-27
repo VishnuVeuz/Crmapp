@@ -464,45 +464,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             )
                           ],
                         ),
-                        Column(
-                          children: [
-                            InkWell(
-                              onTap: () async {
-                                print(widget.opportunityId);
-                                var data = await deleteOpportunityData(
-                                    widget.opportunityId);
 
-                                if (data['message'] == "Success") {
-                                  print(data);
-
-                                  print("responcedata");
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            OpportunityMainPage(
-                                                null, "", "", "", "")),
-                                  );
-                                }
-                              },
-                              child: SvgPicture.asset(
-                                "images/delete.svg",
-                                width: 28,
-                                height: 28,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 5),
-                              child: Text("Delete",
-                                  style: TextStyle(
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                    color: Color(0xFF212121),
-                                  )),
-                            )
-                          ],
-                        ),
                         Column(
                           children: [
                             InkWell(
@@ -519,6 +481,45 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: [
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      print(widget.opportunityId);
+                                                      var data = await deleteOpportunityData(
+                                                          widget.opportunityId);
+
+                                                      if (data['message'] == "Success") {
+                                                        print(data);
+
+                                                        print("responcedata");
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  OpportunityMainPage(
+                                                                      null, "", "", "", "")),
+                                                        );
+                                                      }
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/delete.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Delete",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              ),
                                               Column(
                                                 children: [
                                                   InkWell(
@@ -4100,7 +4101,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   children: [
                                     Padding(
                                       //padding: const EdgeInsets.all(25.0),
-                                      padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                      padding: const EdgeInsets.only(top: 10,bottom: 10),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
 

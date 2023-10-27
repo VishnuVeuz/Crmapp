@@ -418,41 +418,156 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             )
                           ],
                         ),
+
+
                         Column(
                           children: [
                             InkWell(
                               onTap: () async {
-                                var data = await getCustomerData(
-                                    widget.customerId, "duplicate");
-                                String resMessageText;
-                                print(data['message'].toString());
-                                if (data['message'].toString() == "success") {
-                                  resMessageText =
-                                      data['data']['id'].toString();
-                                  print(resMessageText);
+                                showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return SizedBox(
+                                        height: 70,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: 10, bottom: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      var data = await getCustomerData(
+                                                          widget.customerId, "duplicate");
+                                                      String resMessageText;
+                                                      print(data['message'].toString());
+                                                      if (data['message'].toString() == "success") {
+                                                        resMessageText =
+                                                            data['data']['id'].toString();
+                                                        print(resMessageText);
 
-                                  int resmessagevalue =
-                                      int.parse(resMessageText);
-                                  if (resmessagevalue != 0) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CustomerCreation(
-                                                  resmessagevalue)),
-                                    );
-                                  }
-                                }
+                                                        int resmessagevalue =
+                                                        int.parse(resMessageText);
+                                                        if (resmessagevalue != 0) {
+                                                          Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    CustomerCreation(
+                                                                        resmessagevalue)),
+                                                          );
+                                                        }
+                                                      }
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/duplicatee.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Duplicate",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              ),
+                                              customerType == true
+                                                  ? Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      String resmessage =
+                                                      await customerArchive(false);
+                                                      int resmessagevalue =
+                                                      int.parse(resmessage);
+                                                      if (resmessagevalue != 0) {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  CustomerDetail(
+                                                                      resmessagevalue)),
+                                                        );
+                                                      }
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/more.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Archive",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              )
+                                                  : Column(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () async {
+                                                      String resmessage =
+                                                      await customerArchive(true);
+                                                      int resmessagevalue =
+                                                      int.parse(resmessage);
+                                                      if (resmessagevalue != 0) {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                                  CustomerDetail(
+                                                                      resmessagevalue)),
+                                                        );
+                                                      }
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      "images/unarchivee.svg",
+                                                      width: 28,
+                                                      height: 28,
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top: 5),
+                                                    child: Text("Unarchive",
+                                                        style: TextStyle(
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight: FontWeight.w400,
+                                                          fontSize: 12,
+                                                          color: Color(0xFF212121),
+                                                        )),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    });
                               },
                               child: SvgPicture.asset(
-                                "images/duplicatee.svg",
+                                "images/moree.svg",
                                 width: 28,
                                 height: 28,
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 5),
-                              child: Text("Duplicate",
+                              child: Text("More",
                                   style: TextStyle(
                                     fontFamily: 'Mulish',
                                     fontWeight: FontWeight.w400,
@@ -461,80 +576,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   )),
                             )
                           ],
-                        ),
-                        customerType == true
-                            ? Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      String resmessage =
-                                          await customerArchive(false);
-                                      int resmessagevalue =
-                                          int.parse(resmessage);
-                                      if (resmessagevalue != 0) {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CustomerDetail(
-                                                      resmessagevalue)),
-                                        );
-                                      }
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/more.svg",
-                                      width: 28,
-                                      height: 28,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("Archive",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              )
-                            : Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      String resmessage =
-                                          await customerArchive(true);
-                                      int resmessagevalue =
-                                          int.parse(resmessage);
-                                      if (resmessagevalue != 0) {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CustomerDetail(
-                                                      resmessagevalue)),
-                                        );
-                                      }
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/unarchivee.svg",
-                                      width: 28,
-                                      height: 28,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("Unarchive",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              ),
+                        )
                       ],
                     ),
                     Padding(
@@ -3387,7 +3429,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     children: [
                                       Padding(
                                         //padding: const EdgeInsets.all(25.0),
-                                        padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                        padding: const EdgeInsets.only(top: 10,bottom: 10),
                                         child: Container(
                                           margin: EdgeInsets.fromLTRB(25,0,25,5),
                                           // group20525KqJ (1112:1365)
