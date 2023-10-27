@@ -4613,14 +4613,16 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       child:  Container(child: logNoteIcon),
                                                                     ),
                                                                   ),
-                                                                  Expanded(
+                                                                  lognoteoptions == true ? Expanded(
                                                                     flex:2,
                                                                     child: Container(
                                                                       padding: EdgeInsets.all(1.0),
                                                                       decoration: BoxDecoration(
+
                                                                         borderRadius: BorderRadius.circular(5.0), // Specifies rounded corners
                                                                         border: Border.all(
                                                                           color: Color(0XFFD9D9D9), // Border color
+
                                                                           width: 1.0,           // Border width
                                                                         ),
                                                                       ),
@@ -4705,65 +4707,217 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           ),
                                                                           SizedBox(width: 5,),
 
-                                                                          Visibility(
-                                                                            visible: lognoteoptions,
-                                                                            
-                                                                            child: Expanded(
-                                                                              child: InkWell(
-                                                                                child: Container(
-                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                                  width: 13,
-                                                                                  height: 13,
-                                                                                  //color:Colors.red,
-                                                                                  child: SvgPicture.asset(
-                                                                                    'images/edit6.svg',
-                                                                                    // 'assets/page-1/images/group-20576.png',
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                //color:Colors.red,
+                                                                                child: SvgPicture.asset(
+                                                                                  'images/edit6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
 
-                                                                                  ),
                                                                                 ),
-                                                                                onTap: (){
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                  String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
-
-                                                                                },
                                                                               ),
+                                                                              onTap: (){
+                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+
+                                                                              },
                                                                             ),
                                                                           ),
-                                                                          SizedBox(width: 5,),
-                                                                          
-                                                                          Visibility(
-                                                                            visible: lognoteoptions,
-                                                                            child: Expanded(
-                                                                              child: InkWell(
-                                                                                child: Container(
-                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                                  width: 13,
-                                                                                  height: 13,
-                                                                                  child: SvgPicture.asset(
-                                                                                    'images/delete6.svg',
-                                                                                    // 'assets/page-1/images/group-20576.png',
+                                                                         SizedBox(width: 5,),
 
-                                                                                  ),
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                child: SvgPicture.asset(
+                                                                                  'images/delete6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
+
                                                                                 ),
-                                                                                onTap: ()async{
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                  var data = await deleteLogData(lodDataId);
-
-                                                                                  if (data['message'] == "Success") {
-                                                                                    print("final11");
-                                                                                    await getLeadDetails();
-                                                                                    setState(() {
-                                                                                      logDataHeader.clear();
-                                                                                      logDataTitle.clear();
-                                                                                      selectedImagesDisplay.clear();
-                                                                                    });
-                                                                                  }
-                                                                                },
                                                                               ),
+                                                                              onTap: ()async{
+                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                var data = await deleteLogData(lodDataId);
+
+                                                                                if (data['message'] == "Success") {
+                                                                                  print("final11");
+                                                                                  await getLeadDetails();
+                                                                                  setState(() {
+                                                                                    logDataHeader.clear();
+                                                                                    logDataTitle.clear();
+                                                                                    selectedImagesDisplay.clear();
+                                                                                  });
+                                                                                }
+                                                                              },
                                                                             ),
                                                                           ),
                                                                           SizedBox(width: 3,),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ):
+                                                                  Expanded(
+                                                                    flex:1,
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.all(1.0),
+                                                                      decoration: BoxDecoration(
+
+                                                                        borderRadius: BorderRadius.circular(5.0), // Specifies rounded corners
+                                                                        border: Border.all(
+                                                                           color: Color(0XFFD9D9D9), // Border color
+
+                                                                          width: 1.0,           // Border width
+                                                                        ),
+                                                                      ),
+                                                                      child: Row(
+                                                                        children: [
+                                                                          SizedBox(width: 3,),
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                child: SvgPicture.asset(
+                                                                                  'images/emoji6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                                ),
+                                                                              ),
+                                                                              onTap: (){
+                                                                                logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
+                                                                                showDialog(
+                                                                                  context: context,
+                                                                                  builder: (BuildContext context) => _buildEmojiPopupDialog(context),
+                                                                                ).then((value) => setState(() {}));
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Expanded(
+
+                                                                            child: StatefulBuilder(builder: (BuildContext
+                                                                            context,
+                                                                                StateSetter
+                                                                                setState) {
+                                                                              return   Container(
+                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                  width: 13,
+                                                                                  height: 13,
+                                                                                  child: starImage == true? InkWell(
+                                                                                    onTap: ()async{
+                                                                                      int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                      var data = await logStarChange(lodDataId, false);
+
+                                                                                      if (data['result']['message'] == "success") {
+                                                                                        print("startrue");
+                                                                                        setState(() {
+                                                                                          starImage = false;
+                                                                                        });
+                                                                                      }
+                                                                                    },
+                                                                                    child: SvgPicture.asset(
+                                                                                      'images/st3.svg',
+                                                                                      // 'assets/page-1/images/group-20576.png',
+
+                                                                                    ),
+                                                                                  ):InkWell(
+                                                                                    onTap: ()async{
+                                                                                      int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                      var data = await logStarChange(lodDataId, true);
+
+                                                                                      if (data['result']['message'] == "success") {
+                                                                                        print("starfalse");
+                                                                                        setState(() {
+                                                                                          starImage = true;
+                                                                                        });
+                                                                                      }
+
+
+                                                                                    },
+                                                                                    child: SvgPicture.asset(
+                                                                                      'images/star6.svg',
+                                                                                      // 'assets/page-1/images/group-20576.png',
+
+                                                                                    ),
+                                                                                  )
+                                                                              );
+                                                                            }
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 3,),
+                                                                          // SizedBox(width: 5,),
+                                                                          //
+                                                                          // Visibility(
+                                                                          //   visible: lognoteoptions,
+                                                                          //
+                                                                          //   child: Expanded(
+                                                                          //     child: InkWell(
+                                                                          //       child: Container(
+                                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                          //         width: 13,
+                                                                          //         height: 13,
+                                                                          //         //color:Colors.red,
+                                                                          //         child: SvgPicture.asset(
+                                                                          //           'images/edit6.svg',
+                                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                                          //
+                                                                          //         ),
+                                                                          //       ),
+                                                                          //       onTap: (){
+                                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                          //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                          //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                                                                          //
+                                                                          //       },
+                                                                          //     ),
+                                                                          //   ),
+                                                                          // ),
+                                                                          // SizedBox(width: 5,),
+                                                                          //
+                                                                          // Visibility(
+                                                                          //   visible: lognoteoptions,
+                                                                          //
+                                                                          //   child: Expanded(
+                                                                          //     child: InkWell(
+                                                                          //       child: Container(
+                                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                          //         width: 13,
+                                                                          //         height: 13,
+                                                                          //         child: SvgPicture.asset(
+                                                                          //           'images/delete6.svg',
+                                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                                          //
+                                                                          //         ),
+                                                                          //       ),
+                                                                          //       onTap: ()async{
+                                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                          //         var data = await deleteLogData(lodDataId);
+                                                                          //
+                                                                          //         if (data['message'] == "Success") {
+                                                                          //           print("final11");
+                                                                          //           await getLeadDetails();
+                                                                          //           setState(() {
+                                                                          //             logDataHeader.clear();
+                                                                          //             logDataTitle.clear();
+                                                                          //             selectedImagesDisplay.clear();
+                                                                          //           });
+                                                                          //         }
+                                                                          //       },
+                                                                          //     ),
+                                                                          //   ),
+                                                                          // ),
+                                                                          // SizedBox(width: 3,),
                                                                         ],
                                                                       ),
                                                                     ),
