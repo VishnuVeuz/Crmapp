@@ -2513,7 +2513,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
             ],
           ),
         ),
-        bottomNavigationBar:MyBottomNavigationBar(1),
+        bottomNavigationBar:MyBottomNavigationBar(3),
       );
     }
   }

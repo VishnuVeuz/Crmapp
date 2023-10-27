@@ -2418,7 +2418,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
             ],
           ),
         ),
-        bottomNavigationBar:MyBottomNavigationBar(1),
+        bottomNavigationBar:MyBottomNavigationBar(3),
       );
     }
   }

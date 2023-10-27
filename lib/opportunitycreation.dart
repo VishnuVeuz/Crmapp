@@ -2518,7 +2518,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
             ],
           ),
         ),
-        bottomNavigationBar:MyBottomNavigationBar(1),
+        bottomNavigationBar:MyBottomNavigationBar(2),
       );
     }
   }

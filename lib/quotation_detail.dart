@@ -5282,7 +5282,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
             ),
           ),
         ),
-        bottomNavigationBar:MyBottomNavigationBar(1),
+        bottomNavigationBar:MyBottomNavigationBar(3),
       );
     }
   }

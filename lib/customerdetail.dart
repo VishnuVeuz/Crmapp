@@ -5178,7 +5178,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
               ),
             ),
           ),
-          bottomNavigationBar:MyBottomNavigationBar(1),
+          bottomNavigationBar:MyBottomNavigationBar(3),
         ),
       );
     }
