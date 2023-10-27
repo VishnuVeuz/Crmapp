@@ -3465,7 +3465,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   children: [
                                     Padding(
                                       //padding: const EdgeInsets.all(25.0),
-                                      padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                      padding: const EdgeInsets.only(top: 10,bottom: 10),
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(25,0,25,5),
 

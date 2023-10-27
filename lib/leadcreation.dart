@@ -1904,74 +1904,76 @@ class _LeadCreationState extends State<LeadCreation> {
                             ),
                           ),
 
-                          Padding(
-                            padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 10),
-                            child: SizedBox(
-                              width: 360,
-                              height: 47,
 
-                              child: ElevatedButton(
-
-                                  child: Text("Save", style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 14.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),),
-
-                                  onPressed: () async {
-
-
-
-                                    if (_formKey.currentState!.validate() && leadnameController.text.trim().isNotEmpty) {
-
-
-                                      setState(() {
-                                        _isInitialized = false;
-                                      });
-
-                                      String resmessage;
-
-                                      widget.leadId==0 ?  resmessage=await leadCreate() :resmessage= await leadEdit();
-
-
-                                      print(resmessage);
-
-                                      print("titleId");
-
-
-
-                                      int resmessagevalue = int.parse(resmessage);
-                                      if(resmessagevalue != 0){
-
-                                        setState(() {
-                                          _isInitialized = true;
-                                        });
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(builder: (context) => LeadDetail(resmessagevalue)),);
-
-                                      }
-
-                                      print("finalalalalalalal");
-                                    }
-                                    else{
-                                      print("finalalalalalalal11111");
-                                    }
-
-
-                                  },
-                                  style: ElevatedButton.styleFrom(
-
-                                    primary: Color(0xFFF9246A),
-                                  )
-                              ),
-                            ),
-                          ),
 
 
 
           //listview
                         ],
                       ),
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 10),
+                  child: SizedBox(
+                    width: 360,
+                    height: 47,
+
+                    child: ElevatedButton(
+
+                        child: Text("Save", style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 14.57,
+                            color: Colors.white,fontFamily: 'Mulish'),),
+
+                        onPressed: () async {
+
+
+
+                          if (_formKey.currentState!.validate() && leadnameController.text.trim().isNotEmpty) {
+
+
+                            setState(() {
+                              _isInitialized = false;
+                            });
+
+                            String resmessage;
+
+                            widget.leadId==0 ?  resmessage=await leadCreate() :resmessage= await leadEdit();
+
+
+                            print(resmessage);
+
+                            print("titleId");
+
+
+
+                            int resmessagevalue = int.parse(resmessage);
+                            if(resmessagevalue != 0){
+
+                              setState(() {
+                                _isInitialized = true;
+                              });
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => LeadDetail(resmessagevalue)),);
+
+                            }
+
+                            print("finalalalalalalal");
+                          }
+                          else{
+                            print("finalalalalalalal11111");
+                          }
+
+
+                        },
+                        style: ElevatedButton.styleFrom(
+
+                          primary: Color(0xFFF9246A),
+                        )
                     ),
                   ),
                 ),

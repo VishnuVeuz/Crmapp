@@ -1905,90 +1905,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         //     thickness: 0.5,
                         //   ),
                         // ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 20),
-                              child: SizedBox(
-                                width: 180,
-                                height: 47,
-                                child: ElevatedButton(
-                                    child: Text(
-                                      "Save",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 13.57,
-                                          color: Colors.white,fontFamily: 'Mulish'),
-                                    ),
-                                    onPressed: () async {
-                                      if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
 
-
-
-
-                                        setState(() {
-                                          _isInitialized = false;
-                                        });
-                                        String resmessage;
-
-                                        print("tagsss");
-
-                                        widget.customnerId == 0
-                                            ? resmessage = await customerCreate()
-                                            : resmessage = await customerEdit();
-
-                                        print(resmessage);
-
-                                        print("titleId");
-
-                                        int resmessagevalue = int.parse(resmessage);
-                                        if (resmessagevalue != 0) {
-                                          setState(() {
-                                            _isInitialized = true;
-                                          });
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    CustomerDetail(resmessagevalue)),
-                                          );
-                                        }
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF9246A),
-                                    )),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 20, bottom: 20,left: 5,right: 25),
-                              child: Center(
-                                child: SizedBox(
-                                  width: 171,
-                                  height: 47,
-                                  child: ElevatedButton(
-                                      child: Text(
-                                        "Add",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 13.57,
-                                            color: Color(0xFF212121),fontFamily: 'Mulish'),
-                                      ),
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              _buildSchedulePopupDialog(context, -1),
-                                        ).then((value) => setState(() {}));
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF6F6F6),
-                                      )),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
 
                         Container(
                           color: Colors.white70,
@@ -2228,6 +2145,91 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     ),
                   ),
                 ),
+              ),
+
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 20),
+                    child: SizedBox(
+                      width: 180,
+                      height: 47,
+                      child: ElevatedButton(
+                          child: Text(
+                            "Save",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13.57,
+                                color: Colors.white,fontFamily: 'Mulish'),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
+
+
+
+
+                              setState(() {
+                                _isInitialized = false;
+                              });
+                              String resmessage;
+
+                              print("tagsss");
+
+                              widget.customnerId == 0
+                                  ? resmessage = await customerCreate()
+                                  : resmessage = await customerEdit();
+
+                              print(resmessage);
+
+                              print("titleId");
+
+                              int resmessagevalue = int.parse(resmessage);
+                              if (resmessagevalue != 0) {
+                                setState(() {
+                                  _isInitialized = true;
+                                });
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          CustomerDetail(resmessagevalue)),
+                                );
+                              }
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 20,left: 5,right: 25),
+                    child: Center(
+                      child: SizedBox(
+                        width: 171,
+                        height: 47,
+                        child: ElevatedButton(
+                            child: Text(
+                              "Add",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 13.57,
+                                  color: Color(0xFF212121),fontFamily: 'Mulish'),
+                            ),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildSchedulePopupDialog(context, -1),
+                              ).then((value) => setState(() {}));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFFF6F6F6),
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

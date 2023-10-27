@@ -2040,130 +2040,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             ),
                           ),
                         ),
-                        Row(
-                          children: [
-                            Padding(
-                              padding:
-                              const EdgeInsets.only(left: 25, top: 20, right:5,bottom: 10),
-                              child: SizedBox(
-                                width: 180,
-                                height: 47,
-                                child: ElevatedButton(
-                                    child: Text(
-                                      "Save",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 15.57,
-                                          color: Colors.white,
-                                          fontFamily: 'Mulish'),
-                                    ),
-                                    onPressed: () async {
-                                      // if(opportunitynameController.text!=""){
-                                      //   setState(() {
-                                      //    // isLoadingSave = true;
-                                      //   });
-                                      // }
 
-                                      if (_formKey.currentState!.validate() &&
-                                          opportunitynameController.text
-                                              .trim()
-                                              .isNotEmpty) {
-                                        setState(() {
-                                          _isInitialized = false;
-                                        });
-                                        String resmessage;
-                                        print(opportunitynameController.text);
-                                        print(probabilityController.text);
-                                        print(companynameController.text);
-                                        print(titleId);
-                                        print(contactnameController.text);
-                                        print(streetController.text);
-                                        print(streettwoController.text);
-                                        print(cityController.text);
-                                        print(countryId);
-                                        print(stateId);
-                                        print(zipController.text);
-                                        print(websiteController.text);
-                                        print(languageId);
-                                        print(emailController.text);
-                                        print(emailccController.text);
-                                        print(jobpositionController.text);
-                                        print(phoneController.text);
-                                        print(mobileController.text);
-                                        print(pricelistId);
-                                        print(companyId);
-                                        print(salespersonId);
-                                        print(salesteamId);
-                                        print(rtaingValue);
-                                        print(campaignId);
-                                        print(mediumId);
-                                        print(sourceId);
-                                        print(internalnotesController.text);
-                                        print(tags);
-
-                                        //resmessage=await opportunityCreate();
-
-                                        widget.opportunityId == 0
-                                            ? resmessage = await opportunityCreate()
-                                            : resmessage = await opportunityEdit();
-                                        print(resmessage);
-                                        int resmessagevalue = int.parse(resmessage);
-                                        if (resmessagevalue != 0) {
-                                          setState(() {
-                                            _isInitialized = true;
-                                          });
-                                          // Navigator.push(
-                                          //   context,
-                                          //   MaterialPageRoute(builder: (context) => LeadFirst()),);
-
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    OpportunityDetail(resmessagevalue)),
-                                          );
-                                        }
-                                      }
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF9246A),
-                                    )),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5, top: 20, right:25,bottom: 10),
-                              child: Center(
-                                child: SizedBox(
-                                  width: 171,
-                                  height: 47,
-                                  child: ElevatedButton(
-                                      child: Text(
-                                        "Add",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 15.57,
-                                            color: Color(0xFF212121),
-                                            fontFamily: 'Mulish'),
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          productId = null;
-                                        });
-
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              _buildOrderPopupDialog(context, -1),
-                                        ).then((value) => setState(() {}));
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF6F6F6),
-                                      )),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
 
 
 
@@ -2499,6 +2376,132 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                   ),
                 ),
               ),
+
+              Row(
+                children: [
+                  Padding(
+                    padding:
+                    const EdgeInsets.only(left: 25, top: 20, right:5,bottom: 10),
+                    child: SizedBox(
+                      width: 180,
+                      height: 47,
+                      child: ElevatedButton(
+                          child: Text(
+                            "Save",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15.57,
+                                color: Colors.white,
+                                fontFamily: 'Mulish'),
+                          ),
+                          onPressed: () async {
+                            // if(opportunitynameController.text!=""){
+                            //   setState(() {
+                            //    // isLoadingSave = true;
+                            //   });
+                            // }
+
+                            if (_formKey.currentState!.validate() &&
+                                opportunitynameController.text
+                                    .trim()
+                                    .isNotEmpty) {
+                              setState(() {
+                                _isInitialized = false;
+                              });
+                              String resmessage;
+                              print(opportunitynameController.text);
+                              print(probabilityController.text);
+                              print(companynameController.text);
+                              print(titleId);
+                              print(contactnameController.text);
+                              print(streetController.text);
+                              print(streettwoController.text);
+                              print(cityController.text);
+                              print(countryId);
+                              print(stateId);
+                              print(zipController.text);
+                              print(websiteController.text);
+                              print(languageId);
+                              print(emailController.text);
+                              print(emailccController.text);
+                              print(jobpositionController.text);
+                              print(phoneController.text);
+                              print(mobileController.text);
+                              print(pricelistId);
+                              print(companyId);
+                              print(salespersonId);
+                              print(salesteamId);
+                              print(rtaingValue);
+                              print(campaignId);
+                              print(mediumId);
+                              print(sourceId);
+                              print(internalnotesController.text);
+                              print(tags);
+
+                              //resmessage=await opportunityCreate();
+
+                              widget.opportunityId == 0
+                                  ? resmessage = await opportunityCreate()
+                                  : resmessage = await opportunityEdit();
+                              print(resmessage);
+                              int resmessagevalue = int.parse(resmessage);
+                              if (resmessagevalue != 0) {
+                                setState(() {
+                                  _isInitialized = true;
+                                });
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(builder: (context) => LeadFirst()),);
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          OpportunityDetail(resmessagevalue)),
+                                );
+                              }
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFF9246A),
+                          )),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 5, top: 20, right:25,bottom: 10),
+                    child: Center(
+                      child: SizedBox(
+                        width: 171,
+                        height: 47,
+                        child: ElevatedButton(
+                            child: Text(
+                              "Add",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 15.57,
+                                  color: Color(0xFF212121),
+                                  fontFamily: 'Mulish'),
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                productId = null;
+                              });
+
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _buildOrderPopupDialog(context, -1),
+                              ).then((value) => setState(() {}));
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xFFF6F6F6),
+                            )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
             ],
           ),
         ),
@@ -2717,7 +2720,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 260, right: 20),
+                    padding: const EdgeInsets.only(left: 280, right: 20),
                     child: IconButton(
                       icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {

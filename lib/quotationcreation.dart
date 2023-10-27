@@ -2315,89 +2315,91 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
-                          child: SizedBox(
-                            width: 360,
-                            height: 47,
-                            child: ElevatedButton(
-                                child: Text(
-                                  "Save",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 15.57,
-                                      color: Colors.white,fontFamily: 'Mulish'),
-                                ),
-                                onPressed: () async {
-                                  if (_formKey.currentState!.validate()) {
 
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Processing Data')),
-                                    );
-
-
-                                    setState(() {
-                                      _isInitialized = false;
-                                    });
-
-                                    String resmessage;
-                                    print(customerId);
-                                    print(quotationtemplateId);
-                                    print(pricelistId);
-                                    print(paymenttermsId);
-                                    print(salespersonId);
-                                    print(salesteamId);
-                                    print(companyId);
-                                    print(tags);
-                                    print(fiscalpositionId);
-                                    print(campaignId);
-                                    print(mediumId);
-                                    print(sourceId);
-                                    print(customerreference.text);
-                                    print(sourcedocument.text);
-                                    print(expirationDateTime.text);
-                                    print(deliveryDateTime.text);
-                                    print(isCheckedSignature);
-                                    print(isCheckedPayment);
-
-                                    //resmessage=await quotationCreate() ;
-
-                                    print("lakshmiiiiiii");
-
-                                    widget.quotationId == 0
-                                        ? resmessage = await quotationCreate()
-                                        : resmessage = await quotationEdit();
-
-                                    int resmessagevalue = int.parse(resmessage);
-                                    if (resmessagevalue != 0) {
-                                      setState(() {
-                                        _isInitialized = true;
-                                      });
-
-                                      print("gggggggg");
-
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                QuotationDetail(resmessagevalue)),
-                                      );
-                                    }
-                                  }
-
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
-                                )),
-                          ),
-                        ),
 
 
 
                       ],
                     ),
                   ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
+                child: SizedBox(
+                  width: 360,
+                  height: 47,
+                  child: ElevatedButton(
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15.57,
+                            color: Colors.white,fontFamily: 'Mulish'),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Processing Data')),
+                          );
+
+
+                          setState(() {
+                            _isInitialized = false;
+                          });
+
+                          String resmessage;
+                          print(customerId);
+                          print(quotationtemplateId);
+                          print(pricelistId);
+                          print(paymenttermsId);
+                          print(salespersonId);
+                          print(salesteamId);
+                          print(companyId);
+                          print(tags);
+                          print(fiscalpositionId);
+                          print(campaignId);
+                          print(mediumId);
+                          print(sourceId);
+                          print(customerreference.text);
+                          print(sourcedocument.text);
+                          print(expirationDateTime.text);
+                          print(deliveryDateTime.text);
+                          print(isCheckedSignature);
+                          print(isCheckedPayment);
+
+                          //resmessage=await quotationCreate() ;
+
+                          print("lakshmiiiiiii");
+
+                          widget.quotationId == 0
+                              ? resmessage = await quotationCreate()
+                              : resmessage = await quotationEdit();
+
+                          int resmessagevalue = int.parse(resmessage);
+                          if (resmessagevalue != 0) {
+                            setState(() {
+                              _isInitialized = true;
+                            });
+
+                            print("gggggggg");
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      QuotationDetail(resmessagevalue)),
+                            );
+                          }
+                        }
+
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF9246A),
+                      )),
                 ),
               ),
             ],
