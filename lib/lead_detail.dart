@@ -379,6 +379,7 @@ class _LeadDetailState extends State<LeadDetail> {
               controller: _scrollController, // Link
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -4456,13 +4457,17 @@ class _LeadDetailState extends State<LeadDetail> {
                                               return Card(
                                                 elevation: 1,
                                                 child: Column(
+                                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Container(
                                                       margin: EdgeInsets.only(top: 20),
                                                       width: 340,
-                                                      height: 35,
+                                                      height:35,
+                                                     // color: Colors.yellow,
                                                       child: Row(
                                                         crossAxisAlignment: CrossAxisAlignment.center,
+
                                                         children: [
                                                           Container(
                                                             // group20507jZA (1636:7)
@@ -4470,6 +4475,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             width: 35,
                                                             height: double.infinity,
                                                             decoration: BoxDecoration (
+
                                                               borderRadius: BorderRadius.circular(17.5),
                                                               image: DecorationImage (
                                                                 fit: BoxFit.cover,
@@ -4504,7 +4510,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   Expanded(
                                                                     flex:3,
                                                                     child: Container(
-
+                                                                    //  color: Colors.blue,
                                                                       margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
                                                                       height: double.infinity,
                                                                       child: SingleChildScrollView(
@@ -4513,7 +4519,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                                           children: [
                                                                             Container(
-                                                                              // administrator17daysago19J (1636:14)
+                                                                             // color:Colors.red,
+
                                                                               margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                                                                               child: RichText(
                                                                                 text: TextSpan(
@@ -4570,18 +4577,21 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 ),
                                                                               ),
                                                                             ),
-                                                                            Text(
-                                                                             logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                                                 .toString() ??
-                                                                                 "",
-                                                                              style: TextStyle (
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 9,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                // height: 1.5,
-                                                                                color: Color(0xff787878),
-                                                                              ),
+                                                                            Container(
+                                                                             // color:Colors.pink,
+                                                                              child: Text(
+                                                                               logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                                                   .toString() ??
+                                                                                   "",
+                                                                                style: TextStyle (
+                                                                                  fontFamily: 'Mulish',
+                                                                                  fontSize: 9,
+                                                                                  fontWeight: FontWeight.w600,
+                                                                                  // height: 1.5,
+                                                                                  color: Color(0xff787878),
+                                                                                ),
 
+                                                                              ),
                                                                             ),
 
 
@@ -4617,127 +4627,140 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       child: Row(
                                                                         children: [
                                                                           SizedBox(width: 3,),
-                                                                          InkWell(
-                                                                            child: Container(
-                                                                              margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                              width: 13,
-                                                                              height: 13,
-                                                                              child: SvgPicture.asset(
-                                                                                'images/emoji6.svg',
-                                                                                // 'assets/page-1/images/group-20576.png',
-
-                                                                              ),
-                                                                            ),
-                                                                            onTap: (){
-                                                                              logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
-                                                                              showDialog(
-                                                                                context: context,
-                                                                                builder: (BuildContext context) => _buildEmojiPopupDialog(context),
-                                                                              ).then((value) => setState(() {}));
-                                                                            },
-                                                                          ),
-                                                                          SizedBox(width: 5,),
-                                                                          StatefulBuilder(builder: (BuildContext
-                                                                          context,
-                                                                              StateSetter
-                                                                              setState) {
-                                                                           return   Container(
-                                                                              margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                              width: 13,
-                                                                              height: 13,
-                                                                              child: starImage == true? InkWell(
-                                                                                onTap: ()async{
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                  var data = await logStarChange(lodDataId, false);
-
-                                                                                  if (data['result']['message'] == "success") {
-                                                                                    print("startrue");
-                                                                                    setState(() {
-                                                                                      starImage = false;
-                                                                                    });
-                                                                                  }
-                                                                                },
-                                                                                child: SvgPicture.asset(
-                                                                                  'images/st3.svg',
-                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                ),
-                                                                              ):InkWell(
-                                                                                onTap: ()async{
-                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                  var data = await logStarChange(lodDataId, true);
-
-                                                                                  if (data['result']['message'] == "success") {
-                                                                                    print("starfalse");
-                                                                                    setState(() {
-                                                                                      starImage = true;
-                                                                                    });
-                                                                                  }
-
-
-                                                                                },
-                                                                                child: SvgPicture.asset(
-                                                                                  'images/star6.svg',
-                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                ),
-                                                                              )
-                                                                            );
-                                                                           }
-                                                                          ),
-                                                                          SizedBox(width: 5,),
-                                                                          Visibility(
-                                                                            visible: lognoteoptions,
+                                                                          Expanded(
                                                                             child: InkWell(
                                                                               child: Container(
                                                                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                                                                 width: 13,
                                                                                 height: 13,
-                                                                                //color:Colors.red,
                                                                                 child: SvgPicture.asset(
-                                                                                  'images/edit6.svg',
+                                                                                  'images/emoji6.svg',
                                                                                   // 'assets/page-1/images/group-20576.png',
 
                                                                                 ),
                                                                               ),
                                                                               onTap: (){
-                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
-
+                                                                                logDataIdEmoji = logDataTitle[indexx][indexs]['id'];
+                                                                                showDialog(
+                                                                                  context: context,
+                                                                                  builder: (BuildContext context) => _buildEmojiPopupDialog(context),
+                                                                                ).then((value) => setState(() {}));
                                                                               },
                                                                             ),
                                                                           ),
                                                                           SizedBox(width: 5,),
-                                                                          Visibility(
-                                                                            visible: lognoteoptions,
-                                                                            child: InkWell(
-                                                                              child: Container(
+
+                                                                          Expanded(
+
+                                                                            child: StatefulBuilder(builder: (BuildContext
+                                                                            context,
+                                                                                StateSetter
+                                                                                setState) {
+                                                                             return   Container(
                                                                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
                                                                                 width: 13,
                                                                                 height: 13,
-                                                                                child: SvgPicture.asset(
-                                                                                  'images/delete6.svg',
-                                                                                  // 'assets/page-1/images/group-20576.png',
+                                                                                child: starImage == true? InkWell(
+                                                                                  onTap: ()async{
+                                                                                    int lodDataId = logDataTitle[indexx][indexs]['id'];
 
+                                                                                    var data = await logStarChange(lodDataId, false);
+
+                                                                                    if (data['result']['message'] == "success") {
+                                                                                      print("startrue");
+                                                                                      setState(() {
+                                                                                        starImage = false;
+                                                                                      });
+                                                                                    }
+                                                                                  },
+                                                                                  child: SvgPicture.asset(
+                                                                                    'images/st3.svg',
+                                                                                    // 'assets/page-1/images/group-20576.png',
+
+                                                                                  ),
+                                                                                ):InkWell(
+                                                                                  onTap: ()async{
+                                                                                    int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                                    var data = await logStarChange(lodDataId, true);
+
+                                                                                    if (data['result']['message'] == "success") {
+                                                                                      print("starfalse");
+                                                                                      setState(() {
+                                                                                        starImage = true;
+                                                                                      });
+                                                                                    }
+
+
+                                                                                  },
+                                                                                  child: SvgPicture.asset(
+                                                                                    'images/star6.svg',
+                                                                                    // 'assets/page-1/images/group-20576.png',
+
+                                                                                  ),
+                                                                                )
+                                                                              );
+                                                                             }
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Visibility(
+                                                                            visible: lognoteoptions,
+                                                                            
+                                                                            child: Expanded(
+                                                                              child: InkWell(
+                                                                                child: Container(
+                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                  width: 13,
+                                                                                  height: 13,
+                                                                                  //color:Colors.red,
+                                                                                  child: SvgPicture.asset(
+                                                                                    'images/edit6.svg',
+                                                                                    // 'assets/page-1/images/group-20576.png',
+
+                                                                                  ),
                                                                                 ),
-                                                                              ),
-                                                                              onTap: ()async{
-                                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                var data = await deleteLogData(lodDataId);
+                                                                                onTap: (){
+                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                  String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
 
-                                                                                if (data['message'] == "Success") {
-                                                                                  print("final11");
-                                                                                  await getLeadDetails();
-                                                                                  setState(() {
-                                                                                    logDataHeader.clear();
-                                                                                    logDataTitle.clear();
-                                                                                    selectedImagesDisplay.clear();
-                                                                                  });
-                                                                                }
-                                                                              },
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+                                                                          
+                                                                          Visibility(
+                                                                            visible: lognoteoptions,
+                                                                            child: Expanded(
+                                                                              child: InkWell(
+                                                                                child: Container(
+                                                                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                                  width: 13,
+                                                                                  height: 13,
+                                                                                  child: SvgPicture.asset(
+                                                                                    'images/delete6.svg',
+                                                                                    // 'assets/page-1/images/group-20576.png',
+
+                                                                                  ),
+                                                                                ),
+                                                                                onTap: ()async{
+                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                                  var data = await deleteLogData(lodDataId);
+
+                                                                                  if (data['message'] == "Success") {
+                                                                                    print("final11");
+                                                                                    await getLeadDetails();
+                                                                                    setState(() {
+                                                                                      logDataHeader.clear();
+                                                                                      logDataTitle.clear();
+                                                                                      selectedImagesDisplay.clear();
+                                                                                    });
+                                                                                  }
+                                                                                },
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                           SizedBox(width: 3,),
@@ -4884,10 +4907,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                 SizedBox(height:5),
                                                                 Container(
-                                                                  width: MediaQuery.of(context)
-                                                                      .size
-                                                                      .width,
-
+                                                                  width: MediaQuery.of(context).size.width,
                                                                   child:logattachmentFileDisplay.length>0? GridView.builder(
                                                                       shrinkWrap: true,
                                                                       // Avoid scrolling
@@ -5097,7 +5117,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   );
                                                               }
                                                               ):
-                                                                      Container(),
+                                                                    Container(),
                                                                 ),
 
                                                             ],
