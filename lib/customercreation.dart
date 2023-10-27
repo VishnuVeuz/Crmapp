@@ -316,63 +316,331 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                                     personImg !=""
                                         ?
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 1),
-                                      child: Container(
-                                        width: 70,
-                                        height: 55,
-
-                                        child: ClipRRect(
-                                          // borderRadius: BorderRadius
-                                          //     .circular(0),
-                                          child: Image.memory(
-                                            base64Decode(personImg!),
-                                            fit: BoxFit.cover,
-                                            width: MediaQuery
-                                                .of(context)
-                                                .size
-                                                .width,
-                                            height: 300,
-                                          ),
-                                        ),
-                                      ),
-                                    ):Padding(
-                                      padding: const EdgeInsets.only(top: 15),
-                                      child: Image.asset("images/cam.png"),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10),
-                                      child: Row(
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      width: 80,
+                                      // color: Colors.red,
+                                      height: 80,
+                                      child: Stack(
                                         children: [
-                                          SizedBox(
-                                              width: 37,
-                                              height: 18,
-                                              child: ElevatedButton(
-                                                child: Image.asset("images/pencil.png"),
-                                                onPressed: () {
+                                          Positioned(
+                                            // rectangle4756kQ (1652:322)
+                                            left: 0,
+                                            top: 6,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 75,
+                                                height: 71,
+                                                child: Container(
+                                                  child: ClipRRect(
+                                                          // borderRadius: BorderRadius
+                                                          //     .circular(0),
+                                                          child: Image.memory(
+                                                            base64Decode(personImg!),
+                                                            fit: BoxFit.cover,
+                                                            width: MediaQuery
+                                                                .of(context)
+                                                                .size
+                                                                .width,
+                                                            height: 300,
+                                                          ),
+                                                        ),
+
+                                                  decoration: BoxDecoration (
+                                                    borderRadius: BorderRadius.circular(3),
+                                                    color: Color(0xffd9d9d9),
+                                                    // image: DecorationImage (
+                                                    //   fit: BoxFit.cover,
+                                                    //   image: AssetImage (
+                                                    //       "images/test.png",
+                                                    //   ),
+                                                    // ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            // group20514mrY (1652:323)
+                                            left: 60,
+                                            top: 0,
+                                            child: Align(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  print("demo clicked");
+                                                  setState(() {
+                                                    selectedImages.clear();
+                                                    personImg="";
+                                                  });
+                                                },
+                                                child: SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: Image.asset(
+                                                    'images/logimagedelete.png',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            // trash2G2c (1652:325)
+                                            left: 65,
+                                            top: 5,
+                                            child: Align(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  print("demo clicked1");
+                                                  setState(() {
+                                                    selectedImages.clear();
+                                                    personImg="";
+                                                  });
+                                                },
+                                                child: SizedBox(
+                                                  width: 9,
+                                                  height: 10,
+                                                  child: Image.asset(
+                                                    'images/logtrash.png',
+                                                    width: 9,
+                                                    height: 10,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          Positioned(
+                                            // group20514mrY (1652:323)
+                                            left: 38,
+                                            top: 0,
+                                            child: Align(
+                                              child: InkWell(
+                                                onTap: (){
                                                   myAlert();
                                                 },
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xFF3D418E),
+                                                child: SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: Image.asset(
+                                                    'images/logimagedelete.png',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
                                                 ),
-                                              )),
-                                          SizedBox(
-                                              width: 41,
-                                              height: 18,
-                                              child: ElevatedButton(
-                                                  child: Image.asset("images/del.png"),
-                                                  onPressed: () {
-                                                    setState(() {
-                                                      selectedImages.clear();
-                                                      personImg="";
-                                                    });
-                                                  },
-                                                  style: ElevatedButton.styleFrom(
-                                                    primary: Color(0xFFB8000B),
-                                                  )))
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            // trash2G2c (1652:325)
+                                            left: 43,
+                                            top: 5,
+                                            child: Align(
+                                              child:  InkWell(
+                                                onTap: (){
+                                                  myAlert();
+                                                },
+                                                child: SizedBox(
+                                                  width: 9,
+                                                  height: 10,
+                                                  child: SvgPicture.asset(
+                                                    "images/logedits.svg",
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ),
-                                    )
+                                    ):
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      width: 80,
+                                      // color: Colors.red,
+                                      height: 80,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            // rectangle4756kQ (1652:322)
+                                            left: 0,
+                                            top: 6,
+                                            child: Align(
+                                              child: SizedBox(
+                                                width: 75,
+                                                height: 71,
+                                                child: Container(
+                                                  child: SvgPicture.asset(
+                                                    "images/user.svg",
+                                                  ),
+
+                                                  decoration: BoxDecoration (
+                                                    borderRadius: BorderRadius.circular(3),
+                                                    color: Color(0xffd9d9d9),
+                                                    // image: DecorationImage (
+                                                    //   fit: BoxFit.cover,
+                                                    //   image: AssetImage (
+                                                    //       "images/user.png",
+                                                    //   ),
+                                                    // ),
+                                                  ),
+
+
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            // group20514mrY (1652:323)
+                                            left: 60,
+                                            top: 0,
+                                            child: Align(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  myAlert();
+                                                },
+                                                child: SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child: Image.asset(
+                                                    'images/logimagedelete.png',
+                                                    width: 20,
+                                                    height: 20,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            // trash2G2c (1652:325)
+                                            left: 65,
+                                            top: 5,
+                                            child: Align(
+                                              child: InkWell(
+                                                onTap: (){
+                                                  myAlert();
+                                                }
+                                                ,
+                                                child: SizedBox(
+                                                  width: 9,
+                                                  height: 10,
+                                                  child:SvgPicture.asset(
+                                                    "images/logedits.svg",
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+
+                                          // Positioned(
+                                          //   // group20514mrY (1652:323)
+                                          //   left: 35,
+                                          //   top: 0,
+                                          //   child: Align(
+                                          //     child: SizedBox(
+                                          //       width: 20,
+                                          //       height: 20,
+                                          //       child: Image.asset(
+                                          //         'images/logimagedelete.png',
+                                          //         width: 20,
+                                          //         height: 20,
+                                          //       ),
+                                          //     ),
+                                          //   ),
+                                          // ),
+                                          // Positioned(
+                                          //   // trash2G2c (1652:325)
+                                          //   left: 40,
+                                          //   top: 5,
+                                          //   child: Align(
+                                          //     child: SizedBox(
+                                          //       width: 9,
+                                          //       height: 10,
+                                          //       child: Image.asset(
+                                          //         'images/logtrash.png',
+                                          //         width: 9,
+                                          //         height: 10,
+                                          //       ),
+                                          //     ),
+                                          //   ),
+                                          // ),
+                                        ],
+                                      ),
+                                    ),
+
+
+
+
+
+                                        // code change customer
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(top: 1),
+                                    //   child: Container(
+                                    //     width: 70,
+                                    //     height: 55,
+                                    //
+                                    //     child: ClipRRect(
+                                    //       // borderRadius: BorderRadius
+                                    //       //     .circular(0),
+                                    //       child: Image.memory(
+                                    //         base64Decode(personImg!),
+                                    //         fit: BoxFit.cover,
+                                    //         width: MediaQuery
+                                    //             .of(context)
+                                    //             .size
+                                    //             .width,
+                                    //         height: 300,
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ):Padding(
+                                    //   padding: const EdgeInsets.only(top: 15),
+                                    //   child: Image.asset("images/cam.png"),
+                                    // ),
+                                    // Padding(
+                                    //   padding: const EdgeInsets.only(top: 10),
+                                    //   child: Row(
+                                    //     children: [
+                                    //       SizedBox(
+                                    //           width: 37,
+                                    //           height: 18,
+                                    //           child: ElevatedButton(
+                                    //             child: Image.asset("images/pencil.png"),
+                                    //             onPressed: () {
+                                    //               myAlert();
+                                    //             },
+                                    //             style: ElevatedButton.styleFrom(
+                                    //               primary: Color(0xFF3D418E),
+                                    //             ),
+                                    //           )),
+                                    //       SizedBox(
+                                    //           width: 41,
+                                    //           height: 18,
+                                    //           child: ElevatedButton(
+                                    //               child: Image.asset("images/del.png"),
+                                    //               onPressed: () {
+                                    //                 setState(() {
+                                    //                   selectedImages.clear();
+                                    //                   personImg="";
+                                    //                 });
+                                    //               },
+                                    //               style: ElevatedButton.styleFrom(
+                                    //                 primary: Color(0xFFB8000B),
+                                    //               )))
+                                    //     ],
+                                    //   ),
+                                    // )
+
+                                    //code change customer
+
+
+
+
+
+
+
+
+
                                   ],
                                 ),
                               ),

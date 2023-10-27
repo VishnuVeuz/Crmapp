@@ -4772,7 +4772,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                         borderRadius: BorderRadius.circular(5.0), // Specifies rounded corners
                                                                         border: Border.all(
                                                                            color: Color(0XFFD9D9D9), // Border color
-
                                                                           width: 1.0,           // Border width
                                                                         ),
                                                                       ),
