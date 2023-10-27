@@ -2962,6 +2962,8 @@ getlogNoteData(int dataId, String activityModel) async {
 
   var data;
   String? authresponce;
+  print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
+  print("demo data");
 
   Response response = await get(
 

@@ -704,6 +704,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
   companyData() async {
 
     token = await getUserJwt();
+    print(token);
+    print("token");
 
     var notificationMessage  = await getNotificationCount();
 

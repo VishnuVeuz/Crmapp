@@ -4462,19 +4462,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
                                                     Container(
-                                                      margin: EdgeInsets.only(top: 20),
+                                                      margin: EdgeInsets.only(top: 10),
                                                       width: 340,
-                                                      height:35,
-                                                     // color: Colors.yellow,
+                                                      //height:80,
+                                                     //  color: Colors.yellow,
                                                       child: Row(
-                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
 
                                                         children: [
                                                           Container(
                                                             // group20507jZA (1636:7)
                                                             padding: EdgeInsets.fromLTRB(25, 27, 3, 0),
                                                             width: 35,
-                                                            height: double.infinity,
+                                                            height: 35,
                                                             decoration: BoxDecoration (
 
                                                               borderRadius: BorderRadius.circular(17.5),
@@ -4504,101 +4504,104 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                               // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
                                                               padding: EdgeInsets.fromLTRB(19, 2, 2, 2),
-                                                              height: double.infinity,
+
                                                               child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                crossAxisAlignment: CrossAxisAlignment.start,
                                                                 children: [
                                                                   Expanded(
                                                                     flex:3,
                                                                     child: Container(
                                                                     //  color: Colors.blue,
                                                                       margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                                                      height: double.infinity,
-                                                                      child: SingleChildScrollView(
-                                                                        child: Column(
-                                                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                                          children: [
-                                                                            Container(
-                                                                             // color:Colors.red,
+                                                                     // height: double.infinity,
+                                                                      child: Column(
+                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                                        children: [
+                                                                          Container(
+                                                                           // color:Colors.red,
 
-                                                                              margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
-                                                                              child: RichText(
-                                                                                text: TextSpan(
-                                                                                  style: TextStyle (
-                                                                                    fontFamily: 'Mulish',
-                                                                                    fontSize: 12,
-                                                                                    fontWeight: FontWeight.w700,
-                                                                                    height: 0,
-                                                                                    color: Color(0xff000000),
-                                                                                  ),
-                                                                                  children: [
-                                                                                    TextSpan(
-                                                                                      text: logDataTitle[indexx][indexs]['create_uid'][1],
-                                                                                      style: TextStyle (
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 11,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                        height: 1,
-                                                                                        color: Color(0xff000000),
-
-                                                                                      ),
-                                                                                    ),
-                                                                                    TextSpan(
-                                                                                      text: ' -',
-                                                                                      style: TextStyle (
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 11,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                        height: 1,
-                                                                                        color: Color(0xffa29d9d),
-                                                                                      ),
-                                                                                    ),
-                                                                                    TextSpan(
-                                                                                      text: ' ',
-                                                                                      style: TextStyle (
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 11,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                        height: 1,
-                                                                                        color: Color(0xff000000),
-                                                                                      ),
-                                                                                    ),
-                                                                                    TextSpan(
-                                                                                      text: logDataTitle[indexx][indexs]["period"],
-                                                                                      style: TextStyle (
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 9,
-                                                                                        fontWeight: FontWeight.w500,
-                                                                                        height: 1.5,
-                                                                                        color: Color(0xff948e8e),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                            Container(
-                                                                             // color:Colors.pink,
-                                                                              child: Text(
-                                                                               logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                                                   .toString() ??
-                                                                                   "",
+                                                                            margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
+                                                                            child: RichText(
+                                                                              text: TextSpan(
                                                                                 style: TextStyle (
                                                                                   fontFamily: 'Mulish',
-                                                                                  fontSize: 9,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                  // height: 1.5,
-                                                                                  color: Color(0xff787878),
+                                                                                  fontSize: 12,
+                                                                                  fontWeight: FontWeight.w700,
+                                                                                  height: 0,
+                                                                                  color: Color(0xff000000),
                                                                                 ),
+                                                                                children: [
+                                                                                  TextSpan(
+                                                                                    text: logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                                    style: TextStyle (
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                      height: 1,
+                                                                                      color: Color(0xff000000),
 
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text: ' -',
+                                                                                    style: TextStyle (
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                      height: 1,
+                                                                                      color: Color(0xffa29d9d),
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text: ' ',
+                                                                                    style: TextStyle (
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                      height: 1,
+                                                                                      color: Color(0xff000000),
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text: logDataTitle[indexx][indexs]["period"],
+                                                                                    style: TextStyle (
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 9,
+                                                                                      fontWeight: FontWeight.w500,
+                                                                                      height: 1.5,
+                                                                                      color: Color(0xff948e8e),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
                                                                               ),
                                                                             ),
+                                                                          ),
+                                                                          Container(
+                                                                           // color:Colors.pink,
+                                                                            //height:60,
+                                                                            child: Text(
+
+
+                                                                              removeHtmlTagsAndSpaces(logDataTitle[indexx][indexs]['body'].toString()??""),
+
+                                                                             // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                                             //     .toString() ??
+                                                                             //     "",
+                                                                              style: TextStyle (
+                                                                                fontFamily: 'Mulish',
+                                                                                fontSize: 9,
+                                                                                fontWeight: FontWeight.w600,
+                                                                                // height: 1.5,
+                                                                                color: Color(0xff787878),
+                                                                              ),
+
+                                                                            ),
+                                                                          ),
 
 
 
-                                                                          ],
-                                                                        ),
+                                                                        ],
                                                                       ),
                                                                     ),
                                                                   ),
@@ -4933,8 +4936,9 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                     Container(
 
-                                                      margin: EdgeInsets.only(top: 30),
+                                                      margin: EdgeInsets.only(top: 25),
                                                       width: 350,
+                                                      //color:Colors.red,
                                                       // height: 450,
                                                       child: Column(
                                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -8838,5 +8842,17 @@ return data;
 
 
   }
+
+  String removeHtmlTagsAndSpaces(String input) {
+    // Remove HTML tags
+    final noHtmlTags = input.replaceAll(RegExp(r'<[^>]*>'), '');
+
+    // Remove extra white spaces
+    final noExtraSpaces = noHtmlTags.replaceAll(RegExp(r'\s+'), ' ');
+
+    // Trim leading and trailing spaces
+    return noExtraSpaces.trim();
+  }
+
 
 }
