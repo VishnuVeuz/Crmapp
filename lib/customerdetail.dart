@@ -19,6 +19,7 @@ import 'package:search_choices/search_choices.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'bottomnavigation.dart';
+import 'custom_shape.dart';
 import 'globals.dart';
 import 'lead_detail.dart';
 import 'notificationactivity.dart';
@@ -1187,6 +1188,17 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 spacing: 8.0, // Space between items
                                 runSpacing: 8.0, // Space between rows (if wrapping)
                                 children: List.generate(tagss!.length ?? 0, (int index) {
+                                  final TextSpan span = TextSpan(
+                                    text: tagss![index]["name"].toString(),
+                                    style: TextStyle(fontSize: 10),
+                                  );
+                                  final TextPainter tp = TextPainter(
+                                      text: span,
+                                      textDirection: Directionality.of(context)
+                                  );
+                                  tp.layout();
+                                  double textWidth = tp.size.width;
+
                                   return InkWell(
                                     onTap: ()async{
                                       var colors =   await getColors();
@@ -1199,26 +1211,65 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         tagss![index]["color"] =  tagChangeColoir;
                                       }));
                                     },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                        BorderRadius.all(Radius.circular(30)),
-                                        color: Color(
-                                            int.parse(tagss![index]["color"])),
-                                      ),
-                                      width: 80,
-                                      height: 19,
-                                      child: Center(
-                                        child: Text(
-                                          tagss![index]["name"].toString(),
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 8),
+
+
+                                    child: ClipPath(
+                                      clipper: CustomShape(textWidth), // Pass the calculated width
+                                      child: Container(
+                                        width: textWidth + 25, // Set the container width based on text width + padding
+                                        height: 19,
+                                        color: Color(int.parse(tagss![index]["color"])),
+                                        child: Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Center(
+                                            child: Row(
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 3),
+                                                  child: Text(
+                                                    tagss![index]["name"].toString(),
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(left: 2),
+                                                  child: SvgPicture.asset(
+                                                    'images/cross.svg',
+                                                    width: 10,
+                                                    height: 10,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
+                                    // child: Container(
+                                    //   decoration: BoxDecoration(
+                                    //     borderRadius:
+                                    //     BorderRadius.all(Radius.circular(30)),
+                                    //     color: Color(
+                                    //         int.parse(tagss![index]["color"])),
+                                    //   ),
+                                    //   width: 80,
+                                    //   height: 19,
+                                    //   child: Center(
+                                    //     child: Text(
+                                    //       tagss![index]["name"].toString(),
+                                    //       style: TextStyle(
+                                    //           color: Colors.white,
+                                    //           fontWeight: FontWeight.w500,
+                                    //           fontFamily: 'Mulish',
+                                    //           fontSize: 8),
+                                    //     ),
+                                    //   ),
+                                    // ),
                                   );
                                 }),
                               ),
@@ -9239,23 +9290,15 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   widthFactor: null,
                   child: InkWell(
                     onTap: ()async{
-
                       int selectedColorId = colors[index]["color"];
-
                       String value = await colorChange(selectedtagId,selectedColorId,"res.partner.category");
-
                       print(value);
                       print("finalidididid");
                       if( value == "success"){
                         setState((){
                           tagChangeColoir = colors[index]["code"];
                         });
-
                       }
-
-
-
-
                       Navigator.pop(context);
                       print(colors[index]["code"]);
                       print(colors[index]["color"]);

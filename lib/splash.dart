@@ -53,7 +53,7 @@
 //     //         decoration: BoxDecoration(
 //     //           image: DecorationImage(
 //     //             image: AssetImage(
-//     //                 'images/logo.png'),
+//     //                 'images/logo1.png'),
 //     //             fit: BoxFit.fill,
 //     //           ),
 //     //           shape: BoxShape.rectangle,
@@ -137,6 +137,7 @@ class _SplashPageState extends State<SplashPage> {
     //     Duration(seconds: 3),
     //         () =>
     // );
+
     Timer(
         Duration(seconds: 3),
             () =>
@@ -157,7 +158,7 @@ class _SplashPageState extends State<SplashPage> {
         body: Center(
           child: Container(
             width: 200,
-            height: 60,
+             height: 50,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
