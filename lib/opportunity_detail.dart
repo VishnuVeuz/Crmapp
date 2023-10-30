@@ -1949,6 +1949,20 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+
+                  Container(
+                    height: 7,
+                    width: MediaQuery.of(context).size.width ,
+                    color: Color(0xFFF1F1F1),
+                  ),
 
 
                   Visibility(
@@ -2053,6 +2067,52 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 15),
+                    child: SizedBox(
+                      width: 360,
+                      height: 34,
+
+                      child: ElevatedButton(
+
+                          child: Text("Mark Stage as Complete", style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 13.57,
+                              color: Colors.white,fontFamily: 'Mulish'),),
+
+                          onPressed: (){},
+                          style: ElevatedButton.styleFrom(
+
+                            primary: Color(0xFF3F7ADF),
+                          )
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25, top: 0, right: 25,bottom: 10),
+                    child: SizedBox(
+                      width: 360,
+                      height: 34,
+
+                      child: ElevatedButton(
+
+                          child: Text("Show More", style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13.57,
+                              color: Color(0xFF212121),fontFamily: 'Mulish'),),
+
+                          onPressed: (){},
+                          style: ElevatedButton.styleFrom(
+
+                            primary: Color(0xFFEBEBEB),
+                          )
+                      ),
+                    ),
+                  ),
+
+
+
+
 
 
                   Padding(
@@ -2064,12 +2124,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: Padding(
                         padding: const EdgeInsets.only(
                             left: 25, top: 13, bottom: 10),
-                        child: Text("Optional Products",
+                        child: Text("Products",
                             style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontFamily: 'Mulish',
-                                fontSize: 13,
-                                color: Color(0xFF212121))),
+                                fontSize: 14,
+                                color: Color(0xFF000000))),
                       ),
                     ),
                   ),
