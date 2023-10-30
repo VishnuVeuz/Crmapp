@@ -1981,7 +1981,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             print(index);
                             print("final indexxx");
                             return Padding(
-                              padding: const EdgeInsets.only(left:5, top: 10),
+                              padding: const EdgeInsets.only(left:0, top: 10),
                               child: Row(
                                 children: [
                                   InkWell(
