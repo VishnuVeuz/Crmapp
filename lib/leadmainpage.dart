@@ -61,6 +61,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
       );
     }
     else {
+      print(Theme.of(context).primaryColor);
+      print("primaryColor");
       return Scaffold(
         drawer: MainDrawer(),
         appBar:  AppBar(

@@ -157,8 +157,8 @@ class _SplashPageState extends State<SplashPage> {
 
         body: Center(
           child: Container(
-            width: 200,
-             height: 50,
+            width: 150,
+             height: 42,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(

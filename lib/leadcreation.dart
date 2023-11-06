@@ -285,6 +285,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
                               ),
                             ),),
+
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),
@@ -305,6 +306,7 @@ class _LeadCreationState extends State<LeadCreation> {
                             ),),
 
                           //title
+
 
                           Padding(
                             padding: const EdgeInsets.symmetric(
@@ -356,7 +358,6 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-
                                       width: 320,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
@@ -440,6 +441,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xFF000000),fontFamily: 'Mulish'),),
                           ),
+
                           Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 25, vertical: 0),

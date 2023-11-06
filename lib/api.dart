@@ -2956,7 +2956,7 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
 
 
 
-getlogNoteData(int dataId, String activityModel) async {
+ getlogNoteData(int dataId, String activityModel) async {
   String token = await getUserJwt();
 
 
@@ -2979,8 +2979,10 @@ getlogNoteData(int dataId, String activityModel) async {
 
   if (response.statusCode != 200) {
     throw Exception("failed to get data from internet");
-  } else {
+  }
+  else {
     data = jsonDecode(response.body);
+    print(data);
 
     // authresponce = data['result'].toString();
   }
@@ -2995,6 +2997,7 @@ deleteLogData(int logId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
+ // print(object)
 
   Response response = await delete(
     Uri.parse("${baseUrl}api/log/${logId}"),
