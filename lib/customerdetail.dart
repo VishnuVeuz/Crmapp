@@ -852,7 +852,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ),
 
 
-
+                  Padding(
+                    padding:
+                    const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 2,
+                    ),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

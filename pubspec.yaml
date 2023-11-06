@@ -286,6 +286,9 @@ flutter:
     - images/logedits.svg
     - images/logo.png
     - images/cross.svg
+    - images/url.svg
+    - images/email.svg
+    - images/password.svg
 
 
 

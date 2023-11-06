@@ -2,6 +2,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
@@ -20,6 +21,8 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController urlController = TextEditingController();
+
 
   get message => null;
 
@@ -34,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Container(
             width: MediaQuery.of(context).size.width/1,
-            height: MediaQuery.of(context).size.height/2,
+            height: MediaQuery.of(context).size.height/1.8,
             color: Color(0xFF3D418E),
             child: Column(
 
@@ -85,7 +88,7 @@ CRM made easy.
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 32, left: 34.8),
+                        padding: const EdgeInsets.only(top: 46, left: 34.8),
                         child: SizedBox(
                           width: 92,
                           height: 35,
@@ -99,9 +102,48 @@ CRM made easy.
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 34),
+                              child: SizedBox(
+                                width: 271,
+                                height: 19,
+                                child: TextFormField(
+                                  controller: urlController,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                      border: InputBorder.none,
+
+                                      hintText: 'Yourcompany.odoo.com',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey,
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 15)),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 35,bottom: 13),
+                              child: SvgPicture.asset("images/url.svg")
+                              //Image.asset("images/user.png"),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 34, right: 34,top: 0),
+                        child: Divider(
+                          color: Colors.grey,
+                        ),
+                      ),
 
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -127,19 +169,19 @@ CRM made easy.
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 35,bottom: 13),
-                              child: Image.asset("images/user.png"),
+                              child: SvgPicture.asset("images/email.svg"),
                             )
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 34, right: 34,top: 10),
+                        padding: const EdgeInsets.only(left: 34, right: 34,top: 0),
                         child: Divider(
                           color: Colors.grey,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 20),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -165,22 +207,22 @@ CRM made easy.
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 35,bottom: 13),
-                              child: Image.asset("images/lock2.png"),
+                              child: SvgPicture.asset("images/password.svg"),
                             )
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 34, right: 34,top: 10),
+                        padding: const EdgeInsets.only(left: 34, right: 34,top: 0),
                         child: Divider(
                           color: Colors.grey,
                         ),
                       ),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 20),
                           child: SizedBox(
-                            width: 329.64,
+                            width: 334.64,
                             height: 53.12,
                             child: ElevatedButton(
                               child: Text(

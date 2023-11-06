@@ -312,7 +312,11 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         ],
       ),
       // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
-      body: buildLeadModelsView(),
+      body:Container(
+
+        child: buildLeadModelsView(),
+      ),
+
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
