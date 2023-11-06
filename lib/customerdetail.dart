@@ -1223,8 +1223,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 child: ClipPath(
                                   clipper: CustomShape(textWidth), // Pass the calculated width
                                   child: Container(
-                                    width: textWidth + 25, // Set the container width based on text width + padding
-                                    height: 19,
+                                    width: textWidth + 28, // Set the container width based on text width + padding
+                                    height: 20,
                                     color: Color(int.parse(tagss![index]["color"])),
                                     child: Align(
                                       alignment: Alignment.topLeft,
@@ -1239,7 +1239,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   color: Colors.white,
                                                   fontFamily: 'Mulish',
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 10,
+                                                  fontSize:9.5,
                                                 ),
                                               ),
                                             ),

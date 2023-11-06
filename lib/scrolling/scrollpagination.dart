@@ -385,16 +385,19 @@ class _LeadScrollingState extends State<LeadScrolling> {
      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => LeadCreation(0)));
-          // Add your onPressed code here!
-        },
-        backgroundColor: Color(0xFFFA256B),
-        child: const Icon(Icons.add),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LeadCreation(0)));
+            // Add your onPressed code here!
+          },
+          backgroundColor: Color(0xFFFA256B),
+          child: const Icon(Icons.add),
+        ),
       ),
       bottomNavigationBar:MyBottomNavigationBar(1),
      // bottomNavigationBar: bottomNavigationBar(context),
@@ -435,11 +438,14 @@ class _LeadScrollingState extends State<LeadScrolling> {
             title: Text("Leads Category",style:
             TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
 
+
+
             buttonText: Text("Lead Filter",
 
               style:
             TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
-            buttonIcon:  Icon(
+            buttonIcon:
+            Icon(
             //  Icons.arrow_drop_down_rounded,
               Icons.filter_list_alt,
               color: Colors.grey,

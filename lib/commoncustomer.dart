@@ -44,9 +44,11 @@ class _CustomerListState extends State<CustomerList> {
                     LeadMainPage()));
         return true;
       },
+
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           InkWell(
             child: Padding(
               padding: const EdgeInsets.only(top: 5,bottom: 0),

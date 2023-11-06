@@ -1532,9 +1532,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                             clipper: CustomShape(textWidth),
                                             // Pass the calculated width
                                             child: Container(
-                                              width: textWidth + 25,
+                                              width: textWidth + 27,
                                               // Set the container width based on text width + padding
-                                              height: 19,
+                                              height: 20,
                                               color: Color(int.parse(
                                                   tags![index]["color"])),
                                               child: Align(
@@ -1553,7 +1553,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             fontFamily: 'Mulish',
                                                             fontWeight: FontWeight
                                                                 .w500,
-                                                            fontSize: 10,
+                                                            fontSize: 9.5,
                                                           ),
                                                         ),
                                                       ),

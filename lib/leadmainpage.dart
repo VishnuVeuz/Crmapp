@@ -367,7 +367,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                     height: MediaQuery
                         .of(context)
                         .size
-                        .height / 1.67,
+                        .height / 1.69,
 
                     child: FutureBuilder(
                         future: recentLead("recent"),
@@ -684,7 +684,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
 
         floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 0),
+          padding: const EdgeInsets.only(bottom: 15),
           child: FloatingActionButton(
             onPressed: () {
               Navigator.push(
