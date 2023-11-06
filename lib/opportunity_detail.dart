@@ -4308,7 +4308,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                       margin: EdgeInsets.fromLTRB(0,1,1,2),
                                                       //width: MediaQuery.of(context).size.width,
-                                                      width: MediaQuery.of(context).size.width/5,
+                                                      width: MediaQuery.of(context).size.width/4.2,
                                                       //height: double.infinity,
                                                       child: Stack(
 
@@ -6267,7 +6267,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       crossAxisCount: 6,
                                                                       mainAxisSpacing: 5.0,
                                                                       crossAxisSpacing: 5.0,
-                                                                      childAspectRatio: 2,
+                                                                      childAspectRatio: 2.1,
                                                                     ),
                                                                     itemBuilder: (
                                                                         BuildContext context,
@@ -6301,7 +6301,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       .only(left: 5),
                                                                                   child: Container(
                                                                                     // width:18,
-                                                                                      height: 15,
+                                                                                      height: 17,
                                                                                       child: Text(
                                                                                           emojiSet[index]['emoji'])),
                                                                                 ),

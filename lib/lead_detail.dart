@@ -4076,7 +4076,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               width: MediaQuery
                                                                   .of(context)
                                                                   .size
-                                                                  .width / 5,
+                                                                  .width / 4.2,
+                                                              //color:Colors.green,
                                                               //height: double.infinity,
                                                               child: Stack(
 
@@ -6149,7 +6150,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 crossAxisCount: 6,
                                                 mainAxisSpacing: 5.0,
                                                 crossAxisSpacing: 5.0,
-                                                childAspectRatio: 2,
+                                                childAspectRatio: 2.1,
                                               ),
                                               itemBuilder: (
                                                   BuildContext context,
@@ -6164,7 +6165,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       // width: 40,
                                                       height: 15,
                                                       decoration: BoxDecoration(
-                                                          color: Colors.white,
+                                                         // color: Colors.green,
                                                           borderRadius: BorderRadius
                                                               .all(
                                                               Radius.circular(
@@ -6183,7 +6184,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 .only(left: 5),
                                                             child: Container(
                                                               // width:18,
-                                                                height: 15,
+                                                                height: 17,
                                                                 child: Text(
                                                                     emojiSet[index]['emoji'])),
                                                           ),
