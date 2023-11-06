@@ -6184,7 +6184,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 .only(left: 5),
                                                             child: Container(
                                                               // width:18,
-                                                                height: 17,
+                                                                height: 19,
                                                                 child: Text(
                                                                     emojiSet[index]['emoji'])),
                                                           ),
