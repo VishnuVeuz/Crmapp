@@ -44,8 +44,6 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
   bool isSearching = false;
   bool searchBanner = true,searchoption= false;
 
-
-
   TextEditingController searchController = TextEditingController();
 
   @override
@@ -65,7 +63,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
   Future<void> fetchData(data) async {
 
 
-print("fetchData1");
+
+    print("fetchData1");
     print(data);
     token = await getUserJwt();
     var notificationMessage  = await getNotificationCount();
@@ -81,7 +80,7 @@ print("fetchData1");
 
 print(searchText);
 if (searchText.isEmpty) {
-  print("searchtext1");
+
 
   widget.quotationFrom == "notification" ?
   urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&filters=${widget.filterItems}&key_word=":
@@ -90,7 +89,7 @@ if (searchText.isEmpty) {
 
 }
 else{
-  print("searchtext2");
+
   widget.quotationFrom == "notification" ?
   urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&filters=${widget.filterItems}&key_word=${searchText}":
 
@@ -251,17 +250,7 @@ else{
                 decoration: TextDecoration.none),)
           ],
         ),
-        // leading: Builder(
-        //   builder: (context) =>
-        //       Padding(
-        //         padding: const EdgeInsets.only(left: 20),
-        //         child: IconButton(icon: Image.asset("images/back.png"),
-        //           onPressed: () {
-        //
-        //           },
-        //         ),
-        //       ),
-        // ),
+
         automaticallyImplyLeading: false,
         actions: [
           Builder(builder: (context) {
@@ -331,14 +320,7 @@ else{
                       ]
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 0),
-                //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                //     onPressed: () {
-                //       Scaffold.of(context).openDrawer();
-                //     },
-                //   ),
-                // ),
+
                 Padding(
                   padding: const EdgeInsets.only(right: 15),
                   child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
@@ -394,6 +376,7 @@ else{
     }
     return Column(
       children: [
+
         Visibility(
           visible: searchBanner,
           child: Container(
@@ -436,8 +419,6 @@ else{
             ),
           ),
         ),
-
-
         Visibility(
           visible: searchoption,
           child: Padding(
@@ -447,9 +428,9 @@ else{
               onChanged: (value) {
                 setState(() {
                   searchText = value;
-                  _pageNumber = 1; // Reset the page number when a new search is initiated
-                  fetchData(""); // Fetch data with the updated search query
-                });// Store the search text when it's changed
+                  _pageNumber = 1;
+                  fetchData("");
+                });
               },
               decoration: InputDecoration(
                 hintText: 'Search...',
@@ -470,7 +451,7 @@ else{
                   searchText="";
                   loadMoreData();
                 },iconSize: 15,color: Colors.black ,) ,
-                //Icon(Icons.close,size: 18,color: Colors.black,),
+
 
               ),
             ),
@@ -481,23 +462,6 @@ else{
           child: ListView.builder(
               itemCount: _QuotationModel.length + (_isLastPage ? 0 : 1),
               itemBuilder: (context, index) {
-
-
-                // if(searchText=="") {
-                //   print("demodemo1");
-                //   if (index == _QuotationModel.length - _nextPageTrigger) {
-                //      fetchData("");
-                //   }
-                // }
-                // else{
-                //   print("demodemo");
-                //   if (index == _QuotationModel.length ) {
-                //     print("finalfinal");
-                //
-                //
-                //     fetchData(searchText);
-                //   }
-                // }
 
 
 
@@ -542,103 +506,7 @@ else{
     );
   }
 
-  Future<void> fetchData1(data) async {
-    print(data);
 
-    print("fetchData2");
-
-
-    setState(() {
-      _pageNumber = 1;
-    });
-    // Reset the page number when initiating a new search
-    // _QuotationModel.clear();
-    print(data);
-    token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
-
-    notificationCount = notificationMessage['activity_count'].toString();
-
-    messageCount = notificationMessage['message_count'].toString();
-    String urls;
-
-    print(token);
-    print(_numberOfLeadModelsPerRequest);
-    print(_pageNumber);
-
-
-    widget.quotationFrom == "notification" ?
-    urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&filters=${widget.filterItems}&key_word=${data}":
-
-    urls = "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${data}";
-
-
-    try {
-
-      final response = await get(Uri.parse(
-          urls
-        // "${baseUrl}api/quotations?company_ids=${globals.selectedIds}&count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word="
-      ),
-
-        headers: {
-
-          'Authorization': 'Bearer $token',
-
-        },
-      );
-
-      var responseList = jsonDecode(response.body);
-      print(urls);
-      print("company_ids");
-      print(globals.selectedIds);
-      print(responseList['records']);
-      print("company_idss");
-
-      List quotationModelList= responseList['records'];
-      if(quotationModelList.isEmpty){
-        print("vishnu");
-
-        setState(() {
-          _loading = false;
-          _error1 = true;
-          _QuotationModel.clear();
-        });
-
-
-      }
-      else{
-        List<QuotationModel> quotationModelList = (responseList['records'] as List<dynamic>).map<QuotationModel>((data) => QuotationModel(data['id']??"",data['partner_id'].length!=0?data['partner_id'][1]??"":"",data['amount_total']??"",data['name']??"",data['date_order']??"",data['state']??"")).toList();
-
-
-        setState(() {
-          _isLastPage = quotationModelList.length < _numberOfLeadModelsPerRequest;
-          _loading = false;
-          // _pageNumber = _pageNumber + 1;
-         _pageNumber = 1;
-          print(_pageNumber);
-          print("_pageNumber");
-          _QuotationModel.clear();
-
-          _QuotationModel.addAll(quotationModelList);
-        });
-      }
-
-
-    } catch (e) {
-      print("error --> $e");
-      setState(() {
-        _loading = false;
-        _error = true;
-      });
-    }
-  }
-
-  // void searchForData(String text) {
-  //   setState(() {
-  //     isSearching = true;
-  //   });
-  //   fetchData1(text);
-  // }
 
   void loadMoreData() {
     if (!isSearching) {

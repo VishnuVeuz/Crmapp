@@ -40,6 +40,12 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
   int? quotationType;
   String notificationCount="0";
   String messageCount="0";
+  bool isSearching = false;
+  String searchText="";
+  bool searchBanner = true,searchoption= false;
+
+  TextEditingController searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -50,11 +56,11 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
     _error = false;
     print("sfgdds");
     //  quotationType = widget.type;
-    fetchData();
+    fetchData("");
   }
 
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(data) async {
     token = await getUserJwt();
     var notificationMessage  = await getNotificationCount();
 
@@ -65,10 +71,22 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
     print(token);
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);
+    if (searchText.isEmpty) {
+      widget.quotationFrom == "notification" ?
+      urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}":
+      urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}";
 
-    widget.quotationFrom == "notification" ?
-    urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}":
-    urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}";
+    }
+
+    else{
+
+      widget.quotationFrom == "notification" ?
+      urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&filters=${widget.filterItems}":
+      urls = "${baseUrl}api/contacts?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}";
+
+    }
+
+
 
     try {
 
@@ -112,7 +130,20 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         setState(() {
           _isLastPage = customerModelList.length < _numberOfLeadModelsPerRequest;
           _loading = false;
-          _pageNumber = _pageNumber + 1;
+
+          if (customerModelList.length < _numberOfLeadModelsPerRequest) {
+            // If the result length is less than 10, set page number to 1
+            _pageNumber = 1;
+          } else {
+            // Otherwise, increment the page number
+            _pageNumber = _pageNumber + 1;
+          }
+          if (_pageNumber == 1) {
+            _CustomerModel.clear();
+          }
+
+
+          //_pageNumber = _pageNumber + 1;
           print(_pageNumber);
           print("_pageNumber");
           _CustomerModel.addAll(customerModelList);
@@ -150,7 +181,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -179,7 +210,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -210,17 +241,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
             )
           ],
         ),
-        // leading: Builder(
-        //   builder: (context) =>
-        //       Padding(
-        //         padding: const EdgeInsets.only(left: 20),
-        //         child: IconButton(icon: Image.asset("images/back.png"),
-        //           onPressed: () {
-        //
-        //           },
-        //         ),
-        //       ),
-        // ),
+
         automaticallyImplyLeading: false,
         actions: [
           Builder(builder: (context) {
@@ -290,14 +311,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                       ]
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 0),
-                //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                //     onPressed: () {
-                //
-                //     },
-                //   ),
-                // ),
+
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
@@ -354,40 +368,143 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         );
       }
     }
-    return ListView.builder(
-        itemCount: _CustomerModel.length + (_isLastPage ? 0 : 1),
-        itemBuilder: (context, index) {
+    return Column(
+      children: [
 
-          // request more data when the user has reached the trigger point.
-          if (index == _CustomerModel.length - _nextPageTrigger) {
-            fetchData();
-          }
+        Visibility(
+          visible: searchBanner,
+          child: Container(
+            height: 50,
+            //color: Colors.red,
 
-          if (index == _CustomerModel.length) {
-            if (_error) {
-              return Center(
-                  child: errorDialog(size: 15)
-              );
-            } else {
-              return const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: CircularProgressIndicator(),
-                  ));
-            }
-          }
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text("Customers", style: TextStyle(
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Color(0xFF292929),
+                      decoration: TextDecoration.none),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 26),
+                  child: InkWell(
+                    child: Container(
+                      width: 18,
+                      height: 18,
+                      child: SvgPicture.asset(
+                        "images/search.svg",
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        searchoption = true;
+                        searchBanner = false;
+                        searchController.clear();
+                        searchText="";
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Visibility(
+          visible: searchoption,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: TextField(
+              controller: searchController,
+              onChanged: (value) {
+                setState(() {
+                  searchText = value;
+                  _pageNumber = 1;
+                  fetchData("");
+                });
+              },
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
+                  onPressed: (){
+                    setState(() {
+                      searchoption = false;
+                      searchBanner = true;
+                      searchController.clear();
+                      searchText="";
+                      loadMoreData();
+                    });
+                  },iconSize: 15,color: Colors.black ,) ,
 
-          final CustomerModel customerModel = _CustomerModel[index];
+                suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){
 
-          return Padding(
-              padding: const EdgeInsets.all(0),
-              child: CustomerList(customerModel.id,customerModel.name,customerModel.jobposition,customerModel.state,customerModel.country,customerModel.email,
-                  customerModel.meetingcount,customerModel.opportunitycount,customerModel.customerimage,customerModel.parentname)
-          );
-
+                  searchController.clear();
+                  searchText="";
+                  loadMoreData();
+                },iconSize: 15,color: Colors.black ,) ,
 
 
-        });
+              ),
+            ),
+          ),
+        ),
+
+        Expanded(
+          child: ListView.builder(
+              itemCount: _CustomerModel.length + (_isLastPage ? 0 : 1),
+              itemBuilder: (context, index) {
+
+    if (searchText.isEmpty) {
+      if (index == _CustomerModel.length - _nextPageTrigger) {
+        loadMoreData();
+      }
+    }
+    else{
+      if (index == _CustomerModel.length) {
+        loadMoreData();
+      }
+    }
+
+
+
+
+                if (index == _CustomerModel.length) {
+                  if (_error) {
+                    return Center(
+                        child: errorDialog(size: 15)
+                    );
+                  } else {
+                    return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: CircularProgressIndicator(),
+                        ));
+                  }
+                }
+
+                final CustomerModel customerModel = _CustomerModel[index];
+
+                return Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: CustomerList(customerModel.id,customerModel.name,customerModel.jobposition,customerModel.state,customerModel.country,customerModel.email,
+                        customerModel.meetingcount,customerModel.opportunitycount,customerModel.customerimage,customerModel.parentname)
+                );
+
+
+
+              }),
+        ),
+      ],
+    );
+  }
+
+  void loadMoreData() {
+    if (!isSearching) {
+      fetchData("");
+    }
   }
 
 

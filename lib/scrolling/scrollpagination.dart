@@ -45,8 +45,13 @@ class _LeadScrollingState extends State<LeadScrolling> {
   late List<LeadModel> _LeadModels;
   final int _nextPageTrigger = 3;
   String? token,leadType;
+  String searchText="";
   String notificationCount="0";
   String messageCount="0";
+  bool isSearching = false;
+  bool searchBanner = true,searchoption= false;
+
+  TextEditingController searchController = TextEditingController();
 
   final _multiSelectKey = GlobalKey<FormFieldState>();
 
@@ -80,12 +85,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
     print(leadType);
     print("demotesttesttt");
-    fetchData();
+    fetchData("");
     profilePreference();
   }
 
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(data) async {
 
     print("lead fetch");
     token = await getUserJwt();
@@ -99,15 +104,28 @@ class _LeadScrollingState extends State<LeadScrolling> {
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);
     print("pagenumberrr");
-    widget.quotationFrom == "notification" ?
-    urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}"
-    : urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]";
+
+
+    if (searchText.isEmpty) {
+      widget.quotationFrom == "notification" ?
+      urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=${widget.filterItems}"
+          : urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]";
+
+    }
+    else
+      {
+
+        widget.quotationFrom == "notification" ?
+        urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&filters=${widget.filterItems}"
+            : urls = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&filters=[$leadType]";
+
+      }
+
 
 
     try {
       String base = "${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]";
-      // print(base);
-      // print("basetotooooo");
+
     final response = await get(Uri.parse(urls
 
           //"${baseUrl}api/leads?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&filters=[$leadType]"
@@ -155,7 +173,20 @@ class _LeadScrollingState extends State<LeadScrolling> {
           setState(() {
             _isLastPage = LeadModelList.length < _numberOfLeadModelsPerRequest;
             _loading = false;
-            _pageNumber = _pageNumber + 1;
+
+            if (LeadModelList.length < _numberOfLeadModelsPerRequest) {
+              // If the result length is less than 10, set page number to 1
+              _pageNumber = 1;
+            } else {
+              // Otherwise, increment the page number
+              _pageNumber = _pageNumber + 1;
+            }
+            if (_pageNumber == 1) {
+              _LeadModels.clear();
+            }
+
+
+           // _pageNumber = _pageNumber + 1;
             //_LeadModels.clear();
 
             _LeadModels.addAll(LeadModelList);
@@ -201,7 +232,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -230,7 +261,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -476,7 +507,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
                  _pageNumber = 1;
                 _LeadModels.clear();
-                fetchData();
+                fetchData("");
 
               });
 
@@ -490,7 +521,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                   leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
                   _pageNumber = 1;
                   _LeadModels.clear();
-                  fetchData();
+                  fetchData("");
                 });
                 _multiSelectKey.currentState?.validate();
               },
@@ -502,6 +533,88 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
 
         ),
+
+        Visibility(
+          visible: searchBanner,
+          child: Container(
+            height: 50,
+            //color: Colors.red,
+
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text("Quotations", style: TextStyle(
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Color(0xFF292929),
+                      decoration: TextDecoration.none),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 26),
+                  child: InkWell(
+                    child: Container(
+                      width: 18,
+                      height: 18,
+                      child: SvgPicture.asset(
+                        "images/search.svg",
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        searchoption = true;
+                        searchBanner = false;
+                        searchController.clear();
+                        searchText="";
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Visibility(
+          visible: searchoption,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: TextField(
+              controller: searchController,
+              onChanged: (value) {
+                setState(() {
+                  searchText = value;
+                  _pageNumber = 1;
+                  fetchData("");
+                });
+              },
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
+                  onPressed: (){
+                    setState(() {
+                      searchoption = false;
+                      searchBanner = true;
+                      searchController.clear();
+                      searchText="";
+                      loadMoreData();
+                    });
+                  },iconSize: 15,color: Colors.black ,) ,
+
+                suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){
+
+                  searchController.clear();
+                  searchText="";
+                  loadMoreData();
+                },iconSize: 15,color: Colors.black ,) ,
+
+
+              ),
+            ),
+          ),
+        ),
+
         Expanded(
           child: ListView.builder(
               itemCount: _LeadModels.length + (_isLastPage ? 0 : 1),
@@ -517,13 +630,20 @@ class _LeadScrollingState extends State<LeadScrolling> {
                print("data checksssss lead");
 
 
+    if (searchText.isEmpty) {
+      if (index == _LeadModels.length - _nextPageTrigger) {
+        loadMoreData();
+      }
+    }
+    else{
+
+      if (index == _LeadModels.length) {
+        loadMoreData();
+      }
+    }
 
 
 
-                if (index == _LeadModels.length - _nextPageTrigger) {
-
-                  fetchData();
-                }
                 // when the user gets to the last item in the list, check whether
                 // there is an error, otherwise, render a progress indicator.
                 if (index == _LeadModels.length) {
@@ -560,6 +680,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
   profilePreference() async{
     username = await getStringValuesSF() as String;
 
+  }
+
+  void loadMoreData() {
+    if (!isSearching) {
+      fetchData("");
+    }
   }
 }
 Future getStringValuesSF() async {
