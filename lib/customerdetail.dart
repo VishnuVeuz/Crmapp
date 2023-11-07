@@ -1230,7 +1230,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 child: ClipPath(
                                   clipper: CustomShape(textWidth), // Pass the calculated width
                                   child: Container(
-                                    width: textWidth + 28, // Set the container width based on text width + padding
+                                    width: textWidth + 31, // Set the container width based on text width + padding
                                     height: 20,
                                     color: Color(int.parse(tagss![index]["color"])),
                                     child: Align(
