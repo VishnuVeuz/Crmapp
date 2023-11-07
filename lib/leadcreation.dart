@@ -1930,11 +1930,121 @@ class _LeadCreationState extends State<LeadCreation> {
                             ),
                           ),
 
+                          // Container(
+                          //   child: Column(
+                          //     children: [
+                          //       Padding(
+                          //         padding: const EdgeInsets.only(
+                          //             left: 0, right: 50),
+                          //         child: Container(
+                          //           width: MediaQuery
+                          //               .of(context)
+                          //               .size
+                          //               .width /
+                          //               1.32,
+                          //
+                          //           //height: 46,
+                          //           decoration: BoxDecoration(
+                          //               borderRadius: BorderRadius.all(
+                          //                   Radius.circular(5)),
+                          //               color: Color(0xFFF6F6F6),
+                          //               border: Border.all(
+                          //                 color: Color(0xFFEBEBEB),
+                          //               )),
+                          //           child: Row(
+                          //             children: [
+                          //               Column(
+                          //                 crossAxisAlignment:
+                          //                 CrossAxisAlignment.start,
+                          //                 children: [
+                          //                   Container(
+                          //                     width: MediaQuery
+                          //                         .of(context)
+                          //                         .size
+                          //                         .width /
+                          //                         1.8,
+                          //
+                          //                     // height: 40,
+                          //                     //color: Colors.red,
+                          //                     child: Padding(
+                          //                       padding: const EdgeInsets
+                          //                           .only(
+                          //                           left: 10),
+                          //                       child: TextField(
+                          //                           textAlignVertical:
+                          //                           TextAlignVertical
+                          //                               .top,
+                          //                           style: TextStyle(
+                          //                             fontWeight: FontWeight
+                          //                                 .w400,
+                          //                             fontFamily: 'Mulish',
+                          //                             fontSize: 11,
+                          //                             color: Color(
+                          //                                 0xFF000000),
+                          //                           ),
+                          //
+                          //
+                          //                           maxLines: null,
+                          //                          // controller: lognoteController,
+                          //                           decoration:
+                          //                           const InputDecoration(
+                          //                               border:
+                          //                               InputBorder
+                          //                                   .none,
+                          //                               hintText:
+                          //                               "Send a message to followers",
+                          //                               hintStyle: TextStyle(
+                          //                                 //fontFamily: "inter",
+                          //                                   fontWeight:
+                          //                                   FontWeight
+                          //                                       .w400,
+                          //                                   fontFamily:
+                          //                                   'Mulish',
+                          //                                   fontSize: 11,
+                          //                                   color: Color(
+                          //                                       0xFFAFAFAF)))),
+                          //                     ),
+                          //                   ),
+                          //                   // Divider(
+                          //                   //   color: Colors.grey[350],
+                          //                   //   thickness: 1,
+                          //                   // ),
+                          //
+                          //
+                          //                 ],
+                          //               ),
+                          //               Padding(
+                          //                 padding: const EdgeInsets
+                          //                     .only(left: 10),
+                          //                 child: IconButton(
+                          //                     onPressed: (){},
+                          //                     icon: Image.asset("images/pi.png")
+                          //                 ),
+                          //               ),
+                          //             ],
+                          //           ),
+                          //         ),
+                          //       ),
+                          //       Padding(
+                          //         padding: const EdgeInsets.only(left: 25),
+                          //         child: Row(
+                          //           children: [
+                          //             Text("escape to"),
+                          //             TextButton(onPressed:(){}, child: Text("cancel")),
+                          //             Text(","),
+                          //             Text("enter to"),
+                          //             TextButton(onPressed:(){}, child: Text("save")),
+                          //           ],
+                          //         ),
+                          //       )
+                          //     ],
+                          //   ),
+                          // ),
 
 
 
 
-          //listview
+
                         ],
                       ),
                     ),

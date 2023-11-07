@@ -423,16 +423,31 @@ else{
 
         Container(
           height: 50,
-          color: Colors.red,
+          //color: Colors.red,
 
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Quotations"),
-              Container(
-                width: 18,
-                height: 18,
-                child: Image.asset(
-                  "images/pi.png",
+              Padding(
+                padding: const EdgeInsets.only(left: 24),
+                child: Text("Quotations", style: TextStyle(
+          fontFamily: 'Mulish',
+                fontWeight: FontWeight.w500,
+                fontSize: 20,
+                color: Color(0xFF292929),
+        decoration: TextDecoration.none),),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 26),
+                child: InkWell(
+                  child: Container(
+                    width: 18,
+                    height: 18,
+                    child: SvgPicture.asset(
+                      "images/search.svg",
+                    ),
+                  ),
+                  onTap: (){},
                 ),
               ),
             ],
@@ -440,19 +455,23 @@ else{
         ),
 
 
-        TextField(
-          controller: searchController,
-          onChanged: (value) {
-            setState(() {
-              searchText = value;
-              _pageNumber = 1; // Reset the page number when a new search is initiated
-              fetchData(""); // Fetch data with the updated search query
-            });// Store the search text when it's changed
-          },
-          decoration: InputDecoration(
-            hintText: 'Search...',
-            prefixIcon: Icon(Icons.search),
+        Padding(
+          padding: const EdgeInsets.only(left: 10,right: 10),
+          child: TextField(
+            controller: searchController,
+            onChanged: (value) {
+              setState(() {
+                searchText = value;
+                _pageNumber = 1; // Reset the page number when a new search is initiated
+                fetchData(""); // Fetch data with the updated search query
+              });// Store the search text when it's changed
+            },
+            decoration: InputDecoration(
+              hintText: 'Search...',
+              prefixIcon: Icon(Icons.arrow_back_ios,size: 18,color: Colors.black,),
+              suffixIcon:Icon(Icons.close,size: 18,color: Colors.black,),
 
+            ),
           ),
         ),
 
