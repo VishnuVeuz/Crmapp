@@ -468,8 +468,10 @@ else{
             },
             decoration: InputDecoration(
               hintText: 'Search...',
-              prefixIcon: Icon(Icons.arrow_back_ios,size: 18,color: Colors.black,),
-              suffixIcon:Icon(Icons.close,size: 18,color: Colors.black,),
+              prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),onPressed: (){},iconSize: 15,color: Colors.black ,) ,
+              //Icon(Icons.arrow_back_ios,size: 18,color: Colors.black,),
+              suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){},iconSize: 15,color: Colors.black ,) ,
+              //Icon(Icons.close,size: 18,color: Colors.black,),
 
             ),
           ),
