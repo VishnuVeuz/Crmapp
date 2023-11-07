@@ -42,6 +42,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
   String searchText="";
   String messageCount="0";
   bool isSearching = false;
+  bool searchBanner = true,searchoption= false;
+
 
 
   TextEditingController searchController = TextEditingController();
@@ -392,87 +394,85 @@ else{
     }
     return Column(
       children: [
-        // Container(
-        //   width: 400,
-        //   height: 50,
-        //   color: Colors.red,
-        //   child: TextField(
-        //     decoration: InputDecoration(hintText: 'Search'),
-        //     onChanged: (text) {
-        //       print("demodata1");
-        //       searchText = text;
-        //       if (searchText.isEmpty) {
-        //         // If the text is empty, show all data
-        //         isSearching = false;
-        //         fetchData("");
-        //        // fetchData1("");
-        //       } else {
-        //         // If there's a search text, fetch data for that search text
-        //
-        //         searchForData(searchText);
-        //         fetchData1(searchText);
-        //       }
-        //
-        //
-        //
-        //     },
-        //   ),
-        // ),
-        //
+        Visibility(
+          visible: searchBanner,
+          child: Container(
+            height: 50,
+            //color: Colors.red,
 
-
-        Container(
-          height: 50,
-          //color: Colors.red,
-
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 24),
-                child: Text("Quotations", style: TextStyle(
-          fontFamily: 'Mulish',
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-                color: Color(0xFF292929),
-        decoration: TextDecoration.none),),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 26),
-                child: InkWell(
-                  child: Container(
-                    width: 18,
-                    height: 18,
-                    child: SvgPicture.asset(
-                      "images/search.svg",
-                    ),
-                  ),
-                  onTap: (){},
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text("Quotations", style: TextStyle(
+            fontFamily: 'Mulish',
+                  fontWeight: FontWeight.w500,
+                  fontSize: 20,
+                  color: Color(0xFF292929),
+          decoration: TextDecoration.none),),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 26),
+                  child: InkWell(
+                    child: Container(
+                      width: 18,
+                      height: 18,
+                      child: SvgPicture.asset(
+                        "images/search.svg",
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        searchoption = true;
+                        searchBanner = false;
+                        searchController.clear();
+                        searchText="";
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
 
 
-        Padding(
-          padding: const EdgeInsets.only(left: 10,right: 10),
-          child: TextField(
-            controller: searchController,
-            onChanged: (value) {
-              setState(() {
-                searchText = value;
-                _pageNumber = 1; // Reset the page number when a new search is initiated
-                fetchData(""); // Fetch data with the updated search query
-              });// Store the search text when it's changed
-            },
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),onPressed: (){},iconSize: 15,color: Colors.black ,) ,
-              //Icon(Icons.arrow_back_ios,size: 18,color: Colors.black,),
-              suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){},iconSize: 15,color: Colors.black ,) ,
-              //Icon(Icons.close,size: 18,color: Colors.black,),
+        Visibility(
+          visible: searchoption,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: TextField(
+              controller: searchController,
+              onChanged: (value) {
+                setState(() {
+                  searchText = value;
+                  _pageNumber = 1; // Reset the page number when a new search is initiated
+                  fetchData(""); // Fetch data with the updated search query
+                });// Store the search text when it's changed
+              },
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
+                  onPressed: (){
+                    setState(() {
+                      searchoption = false;
+                      searchBanner = true;
+                      searchController.clear();
+                      searchText="";
+                      loadMoreData();
+                    });
+                },iconSize: 15,color: Colors.black ,) ,
 
+                suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){
+
+                  searchController.clear();
+                  searchText="";
+                  loadMoreData();
+                },iconSize: 15,color: Colors.black ,) ,
+                //Icon(Icons.close,size: 18,color: Colors.black,),
+
+              ),
             ),
           ),
         ),
@@ -482,11 +482,6 @@ else{
               itemCount: _QuotationModel.length + (_isLastPage ? 0 : 1),
               itemBuilder: (context, index) {
 
-print(index);
-print(_QuotationModel.length);
-print(_nextPageTrigger);
-print(_QuotationModel.length - _nextPageTrigger);
-print("final data demo");
 
                 // if(searchText=="") {
                 //   print("demodemo1");
@@ -638,12 +633,12 @@ print("final data demo");
     }
   }
 
-  void searchForData(String text) {
-    setState(() {
-      isSearching = true;
-    });
-    fetchData1(text);
-  }
+  // void searchForData(String text) {
+  //   setState(() {
+  //     isSearching = true;
+  //   });
+  //   fetchData1(text);
+  // }
 
   void loadMoreData() {
     if (!isSearching) {
