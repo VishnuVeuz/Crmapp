@@ -458,6 +458,63 @@ class _LeadScrollingState extends State<LeadScrolling> {
     return Column(
       children: [
         Padding(
+          padding: const EdgeInsets.only(top: 10,left: 160),
+          child: Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  InkWell(
+                    onTap: (){},
+                    child: SvgPicture.asset(
+                      "images/filter.svg",
+                      width: 28,
+                      height: 28,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Text("Filter",
+                        style: TextStyle(
+                          fontFamily: 'Mulish',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Color(0xFF212121),
+                        )),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: (){},
+                      child: SvgPicture.asset(
+                        "images/search1.svg",
+                        width: 28,
+                        height: 28,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text("Search",
+                          style: TextStyle(
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xFF212121),
+                          )),
+                    )
+                  ],
+                ),
+              ),
+
+
+            ],
+          ),
+        ),
+        Padding(
           padding: const EdgeInsets.only(left: 15,right: 20),
 
 

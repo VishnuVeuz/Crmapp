@@ -290,6 +290,8 @@ flutter:
     - images/email.svg
     - images/password.svg
     - images/search.svg
+    - images/search1.svg
+    - images/filter.svg
 
 
 
