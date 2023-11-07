@@ -504,6 +504,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                           setState(() {
                             searchoption= true;
                             filtervisible = false;
+
                           });
                         },
                         child: SvgPicture.asset(
