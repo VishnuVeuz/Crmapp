@@ -420,6 +420,26 @@ else{
         // ),
         //
 
+
+        Container(
+          height: 50,
+          color: Colors.red,
+
+          child: Row(
+            children: [
+              Text("Quotations"),
+              Container(
+                width: 18,
+                height: 18,
+                child: Image.asset(
+                  "images/pi.png",
+                ),
+              ),
+            ],
+          ),
+        ),
+
+
         TextField(
           controller: searchController,
           onChanged: (value) {
@@ -432,6 +452,7 @@ else{
           decoration: InputDecoration(
             hintText: 'Search...',
             prefixIcon: Icon(Icons.search),
+
           ),
         ),
 
