@@ -108,7 +108,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
   List<ValueItem> editProductTaxName = [];
   List<dynamic> selectedtaxesIdFinal = [];
 
-  bool optvisibility = false,ordervisibility = false;
+  bool optvisibility = false,ordervisibility = true;
   final FocusNode _textFieldFocusNode = FocusNode();
   @override
   void dispose() {
@@ -1215,7 +1215,9 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                       hintText: "Delivery Date",
                                       hintStyle: TextStyle(
                                         //fontFamily: "inter",
-                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500))),
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 10,
+                                          color: Colors.black,fontFamily: 'Mulish'))),
                             ),
                           ),
                         ),
@@ -2718,7 +2720,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 260),
+                        padding: const EdgeInsets.only(left: 290),
                         child: IconButton(
                           icon: SvgPicture.asset("images/cr.svg"),
                           onPressed: () {
