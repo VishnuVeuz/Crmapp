@@ -38,7 +38,11 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
   late List<OpportunityModel> _OpportunityModel;
   final int _nextPageTrigger = 3;
   String? token,leadType;
+  String searchText="";
   int? opportunityType;
+  bool isSearching = false;
+  bool searchBanner = true,searchoption= false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
@@ -60,11 +64,11 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
     print("sfgdds11");
     opportunityType = widget.type;
-    fetchData();
+    fetchData("");
   }
 
 
-  Future<void> fetchData() async {
+  Future<void> fetchData(data) async {
     token = await getUserJwt();
     String dataa;
 
@@ -73,16 +77,35 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     print(_pageNumber);
     try {
 
-      widget.quotationFrom == "notification" ?
-      dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+      if (searchText.isEmpty) {
 
-      widget.quotationFrom == "lost" ?
-      dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+        widget.quotationFrom == "notification" ?
+        dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+
+        widget.quotationFrom == "lost" ?
+        dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
 
 
 
-      widget.similartype=="similar"? dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&opportunity_id=${widget.Id}"
-      : dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}${widget.Id==null?"&partner_id=":"&partner_id=${widget.Id}"}";
+        widget.similartype=="similar"? dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&opportunity_id=${widget.Id}"
+            : dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=&company_ids=${globals.selectedIds}&stage_id=${opportunityType}${widget.Id==null?"&partner_id=":"&partner_id=${widget.Id}"}";
+
+      }
+      else{
+
+        widget.quotationFrom == "notification" ?
+        dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+
+        widget.quotationFrom == "lost" ?
+        dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&&filters=${widget.filterItems}":
+
+
+
+        widget.similartype=="similar"? dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&stage_id=${opportunityType}&opportunity_id=${widget.Id}"
+            : dataa = "${baseUrl}api/opportunity?count=${_numberOfLeadModelsPerRequest}&page_no=${_pageNumber}&key_word=${searchText}&company_ids=${globals.selectedIds}&stage_id=${opportunityType}${widget.Id==null?"&partner_id=":"&partner_id=${widget.Id}"}";
+
+      }
+
 
       print(dataa);
 
@@ -125,6 +148,19 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
       setState(() {
         _isLastPage = opportunityModelList.length < _numberOfLeadModelsPerRequest;
         _loading = false;
+
+        if (opportunityModelList.length < _numberOfLeadModelsPerRequest) {
+          // If the result length is less than 10, set page number to 1
+          _pageNumber = 1;
+        } else {
+          // Otherwise, increment the page number
+          _pageNumber = _pageNumber + 1;
+        }
+        if (_pageNumber == 1) {
+          _OpportunityModel.clear();
+        }
+
+
         _pageNumber = _pageNumber + 1;
         print(_pageNumber);
         print("_pageNumber");
@@ -163,7 +199,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -193,7 +229,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                 setState(() {
                   _loading = true;
                   _error = false;
-                  fetchData();
+                  fetchData("");
                 });
               },
               child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
@@ -260,42 +296,146 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
       }
 
     }
-    return ListView.builder(
-        itemCount: _OpportunityModel.length + (_isLastPage ? 0 : 1),
-        itemBuilder: (context, index) {
+    return Column(
+      children: [
 
-          // request more data when the user has reached the trigger point.
-          if (index == _OpportunityModel.length - _nextPageTrigger) {
-            fetchData();
-          }
-          // when the user gets to the last item in the list, check whether
-          // there is an error, otherwise, render a progress indicator.
-          if (index == _OpportunityModel.length) {
-            if (_error) {
-              return Center(
-                  child: errorDialog(size: 15)
-              );
-            } else {
-              return const Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(8),
-                    child: CircularProgressIndicator(),
-                  ));
-            }
-          }
+        Visibility(
+          visible: searchBanner,
+          child: Container(
+            height: 50,
+            //color: Colors.red,
 
-          final OpportunityModel opportunityModel = _OpportunityModel[index];
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text("Quotations", style: TextStyle(
+                      fontFamily: 'Mulish',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Color(0xFF292929),
+                      decoration: TextDecoration.none),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 26),
+                  child: InkWell(
+                    child: Container(
+                      width: 18,
+                      height: 18,
+                      child: SvgPicture.asset(
+                        "images/search.svg",
+                      ),
+                    ),
+                    onTap: (){
+                      setState(() {
+                        searchoption = true;
+                        searchBanner = false;
+                        searchController.clear();
+                        searchText="";
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Visibility(
+          visible: searchoption,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: TextField(
+              controller: searchController,
+              onChanged: (value) {
+                setState(() {
+                  searchText = value;
+                  _pageNumber = 1;
+                  fetchData("");
+                });
+              },
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
+                  onPressed: (){
+                    setState(() {
+                      searchoption = false;
+                      searchBanner = true;
+                      searchController.clear();
+                      searchText="";
+                      loadMoreData();
+                    });
+                  },iconSize: 15,color: Colors.black ,) ,
 
-          return Padding(
-              padding: const EdgeInsets.all(0),
-              child: CommonOpportunity(opportunityModel.id,
-                  opportunityModel.name, opportunityModel.contactname, opportunityModel.priority,
-                  opportunityModel.tags, opportunityModel.leadimg,widget.fromCustomer,widget.Id== null ?0:widget.Id)
-          );
+                suffixIcon:IconButton(icon: Icon(Icons.close,),onPressed: (){
+
+                  searchController.clear();
+                  searchText="";
+                  loadMoreData();
+                },iconSize: 15,color: Colors.black ,) ,
+
+
+              ),
+            ),
+          ),
+        ),
+
+        Expanded(
+          child: ListView.builder(
+              itemCount: _OpportunityModel.length + (_isLastPage ? 0 : 1),
+              itemBuilder: (context, index) {
+
+                // request more data when the user has reached the trigger point.
+
+                if (searchText.isEmpty) {
+                  if (index == _OpportunityModel.length - _nextPageTrigger) {
+                    fetchData("");
+                  }
+                }
+                else{
+                  if (index == _OpportunityModel.length) {
+                    loadMoreData();
+                  }
+                }
+
+
+                // when the user gets to the last item in the list, check whether
+                // there is an error, otherwise, render a progress indicator.
+                if (index == _OpportunityModel.length) {
+                  if (_error) {
+                    return Center(
+                        child: errorDialog(size: 15)
+                    );
+                  } else {
+                    return const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: CircularProgressIndicator(),
+                        ));
+                  }
+                }
+
+                final OpportunityModel opportunityModel = _OpportunityModel[index];
+
+                return Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: CommonOpportunity(opportunityModel.id,
+                        opportunityModel.name, opportunityModel.contactname, opportunityModel.priority,
+                        opportunityModel.tags, opportunityModel.leadimg,widget.fromCustomer,widget.Id== null ?0:widget.Id)
+                );
 
 
 
-        });
+              }),
+        ),
+      ],
+    );
+  }
+
+  void loadMoreData() {
+    if (!isSearching) {
+      fetchData("");
+    }
   }
 
 
