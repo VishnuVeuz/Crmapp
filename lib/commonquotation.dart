@@ -30,6 +30,7 @@ class QuotationList extends StatelessWidget {
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           InkWell(
             child: Card(
               elevation: 1,
