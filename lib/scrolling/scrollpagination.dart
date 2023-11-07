@@ -49,7 +49,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
   String notificationCount="0";
   String messageCount="0";
   bool isSearching = false;
-  bool searchBanner = true,searchoption= false;
+  bool searchBanner = true,searchoption= false,filtervisible = false;
 
   TextEditingController searchController = TextEditingController();
 
@@ -457,48 +457,34 @@ class _LeadScrollingState extends State<LeadScrolling> {
     }
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 10,left: 160),
-          child: Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  InkWell(
-                    onTap: (){},
-                    child: SvgPicture.asset(
-                      "images/filter.svg",
-                      width: 28,
-                      height: 28,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5),
-                    child: Text("Filter",
-                        style: TextStyle(
-                          fontFamily: 'Mulish',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          color: Color(0xFF212121),
-                        )),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Column(
+        Visibility(
+          visible: searchBanner,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10,left: 160),
+            child: Row(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
                   children: [
                     InkWell(
-                      onTap: (){},
+                      onTap: (){
+
+                        setState(() {
+
+                          searchoption= false;
+                          filtervisible = true;
+                        });
+
+                      },
                       child: SvgPicture.asset(
-                        "images/search1.svg",
+                        "images/filter.svg",
                         width: 28,
                         height: 28,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
-                      child: Text("Search",
+                      child: Text("Filter",
                           style: TextStyle(
                             fontFamily: 'Mulish',
                             fontWeight: FontWeight.w400,
@@ -508,131 +494,169 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     )
                   ],
                 ),
-              ),
-
-
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 15,right: 20),
-
-
-          child: MultiSelectBottomSheetField<LeadFilter?>(
-            key: _multiSelectKey,
-            initialChildSize: 0.7,
-            maxChildSize: 0.95,
-
-            title: Text("Leads Category",style:
-            TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
-
-
-
-            buttonText: Text("Lead Filter",
-
-              style:
-            TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
-            buttonIcon:
-            Icon(
-            //  Icons.arrow_drop_down_rounded,
-              Icons.filter_list_alt,
-              color: Colors.grey,
-            ),
-
-            items: _items,
-            searchable: true,
-
-
-
-           // backgroundColor:  Color(0xFFED2449),
-          cancelText: Text("Cancel",style: TextStyle(color: Color(0xFF231F20),
-              fontWeight: FontWeight.w700,fontSize: 13.57,
-              fontFamily: 'Mulish'
-          ),),
-            confirmText: Text("Ok",style: TextStyle(color: Color(0xFF231F20),
-            fontWeight: FontWeight.w700,fontSize: 13.57,
-                fontFamily: 'Mulish'
-            ),),
-
-            onConfirm: (values) async{
-              setState(() {
-                print(values);
-                print("drop values");
-                selectedFilter = values;
-                leadType = selectedFilter.join(', ');
-                leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
-
-                 _pageNumber = 1;
-                _LeadModels.clear();
-                fetchData("");
-
-              });
-
-              _multiSelectKey.currentState?.validate();
-            },
-            chipDisplay: MultiSelectChipDisplay(
-              onTap: (item) {
-                setState(() {
-                  selectedFilter.remove(item);
-                  leadType = selectedFilter.join(', ');
-                  leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
-                  _pageNumber = 1;
-                  _LeadModels.clear();
-                  fetchData("");
-                });
-                _multiSelectKey.currentState?.validate();
-              },
-            ),
-          ),
-
-
-
-
-
-        ),
-
-        Visibility(
-          visible: searchBanner,
-          child: Container(
-            height: 50,
-            //color: Colors.red,
-
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 24),
-                  child: Text("Quotations", style: TextStyle(
-                      fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                      color: Color(0xFF292929),
-                      decoration: TextDecoration.none),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 26),
-                  child: InkWell(
-                    child: Container(
-                      width: 18,
-                      height: 18,
-                      child: SvgPicture.asset(
-                        "images/search.svg",
+                  padding: const EdgeInsets.only(left: 30),
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: (){
+
+                          setState(() {
+                            searchoption= true;
+                            filtervisible = false;
+                          });
+                        },
+                        child: SvgPicture.asset(
+                          "images/search1.svg",
+                          width: 28,
+                          height: 28,
+                        ),
                       ),
-                    ),
-                    onTap: (){
-                      setState(() {
-                        searchoption = true;
-                        searchBanner = false;
-                        searchController.clear();
-                        searchText="";
-                      });
-                    },
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Text("Search",
+                            style: TextStyle(
+                              fontFamily: 'Mulish',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: Color(0xFF212121),
+                            )),
+                      )
+                    ],
                   ),
                 ),
+
+
               ],
             ),
           ),
         ),
+        Visibility(
+          visible: filtervisible,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15,right: 20),
+
+
+            child: MultiSelectBottomSheetField<LeadFilter?>(
+              key: _multiSelectKey,
+              initialChildSize: 0.7,
+              maxChildSize: 0.95,
+
+              title: Text("Leads Category",style:
+              TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
+
+
+
+              buttonText: Text("Lead Filter",
+
+                style:
+              TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
+              buttonIcon:
+              Icon(
+              //  Icons.arrow_drop_down_rounded,
+                Icons.filter_list_alt,
+                color: Colors.grey,
+              ),
+
+
+
+
+              items: _items,
+              searchable: true,
+
+
+
+             // backgroundColor:  Color(0xFFED2449),
+            cancelText: Text("Cancel",style: TextStyle(color: Color(0xFF231F20),
+                fontWeight: FontWeight.w700,fontSize: 13.57,
+                fontFamily: 'Mulish'
+            ),),
+              confirmText: Text("Ok",style: TextStyle(color: Color(0xFF231F20),
+              fontWeight: FontWeight.w700,fontSize: 13.57,
+                  fontFamily: 'Mulish'
+              ),),
+
+              onConfirm: (values) async{
+                setState(() {
+                  print(values);
+                  print("drop values");
+                  selectedFilter = values;
+                  leadType = selectedFilter.join(', ');
+                  leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
+
+                   _pageNumber = 1;
+                  _LeadModels.clear();
+                  fetchData("");
+
+
+                });
+
+                _multiSelectKey.currentState?.validate();
+              },
+              chipDisplay: MultiSelectChipDisplay(
+                onTap: (item) {
+                  setState(() {
+                    selectedFilter.remove(item);
+                    leadType = selectedFilter.join(', ');
+                    leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
+                    _pageNumber = 1;
+                    _LeadModels.clear();
+                    fetchData("");
+                  });
+                  _multiSelectKey.currentState?.validate();
+                },
+              ),
+            ),
+
+
+
+
+
+          ),
+        ),
+
+        // Visibility(
+        //   visible: searchBanner,
+        //   child: Container(
+        //     height: 50,
+        //     //color: Colors.red,
+        //
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //       children: [
+        //         Padding(
+        //           padding: const EdgeInsets.only(left: 24),
+        //           child: Text("Quotations", style: TextStyle(
+        //               fontFamily: 'Mulish',
+        //               fontWeight: FontWeight.w500,
+        //               fontSize: 20,
+        //               color: Color(0xFF292929),
+        //               decoration: TextDecoration.none),),
+        //         ),
+        //         Padding(
+        //           padding: const EdgeInsets.only(right: 26),
+        //           child: InkWell(
+        //             child: Container(
+        //               width: 18,
+        //               height: 18,
+        //               child: SvgPicture.asset(
+        //                 "images/search.svg",
+        //               ),
+        //             ),
+        //             onTap: (){
+        //               setState(() {
+        //                 searchoption = true;
+        //                 searchBanner = false;
+        //                 searchController.clear();
+        //                 searchText="";
+        //               });
+        //             },
+        //           ),
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         Visibility(
           visible: searchoption,
           child: Padding(
