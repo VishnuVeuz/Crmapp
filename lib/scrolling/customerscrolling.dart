@@ -381,7 +381,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 24),
+                  padding: const EdgeInsets.only(left: 25),
                   child: Text("Customers", style: TextStyle(
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w500,
@@ -390,7 +390,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                       decoration: TextDecoration.none),),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 26),
+                  padding: const EdgeInsets.only(right: 28),
                   child: InkWell(
                     child: Container(
                       width: 18,

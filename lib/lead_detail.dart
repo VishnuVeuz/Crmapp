@@ -117,6 +117,7 @@ class _LeadDetailState extends State<LeadDetail> {
   bool smsVisible = true;
   bool isCheckedEmail = false;
   bool isCheckedFollowers = false;
+ // bool
 
   dynamic templateName, templateId;
 
@@ -137,6 +138,7 @@ class _LeadDetailState extends State<LeadDetail> {
       internalVisibility = true,
       otherinfoVisibility = false,
       starImage = false,
+      lognoteEdit = false,
       lognoteoptions = true;
 
   int? scheduleViewIndex;
@@ -5248,6 +5250,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 Expanded(
                                                   flex: 1,
                                                   child: Container(
+                                                    //color:Colors.red,
 
                                                     margin: EdgeInsets.fromLTRB(
                                                         0, 0, 0, 1),
@@ -5405,19 +5408,24 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   RegExp(
                                                                       r'<[^>]*>|&[^;]+;'),
                                                                   ' ') ?? "";
-                                                              Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder: (
-                                                                          context) =>
-                                                                          LogNoteEdit(
-                                                                              lodDataId,
-                                                                              salesperImg!,
-                                                                              token!,
-                                                                              widget
-                                                                                  .leadId,
-                                                                              logdata,
-                                                                              "lead.lead")));
+
+
+                                                              // Navigator.push(
+                                                              //     context,
+                                                              //     MaterialPageRoute(
+                                                              //         builder: (
+                                                              //             context) =>
+                                                              //             LogNoteEdit(
+                                                              //                 lodDataId,
+                                                              //                 salesperImg!,
+                                                              //                 token!,
+                                                              //                 widget
+                                                              //                     .leadId,
+                                                              //                 logdata,
+                                                              //                 "lead.lead")));
+                                                              setState(() {
+                                                                lognoteEdit = true;
+                                                              });
                                                             },
                                                           ),
                                                         ),
@@ -5661,13 +5669,133 @@ class _LeadDetailState extends State<LeadDetail> {
                                       ],
                                     ),
                                   ),
+                                  Visibility(
+                                    visible: lognoteEdit,
+                                    child: Container(
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 58, right: 10),
+                                            child: Container(
+                                              width: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .width /
+                                                  1.44,
+
+
+                                              //height: 46,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(5)),
+                                                  color: Color(0xFFF6F6F6),
+                                                  border: Border.all(
+                                                    color: Color(0xFFEBEBEB),
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        width: MediaQuery
+                                                            .of(context)
+                                                            .size
+                                                            .width /
+                                                            1.92,
+
+                                                        // height: 40,
+                                                        //color: Colors.red,
+                                                        child: Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(
+                                                              left: 10),
+                                                          child: TextField(
+                                                              textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                              style: TextStyle(
+                                                                fontWeight: FontWeight
+                                                                    .w400,
+                                                                fontFamily: 'Mulish',
+                                                                fontSize: 11,
+                                                                color: Color(
+                                                                    0xFF000000),
+                                                              ),
+
+
+                                                              maxLines: null,
+                                                              // controller: lognoteController,
+                                                              decoration:
+                                                              const InputDecoration(
+                                                                  border:
+                                                                  InputBorder
+                                                                      .none,
+                                                                  hintText:
+                                                                  "Send a message to followers",
+                                                                  hintStyle: TextStyle(
+                                                                    //fontFamily: "inter",
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                      fontFamily:
+                                                                      'Mulish',
+                                                                      fontSize: 11,
+                                                                      color: Color(
+                                                                          0xFFAFAFAF)))),
+                                                        ),
+                                                      ),
+                                                      // Divider(
+                                                      //   color: Colors.grey[350],
+                                                      //   thickness: 1,
+                                                      // ),
+
+
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .only(left: 10),
+                                                    child: IconButton(
+                                                        onPressed: (){},
+                                                        icon: Image.asset("images/pi.png")
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(left:88),
+                                            child: Row(
+                                              children: [
+                                                Text("escape to",style: TextStyle(color: Colors.grey),),
+                                                InkWell(child: Container(child: Text("  cancel  ")),
+                                                    onTap: (){},
+                                                ),
+                                                //TextButton(onPressed:(){}, child: Text("cancel")),
+                                                Text(","),
+                                                Text("  enter to",style: TextStyle(color: Colors.grey),),
+                                                InkWell(child: Container(child: Text("  save")),
+                                                  onTap: (){},
+                                                ),
+                                               // TextButton(onPressed:(){}, child: Text("save")),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
 
 
                                   Container(
 
                                     margin: EdgeInsets.only(top: 25),
                                     width: 350,
-                                    //color:Colors.red,
+                                   // color:Colors.red,
                                     // height: 450,
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment
