@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 
+
 import 'api.dart';
 import 'bottomnavigation.dart';
 import 'drawer.dart';
@@ -97,6 +98,9 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                         children: [
                           IconButton(icon: SvgPicture.asset("images/messages.svg"),
                             onPressed: () {
+
+
+
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(

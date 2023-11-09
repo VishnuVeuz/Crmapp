@@ -36,10 +36,12 @@ import 'globals.dart' as globals;
 
 import 'package:http/http.dart' as http;
 
+
 class LeadDetail extends StatefulWidget {
   //late int lognoteId;
   var leadId;
   LeadDetail(this.leadId);
+  static final _formKey = GlobalKey<FormState>();
 
   @override
   State<LeadDetail> createState() => _LeadDetailState();
@@ -139,9 +141,11 @@ class _LeadDetailState extends State<LeadDetail> {
       otherinfoVisibility = false,
       starImage = false,
       lognoteEdit = false,
+
       lognoteoptions = true;
 
   int? scheduleViewIndex;
+  int selectedItemIndex = -1;
 
   String? scheduleDays,
       scheduleactivityType,
@@ -174,8 +178,13 @@ class _LeadDetailState extends State<LeadDetail> {
   // lognote
 
   TextEditingController lognoteController = TextEditingController();
+  TextEditingController lognoteEditController = TextEditingController();
+
+
   final ImagePicker picker = ImagePicker();
   List<File> selectedImages = [];
+  List<File> selectedImagesEdit = [];
+
   List<File> attachmentSelectedImages = [];
   var selectedImagesDisplay;
 
@@ -233,6 +242,8 @@ class _LeadDetailState extends State<LeadDetail> {
     FlutterDownloader.registerCallback(downloadCallback);
   }
 
+
+
   String? token;
 
   String? _taskId;
@@ -270,10 +281,10 @@ class _LeadDetailState extends State<LeadDetail> {
                 title: Row(
                   children: [
                     Container(
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width / 4,
+                      // width: mediaQueryData
+                      //     .size
+                      //     .width / 4,
+                      width: 150,
                       // color: Colors.red,
                       child: Text(
                         leadname!,
@@ -397,212 +408,265 @@ class _LeadDetailState extends State<LeadDetail> {
                   })
                 ],
               ),
-              body: WillPopScope(
-                onWillPop: () async {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LeadMainPage()));
-                  return true;
-                },
-                child: Container(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height,
-                  child: SingleChildScrollView(
-                    controller: _scrollController, // Link
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+              body: Builder(
 
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
+                  builder: (context) {
+                    final mediaQueryData = MediaQuery.of(context);
+                return WillPopScope(
+                  onWillPop: () async {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LeadMainPage()));
+                    return true;
+                  },
+                  child: Container(
+                    width: mediaQueryData
+                        .size
+                        .width,
+                    height: mediaQueryData
+                        .size
+                        .height,
+
+                   // height: 500,
+                    child: SingleChildScrollView(
+                      controller: _scrollController, // Link
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LeadCreation(0)));
+                                      },
+                                      child: SvgPicture.asset(
+                                        "images/create.svg",
+                                        width: 28,
+                                        height: 28,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text("Create",
+                                          style: TextStyle(
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xFF212121),
+                                          )),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    LeadCreation(widget.leadId)));
+                                      },
+                                      child: SvgPicture.asset(
+                                        "images/edit.svg",
+                                        width: 28,
+                                        height: 28,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text("Edit",
+                                          style: TextStyle(
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xFF212121),
+                                          )),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  LeadCreation(0)));
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/create.svg",
-                                      width: 28,
-                                      height: 28,
+                                                  LeadConvert(widget.leadId)),
+                                        );
+                                      },
+                                      child: SvgPicture.asset(
+                                        "images/convert.svg",
+                                        width: 28,
+                                        height: 28,
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("Create",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  LeadCreation(widget.leadId)));
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/edit.svg",
-                                      width: 28,
-                                      height: 28,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("Edit",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                LeadConvert(widget.leadId)),
-                                      );
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/convert.svg",
-                                      width: 28,
-                                      height: 28,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("Convert",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text("Convert",
+                                          style: TextStyle(
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xFF212121),
+                                          )),
+                                    )
+                                  ],
+                                ),
 
 
-                              Column(
-                                children: [
-                                  InkWell(
-                                    onTap: () async {
-                                      showModalBottomSheet<void>(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return SizedBox(
-                                              height: 70,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10, bottom: 10),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            print(
-                                                                widget.leadId);
-                                                            var data = await deleteLeadData(
-                                                                widget.leadId);
+                                Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () async {
+                                        showModalBottomSheet<void>(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return SizedBox(
+                                                height: 70,
+                                                child: Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      top: 10, bottom: 10),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                    MainAxisAlignment.spaceEvenly,
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              print(
+                                                                  widget.leadId);
+                                                              var data = await deleteLeadData(
+                                                                  widget.leadId);
 
-                                                            if (data['message'] ==
-                                                                "Success") {
-                                                              print("responce");
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) =>
-                                                                        LeadScrolling(
-                                                                            "",
-                                                                            "",
-                                                                            "")),
-                                                              );
-                                                            }
-                                                          },
-                                                          child: SvgPicture
-                                                              .asset(
-                                                            "images/delete.svg",
-                                                            width: 28,
-                                                            height: 28,
+                                                              if (data['message'] ==
+                                                                  "Success") {
+                                                                print("responce");
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (
+                                                                          context) =>
+                                                                          LeadScrolling(
+                                                                              "",
+                                                                              "",
+                                                                              "")),
+                                                                );
+                                                              }
+                                                            },
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              "images/delete.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding: const EdgeInsets
-                                                              .only(top: 5),
-                                                          child: Text("Delete",
-                                                              style: TextStyle(
-                                                                fontFamily: 'Mulish',
-                                                                fontWeight: FontWeight
-                                                                    .w400,
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            var data =
-                                                            await getLeadData(
-                                                                widget.leadId,
-                                                                "duplicate");
-                                                            String resMessageText;
+                                                          Padding(
+                                                            padding: const EdgeInsets
+                                                                .only(top: 5),
+                                                            child: Text("Delete",
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Mulish',
+                                                                  fontWeight: FontWeight
+                                                                      .w400,
+                                                                  fontSize: 12,
+                                                                  color: Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              var data =
+                                                              await getLeadData(
+                                                                  widget.leadId,
+                                                                  "duplicate");
+                                                              String resMessageText;
 
-                                                            print(data);
-                                                            print(
-                                                                data['message']
-                                                                    .toString());
-
-                                                            print(
-                                                                "lead duplications");
-                                                            if (data['message']
-                                                                .toString() ==
-                                                                "success") {
-                                                              resMessageText =
-                                                                  data['data']['id']
-                                                                      .toString();
+                                                              print(data);
                                                               print(
-                                                                  resMessageText);
-                                                              print(
-                                                                  "121212121212");
+                                                                  data['message']
+                                                                      .toString());
 
+                                                              print(
+                                                                  "lead duplications");
+                                                              if (data['message']
+                                                                  .toString() ==
+                                                                  "success") {
+                                                                resMessageText =
+                                                                    data['data']['id']
+                                                                        .toString();
+                                                                print(
+                                                                    resMessageText);
+                                                                print(
+                                                                    "121212121212");
+
+                                                                int resmessagevalue =
+                                                                int.parse(
+                                                                    resMessageText);
+                                                                if (resmessagevalue !=
+                                                                    0) {
+                                                                  Navigator.push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (
+                                                                            context) =>
+                                                                            LeadCreation(
+                                                                                resmessagevalue)),
+                                                                  );
+                                                                }
+                                                              }
+                                                            },
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              "images/duplicatee.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                top: 5),
+                                                            child: Text(
+                                                                "Duplicate",
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight.w400,
+                                                                  fontSize: 12,
+                                                                  color:
+                                                                  Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      leadType == true
+                                                          ? Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              String resmessage =
+                                                              await leadLost(
+                                                                  false);
                                                               int resmessagevalue =
                                                               int.parse(
-                                                                  resMessageText);
+                                                                  resmessage);
                                                               if (resmessagevalue !=
                                                                   0) {
                                                                 Navigator.push(
@@ -610,2013 +674,5691 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   MaterialPageRoute(
                                                                       builder: (
                                                                           context) =>
-                                                                          LeadCreation(
+                                                                          LeadDetail(
                                                                               resmessagevalue)),
                                                                 );
                                                               }
-                                                            }
-                                                          },
-                                                          child: SvgPicture
-                                                              .asset(
-                                                            "images/duplicatee.svg",
-                                                            width: 28,
-                                                            height: 28,
+                                                            },
+                                                            child:
+                                                            SvgPicture.asset(
+                                                              "images/lost.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets.only(
-                                                              top: 5),
-                                                          child: Text(
-                                                              "Duplicate",
-                                                              style: TextStyle(
-                                                                fontFamily: 'Mulish',
-                                                                fontWeight:
-                                                                FontWeight.w400,
-                                                                fontSize: 12,
-                                                                color:
-                                                                Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    leadType == true
-                                                        ? Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            String resmessage =
-                                                            await leadLost(
-                                                                false);
-                                                            int resmessagevalue =
-                                                            int.parse(
-                                                                resmessage);
-                                                            if (resmessagevalue !=
-                                                                0) {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) =>
-                                                                        LeadDetail(
-                                                                            resmessagevalue)),
-                                                              );
-                                                            }
-                                                          },
-                                                          child:
-                                                          SvgPicture.asset(
-                                                            "images/lost.svg",
-                                                            width: 28,
-                                                            height: 28,
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets
+                                                                .only(top: 5),
+                                                            child: Text("Lost",
+                                                                style: TextStyle(
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                                  fontSize: 12,
+                                                                  color: Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      )
+                                                          : Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              String resmessage =
+                                                              await leadLost(
+                                                                  true);
+                                                              int resmessagevalue =
+                                                              int.parse(
+                                                                  resmessage);
+                                                              if (resmessagevalue !=
+                                                                  0) {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (
+                                                                          context) =>
+                                                                          LeadDetail(
+                                                                              resmessagevalue)),
+                                                                );
+                                                              }
+                                                            },
+                                                            child:
+                                                            SvgPicture.asset(
+                                                              "images/more.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets
-                                                              .only(top: 5),
-                                                          child: Text("Lost",
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    )
-                                                        : Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            String resmessage =
-                                                            await leadLost(
-                                                                true);
-                                                            int resmessagevalue =
-                                                            int.parse(
-                                                                resmessage);
-                                                            if (resmessagevalue !=
-                                                                0) {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) =>
-                                                                        LeadDetail(
-                                                                            resmessagevalue)),
-                                                              );
-                                                            }
-                                                          },
-                                                          child:
-                                                          SvgPicture.asset(
-                                                            "images/more.svg",
-                                                            width: 28,
-                                                            height: 28,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets
-                                                              .only(top: 5),
-                                                          child: Text("Restore",
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    leadType == true
-                                                        ? Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            String resmessage =
-                                                            await leadLost(
-                                                                false);
-                                                            int resmessagevalue =
-                                                            int.parse(
-                                                                resmessage);
-                                                            if (resmessagevalue !=
-                                                                0) {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) =>
-                                                                        LeadDetail(
-                                                                            resmessagevalue)),
-                                                              );
-                                                            }
-                                                          },
-                                                          child:
-                                                          SvgPicture.asset(
-                                                            "images/more.svg",
-                                                            width: 28,
-                                                            height: 28,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets
-                                                              .only(top: 5),
-                                                          child: Text("Archive",
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    )
-                                                        : Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            String resmessage =
-                                                            await leadLost(
-                                                                true);
-                                                            int resmessagevalue =
-                                                            int.parse(
-                                                                resmessage);
-                                                            if (resmessagevalue !=
-                                                                0) {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) =>
-                                                                        LeadDetail(
-                                                                            resmessagevalue)),
-                                                              );
-                                                            }
-                                                          },
-                                                          child:
-                                                          SvgPicture.asset(
-                                                            "images/unarchivee.svg",
-                                                            width: 28,
-                                                            height: 28,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets
-                                                              .only(top: 5),
-                                                          child: Text(
-                                                              "Unarchive",
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      children: [
-                                                        InkWell(
-                                                          onTap: () async {
-                                                            var smsResponce =
-                                                            await smsDataGet(
-                                                                widget.leadId,
-                                                                "lead.lead");
-
-                                                            var name, phone,
-                                                                smsId;
-                                                            bool smsCondition;
-                                                            name = smsResponce[
-                                                            'recipient_single_description'];
-                                                            phone = smsResponce[
-                                                            'recipient_single_number_itf'];
-                                                            smsId =
-                                                            smsResponce['id'];
-                                                            smsCondition =
-                                                            smsResponce[
-                                                            'invalid_tag'];
-
-                                                            showDialog(
-                                                              context: context,
-                                                              builder: (
-                                                                  BuildContext
-                                                                  context) =>
-                                                                  _buildSendsmsPopupDialog(
-                                                                      context,
-                                                                      name,
-                                                                      phone,
-                                                                      smsId,
-                                                                      smsCondition,
-                                                                      ""),
-                                                            ).then((value) =>
-                                                                setState(() {}));
-                                                          },
-                                                          child: SvgPicture
-                                                              .asset(
-                                                            "images/sendsmss.svg",
-                                                            width: 28,
-                                                            height: 28,
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                          const EdgeInsets.only(
-                                                              top: 5),
-                                                          child: Text(
-                                                              "Send SMS",
-                                                              style: TextStyle(
-                                                                fontFamily: 'Mulish',
-                                                                fontWeight:
-                                                                FontWeight.w400,
-                                                                fontSize: 12,
-                                                                color:
-                                                                Color(
-                                                                    0xFF212121),
-                                                              )),
-                                                        )
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            );
-                                          });
-                                    },
-                                    child: SvgPicture.asset(
-                                      "images/moree.svg",
-                                      width: 28,
-                                      height: 28,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text("More",
-                                        style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xFF212121),
-                                        )),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding:
-                              const EdgeInsets.only(
-                                  top: 10, left: 24, right: 25),
-                              child: Text(leadname!,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                  )),
-                            ),
-                            leadType == true
-                                ? Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10, left: 24, right: 25),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Center(
-                                    child: Text(
-                                      "",
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontFamily: 'Mulish',
-                                      ),
-                                    )),
-                              ),
-                            )
-                                : Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10, left: 25, right: 35),
-                              child: Container(
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                    child: Text(
-                                      "Lost",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.white,
-                                        fontFamily: 'Mulish',
-                                      ),
-                                    )),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Company",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width / 2,
-                              // color: Colors.red,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 25),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    company!,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF000000)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Email",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width / 2.3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 25),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    email!,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF000000)),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Phone",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Visibility(
-                              visible: phone != "" ? true : false,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 25),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width / 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 45),
-                                          child: Text(
-                                            phone!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          var smsResponce = await smsDataGet(
-                                              widget.leadId, "lead.lead");
-
-                                          var name, phone, smsId;
-                                          bool smsCondition;
-                                          name =
-                                          smsResponce['recipient_single_description'];
-                                          phone =
-                                          smsResponce['recipient_single_number_itf'];
-                                          smsId = smsResponce['id'];
-                                          smsCondition =
-                                          smsResponce['invalid_tag'];
-
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                _buildSendsmsPopupDialog(
-                                                    context, name,
-                                                    phone, smsId, smsCondition,
-                                                    "phone"),
-                                          ).then((value) => setState(() {}));
-                                        },
-                                        child: Container(
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.mobile_friendly_rounded,
-                                                size: 10,
-                                              ),
-                                              SizedBox(
-                                                width: 3,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 0),
-                                                child: Text(
-                                                  "SMS", style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
-                                                    color: Color(0xFF000000)),),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Mobile",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Visibility(
-                              visible: mobile != "" ? true : false,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 25),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Row(
-                                    children: [
-                                      Container(
-                                        width: MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width / 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 45),
-                                          child: Text(
-                                            mobile!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ),
-                                      InkWell(
-                                        onTap: () async {
-                                          var smsResponce = await smsDataGet(
-                                              widget.leadId, "lead.lead");
-
-                                          var name, phone, smsId;
-                                          bool smsCondition;
-                                          name =
-                                          smsResponce['recipient_single_description'];
-                                          phone =
-                                          smsResponce['recipient_single_number_itf'];
-                                          smsId = smsResponce['id'];
-                                          smsCondition =
-                                          smsResponce['invalid_tag'];
-
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                _buildSendsmsPopupDialog(
-                                                    context, name,
-                                                    phone, smsId, smsCondition,
-                                                    ""),
-                                          ).then((value) => setState(() {}));
-                                        },
-                                        child: Container(
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.mobile_friendly_rounded,
-                                                size: 10,
-                                              ),
-                                              SizedBox(
-                                                width: 3,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    right: 0),
-                                                child: Text(
-                                                  "SMS", style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
-                                                    color: Color(0xFF000000)),),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Salesperson",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-
-
-                            Row(
-                              children: [
-                                salesperImg != ""
-                                    ? Padding(
-                                  padding: const EdgeInsets.only(left: 0),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                        border: Border.all(),
-                                        borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                      ),
-                                      child: CircleAvatar(
-                                        radius: 12,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(
-                                              18),
-                                          child: Image.network(
-                                              "${salesperImg!}?token=${token}"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                                    : Padding(
-                                  padding: const EdgeInsets.only(left: 0),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            //  color: Colors.green
-                                          ),
-                                          borderRadius:
-                                          BorderRadius.all(
-                                              Radius.circular(20))),
-                                      child: CircleAvatar(
-                                        radius: 12,
-                                        child: Icon(
-                                          Icons.person,
-                                          size: 20,
-                                          // Adjust the size of the icon as per your requirements
-                                          color: Colors
-                                              .white, // Adjust the color of the icon as per your requirements
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 8,),
-                                Container(
-                                  // width: MediaQuery.of(context).size.width / 3,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 25),
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text(
-                                        salesperson!,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF000000)),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-
-
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Priority",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Container(
-                                width: MediaQuery
-                                    .of(context)
-                                    .size
-                                    .width / 2.3,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(right: 25),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: RatingBar.builder(
-                                      initialRating: double.parse(priority!),
-                                      // initialRating: 0.0,
-
-                                      itemSize: 19,
-                                      minRating: 0,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: false,
-                                      itemCount: 3,
-
-                                      itemPadding:
-                                      EdgeInsets.symmetric(horizontal: 1.0),
-                                      itemBuilder: (context, _) =>
-                                          Icon(
-                                            Icons.star,
-                                            // color: Colors.amber,
-                                            color: Colors.green,
-                                            size: 10,
-                                          ),
-                                      onRatingUpdate: (double value) async {
-                                        print(value);
-                                        print("finallalala");
-
-                                        int prioritydata = value.toInt();
-                                        String valuess = await editLeadpriority(
-                                            prioritydata.toString(),
-                                            widget.leadId);
-                                      },
-                                    ),
-                                  ),
-                                )),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 25),
-                              child: Text("Tags",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 12,
-                                      color: Color(0xFF666666))),
-                            ),
-                            Container(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 25, right: 25, top: 0),
-                                child: Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width / 1.8,
-                                  // height: 20,
-                                  //  color: Colors.pinkAccent,
-
-
-                                  child: Wrap(
-                                    alignment: WrapAlignment.end,
-                                    direction: Axis.horizontal,
-                                    // Direction is horizontal
-                                    spacing: 8.0,
-                                    // Space between items
-                                    runSpacing: 8.0,
-                                    // Space between rows (if wrapping)
-                                    children: List.generate(
-                                        tags!.length ?? 0, (int index) {
-                                      final TextSpan span = TextSpan(
-                                        text: tags![index]["name"].toString(),
-                                        style: TextStyle(fontSize: 10),
-                                      );
-                                      final TextPainter tp = TextPainter(
-                                          text: span,
-                                          textDirection: Directionality.of(
-                                              context)
-                                      );
-                                      tp.layout();
-                                      double textWidth = tp.size.width;
-
-                                      return FractionallySizedBox(
-                                        widthFactor: null,
-                                        child: InkWell(
-                                          onTap: () async {
-                                            // 0xFFEE4B39s
-                                            print(tags![index]["color"]
-                                                .toString());
-                                            print(
-                                                tags![index]["id"].toString());
-                                            print("clicked tag");
-
-                                            var colors = await getColors();
-                                            int selectedtagId = tags![index]["id"];
-                                            showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) =>
-                                                  _buildColorPopupDialog(
-                                                      context, colors,
-                                                      selectedtagId),
-                                            ).then((value) =>
-                                                setState(() {
-                                                  tagChangeColoir == null ?
-                                                  tags![index]["color"] =
-                                                  tags![index]["color"] :
-                                                  tags![index]["color"] =
-                                                      tagChangeColoir;
-                                                }));
-                                          },
-
-                                          child: ClipPath(
-                                            clipper: CustomShape(textWidth),
-                                            // Pass the calculated width
-                                            child: Container(
-                                              width: textWidth + 27,
-                                              // Set the container width based on text width + padding
-                                              height: 20,
-                                              color: Color(int.parse(
-                                                  tags![index]["color"])),
-                                              child: Align(
-                                                alignment: Alignment.topLeft,
-                                                child: Center(
-                                                  child: Row(
-                                                    children: [
-                                                      Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(left: 3),
-                                                        child: Text(
-                                                          tags![index]["name"]
-                                                              .toString(),
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontFamily: 'Mulish',
-                                                            fontWeight: FontWeight
-                                                                .w500,
-                                                            fontSize: 9.5,
-                                                          ),
-                                                        ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets
+                                                                .only(top: 5),
+                                                            child: Text("Restore",
+                                                                style: TextStyle(
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                                  fontSize: 12,
+                                                                  color: Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
                                                       ),
-                                                      Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(left: 2),
-                                                        child: SvgPicture.asset(
-                                                          'images/cross.svg',
-                                                          width: 10,
-                                                          height: 10,
-                                                        ),
+                                                      leadType == true
+                                                          ? Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              String resmessage =
+                                                              await leadLost(
+                                                                  false);
+                                                              int resmessagevalue =
+                                                              int.parse(
+                                                                  resmessage);
+                                                              if (resmessagevalue !=
+                                                                  0) {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (
+                                                                          context) =>
+                                                                          LeadDetail(
+                                                                              resmessagevalue)),
+                                                                );
+                                                              }
+                                                            },
+                                                            child:
+                                                            SvgPicture.asset(
+                                                              "images/more.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets
+                                                                .only(top: 5),
+                                                            child: Text("Archive",
+                                                                style: TextStyle(
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                                  fontSize: 12,
+                                                                  color: Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      )
+                                                          : Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              String resmessage =
+                                                              await leadLost(
+                                                                  true);
+                                                              int resmessagevalue =
+                                                              int.parse(
+                                                                  resmessage);
+                                                              if (resmessagevalue !=
+                                                                  0) {
+                                                                Navigator.push(
+                                                                  context,
+                                                                  MaterialPageRoute(
+                                                                      builder: (
+                                                                          context) =>
+                                                                          LeadDetail(
+                                                                              resmessagevalue)),
+                                                                );
+                                                              }
+                                                            },
+                                                            child:
+                                                            SvgPicture.asset(
+                                                              "images/unarchivee.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets
+                                                                .only(top: 5),
+                                                            child: Text(
+                                                                "Unarchive",
+                                                                style: TextStyle(
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                                  fontSize: 12,
+                                                                  color: Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        children: [
+                                                          InkWell(
+                                                            onTap: () async {
+                                                              var smsResponce =
+                                                              await smsDataGet(
+                                                                  widget.leadId,
+                                                                  "lead.lead");
+
+                                                              var name, phone,
+                                                                  smsId;
+                                                              bool smsCondition;
+                                                              name = smsResponce[
+                                                              'recipient_single_description'];
+                                                              phone = smsResponce[
+                                                              'recipient_single_number_itf'];
+                                                              smsId =
+                                                              smsResponce['id'];
+                                                              smsCondition =
+                                                              smsResponce[
+                                                              'invalid_tag'];
+
+                                                              showDialog(
+                                                                context: context,
+                                                                builder: (
+                                                                    BuildContext
+                                                                    context) =>
+                                                                    _buildSendsmsPopupDialog(
+                                                                        context,
+                                                                        name,
+                                                                        phone,
+                                                                        smsId,
+                                                                        smsCondition,
+                                                                        ""),
+                                                              ).then((value) =>
+                                                                  setState(() {}));
+                                                            },
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              "images/sendsmss.svg",
+                                                              width: 28,
+                                                              height: 28,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                            const EdgeInsets.only(
+                                                                top: 5),
+                                                            child: Text(
+                                                                "Send SMS",
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Mulish',
+                                                                  fontWeight:
+                                                                  FontWeight.w400,
+                                                                  fontSize: 12,
+                                                                  color:
+                                                                  Color(
+                                                                      0xFF212121),
+                                                                )),
+                                                          )
+                                                        ],
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                          ),
-
-
-                                          // child: Container(
-                                          //   decoration: BoxDecoration(
-                                          //     borderRadius: BorderRadius.all(Radius.circular(30)),
-                                          //     color: Color(int.parse(tags![index]["color"])),
-                                          //   ),
-                                          //   width: 70,
-                                          //   height: 19,
-                                          //   child: Center(
-                                          //     child: Text(
-                                          //       tags![index]["name"].toString(),
-                                          //       style: TextStyle(
-                                          //         color: Colors.white,
-                                          //         fontFamily: 'Mulish',
-                                          //         fontWeight: FontWeight.w500,
-                                          //         fontSize: 10,
-                                          //       ),
-                                          //     ),
-                                          //   ),
-                                          // ),
-
-
-                                        ),
-                                      );
-                                    }),
-                                  ),
-
-
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 22,
-                              right: 22,
-                              bottom: 20),
-                          child: Divider(
-                            color: Color(0xFFF4F4F4),
-                            thickness: 2,
-                          ),
-                        ),
-
-
-                        Container(
-                          color: Color(0xFFF5F5F5),
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 17, right: 0),
-                                child: Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      //color: Colors.blue,
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: internalVisibility == true
-                                              ? Color(0XFFFA256B)
-                                              :
-                                          Colors.transparent, // Underline color
-                                          width: 1.0, // Underline width
-                                        ),
+                                              );
+                                            });
+                                      },
+                                      child: SvgPicture.asset(
+                                        "images/moree.svg",
+                                        width: 28,
+                                        height: 28,
                                       ),
                                     ),
-                                    child: TextButton(
-                                        child: Text(
-                                          "Internal Notes",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
-                                              color: internalVisibility == true
-                                                  ? Color(0XFFFA256B)
-                                                  : Color(0xFF212121)),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            internalVisibility = true;
-                                            otherinfoVisibility = false;
-                                          });
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF6F6F6),
-                                        )),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 40, right: 0),
-                                child: Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      //color: Colors.blue,
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: otherinfoVisibility == true
-                                              ? Color(0XFFFA256B)
-                                              :
-                                          Colors.transparent, // Underline color
-                                          width: 1.0,
-
-                                          // Underline width
-                                        ),
-                                      ),
-                                    ),
-                                    child: TextButton(
-                                        child: Text(
-                                          "Other Information",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
-                                              color: otherinfoVisibility == true
-                                                  ? Color(0XFFFA256B)
-                                                  : Color(0xFF212121)),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            internalVisibility = false;
-                                            otherinfoVisibility = true;
-                                          });
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF6F6F6),
-                                        )),
-                                  ),
-                                ),
-                              ),
-
-                            ],
-                          ),
-                        ),
-                        Visibility(
-                          visible: internalVisibility,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 10, bottom: 10),
-                            child: Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width,
-                              //height: 40,
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 25, right: 25),
-                                  child: Text(internalnotes!,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF787878))),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        Visibility(
-                          visible: otherinfoVisibility,
-                          child: Container(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 20, left: 22, right: 22),
-                                  child: Divider(
-                                    color: Color(0xFFF4F4F4),
-                                    thickness: 2,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
-                                  children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(left: 25),
-                                      child: Text("Created by",
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text("More",
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
-                                              color: Color(0xFF666666))),
-                                    ),
-                                    Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width / 2.3,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 25),
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            createdby!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xFF212121),
+                                          )),
+                                    )
                                   ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 0, left: 22, right: 22),
-                                  child: Divider(
-                                    color: Color(0xFFF4F4F4),
-                                    thickness: 2,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 25),
-                                      child: Text("Created on",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
-                                              color: Color(0xFF666666))),
-                                    ),
-                                    Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width / 2.3,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 25),
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            createdon!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 0, left: 22, right: 22),
-                                  child: Divider(
-                                    color: Color(0xFFF4F4F4),
-                                    thickness: 2,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 25),
-                                      child: Text("Last Updated by",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
-                                              color: Color(0xFF666666))),
-                                    ),
-                                    Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width / 2.3,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 25),
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            lastupdateby!,
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 0, left: 22, right: 22),
-                                  child: Divider(
-                                    color: Color(0xFFF4F4F4),
-                                    thickness: 2,
-                                  ),
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 25),
-                                      child: Text("Last Updated on",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
-                                              color: Color(0xFF666666))),
-                                    ),
-                                    Container(
-                                      width: MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width / 2.3,
-                                      child: Padding(
-                                        padding: const EdgeInsets.only(
-                                            right: 25),
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(lastupdateon!,
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
-                                                  color: Color(0xFF000000))),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 0, left: 22, right: 22, bottom: 20),
-                                  child: Divider(
-                                    color: Color(0xFFF4F4F4),
-                                    thickness: 2,
-                                  ),
-                                ),
+                                )
                               ],
                             ),
                           ),
-                        ),
-                        Container(
-                          color: Color(0xFFF5F5F5),
-                          child: Row(
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 17, right: 0),
-                                child: Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: followersVisibility == true
-                                              ? Color(0XFFFA256B)
-                                              :
-                                          Colors.transparent, // Underline color
-                                          width: 1.0, // Underline width
-                                        ),
-                                      ),
-                                    ),
-                                    child: TextButton(
-                                        child: Text(
-                                          "Send Message",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
-                                              color: followersVisibility == true
-                                                  ? Color(0XFFFA256B)
-                                                  : Color(0xFF212121)),
-                                        ),
-                                        onPressed: () async {
-                                          sendMailData =
-                                          await sendMailsFollowers(
-                                              widget.leadId, "lead.lead");
-
-                                          setState(() {
-                                            followersVisibility == true
-                                                ? followersVisibility = false
-                                                : followersVisibility = true;
-                                            lognoteVisibility == false
-                                                ? lognoteVisibility = false
-                                                : lognoteVisibility = false;
-                                          });
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF6F6F6),
-                                        )),
-                                  ),
-                                ),
+                                padding:
+                                const EdgeInsets.only(
+                                    top: 10, left: 24, right: 25),
+                                child: Text(leadname!,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'Mulish',
+                                      fontSize: 17,
+                                      color: Colors.black,
+                                    )),
                               ),
-                              Padding(
+                              leadType == true
+                                  ? Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 0, right: 0),
-                                child: Center(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: lognoteVisibility == true
-                                              ? Color(0XFFFA256B)
-                                              :
-                                          Colors.transparent, // Underline color
-                                          width: 1.0, // Underline width
-                                        ),
-                                      ),
-                                    ),
-                                    child: TextButton(
-                                        child: Text(
-                                          "Log note",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
-                                              color: lognoteVisibility == true
-                                                  ? Color(0XFFFA256B)
-                                                  : Color(0xFF212121)),
-                                        ),
-                                        onPressed: () {
-                                          setState(() {
-                                            followersVisibility == false
-                                                ? followersVisibility = false
-                                                : followersVisibility = false;
-                                            lognoteVisibility == true
-                                                ? lognoteVisibility = false
-                                                : lognoteVisibility = true;
-                                          });
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF6F6F6),
-                                        )),
+                                    top: 10, left: 24, right: 25),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 5, bottom: 5, left: 0, right: 20),
-                                child: Center(
-                                  child: TextButton(
+                                  child: Center(
                                       child: Text(
-                                        "Schedule Activity",
+                                        "",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 13,
-                                            color: Color(0xFF212121)),
-                                      ),
-                                      onPressed: () async {
-                                        await defaultScheduleValues();
-
-                                        summaryController.text = "";
-                                        commandsController.text = "";
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              _buildOrderPopupDialog(
-                                                  context, 0),
-                                        ).then((value) => setState(() {}));
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF6F6F6),
+                                          fontSize: 20,
+                                          color: Colors.white,
+                                          fontFamily: 'Mulish',
+                                        ),
+                                      )),
+                                ),
+                              )
+                                  : Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 10, left: 25, right: 35),
+                                child: Container(
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                        "Lost",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontFamily: 'Mulish',
+                                        ),
                                       )),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 25,
-                              right: 0),
-                          child: Center(
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Company",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Container(
+                                width: mediaQueryData
+                                    .size
+                                    .width / 2,
+                                // width:50,
+                                // color: Colors.red,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 25),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      company!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF000000)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Email",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Container(
+                                width: mediaQueryData
+                                    .size
+                                    .width / 2.3,
+                                // width : 300,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 25),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      email!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF000000)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Phone",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Visibility(
+                                visible: phone != "" ? true : false,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 25),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: mediaQueryData
+                                              .size
+                                              .width / 3,
+                                          //width:250,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 45),
+                                            child: Text(
+                                              phone!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Color(0xFF000000)),
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            var smsResponce = await smsDataGet(
+                                                widget.leadId, "lead.lead");
+
+                                            var name, phone, smsId;
+                                            bool smsCondition;
+                                            name =
+                                            smsResponce['recipient_single_description'];
+                                            phone =
+                                            smsResponce['recipient_single_number_itf'];
+                                            smsId = smsResponce['id'];
+                                            smsCondition =
+                                            smsResponce['invalid_tag'];
+
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  _buildSendsmsPopupDialog(
+                                                      context, name,
+                                                      phone, smsId, smsCondition,
+                                                      "phone"),
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Container(
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.mobile_friendly_rounded,
+                                                  size: 10,
+                                                ),
+                                                SizedBox(
+                                                  width: 3,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      right: 0),
+                                                  child: Text(
+                                                    "SMS", style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 12,
+                                                      color: Color(0xFF000000)),),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Mobile",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Visibility(
+                                visible: mobile != "" ? true : false,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 25),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: mediaQueryData
+                                              .size
+                                              .width / 3,
+                                          //width:300,
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 45),
+                                            child: Text(
+                                              mobile!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Color(0xFF000000)),
+                                            ),
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () async {
+                                            var smsResponce = await smsDataGet(
+                                                widget.leadId, "lead.lead");
+
+                                            var name, phone, smsId;
+                                            bool smsCondition;
+                                            name =
+                                            smsResponce['recipient_single_description'];
+                                            phone =
+                                            smsResponce['recipient_single_number_itf'];
+                                            smsId = smsResponce['id'];
+                                            smsCondition =
+                                            smsResponce['invalid_tag'];
+
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  _buildSendsmsPopupDialog(
+                                                      context, name,
+                                                      phone, smsId, smsCondition,
+                                                      ""),
+                                            ).then((value) => setState(() {}));
+                                          },
+                                          child: Container(
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.mobile_friendly_rounded,
+                                                  size: 10,
+                                                ),
+                                                SizedBox(
+                                                  width: 3,
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(
+                                                      right: 0),
+                                                  child: Text(
+                                                    "SMS", style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 12,
+                                                      color: Color(0xFF000000)),),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Salesperson",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+
+
+                              Row(
+                                children: [
+                                  salesperImg != ""
+                                      ? Padding(
+                                    padding: const EdgeInsets.only(left: 0),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Container(
+                                        width: 20,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                          border: Border.all(),
+                                          borderRadius:
+                                          BorderRadius.all(Radius.circular(20)),
+                                        ),
+                                        child: CircleAvatar(
+                                          radius: 12,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(
+                                                18),
+                                            child: Image.network(
+                                                "${salesperImg!}?token=${token}"),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                      : Padding(
+                                    padding: const EdgeInsets.only(left: 0),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: Container(
+                                        width: 20,
+                                        height: 20,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                              //  color: Colors.green
+                                            ),
+                                            borderRadius:
+                                            BorderRadius.all(
+                                                Radius.circular(20))),
+                                        child: CircleAvatar(
+                                          radius: 12,
+                                          child: Icon(
+                                            Icons.person,
+                                            size: 20,
+                                            // Adjust the size of the icon as per your requirements
+                                            color: Colors
+                                                .white, // Adjust the color of the icon as per your requirements
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 8,),
+                                  Container(
+                                    // width: MediaQuery.of(context).size.width / 3,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 25),
+                                      child: Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          salesperson!,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 12,
+                                              color: Color(0xFF000000)),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+
+
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Priority",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Container(
+                                  width: mediaQueryData
+                                      .size
+                                      .width / 2.3,
+                               // width:250,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: RatingBar.builder(
+                                        initialRating: double.parse(priority!),
+                                        // initialRating: 0.0,
+
+                                        itemSize: 19,
+                                        minRating: 0,
+                                        direction: Axis.horizontal,
+                                        allowHalfRating: false,
+                                        itemCount: 3,
+
+                                        itemPadding:
+                                        EdgeInsets.symmetric(horizontal: 1.0),
+                                        itemBuilder: (context, _) =>
+                                            Icon(
+                                              Icons.star,
+                                              // color: Colors.amber,
+                                              color: Colors.green,
+                                              size: 10,
+                                            ),
+                                        onRatingUpdate: (double value) async {
+                                          print(value);
+                                          print("finallalala");
+
+                                          int prioritydata = value.toInt();
+                                          String valuess = await editLeadpriority(
+                                              prioritydata.toString(),
+                                              widget.leadId);
+                                        },
+                                      ),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25),
+                                child: Text("Tags",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 12,
+                                        color: Color(0xFF666666))),
+                              ),
+                              Container(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 25, right: 25, top: 0),
+                                  child: Container(
+                                    width: mediaQueryData
+                                        .size
+                                        .width / 1.8,
+                                    //width:350,
+                                    // height: 20,
+                                    //  color: Colors.pinkAccent,
+
+
+                                    child: Wrap(
+                                      alignment: WrapAlignment.end,
+                                      direction: Axis.horizontal,
+                                      // Direction is horizontal
+                                      spacing: 8.0,
+                                      // Space between items
+                                      runSpacing: 8.0,
+                                      // Space between rows (if wrapping)
+                                      children: List.generate(
+                                          tags!.length ?? 0, (int index) {
+                                        final TextSpan span = TextSpan(
+                                          text: tags![index]["name"].toString(),
+                                          style: TextStyle(fontSize: 10),
+                                        );
+                                        final TextPainter tp = TextPainter(
+                                            text: span,
+                                            textDirection: Directionality.of(
+                                                context)
+                                        );
+                                        tp.layout();
+                                        double textWidth = tp.size.width;
+
+                                        return FractionallySizedBox(
+                                          widthFactor: null,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              // 0xFFEE4B39s
+                                              print(tags![index]["color"]
+                                                  .toString());
+                                              print(
+                                                  tags![index]["id"].toString());
+                                              print("clicked tag");
+
+                                              var colors = await getColors();
+                                              int selectedtagId = tags![index]["id"];
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext context) =>
+                                                    _buildColorPopupDialog(
+                                                        context, colors,
+                                                        selectedtagId),
+                                              ).then((value) =>
+                                                  setState(() {
+                                                    tagChangeColoir == null ?
+                                                    tags![index]["color"] =
+                                                    tags![index]["color"] :
+                                                    tags![index]["color"] =
+                                                        tagChangeColoir;
+                                                  }));
+                                            },
+
+                                            child: ClipPath(
+                                              clipper: CustomShape(textWidth),
+                                              // Pass the calculated width
+                                              child: Container(
+                                                width: textWidth + 27,
+                                                // Set the container width based on text width + padding
+                                                height: 20,
+                                                color: Color(int.parse(
+                                                    tags![index]["color"])),
+                                                child: Align(
+                                                  alignment: Alignment.topLeft,
+                                                  child: Center(
+                                                    child: Row(
+                                                      children: [
+                                                        Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(left: 3),
+                                                          child: Text(
+                                                            tags![index]["name"]
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontFamily: 'Mulish',
+                                                              fontWeight: FontWeight
+                                                                  .w500,
+                                                              fontSize: 9.5,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(left: 2),
+                                                          child: SvgPicture.asset(
+                                                            'images/cross.svg',
+                                                            width: 10,
+                                                            height: 10,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+
+                                            // child: Container(
+                                            //   decoration: BoxDecoration(
+                                            //     borderRadius: BorderRadius.all(Radius.circular(30)),
+                                            //     color: Color(int.parse(tags![index]["color"])),
+                                            //   ),
+                                            //   width: 70,
+                                            //   height: 19,
+                                            //   child: Center(
+                                            //     child: Text(
+                                            //       tags![index]["name"].toString(),
+                                            //       style: TextStyle(
+                                            //         color: Colors.white,
+                                            //         fontFamily: 'Mulish',
+                                            //         fontWeight: FontWeight.w500,
+                                            //         fontSize: 10,
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
+
+
+                                          ),
+                                        );
+                                      }),
+                                    ),
+
+
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22,
+                                bottom: 20),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
+
+
+                          Container(
+                            color: Color(0xFFF5F5F5),
                             child: Row(
                               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-
-                                      InkWell(
-                                        child: Container(
-                                          width: 15,
-                                          child: Image.asset(
-                                            "images/pi.png",
-                                          ),
-
-
-                                        ),
-                                        onTap: () {
-                                          setState(() {
-                                            attachmentVisibility == true
-                                                ? attachmentVisibility = false
-                                                : attachmentVisibility = true;
-                                          }
-                                          );
-                                        },
-                                      ),
-                                      SizedBox(width: 1,),
-                                      Container(
-                                        width: 25,
-                                        // color: Colors.green,
-                                        child: Text(
-                                          attachmentCount!,
-                                          style: TextStyle(
-                                              fontSize: 13,
-                                              fontFamily: 'Mulish',
-                                              fontWeight: FontWeight.w600,
-                                              color: Color(0xFF000000)
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 17, right: 0),
+                                  child: Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        //color: Colors.blue,
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: internalVisibility == true
+                                                ? Color(0XFFFA256B)
+                                                :
+                                            Colors.transparent, // Underline color
+                                            width: 1.0, // Underline width
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-
-                                followerStatus == false
-                                    ? Padding(
-                                  padding: const EdgeInsets.only(left: 180),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.check_sharp,
-                                        size: 14,
-                                        color: Colors.green,
-                                      ),
-                                      TextButton(
-                                          onPressed: () async {
-                                            String resMessage =
-                                            await followerFollow(
-                                                widget.leadId, "lead.lead");
-
-                                            if (resMessage == "success") {
-                                              setState(() {
-                                                int followCount;
-                                                followCount =
-                                                    int.parse(followerCount!);
-                                                followerStatus = true;
-                                                followCount = followCount + 1;
-                                                followerCount =
-                                                    followCount.toString();
-                                              });
-
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) => LeadDetail(widget.leadId)));
-                                            }
-                                          },
+                                      child: TextButton(
                                           child: Text(
-                                            "Follow",
+                                            "Internal Notes",
                                             style: TextStyle(
-                                                color: Colors.green,
+                                                fontWeight: FontWeight.w500,
                                                 fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600
-                                            ),
-                                          )),
-                                    ],
-                                  ),
-                                )
-                                    : Padding(
-                                  padding: const EdgeInsets.only(left: 180),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.close,
-                                        size: 14,
-                                        color: Colors.red,
-                                      ),
-                                      TextButton(
-                                          onPressed: () async {
-                                            String resMessage =
-                                            await followerUnFollow(
-                                                widget.leadId, "lead.lead");
-
-                                            if (resMessage == "success") {
-                                              setState(() {
-                                                int followCount;
-                                                followCount =
-                                                    int.parse(followerCount!);
-                                                followerStatus = false;
-                                                followCount = followCount - 1;
-                                                followerCount =
-                                                    followCount.toString();
-                                              });
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (context) => LeadDetail(widget.leadId)));
-                                            }
+                                                fontSize: 13,
+                                                color: internalVisibility == true
+                                                    ? Color(0XFFFA256B)
+                                                    : Color(0xFF212121)),
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              internalVisibility = true;
+                                              otherinfoVisibility = false;
+                                            });
                                           },
-                                          child: Text(
-                                            "Unfollow",
-                                            style: TextStyle(
-                                                color: Colors.red,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600
-                                            ),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFF6F6F6),
                                           )),
-                                    ],
-                                  ),
-                                ),
-                                InkWell(
-                                  child: Container(
-                                      width: 18,
-                                      child: SvgPicture.asset("images/user.svg")
-
-                                  ),
-                                  onTap: () async {
-                                    List followers = await getFollowers(
-                                        widget.leadId, "lead.lead");
-
-                                    showDialog(
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          _buildFollowPopupDialog(
-                                              context, followers),
-                                    ).then((value) => setState(() {}));
-                                  },
-                                ),
-                                Container(
-                                  width: 25,
-                                  //color: Colors.green,
-                                  child: Text(
-                                    followerCount!,
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xFF000000)
                                     ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 40, right: 0),
+                                  child: Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        //color: Colors.blue,
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: otherinfoVisibility == true
+                                                ? Color(0XFFFA256B)
+                                                :
+                                            Colors.transparent, // Underline color
+                                            width: 1.0,
+
+                                            // Underline width
+                                          ),
+                                        ),
+                                      ),
+                                      child: TextButton(
+                                          child: Text(
+                                            "Other Information",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 13,
+                                                color: otherinfoVisibility == true
+                                                    ? Color(0XFFFA256B)
+                                                    : Color(0xFF212121)),
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              internalVisibility = false;
+                                              otherinfoVisibility = true;
+                                            });
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFF6F6F6),
+                                          )),
+                                    ),
+                                  ),
+                                ),
+
+                              ],
+                            ),
+                          ),
+                          Visibility(
+                            visible: internalVisibility,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 10, bottom: 10),
+                              child: Container(
+                                width: mediaQueryData
+                                    .size
+                                    .width,
+                                //height: 40,
+                               // width:400,
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 25, right: 25),
+                                    child: Text(internalnotes!,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 12,
+                                            color: Color(0xFF787878))),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          Visibility(
+                            visible: otherinfoVisibility,
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 20, left: 22, right: 22),
+                                    child: Divider(
+                                      color: Color(0xFFF4F4F4),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 25),
+                                        child: Text("Created by",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 12,
+                                                color: Color(0xFF666666))),
+                                      ),
+                                      Container(
+                                        width:mediaQueryData
+                                            .size
+                                            .width / 2.3,
+                                       // width:250,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 25),
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              createdby!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Color(0xFF000000)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, left: 22, right: 22),
+                                    child: Divider(
+                                      color: Color(0xFFF4F4F4),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 25),
+                                        child: Text("Created on",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 12,
+                                                color: Color(0xFF666666))),
+                                      ),
+                                      Container(
+                                        width: mediaQueryData
+                                            .size
+                                            .width / 2.3,
+                                       // width:250,
+                                        child: Padding(
+
+                                          padding: const EdgeInsets.only(
+                                              right: 25),
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              createdon!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Color(0xFF000000)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, left: 22, right: 22),
+                                    child: Divider(
+                                      color: Color(0xFFF4F4F4),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 25),
+                                        child: Text("Last Updated by",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 12,
+                                                color: Color(0xFF666666))),
+                                      ),
+                                      Container(
+                                        width:mediaQueryData
+                                            .size
+                                            .width / 2.3,
+                                        //width:250,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 25),
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(
+                                              lastupdateby!,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Color(0xFF000000)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, left: 22, right: 22),
+                                    child: Divider(
+                                      color: Color(0xFFF4F4F4),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .spaceBetween,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 25),
+                                        child: Text("Last Updated on",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 12,
+                                                color: Color(0xFF666666))),
+                                      ),
+                                      Container(
+                                        width: mediaQueryData
+                                            .size
+                                            .width / 2.3,
+                                       // width:250,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 25),
+                                          child: Align(
+                                            alignment: Alignment.centerRight,
+                                            child: Text(lastupdateon!,
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: 'Mulish',
+                                                    fontSize: 12,
+                                                    color: Color(0xFF000000))),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, left: 22, right: 22, bottom: 20),
+                                    child: Divider(
+                                      color: Color(0xFFF4F4F4),
+                                      thickness: 2,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(
+                            color: Color(0xFFF5F5F5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 17, right: 0),
+                                  child: Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: followersVisibility == true
+                                                ? Color(0XFFFA256B)
+                                                :
+                                            Colors.transparent, // Underline color
+                                            width: 1.0, // Underline width
+                                          ),
+                                        ),
+                                      ),
+                                      child: TextButton(
+                                          child: Text(
+                                            "Send Message",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 13,
+                                                color: followersVisibility == true
+                                                    ? Color(0XFFFA256B)
+                                                    : Color(0xFF212121)),
+                                          ),
+                                          onPressed: () async {
+                                            sendMailData =
+                                            await sendMailsFollowers(
+                                                widget.leadId, "lead.lead");
+
+                                            setState(() {
+                                              followersVisibility == true
+                                                  ? followersVisibility = false
+                                                  : followersVisibility = true;
+                                              lognoteVisibility == false
+                                                  ? lognoteVisibility = false
+                                                  : lognoteVisibility = false;
+                                            });
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFF6F6F6),
+                                          )),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 0, right: 0),
+                                  child: Center(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                          bottom: BorderSide(
+                                            color: lognoteVisibility == true
+                                                ? Color(0XFFFA256B)
+                                                :
+                                            Colors.transparent, // Underline color
+                                            width: 1.0, // Underline width
+                                          ),
+                                        ),
+                                      ),
+                                      child: TextButton(
+                                          child: Text(
+                                            "Log note",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Mulish',
+                                                fontSize: 13,
+                                                color: lognoteVisibility == true
+                                                    ? Color(0XFFFA256B)
+                                                    : Color(0xFF212121)),
+                                          ),
+                                          onPressed: () {
+                                            setState(() {
+                                              followersVisibility == false
+                                                  ? followersVisibility = false
+                                                  : followersVisibility = false;
+                                              lognoteVisibility == true
+                                                  ? lognoteVisibility = false
+                                                  : lognoteVisibility = true;
+                                            });
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Color(0xFFF6F6F6),
+                                          )),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 5, bottom: 5, left: 0, right: 20),
+                                  child: Center(
+                                    child: TextButton(
+                                        child: Text(
+                                          "Schedule Activity",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Mulish',
+                                              fontSize: 13,
+                                              color: Color(0xFF212121)),
+                                        ),
+                                        onPressed: () async {
+                                          await defaultScheduleValues();
+
+                                          summaryController.text = "";
+                                          commandsController.text = "";
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) =>
+                                                _buildOrderPopupDialog(
+                                                    context, 0),
+                                          ).then((value) => setState(() {}));
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Color(0xFFF6F6F6),
+                                        )),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 0,
-                              left: 0,
-                              right: 0,
-                              bottom: 10),
-                          child: Divider(
-                            color: Color(0xFFEBEBEB),
-                            thickness: 2,
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 25,
+                                right: 0),
+                            child: Center(
+                              child: Row(
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+
+                                        InkWell(
+                                          child: Container(
+                                            width: 15,
+                                            child: Image.asset(
+                                              "images/pi.png",
+                                            ),
+
+
+                                          ),
+                                          onTap: () {
+                                            setState(() {
+                                              attachmentVisibility == true
+                                                  ? attachmentVisibility = false
+                                                  : attachmentVisibility = true;
+                                            }
+                                            );
+                                          },
+                                        ),
+                                        SizedBox(width: 1,),
+                                        Container(
+                                          width: 25,
+                                          // color: Colors.green,
+                                          child: Text(
+                                            attachmentCount!,
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: 'Mulish',
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xFF000000)
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+
+                                  followerStatus == false
+                                      ? Padding(
+                                    padding: const EdgeInsets.only(left: 180),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check_sharp,
+                                          size: 14,
+                                          color: Colors.green,
+                                        ),
+                                        TextButton(
+                                            onPressed: () async {
+                                              String resMessage =
+                                              await followerFollow(
+                                                  widget.leadId, "lead.lead");
+
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  int followCount;
+                                                  followCount =
+                                                      int.parse(followerCount!);
+                                                  followerStatus = true;
+                                                  followCount = followCount + 1;
+                                                  followerCount =
+                                                      followCount.toString();
+                                                });
+
+                                                // Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) => LeadDetail(widget.leadId)));
+                                              }
+                                            },
+                                            child: Text(
+                                              "Follow",
+                                              style: TextStyle(
+                                                  color: Colors.green,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w600
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  )
+                                      : Padding(
+                                    padding: const EdgeInsets.only(left: 180),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.close,
+                                          size: 14,
+                                          color: Colors.red,
+                                        ),
+                                        TextButton(
+                                            onPressed: () async {
+                                              String resMessage =
+                                              await followerUnFollow(
+                                                  widget.leadId, "lead.lead");
+
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  int followCount;
+                                                  followCount =
+                                                      int.parse(followerCount!);
+                                                  followerStatus = false;
+                                                  followCount = followCount - 1;
+                                                  followerCount =
+                                                      followCount.toString();
+                                                });
+                                                // Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) => LeadDetail(widget.leadId)));
+                                              }
+                                            },
+                                            child: Text(
+                                              "Unfollow",
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w600
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  InkWell(
+                                    child: Container(
+                                        width: 18,
+                                        child: SvgPicture.asset("images/user.svg")
+
+                                    ),
+                                    onTap: () async {
+                                      List followers = await getFollowers(
+                                          widget.leadId, "lead.lead");
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            _buildFollowPopupDialog(
+                                                context, followers),
+                                      ).then((value) => setState(() {}));
+                                    },
+                                  ),
+                                  Container(
+                                    width: 25,
+                                    //color: Colors.green,
+                                    child: Text(
+                                      followerCount!,
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xFF000000)
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 10),
+                            child: Divider(
+                              color: Color(0xFFEBEBEB),
+                              thickness: 2,
+                            ),
+                          ),
 
 
-                        // code for attchments
+                          // code for attchments
 
-                        Visibility(
-                          visible: attachmentVisibility,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 25, right: 25),
-                            child: Column(
-                              children: [
-                                FutureBuilder(
-                                    future:
-                                    getattchmentData(
-                                        widget.leadId, "lead.lead"),
-                                    builder: (context, AsyncSnapshot snapshot) {
-                                      if (snapshot.hasError) {}
-                                      if (snapshot.connectionState ==
-                                          ConnectionState.done) {
-                                        if (snapshot.hasData) {
-                                          if (snapshot.data == null) {
-                                            return const Center(
-                                                child: Text(
-                                                    'Something went wrong'));
-                                          }
+                          Visibility(
+                            visible: attachmentVisibility,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 25, right: 25),
+                              child: Column(
+                                children: [
+                                  FutureBuilder(
+                                      future:
+                                      getattchmentData(
+                                          widget.leadId, "lead.lead"),
+                                      builder: (context, AsyncSnapshot snapshot) {
+                                        if (snapshot.hasError) {}
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.done) {
+                                          if (snapshot.hasData) {
+                                            if (snapshot.data == null) {
+                                              return const Center(
+                                                  child: Text(
+                                                      'Something went wrong'));
+                                            }
 
-                                          if (snapshot.data.length != 0) {
-                                            attachmentImagesDisplay =
-                                            snapshot.data['images'];
-                                            attachmentFileDisplay =
-                                            snapshot.data['files'];
+                                            if (snapshot.data.length != 0) {
+                                              attachmentImagesDisplay =
+                                              snapshot.data['images'];
+                                              attachmentFileDisplay =
+                                              snapshot.data['files'];
 
-                                            return Column(
-                                              children: [
+                                              return Column(
+                                                children: [
 
-                                                Container(
-                                                  width: MediaQuery
-                                                      .of(context)
-                                                      .size
-                                                      .width,
-                                                  child: attachmentImagesDisplay
-                                                      .length > 0 ? GridView
-                                                      .builder(
-                                                      shrinkWrap: true,
-                                                      // Avoid scrolling
-                                                      physics: NeverScrollableScrollPhysics(),
-                                                      itemCount: attachmentImagesDisplay
-                                                          .length,
-                                                      // itemCount: 15,
-                                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                        crossAxisCount: 4,
-                                                        mainAxisSpacing: 1.0,
-                                                        crossAxisSpacing: 1.0,
-                                                        childAspectRatio: 1,
-                                                      ),
-                                                      itemBuilder: (
-                                                          BuildContext context,
-                                                          int index) {
-                                                        return Container(
+                                                  Container(
+                                                    width: mediaQueryData
+                                                        .size
+                                                        .width,
+                                                   // width:400,
+                                                    child: attachmentImagesDisplay
+                                                        .length > 0 ? GridView
+                                                        .builder(
+                                                        shrinkWrap: true,
+                                                        // Avoid scrolling
+                                                        physics: NeverScrollableScrollPhysics(),
+                                                        itemCount: attachmentImagesDisplay
+                                                            .length,
+                                                        // itemCount: 15,
+                                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 4,
+                                                          mainAxisSpacing: 1.0,
+                                                          crossAxisSpacing: 1.0,
+                                                          childAspectRatio: 1,
+                                                        ),
+                                                        itemBuilder: (
+                                                            BuildContext context,
+                                                            int index) {
+                                                          return Container(
 
-                                                          margin: EdgeInsets
-                                                              .fromLTRB(
-                                                              2, 0, 2, 0),
-                                                          width: 80,
-                                                          height: double
-                                                              .infinity,
-                                                          child: Stack(
-                                                            children: [
-                                                              Positioned(
-                                                                // rectangle4756kQ (1652:322)
-                                                                left: 0,
-                                                                top: 6,
-                                                                child: Align(
-                                                                  child: SizedBox(
-                                                                    width: 75,
-                                                                    height: 71,
-                                                                    child: Container(
-                                                                      decoration: BoxDecoration(
-                                                                        borderRadius: BorderRadius
-                                                                            .circular(
-                                                                            3),
-                                                                        color: Color(
-                                                                            0xffd9d9d9),
-                                                                        image: DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          image: NetworkImage(
-                                                                              "${attachmentImagesDisplay[index]['url']}?token=${token}"
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(
+                                                                2, 0, 2, 0),
+                                                            width: 80,
+                                                            height: double
+                                                                .infinity,
+                                                            child: Stack(
+                                                              children: [
+                                                                Positioned(
+                                                                  // rectangle4756kQ (1652:322)
+                                                                  left: 0,
+                                                                  top: 6,
+                                                                  child: Align(
+                                                                    child: SizedBox(
+                                                                      width: 75,
+                                                                      height: 71,
+                                                                      child: Container(
+                                                                        decoration: BoxDecoration(
+                                                                          borderRadius: BorderRadius
+                                                                              .circular(
+                                                                              3),
+                                                                          color: Color(
+                                                                              0xffd9d9d9),
+                                                                          image: DecorationImage(
+                                                                            fit: BoxFit
+                                                                                .cover,
+                                                                            image: NetworkImage(
+                                                                                "${attachmentImagesDisplay[index]['url']}?token=${token}"
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                              Positioned(
-                                                                // group20514mrY (1652:323)
-                                                                left: 60,
-                                                                top: 0,
-                                                                child: Align(
-                                                                  child: SizedBox(
-                                                                    width: 20,
-                                                                    height: 20,
-                                                                    child: Image
-                                                                        .asset(
-                                                                      'images/logimagedelete.png',
+                                                                Positioned(
+                                                                  // group20514mrY (1652:323)
+                                                                  left: 60,
+                                                                  top: 0,
+                                                                  child: Align(
+                                                                    child: SizedBox(
                                                                       width: 20,
                                                                       height: 20,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Positioned(
-                                                                // trash2G2c (1652:325)
-                                                                left: 65,
-                                                                top: 5,
-                                                                child: Align(
-                                                                  child: InkWell(
-                                                                    onTap: () async {
-                                                                      int lodAttachmentId =
-                                                                      attachmentImagesDisplay[index]['id'];
-                                                                      var data =
-                                                                      await deleteLogAttachment(
-                                                                          lodAttachmentId);
-
-                                                                      if (data['message'] ==
-                                                                          "Success") {
-                                                                        await getLeadDetails();
-                                                                        setState(() {
-                                                                          attachmentImagesDisplay
-                                                                              .clear();
-                                                                        });
-                                                                      }
-                                                                    },
-                                                                    child: SizedBox(
-                                                                      width: 9,
-                                                                      height: 10,
                                                                       child: Image
                                                                           .asset(
-                                                                        'images/logtrash.png',
-                                                                        width: 9,
-                                                                        height: 10,
+                                                                        'images/logimagedelete.png',
+                                                                        width: 20,
+                                                                        height: 20,
                                                                       ),
                                                                     ),
                                                                   ),
                                                                 ),
-                                                              ),
+                                                                Positioned(
+                                                                  // trash2G2c (1652:325)
+                                                                  left: 65,
+                                                                  top: 5,
+                                                                  child: Align(
+                                                                    child: InkWell(
+                                                                      onTap: () async {
+                                                                        int lodAttachmentId =
+                                                                        attachmentImagesDisplay[index]['id'];
+                                                                        var data =
+                                                                        await deleteLogAttachment(
+                                                                            lodAttachmentId);
 
-
-                                                            ],
-                                                          ),
-                                                        );
-                                                      }
-                                                  ) :
-                                                  Container(),
-                                                ),
-
-                                                SizedBox(height: 5),
-
-                                                Container(
-                                                  width: MediaQuery
-                                                      .of(context)
-                                                      .size
-                                                      .width,
-
-                                                  child: attachmentFileDisplay
-                                                      .length > 0 ? GridView
-                                                      .builder(
-                                                      shrinkWrap: true,
-                                                      // Avoid scrolling
-                                                      physics: NeverScrollableScrollPhysics(),
-                                                      itemCount: attachmentFileDisplay
-                                                          .length,
-                                                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                        crossAxisCount: 1,
-                                                        //mainAxisSpacing: 5.0,
-                                                        crossAxisSpacing: 1.0,
-                                                        childAspectRatio: 5.5,
-                                                      ),
-                                                      itemBuilder: (
-                                                          BuildContext context,
-                                                          int index) {
-                                                        return
-                                                          Container(
-                                                            margin: EdgeInsets
-                                                                .fromLTRB(
-                                                                2, 0, 2, 0),
-                                                            // group20585QEc (1652:502)
-                                                            width: double
-                                                                .infinity,
-                                                            child: Column(
-                                                              crossAxisAlignment: CrossAxisAlignment
-                                                                  .center,
-                                                              children: [
-                                                                Container(
-                                                                  // group20565Yrc (1652:364)
-                                                                  padding: EdgeInsets
-                                                                      .fromLTRB(
-                                                                      14, 11,
-                                                                      18, 9),
-                                                                  width: double
-                                                                      .infinity,
-                                                                  height: 52,
-                                                                  decoration: BoxDecoration(
-                                                                    border: Border
-                                                                        .all(
-                                                                        color: Color(
-                                                                            0xffebebeb)),
-                                                                    borderRadius: BorderRadius
-                                                                        .circular(
-                                                                        6),
-                                                                  ),
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                        .center,
-                                                                    children: [
-                                                                      Container(
-                                                                        // pdffile21FW8 (1652:378)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            12,
-                                                                            0),
-                                                                        width: 23,
-                                                                        height: 29,
+                                                                        if (data['message'] ==
+                                                                            "Success") {
+                                                                          await getLeadDetails();
+                                                                          setState(() {
+                                                                            attachmentImagesDisplay
+                                                                                .clear();
+                                                                          });
+                                                                        }
+                                                                      },
+                                                                      child: SizedBox(
+                                                                        width: 9,
+                                                                        height: 10,
                                                                         child: Image
                                                                             .asset(
-                                                                          attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/pdf"
-                                                                              ? 'images/logpdf.png'
-                                                                              : attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/msword"
-                                                                              ? 'images/logword.png'
-                                                                              : attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                              ? 'images/logexcel.png'
-                                                                              : attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/xml"
-                                                                              ? 'images/logxml.png'
-                                                                              : attachmentFileDisplay[index]["mimetype"] ==
-                                                                              "application/zip"
-                                                                              ? 'images/logzip.png'
-                                                                              : '',
+                                                                          'images/logtrash.png',
+                                                                          width: 9,
+                                                                          height: 10,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
 
 
+                                                              ],
+                                                            ),
+                                                          );
+                                                        }
+                                                    ) :
+                                                    Container(),
+                                                  ),
+
+                                                  SizedBox(height: 5),
+
+                                                  Container(
+                                                    width: mediaQueryData
+                                                        .size
+                                                        .width,
+                                                     // width:400,
+                                                    child: attachmentFileDisplay
+                                                        .length > 0 ? GridView
+                                                        .builder(
+                                                        shrinkWrap: true,
+                                                        // Avoid scrolling
+                                                        physics: NeverScrollableScrollPhysics(),
+                                                        itemCount: attachmentFileDisplay
+                                                            .length,
+                                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                          crossAxisCount: 1,
+                                                          //mainAxisSpacing: 5.0,
+                                                          crossAxisSpacing: 1.0,
+                                                          childAspectRatio: 5.5,
+                                                        ),
+                                                        itemBuilder: (
+                                                            BuildContext context,
+                                                            int index) {
+                                                          return
+                                                            Container(
+                                                              margin: EdgeInsets
+                                                                  .fromLTRB(
+                                                                  2, 0, 2, 0),
+                                                              // group20585QEc (1652:502)
+                                                              width: double
+                                                                  .infinity,
+                                                              child: Column(
+                                                                crossAxisAlignment: CrossAxisAlignment
+                                                                    .center,
+                                                                children: [
+                                                                  Container(
+                                                                    // group20565Yrc (1652:364)
+                                                                    padding: EdgeInsets
+                                                                        .fromLTRB(
+                                                                        14, 11,
+                                                                        18, 9),
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 52,
+                                                                    decoration: BoxDecoration(
+                                                                      border: Border
+                                                                          .all(
+                                                                          color: Color(
+                                                                              0xffebebeb)),
+                                                                      borderRadius: BorderRadius
+                                                                          .circular(
+                                                                          6),
+                                                                    ),
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment
+                                                                          .center,
+                                                                      children: [
+                                                                        Container(
+                                                                          // pdffile21FW8 (1652:378)
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              12,
+                                                                              0),
                                                                           width: 23,
                                                                           height: 29,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/pdf"
+                                                                                ? 'images/logpdf.png'
+                                                                                : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/msword"
+                                                                                ? 'images/logword.png'
+                                                                                : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                ? 'images/logexcel.png'
+                                                                                : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/xml"
+                                                                                ? 'images/logxml.png'
+                                                                                : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                "application/zip"
+                                                                                ? 'images/logzip.png'
+                                                                                : '',
+
+
+                                                                            width: 23,
+                                                                            height: 29,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      Container(
-                                                                        width: MediaQuery
-                                                                            .of(
-                                                                            context)
-                                                                            .size
-                                                                            .width /
-                                                                            2,
-                                                                        //height: double.infinity,
-                                                                        child: Stack(
-                                                                          children: [
-                                                                            Positioned(
-                                                                              // pdfnamearea1tc (1652:376)
-                                                                              left: 0,
-                                                                              top: 00,
-                                                                              child: Align(
-                                                                                child: SizedBox(
-                                                                                  width: MediaQuery
-                                                                                      .of(
-                                                                                      context)
-                                                                                      .size
-                                                                                      .width /
-                                                                                      2,
-                                                                                  child: Text(
-                                                                                    attachmentFileDisplay[index]["name"],
-                                                                                    style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 12,
-                                                                                      fontWeight: FontWeight
-                                                                                          .w600,
-                                                                                      color: Color(
-                                                                                          0xff202020),
+                                                                        Container(
+                                                                          width: mediaQueryData
+                                                                              .size
+                                                                              .width /
+                                                                              2,
+                                                                         // width:250,
+                                                                          //height: double.infinity,
+                                                                          child: Stack(
+                                                                            children: [
+                                                                              Positioned(
+                                                                                // pdfnamearea1tc (1652:376)
+                                                                                left: 0,
+                                                                                top: 00,
+                                                                                child: Align(
+                                                                                  child: SizedBox(
+                                                                                    width: mediaQueryData
+                                                                                        .size
+                                                                                        .width /
+                                                                                        2,
+                                                                                   // width:250,
+                                                                                    child: Text(
+                                                                                      attachmentFileDisplay[index]["name"],
+                                                                                      style: TextStyle(
+                                                                                        fontFamily: 'Mulish',
+                                                                                        fontSize: 12,
+                                                                                        fontWeight: FontWeight
+                                                                                            .w600,
+                                                                                        color: Color(
+                                                                                            0xff202020),
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                            Positioned(
-                                                                              // pdfuDJ (1652:377)
-                                                                              left: 0,
-                                                                              top: 18,
-                                                                              child: Align(
-                                                                                child: SizedBox(
-                                                                                  width: 50,
-                                                                                  // height: 15,
-                                                                                  child: Text(
-                                                                                    attachmentFileDisplay[index]["mimetype"] ==
-                                                                                        "application/pdf"
-                                                                                        ?
-                                                                                    "PDF"
-                                                                                        : attachmentFileDisplay[index]["mimetype"] ==
-                                                                                        "application/msword"
-                                                                                        ?
-                                                                                    "WORD"
-                                                                                        : attachmentFileDisplay[index]["mimetype"] ==
-                                                                                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                        ?
-                                                                                    "EXCEL"
-                                                                                        : attachmentFileDisplay[index]["mimetype"] ==
-                                                                                        "application/xml"
-                                                                                        ?
-                                                                                    "XML"
-                                                                                        : attachmentFileDisplay[index]["mimetype"] ==
-                                                                                        "application/zip"
-                                                                                        ?
-                                                                                    "ZIP"
-                                                                                        : "",
+                                                                              Positioned(
+                                                                                // pdfuDJ (1652:377)
+                                                                                left: 0,
+                                                                                top: 18,
+                                                                                child: Align(
+                                                                                  child: SizedBox(
+                                                                                    width: 50,
+                                                                                    // height: 15,
+                                                                                    child: Text(
+                                                                                      attachmentFileDisplay[index]["mimetype"] ==
+                                                                                          "application/pdf"
+                                                                                          ?
+                                                                                      "PDF"
+                                                                                          : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                          "application/msword"
+                                                                                          ?
+                                                                                      "WORD"
+                                                                                          : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                          ?
+                                                                                      "EXCEL"
+                                                                                          : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                          "application/xml"
+                                                                                          ?
+                                                                                      "XML"
+                                                                                          : attachmentFileDisplay[index]["mimetype"] ==
+                                                                                          "application/zip"
+                                                                                          ?
+                                                                                      "ZIP"
+                                                                                          : "",
 
-                                                                                    style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 9,
-                                                                                      fontWeight: FontWeight
-                                                                                          .w500,
+                                                                                      style: TextStyle(
+                                                                                        fontFamily: 'Mulish',
+                                                                                        fontSize: 9,
+                                                                                        fontWeight: FontWeight
+                                                                                            .w500,
 
-                                                                                      color: Color(
-                                                                                          0xff666666),
+                                                                                        color: Color(
+                                                                                            0xff666666),
+                                                                                      ),
                                                                                     ),
                                                                                   ),
                                                                                 ),
                                                                               ),
-                                                                            ),
-                                                                          ],
+                                                                            ],
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                      Padding(
-                                                                        padding: const EdgeInsets
-                                                                            .only(
-                                                                            left: 35),
-                                                                        child: InkWell(
+                                                                        Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .only(
+                                                                              left: 35),
+                                                                          child: InkWell(
+                                                                            child: Container(
+                                                                              // trash2Qvk (1652:366)
+                                                                              margin: EdgeInsets
+                                                                                  .fromLTRB(
+                                                                                  0,
+                                                                                  0,
+                                                                                  15,
+                                                                                  1),
+                                                                              width: 15,
+                                                                              height: 16,
+                                                                              child: Image
+                                                                                  .asset(
+                                                                                'images/logtrash.png',
+                                                                                width: 15,
+                                                                                height: 16,
+                                                                              ),
+                                                                            ),
+                                                                            onTap: () async {
+                                                                              int lodAttachmentId =
+                                                                              attachmentFileDisplay[index]
+                                                                              [
+                                                                              'id'];
+                                                                              var data =
+                                                                              await deleteLogAttachment(
+                                                                                  lodAttachmentId);
+
+                                                                              if (data[
+                                                                              'message'] ==
+                                                                                  "Success") {
+                                                                                print(
+                                                                                    "jhbdndsjbv");
+                                                                                await getLeadDetails();
+                                                                                setState(
+                                                                                        () {
+                                                                                      attachmentFileDisplay
+                                                                                          .clear();
+                                                                                    });
+                                                                              }
+                                                                            },
+                                                                          ),
+                                                                        ),
+                                                                        InkWell(
                                                                           child: Container(
-                                                                            // trash2Qvk (1652:366)
+                                                                            // download6oa (1652:371)
                                                                             margin: EdgeInsets
                                                                                 .fromLTRB(
                                                                                 0,
                                                                                 0,
-                                                                                15,
-                                                                                1),
-                                                                            width: 15,
-                                                                            height: 16,
+                                                                                0,
+                                                                                2),
+                                                                            width: 14,
+                                                                            height: 14,
                                                                             child: Image
                                                                                 .asset(
-                                                                              'images/logtrash.png',
-                                                                              width: 15,
-                                                                              height: 16,
+                                                                              'images/logdownload.png',
+                                                                              width: 14,
+                                                                              height: 14,
                                                                             ),
                                                                           ),
                                                                           onTap: () async {
-                                                                            int lodAttachmentId =
-                                                                            attachmentFileDisplay[index]
-                                                                            [
-                                                                            'id'];
-                                                                            var data =
-                                                                            await deleteLogAttachment(
-                                                                                lodAttachmentId);
+                                                                            await getExternalStorageDirectory();
 
-                                                                            if (data[
-                                                                            'message'] ==
-                                                                                "Success") {
-                                                                              print(
-                                                                                  "jhbdndsjbv");
-                                                                              await getLeadDetails();
-                                                                              setState(
-                                                                                      () {
-                                                                                    attachmentFileDisplay
-                                                                                        .clear();
-                                                                                  });
-                                                                            }
+                                                                            print(
+                                                                                selectedImagesDisplay);
+                                                                            print(
+                                                                                "dbjfnkdfbjsjfbdsvbkdsvkdj");
+
+                                                                            //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
+                                                                            String mimetypes = attachmentFileDisplay[index]['mimetype'];
+                                                                            //String mimetypes = "application/pdf";
+
+                                                                            String itemName,
+                                                                                itemNamefinal;
+
+                                                                            itemName =
+                                                                            attachmentFileDisplay[index]['name'];
+
+                                                                            mimetypes ==
+                                                                                "application/pdf"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.pdf"
+                                                                                : mimetypes ==
+                                                                                "application/msword"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.doc"
+                                                                                : mimetypes ==
+                                                                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.xlsx"
+                                                                                : mimetypes ==
+                                                                                "application/xml"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.xml"
+                                                                                : mimetypes ==
+                                                                                "application/zip"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.zip"
+                                                                                : mimetypes ==
+                                                                                "image/jpeg"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.jpeg"
+                                                                                : mimetypes ==
+                                                                                "image/png"
+                                                                                ?
+                                                                            itemNamefinal =
+                                                                            "${itemName}.png"
+                                                                                : itemNamefinal =
+                                                                            "${itemName}";
+
+
+                                                                            FlutterDownloader
+                                                                                .registerCallback(
+                                                                                downloadCallback);
+
+                                                                            requestPermission(
+                                                                                itemNamefinal,
+                                                                                attachmentFileDisplay[index]['url']);
                                                                           },
                                                                         ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height: 9,
+                                                                  ),
+
+
+                                                                ],
+                                                              ),
+                                                            );
+                                                        }
+                                                    ) :
+                                                    Container(),
+                                                  ),
+
+
+                                                ],
+                                              );
+                                            } else {
+                                              return Container();
+                                            }
+                                          }
+                                        }
+                                        return Center(
+                                            child: const CircularProgressIndicator());
+                                      }),
+                                  TextButton(
+                                      onPressed: () {
+                                        myAlert("attachment");
+                                      },
+                                      child: Text(
+                                        "Select Attachments",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Mulish',
+                                        ),
+                                      )),
+                                ],
+                              ),
+                            ),
+                          ),
+                          //
+
+                          // code for attchments
+
+                          // code for send message
+                          Container(
+                            width: mediaQueryData
+                                .size
+                                .width,
+
+                           // width:400,
+                            //height: MediaQuery.of(context).size.height/6,
+                            //color: Colors.green,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Visibility(
+                                  visible: followersVisibility,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 25),
+                                    child: Container(
+                                      //color: Colors.red,
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            "To:",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF666666),
+                                              fontSize: 10,
+                                              fontFamily: 'Mulish',
+                                            ),
+                                          ),
+                                          Text(
+                                            " Followers of",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF666666),
+                                              fontSize: 10,
+                                              fontFamily: 'Mulish',
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 5,
+                                          ),
+                                          Container(
+                                            //color: Colors.green,
+                                              width:
+                                              mediaQueryData
+                                                  .size
+                                                  .width / 2,
+                                              //width:250,
+                                              child: Text(
+                                                leadname!,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xFF414141),
+                                                  fontSize: 10,
+                                                  fontFamily: 'Mulish',
+                                                ),
+                                              )),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Visibility(
+                                  visible: followersVisibility,
+                                  child: Container(
+                                    width: mediaQueryData
+                                        .size
+                                        .width,
+                                    // height: 100,
+                                    //width:400,
+                                    // color: Colors.red,
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      physics: NeverScrollableScrollPhysics(),
+                                      itemCount: sendMailData.length,
+                                      itemBuilder: (_, i) {
+                                        isCheckedMail =
+                                        sendMailData[i]['selected'];
+                                        return Padding(
+                                          padding: const EdgeInsets.only(left: 8),
+                                          child: Container(
+                                            height: 15,
+                                            child: Row(
+                                              children: [
+                                                Transform.scale(
+                                                  scale: 0.7,
+                                                  child: Checkbox(
+                                                    shape: CircleBorder(),
+                                                    activeColor: Color(
+                                                        0xFF3D418E),
+                                                    value: isCheckedMail,
+                                                    onChanged: (bool? value) {
+                                                      print(value);
+                                                      print("check box issues");
+
+                                                      String emails = sendMailData[i]['email'] ??
+                                                          "";
+                                                      value == true &&
+                                                          sendMailData[i]['id'] ==
+                                                              null ?
+                                                      showDialog(
+                                                        context: context,
+                                                        builder: (
+                                                            BuildContext context) =>
+                                                            _buildMailPopupDialog(
+                                                                context, 0,
+                                                                emails),
+                                                      ).then((value) =>
+                                                          setState(() {
+                                                            sendMailData[i]['id'] =
+                                                                scheduleCustcreateId;
+                                                          }))
+                                                          : null;
+                                                      setState(() {
+                                                        print(
+                                                            scheduleCustcreateId);
+                                                        print(
+                                                            "scheduleCustcreateId");
+
+
+                                                        isCheckedMail = value!;
+                                                        sendMailData[i]['id'] =
+                                                            scheduleCustcreateId;
+                                                        sendMailData[i]['selected'] =
+                                                            value;
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                                Text(
+                                                  sendMailData[i]['name'],
+                                                  style: TextStyle(
+                                                      color: Color(0xFF666666),
+                                                      fontSize: 11,
+                                                      fontFamily: 'Mulish',
+                                                      fontWeight: FontWeight
+                                                          .w500),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Visibility(
+                                  visible: followersVisibility,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          salesperImg != ""
+                                              ? Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 23),
+                                            child: Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                              ),
+                                              child: CircleAvatar(
+                                                radius: 12,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                  BorderRadius.circular(18),
+                                                  child: Image.network(
+                                                      "${salesperImg!}?token=${token}"),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                              : Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 23),
+                                            child: Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    //  color: Colors.green
+                                                  ),
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(20))),
+                                              child: CircleAvatar(
+                                                radius: 12,
+                                                child: Icon(
+                                                  Icons.person,
+                                                  size: 20,
+                                                  // Adjust the size of the icon as per your requirements
+                                                  color: Colors
+                                                      .white, // Adjust the color of the icon as per your requirements
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, right: 25),
+                                            child: Container(
+                                              width: mediaQueryData
+                                                  .size
+                                                  .width /
+                                                  1.32,
+                                              //width:250,
+                                              //height: 46,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(5)),
+                                                  color: Color(0xFFF6F6F6),
+                                                  border: Border.all(
+                                                    color: Color(0xFFEBEBEB),
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        width: mediaQueryData
+                                                            .size
+                                                            .width /
+                                                            1.8,
+                                                        //width:250,
+                                                        // height: 40,
+                                                        //color: Colors.red,
+                                                        child: Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(
+                                                              left: 10),
+                                                          child: TextField(
+                                                              textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                              style: TextStyle(
+                                                                fontWeight: FontWeight
+                                                                    .w400,
+                                                                fontFamily: 'Mulish',
+                                                                fontSize: 11,
+                                                                color: Color(
+                                                                    0xFF000000),
+                                                              ),
+
+
+                                                              maxLines: null,
+                                                              controller: lognoteController,
+                                                              decoration:
+                                                              const InputDecoration(
+                                                                  border:
+                                                                  InputBorder
+                                                                      .none,
+                                                                  hintText:
+                                                                  "Send a message to followers",
+                                                                  hintStyle: TextStyle(
+                                                                    //fontFamily: "inter",
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                      fontFamily:
+                                                                      'Mulish',
+                                                                      fontSize: 11,
+                                                                      color: Color(
+                                                                          0xFFAFAFAF)))),
+                                                        ),
+                                                      ),
+                                                      // Divider(
+                                                      //   color: Colors.grey[350],
+                                                      //   thickness: 1,
+                                                      // ),
+
+
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .only(left: 10),
+                                                    child: IconButton(
+                                                        onPressed: () async {
+                                                          recipient!.clear();
+                                                          await defaultSendmsgvalues();
+                                                          setState(() {
+                                                            recipientsVisibility ==
+                                                                true
+                                                                ?
+                                                            recipientsVisibility =
+                                                            false
+                                                                : recipientsVisibility =
+                                                            true;
+                                                          });
+
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext
+                                                            context) =>
+                                                                _buildSendmessagePopupDialog(
+                                                                    context, 0),
+                                                          ).then((value) =>
+                                                              setState(() {}));
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .arrow_outward_rounded,
+                                                          size: 18,
+                                                          color: Colors.grey[700],
+                                                        )),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      selectedImages.isEmpty
+                                          ? Padding(
+                                        padding: const EdgeInsets.only(left: 73),
+                                        child: Container(
+                                         width:
+                                         mediaQueryData
+                                              .size
+                                              .width,
+                                          // height: 40,
+                                          // width:400,
+                                        ),
+                                      )
+                                          : Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 70, right: 50, top: 5),
+                                        child: Container(
+                                          width:
+                                          mediaQueryData
+                                              .size
+                                              .width,
+                                          //width:400,
+                                          // height: 40,
+                                          //color: Colors.red,
+                                          child: Container(
+                                            width: 40,
+                                            //height: 40,
+                                            // color: Colors.green,
+                                            child: GridView.builder(
+                                              shrinkWrap: true,
+                                              // Avoid scrolling
+                                              physics:
+                                              NeverScrollableScrollPhysics(),
+                                              itemCount: selectedImages.length,
+                                              gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 8,
+                                              ),
+                                              itemBuilder: (BuildContext context,
+                                                  int index) {
+                                                return selectedImages[index]
+                                                    .path
+                                                    .contains(".pdf")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(0xFFEF5350),
+                                                  child: Icon(Icons
+                                                      .picture_as_pdf_sharp),
+                                                )
+                                                    : selectedImages[index]
+                                                    .path
+                                                    .contains(".zip")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color:
+                                                  Color(0xFFFDD835),
+                                                  child: Icon(Icons
+                                                      .folder_zip_outlined),
+                                                )
+                                                    : selectedImages[index]
+                                                    .path
+                                                    .contains(".xlsx")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(
+                                                      0xFF4CAF50),
+                                                  child: Icon(
+                                                    Icons.clear,
+                                                    color: Colors
+                                                        .white,
+                                                  ),
+                                                )
+                                                    : selectedImages[
+                                                index]
+                                                    .path
+                                                    .contains(
+                                                    ".xml")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(
+                                                      0xFF0277BD),
+                                                  child: Icon(Icons
+                                                      .code_off),
+                                                )
+                                                    : selectedImages[
+                                                index]
+                                                    .path
+                                                    .contains(
+                                                    ".doc")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height:
+                                                  40,
+                                                  color: Color(
+                                                      0xFF2196F3),
+                                                  child: Icon(
+                                                      Icons
+                                                          .article_outlined),
+                                                )
+                                                    : Center(
+                                                    child: kIsWeb
+                                                        ? Image.network(
+                                                        selectedImages[index]
+                                                            .path)
+                                                        : Image.file(
+                                                        selectedImages[index]));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 60),
+                                            child: Container(
+                                              child: IconButton(
+                                                icon: Image.asset(
+                                                    "images/pi.png"),
+                                                onPressed: () {
+                                                  myAlert("lognote");
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 27, top: 3),
+                                            child: SizedBox(
+                                              width: 55,
+                                              height: 30,
+                                              child: ElevatedButton(
+                                                  child: Center(
+                                                      child: SvgPicture.asset(
+                                                          "images/sendd.svg")
+                                                    // Text(
+                                                    //   "Send",
+                                                    //   style: TextStyle(
+                                                    //       fontWeight: FontWeight.w500,
+                                                    //       fontFamily: 'Mulish',
+                                                    //       fontSize: 10,
+                                                    //       color: Colors.white),
+                                                    // ),
+                                                  ),
+                                                  onPressed: _isSavingData
+                                                      ? null // Disable the button if saving is in progress
+                                                      : () async {
+                                                    setState(() {
+                                                      _isSavingData = true;
+                                                    });
+
+                                                    for (int i = 0;
+                                                    i < selectedImages.length;
+                                                    i++) {
+                                                      // print(selectedImages[i].path.split('/').last);
+
+                                                      //imagefilename=selectedImages[i].path.split('/').last;
+
+                                                      imagepath =
+                                                          selectedImages[i]
+                                                              .path
+                                                              .toString();
+                                                      File imagefile =
+                                                      File(imagepath);
+
+                                                      Uint8List imagebytes =
+                                                      await imagefile
+                                                          .readAsBytes(); //convert to bytes
+                                                      base64string =
+                                                          base64.encode(
+                                                              imagebytes);
+
+                                                      //
+
+                                                      String dataImages =
+                                                          '{"name":"name","type":"binary","datas":"${base64string
+                                                          .toString()}"}';
+
+                                                      Map<String,
+                                                          dynamic> jsondata =
+                                                      jsonDecode(dataImages);
+                                                      myData1.add(jsondata);
+                                                    }
+                                                    print(followersVisibility);
+                                                    print("final datatata");
+
+                                                    bodyController.text =
+                                                        lognoteController.text;
+
+                                                    var resMessage;
+                                                    followersVisibility == false
+                                                        ? resMessage =
+                                                    await logNoteData(myData1)
+                                                        : resMessage =
+                                                    await createSendmessage(
+                                                        myData1);
+
+                                                    if (resMessage['message'] ==
+                                                        "success") {
+                                                      print(
+                                                          resMessage['data']['att_count']);
+                                                      print("attachment count ");
+                                                      setState(() {
+                                                        _isSavingData = false;
+                                                        attachmentCount =
+                                                            resMessage['data']['att_count']
+                                                                .toString();
+
+                                                        logDataHeader.clear();
+                                                        logDataTitle.clear();
+                                                        selectedImagesDisplay
+                                                            .clear();
+
+                                                        lognoteController.text =
+                                                        "";
+                                                        selectedImages.clear();
+                                                        myData1.clear();
+                                                        bodyController.text = "";
+
+
+                                                        FocusScope.of(context).unfocus();
+                                                      });
+                                                    }
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: Color(0xFFFA256A),
+                                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: lognoteVisibility,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          salesperImg != ""
+                                              ? Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 25),
+                                            child: Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(),
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(20)),
+                                              ),
+                                              child: CircleAvatar(
+                                                radius: 12,
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                  BorderRadius.circular(18),
+                                                  child: Image.network(
+                                                      "${salesperImg!}?token=${token}"),
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                              : Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 25),
+                                            child: Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    //  color: Colors.green
+                                                  ),
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(20))),
+                                              child: CircleAvatar(
+                                                radius: 12,
+                                                child: Icon(
+                                                  Icons.person,
+                                                  size: 20,
+                                                  // Adjust the size of the icon as per your requirements
+                                                  color: Colors
+                                                      .white, // Adjust the color of the icon as per your requirements
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 15, right: 20),
+                                            child: Container(
+                                              width: mediaQueryData
+                                                  .size
+                                                  .width /
+                                                  1.34,
+
+                                               // width:300,
+                                              //height: 46,
+                                              decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(5)),
+                                                  color: Color(0xFFF6F6F6),
+                                                  border: Border.all(
+                                                    color: Color(0xFFEBEBEB),
+                                                  )),
+                                              child: Row(
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                    children: [
+                                                      Container(
+                                                        width: mediaQueryData
+                                                            .size
+                                                            .width /
+                                                            1.8,
+                                                        //width:300,
+                                                        // height: 40,
+                                                        //color: Colors.red,
+                                                        child: Padding(
+                                                          padding: const EdgeInsets
+                                                              .only(
+                                                              left: 10),
+                                                          child: TextField(
+                                                              textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                              style: TextStyle(
+                                                                fontWeight: FontWeight
+                                                                    .w400,
+                                                                fontFamily: 'Mulish',
+                                                                fontSize: 11,
+                                                                color: Color(
+                                                                    0xFF000000),
+                                                              ),
+                                                              //expands: true,
+                                                              maxLines: null,
+                                                              controller: lognoteController,
+                                                              decoration:
+                                                              const InputDecoration(
+                                                                  border:
+                                                                  InputBorder
+                                                                      .none,
+                                                                  hintText:
+                                                                  "Log an internal note",
+                                                                  hintStyle: TextStyle(
+                                                                    //fontFamily: "inter",
+                                                                      fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                      fontFamily:
+                                                                      'Mulish',
+                                                                      fontSize: 12,
+                                                                      color: Color(
+                                                                          0xFFAFAFAF)))),
+                                                        ),
+                                                      ),
+
+
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets
+                                                        .only(left: 20),
+                                                    child: IconButton(
+                                                        onPressed: () async {
+                                                          recipient!.clear();
+                                                          await defaultSendmsgvalues();
+                                                          setState(() {
+                                                            recipientsVisibility ==
+                                                                false
+                                                                ?
+                                                            recipientsVisibility =
+                                                            false
+                                                                : recipientsVisibility =
+                                                            false;
+                                                          });
+
+                                                          showDialog(
+                                                            context: context,
+                                                            builder: (BuildContext
+                                                            context) =>
+                                                                _buildSendmessagePopupDialog(
+                                                                    context, 0),
+                                                          ).then((value) =>
+                                                              setState(() {}));
+                                                        },
+                                                        icon: Icon(
+                                                          Icons
+                                                              .arrow_outward_rounded,
+                                                          size: 18,
+                                                          color: Colors.grey[700],
+                                                        )),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      selectedImages.isEmpty
+                                          ? Padding(
+                                        padding: const EdgeInsets.only(left: 73),
+                                        child: Container(
+                                          width:
+                                          mediaQueryData
+                                              .size
+                                              .width,
+                                          //width:400,
+                                          // height: 40,
+                                        ),
+                                      )
+                                          : Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 70, right: 50, top: 5),
+                                        child: Container(
+                                         width:
+                                         mediaQueryData
+                                              .size
+                                              .width,
+                                         // width:400,
+                                          // height: 40,
+                                          child: Container(
+                                            width: 40,
+                                            //height: 40,
+                                            child: GridView.builder(
+                                              shrinkWrap: true,
+                                              // Avoid scrolling
+                                              physics:
+                                              NeverScrollableScrollPhysics(),
+                                              itemCount: selectedImages.length,
+                                              gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 8),
+                                              itemBuilder: (BuildContext context,
+                                                  int index) {
+                                                print("pdfffffffffff2");
+                                                return selectedImages[index]
+                                                    .path
+                                                    .contains(".pdf")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(0xFFEF5350),
+                                                  child: Icon(Icons
+                                                      .picture_as_pdf_sharp),
+                                                )
+                                                    : selectedImages[index]
+                                                    .path
+                                                    .contains(".zip")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color:
+                                                  Color(0xFFFDD835),
+                                                  child: Icon(Icons
+                                                      .folder_zip_outlined),
+                                                )
+                                                    : selectedImages[index]
+                                                    .path
+                                                    .contains(".xlsx")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(
+                                                      0xFF4CAF50),
+                                                  child: Icon(
+                                                      Icons.clear),
+                                                )
+                                                    : selectedImages[
+                                                index]
+                                                    .path
+                                                    .contains(
+                                                    ".xml")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height: 40,
+                                                  color: Color(
+                                                      0xFF0277BD),
+                                                  child: Icon(Icons
+                                                      .code_off),
+                                                )
+                                                    : selectedImages[
+                                                index]
+                                                    .path
+                                                    .contains(
+                                                    ".doc")
+                                                    ? Container(
+                                                  width: 40,
+                                                  height:
+                                                  40,
+                                                  color: Color(
+                                                      0xFF2196F3),
+                                                  child: Icon(
+                                                      Icons
+                                                          .article_outlined),
+                                                )
+                                                    : Center(
+                                                    child: kIsWeb
+                                                        ? Image.network(
+                                                        selectedImages[index]
+                                                            .path)
+                                                        : Image.file(
+                                                        selectedImages[index]));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .spaceBetween,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 60),
+                                            child: Container(
+                                              child: IconButton(
+                                                icon: Image.asset(
+                                                    "images/pi.png"),
+                                                onPressed: () {
+                                                  myAlert("lognote");
+                                                },
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 25, top: 3),
+                                            child: SizedBox(
+                                              width: 55,
+                                              height: 30,
+                                              child: ElevatedButton(
+                                                  child: Center(
+                                                      child: SvgPicture.asset(
+                                                          "images/sendd.svg")
+                                                    // Text(
+                                                    //   "Send",
+                                                    //   style: TextStyle(
+                                                    //       fontWeight: FontWeight.w500,
+                                                    //       fontFamily: 'Mulish',
+                                                    //       fontSize: 10,
+                                                    //       color: Colors.white),
+                                                    // ),
+                                                  ),
+                                                  onPressed: _isSavingData
+                                                      ? null // Disable the button if saving is in progress
+                                                      : () async {
+                                                    setState(() {
+                                                      _isSavingData = true;
+                                                    });
+
+                                                    for (int i = 0;
+                                                    i < selectedImages.length;
+                                                    i++) {
+                                                      // print(selectedImages[i].path.split('/').last);
+
+                                                      //imagefilename=selectedImages[i].path.split('/').last;
+
+                                                      imagepath =
+                                                          selectedImages[i]
+                                                              .path
+                                                              .toString();
+                                                      File imagefile =
+                                                      File(imagepath);
+
+                                                      Uint8List imagebytes =
+                                                      await imagefile
+                                                          .readAsBytes(); //convert to bytes
+                                                      base64string =
+                                                          base64.encode(
+                                                              imagebytes);
+
+                                                      //
+
+                                                      String dataImages =
+                                                          '{"name":"name","type":"binary","datas":"${base64string
+                                                          .toString()}"}';
+
+                                                      Map<String,
+                                                          dynamic> jsondata =
+                                                      jsonDecode(dataImages);
+                                                      myData1.add(jsondata);
+                                                    }
+                                                    print(followersVisibility);
+                                                    print("final datatata");
+
+                                                    bodyController.text =
+                                                        lognoteController.text;
+
+                                                    var resMessage;
+                                                    followersVisibility == false
+                                                        ? resMessage =
+                                                    await logNoteData(myData1)
+                                                        : resMessage =
+                                                    await createSendmessage(
+                                                        myData1);
+
+                                                    if (resMessage['message'] ==
+                                                        "success") {
+                                                      print(
+                                                          resMessage['data']['att_count']);
+                                                      print("attachment count ");
+                                                      setState(() {
+                                                        _isSavingData = false;
+                                                        attachmentCount =
+                                                            resMessage['data']['att_count']
+                                                                .toString();
+
+                                                        logDataHeader.clear();
+                                                        logDataTitle.clear();
+                                                        selectedImagesDisplay
+                                                            .clear();
+
+                                                        lognoteController.text =
+                                                        "";
+                                                        selectedImages.clear();
+                                                        myData1.clear();
+                                                        bodyController.text = "";
+                                                        FocusScope.of(context).unfocus();
+                                                      });
+                                                    }
+                                                  },
+                                                  style: ElevatedButton.styleFrom(
+                                                    primary: Color(0xFFFA256A),
+                                                  )),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Visibility(
+                            visible: scheduleLength == 0 ? false : true,
+                            // visible:true,
+                            child: Container(
+                              // width: 104,
+                              // height: 16,
+                              color: Color(0xFFF6F6F6),
+
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton.icon(
+                                      // <-- TextButton
+                                      onPressed: () {
+                                        setState(() {
+                                          scheduleActivityVisibility == true
+                                              ? scheduleActivityVisibility = false
+                                              : scheduleActivityVisibility = true;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_drop_down_rounded,
+                                        size: 30.0,
+                                        color: Colors.black54,
+                                      ),
+                                      label: Text(
+                                        'Planned Activities',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Color(0xFF000000),
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                        ),
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible: scheduleVisibiltyOverdue,
+                                      child: Container(
+                                        width: 15,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.red,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                              scheduleOverdue.toString(),
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Mulish',
+                                                  color: Colors.white),
+                                            )),
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible: scheduleVisibiltyToday,
+                                      child: Container(
+                                        width: 15,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.yellow,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                              scheduleToday.toString(),
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.bold,
+                                                  //fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Mulish',
+                                                  color: Colors.black),
+                                            )),
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible: scheduleVisibiltyPlanned,
+                                      child: Container(
+                                        width: 15,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.green,
+                                        ),
+                                        child: Center(
+                                            child: Text(
+                                              schedulePlanned.toString(),
+                                              style: TextStyle(
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'Mulish',
+                                                  color: Colors.white),
+                                            )),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // code change for schedule activity
+
+                          Visibility(
+                            visible: scheduleActivityVisibility,
+                            child: Container(
+                              //color: Colors.green,
+                              //height: MediaQuery.of(context).size.height/1.8,
+                              child: scheduleLength == 0
+                                  ? Container()
+                                  : ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: scheduleLength,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    scheduleData['records'][index]['icon'] ==
+                                        "fa-envelope"
+                                        ? scheduleIcon = const Icon(
+                                      Icons.email_outlined,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records'][index]['icon'] ==
+                                        "fa-phone"
+                                        ? scheduleIcon = Icon(
+                                      Icons.phone,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records'][index]
+                                    ['icon'] ==
+                                        "fa-users"
+                                        ? scheduleIcon = Icon(
+                                      Icons.person,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records'][index]
+                                    ['icon'] ==
+                                        "fa-file-text-o"
+                                        ? scheduleIcon = Icon(
+                                      Icons.file_copy,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records'][index]
+                                    ['icon'] ==
+                                        "fa-line-chart"
+                                        ? scheduleIcon = Icon(
+                                      Icons.bar_chart,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records']
+                                    [index]
+                                    ['icon'] ==
+                                        "fa-tasks"
+                                        ? scheduleIcon = Icon(
+                                      Icons.task,
+                                      color: Colors.white,
+                                      size: 8,
+                                    )
+                                        : scheduleData['records']
+                                    [index]
+                                    ['icon'] ==
+                                        "fa-upload"
+                                        ? scheduleIcon =
+                                        Icon(
+                                          Icons.upload,
+                                          color: Colors
+                                              .white,
+                                          size: 8,
+                                        )
+                                        : Icon(
+                                      Icons.circle,
+                                      color: Colors
+                                          .white,
+                                      size: 8,
+                                    );
+
+                                    return Column(
+                                      crossAxisAlignment: CrossAxisAlignment
+                                          .center,
+                                      children: [
+                                        Padding(
+                                          //padding: const EdgeInsets.all(25.0),
+                                          padding: const EdgeInsets.only(
+                                              top: 10, bottom: 10),
+                                          child: Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                25, 0, 25, 5),
+
+                                            width: double.infinity,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                  color: Color(0xffebebeb)),
+                                              color: Color(0xfffcfcfc),
+                                              // color: Colors.blue,
+                                              borderRadius: BorderRadius.circular(
+                                                  4),
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment
+                                                  .start,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0, 0, 0, 0),
+
+                                                  width: mediaQueryData
+                                                      .size
+                                                      .width / 1,
+                                                  // width:300,
+                                                  height: 40,
+                                                  child: Row(
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .center,
+                                                    children: [
+                                                      Container(
+                                                        //color:Colors.pink,
+                                                        // ellipse121x7a (1112:1367)
+                                                        margin: EdgeInsets
+                                                            .fromLTRB(9, 0, 9, 2),
+                                                        width: 25,
+                                                        height: 25,
+                                                        child: Stack(
+                                                          alignment: Alignment
+                                                              .center,
+                                                          children: [
+                                                            // scheduleData['records'][index]['delay_label'].toString() ?? ""
+                                                            CircleAvatar(
+                                                              radius: 12,
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(18),
+                                                                child: Image
+                                                                    .network(
+                                                                    "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                              ),
+                                                            ),
+
+                                                            Positioned(
+                                                              bottom: 0,
+                                                              right: 0,
+                                                              child: Container(
+                                                                width: 10.0,
+                                                                height: 10.0,
+                                                                decoration:
+                                                                BoxDecoration(
+                                                                  shape:
+                                                                  BoxShape.circle,
+                                                                  color: Color(
+                                                                      int.parse(
+                                                                          scheduleData[
+                                                                          'records']
+                                                                          [index][
+                                                                          'label_color'])),
+                                                                ),
+                                                                child: Center(
+                                                                  child: scheduleIcon,
+                                                                  // child: Icon(
+                                                                  //   Icons.image,
+                                                                  //   color: Colors.white,
+                                                                  //   size: 8,
+                                                                  // ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Expanded(
+                                                        child: Container(
+                                                          margin: EdgeInsets
+                                                              .fromLTRB(
+                                                              0, 0, 9, 0),
+                                                          width: mediaQueryData
+                                                              .size
+                                                              .width / 1.3,
+                                                         // width:300,
+                                                          height: double.infinity,
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment
+                                                                .center,
+                                                            mainAxisAlignment: MainAxisAlignment
+                                                                .spaceBetween,
+                                                            children: [
+                                                              Container(
+                                                                // autogrouprwrccT2 (7u5yPeGNvuuGAuKdPZrWrc)
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 1, 1, 2),
+                                                                width: mediaQueryData
+                                                                    .size
+                                                                    .width / 2,
+                                                                //width:300,
+                                                                height: double
+                                                                    .infinity,
+                                                                child: Stack(
+                                                                  children: [
+                                                                    Positioned(
+                                                                      // marcdemoLP2 (1112:1368)
+                                                                      left: 1,
+                                                                      top: 1,
+                                                                      child: Align(
+                                                                        child: Text(
+                                                                          scheduleData['records']
+                                                                          [index]
+                                                                          ['user_id'][1]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 12,
+                                                                            fontWeight: FontWeight
+                                                                                .w600,
+
+                                                                            color: Color(
+                                                                                0xff202020),
+                                                                          ),
+                                                                        ),
                                                                       ),
-                                                                      InkWell(
+                                                                    ),
+                                                                    Positioned(
+                                                                      left: 2,
+                                                                      top: 15,
+                                                                      child: Align(
+                                                                        child: Text(
+                                                                          scheduleData['records'][index]
+                                                                          ['note']
+                                                                              .replaceAll(
+                                                                              RegExp(
+                                                                                  r'<[^>]*>|&[^;]+;'),
+                                                                              ' ')
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 10,
+                                                                            fontWeight: FontWeight
+                                                                                .w500,
+
+                                                                            color: Color(
+                                                                                0xff666666),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Container(
+
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 1, 1, 2),
+                                                                //width: MediaQuery.of(context).size.width,
+                                                                width: mediaQueryData
+                                                                    .size
+                                                                    .width / 4.2,
+                                                               // width:200,
+                                                                //color:Colors.green,
+                                                                //height: double.infinity,
+                                                                child: Stack(
+
+                                                                  children: [
+                                                                    Positioned(
+                                                                      right: 1,
+                                                                      top: 1,
+                                                                      child: Align(
+
+                                                                        child: Text(
+                                                                          scheduleData['records']
+                                                                          [index]
+                                                                          ['delay_label']
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle(
+                                                                              fontFamily: 'Mulish',
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight
+                                                                                  .w600,
+
+                                                                              color: Color(
+                                                                                  int
+                                                                                      .parse(
+                                                                                      scheduleData[
+                                                                                      'records']
+                                                                                      [index][
+                                                                                      'label_color']))
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Positioned(
+                                                                      right: 1,
+                                                                      top: 15,
+                                                                      child: Align(
+
+                                                                        child: Text(
+                                                                          scheduleData['records']
+                                                                          [index][
+                                                                          'activity_type_id'][1]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          textAlign: TextAlign
+                                                                              .right,
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 12,
+                                                                            fontWeight: FontWeight
+                                                                                .w600,
+                                                                            color: Color(
+                                                                                0xff202020),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0, 0, 0, 6),
+                                                  height: 1,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xffebebeb),
+
+                                                  ),
+                                                ),
+                                                Container(
+
+                                                  // color: Colors.green,
+                                                  width: mediaQueryData
+                                                      .size
+                                                      .width,
+                                                  //width:300,
+                                                  height: 30,
+                                                  child: Row(
+                                                    crossAxisAlignment: CrossAxisAlignment
+                                                        .center,
+                                                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Container(
+
+                                                          height: double.infinity,
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment
+                                                                .center,
+
+                                                            children: [
+                                                              Expanded(
+                                                                flex: 2,
+                                                                child: Container(
+
+
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
+                                                                      10, 0, 2,
+                                                                      0),
+                                                                  // height: 14*fem,
+                                                                  child: InkWell(
+                                                                    onTap: () async {
+                                                                      int datasIds =
+                                                                      scheduleData[
+                                                                      'records']
+                                                                      [index]['id'];
+
+                                                                      showDialog(
+                                                                        context: context,
+                                                                        builder: (
+                                                                            BuildContext
+                                                                            context) =>
+                                                                            _buildMarkDoneDialog(
+                                                                                context,
+                                                                                datasIds),
+                                                                      ).then((
+                                                                          value) =>
+                                                                          setState(() {}));
+                                                                    },
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment
+                                                                          .center,
+                                                                      children: [
+                                                                        Container(
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              2,
+                                                                              0),
+                                                                          width: 12,
+                                                                          height: 12,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            'images/schedulecheck.png',
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                          ),
+                                                                        ),
+                                                                        Container(
+
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              0,
+                                                                              0),
+                                                                          child: Text(
+                                                                            scheduleData['records']
+                                                                            [index][
+                                                                            'buttons'][0]
+                                                                                .toString() ??
+                                                                                "",
+                                                                            style: TextStyle(
+                                                                              fontFamily: 'Mulish',
+                                                                              fontSize: 11,
+                                                                              fontWeight: FontWeight
+                                                                                  .w500,
+                                                                              color: Color(
+                                                                                  0xff707070),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+
+                                                              scheduleData['records'][index]
+                                                              ['buttons'][1] ==
+                                                                  "Reschedule" ?
+                                                              Expanded(
+                                                                flex: 2,
+                                                                child: Container(
+
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
+                                                                      2, 0, 2, 0),
+
+                                                                  // height: double.infinity,
+                                                                  child: InkWell(
+                                                                    onTap: () async {
+                                                                      DateTime
+                                                                      dateTime =
+                                                                      DateTime
+                                                                          .parse(
+                                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                          [
+                                                                          'date_deadline']);
+
+                                                                      Navigator
+                                                                          .push(
+                                                                          context,
+                                                                          MaterialPageRoute(
+                                                                              builder: (
+                                                                                  context) =>
+                                                                                  Calender(
+                                                                                      null,
+                                                                                      "",
+                                                                                      dateTime,
+                                                                                      null,
+                                                                                      [
+                                                                                      ],
+                                                                                      "")));
+                                                                    },
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment
+                                                                          .center,
+
+                                                                      mainAxisAlignment: MainAxisAlignment
+                                                                          .center,
+                                                                      children: [
+                                                                        Container(
+                                                                          // iconsaxlinearcalendarPvx (1112:1377)
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              4,
+                                                                              0),
+                                                                          width: 12,
+                                                                          height: 12,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            'images/schedulecalendar.png',
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+
+                                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 11,
+                                                                            fontWeight: FontWeight
+                                                                                .w500,
+                                                                            // height: 1.255*ffem/fem,
+                                                                            color: Color(
+                                                                                0xff707070),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ) :
+
+                                                              Expanded(
+                                                                flex: 2,
+                                                                child: Container(
+
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
+                                                                      2, 0, 2, 0),
+
+                                                                  // height: double.infinity,
+                                                                  child: InkWell(
+                                                                    onTap: () async {
+                                                                      int idType =
+                                                                      scheduleData[
+                                                                      'records']
+                                                                      [
+                                                                      index]['id'];
+
+                                                                      var data = await editDefaultScheduleData(
+                                                                          scheduleData[
+                                                                          'records']
+                                                                          [
+                                                                          index]['id']);
+
+                                                                      setState(() {
+                                                                        activityTypeName =
+                                                                            data['activity_type_id'] ??
+                                                                                null;
+                                                                        activityTypeId =
+                                                                            data['activity_type_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                                null;
+                                                                        activityTypeNameCategory =
+                                                                            data['activity_type_id']
+                                                                            [
+                                                                            'category'] ??
+                                                                                "";
+                                                                        assignedToname =
+                                                                            data['user_id'] ??
+                                                                                null;
+                                                                        assignedToid =
+                                                                            data['user_id']
+                                                                            [
+                                                                            'id'] ??
+                                                                                null;
+                                                                        DuedateTime
+                                                                            .text =
+                                                                            data['date_deadline'] ??
+                                                                                "";
+                                                                        summaryController
+                                                                            .text =
+                                                                            data['summary'] ??
+                                                                                "";
+                                                                        commandsController
+                                                                            .text =
+                                                                            data[
+                                                                            'note']
+                                                                                .replaceAll(
+                                                                                RegExp(
+                                                                                    r'<[^>]*>|&[^;]+;'),
+                                                                                ' ')
+                                                                                .toString();
+                                                                        // DuedateTime.text == "default" ?
+                                                                        if (activityTypeNameCategory ==
+                                                                            "default") {
+                                                                          scheduleBtn =
+                                                                          true;
+                                                                          opencalendarBtn =
+                                                                          false;
+                                                                          btntext =
+                                                                          "Schedule";
+                                                                          meetingColum =
+                                                                          true;
+                                                                        } else
+                                                                        if (activityTypeNameCategory ==
+                                                                            "phonecall") {
+                                                                          scheduleBtn =
+                                                                          true;
+                                                                          opencalendarBtn =
+                                                                          true;
+                                                                          btntext =
+                                                                          "Save";
+                                                                          meetingColum =
+                                                                          true;
+                                                                        } else
+                                                                        if (activityTypeNameCategory ==
+                                                                            "meeting") {
+                                                                          scheduleBtn =
+                                                                          false;
+                                                                          opencalendarBtn =
+                                                                          true;
+                                                                          btntext =
+                                                                          "Schedule";
+                                                                          meetingColum =
+                                                                          false;
+                                                                        } else
+                                                                        if (activityTypeNameCategory ==
+                                                                            "upload_file") {
+                                                                          scheduleBtn =
+                                                                          true;
+                                                                          opencalendarBtn =
+                                                                          false;
+                                                                          btntext =
+                                                                          "Schedule";
+                                                                          meetingColum =
+                                                                          true;
+                                                                        }
+
+                                                                        print(
+                                                                            activityTypeNameCategory);
+                                                                        print(
+                                                                            "jhbvjbvsvj");
+                                                                      });
+
+                                                                      showDialog(
+                                                                        context:
+                                                                        context,
+                                                                        builder: (
+                                                                            BuildContext
+                                                                            context) =>
+                                                                            _buildOrderPopupDialog(
+                                                                                context,
+                                                                                idType),
+                                                                      ).then((
+                                                                          value) =>
+                                                                          setState(
+                                                                                  () {}));
+                                                                    },
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment
+                                                                          .center,
+
+                                                                      mainAxisAlignment: MainAxisAlignment
+                                                                          .center,
+                                                                      children: [
+                                                                        Container(
+                                                                          // iconsaxlinearcalendarPvx (1112:1377)
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              4,
+                                                                              0),
+                                                                          width: 12,
+                                                                          height: 12,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            'images/scheduleedit.png',
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+
+                                                                          scheduleData['records']
+                                                                          [
+                                                                          index]
+                                                                          [
+                                                                          'buttons'][1]
+                                                                              .toString() ??
+                                                                              "",
+                                                                          style: TextStyle(
+                                                                            fontFamily: 'Mulish',
+                                                                            fontSize: 11,
+                                                                            fontWeight: FontWeight
+                                                                                .w500,
+                                                                            // height: 1.255*ffem/fem,
+                                                                            color: Color(
+                                                                                0xff707070),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+
+                                                              Expanded(
+                                                                flex: 2,
+                                                                child: Container(
+                                                                  // color:Colors.red,
+
+                                                                  padding: EdgeInsets
+                                                                      .fromLTRB(
+                                                                      2, 0, 10,
+                                                                      0),
+                                                                  //  height: double.infinity,
+                                                                  child: InkWell(
+                                                                    onTap: () async {
+                                                                      var data =
+                                                                      await deleteScheduleData(
+                                                                          scheduleData[
+                                                                          'records']
+                                                                          [
+                                                                          index]['id']);
+
+                                                                      if (data['message'] ==
+                                                                          "Success") {
+                                                                        print(
+                                                                            "responce");
+                                                                        setState(() {
+                                                                          getScheduleDetails();
+                                                                        });
+                                                                      }
+
+                                                                      print(
+                                                                          "demo datataaa");
+                                                                    },
+                                                                    child: Row(
+                                                                      crossAxisAlignment: CrossAxisAlignment
+                                                                          .center,
+                                                                      mainAxisAlignment: MainAxisAlignment
+                                                                          .end,
+                                                                      children: [
+                                                                        Align(
+                                                                          alignment: Alignment
+                                                                              .centerRight,
+                                                                          child: Container(
+
+                                                                            margin: EdgeInsets
+                                                                                .fromLTRB(
+                                                                                0,
+                                                                                0,
+                                                                                4,
+                                                                                0),
+                                                                            width: 12,
+                                                                            height: 12,
+                                                                            child: Image
+                                                                                .asset(
+                                                                              'images/schedulecancel.png',
+                                                                              width: 10,
+                                                                              height: 10,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Align(
+                                                                          alignment: Alignment
+                                                                              .centerRight,
+                                                                          child: Text(
+                                                                            scheduleData['records']
+                                                                            [index][
+                                                                            'buttons'][2]
+                                                                                .toString() ??
+                                                                                "",
+                                                                            style: TextStyle(
+                                                                              fontFamily: 'Mulish',
+                                                                              fontSize: 11,
+                                                                              fontWeight: FontWeight
+                                                                                  .w500,
+                                                                              //height: 1.255*ffem/fem,
+                                                                              color: Color(
+                                                                                  0xff707070),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              VerticalDivider(),
+
+
+                                                              Expanded(
+
+                                                                flex: 1,
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment
+                                                                      .center,
+                                                                  mainAxisAlignment: MainAxisAlignment
+                                                                      .end,
+
+                                                                  children: [
+                                                                    JustTheTooltip(
+                                                                      margin: EdgeInsets
+                                                                          .only(
+                                                                          left: 25,
+                                                                          right: 25),
+
+                                                                      preferredDirection: AxisDirection
+                                                                          .up,
+                                                                      isModal: true,
+                                                                      child: Material(
+                                                                        //color: Colors.grey.shade800,
+                                                                        shape: const CircleBorder(),
+                                                                        //elevation: 4.0,
+                                                                        child: Container(
+                                                                          // iconsaxlinearcalendarPvx (1112:1377)
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              10,
+                                                                              0),
+                                                                          width: 12,
+                                                                          height: 12,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            'images/alertcircle.png',
+                                                                            width: 10,
+                                                                            height: 10,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      content: Container(
+                                                                        margin: EdgeInsets
+                                                                            .only(
+                                                                            left: 25,
+                                                                            right: 25),
+                                                                        height: 165,
+                                                                        child: Padding(
+                                                                          padding: const EdgeInsets
+                                                                              .only(
+                                                                              top: 5,
+                                                                              left: 9),
+                                                                          child: Column(
+                                                                            crossAxisAlignment:
+                                                                            CrossAxisAlignment
+                                                                                .start,
+                                                                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                                            children: [
+                                                                              Text(
+                                                                                "Activity type",
+                                                                                style: TextStyle(
+                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: Color(
+                                                                                      0xFF666666),
+                                                                                  fontWeight:
+                                                                                  FontWeight
+                                                                                      .w500,
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                scheduleData['records']
+                                                                                [index][
+                                                                                'activity_type_id'][1],
+                                                                                style: TextStyle(
+                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: Color(
+                                                                                      0xFF666666),
+                                                                                  fontWeight: FontWeight
+                                                                                      .w500,),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                "Created",
+                                                                                style: TextStyle(
+                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: Color(
+                                                                                      0xFF666666),
+                                                                                  fontWeight:
+                                                                                  FontWeight
+                                                                                      .w500,
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Row(
+                                                                                children: [
+                                                                                  Text(
+                                                                                    scheduleData['records']
+                                                                                    [
+                                                                                    index]
+                                                                                    [
+                                                                                    'create_date']
+                                                                                        .toString() ??
+                                                                                        "",
+                                                                                    style: TextStyle(
+                                                                                        fontSize: 11,
+                                                                                        fontWeight: FontWeight
+                                                                                            .w500,
+                                                                                        fontFamily:
+                                                                                        'Mulish',
+                                                                                        color:
+                                                                                        Color(
+                                                                                            0xFF666666)),
+                                                                                  ),
+                                                                                  SizedBox(
+                                                                                    width: 5,
+                                                                                  ),
+                                                                                  Container(
+                                                                                    child: CircleAvatar(
+                                                                                      radius: 10,
+                                                                                      child: ClipRRect(
+                                                                                        borderRadius:
+                                                                                        BorderRadius
+                                                                                            .circular(
+                                                                                            12),
+                                                                                        child: Image
+                                                                                            .network(
+                                                                                            "${scheduleData['records'][index]['image2']!}?token=${token}"),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  SizedBox(
+                                                                                    width: 3,
+                                                                                  ),
+                                                                                  Text(
+                                                                                    scheduleData['records']
+                                                                                    [
+                                                                                    index]
+                                                                                    [
+                                                                                    'create_uid'][1]
+                                                                                        .toString() ??
+                                                                                        "",
+                                                                                    style: TextStyle(
+                                                                                      fontSize: 11,
+                                                                                      fontFamily:
+                                                                                      'Mulish',
+                                                                                      color: Color(
+                                                                                          0xFF666666),
+                                                                                      fontWeight:
+                                                                                      FontWeight
+                                                                                          .w500,
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                "Assigned to",
+                                                                                style: TextStyle(
+                                                                                  fontSize: 11,
+
+                                                                                  fontFamily: 'Mulish',
+                                                                                  color: Color(
+                                                                                      0xFF666666),
+                                                                                  fontWeight:
+                                                                                  FontWeight
+                                                                                      .w500,
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Row(
+                                                                                children: [
+                                                                                  Container(
+                                                                                    child: CircleAvatar(
+                                                                                      radius: 10,
+                                                                                      child: ClipRRect(
+                                                                                        borderRadius:
+                                                                                        BorderRadius
+                                                                                            .circular(
+                                                                                            18),
+                                                                                        child: Image
+                                                                                            .network(
+                                                                                            "${scheduleData['records'][index]['image']!}?token=${token}"),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                  SizedBox(
+                                                                                    width: 3,
+                                                                                  ),
+                                                                                  Text(
+                                                                                    scheduleData['records']
+                                                                                    [
+                                                                                    index]
+                                                                                    [
+                                                                                    'user_id'][1]
+                                                                                        .toString() ??
+                                                                                        "",
+                                                                                    style: TextStyle(
+                                                                                        fontSize: 11,
+                                                                                        fontFamily:
+                                                                                        'Mulish',
+                                                                                        fontWeight: FontWeight
+                                                                                            .w500,
+                                                                                        color:
+                                                                                        Color(
+                                                                                            0xFF666666)),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                "Due on",
+                                                                                style: TextStyle(
+                                                                                  fontSize: 11,
+                                                                                  color: Color(
+                                                                                      0xFF666666),
+                                                                                  fontWeight:
+                                                                                  FontWeight
+                                                                                      .w500,
+                                                                                ),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                              Text(
+                                                                                scheduleData['records']
+                                                                                [index][
+                                                                                'date_deadline']
+                                                                                    .toString() ??
+                                                                                    "",
+                                                                                style: TextStyle(
+                                                                                    fontSize: 11,
+                                                                                    fontWeight: FontWeight
+                                                                                        .w500,
+                                                                                    fontFamily: 'Mulish',
+                                                                                    color: Color(
+                                                                                        0xFF666666)),
+                                                                              ),
+                                                                              SizedBox(
+                                                                                height: 3,
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+
+
+                                                        ),
+
+                                                      ),
+
+
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    );
+                                  }),
+                            ),
+                          ),
+
+                          SizedBox(
+                            height: 0,
+                          ),
+
+
+                          FutureBuilder(
+                              future:  postProvider?.fetchPosts(widget.leadId),
+                              builder: (context, snapshot) {
+                                logDataHeader.clear();
+                                logDataTitle.clear();
+                                print(snapshot.hasData);
+                                 print("snapshot.data");
+                                print("snap data final ");
+
+                                if (snapshot.connectionState == ConnectionState.waiting) {
+
+                                  return Center(child: CircularProgressIndicator());
+                                }
+                                else {
+
+                                  if (snapshot.hasError) {
+
+                                    return Center(child: Text('Error: ${snapshot.error}'));
+                                  }
+                                  else{
+
+                                    if (postProvider?.posts.length != 0) {
+
+
+
+          return Consumer<PostProvider>(
+          builder: (mcontext, provider, child) {
+
+          logDataHeader.clear();
+          logDataTitle.clear();
+          if (provider != null ) {
+          var postss = provider.posts;
+          if(postss!=null){
+          postss.forEach((key, value) {
+          logDataHeader.add(key);
+          logDataTitle.add(value);
+
+
+          } );
+
+          }
+          }
+            print("ddd1.lengthtest2");
+
+           return ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: logDataHeader.length,
+                  itemBuilder:
+                      (BuildContext context, int indexx) {
+
+                        return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 0, bottom: 0),
+                          child: Container(
+                            width: mediaQueryData
+                                .size
+                                .width,
+                           // width:300,
+                            height: 42,
+                            color: Color(0xff3D418E),
+                            child: Center(
+                                child: Text(
+                                  logDataHeader[indexx],
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 12,
+                                      fontFamily: 'Mulish',
+                                      color: Colors.white),
+
+                                )),
+                          ),
+                        ),
+                        ListView.builder(
+
+                            scrollDirection: Axis.vertical,
+                            physics:
+                            NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount:
+                            logDataTitle[indexx].length,
+                            itemBuilder:
+                                (BuildContext context,
+                                int indexs) {
+                              selectedImagesDisplay =
+                              logDataTitle[indexx][indexs]
+                              ['attachment_ids'];
+
+                              if (selectedImagesDisplay.length != 0) {
+                                logattachmentImagesDisplay =
+                                selectedImagesDisplay['images'];
+                                logattachmentFileDisplay =
+                                selectedImagesDisplay['files'];
+                                print("image have data");
+                              }
+
+                              print(logDataTitle[indexx]
+                              [indexs]['attachment_ids']);
+                              print(selectedImagesDisplay);
+
+                              print(logDataTitle[indexx]
+                              [indexs]['reaction_ids']);
+                              print("hjvdbjsbdv");
+
+
+                              List emojiSet =
+                              logDataTitle[indexx][indexs]
+                              ['reaction_ids'];
+
+                              if (emojiSet.length > 0) {
+                                print(emojiSet[0]['emoji']);
+                                print(emojiSet[0]['count']);
+                                print("fsvdsvdvdv");
+                              }
+
+                              print(emojiSet);
+                              print("various hbfuhebin");
+                              print(logDataTitle[indexx][indexs]
+                              ['reaction_ids']);
+                              print("hbfuhebin");
+
+                              print("selectedImagesDisplaysss");
+
+                              starImage = logDataTitle[indexx]
+                              [indexs]['starred'] ??
+                                  false;
+                              lognoteoptions =
+                                  logDataTitle[indexx][indexs]
+                                  ['is_editable'] ??
+                                      true;
+
+                              print(logDataTitle[indexx]
+                              [indexs]['is_editable']);
+
+                              print('is_editable');
+
+                              logDataTitle[indexx][indexs]
+                              ['icon'] ==
+                                  "envelope"
+                                  ? logNoteIcon = const Icon(
+                                Icons.email,
+                                color: Colors.red,
+                                size: 15,
+                              )
+                                  : logDataTitle[indexx]
+                              [indexs]
+                              ['icon'] ==
+                                  "ad_units"
+                                  ? logNoteIcon = Icon(
+                                Icons.phone,
+                                color: Colors.red,
+                                size: 15,
+                              )
+                                  : logDataTitle[indexx]
+                              [indexs]
+                              ['icon'] ==
+                                  "telegram"
+                                  ? logNoteIcon =
+                                  Icon(
+                                    Icons.telegram,
+                                    color:
+                                    Colors.red,
+                                    size: 15,
+                                  )
+                                  : Icon(
+                                Icons.circle,
+                                color: Colors
+                                    .white,
+                                size: 8,
+                              );
+
+                              return Card(
+                                elevation: 1,
+                                child: Column(
+                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.only(top: 10),
+                                      width: 340,
+                                      //height:80,
+                                      //  color: Colors.yellow,
+                                      child: Row(
+                                        crossAxisAlignment: CrossAxisAlignment
+                                            .start,
+
+                                        children: [
+                                          Container(
+                                            // group20507jZA (1636:7)
+                                            padding: EdgeInsets.fromLTRB(
+                                                25, 27, 3, 0),
+                                            width: 35,
+                                            height: 35,
+                                            decoration: BoxDecoration(
+
+                                              borderRadius: BorderRadius.circular(
+                                                  17.5),
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                    "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
+                                              ),
+                                            ),
+                                            child: Align(
+                                              // ellipse123qs6 (1636:32)
+                                              alignment: Alignment.bottomRight,
+                                              child: SizedBox(
+                                                width: double.infinity,
+                                                height: 7,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius
+                                                        .circular(3),
+                                                    border: Border.all(
+                                                        color: Color(0xffffffff)),
+                                                    color: Color(0xff167b33),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Container(
+
+                                              // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
+                                              padding: EdgeInsets.fromLTRB(
+                                                  19, 2, 2, 2),
+
+                                              child: Row(
+                                                crossAxisAlignment: CrossAxisAlignment
+                                                    .start,
+                                                children: [
+                                                  Expanded(
+                                                    flex: 3,
+                                                    child: Container(
+                                                      //  color: Colors.blue,
+                                                      margin: EdgeInsets.fromLTRB(
+                                                          0, 0, 20, 0),
+                                                      // height: double.infinity,
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment
+                                                            .start,
+                                                        mainAxisAlignment: MainAxisAlignment
+                                                            .start,
+                                                        children: [
+                                                          Container(
+                                                            // color:Colors.red,
+
+                                                            margin: EdgeInsets
+                                                                .fromLTRB(
+                                                                0, 0, 0, 2),
+                                                            child: RichText(
+                                                              text: TextSpan(
+                                                                style: TextStyle(
+                                                                  fontFamily: 'Mulish',
+                                                                  fontSize: 12,
+                                                                  fontWeight: FontWeight
+                                                                      .w700,
+                                                                  height: 0,
+                                                                  color: Color(
+                                                                      0xff000000),
+                                                                ),
+                                                                children: [
+                                                                  TextSpan(
+                                                                    text: logDataTitle[indexx][indexs]['create_uid'][1],
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish',
+                                                                      fontSize: 11,
+                                                                      fontWeight: FontWeight
+                                                                          .w500,
+                                                                      height: 1,
+                                                                      color: Color(
+                                                                          0xff000000),
+
+                                                                    ),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: ' -',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish',
+                                                                      fontSize: 11,
+                                                                      fontWeight: FontWeight
+                                                                          .w500,
+                                                                      height: 1,
+                                                                      color: Color(
+                                                                          0xffa29d9d),
+                                                                    ),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: ' ',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish',
+                                                                      fontSize: 11,
+                                                                      fontWeight: FontWeight
+                                                                          .w500,
+                                                                      height: 1,
+                                                                      color: Color(
+                                                                          0xff000000),
+                                                                    ),
+                                                                  ),
+                                                                  TextSpan(
+                                                                    text: logDataTitle[indexx][indexs]["period"],
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Mulish',
+                                                                      fontSize: 9,
+                                                                      fontWeight: FontWeight
+                                                                          .w500,
+                                                                      height: 1.5,
+                                                                      color: Color(
+                                                                          0xff948e8e),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            // color:Colors.pink,
+                                                            //height:60,
+                                                            child: Text(
+
+
+                                                              removeHtmlTagsAndSpaces(
+                                                                  logDataTitle[indexx][indexs]['body']
+                                                                      .toString() ??
+                                                                      ""),
+
+                                                              // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                              //     .toString() ??
+                                                              //     "",
+                                                              style: TextStyle(
+                                                                fontFamily: 'Mulish',
+                                                                fontSize: 9,
+                                                                fontWeight: FontWeight
+                                                                    .w600,
+                                                                // height: 1.5,
+                                                                color: Color(
+                                                                    0xff787878),
+                                                              ),
+
+                                                            ),
+                                                          ),
+
+
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                      //color:Colors.red,
+
+                                                      margin: EdgeInsets.fromLTRB(
+                                                          0, 0, 0, 1),
+                                                      width: 25,
+                                                      height: 20,
+                                                      child: Container(
+                                                          child: logNoteIcon),
+                                                    ),
+                                                  ),
+                                                  lognoteoptions == true
+                                                      ? Expanded(
+                                                    flex: 2,
+                                                    child: Container(
+                                                      padding: EdgeInsets.all(
+                                                          1.0),
+                                                      decoration: BoxDecoration(
+
+                                                        borderRadius: BorderRadius
+                                                            .circular(5.0),
+                                                        // Specifies rounded corners
+                                                        border: Border.all(
+                                                          color: Color(
+                                                              0XFFD9D9D9),
+                                                          // Border color
+
+                                                          width: 1.0, // Border width
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        children: [
+                                                          SizedBox(width: 3,),
+                                                          Expanded(
+                                                            child: InkWell(
+                                                              child: Container(
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 0, 0, 1),
+                                                                width: 13,
+                                                                height: 13,
+                                                                child: SvgPicture
+                                                                    .asset(
+                                                                  'images/emoji6.svg',
+                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                ),
+                                                              ),
+                                                              onTap: () {
+                                                                logDataIdEmoji =
+                                                                logDataTitle[indexx][indexs]['id'];
+                                                                showDialog(
+                                                                  context: context,
+                                                                  builder: (
+                                                                      BuildContext context) =>
+                                                                      _buildEmojiPopupDialog(
+                                                                          mcontext),
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 5,),
+
+                                                          Expanded(
+
+                                                            child: StatefulBuilder(
+                                                                builder: (
+                                                                    BuildContext
+                                                                    context,
+                                                                    StateSetter
+                                                                    setState) {
+                                                                  return Container(
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                          0, 0, 0,
+                                                                          1),
+                                                                      width: 13,
+                                                                      height: 13,
+                                                                      child: starImage ==
+                                                                          true
+                                                                          ? InkWell(
+                                                                        onTap: () async {
+                                                                          int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                          var data = await logStarChange(
+                                                                              lodDataId,
+                                                                              false);
+
+                                                                          if (data['result']['message'] ==
+                                                                              "success") {
+                                                                            print(
+                                                                                "startrue");
+                                                                            setState(() {
+                                                                              starImage =
+                                                                              false;
+                                                                            });
+                                                                          }
+                                                                        },
+                                                                        child: SvgPicture
+                                                                            .asset(
+                                                                          'images/st3.svg',
+                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                        ),
+                                                                      )
+                                                                          : InkWell(
+                                                                        onTap: () async {
+                                                                          int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                          var data = await logStarChange(
+                                                                              lodDataId,
+                                                                              true);
+
+                                                                          if (data['result']['message'] ==
+                                                                              "success") {
+                                                                            print(
+                                                                                "starfalse");
+                                                                            setState(() {
+                                                                              starImage =
+                                                                              true;
+                                                                            });
+                                                                          }
+                                                                        },
+                                                                        child: SvgPicture
+                                                                            .asset(
+                                                                          'images/star6.svg',
+                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                        ),
+                                                                      )
+                                                                  );
+                                                                }
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 5,),
+
+                                                          Expanded(
+                                                            child: InkWell(
+                                                              child: Container(
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 0, 0, 1),
+                                                                width: 13,
+                                                                height: 13,
+                                                                //color:Colors.red,
+                                                                child: SvgPicture
+                                                                    .asset(
+                                                                  'images/edit6.svg',
+                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                ),
+                                                              ),
+                                                              onTap: () {
+                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                String logdata = logDataTitle[indexx][indexs]['body']
+                                                                    .replaceAll(
+                                                                    RegExp(
+                                                                        r'<[^>]*>|&[^;]+;'),
+                                                                    ' ') ?? "";
+
+
+                                                                // Navigator.push(
+                                                                //     context,
+                                                                //     MaterialPageRoute(
+                                                                //         builder: (
+                                                                //             context) =>
+                                                                //             LogNoteEdit(
+                                                                //                 lodDataId,
+                                                                //                 salesperImg!,
+                                                                //                 token!,
+                                                                //                 widget
+                                                                //                     .leadId,
+                                                                //                 logdata,
+                                                                //                 "lead.lead")));
+                                                                // setState(() {
+                                                                //   lognoteEdit = true;
+                                                                // });
+
+                                                                print("fdsfdc11");
+                                                                print(indexs);
+                                                                print(logDataTitle[indexx][indexs]);
+                                                                print("fdsfdc");
+                                                               // lognoteEdit == false?lognoteEdit = true: lognoteEdit = false;
+                                                               // selectedItemIndex = selectedItemIndex == logDataTitle[indexx][indexs] ? -1 : logDataTitle[indexx][indexs];
+
+                                                                selectedItemIndex =  lodDataId;
+                                                                lognoteEditController.text = logdata;
+                                                                postProvider?.fetchPosts(widget.leadId);
+
+                                                              },
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 5,),
+
+                                                          Expanded(
+                                                            child: InkWell(
+                                                              child: Container(
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 0, 0, 1),
+                                                                width: 13,
+                                                                height: 13,
+                                                                child: SvgPicture
+                                                                    .asset(
+                                                                  'images/delete6.svg',
+                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                ),
+                                                              ),
+                                                              onTap: () async {
+                                                                int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                var data = await deleteLogData(
+                                                                    lodDataId);
+
+                                                                if (data['message'] ==
+                                                                    "Success") {
+                                                                  print("final11");
+                                                                  // await getLeadDetails();
+                                                                  // setState(() {
+                                                                  //   logDataHeader
+                                                                  //       .clear();
+                                                                  //   logDataTitle
+                                                                  //       .clear();
+                                                                  //   selectedImagesDisplay
+                                                                  //       .clear();
+                                                                  // });
+
+                                                                  postProvider?.fetchPosts(widget.leadId);
+                                                                }
+                                                              },
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 3,),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  )
+                                                      :
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Container(
+                                                      padding: EdgeInsets.all(
+                                                          1.0),
+                                                      decoration: BoxDecoration(
+                                                        borderRadius: BorderRadius
+                                                            .circular(5.0),
+                                                        // Specifies rounded corners
+                                                        border: Border.all(
+                                                          color: Color(
+                                                              0XFFD9D9D9),
+                                                          // Border color
+                                                          width: 1.0, // Border width
+                                                        ),
+                                                      ),
+                                                      child: Row(
+                                                        children: [
+                                                          SizedBox(width: 3,),
+                                                          Expanded(
+                                                            child: InkWell(
+                                                              child: Container(
+                                                                margin: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    0, 0, 0, 1),
+                                                                width: 13,
+                                                                height: 13,
+                                                                child: SvgPicture
+                                                                    .asset(
+                                                                  'images/emoji6.svg',
+                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                ),
+                                                              ),
+                                                              onTap: () {
+                                                                logDataIdEmoji =
+                                                                logDataTitle[indexx][indexs]['id'];
+                                                                showDialog(
+                                                                  context: context,
+                                                                  builder: (
+                                                                      BuildContext context) =>
+                                                                      _buildEmojiPopupDialog(
+                                                                          mcontext),
+                                                                );
+                                                              },
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 5,),
+
+                                                          Expanded(
+
+                                                            child: StatefulBuilder(
+                                                                builder: (
+                                                                    BuildContext
+                                                                    context,
+                                                                    StateSetter
+                                                                    setState) {
+                                                                  return Container(
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                          0, 0, 0,
+                                                                          1),
+                                                                      width: 13,
+                                                                      height: 13,
+                                                                      child: starImage ==
+                                                                          true
+                                                                          ? InkWell(
+                                                                        onTap: () async {
+                                                                          int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                          var data = await logStarChange(
+                                                                              lodDataId,
+                                                                              false);
+
+                                                                          if (data['result']['message'] ==
+                                                                              "success") {
+                                                                            print(
+                                                                                "startrue");
+                                                                            setState(() {
+                                                                              starImage =
+                                                                              false;
+                                                                            });
+                                                                          }
+                                                                        },
+                                                                        child: SvgPicture
+                                                                            .asset(
+                                                                          'images/st3.svg',
+                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                        ),
+                                                                      )
+                                                                          : InkWell(
+                                                                        onTap: () async {
+                                                                          int lodDataId = logDataTitle[indexx][indexs]['id'];
+
+                                                                          var data = await logStarChange(
+                                                                              lodDataId,
+                                                                              true);
+
+                                                                          if (data['result']['message'] ==
+                                                                              "success") {
+                                                                            print(
+                                                                                "starfalse");
+
+                                                                            setState(() {
+                                                                              starImage =
+                                                                              true;
+                                                                            });
+                                                                          }
+                                                                        },
+                                                                        child: SvgPicture
+                                                                            .asset(
+                                                                          'images/star6.svg',
+                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                        ),
+                                                                      )
+                                                                  );
+                                                                }
+                                                            ),
+                                                          ),
+                                                          SizedBox(width: 3,),
+                                                          // SizedBox(width: 5,),
+                                                          //
+                                                          // Visibility(
+                                                          //   visible: lognoteoptions,
+                                                          //
+                                                          //   child: Expanded(
+                                                          //     child: InkWell(
+                                                          //       child: Container(
+                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                          //         width: 13,
+                                                          //         height: 13,
+                                                          //         //color:Colors.red,
+                                                          //         child: SvgPicture.asset(
+                                                          //           'images/edit6.svg',
+                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                          //
+                                                          //         ),
+                                                          //       ),
+                                                          //       onTap: (){
+                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                          //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                          //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                                                          //
+                                                          //       },
+                                                          //     ),
+                                                          //   ),
+                                                          // ),
+                                                          // SizedBox(width: 5,),
+                                                          //
+                                                          // Visibility(
+                                                          //   visible: lognoteoptions,
+                                                          //
+                                                          //   child: Expanded(
+                                                          //     child: InkWell(
+                                                          //       child: Container(
+                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                          //         width: 13,
+                                                          //         height: 13,
+                                                          //         child: SvgPicture.asset(
+                                                          //           'images/delete6.svg',
+                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                          //
+                                                          //         ),
+                                                          //       ),
+                                                          //       onTap: ()async{
+                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                          //         var data = await deleteLogData(lodDataId);
+                                                          //
+                                                          //         if (data['message'] == "Success") {
+                                                          //           print("final11");
+                                                          //           await getLeadDetails();
+                                                          //           setState(() {
+                                                          //             logDataHeader.clear();
+                                                          //             logDataTitle.clear();
+                                                          //             selectedImagesDisplay.clear();
+                                                          //           });
+                                                          //         }
+                                                          //       },
+                                                          //     ),
+                                                          //   ),
+                                                          // ),
+                                                          // SizedBox(width: 3,),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible:  logDataTitle[indexx][indexs]['id'] == selectedItemIndex?true:false,
+                                   // visible: logDataTitle[indexx][indexs].lognoteEdit,
+                                      child: Container(
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 58, right: 10),
+                                              child: Container(
+                                                width: mediaQueryData
+                                                    .size
+                                                    .width /
+                                                    1.44,
+                                                // width:200,
+
+                                                //height: 46,
+                                                decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.all(
+                                                        Radius.circular(5)),
+                                                    color: Color(0xFFF6F6F6),
+                                                    border: Border.all(
+                                                      color: Color(0xFFEBEBEB),
+                                                    )),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                      width:mediaQueryData
+                                                          .size
+                                                          .width /
+                                                          1.92,
+
+                                                      // width:300,
+                                                      // height: 40,
+                                                      //color: Colors.red,
+                                                      child: Padding(
+                                                        padding: const EdgeInsets
+                                                            .only(
+                                                            left: 10),
+                                                        child:  TextField(
+                                                            textAlignVertical:
+                                                            TextAlignVertical
+                                                                .top,
+                                                            style: TextStyle(
+                                                              fontWeight: FontWeight
+                                                                  .w400,
+                                                              fontFamily: 'Mulish',
+                                                              fontSize: 11,
+                                                              color: Color(
+                                                                  0xFF000000),
+                                                            ),
+
+
+                                                            maxLines: null,
+
+                                                            onChanged: (newValue) {
+                                                              print("demodatatataadsaf");
+                                                              // Handle text changes here if necessary
+                                                            },
+                                                             controller: lognoteEditController,
+
+                                                            decoration:
+                                                            const InputDecoration(
+                                                                border:
+                                                                InputBorder
+                                                                    .none,
+                                                                hintText:
+                                                                "Send a message to followers",
+                                                                hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                    fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                    fontFamily:
+                                                                    'Mulish',
+                                                                    fontSize: 11,
+                                                                    color: Color(
+                                                                        0xFFAFAFAF)))),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                          .only(left: 10),
+                                                      child: IconButton(
+                                                          onPressed: (){
+                                                            myAlert("lognoteEdit");
+                                                            postProvider?.fetchPosts(widget.leadId);
+                                                          },
+                                                          icon: Image.asset("images/pi.png")
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+
+
+                                            selectedImagesEdit.isEmpty
+                                                ? Padding(
+                                              padding: const EdgeInsets.only(left: 73),
+                                              child: Container(
+                                                width:
+                                                mediaQueryData
+                                                    .size
+                                                    .width,
+                                                //width:400,
+                                                 //height: 40,
+                                                //color: Colors.red,
+                                              ),
+                                            )
+                                                : Padding(
+                                              padding: const EdgeInsets.only(
+                                                  left: 70, right: 50, top: 5),
+                                              child: Container(
+                                                width:
+                                                mediaQueryData
+                                                    .size
+                                                    .width,
+                                                // width:400,
+                                                // height: 40,
+                                                child: Container(
+                                                  width: 40,
+                                                  //height: 40,
+                                                  child: GridView.builder(
+                                                    shrinkWrap: true,
+                                                    // Avoid scrolling
+                                                    physics:
+                                                    NeverScrollableScrollPhysics(),
+                                                    itemCount: selectedImagesEdit.length,
+                                                    gridDelegate:
+                                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 8),
+                                                    itemBuilder: (BuildContext context,
+                                                        int index) {
+                                                      print("pdfffffffffff2");
+                                                      return selectedImagesEdit[index]
+                                                          .path
+                                                          .contains(".pdf")
+                                                          ? Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        color: Color(0xFFEF5350),
+                                                        child: Icon(Icons
+                                                            .picture_as_pdf_sharp),
+                                                      )
+                                                          : selectedImagesEdit[index]
+                                                          .path
+                                                          .contains(".zip")
+                                                          ? Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        color:
+                                                        Color(0xFFFDD835),
+                                                        child: Icon(Icons
+                                                            .folder_zip_outlined),
+                                                      )
+                                                          : selectedImagesEdit[index]
+                                                          .path
+                                                          .contains(".xlsx")
+                                                          ? Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        color: Color(
+                                                            0xFF4CAF50),
+                                                        child: Icon(
+                                                            Icons.clear),
+                                                      )
+                                                          : selectedImagesEdit[
+                                                      index]
+                                                          .path
+                                                          .contains(
+                                                          ".xml")
+                                                          ? Container(
+                                                        width: 40,
+                                                        height: 40,
+                                                        color: Color(
+                                                            0xFF0277BD),
+                                                        child: Icon(Icons
+                                                            .code_off),
+                                                      )
+                                                          : selectedImagesEdit[
+                                                      index]
+                                                          .path
+                                                          .contains(
+                                                          ".doc")
+                                                          ? Container(
+                                                        width: 40,
+                                                        height:
+                                                        40,
+                                                        color: Color(
+                                                            0xFF2196F3),
+                                                        child: Icon(
+                                                            Icons
+                                                                .article_outlined),
+                                                      )
+                                                          : Center(
+                                                          child: kIsWeb
+                                                              ? Image.network(
+                                                              selectedImagesEdit[index]
+                                                                  .path)
+                                                              : Image.file(
+                                                              selectedImagesEdit[index]));
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:88),
+                                              child: Row(
+                                                children: [
+                                                  Text("escape to",style: TextStyle(color: Colors.grey),),
+                                                  InkWell(child: Container(child: Text("  cancel  ")),
+                                                      onTap: (){
+                                                        selectedItemIndex = -1;
+                                                        lognoteEditController.text= "";
+                                                        selectedImagesEdit.clear();
+                                                        myData1.clear();
+                                                        postProvider?.fetchPosts(widget.leadId);
+                                                      },
+                                                  ),
+                                                  //TextButton(onPressed:(){}, child: Text("cancel")),
+                                                  Text(","),
+                                                  Text("  enter to",style: TextStyle(color: Colors.grey),),
+                                                  InkWell(child: Container(child: Text("  save")),
+                                                    // onTap:_isSavingData
+                                                    //     ? null
+                                  onTap :()async{
+
+
+                        _isSavingData = true;
+
+
+                        for (int i = 0;
+                        i < selectedImagesEdit.length;
+                        i++) {
+                          imagepath =
+                        selectedImagesEdit[i]
+                            .path
+                            .toString();
+                        File imagefile =
+                        File(imagepath);
+
+                        Uint8List imagebytes =
+                        await imagefile
+                            .readAsBytes(); //convert to bytes
+                        base64string =
+                        base64.encode(
+                        imagebytes);
+
+                        //
+
+                        String dataImages =
+                        '{"name":"name","type":"binary","datas":"${base64string
+                            .toString()}"}';
+
+                        Map<String,
+                        dynamic> jsondata =
+                        jsonDecode(dataImages);
+                        myData1.add(jsondata);
+                        }
+
+
+
+
+                                                  int lognoteId  = logDataTitle[indexx][indexs]['id'];
+                                                      String resMessage = await logNoteEditData(myData1,lognoteId);
+
+                                                   if(resMessage != 0){
+
+
+                                                    lognoteEditController.text= "";
+                                                    selectedImagesEdit.clear();
+                                                       myData1.clear();
+                                                   selectedItemIndex = -1;
+                                                   postProvider?.fetchPosts(widget.leadId);
+
+                                                    };
+                                                  }
+                                                  ),
+                                                 // TextButton(onPressed:(){}, child: Text("save")),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+
+
+                                    Container(
+
+                                      margin: EdgeInsets.only(top: 25),
+                                      width: 350,
+                                     // color:Colors.red,
+                                      // height: 450,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment
+                                            .start,
+                                        children: [
+
+                                          selectedImagesDisplay.length == 0 ?
+                                          Container(
+                                          ) :
+                                          Column(
+                                            children: [
+                                              Container(
+                                                width: mediaQueryData
+                                                    .size
+                                                    .width,
+                                                // width:300,
+                                                child: logattachmentImagesDisplay
+                                                    .length > 0 ?
+                                                // Container(
+                                                //   width: 20,
+                                                //   height: 20,
+                                                //   color: Colors.blue,
+                                                // ):
+                                                GridView.builder(
+
+                                                    shrinkWrap: true,
+                                                    // Avoid scrolling
+                                                    physics: NeverScrollableScrollPhysics(),
+                                                    itemCount: logattachmentImagesDisplay
+                                                        .length,
+                                                     // itemCount: 2,
+                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 4,
+                                                      mainAxisSpacing: 1.0,
+                                                      crossAxisSpacing: 1.0,
+                                                      childAspectRatio: 1,
+                                                    ),
+                                                    itemBuilder: (
+                                                        BuildContext context,
+                                                        int index) {
+                                                      postProvider?.fetchPosts(widget.leadId);
+                                                      print(logattachmentImagesDisplay);
+                                                      print("selectedImagesDisplay.length,");
+                                                      print(index);
+                                                     // print(logattachmentImagesDisplay[index]["datas"]);
+                                                      print("selectedImagesDisplay.length,");
+                                                      return Container(
+
+                                                        margin: EdgeInsets
+                                                            .fromLTRB(
+                                                            10, 0, 2, 0),
+                                                        width: 80,
+                                                        height: double.infinity,
+                                                        child: Stack(
+                                                          children: [
+                                                            Positioned(
+                                                              // rectangle4756kQ (1652:322)
+                                                              left: 0,
+                                                              top: 6,
+                                                              child: Align(
+                                                                child: SizedBox(
+                                                                  width: 75,
+                                                                  height: 71,
+                                                                  child: Container(
+                                                                    decoration: BoxDecoration(
+                                                                      borderRadius: BorderRadius
+                                                                          .circular(
+                                                                          3),
+                                                                      color: Color(
+                                                                          0xffd9d9d9),
+                                                                      image: DecorationImage(
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        image: NetworkImage(
+                                                                            logattachmentImagesDisplay[index]["datas"]
+                                                                         ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Positioned(
+                                                              // group20514mrY (1652:323)
+                                                              left: 60,
+                                                              top: 0,
+                                                              child: Align(
+                                                                child: SizedBox(
+                                                                  width: 20,
+                                                                  height: 20,
+                                                                  child: Image
+                                                                      .asset(
+                                                                    'images/logimagedelete.png',
+                                                                    width: 20,
+                                                                    height: 20,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Positioned(
+                                                              // trash2G2c (1652:325)
+                                                              left: 65,
+                                                              top: 5,
+                                                              child: Align(
+                                                                child: InkWell(
+                                                                  onTap: () async {
+                                                                    int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['images'][index]["id"];
+                                                                    var data = await deleteLogAttachment(
+                                                                        lodAttachmentId);
+
+                                                                    if (data['message'] ==
+                                                                        "Success") {
+                                                                      print(
+                                                                          "jhbdndsjbv");
+                                                                      // await getLeadDetails();
+                                                                      // setState(() {
+                                                                      //   logDataHeader
+                                                                      //       .clear();
+                                                                      //   logDataTitle
+                                                                      //       .clear();
+                                                                      //   selectedImagesDisplay
+                                                                      //       .clear();
+                                                                      // });
+                                                                      postProvider?.fetchPosts(widget.leadId);
+                                                                    }
+                                                                  },
+                                                                  child: SizedBox(
+                                                                    width: 9,
+                                                                    height: 10,
+                                                                    child: Image
+                                                                        .asset(
+                                                                      'images/logtrash.png',
+                                                                      width: 9,
+                                                                      height: 10,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+
+                                                          ],
+                                                        ),
+                                                      );
+                                                    }
+                                                ) :
+                                                Container(),
+                                              ),
+
+                                              SizedBox(height: 5),
+                                              Container(
+                                                width: mediaQueryData
+                                                    .size
+                                                    .width,
+                                                // width:300,
+                                                child: logattachmentFileDisplay
+                                                    .length > 0 ? GridView
+                                                    .builder(
+                                                    shrinkWrap: true,
+                                                    // Avoid scrolling
+                                                    physics: NeverScrollableScrollPhysics(),
+                                                    itemCount: logattachmentFileDisplay
+                                                        .length,
+                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 1,
+                                                      //mainAxisSpacing: 5.0,
+                                                      crossAxisSpacing: 1.0,
+                                                      childAspectRatio: 5.5,
+                                                    ),
+                                                    itemBuilder: (
+                                                        BuildContext context,
+                                                        int index) {
+                                                      return
+                                                        Container(
+                                                          margin: EdgeInsets
+                                                              .fromLTRB(
+                                                              10, 0, 0, 2),
+                                                          // group20585QEc (1652:502)
+                                                          width: double.infinity,
+                                                          child: Column(
+                                                            crossAxisAlignment: CrossAxisAlignment
+                                                                .center,
+                                                            children: [
+                                                              Container(
+                                                                // group20565Yrc (1652:364)
+                                                                padding: EdgeInsets
+                                                                    .fromLTRB(
+                                                                    14, 11, 18,
+                                                                    9),
+                                                                width: double
+                                                                    .infinity,
+                                                                height: 52,
+                                                                decoration: BoxDecoration(
+                                                                  border: Border
+                                                                      .all(
+                                                                      color: Color(
+                                                                          0xffebebeb)),
+                                                                  borderRadius: BorderRadius
+                                                                      .circular(
+                                                                      6),
+                                                                ),
+                                                                child: Row(
+                                                                  crossAxisAlignment: CrossAxisAlignment
+                                                                      .center,
+                                                                  children: [
+                                                                    Container(
+                                                                      // pdffile21FW8 (1652:378)
+                                                                      margin: EdgeInsets
+                                                                          .fromLTRB(
+                                                                          0, 0,
+                                                                          12, 0),
+                                                                      width: 23,
+                                                                      height: 29,
+                                                                      child: Image
+                                                                          .asset(
+                                                                        logattachmentFileDisplay[index]["mimetype"] ==
+                                                                            "application/pdf"
+                                                                            ? 'images/logpdf.png'
+                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                            "application/msword"
+                                                                            ? 'images/logword.png'
+                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                            ? 'images/logexcel.png'
+                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                            "application/xml"
+                                                                            ? 'images/logxml.png'
+                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                            "application/zip"
+                                                                            ? 'images/logzip.png'
+                                                                            : '',
+
+
+                                                                        width: 23,
+                                                                        height: 29,
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+
+                                                                      width: mediaQueryData
+                                                                          .size
+                                                                          .width /
+                                                                          2,
+                                                                      // width:300,
+                                                                      //height: double.infinity,
+                                                                      child: Stack(
+                                                                        children: [
+                                                                          Positioned(
+                                                                            // pdfnamearea1tc (1652:376)
+                                                                            left: 0,
+                                                                            top: 00,
+                                                                            child: Align(
+                                                                              child: SizedBox(
+                                                                                width: mediaQueryData
+                                                                                    .size
+                                                                                    .width /
+                                                                                    2,
+                                                                                // width:300,
+                                                                                child: Text(
+                                                                                  logattachmentFileDisplay[index]["name"],
+                                                                                  style: TextStyle(
+                                                                                    fontFamily: 'Mulish',
+                                                                                    fontSize: 12,
+                                                                                    fontWeight: FontWeight
+                                                                                        .w600,
+                                                                                    color: Color(
+                                                                                        0xff202020),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Positioned(
+                                                                            // pdfuDJ (1652:377)
+                                                                            left: 0,
+                                                                            top: 18,
+                                                                            child: Align(
+                                                                              child: SizedBox(
+                                                                                width: 50,
+                                                                                // height: 15,
+                                                                                child: Text(
+                                                                                  logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                      "application/pdf"
+                                                                                      ?
+                                                                                  "PDF"
+                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                      "application/msword"
+                                                                                      ?
+                                                                                  "WORD"
+                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                      ?
+                                                                                  "EXCEL"
+                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                      "application/xml"
+                                                                                      ?
+                                                                                  "XML"
+                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                      "application/zip"
+                                                                                      ?
+                                                                                  "ZIP"
+                                                                                      : "",
+
+                                                                                  style: TextStyle(
+                                                                                    fontFamily: 'Mulish',
+                                                                                    fontSize: 9,
+                                                                                    fontWeight: FontWeight
+                                                                                        .w500,
+
+                                                                                    color: Color(
+                                                                                        0xff666666),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Spacer(),
+                                                                    Container(
+
+                                                                      child: InkWell(
+                                                                        child: Container(
+                                                                          // trash2Qvk (1652:366)
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              0,
+                                                                              0,
+                                                                              15,
+                                                                              1),
+                                                                          width: 15,
+                                                                          height: 16,
+                                                                          child: Image
+                                                                              .asset(
+                                                                            'images/logtrash.png',
+                                                                            width: 15,
+                                                                            height: 16,
+                                                                          ),
+                                                                        ),
+                                                                        onTap: () async {
+                                                                          int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
+                                                                          var data = await deleteLogAttachment(
+                                                                              lodAttachmentId);
+
+                                                                          if (data['message'] ==
+                                                                              "Success") {
+                                                                            print(
+                                                                                "jhbdndsjbv");
+                                                                            // await getLeadDetails();
+                                                                            // setState(() {
+                                                                            //   logDataHeader
+                                                                            //       .clear();
+                                                                            //   logDataTitle
+                                                                            //       .clear();
+                                                                            //   selectedImagesDisplay
+                                                                            //       .clear();
+                                                                            // });
+                                                                            postProvider?.fetchPosts(widget.leadId);
+                                                                          }
+                                                                        },
+                                                                      ),
+                                                                    ),
+                                                                    Container(
+                                                                      child: InkWell(
                                                                         child: Container(
                                                                           // download6oa (1652:371)
                                                                           margin: EdgeInsets
@@ -2634,23 +6376,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             height: 14,
                                                                           ),
                                                                         ),
-                                                                        onTap: () async {
-                                                                          await getExternalStorageDirectory();
-
-                                                                          print(
-                                                                              selectedImagesDisplay);
-                                                                          print(
-                                                                              "dbjfnkdfbjsjfbdsvbkdsvkdj");
-
-                                                                          //  String mimetypes = selectedImagesDisplay[index]["mimetype"];
-                                                                          String mimetypes = attachmentFileDisplay[index]['mimetype'];
+                                                                        onTap: () {
+                                                                          String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
                                                                           //String mimetypes = "application/pdf";
 
                                                                           String itemName,
                                                                               itemNamefinal;
 
                                                                           itemName =
-                                                                          attachmentFileDisplay[index]['name'];
+                                                                          logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
 
                                                                           mimetypes ==
                                                                               "application/pdf"
@@ -2690,6 +6424,18 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               : itemNamefinal =
                                                                           "${itemName}";
 
+                                                                          print(
+                                                                              index);
+
+                                                                          print(
+                                                                              logattachmentFileDisplay);
+
+                                                                          print(
+                                                                              itemNamefinal);
+                                                                          print(
+                                                                              mimetypes);
+                                                                          print(
+                                                                              "final print dataaa");
 
                                                                           FlutterDownloader
                                                                               .registerCallback(
@@ -2697,3689 +6443,150 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                           requestPermission(
                                                                               itemNamefinal,
-                                                                              attachmentFileDisplay[index]['url']);
+                                                                              logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
+                                                                           postProvider?.fetchPosts(widget.leadId);
+
                                                                         },
                                                                       ),
-                                                                    ],
-                                                                  ),
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                                SizedBox(
-                                                                  height: 9,
-                                                                ),
+                                                              ),
+                                                              SizedBox(
+                                                                height: 9,
+                                                              ),
 
 
-                                                              ],
-                                                            ),
-                                                          );
-                                                      }
-                                                  ) :
-                                                  Container(),
-                                                ),
-
-
-                                              ],
-                                            );
-                                          } else {
-                                            return Container();
-                                          }
-                                        }
-                                      }
-                                      return Center(
-                                          child: const CircularProgressIndicator());
-                                    }),
-                                TextButton(
-                                    onPressed: () {
-                                      myAlert("attachment");
-                                    },
-                                    child: Text(
-                                      "Select Attachments",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Mulish',
-                                      ),
-                                    )),
-                              ],
-                            ),
-                          ),
-                        ),
-                        //
-
-                        // code for attchments
-
-                        // code for send message
-                        Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-
-                          //height: MediaQuery.of(context).size.height/6,
-                          //color: Colors.green,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Visibility(
-                                visible: followersVisibility,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 25),
-                                  child: Container(
-                                    //color: Colors.red,
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "To:",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Color(0xFF666666),
-                                            fontSize: 10,
-                                            fontFamily: 'Mulish',
-                                          ),
-                                        ),
-                                        Text(
-                                          " Followers of",
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Color(0xFF666666),
-                                            fontSize: 10,
-                                            fontFamily: 'Mulish',
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Container(
-                                          //color: Colors.green,
-                                            width:
-                                            MediaQuery
-                                                .of(context)
-                                                .size
-                                                .width / 2,
-                                            child: Text(
-                                              leadname!,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xFF414141),
-                                                fontSize: 10,
-                                                fontFamily: 'Mulish',
+                                                            ],
+                                                          ),
+                                                        );
+                                                    }
+                                                ) :
+                                                Container(),
                                               ),
-                                            )),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Visibility(
-                                visible: followersVisibility,
-                                child: Container(
-                                  width: MediaQuery
-                                      .of(context)
-                                      .size
-                                      .width,
-                                  // height: 100,
-                                  // color: Colors.red,
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    physics: NeverScrollableScrollPhysics(),
-                                    itemCount: sendMailData.length,
-                                    itemBuilder: (_, i) {
-                                      isCheckedMail =
-                                      sendMailData[i]['selected'];
-                                      return Padding(
-                                        padding: const EdgeInsets.only(left: 8),
-                                        child: Container(
-                                          height: 15,
-                                          child: Row(
-                                            children: [
-                                              Transform.scale(
-                                                scale: 0.7,
-                                                child: Checkbox(
-                                                  shape: CircleBorder(),
-                                                  activeColor: Color(
-                                                      0xFF3D418E),
-                                                  value: isCheckedMail,
-                                                  onChanged: (bool? value) {
-                                                    print(value);
-                                                    print("check box issues");
 
-                                                    String emails = sendMailData[i]['email'] ??
-                                                        "";
-                                                    value == true &&
-                                                        sendMailData[i]['id'] ==
-                                                            null ?
-                                                    showDialog(
-                                                      context: context,
-                                                      builder: (
-                                                          BuildContext context) =>
-                                                          _buildMailPopupDialog(
-                                                              context, 0,
-                                                              emails),
-                                                    ).then((value) =>
-                                                        setState(() {
-                                                          sendMailData[i]['id'] =
-                                                              scheduleCustcreateId;
-                                                        }))
-                                                        : null;
-                                                    setState(() {
-                                                      print(
-                                                          scheduleCustcreateId);
-                                                      print(
-                                                          "scheduleCustcreateId");
-
-
-                                                      isCheckedMail = value!;
-                                                      sendMailData[i]['id'] =
-                                                          scheduleCustcreateId;
-                                                      sendMailData[i]['selected'] =
-                                                          value;
-                                                    });
-                                                  },
-                                                ),
-                                              ),
-                                              Text(
-                                                sendMailData[i]['name'],
-                                                style: TextStyle(
-                                                    color: Color(0xFF666666),
-                                                    fontSize: 11,
-                                                    fontFamily: 'Mulish',
-                                                    fontWeight: FontWeight
-                                                        .w500),
-                                              )
                                             ],
                                           ),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Visibility(
-                                visible: followersVisibility,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        salesperImg != ""
-                                            ? Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 23),
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                              border: Border.all(),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20)),
-                                            ),
-                                            child: CircleAvatar(
-                                              radius: 12,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                BorderRadius.circular(18),
-                                                child: Image.network(
-                                                    "${salesperImg!}?token=${token}"),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                            : Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 23),
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  //  color: Colors.green
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20))),
-                                            child: CircleAvatar(
-                                              radius: 12,
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 20,
-                                                // Adjust the size of the icon as per your requirements
-                                                color: Colors
-                                                    .white, // Adjust the color of the icon as per your requirements
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15, right: 25),
-                                          child: Container(
-                                            width: MediaQuery
-                                                .of(context)
+                                          emojiSet.length > 0 ?
+                                          Container(
+                                            width: mediaQueryData
                                                 .size
-                                                .width /
-                                                1.32,
-
-                                            //height: 46,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(5)),
-                                                color: Color(0xFFF6F6F6),
-                                                border: Border.all(
-                                                  color: Color(0xFFEBEBEB),
-                                                )),
-                                            child: Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery
-                                                          .of(context)
-                                                          .size
-                                                          .width /
-                                                          1.8,
-
-                                                      // height: 40,
-                                                      //color: Colors.red,
-                                                      child: Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(
-                                                            left: 10),
-                                                        child: TextField(
-                                                            textAlignVertical:
-                                                            TextAlignVertical
-                                                                .top,
-                                                            style: TextStyle(
-                                                              fontWeight: FontWeight
-                                                                  .w400,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize: 11,
-                                                              color: Color(
-                                                                  0xFF000000),
-                                                            ),
-
-
-                                                            maxLines: null,
-                                                            controller: lognoteController,
-                                                            decoration:
-                                                            const InputDecoration(
-                                                                border:
-                                                                InputBorder
-                                                                    .none,
-                                                                hintText:
-                                                                "Send a message to followers",
-                                                                hintStyle: TextStyle(
-                                                                  //fontFamily: "inter",
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                    fontFamily:
-                                                                    'Mulish',
-                                                                    fontSize: 11,
-                                                                    color: Color(
-                                                                        0xFFAFAFAF)))),
-                                                      ),
-                                                    ),
-                                                    // Divider(
-                                                    //   color: Colors.grey[350],
-                                                    //   thickness: 1,
-                                                    // ),
-
-
-                                                  ],
+                                                .width,
+                                            // width:300,
+                                            child: GridView.builder(
+                                                shrinkWrap: true,
+                                                // Avoid scrolling
+                                                physics: NeverScrollableScrollPhysics(),
+                                                itemCount: emojiSet.length,
+                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                  crossAxisCount: 6,
+                                                  mainAxisSpacing: 5.0,
+                                                  crossAxisSpacing: 5.0,
+                                                  childAspectRatio: 2.1,
                                                 ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .only(left: 10),
-                                                  child: IconButton(
-                                                      onPressed: () async {
-                                                        recipient!.clear();
-                                                        await defaultSendmsgvalues();
-                                                        setState(() {
-                                                          recipientsVisibility ==
-                                                              true
-                                                              ?
-                                                          recipientsVisibility =
-                                                          false
-                                                              : recipientsVisibility =
-                                                          true;
-                                                        });
+                                                itemBuilder: (
+                                                    BuildContext context,
+                                                    int index) {
+                                                  return InkWell(
 
-                                                        showDialog(
-                                                          context: context,
-                                                          builder: (BuildContext
-                                                          context) =>
-                                                              _buildSendmessagePopupDialog(
-                                                                  context, 0),
-                                                        ).then((value) =>
-                                                            setState(() {}));
-                                                      },
-                                                      icon: Icon(
-                                                        Icons
-                                                            .arrow_outward_rounded,
-                                                        size: 18,
-                                                        color: Colors.grey[700],
-                                                      )),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    selectedImages.isEmpty
-                                        ? Padding(
-                                      padding: const EdgeInsets.only(left: 73),
-                                      child: Container(
-                                        width:
-                                        MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width,
-                                        // height: 40,
-                                      ),
-                                    )
-                                        : Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 70, right: 50, top: 5),
-                                      child: Container(
-                                        width:
-                                        MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width,
-                                        // height: 40,
-                                        //color: Colors.red,
-                                        child: Container(
-                                          width: 40,
-                                          //height: 40,
-                                          // color: Colors.green,
-                                          child: GridView.builder(
-                                            shrinkWrap: true,
-                                            // Avoid scrolling
-                                            physics:
-                                            NeverScrollableScrollPhysics(),
-                                            itemCount: selectedImages.length,
-                                            gridDelegate:
-                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: 8,
-                                            ),
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return selectedImages[index]
-                                                  .path
-                                                  .contains(".pdf")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(0xFFEF5350),
-                                                child: Icon(Icons
-                                                    .picture_as_pdf_sharp),
-                                              )
-                                                  : selectedImages[index]
-                                                  .path
-                                                  .contains(".zip")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color:
-                                                Color(0xFFFDD835),
-                                                child: Icon(Icons
-                                                    .folder_zip_outlined),
-                                              )
-                                                  : selectedImages[index]
-                                                  .path
-                                                  .contains(".xlsx")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(
-                                                    0xFF4CAF50),
-                                                child: Icon(
-                                                  Icons.clear,
-                                                  color: Colors
-                                                      .white,
-                                                ),
-                                              )
-                                                  : selectedImages[
-                                              index]
-                                                  .path
-                                                  .contains(
-                                                  ".xml")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(
-                                                    0xFF0277BD),
-                                                child: Icon(Icons
-                                                    .code_off),
-                                              )
-                                                  : selectedImages[
-                                              index]
-                                                  .path
-                                                  .contains(
-                                                  ".doc")
-                                                  ? Container(
-                                                width: 40,
-                                                height:
-                                                40,
-                                                color: Color(
-                                                    0xFF2196F3),
-                                                child: Icon(
-                                                    Icons
-                                                        .article_outlined),
-                                              )
-                                                  : Center(
-                                                  child: kIsWeb
-                                                      ? Image.network(
-                                                      selectedImages[index]
-                                                          .path)
-                                                      : Image.file(
-                                                      selectedImages[index]));
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 60),
-                                          child: Container(
-                                            child: IconButton(
-                                              icon: Image.asset(
-                                                  "images/pi.png"),
-                                              onPressed: () {
-                                                myAlert("lognote");
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 27, top: 3),
-                                          child: SizedBox(
-                                            width: 55,
-                                            height: 30,
-                                            child: ElevatedButton(
-                                                child: Center(
-                                                    child: SvgPicture.asset(
-                                                        "images/sendd.svg")
-                                                  // Text(
-                                                  //   "Send",
-                                                  //   style: TextStyle(
-                                                  //       fontWeight: FontWeight.w500,
-                                                  //       fontFamily: 'Mulish',
-                                                  //       fontSize: 10,
-                                                  //       color: Colors.white),
-                                                  // ),
-                                                ),
-                                                onPressed: _isSavingData
-                                                    ? null // Disable the button if saving is in progress
-                                                    : () async {
-                                                  setState(() {
-                                                    _isSavingData = true;
-                                                  });
-
-                                                  for (int i = 0;
-                                                  i < selectedImages.length;
-                                                  i++) {
-                                                    // print(selectedImages[i].path.split('/').last);
-
-                                                    //imagefilename=selectedImages[i].path.split('/').last;
-
-                                                    imagepath =
-                                                        selectedImages[i]
-                                                            .path
-                                                            .toString();
-                                                    File imagefile =
-                                                    File(imagepath);
-
-                                                    Uint8List imagebytes =
-                                                    await imagefile
-                                                        .readAsBytes(); //convert to bytes
-                                                    base64string =
-                                                        base64.encode(
-                                                            imagebytes);
-
-                                                    //
-
-                                                    String dataImages =
-                                                        '{"name":"name","type":"binary","datas":"${base64string
-                                                        .toString()}"}';
-
-                                                    Map<String,
-                                                        dynamic> jsondata =
-                                                    jsonDecode(dataImages);
-                                                    myData1.add(jsondata);
-                                                  }
-                                                  print(followersVisibility);
-                                                  print("final datatata");
-
-                                                  bodyController.text =
-                                                      lognoteController.text;
-
-                                                  var resMessage;
-                                                  followersVisibility == false
-                                                      ? resMessage =
-                                                  await logNoteData(myData1)
-                                                      : resMessage =
-                                                  await createSendmessage(
-                                                      myData1);
-
-                                                  if (resMessage['message'] ==
-                                                      "success") {
-                                                    print(
-                                                        resMessage['data']['att_count']);
-                                                    print("attachment count ");
-                                                    setState(() {
-                                                      _isSavingData = false;
-                                                      attachmentCount =
-                                                          resMessage['data']['att_count']
-                                                              .toString();
-
-                                                      logDataHeader.clear();
-                                                      logDataTitle.clear();
-                                                      selectedImagesDisplay
-                                                          .clear();
-
-                                                      lognoteController.text =
-                                                      "";
-                                                      selectedImages.clear();
-                                                      myData1.clear();
-                                                      bodyController.text = "";
-
-                                                      FocusScope.of(context).unfocus();
-                                                    });
-                                                  }
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xFFFA256A),
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Visibility(
-                                visible: lognoteVisibility,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        salesperImg != ""
-                                            ? Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 25),
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                              border: Border.all(),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(20)),
-                                            ),
-                                            child: CircleAvatar(
-                                              radius: 12,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                BorderRadius.circular(18),
-                                                child: Image.network(
-                                                    "${salesperImg!}?token=${token}"),
-                                              ),
-                                            ),
-                                          ),
-                                        )
-                                            : Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 25),
-                                          child: Container(
-                                            width: 30,
-                                            height: 30,
-                                            decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  //  color: Colors.green
-                                                ),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(20))),
-                                            child: CircleAvatar(
-                                              radius: 12,
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 20,
-                                                // Adjust the size of the icon as per your requirements
-                                                color: Colors
-                                                    .white, // Adjust the color of the icon as per your requirements
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 15, right: 20),
-                                          child: Container(
-                                            width: MediaQuery
-                                                .of(context)
-                                                .size
-                                                .width /
-                                                1.34,
-
-                                            //height: 46,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(5)),
-                                                color: Color(0xFFF6F6F6),
-                                                border: Border.all(
-                                                  color: Color(0xFFEBEBEB),
-                                                )),
-                                            child: Row(
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      width: MediaQuery
-                                                          .of(context)
-                                                          .size
-                                                          .width /
-                                                          1.8,
-
-                                                      // height: 40,
-                                                      //color: Colors.red,
-                                                      child: Padding(
-                                                        padding: const EdgeInsets
-                                                            .only(
-                                                            left: 10),
-                                                        child: TextField(
-                                                            textAlignVertical:
-                                                            TextAlignVertical
-                                                                .top,
-                                                            style: TextStyle(
-                                                              fontWeight: FontWeight
-                                                                  .w400,
-                                                              fontFamily: 'Mulish',
-                                                              fontSize: 11,
-                                                              color: Color(
-                                                                  0xFF000000),
-                                                            ),
-                                                            //expands: true,
-                                                            maxLines: null,
-                                                            controller: lognoteController,
-                                                            decoration:
-                                                            const InputDecoration(
-                                                                border:
-                                                                InputBorder
-                                                                    .none,
-                                                                hintText:
-                                                                "Log an internal note",
-                                                                hintStyle: TextStyle(
-                                                                  //fontFamily: "inter",
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                    fontFamily:
-                                                                    'Mulish',
-                                                                    fontSize: 12,
-                                                                    color: Color(
-                                                                        0xFFAFAFAF)))),
-                                                      ),
-                                                    ),
-
-
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .only(left: 20),
-                                                  child: IconButton(
-                                                      onPressed: () async {
-                                                        recipient!.clear();
-                                                        await defaultSendmsgvalues();
-                                                        setState(() {
-                                                          recipientsVisibility ==
-                                                              false
-                                                              ?
-                                                          recipientsVisibility =
-                                                          false
-                                                              : recipientsVisibility =
-                                                          false;
-                                                        });
-
-                                                        showDialog(
-                                                          context: context,
-                                                          builder: (BuildContext
-                                                          context) =>
-                                                              _buildSendmessagePopupDialog(
-                                                                  context, 0),
-                                                        ).then((value) =>
-                                                            setState(() {}));
-                                                      },
-                                                      icon: Icon(
-                                                        Icons
-                                                            .arrow_outward_rounded,
-                                                        size: 18,
-                                                        color: Colors.grey[700],
-                                                      )),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    selectedImages.isEmpty
-                                        ? Padding(
-                                      padding: const EdgeInsets.only(left: 73),
-                                      child: Container(
-                                        width:
-                                        MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width,
-                                        // height: 40,
-                                      ),
-                                    )
-                                        : Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 70, right: 50, top: 5),
-                                      child: Container(
-                                        width:
-                                        MediaQuery
-                                            .of(context)
-                                            .size
-                                            .width,
-                                        // height: 40,
-                                        child: Container(
-                                          width: 40,
-                                          //height: 40,
-                                          child: GridView.builder(
-                                            shrinkWrap: true,
-                                            // Avoid scrolling
-                                            physics:
-                                            NeverScrollableScrollPhysics(),
-                                            itemCount: selectedImages.length,
-                                            gridDelegate:
-                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 8),
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              print("pdfffffffffff2");
-                                              return selectedImages[index]
-                                                  .path
-                                                  .contains(".pdf")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(0xFFEF5350),
-                                                child: Icon(Icons
-                                                    .picture_as_pdf_sharp),
-                                              )
-                                                  : selectedImages[index]
-                                                  .path
-                                                  .contains(".zip")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color:
-                                                Color(0xFFFDD835),
-                                                child: Icon(Icons
-                                                    .folder_zip_outlined),
-                                              )
-                                                  : selectedImages[index]
-                                                  .path
-                                                  .contains(".xlsx")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(
-                                                    0xFF4CAF50),
-                                                child: Icon(
-                                                    Icons.clear),
-                                              )
-                                                  : selectedImages[
-                                              index]
-                                                  .path
-                                                  .contains(
-                                                  ".xml")
-                                                  ? Container(
-                                                width: 40,
-                                                height: 40,
-                                                color: Color(
-                                                    0xFF0277BD),
-                                                child: Icon(Icons
-                                                    .code_off),
-                                              )
-                                                  : selectedImages[
-                                              index]
-                                                  .path
-                                                  .contains(
-                                                  ".doc")
-                                                  ? Container(
-                                                width: 40,
-                                                height:
-                                                40,
-                                                color: Color(
-                                                    0xFF2196F3),
-                                                child: Icon(
-                                                    Icons
-                                                        .article_outlined),
-                                              )
-                                                  : Center(
-                                                  child: kIsWeb
-                                                      ? Image.network(
-                                                      selectedImages[index]
-                                                          .path)
-                                                      : Image.file(
-                                                      selectedImages[index]));
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment
-                                          .spaceBetween,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 60),
-                                          child: Container(
-                                            child: IconButton(
-                                              icon: Image.asset(
-                                                  "images/pi.png"),
-                                              onPressed: () {
-                                                myAlert("lognote");
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 25, top: 3),
-                                          child: SizedBox(
-                                            width: 55,
-                                            height: 30,
-                                            child: ElevatedButton(
-                                                child: Center(
-                                                    child: SvgPicture.asset(
-                                                        "images/sendd.svg")
-                                                  // Text(
-                                                  //   "Send",
-                                                  //   style: TextStyle(
-                                                  //       fontWeight: FontWeight.w500,
-                                                  //       fontFamily: 'Mulish',
-                                                  //       fontSize: 10,
-                                                  //       color: Colors.white),
-                                                  // ),
-                                                ),
-                                                onPressed: _isSavingData
-                                                    ? null // Disable the button if saving is in progress
-                                                    : () async {
-                                                  setState(() {
-                                                    _isSavingData = true;
-                                                  });
-
-                                                  for (int i = 0;
-                                                  i < selectedImages.length;
-                                                  i++) {
-                                                    // print(selectedImages[i].path.split('/').last);
-
-                                                    //imagefilename=selectedImages[i].path.split('/').last;
-
-                                                    imagepath =
-                                                        selectedImages[i]
-                                                            .path
-                                                            .toString();
-                                                    File imagefile =
-                                                    File(imagepath);
-
-                                                    Uint8List imagebytes =
-                                                    await imagefile
-                                                        .readAsBytes(); //convert to bytes
-                                                    base64string =
-                                                        base64.encode(
-                                                            imagebytes);
-
-                                                    //
-
-                                                    String dataImages =
-                                                        '{"name":"name","type":"binary","datas":"${base64string
-                                                        .toString()}"}';
-
-                                                    Map<String,
-                                                        dynamic> jsondata =
-                                                    jsonDecode(dataImages);
-                                                    myData1.add(jsondata);
-                                                  }
-                                                  print(followersVisibility);
-                                                  print("final datatata");
-
-                                                  bodyController.text =
-                                                      lognoteController.text;
-
-                                                  var resMessage;
-                                                  followersVisibility == false
-                                                      ? resMessage =
-                                                  await logNoteData(myData1)
-                                                      : resMessage =
-                                                  await createSendmessage(
-                                                      myData1);
-
-                                                  if (resMessage['message'] ==
-                                                      "success") {
-                                                    print(
-                                                        resMessage['data']['att_count']);
-                                                    print("attachment count ");
-                                                    setState(() {
-                                                      _isSavingData = false;
-                                                      attachmentCount =
-                                                          resMessage['data']['att_count']
-                                                              .toString();
-
-                                                      logDataHeader.clear();
-                                                      logDataTitle.clear();
-                                                      selectedImagesDisplay
-                                                          .clear();
-
-                                                      lognoteController.text =
-                                                      "";
-                                                      selectedImages.clear();
-                                                      myData1.clear();
-                                                      bodyController.text = "";
-                                                      FocusScope.of(context).unfocus();
-                                                    });
-                                                  }
-                                                },
-                                                style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xFFFA256A),
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Visibility(
-                          visible: scheduleLength == 0 ? false : true,
-                          // visible:true,
-                          child: Container(
-                            // width: 104,
-                            // height: 16,
-                            color: Color(0xFFF6F6F6),
-
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  TextButton.icon(
-                                    // <-- TextButton
-                                    onPressed: () {
-                                      setState(() {
-                                        scheduleActivityVisibility == true
-                                            ? scheduleActivityVisibility = false
-                                            : scheduleActivityVisibility = true;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      Icons.arrow_drop_down_rounded,
-                                      size: 30.0,
-                                      color: Colors.black54,
-                                    ),
-                                    label: Text(
-                                      'Planned Activities',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Color(0xFF000000),
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                      ),
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible: scheduleVisibiltyOverdue,
-                                    child: Container(
-                                      width: 15,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red,
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                            scheduleOverdue.toString(),
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Mulish',
-                                                color: Colors.white),
-                                          )),
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible: scheduleVisibiltyToday,
-                                    child: Container(
-                                      width: 15,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.yellow,
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                            scheduleToday.toString(),
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                //fontWeight: FontWeight.bold,
-                                                fontFamily: 'Mulish',
-                                                color: Colors.black),
-                                          )),
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible: scheduleVisibiltyPlanned,
-                                    child: Container(
-                                      width: 15,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green,
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                            schedulePlanned.toString(),
-                                            style: TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold,
-                                                fontFamily: 'Mulish',
-                                                color: Colors.white),
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        // code change for schedule activity
-
-                        Visibility(
-                          visible: scheduleActivityVisibility,
-                          child: Container(
-                            //color: Colors.green,
-                            //height: MediaQuery.of(context).size.height/1.8,
-                            child: scheduleLength == 0
-                                ? Container()
-                                : ListView.builder(
-                                scrollDirection: Axis.vertical,
-                                physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: scheduleLength,
-                                itemBuilder: (BuildContext context, int index) {
-                                  scheduleData['records'][index]['icon'] ==
-                                      "fa-envelope"
-                                      ? scheduleIcon = const Icon(
-                                    Icons.email_outlined,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records'][index]['icon'] ==
-                                      "fa-phone"
-                                      ? scheduleIcon = Icon(
-                                    Icons.phone,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records'][index]
-                                  ['icon'] ==
-                                      "fa-users"
-                                      ? scheduleIcon = Icon(
-                                    Icons.person,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records'][index]
-                                  ['icon'] ==
-                                      "fa-file-text-o"
-                                      ? scheduleIcon = Icon(
-                                    Icons.file_copy,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records'][index]
-                                  ['icon'] ==
-                                      "fa-line-chart"
-                                      ? scheduleIcon = Icon(
-                                    Icons.bar_chart,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records']
-                                  [index]
-                                  ['icon'] ==
-                                      "fa-tasks"
-                                      ? scheduleIcon = Icon(
-                                    Icons.task,
-                                    color: Colors.white,
-                                    size: 8,
-                                  )
-                                      : scheduleData['records']
-                                  [index]
-                                  ['icon'] ==
-                                      "fa-upload"
-                                      ? scheduleIcon =
-                                      Icon(
-                                        Icons.upload,
-                                        color: Colors
-                                            .white,
-                                        size: 8,
-                                      )
-                                      : Icon(
-                                    Icons.circle,
-                                    color: Colors
-                                        .white,
-                                    size: 8,
-                                  );
-
-                                  return Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .center,
-                                    children: [
-                                      Padding(
-                                        //padding: const EdgeInsets.all(25.0),
-                                        padding: const EdgeInsets.only(
-                                            top: 10, bottom: 10),
-                                        child: Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              25, 0, 25, 5),
-
-                                          width: double.infinity,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Color(0xffebebeb)),
-                                            color: Color(0xfffcfcfc),
-                                            // color: Colors.blue,
-                                            borderRadius: BorderRadius.circular(
-                                                4),
-                                          ),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment
-                                                .start,
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 0),
-
-                                                width: MediaQuery
-                                                    .of(context)
-                                                    .size
-                                                    .width / 1,
-                                                height: 40,
-                                                child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment
-                                                      .center,
-                                                  children: [
-                                                    Container(
-                                                      //color:Colors.pink,
-                                                      // ellipse121x7a (1112:1367)
-                                                      margin: EdgeInsets
-                                                          .fromLTRB(9, 0, 9, 2),
-                                                      width: 25,
-                                                      height: 25,
-                                                      child: Stack(
-                                                        alignment: Alignment
-                                                            .center,
-                                                        children: [
-                                                          // scheduleData['records'][index]['delay_label'].toString() ?? ""
-                                                          CircleAvatar(
-                                                            radius: 12,
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                              BorderRadius
-                                                                  .circular(18),
-                                                              child: Image
-                                                                  .network(
-                                                                  "${scheduleData['records'][index]['image']!}?token=${token}"),
-                                                            ),
-                                                          ),
-
-                                                          Positioned(
-                                                            bottom: 0,
-                                                            right: 0,
-                                                            child: Container(
-                                                              width: 10.0,
-                                                              height: 10.0,
-                                                              decoration:
-                                                              BoxDecoration(
-                                                                shape:
-                                                                BoxShape.circle,
-                                                                color: Color(
-                                                                    int.parse(
-                                                                        scheduleData[
-                                                                        'records']
-                                                                        [index][
-                                                                        'label_color'])),
-                                                              ),
-                                                              child: Center(
-                                                                child: scheduleIcon,
-                                                                // child: Icon(
-                                                                //   Icons.image,
-                                                                //   color: Colors.white,
-                                                                //   size: 8,
-                                                                // ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: Container(
-                                                        margin: EdgeInsets
-                                                            .fromLTRB(
-                                                            0, 0, 9, 0),
-                                                        width: MediaQuery
-                                                            .of(context)
-                                                            .size
-                                                            .width / 1.3,
-                                                        height: double.infinity,
-                                                        child: Row(
-                                                          crossAxisAlignment: CrossAxisAlignment
-                                                              .center,
-                                                          mainAxisAlignment: MainAxisAlignment
-                                                              .spaceBetween,
-                                                          children: [
-                                                            Container(
-                                                              // autogrouprwrccT2 (7u5yPeGNvuuGAuKdPZrWrc)
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 1, 1, 2),
-                                                              width: MediaQuery
-                                                                  .of(context)
-                                                                  .size
-                                                                  .width / 2,
-                                                              height: double
-                                                                  .infinity,
-                                                              child: Stack(
-                                                                children: [
-                                                                  Positioned(
-                                                                    // marcdemoLP2 (1112:1368)
-                                                                    left: 1,
-                                                                    top: 1,
-                                                                    child: Align(
-                                                                      child: Text(
-                                                                        scheduleData['records']
-                                                                        [index]
-                                                                        ['user_id'][1]
-                                                                            .toString() ??
-                                                                            "",
-                                                                        style: TextStyle(
-                                                                          fontFamily: 'Mulish',
-                                                                          fontSize: 12,
-                                                                          fontWeight: FontWeight
-                                                                              .w600,
-
-                                                                          color: Color(
-                                                                              0xff202020),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Positioned(
-                                                                    left: 2,
-                                                                    top: 15,
-                                                                    child: Align(
-                                                                      child: Text(
-                                                                        scheduleData['records'][index]
-                                                                        ['note']
-                                                                            .replaceAll(
-                                                                            RegExp(
-                                                                                r'<[^>]*>|&[^;]+;'),
-                                                                            ' ')
-                                                                            .toString() ??
-                                                                            "",
-                                                                        style: TextStyle(
-                                                                          fontFamily: 'Mulish',
-                                                                          fontSize: 10,
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-
-                                                                          color: Color(
-                                                                              0xff666666),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Container(
-
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 1, 1, 2),
-                                                              //width: MediaQuery.of(context).size.width,
-                                                              width: MediaQuery
-                                                                  .of(context)
-                                                                  .size
-                                                                  .width / 4.2,
-                                                              //color:Colors.green,
-                                                              //height: double.infinity,
-                                                              child: Stack(
-
-                                                                children: [
-                                                                  Positioned(
-                                                                    right: 1,
-                                                                    top: 1,
-                                                                    child: Align(
-
-                                                                      child: Text(
-                                                                        scheduleData['records']
-                                                                        [index]
-                                                                        ['delay_label']
-                                                                            .toString() ??
-                                                                            "",
-                                                                        style: TextStyle(
-                                                                            fontFamily: 'Mulish',
-                                                                            fontSize: 12,
-                                                                            fontWeight: FontWeight
-                                                                                .w600,
-
-                                                                            color: Color(
-                                                                                int
-                                                                                    .parse(
-                                                                                    scheduleData[
-                                                                                    'records']
-                                                                                    [index][
-                                                                                    'label_color']))
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  Positioned(
-                                                                    right: 1,
-                                                                    top: 15,
-                                                                    child: Align(
-
-                                                                      child: Text(
-                                                                        scheduleData['records']
-                                                                        [index][
-                                                                        'activity_type_id'][1]
-                                                                            .toString() ??
-                                                                            "",
-                                                                        textAlign: TextAlign
-                                                                            .right,
-                                                                        style: TextStyle(
-                                                                          fontFamily: 'Mulish',
-                                                                          fontSize: 12,
-                                                                          fontWeight: FontWeight
-                                                                              .w600,
-                                                                          color: Color(
-                                                                              0xff202020),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 6),
-                                                height: 1,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xffebebeb),
-
-                                                ),
-                                              ),
-                                              Container(
-
-                                                // color: Colors.green,
-                                                width: MediaQuery
-                                                    .of(context)
-                                                    .size
-                                                    .width,
-                                                height: 30,
-                                                child: Row(
-                                                  crossAxisAlignment: CrossAxisAlignment
-                                                      .center,
-                                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                  children: [
-                                                    Expanded(
                                                       child: Container(
 
-                                                        height: double.infinity,
-                                                        child: Row(
-                                                          crossAxisAlignment: CrossAxisAlignment
-                                                              .center,
-
-                                                          children: [
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Container(
-
-
-                                                                padding: EdgeInsets
-                                                                    .fromLTRB(
-                                                                    10, 0, 2,
-                                                                    0),
-                                                                // height: 14*fem,
-                                                                child: InkWell(
-                                                                  onTap: () async {
-                                                                    int datasIds =
-                                                                    scheduleData[
-                                                                    'records']
-                                                                    [index]['id'];
-
-                                                                    showDialog(
-                                                                      context: context,
-                                                                      builder: (
-                                                                          BuildContext
-                                                                          context) =>
-                                                                          _buildMarkDoneDialog(
-                                                                              context,
-                                                                              datasIds),
-                                                                    ).then((
-                                                                        value) =>
-                                                                        setState(() {}));
-                                                                  },
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                        .center,
-                                                                    children: [
-                                                                      Container(
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            2,
-                                                                            0),
-                                                                        width: 12,
-                                                                        height: 12,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/schedulecheck.png',
-                                                                          width: 10,
-                                                                          height: 10,
-                                                                        ),
-                                                                      ),
-                                                                      Container(
-
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            0),
-                                                                        child: Text(
-                                                                          scheduleData['records']
-                                                                          [index][
-                                                                          'buttons'][0]
-                                                                              .toString() ??
-                                                                              "",
-                                                                          style: TextStyle(
-                                                                            fontFamily: 'Mulish',
-                                                                            fontSize: 11,
-                                                                            fontWeight: FontWeight
-                                                                                .w500,
-                                                                            color: Color(
-                                                                                0xff707070),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-
-                                                            scheduleData['records'][index]
-                                                            ['buttons'][1] ==
-                                                                "Reschedule" ?
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Container(
-
-                                                                padding: EdgeInsets
-                                                                    .fromLTRB(
-                                                                    2, 0, 2, 0),
-
-                                                                // height: double.infinity,
-                                                                child: InkWell(
-                                                                  onTap: () async {
-                                                                    DateTime
-                                                                    dateTime =
-                                                                    DateTime
-                                                                        .parse(
-                                                                        scheduleData['records']
-                                                                        [
-                                                                        index]
-                                                                        [
-                                                                        'date_deadline']);
-
-                                                                    Navigator
-                                                                        .push(
-                                                                        context,
-                                                                        MaterialPageRoute(
-                                                                            builder: (
-                                                                                context) =>
-                                                                                Calender(
-                                                                                    null,
-                                                                                    "",
-                                                                                    dateTime,
-                                                                                    null,
-                                                                                    [
-                                                                                    ],
-                                                                                    "")));
-                                                                  },
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                        .center,
-
-                                                                    mainAxisAlignment: MainAxisAlignment
-                                                                        .center,
-                                                                    children: [
-                                                                      Container(
-                                                                        // iconsaxlinearcalendarPvx (1112:1377)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            4,
-                                                                            0),
-                                                                        width: 12,
-                                                                        height: 12,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/schedulecalendar.png',
-                                                                          width: 10,
-                                                                          height: 10,
-                                                                        ),
-                                                                      ),
-                                                                      Text(
-
-                                                                        scheduleData['records']
-                                                                        [
-                                                                        index]
-                                                                        [
-                                                                        'buttons'][1]
-                                                                            .toString() ??
-                                                                            "",
-                                                                        style: TextStyle(
-                                                                          fontFamily: 'Mulish',
-                                                                          fontSize: 11,
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          // height: 1.255*ffem/fem,
-                                                                          color: Color(
-                                                                              0xff707070),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ) :
-
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Container(
-
-                                                                padding: EdgeInsets
-                                                                    .fromLTRB(
-                                                                    2, 0, 2, 0),
-
-                                                                // height: double.infinity,
-                                                                child: InkWell(
-                                                                  onTap: () async {
-                                                                    int idType =
-                                                                    scheduleData[
-                                                                    'records']
-                                                                    [
-                                                                    index]['id'];
-
-                                                                    var data = await editDefaultScheduleData(
-                                                                        scheduleData[
-                                                                        'records']
-                                                                        [
-                                                                        index]['id']);
-
-                                                                    setState(() {
-                                                                      activityTypeName =
-                                                                          data['activity_type_id'] ??
-                                                                              null;
-                                                                      activityTypeId =
-                                                                          data['activity_type_id']
-                                                                          [
-                                                                          'id'] ??
-                                                                              null;
-                                                                      activityTypeNameCategory =
-                                                                          data['activity_type_id']
-                                                                          [
-                                                                          'category'] ??
-                                                                              "";
-                                                                      assignedToname =
-                                                                          data['user_id'] ??
-                                                                              null;
-                                                                      assignedToid =
-                                                                          data['user_id']
-                                                                          [
-                                                                          'id'] ??
-                                                                              null;
-                                                                      DuedateTime
-                                                                          .text =
-                                                                          data['date_deadline'] ??
-                                                                              "";
-                                                                      summaryController
-                                                                          .text =
-                                                                          data['summary'] ??
-                                                                              "";
-                                                                      commandsController
-                                                                          .text =
-                                                                          data[
-                                                                          'note']
-                                                                              .replaceAll(
-                                                                              RegExp(
-                                                                                  r'<[^>]*>|&[^;]+;'),
-                                                                              ' ')
-                                                                              .toString();
-                                                                      // DuedateTime.text == "default" ?
-                                                                      if (activityTypeNameCategory ==
-                                                                          "default") {
-                                                                        scheduleBtn =
-                                                                        true;
-                                                                        opencalendarBtn =
-                                                                        false;
-                                                                        btntext =
-                                                                        "Schedule";
-                                                                        meetingColum =
-                                                                        true;
-                                                                      } else
-                                                                      if (activityTypeNameCategory ==
-                                                                          "phonecall") {
-                                                                        scheduleBtn =
-                                                                        true;
-                                                                        opencalendarBtn =
-                                                                        true;
-                                                                        btntext =
-                                                                        "Save";
-                                                                        meetingColum =
-                                                                        true;
-                                                                      } else
-                                                                      if (activityTypeNameCategory ==
-                                                                          "meeting") {
-                                                                        scheduleBtn =
-                                                                        false;
-                                                                        opencalendarBtn =
-                                                                        true;
-                                                                        btntext =
-                                                                        "Schedule";
-                                                                        meetingColum =
-                                                                        false;
-                                                                      } else
-                                                                      if (activityTypeNameCategory ==
-                                                                          "upload_file") {
-                                                                        scheduleBtn =
-                                                                        true;
-                                                                        opencalendarBtn =
-                                                                        false;
-                                                                        btntext =
-                                                                        "Schedule";
-                                                                        meetingColum =
-                                                                        true;
-                                                                      }
-
-                                                                      print(
-                                                                          activityTypeNameCategory);
-                                                                      print(
-                                                                          "jhbvjbvsvj");
-                                                                    });
-
-                                                                    showDialog(
-                                                                      context:
-                                                                      context,
-                                                                      builder: (
-                                                                          BuildContext
-                                                                          context) =>
-                                                                          _buildOrderPopupDialog(
-                                                                              context,
-                                                                              idType),
-                                                                    ).then((
-                                                                        value) =>
-                                                                        setState(
-                                                                                () {}));
-                                                                  },
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                        .center,
-
-                                                                    mainAxisAlignment: MainAxisAlignment
-                                                                        .center,
-                                                                    children: [
-                                                                      Container(
-                                                                        // iconsaxlinearcalendarPvx (1112:1377)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            4,
-                                                                            0),
-                                                                        width: 12,
-                                                                        height: 12,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/scheduleedit.png',
-                                                                          width: 10,
-                                                                          height: 10,
-                                                                        ),
-                                                                      ),
-                                                                      Text(
-
-                                                                        scheduleData['records']
-                                                                        [
-                                                                        index]
-                                                                        [
-                                                                        'buttons'][1]
-                                                                            .toString() ??
-                                                                            "",
-                                                                        style: TextStyle(
-                                                                          fontFamily: 'Mulish',
-                                                                          fontSize: 11,
-                                                                          fontWeight: FontWeight
-                                                                              .w500,
-                                                                          // height: 1.255*ffem/fem,
-                                                                          color: Color(
-                                                                              0xff707070),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-
-                                                            Expanded(
-                                                              flex: 2,
-                                                              child: Container(
-                                                                // color:Colors.red,
-
-                                                                padding: EdgeInsets
-                                                                    .fromLTRB(
-                                                                    2, 0, 10,
-                                                                    0),
-                                                                //  height: double.infinity,
-                                                                child: InkWell(
-                                                                  onTap: () async {
-                                                                    var data =
-                                                                    await deleteScheduleData(
-                                                                        scheduleData[
-                                                                        'records']
-                                                                        [
-                                                                        index]['id']);
-
-                                                                    if (data['message'] ==
-                                                                        "Success") {
-                                                                      print(
-                                                                          "responce");
-                                                                      setState(() {
-                                                                        getScheduleDetails();
-                                                                      });
-                                                                    }
-
-                                                                    print(
-                                                                        "demo datataaa");
-                                                                  },
-                                                                  child: Row(
-                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                        .center,
-                                                                    mainAxisAlignment: MainAxisAlignment
-                                                                        .end,
-                                                                    children: [
-                                                                      Align(
-                                                                        alignment: Alignment
-                                                                            .centerRight,
-                                                                        child: Container(
-
-                                                                          margin: EdgeInsets
-                                                                              .fromLTRB(
-                                                                              0,
-                                                                              0,
-                                                                              4,
-                                                                              0),
-                                                                          width: 12,
-                                                                          height: 12,
-                                                                          child: Image
-                                                                              .asset(
-                                                                            'images/schedulecancel.png',
-                                                                            width: 10,
-                                                                            height: 10,
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                      Align(
-                                                                        alignment: Alignment
-                                                                            .centerRight,
-                                                                        child: Text(
-                                                                          scheduleData['records']
-                                                                          [index][
-                                                                          'buttons'][2]
-                                                                              .toString() ??
-                                                                              "",
-                                                                          style: TextStyle(
-                                                                            fontFamily: 'Mulish',
-                                                                            fontSize: 11,
-                                                                            fontWeight: FontWeight
-                                                                                .w500,
-                                                                            //height: 1.255*ffem/fem,
-                                                                            color: Color(
-                                                                                0xff707070),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            VerticalDivider(),
-
-
-                                                            Expanded(
-
-                                                              flex: 1,
-                                                              child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment
-                                                                    .center,
-                                                                mainAxisAlignment: MainAxisAlignment
-                                                                    .end,
-
-                                                                children: [
-                                                                  JustTheTooltip(
-                                                                    margin: EdgeInsets
-                                                                        .only(
-                                                                        left: 25,
-                                                                        right: 25),
-
-                                                                    preferredDirection: AxisDirection
-                                                                        .up,
-                                                                    isModal: true,
-                                                                    child: Material(
-                                                                      //color: Colors.grey.shade800,
-                                                                      shape: const CircleBorder(),
-                                                                      //elevation: 4.0,
-                                                                      child: Container(
-                                                                        // iconsaxlinearcalendarPvx (1112:1377)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            10,
-                                                                            0),
-                                                                        width: 12,
-                                                                        height: 12,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/alertcircle.png',
-                                                                          width: 10,
-                                                                          height: 10,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                    content: Container(
-                                                                      margin: EdgeInsets
-                                                                          .only(
-                                                                          left: 25,
-                                                                          right: 25),
-                                                                      height: 165,
-                                                                      child: Padding(
-                                                                        padding: const EdgeInsets
-                                                                            .only(
-                                                                            top: 5,
-                                                                            left: 9),
-                                                                        child: Column(
-                                                                          crossAxisAlignment:
-                                                                          CrossAxisAlignment
-                                                                              .start,
-                                                                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                                          children: [
-                                                                            Text(
-                                                                              "Activity type",
-                                                                              style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                fontFamily: 'Mulish',
-                                                                                color: Color(
-                                                                                    0xFF666666),
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .w500,
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Text(
-                                                                              scheduleData['records']
-                                                                              [index][
-                                                                              'activity_type_id'][1],
-                                                                              style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                fontFamily: 'Mulish',
-                                                                                color: Color(
-                                                                                    0xFF666666),
-                                                                                fontWeight: FontWeight
-                                                                                    .w500,),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Text(
-                                                                              "Created",
-                                                                              style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                fontFamily: 'Mulish',
-                                                                                color: Color(
-                                                                                    0xFF666666),
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .w500,
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Row(
-                                                                              children: [
-                                                                                Text(
-                                                                                  scheduleData['records']
-                                                                                  [
-                                                                                  index]
-                                                                                  [
-                                                                                  'create_date']
-                                                                                      .toString() ??
-                                                                                      "",
-                                                                                  style: TextStyle(
-                                                                                      fontSize: 11,
-                                                                                      fontWeight: FontWeight
-                                                                                          .w500,
-                                                                                      fontFamily:
-                                                                                      'Mulish',
-                                                                                      color:
-                                                                                      Color(
-                                                                                          0xFF666666)),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  width: 5,
-                                                                                ),
-                                                                                Container(
-                                                                                  child: CircleAvatar(
-                                                                                    radius: 10,
-                                                                                    child: ClipRRect(
-                                                                                      borderRadius:
-                                                                                      BorderRadius
-                                                                                          .circular(
-                                                                                          12),
-                                                                                      child: Image
-                                                                                          .network(
-                                                                                          "${scheduleData['records'][index]['image2']!}?token=${token}"),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  width: 3,
-                                                                                ),
-                                                                                Text(
-                                                                                  scheduleData['records']
-                                                                                  [
-                                                                                  index]
-                                                                                  [
-                                                                                  'create_uid'][1]
-                                                                                      .toString() ??
-                                                                                      "",
-                                                                                  style: TextStyle(
-                                                                                    fontSize: 11,
-                                                                                    fontFamily:
-                                                                                    'Mulish',
-                                                                                    color: Color(
-                                                                                        0xFF666666),
-                                                                                    fontWeight:
-                                                                                    FontWeight
-                                                                                        .w500,
-                                                                                  ),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Text(
-                                                                              "Assigned to",
-                                                                              style: TextStyle(
-                                                                                fontSize: 11,
-
-                                                                                fontFamily: 'Mulish',
-                                                                                color: Color(
-                                                                                    0xFF666666),
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .w500,
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Row(
-                                                                              children: [
-                                                                                Container(
-                                                                                  child: CircleAvatar(
-                                                                                    radius: 10,
-                                                                                    child: ClipRRect(
-                                                                                      borderRadius:
-                                                                                      BorderRadius
-                                                                                          .circular(
-                                                                                          18),
-                                                                                      child: Image
-                                                                                          .network(
-                                                                                          "${scheduleData['records'][index]['image']!}?token=${token}"),
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                                SizedBox(
-                                                                                  width: 3,
-                                                                                ),
-                                                                                Text(
-                                                                                  scheduleData['records']
-                                                                                  [
-                                                                                  index]
-                                                                                  [
-                                                                                  'user_id'][1]
-                                                                                      .toString() ??
-                                                                                      "",
-                                                                                  style: TextStyle(
-                                                                                      fontSize: 11,
-                                                                                      fontFamily:
-                                                                                      'Mulish',
-                                                                                      fontWeight: FontWeight
-                                                                                          .w500,
-                                                                                      color:
-                                                                                      Color(
-                                                                                          0xFF666666)),
-                                                                                ),
-                                                                              ],
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Text(
-                                                                              "Due on",
-                                                                              style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                color: Color(
-                                                                                    0xFF666666),
-                                                                                fontWeight:
-                                                                                FontWeight
-                                                                                    .w500,
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                            Text(
-                                                                              scheduleData['records']
-                                                                              [index][
-                                                                              'date_deadline']
-                                                                                  .toString() ??
-                                                                                  "",
-                                                                              style: TextStyle(
-                                                                                  fontSize: 11,
-                                                                                  fontWeight: FontWeight
-                                                                                      .w500,
-                                                                                  fontFamily: 'Mulish',
-                                                                                  color: Color(
-                                                                                      0xFF666666)),
-                                                                            ),
-                                                                            SizedBox(
-                                                                              height: 3,
-                                                                            ),
-                                                                          ],
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            )
-                                                          ],
-                                                        ),
-
-
-                                                      ),
-
-                                                    ),
-
-
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-
-                                    ],
-                                  );
-                                }),
-                          ),
-                        ),
-
-                        SizedBox(
-                          height: 0,
-                        ),
-
-
-                        FutureBuilder(
-                            future:  postProvider?.fetchPosts(widget.leadId),
-                            builder: (context, snapshot) {
-                              logDataHeader.clear();
-                              logDataTitle.clear();
-                              print(snapshot.hasData);
-                               print("snapshot.data");
-                              print("snap data final ");
-
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-
-                                return Center(child: CircularProgressIndicator());
-                              }
-                              else {
-
-                                if (snapshot.hasError) {
-
-                                  return Center(child: Text('Error: ${snapshot.error}'));
-                                }
-                                else{
-
-                                  if (postProvider?.posts.length != 0) {
-
-
-
-          return Consumer<PostProvider>(
-          builder: (mcontext, provider, child) {
-
-          logDataHeader.clear();
-          logDataTitle.clear();
-          if (provider != null ) {
-          var postss = provider.posts;
-          if(postss!=null){
-          postss.forEach((key, value) {
-          logDataHeader.add(key);
-          logDataTitle.add(value);
-
-
-          } );
-
-          }
-          }
-            print("ddd1.lengthtest2");
-
-           return ListView.builder(
-                scrollDirection: Axis.vertical,
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: logDataHeader.length,
-                itemBuilder:
-                    (BuildContext context, int indexx) {
-                  return Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 0, bottom: 0),
-                        child: Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          height: 42,
-                          color: Color(0xff3D418E),
-                          child: Center(
-                              child: Text(
-                                logDataHeader[indexx],
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish',
-                                    color: Colors.white),
-
-                              )),
-                        ),
-                      ),
-                      ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          physics:
-                          NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount:
-                          logDataTitle[indexx].length,
-                          itemBuilder:
-                              (BuildContext context,
-                              int indexs) {
-                            selectedImagesDisplay =
-                            logDataTitle[indexx][indexs]
-                            ['attachment_ids'];
-
-                            if (selectedImagesDisplay.length != 0) {
-                              logattachmentImagesDisplay =
-                              selectedImagesDisplay['images'];
-                              logattachmentFileDisplay =
-                              selectedImagesDisplay['files'];
-                            }
-
-                            print(logDataTitle[indexx]
-                            [indexs]['attachment_ids']);
-
-                            print(logDataTitle[indexx]
-                            [indexs]['reaction_ids']);
-                            print("hjvdbjsbdv");
-
-
-                            List emojiSet =
-                            logDataTitle[indexx][indexs]
-                            ['reaction_ids'];
-
-                            if (emojiSet.length > 0) {
-                              print(emojiSet[0]['emoji']);
-                              print(emojiSet[0]['count']);
-                              print("fsvdsvdvdv");
-                            }
-
-                            print(emojiSet);
-                            print("various hbfuhebin");
-                            print(logDataTitle[indexx][indexs]
-                            ['reaction_ids']);
-                            print("hbfuhebin");
-
-                            print("selectedImagesDisplaysss");
-
-                            starImage = logDataTitle[indexx]
-                            [indexs]['starred'] ??
-                                false;
-                            lognoteoptions =
-                                logDataTitle[indexx][indexs]
-                                ['is_editable'] ??
-                                    true;
-
-                            print(logDataTitle[indexx]
-                            [indexs]['is_editable']);
-
-                            print('is_editable');
-
-                            logDataTitle[indexx][indexs]
-                            ['icon'] ==
-                                "envelope"
-                                ? logNoteIcon = const Icon(
-                              Icons.email,
-                              color: Colors.red,
-                              size: 15,
-                            )
-                                : logDataTitle[indexx]
-                            [indexs]
-                            ['icon'] ==
-                                "ad_units"
-                                ? logNoteIcon = Icon(
-                              Icons.phone,
-                              color: Colors.red,
-                              size: 15,
-                            )
-                                : logDataTitle[indexx]
-                            [indexs]
-                            ['icon'] ==
-                                "telegram"
-                                ? logNoteIcon =
-                                Icon(
-                                  Icons.telegram,
-                                  color:
-                                  Colors.red,
-                                  size: 15,
-                                )
-                                : Icon(
-                              Icons.circle,
-                              color: Colors
-                                  .white,
-                              size: 8,
-                            );
-
-                            return Card(
-                              elevation: 1,
-                              child: Column(
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(top: 10),
-                                    width: 340,
-                                    //height:80,
-                                    //  color: Colors.yellow,
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .start,
-
-                                      children: [
-                                        Container(
-                                          // group20507jZA (1636:7)
-                                          padding: EdgeInsets.fromLTRB(
-                                              25, 27, 3, 0),
-                                          width: 35,
-                                          height: 35,
-                                          decoration: BoxDecoration(
-
-                                            borderRadius: BorderRadius.circular(
-                                                17.5),
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                  "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
-                                            ),
-                                          ),
-                                          child: Align(
-                                            // ellipse123qs6 (1636:32)
-                                            alignment: Alignment.bottomRight,
-                                            child: SizedBox(
-                                              width: double.infinity,
-                                              height: 7,
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius
-                                                      .circular(3),
-                                                  border: Border.all(
-                                                      color: Color(0xffffffff)),
-                                                  color: Color(0xff167b33),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-
-                                            // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
-                                            padding: EdgeInsets.fromLTRB(
-                                                19, 2, 2, 2),
-
-                                            child: Row(
-                                              crossAxisAlignment: CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                Expanded(
-                                                  flex: 3,
-                                                  child: Container(
-                                                    //  color: Colors.blue,
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0, 0, 20, 0),
-                                                    // height: double.infinity,
-                                                    child: Column(
-                                                      crossAxisAlignment: CrossAxisAlignment
-                                                          .start,
-                                                      mainAxisAlignment: MainAxisAlignment
-                                                          .start,
-                                                      children: [
-                                                        Container(
-                                                          // color:Colors.red,
-
-                                                          margin: EdgeInsets
-                                                              .fromLTRB(
-                                                              0, 0, 0, 2),
-                                                          child: RichText(
-                                                            text: TextSpan(
-                                                              style: TextStyle(
-                                                                fontFamily: 'Mulish',
-                                                                fontSize: 12,
-                                                                fontWeight: FontWeight
-                                                                    .w700,
-                                                                height: 0,
-                                                                color: Color(
-                                                                    0xff000000),
-                                                              ),
-                                                              children: [
-                                                                TextSpan(
-                                                                  text: logDataTitle[indexx][indexs]['create_uid'][1],
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Mulish',
-                                                                    fontSize: 11,
-                                                                    fontWeight: FontWeight
-                                                                        .w500,
-                                                                    height: 1,
-                                                                    color: Color(
-                                                                        0xff000000),
-
-                                                                  ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: ' -',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Mulish',
-                                                                    fontSize: 11,
-                                                                    fontWeight: FontWeight
-                                                                        .w500,
-                                                                    height: 1,
-                                                                    color: Color(
-                                                                        0xffa29d9d),
-                                                                  ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: ' ',
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Mulish',
-                                                                    fontSize: 11,
-                                                                    fontWeight: FontWeight
-                                                                        .w500,
-                                                                    height: 1,
-                                                                    color: Color(
-                                                                        0xff000000),
-                                                                  ),
-                                                                ),
-                                                                TextSpan(
-                                                                  text: logDataTitle[indexx][indexs]["period"],
-                                                                  style: TextStyle(
-                                                                    fontFamily: 'Mulish',
-                                                                    fontSize: 9,
-                                                                    fontWeight: FontWeight
-                                                                        .w500,
-                                                                    height: 1.5,
-                                                                    color: Color(
-                                                                        0xff948e8e),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          // color:Colors.pink,
-                                                          //height:60,
-                                                          child: Text(
-
-
-                                                            removeHtmlTagsAndSpaces(
-                                                                logDataTitle[indexx][indexs]['body']
-                                                                    .toString() ??
-                                                                    ""),
-
-                                                            // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                            //     .toString() ??
-                                                            //     "",
-                                                            style: TextStyle(
-                                                              fontFamily: 'Mulish',
-                                                              fontSize: 9,
-                                                              fontWeight: FontWeight
-                                                                  .w600,
-                                                              // height: 1.5,
-                                                              color: Color(
-                                                                  0xff787878),
-                                                            ),
-
-                                                          ),
-                                                        ),
-
-
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Container(
-                                                    //color:Colors.red,
-
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0, 0, 0, 1),
-                                                    width: 25,
-                                                    height: 20,
-                                                    child: Container(
-                                                        child: logNoteIcon),
-                                                  ),
-                                                ),
-                                                lognoteoptions == true
-                                                    ? Expanded(
-                                                  flex: 2,
-                                                  child: Container(
-                                                    padding: EdgeInsets.all(
-                                                        1.0),
-                                                    decoration: BoxDecoration(
-
-                                                      borderRadius: BorderRadius
-                                                          .circular(5.0),
-                                                      // Specifies rounded corners
-                                                      border: Border.all(
-                                                        color: Color(
-                                                            0XFFD9D9D9),
-                                                        // Border color
-
-                                                        width: 1.0, // Border width
-                                                      ),
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        SizedBox(width: 3,),
-                                                        Expanded(
-                                                          child: InkWell(
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 0, 0, 1),
-                                                              width: 13,
-                                                              height: 13,
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'images/emoji6.svg',
-                                                                // 'assets/page-1/images/group-20576.png',
-
-                                                              ),
-                                                            ),
-                                                            onTap: () {
-                                                              logDataIdEmoji =
-                                                              logDataTitle[indexx][indexs]['id'];
-                                                              showDialog(
-                                                                context: context,
-                                                                builder: (
-                                                                    BuildContext context) =>
-                                                                    _buildEmojiPopupDialog(
-                                                                        mcontext),
-                                                              );
-                                                            },
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 5,),
-
-                                                        Expanded(
-
-                                                          child: StatefulBuilder(
-                                                              builder: (
-                                                                  BuildContext
-                                                                  context,
-                                                                  StateSetter
-                                                                  setState) {
-                                                                return Container(
-                                                                    margin: EdgeInsets
-                                                                        .fromLTRB(
-                                                                        0, 0, 0,
-                                                                        1),
-                                                                    width: 13,
-                                                                    height: 13,
-                                                                    child: starImage ==
-                                                                        true
-                                                                        ? InkWell(
-                                                                      onTap: () async {
-                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                        var data = await logStarChange(
-                                                                            lodDataId,
-                                                                            false);
-
-                                                                        if (data['result']['message'] ==
-                                                                            "success") {
-                                                                          print(
-                                                                              "startrue");
-                                                                          setState(() {
-                                                                            starImage =
-                                                                            false;
-                                                                          });
-                                                                        }
-                                                                      },
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'images/st3.svg',
-                                                                        // 'assets/page-1/images/group-20576.png',
-
-                                                                      ),
-                                                                    )
-                                                                        : InkWell(
-                                                                      onTap: () async {
-                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                        var data = await logStarChange(
-                                                                            lodDataId,
-                                                                            true);
-
-                                                                        if (data['result']['message'] ==
-                                                                            "success") {
-                                                                          print(
-                                                                              "starfalse");
-                                                                          setState(() {
-                                                                            starImage =
-                                                                            true;
-                                                                          });
-                                                                        }
-                                                                      },
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'images/star6.svg',
-                                                                        // 'assets/page-1/images/group-20576.png',
-
-                                                                      ),
-                                                                    )
-                                                                );
-                                                              }
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 5,),
-
-                                                        Expanded(
-                                                          child: InkWell(
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 0, 0, 1),
-                                                              width: 13,
-                                                              height: 13,
-                                                              //color:Colors.red,
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'images/edit6.svg',
-                                                                // 'assets/page-1/images/group-20576.png',
-
-                                                              ),
-                                                            ),
-                                                            onTap: () {
-                                                              int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                              String logdata = logDataTitle[indexx][indexs]['body']
-                                                                  .replaceAll(
-                                                                  RegExp(
-                                                                      r'<[^>]*>|&[^;]+;'),
-                                                                  ' ') ?? "";
-
-
-                                                              // Navigator.push(
-                                                              //     context,
-                                                              //     MaterialPageRoute(
-                                                              //         builder: (
-                                                              //             context) =>
-                                                              //             LogNoteEdit(
-                                                              //                 lodDataId,
-                                                              //                 salesperImg!,
-                                                              //                 token!,
-                                                              //                 widget
-                                                              //                     .leadId,
-                                                              //                 logdata,
-                                                              //                 "lead.lead")));
-                                                              setState(() {
-                                                                lognoteEdit = true;
-                                                              });
-                                                            },
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 5,),
-
-                                                        Expanded(
-                                                          child: InkWell(
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 0, 0, 1),
-                                                              width: 13,
-                                                              height: 13,
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'images/delete6.svg',
-                                                                // 'assets/page-1/images/group-20576.png',
-
-                                                              ),
-                                                            ),
-                                                            onTap: () async {
-                                                              int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                              var data = await deleteLogData(
-                                                                  lodDataId);
-
-                                                              if (data['message'] ==
-                                                                  "Success") {
-                                                                print("final11");
-                                                                // await getLeadDetails();
-                                                                // setState(() {
-                                                                //   logDataHeader
-                                                                //       .clear();
-                                                                //   logDataTitle
-                                                                //       .clear();
-                                                                //   selectedImagesDisplay
-                                                                //       .clear();
-                                                                // });
-
-                                                                postProvider?.fetchPosts(widget.leadId);
-                                                              }
-                                                            },
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 3,),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                )
-                                                    :
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Container(
-                                                    padding: EdgeInsets.all(
-                                                        1.0),
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius
-                                                          .circular(5.0),
-                                                      // Specifies rounded corners
-                                                      border: Border.all(
-                                                        color: Color(
-                                                            0XFFD9D9D9),
-                                                        // Border color
-                                                        width: 1.0, // Border width
-                                                      ),
-                                                    ),
-                                                    child: Row(
-                                                      children: [
-                                                        SizedBox(width: 3,),
-                                                        Expanded(
-                                                          child: InkWell(
-                                                            child: Container(
-                                                              margin: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  0, 0, 0, 1),
-                                                              width: 13,
-                                                              height: 13,
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'images/emoji6.svg',
-                                                                // 'assets/page-1/images/group-20576.png',
-
-                                                              ),
-                                                            ),
-                                                            onTap: () {
-                                                              logDataIdEmoji =
-                                                              logDataTitle[indexx][indexs]['id'];
-                                                              showDialog(
-                                                                context: context,
-                                                                builder: (
-                                                                    BuildContext context) =>
-                                                                    _buildEmojiPopupDialog(
-                                                                        mcontext),
-                                                              );
-                                                            },
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 5,),
-
-                                                        Expanded(
-
-                                                          child: StatefulBuilder(
-                                                              builder: (
-                                                                  BuildContext
-                                                                  context,
-                                                                  StateSetter
-                                                                  setState) {
-                                                                return Container(
-                                                                    margin: EdgeInsets
-                                                                        .fromLTRB(
-                                                                        0, 0, 0,
-                                                                        1),
-                                                                    width: 13,
-                                                                    height: 13,
-                                                                    child: starImage ==
-                                                                        true
-                                                                        ? InkWell(
-                                                                      onTap: () async {
-                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                        var data = await logStarChange(
-                                                                            lodDataId,
-                                                                            false);
-
-                                                                        if (data['result']['message'] ==
-                                                                            "success") {
-                                                                          print(
-                                                                              "startrue");
-                                                                          setState(() {
-                                                                            starImage =
-                                                                            false;
-                                                                          });
-                                                                        }
-                                                                      },
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'images/st3.svg',
-                                                                        // 'assets/page-1/images/group-20576.png',
-
-                                                                      ),
-                                                                    )
-                                                                        : InkWell(
-                                                                      onTap: () async {
-                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                        var data = await logStarChange(
-                                                                            lodDataId,
-                                                                            true);
-
-                                                                        if (data['result']['message'] ==
-                                                                            "success") {
-                                                                          print(
-                                                                              "starfalse");
-                                                                          setState(() {
-                                                                            starImage =
-                                                                            true;
-                                                                          });
-                                                                        }
-                                                                      },
-                                                                      child: SvgPicture
-                                                                          .asset(
-                                                                        'images/star6.svg',
-                                                                        // 'assets/page-1/images/group-20576.png',
-
-                                                                      ),
-                                                                    )
-                                                                );
-                                                              }
-                                                          ),
-                                                        ),
-                                                        SizedBox(width: 3,),
-                                                        // SizedBox(width: 5,),
-                                                        //
-                                                        // Visibility(
-                                                        //   visible: lognoteoptions,
-                                                        //
-                                                        //   child: Expanded(
-                                                        //     child: InkWell(
-                                                        //       child: Container(
-                                                        //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                        //         width: 13,
-                                                        //         height: 13,
-                                                        //         //color:Colors.red,
-                                                        //         child: SvgPicture.asset(
-                                                        //           'images/edit6.svg',
-                                                        //           // 'assets/page-1/images/group-20576.png',
-                                                        //
-                                                        //         ),
-                                                        //       ),
-                                                        //       onTap: (){
-                                                        //         int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                        //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                        //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
-                                                        //
-                                                        //       },
-                                                        //     ),
-                                                        //   ),
-                                                        // ),
-                                                        // SizedBox(width: 5,),
-                                                        //
-                                                        // Visibility(
-                                                        //   visible: lognoteoptions,
-                                                        //
-                                                        //   child: Expanded(
-                                                        //     child: InkWell(
-                                                        //       child: Container(
-                                                        //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                        //         width: 13,
-                                                        //         height: 13,
-                                                        //         child: SvgPicture.asset(
-                                                        //           'images/delete6.svg',
-                                                        //           // 'assets/page-1/images/group-20576.png',
-                                                        //
-                                                        //         ),
-                                                        //       ),
-                                                        //       onTap: ()async{
-                                                        //         int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                        //         var data = await deleteLogData(lodDataId);
-                                                        //
-                                                        //         if (data['message'] == "Success") {
-                                                        //           print("final11");
-                                                        //           await getLeadDetails();
-                                                        //           setState(() {
-                                                        //             logDataHeader.clear();
-                                                        //             logDataTitle.clear();
-                                                        //             selectedImagesDisplay.clear();
-                                                        //           });
-                                                        //         }
-                                                        //       },
-                                                        //     ),
-                                                        //   ),
-                                                        // ),
-                                                        // SizedBox(width: 3,),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Visibility(
-                                    visible: lognoteEdit,
-                                    child: Container(
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 58, right: 10),
-                                            child: Container(
-                                              width: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .width /
-                                                  1.44,
-
-
-                                              //height: 46,
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.all(
-                                                      Radius.circular(5)),
-                                                  color: Color(0xFFF6F6F6),
-                                                  border: Border.all(
-                                                    color: Color(0xFFEBEBEB),
-                                                  )),
-                                              child: Row(
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                    children: [
-                                                      Container(
-                                                        width: MediaQuery
-                                                            .of(context)
-                                                            .size
-                                                            .width /
-                                                            1.92,
-
-                                                        // height: 40,
-                                                        //color: Colors.red,
-                                                        child: Padding(
-                                                          padding: const EdgeInsets
-                                                              .only(
-                                                              left: 10),
-                                                          child: TextField(
-                                                              textAlignVertical:
-                                                              TextAlignVertical
-                                                                  .top,
-                                                              style: TextStyle(
-                                                                fontWeight: FontWeight
-                                                                    .w400,
-                                                                fontFamily: 'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFF000000),
-                                                              ),
-
-
-                                                              maxLines: null,
-                                                              // controller: lognoteController,
-                                                              decoration:
-                                                              const InputDecoration(
-                                                                  border:
-                                                                  InputBorder
-                                                                      .none,
-                                                                  hintText:
-                                                                  "Send a message to followers",
-                                                                  hintStyle: TextStyle(
-                                                                    //fontFamily: "inter",
-                                                                      fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                      fontFamily:
-                                                                      'Mulish',
-                                                                      fontSize: 11,
-                                                                      color: Color(
-                                                                          0xFFAFAFAF)))),
-                                                        ),
-                                                      ),
-                                                      // Divider(
-                                                      //   color: Colors.grey[350],
-                                                      //   thickness: 1,
-                                                      // ),
-
-
-                                                    ],
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .only(left: 10),
-                                                    child: IconButton(
-                                                        onPressed: (){},
-                                                        icon: Image.asset("images/pi.png")
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(left:88),
-                                            child: Row(
-                                              children: [
-                                                Text("escape to",style: TextStyle(color: Colors.grey),),
-                                                InkWell(child: Container(child: Text("  cancel  ")),
-                                                    onTap: (){},
-                                                ),
-                                                //TextButton(onPressed:(){}, child: Text("cancel")),
-                                                Text(","),
-                                                Text("  enter to",style: TextStyle(color: Colors.grey),),
-                                                InkWell(child: Container(child: Text("  save")),
-                                                  onTap: (){},
-                                                ),
-                                               // TextButton(onPressed:(){}, child: Text("save")),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-
-
-                                  Container(
-
-                                    margin: EdgeInsets.only(top: 25),
-                                    width: 350,
-                                   // color:Colors.red,
-                                    // height: 450,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment
-                                          .start,
-                                      children: [
-
-                                        selectedImagesDisplay.length == 0 ?
-                                        Container() :
-                                        Column(
-                                          children: [
-                                            Container(
-                                              width: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .width,
-                                              child: logattachmentImagesDisplay
-                                                  .length > 0 ? GridView
-                                                  .builder(
-                                                  shrinkWrap: true,
-                                                  // Avoid scrolling
-                                                  physics: NeverScrollableScrollPhysics(),
-                                                  itemCount: logattachmentImagesDisplay
-                                                      .length,
-                                                  // itemCount: 15,
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 4,
-                                                    mainAxisSpacing: 1.0,
-                                                    crossAxisSpacing: 1.0,
-                                                    childAspectRatio: 1,
-                                                  ),
-                                                  itemBuilder: (
-                                                      BuildContext context,
-                                                      int index) {
-                                                    print(
-                                                        logattachmentImagesDisplay[index]["datas"]);
-                                                    print(
-                                                        "selectedImagesDisplay.length,");
-                                                    return Container(
-
-                                                      margin: EdgeInsets
-                                                          .fromLTRB(
-                                                          10, 0, 2, 0),
-                                                      width: 80,
-                                                      height: double.infinity,
-                                                      child: Stack(
-                                                        children: [
-                                                          Positioned(
-                                                            // rectangle4756kQ (1652:322)
-                                                            left: 0,
-                                                            top: 6,
-                                                            child: Align(
-                                                              child: SizedBox(
-                                                                width: 75,
-                                                                height: 71,
-                                                                child: Container(
-                                                                  decoration: BoxDecoration(
-                                                                    borderRadius: BorderRadius
-                                                                        .circular(
-                                                                        3),
-                                                                    color: Color(
-                                                                        0xffd9d9d9),
-                                                                    image: DecorationImage(
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                      image: NetworkImage(
-                                                                          logattachmentImagesDisplay[index]["datas"]
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Positioned(
-                                                            // group20514mrY (1652:323)
-                                                            left: 60,
-                                                            top: 0,
-                                                            child: Align(
-                                                              child: SizedBox(
-                                                                width: 20,
-                                                                height: 20,
-                                                                child: Image
-                                                                    .asset(
-                                                                  'images/logimagedelete.png',
-                                                                  width: 20,
-                                                                  height: 20,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Positioned(
-                                                            // trash2G2c (1652:325)
-                                                            left: 65,
-                                                            top: 5,
-                                                            child: Align(
-                                                              child: InkWell(
-                                                                onTap: () async {
-                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['images'][index]["id"];
-                                                                  var data = await deleteLogAttachment(
-                                                                      lodAttachmentId);
-
-                                                                  if (data['message'] ==
-                                                                      "Success") {
-                                                                    print(
-                                                                        "jhbdndsjbv");
-                                                                    // await getLeadDetails();
-                                                                    // setState(() {
-                                                                    //   logDataHeader
-                                                                    //       .clear();
-                                                                    //   logDataTitle
-                                                                    //       .clear();
-                                                                    //   selectedImagesDisplay
-                                                                    //       .clear();
-                                                                    // });
-                                                                    postProvider?.fetchPosts(widget.leadId);
-                                                                  }
-                                                                },
-                                                                child: SizedBox(
-                                                                  width: 9,
-                                                                  height: 10,
-                                                                  child: Image
-                                                                      .asset(
-                                                                    'images/logtrash.png',
-                                                                    width: 9,
-                                                                    height: 10,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-
-
-                                                        ],
-                                                      ),
-                                                    );
-                                                  }
-                                              ) :
-                                              Container(),
-                                            ),
-
-                                            SizedBox(height: 5),
-                                            Container(
-                                              width: MediaQuery
-                                                  .of(context)
-                                                  .size
-                                                  .width,
-                                              child: logattachmentFileDisplay
-                                                  .length > 0 ? GridView
-                                                  .builder(
-                                                  shrinkWrap: true,
-                                                  // Avoid scrolling
-                                                  physics: NeverScrollableScrollPhysics(),
-                                                  itemCount: logattachmentFileDisplay
-                                                      .length,
-                                                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: 1,
-                                                    //mainAxisSpacing: 5.0,
-                                                    crossAxisSpacing: 1.0,
-                                                    childAspectRatio: 5.5,
-                                                  ),
-                                                  itemBuilder: (
-                                                      BuildContext context,
-                                                      int index) {
-                                                    return
-                                                      Container(
                                                         margin: EdgeInsets
                                                             .fromLTRB(
                                                             10, 0, 0, 2),
-                                                        // group20585QEc (1652:502)
-                                                        width: double.infinity,
-                                                        child: Column(
-                                                          crossAxisAlignment: CrossAxisAlignment
-                                                              .center,
+                                                        // width: 40,
+                                                        height: 15,
+                                                        decoration: BoxDecoration(
+                                                           // color: Colors.green,
+                                                            borderRadius: BorderRadius
+                                                                .all(
+                                                                Radius.circular(
+                                                                    3)),
+                                                            border: Border.all(
+                                                                color: Color(
+                                                                    0XFFEBEBEB),
+
+                                                                width: 1)),
+                                                        // color: Colors.red,
+                                                        child: Row(
+
                                                           children: [
-                                                            Container(
-                                                              // group20565Yrc (1652:364)
-                                                              padding: EdgeInsets
-                                                                  .fromLTRB(
-                                                                  14, 11, 18,
-                                                                  9),
-                                                              width: double
-                                                                  .infinity,
-                                                              height: 52,
-                                                              decoration: BoxDecoration(
-                                                                border: Border
-                                                                    .all(
-                                                                    color: Color(
-                                                                        0xffebebeb)),
-                                                                borderRadius: BorderRadius
-                                                                    .circular(
-                                                                    6),
-                                                              ),
-                                                              child: Row(
-                                                                crossAxisAlignment: CrossAxisAlignment
-                                                                    .center,
-                                                                children: [
-                                                                  Container(
-                                                                    // pdffile21FW8 (1652:378)
-                                                                    margin: EdgeInsets
-                                                                        .fromLTRB(
-                                                                        0, 0,
-                                                                        12, 0),
-                                                                    width: 23,
-                                                                    height: 29,
-                                                                    child: Image
-                                                                        .asset(
-                                                                      logattachmentFileDisplay[index]["mimetype"] ==
-                                                                          "application/pdf"
-                                                                          ? 'images/logpdf.png'
-                                                                          : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                          "application/msword"
-                                                                          ? 'images/logword.png'
-                                                                          : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                          ? 'images/logexcel.png'
-                                                                          : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                          "application/xml"
-                                                                          ? 'images/logxml.png'
-                                                                          : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                          "application/zip"
-                                                                          ? 'images/logzip.png'
-                                                                          : '',
-
-
-                                                                      width: 23,
-                                                                      height: 29,
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-
-                                                                    width: MediaQuery
-                                                                        .of(
-                                                                        context)
-                                                                        .size
-                                                                        .width /
-                                                                        2,
-                                                                    //height: double.infinity,
-                                                                    child: Stack(
-                                                                      children: [
-                                                                        Positioned(
-                                                                          // pdfnamearea1tc (1652:376)
-                                                                          left: 0,
-                                                                          top: 00,
-                                                                          child: Align(
-                                                                            child: SizedBox(
-                                                                              width: MediaQuery
-                                                                                  .of(
-                                                                                  context)
-                                                                                  .size
-                                                                                  .width /
-                                                                                  2,
-                                                                              child: Text(
-                                                                                logattachmentFileDisplay[index]["name"],
-                                                                                style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 12,
-                                                                                  fontWeight: FontWeight
-                                                                                      .w600,
-                                                                                  color: Color(
-                                                                                      0xff202020),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                        Positioned(
-                                                                          // pdfuDJ (1652:377)
-                                                                          left: 0,
-                                                                          top: 18,
-                                                                          child: Align(
-                                                                            child: SizedBox(
-                                                                              width: 50,
-                                                                              // height: 15,
-                                                                              child: Text(
-                                                                                logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                    "application/pdf"
-                                                                                    ?
-                                                                                "PDF"
-                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                    "application/msword"
-                                                                                    ?
-                                                                                "WORD"
-                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                    ?
-                                                                                "EXCEL"
-                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                    "application/xml"
-                                                                                    ?
-                                                                                "XML"
-                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                    "application/zip"
-                                                                                    ?
-                                                                                "ZIP"
-                                                                                    : "",
-
-                                                                                style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 9,
-                                                                                  fontWeight: FontWeight
-                                                                                      .w500,
-
-                                                                                  color: Color(
-                                                                                      0xff666666),
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  Spacer(),
-                                                                  Container(
-
-                                                                    child: InkWell(
-                                                                      child: Container(
-                                                                        // trash2Qvk (1652:366)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            15,
-                                                                            1),
-                                                                        width: 15,
-                                                                        height: 16,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/logtrash.png',
-                                                                          width: 15,
-                                                                          height: 16,
-                                                                        ),
-                                                                      ),
-                                                                      onTap: () async {
-                                                                        int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
-                                                                        var data = await deleteLogAttachment(
-                                                                            lodAttachmentId);
-
-                                                                        if (data['message'] ==
-                                                                            "Success") {
-                                                                          print(
-                                                                              "jhbdndsjbv");
-                                                                          // await getLeadDetails();
-                                                                          // setState(() {
-                                                                          //   logDataHeader
-                                                                          //       .clear();
-                                                                          //   logDataTitle
-                                                                          //       .clear();
-                                                                          //   selectedImagesDisplay
-                                                                          //       .clear();
-                                                                          // });
-                                                                          postProvider?.fetchPosts(widget.leadId);
-                                                                        }
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    child: InkWell(
-                                                                      child: Container(
-                                                                        // download6oa (1652:371)
-                                                                        margin: EdgeInsets
-                                                                            .fromLTRB(
-                                                                            0,
-                                                                            0,
-                                                                            0,
-                                                                            2),
-                                                                        width: 14,
-                                                                        height: 14,
-                                                                        child: Image
-                                                                            .asset(
-                                                                          'images/logdownload.png',
-                                                                          width: 14,
-                                                                          height: 14,
-                                                                        ),
-                                                                      ),
-                                                                      onTap: () {
-                                                                        String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
-                                                                        //String mimetypes = "application/pdf";
-
-                                                                        String itemName,
-                                                                            itemNamefinal;
-
-                                                                        itemName =
-                                                                        logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
-
-                                                                        mimetypes ==
-                                                                            "application/pdf"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.pdf"
-                                                                            : mimetypes ==
-                                                                            "application/msword"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.doc"
-                                                                            : mimetypes ==
-                                                                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.xlsx"
-                                                                            : mimetypes ==
-                                                                            "application/xml"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.xml"
-                                                                            : mimetypes ==
-                                                                            "application/zip"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.zip"
-                                                                            : mimetypes ==
-                                                                            "image/jpeg"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.jpeg"
-                                                                            : mimetypes ==
-                                                                            "image/png"
-                                                                            ?
-                                                                        itemNamefinal =
-                                                                        "${itemName}.png"
-                                                                            : itemNamefinal =
-                                                                        "${itemName}";
-
-                                                                        print(
-                                                                            index);
-
-                                                                        print(
-                                                                            logattachmentFileDisplay);
-
-                                                                        print(
-                                                                            itemNamefinal);
-                                                                        print(
-                                                                            mimetypes);
-                                                                        print(
-                                                                            "final print dataaa");
-
-                                                                        FlutterDownloader
-                                                                            .registerCallback(
-                                                                            downloadCallback);
-
-                                                                        requestPermission(
-                                                                            itemNamefinal,
-                                                                            logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
-                                                                         postProvider?.fetchPosts(widget.leadId);
-
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
+                                                            Padding(
+                                                              padding: const EdgeInsets
+                                                                  .only(left: 5),
+                                                              child: Container(
+                                                                // width:18,
+                                                                  height: 19,
+                                                                  child: Text(
+                                                                      emojiSet[index]['emoji'])),
                                                             ),
-                                                            SizedBox(
-                                                              height: 9,
-                                                            ),
+                                                            SizedBox(width: 3),
 
-
+                                                            Text(
+                                                              emojiSet[index]['count']
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 10
+                                                              ),),
                                                           ],
                                                         ),
-                                                      );
-                                                  }
-                                              ) :
-                                              Container(),
-                                            ),
-
-                                          ],
-                                        ),
-                                        emojiSet.length > 0 ?
-                                        Container(
-                                          width: MediaQuery
-                                              .of(context)
-                                              .size
-                                              .width,
-
-                                          child: GridView.builder(
-                                              shrinkWrap: true,
-                                              // Avoid scrolling
-                                              physics: NeverScrollableScrollPhysics(),
-                                              itemCount: emojiSet.length,
-                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                crossAxisCount: 6,
-                                                mainAxisSpacing: 5.0,
-                                                crossAxisSpacing: 5.0,
-                                                childAspectRatio: 2.1,
-                                              ),
-                                              itemBuilder: (
-                                                  BuildContext context,
-                                                  int index) {
-                                                return InkWell(
-
-                                                    child: Container(
-
-                                                      margin: EdgeInsets
-                                                          .fromLTRB(
-                                                          10, 0, 0, 2),
-                                                      // width: 40,
-                                                      height: 15,
-                                                      decoration: BoxDecoration(
-                                                         // color: Colors.green,
-                                                          borderRadius: BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  3)),
-                                                          border: Border.all(
-                                                              color: Color(
-                                                                  0XFFEBEBEB),
-
-                                                              width: 1)),
-                                                      // color: Colors.red,
-                                                      child: Row(
-
-                                                        children: [
-                                                          Padding(
-                                                            padding: const EdgeInsets
-                                                                .only(left: 5),
-                                                            child: Container(
-                                                              // width:18,
-                                                                height: 19,
-                                                                child: Text(
-                                                                    emojiSet[index]['emoji'])),
-                                                          ),
-                                                          SizedBox(width: 3),
-
-                                                          Text(
-                                                            emojiSet[index]['count']
-                                                                .toString(),
-                                                            style: TextStyle(
-                                                                fontSize: 10
-                                                            ),),
-                                                        ],
                                                       ),
-                                                    ),
-                                                    onTap: () async {
-                                                      var data = await deleteEmoji(
-                                                          emojiSet[index]['emoji'],
-                                                          logDataTitle[indexx][indexs]['id']);
+                                                      onTap: () async {
+                                                        var data = await deleteEmoji(
+                                                            emojiSet[index]['emoji'],
+                                                            logDataTitle[indexx][indexs]['id']);
 
-                                                      if (data['result']['message'] ==
-                                                          "success") {
-                                                        postProvider?.fetchPosts(widget.leadId);
+                                                        if (data['result']['message'] ==
+                                                            "success") {
+                                                          postProvider?.fetchPosts(widget.leadId);
 
+                                                        }
                                                       }
-                                                    }
-                                                );
-                                              }
-                                          ),
-                                        ) :
-                                        Container(),
-                                      ],
+                                                  );
+                                                }
+                                            ),
+                                          ) :
+                                          Container(),
+                                        ],
+                                      ),
                                     ),
-                                  ),
 
-                                ],
-                              ),
-                            );
-                          })
-                    ],
-                  );
-                });
+                                  ],
+                                ),
+                              );
+                            })
+                      ],
+                    );
+                  });
 
           } );
 
 
 
-                                  } else {
-                                    return Container();
+                                    } else {
+                                      return Container();
+                                    }
                                   }
+
                                 }
 
-                              }
+
+                                return Center(
+                                    child: const CircularProgressIndicator());
 
 
-                              return Center(
-                                  child: const CircularProgressIndicator());
-
-
-                            }),
+                              }),
 
 
 
-                      ],
+                        ],
+                      ),
                     ),
+                    //color: Colors.green,
                   ),
-                  //color: Colors.green,
-                ),
+                );
+
+  }
               ),
               bottomNavigationBar: MyBottomNavigationBar(1),
             ),
@@ -6400,6 +6607,7 @@ class _LeadDetailState extends State<LeadDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
+          // width:300,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -7005,6 +7213,7 @@ class _LeadDetailState extends State<LeadDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
+          // width:300,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -7187,6 +7396,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.grey)),
                   width: MediaQuery.of(context).size.width,
+                  // width:300,
+
                   // height: MediaQuery
                   //     .of(context)
                   //     .size
@@ -7244,6 +7455,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
+                          // width:300,
                           // height: 40,
                         ),
                       )
@@ -7251,6 +7463,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         padding: const EdgeInsets.only(left: 25, right: 50),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
+                          // width:300,
                           // height: 40,
                           child: Container(
                             width: 40,
@@ -7567,6 +7780,7 @@ class _LeadDetailState extends State<LeadDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
+          // width:300,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -7712,6 +7926,8 @@ class _LeadDetailState extends State<LeadDetail> {
                       BoxDecoration(border: Border.all(color: Colors.grey)),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 5,
+                  // width:300,
+                  // height: 150,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Container(
@@ -7863,7 +8079,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                 Container(
                   width: double.maxFinite,
-                  height: MediaQuery.of(context).size.height / 2.5,
+                  // height: MediaQuery.of(context).size.height / 2.5,
+                  height:300,
                   child: ListView.builder(
                     itemCount: followerSub.length,
                     itemBuilder: (_, i) {
@@ -7978,7 +8195,8 @@ class _LeadDetailState extends State<LeadDetail> {
             borderRadius: BorderRadius.all(Radius.circular(20.0))),
         insetPadding: EdgeInsets.all(10),
         content: Container(
-          width: MediaQuery.of(context).size.width,
+         width: MediaQuery.of(context).size.width,
+         //  width: 300,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -8206,6 +8424,7 @@ class _LeadDetailState extends State<LeadDetail> {
         content: Container(
           height: 60,
           width: MediaQuery.of(context).size.width,
+          // width:300,
           child: TextField(
             controller: feedbackController,
             decoration: InputDecoration(
@@ -8220,6 +8439,7 @@ class _LeadDetailState extends State<LeadDetail> {
             children: [
               SizedBox(
                 width: MediaQuery.of(context).size.width / 2.8,
+                // width:250,
                 height: 38,
                 child: ElevatedButton(
                     child: Center(
@@ -8257,6 +8477,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width / 6.4,
+                  // width:100,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
@@ -8290,7 +8511,8 @@ class _LeadDetailState extends State<LeadDetail> {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width / 5,
+                 width: MediaQuery.of(context).size.width / 5,
+                 //  width:100,
                   height: 38,
                   child: ElevatedButton(
                       child: Center(
@@ -8351,7 +8573,8 @@ class _LeadDetailState extends State<LeadDetail> {
             child: Padding(
               padding: const EdgeInsets.only(right: 80),
               child: Container(
-                  width: MediaQuery.of(context).size.width / 2,
+                 width: MediaQuery.of(context).size.width / 2,
+                 //  width:200,
                   //color: Colors.red,
                   child: Text(
                     "Add Follower",
@@ -8367,6 +8590,8 @@ class _LeadDetailState extends State<LeadDetail> {
             color: Color(0xFFF6F6F6),
             width: MediaQuery.of(context).size.width / 2,
             height: MediaQuery.of(context).size.height / 5,
+            // width:300,
+            // height:100,
             child: ListView.builder(
               itemCount: followers.length,
               itemBuilder: (_, i) {
@@ -8419,6 +8644,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                     Container(
                         width: MediaQuery.of(context).size.width / 3.5,
+                        // width:250,
                         child: Text(followers[i]['name'],
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -8626,6 +8852,14 @@ class _LeadDetailState extends State<LeadDetail> {
     print("valuesss");
     return value;
   }
+  logNoteEditData(List myData1,int lognoteId) async {
+    var value = await EditlogNote(lognoteEditController.text,"lead.lead",widget.leadId,myData1,lognoteId);
+
+
+    print(value);
+    print("valuesss");
+    return value;
+  }
 
   void myAlert(String modelType) {
     showDialog(
@@ -8641,7 +8875,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     fontSize: 14,
                     color: Color(0xFF212121))),
             content: Container(
-              height: MediaQuery.of(context).size.height / 6,
+             height: MediaQuery.of(context).size.height / 6,
+            //   height: 100,
               child: Column(
                 children: [
                   ElevatedButton(
@@ -8659,7 +8894,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     onPressed: () {
                       Navigator.pop(context);
                       modelType == "lognote"
-                          ? getImages()
+                          ? getImages():modelType == "lognoteEdit"?getImagesEdit()
                           : getImagesAttachment();
                       //getImage(ImageSource.gallery);
                     },
@@ -8690,7 +8925,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       Navigator.pop(context);
                       print("system 2");
                       modelType == "lognote"
-                          ? getImage(ImageSource.camera)
+                          ? getImage(ImageSource.camera):modelType == "lognoteEdit"?getImageEdit(ImageSource.camera)
                           : getImageAttachment(ImageSource.camera);
 
                       //getImages();
@@ -8713,6 +8948,52 @@ class _LeadDetailState extends State<LeadDetail> {
           );
         });
   }
+
+  Future getImageEdit(ImageSource media) async {
+    print("final datatata55");
+   // setState(() {
+      isLoading = true;
+   // });
+    print("system 1");
+    // var img = await picker.pickImage(source: media));
+    XFile? img = await picker.pickImage(source: ImageSource.camera);
+    List imageData = [];
+    imageData.add(img);
+    print("system 2");
+    // var img = await picker.pickMultiImage();
+
+    if (img != null) {
+
+      // setState(
+      //       () {
+          if (imageData.isNotEmpty) {
+            print("system 3");
+            for (var i = 0; i < imageData.length; i++) {
+              selectedImagesEdit.add(File(imageData[i].path));
+            }
+
+
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Nothing is selected')));
+          }
+      //   },
+      // );
+
+
+    }
+    print(selectedImages);
+    print("system 4");
+
+    // setState(() {
+      //focusEditText();
+      print("aytofocuusss");
+      print(shouldFocus);
+      isLoading = false;
+    // });
+    postProvider?.fetchPosts(widget.leadId);
+  }
+
 
   Future getImage(ImageSource media) async {
     setState(() {
@@ -8757,8 +9038,9 @@ class _LeadDetailState extends State<LeadDetail> {
     });
   }
 
-  //
+
   Future getImages() async {
+    print("final datatata22");
     final pickedFile = await picker.pickMultipleMedia(
         imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
     List<XFile> xfilePick = pickedFile;
@@ -8784,8 +9066,38 @@ class _LeadDetailState extends State<LeadDetail> {
     );
   }
 
+  Future getImagesEdit() async {
+    print("final datatata2211");
+    final pickedFile = await picker.pickMultipleMedia(
+        imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
+    List<XFile> xfilePick = pickedFile;
+
+    // setState(
+    //       () {
+        if (xfilePick.isNotEmpty) {
+          for (var i = 0; i < xfilePick.length; i++) {
+            //  if(xfilePick[i].path.contains(".pdf")||xfilePick[i].path.contains(".zip")){
+            //    print("pdf detected");
+            //  }
+            // else {
+            //    selectedImages.add(File(xfilePick[i].path));
+            //  }
+            selectedImagesEdit.add(File(xfilePick[i].path));
+            print("pdf detected test");
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Nothing is selected')));
+        }
+    //   },
+    // );
+    postProvider?.fetchPosts(widget.leadId);
+  }
+
+
 
   Future getImageAttachment(ImageSource media) async {
+    print("final datatata33");
     setState(() {
       isLoading = true;
     });
@@ -8816,6 +9128,7 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   Future getImagesAttachment() async {
+    print("final datatata44");
     final pickedFile = await picker.pickMultipleMedia(
         imageQuality: 100, maxHeight: 1000, maxWidth: 1000);
     List<XFile> xfilePick = pickedFile;
@@ -8854,6 +9167,9 @@ class _LeadDetailState extends State<LeadDetail> {
           .showSnackBar(const SnackBar(content: Text('Nothing is selected')));
     }
   }
+
+
+
 
   getLeadDetails() async {
     token = await getUserJwt();
@@ -9024,6 +9340,9 @@ class _LeadDetailState extends State<LeadDetail> {
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.6,
             height: MediaQuery.of(context).size.height / 2.7,
+            // width: 300,
+            // height: 150,
+
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -9363,6 +9682,7 @@ class _LeadDetailState extends State<LeadDetail> {
         insetPadding: EdgeInsets.all(10),
         content: Container(
           width: MediaQuery.of(context).size.width,
+          // width:300,
           // height: MediaQuery
           //     .of(context)
           //     .size
@@ -9783,6 +10103,7 @@ class _LeadDetailState extends State<LeadDetail> {
           content: Container(
             color: Colors.white,
             width: MediaQuery.of(context).size.width / 1.5,
+            // width:250,
            // height: MediaQuery.of(context).size.height / 2.7,
              child: Wrap(
             alignment: WrapAlignment.start,
@@ -9868,6 +10189,8 @@ return data;
   void _dismissDialog(BuildContext context) {
     Navigator.of(context, rootNavigator: true).pop();
   }
+
+
 
 
 }
