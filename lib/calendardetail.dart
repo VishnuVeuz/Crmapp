@@ -68,10 +68,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           title: Row(
             children: [
               Container(
-                width: MediaQuery
-                    .of(context)
-                    .size
-                    .width/2.6,
+                width: 150,
                 //color: Colors.red,
                 child: Text(
                   meetingsub!,
