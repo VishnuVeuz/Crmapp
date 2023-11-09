@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:crm_project/bottomnavigation.dart';
+import 'package:crm_project/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
@@ -49,6 +51,8 @@ class _CalendarAddState extends State<CalendarAdd> {
   TextEditingController meeting_discription = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController meetingurlController = TextEditingController();
+  String notificationCount="0";
+  String messageCount="0";
   final _formKey = GlobalKey<FormState>();
 
 
@@ -103,7 +107,7 @@ class _CalendarAddState extends State<CalendarAdd> {
           title: Row(
             children: [
               Text(
-                "New",
+                "Calendar",
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 15,
@@ -130,11 +134,81 @@ class _CalendarAddState extends State<CalendarAdd> {
             Builder(builder: (context) {
               return Row(
                 children: [
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 0),
+                  //   child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //   ),
+                  // ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
 
+                            child: Container(
+                              width: 18.0,
+                              height: 18.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 18.0,
+                              height: 18.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20),
-                    child: IconButton(
-                      icon: SvgPicture.asset("images/drawer.svg"),
+                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
                       onPressed: () {
                         Scaffold.of(context).openDrawer();
                       },
@@ -152,74 +226,7 @@ class _CalendarAddState extends State<CalendarAdd> {
             children: [
 
 
-              Padding(
-                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 10),
-                child: SizedBox(
-                  width: 93,
-                  height: 33,
-                  child: ElevatedButton(
-                      child: Text(
-                        "Save",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 13.57,
-                            color: Colors.white,fontFamily: 'Mulish'),
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate() && meetingsubjectController.text.trim().isNotEmpty) {
 
-
-                          String resmessage;
-                          setState(() {
-
-
-                            (dropdownValue == "Public")
-                                ? dropdowncreatevalue = "public"
-                                : (dropdownValue == "Private")
-                                ? dropdowncreatevalue = "private"
-                                : (dropdownValue == "Only internal users")
-                                ? dropdowncreatevalue = "confidential"
-                                : dropdownValue = "public";
-
-                            (dropdownValues == "Available")
-                                ? dropdowncreatevalues = "free"
-                                : (dropdownValues == "Busy")
-                                ? dropdowncreatevalues = "busy"
-                                : dropdowncreatevalues = "busy";
-
-
-                            print(dropdowncreatevalue);
-                            print(dropdowncreatevalues);
-                          });
-
-                          //resmessage = await calendarCreate();
-
-                          widget.calendarId == 0 ?
-                          resmessage = await calendarCreate() : resmessage =
-                          await calendarEdit();
-
-
-                          print(resmessage);
-
-
-                          int resmessagevalue = int.parse(resmessage);
-                          if (resmessagevalue != 0) {
-                            setState(() {
-                              // isLoadingSave = false;
-                            });
-                          }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      CalencerFullDetail(resmessagevalue)));
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF9246A),
-                      )),
-                ),
-              ),
               Expanded(
                 child: Container(
                   width: MediaQuery.of(context).size.width,
@@ -240,7 +247,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                               }
                               return null;
                             },
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Color(0xFF1E1E1E),fontWeight: FontWeight.w600),
                             controller: meetingsubjectController,
                             decoration: const InputDecoration(
                                 enabledBorder:  UnderlineInputBorder(
@@ -252,67 +259,89 @@ class _CalendarAddState extends State<CalendarAdd> {
 
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Meeting Subject',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                            ),
                           ),
                         ),
                         SizedBox(height: 0,),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 22, vertical: 5),
-                          child: MultiSelectDropDown.network(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left:3),
+                                child: Text(
+                                  'Select Attendees',
+                                  style: TextStyle(
+                                    color: Color(0xFF666666),
+                                    fontSize: 11,
+                                    fontFamily: 'Mulish',
+                                    fontWeight: FontWeight.w500,
 
-                            selectedOptions: editPartnerName
-                                .map((tag) =>
-                                ValueItem(label: tag.label, value: tag.value))
-                                .toList(),
-                            onOptionSelected: (options) {
-                              print(options);
-                              partnerName.clear();
-                              for (var options in options) {
-                                partnerName.add(options.value);
-                                print('Label: ${options.label}');
-                                print('Value: ${options.value}');
-                                print(partnerName);
-                                print('---');
-                              }
-                            },
-                            networkConfig: NetworkConfig(
+                                  ),
+                                ),
+                              ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: MultiSelectDropDown.network(
+
+                                  selectedOptions: editPartnerName
+                                      .map((tag) =>
+                                      ValueItem(label: tag.label, value: tag.value))
+                                      .toList(),
+                                  onOptionSelected: (options) {
+                                    print(options);
+                                    partnerName.clear();
+                                    for (var options in options) {
+                                      partnerName.add(options.value);
+                                      print('Label: ${options.label}');
+                                      print('Value: ${options.value}');
+                                      print(partnerName);
+                                      print('---');
+                                    }
+                                  },
+                                  networkConfig: NetworkConfig(
 
 
-                              url: "${baseUrl}api/partners",
-                              method: RequestMethod.get,
-                              headers: {
+                                    url: "${baseUrl}api/partners",
+                                    method: RequestMethod.get,
+                                    headers: {
 
 
-                                'Authorization': 'Bearer $token',
-                              },
-                            ),
-                            chipConfig: const ChipConfig(wrapType: WrapType.wrap),
+                                      'Authorization': 'Bearer $token',
+                                    },
+                                  ),
+                                  chipConfig: const ChipConfig(wrapType: WrapType.wrap),
 
-                            responseParser: (response) {
-                              debugPrint('Response: $response');
+                                  responseParser: (response) {
+                                    debugPrint('Response: $response');
 
-                              final list = (response['records'] as List<
-                                  dynamic>).map((e) {
-                                final item = e as Map<String, dynamic>;
-                                return ValueItem(
+                                    final list = (response['records'] as List<
+                                        dynamic>).map((e) {
+                                      final item = e as Map<String, dynamic>;
+                                      return ValueItem(
 
-                                  label: item['display_name'],
-                                  value: item['id'].toString(),
-                                );
-                              }).toList();
+                                        label: item['display_name'],
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList();
 
-                              return Future.value(list);
-                            },
-                            responseErrorBuilder: ((context, body) {
-                              print(body);
-                              print(token);
-                              return const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: Text('Error fetching the data'),
-                              );
-                            }),
+                                    return Future.value(list);
+                                  },
+                                  responseErrorBuilder: ((context, body) {
+                                    print(body);
+                                    print(token);
+                                    return const Padding(
+                                      padding: EdgeInsets.all(16.0),
+                                      child: Text('Error fetching the data'),
+                                    );
+                                  }),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
 
@@ -410,6 +439,8 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       padding: const EdgeInsets.only(
                                           top: 0, left: 25, right: 25),
                                       child: TextFormField(
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Please enter the name';
@@ -421,8 +452,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         decoration: InputDecoration(
                                           //border: OutlineInputBorder(),
                                           hintText: "choose date & time",
-                                          hintStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
-                                        ),
+                                            hintStyle: TextStyle(
+                                              //fontFamily: "inter",
+                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500)                                        ),
                                       ),
                                     ),
 
@@ -442,8 +474,10 @@ class _CalendarAddState extends State<CalendarAdd> {
 
                                     child: Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 10, left: 25, right: 25),
+                                          top: 0, left: 25, right: 25),
                                       child: TextFormField(
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
                                             return 'Please enter the name';
@@ -455,8 +489,9 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         decoration: InputDecoration(
                                           //border: OutlineInputBorder(),
                                           hintText: "choose date & time",
-                                          hintStyle: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
-                                        ),
+                                            hintStyle: TextStyle(
+                                              //fontFamily: "inter",
+                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500)                                         ),
                                       ),
                                     ),
 
@@ -525,6 +560,8 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: SearchChoices.single(
+                                      icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+
                                       //items: items
                                       fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
                                         return Container(
@@ -574,11 +611,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       selectedValueWidgetFn: (item) {
                                         return (Center(
                                             child: Container(
-                                              width: 300,
+                                              width: 320,
                                               child: Text(
                                                 item["name"],
-                                                style: TextStyle(
-                                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                                   style: TextStyle(
+                                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
                                               ),
                                             )));
                                       },
@@ -635,22 +672,25 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 1),
+                                        horizontal: 17, vertical: 1),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          'Reminders',
-                                          style: TextStyle(
-                                            color: Color(0xFF666666),
-                                            fontSize: 12,
-                                            fontFamily: 'Mulish',
-                                            fontWeight: FontWeight.w500,
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 8),
+                                          child: Text(
+                                            'Reminders',
+                                            style: TextStyle(
+                                              color: Color(0xFF666666),
+                                              fontSize: 12,
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w500,
 
+                                            ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 2),
+                                          padding: const EdgeInsets.only(top: 5),
                                           child: Container(
                                             height:30,
                                             child: MultiSelectDropDown.network(
@@ -767,23 +807,26 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   Padding(
                                     padding:
                                     const EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 1),
+                                        horizontal: 17, vertical: 1),
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
 
-                                        Text(
-                                          'Tags',
-                                          style: TextStyle(
-                                            color: Color(0xFF666666),
-                                            fontSize: 12,
-                                            fontFamily: 'Mulish',
-                                            fontWeight: FontWeight.w500,
+                                        Padding(
+                                          padding: const EdgeInsets.only(left: 8),
+                                          child: Text(
+                                            'Tags',
+                                            style: TextStyle(
+                                              color: Color(0xFF666666),
+                                              fontSize: 12,
+                                              fontFamily: 'Mulish',
+                                              fontWeight: FontWeight.w500,
 
+                                            ),
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsets.only(top: 2),
+                                          padding: const EdgeInsets.only(top: 5),
                                           child: Container(
                                             height:30,
                                             child: MultiSelectDropDown.network(
@@ -1002,10 +1045,78 @@ class _CalendarAddState extends State<CalendarAdd> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 20),
+                child: SizedBox(
+                  width: 360,
+                  height: 47,
+                  child: ElevatedButton(
+                      child: Text(
+                        "Save",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.57,
+                            color: Colors.white,fontFamily: 'Mulish'),
+                      ),
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate() && meetingsubjectController.text.trim().isNotEmpty) {
+
+
+                          String resmessage;
+                          setState(() {
+
+
+                            (dropdownValue == "Public")
+                                ? dropdowncreatevalue = "public"
+                                : (dropdownValue == "Private")
+                                ? dropdowncreatevalue = "private"
+                                : (dropdownValue == "Only internal users")
+                                ? dropdowncreatevalue = "confidential"
+                                : dropdownValue = "public";
+
+                            (dropdownValues == "Available")
+                                ? dropdowncreatevalues = "free"
+                                : (dropdownValues == "Busy")
+                                ? dropdowncreatevalues = "busy"
+                                : dropdowncreatevalues = "busy";
+
+
+                            print(dropdowncreatevalue);
+                            print(dropdowncreatevalues);
+                          });
+
+                          //resmessage = await calendarCreate();
+
+                          widget.calendarId == 0 ?
+                          resmessage = await calendarCreate() : resmessage =
+                          await calendarEdit();
+
+
+                          print(resmessage);
+
+
+                          int resmessagevalue = int.parse(resmessage);
+                          if (resmessagevalue != 0) {
+                            setState(() {
+                              // isLoadingSave = false;
+                            });
+                          }
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      CalencerFullDetail(resmessagevalue)));
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Color(0xFFF9246A),
+                      )),
+                ),
+              ),
             ],
           ),
         ),
-
+        bottomNavigationBar: MyBottomNavigationBar(3),
 
       );
     }

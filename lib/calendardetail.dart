@@ -6,10 +6,13 @@ import 'package:flutter_svg/svg.dart';
 
 
 import 'api.dart';
+import 'bottomnavigation.dart';
 import 'calendarmainpage.dart';
 import 'custom_shape.dart';
 import 'drawer.dart';
 import 'globals.dart';
+import 'notification.dart';
+import 'notificationactivity.dart';
 
 class CalencerFullDetail extends StatefulWidget {
   var calendarId;
@@ -22,6 +25,9 @@ class CalencerFullDetail extends StatefulWidget {
 class _CalencerFullDetailState extends State<CalencerFullDetail> {
   String? meetingsub,partnername,startdate,stopdate,duration,allday,organizer,
       location,meetingurl,description,privacy,showas;
+
+  String notificationCount="0";
+  String messageCount="0";
 
   List reminder = [];
   List tags = [];
@@ -65,7 +71,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                 width: MediaQuery
                     .of(context)
                     .size
-                    .width/2.5,
+                    .width/2.6,
                 //color: Colors.red,
                 child: Text(
                   meetingsub!,
@@ -99,14 +105,89 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           automaticallyImplyLeading: false,
           actions: [
             Builder(builder: (context) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: IconButton(
-                  icon: SvgPicture.asset("images/drawer.svg"),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
+              return Row(
+                children: [
+                  // Padding(
+                  //   padding: const EdgeInsets.only(right: 0),
+                  //   child: IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                  //     onPressed: () {
+                  //
+                  //     },
+                  //   ),
+                  // ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/messages.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Notifications()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 18.0,
+                              height: 18.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text(messageCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Container(
+                    child: Stack(
+                        alignment: Alignment
+                            .center,
+                        children: [
+                          IconButton(icon: SvgPicture.asset("images/clock2.svg"),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ActivitiesNotification()));
+                            },
+                          ),
+                          Positioned(
+                            bottom: 25,
+                            right: 28,
+
+                            child: Container(
+                              width: 18.0,
+                              height: 18.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape
+                                    .circle,
+                                color: Color(0xFFFA256B),
+                              ),
+                              child: Center(child: Text(notificationCount,style: TextStyle(color: Colors.white,fontSize: 8),)),
+                            ),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: IconButton(icon: SvgPicture.asset("images/drawer.svg"),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                    ),
+                  ),
+                ],
               );
             })
           ],
@@ -238,9 +319,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     ],
                   ),
                 ),
+                Divider(
+                  color: Color(0xFFF4F4F4),
+                  thickness: 2,
+                ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -248,7 +333,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Meeting subject",
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -266,10 +351,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             child: Text(
                               meetingsub!,
                               style:  TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
-                                  color: Color(0xFF212121)),
+                                  color: Color(0xFF000000)),
                             ),
                           ),
                         ),
@@ -278,8 +363,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
-                  child: Divider(color: Color(0xFFEBEBEB)),
+                  padding: const EdgeInsets.only(top: 0,
+                      left: 22,
+                      right: 22),
+                  child: Divider(
+                    color: Color(0xFFF4F4F4),
+                    thickness: 2,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 0),
@@ -289,8 +379,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                       Padding(
                         padding: const EdgeInsets.only(left: 25),
                         child: Text("Partner Name",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
+                            style:  TextStyle(
+                                fontWeight: FontWeight.w400,
                                 fontFamily: 'Mulish',
                                 fontSize: 12,
                                 color: Color(0xFF666666))),
@@ -308,10 +398,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             child: Text(
                               partnername!,
                               style: TextStyle(
-                                  fontWeight: FontWeight.w600,
+                                  fontWeight: FontWeight.w400,
                                   fontFamily: 'Mulish',
                                   fontSize: 12,
-                                  color: Color(0xFF212121)),
+                                  color: Color(0xFF000000)),
                             ),
                           ),
                         ),
@@ -319,6 +409,18 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 0,
+                      left: 22,
+                      right: 22),
+                  child: Divider(
+                    color: Color(0xFFF4F4F4),
+                    thickness: 2,
+                  ),
+                ),
+
+
+                //ToggleButtons(children: children, isSelected: isSelected),
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -385,6 +487,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 0,
+                      left: 22,
+                      right: 22),
+                  child: Divider(
+                    color: Color(0xFFF4F4F4),
+                    thickness: 2,
+                  ),
+                ),
                 Visibility(
                   visible: meetingvisibility,
                   child: Container(
@@ -406,7 +517,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Start at",
                                       style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -424,10 +535,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         startdate!,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FontWeight.w400,
                                             fontFamily: 'Mulish',
                                             fontSize: 12,
-                                            color: Color(0xFF212121)),
+                                            color: Color(0xFF000000)),
                                       ),
                                     ),
                                   ),
@@ -436,9 +547,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -448,8 +563,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Stop at",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                      style:TextStyle(
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -467,10 +582,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         stopdate!,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FontWeight.w400,
                                             fontFamily: 'Mulish',
                                             fontSize: 12,
-                                            color: Color(0xFF212121)),
+                                            color: Color(0xFF000000)),
                                       ),
                                     ),
                                   ),
@@ -479,9 +594,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -491,8 +610,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Duration",
-                                      style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -510,10 +629,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         duration!,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
+                                            fontWeight: FontWeight.w400,
                                             fontFamily: 'Mulish',
                                             fontSize: 12,
-                                            color: Color(0xFF212121))
+                                            color: Color(0xFF000000)),
                                       ),
                                     ),
                                   ),
@@ -522,9 +641,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
 
 
@@ -535,7 +658,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Organizer",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: 'Mulish',
                                         fontSize: 12,
                                         color: Color(0xFF666666))),
@@ -553,10 +676,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     child: Text(
                                       organizer!,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                          color: Color(0xFF000000)),
                                     ),
                                   ),
                                 ),
@@ -564,9 +687,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -577,7 +704,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Reminder",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -590,7 +717,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         .size
                                         .width / 2.3,
 
-                                     // color: Colors.pinkAccent,
+                                    // color: Colors.pinkAccent,
                                     child: ListView.builder(
                                       scrollDirection: Axis.vertical,
                                       shrinkWrap: true,
@@ -606,10 +733,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                               decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(Radius.circular(30)),
                                                // color:  Color(int.parse(reminder![index]["color"])),
-                                               // color: Colors.red,
+                                                //color: Colors.red,
                                          ),
 
-                                              width: MediaQuery.of(context).size.width/2.8,
+                                              width: MediaQuery.of(context).size.width/2.4,
                                               //height: 20,
 
                                               child:
@@ -618,10 +745,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                                                   reminder![index]["name"].toString(),
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.w600,
+                                                      fontWeight: FontWeight.w400,
                                                       fontFamily: 'Mulish',
                                                       fontSize: 12,
-                                                      color: Color(0xFF212121)),
+                                                      color: Color(0xFF000000)),
                                                 ),
                                               ),
                                             ),
@@ -635,9 +762,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -648,7 +779,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Location",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -678,9 +809,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -690,8 +825,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Meeting URL",
-                                      style:  TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -722,9 +857,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -734,7 +873,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Tags",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
+                                        fontWeight: FontWeight.w400,
                                         fontFamily: 'Mulish',
                                         fontSize: 12,
                                         color: Color(0xFF666666))),
@@ -784,8 +923,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         child: ClipPath(
                                           clipper: CustomShape(textWidth), // Pass the calculated width
                                           child: Container(
-                                            width: textWidth + 25, // Set the container width based on text width + padding
-                                            height: 19,
+                                            width: textWidth + 32, // Set the container width based on text width + padding
+                                            height: 20,
                                             color: Color(int.parse(tags![index]["color"])),
                                             child: Align(
                                               alignment: Alignment.topLeft,
@@ -850,9 +989,13 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
 
                           Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22),
-                            child: Divider(color: Color(0xFFEBEBEB)),
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 0),
@@ -863,7 +1006,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   padding: const EdgeInsets.only(left: 25),
                                   child: Text("Description",
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                          fontWeight: FontWeight.w400,
                                           fontFamily: 'Mulish',
                                           fontSize: 12,
                                           color: Color(0xFF666666))),
@@ -892,6 +1035,15 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               ],
                             ),
                           ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 0,
+                                left: 22,
+                                right: 22),
+                            child: Divider(
+                              color: Color(0xFFF4F4F4),
+                              thickness: 2,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -907,7 +1059,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -925,17 +1077,21 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     .of(context)
                                     .size
                                     .width / 2.3,
+                               // color: Colors.red,
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
-                                  child: Text(
-                                    StringUtils.capitalize(privacy!),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      StringUtils.capitalize(privacy!),
 
-                                    style:TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF212121)),
+                                      style:TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF212121)),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -943,7 +1099,16 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 30),
+                          padding: const EdgeInsets.only(top: 0,
+                              left: 22,
+                              right: 22),
+                          child: Divider(
+                            color: Color(0xFFF4F4F4),
+                            thickness: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -964,17 +1129,29 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                                 child: Padding(
                                   padding: const EdgeInsets.only(right: 25),
-                                  child: Text(
-                                    StringUtils.capitalize(showas!),
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
-                                        color: Color(0xFF212121)),
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      StringUtils.capitalize(showas!),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Mulish',
+                                          fontSize: 12,
+                                          color: Color(0xFF212121)),
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 0,
+                              left: 22,
+                              right: 22),
+                          child: Divider(
+                            color: Color(0xFFF4F4F4),
+                            thickness: 2,
                           ),
                         ),
                       ],
@@ -987,6 +1164,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
             ),
           ),
         ),
+        bottomNavigationBar: MyBottomNavigationBar(3),
       );
     }
   }
