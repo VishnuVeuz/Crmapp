@@ -4042,7 +4042,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               "",
                                                                           style: TextStyle(
                                                                             fontFamily: 'Mulish',
-                                                                            fontSize: 12,
+                                                                            fontSize: 11,
                                                                             fontWeight: FontWeight
                                                                                 .w600,
 
@@ -4084,11 +4084,11 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                 margin: EdgeInsets
                                                                     .fromLTRB(
-                                                                    0, 1, 1, 2),
+                                                                    0, 1, 0, 2),
                                                                 //width: MediaQuery.of(context).size.width,
                                                                 width: mediaQueryData
                                                                     .size
-                                                                    .width / 4.2,
+                                                                    .width / 4.3,
                                                                // width:200,
                                                                 //color:Colors.green,
                                                                 //height: double.infinity,
@@ -4108,7 +4108,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               "",
                                                                           style: TextStyle(
                                                                               fontFamily: 'Mulish',
-                                                                              fontSize: 12,
+                                                                              fontSize: 11,
                                                                               fontWeight: FontWeight
                                                                                   .w600,
 
@@ -4138,7 +4138,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               .right,
                                                                           style: TextStyle(
                                                                             fontFamily: 'Mulish',
-                                                                            fontSize: 12,
+                                                                            fontSize: 11,
                                                                             fontWeight: FontWeight
                                                                                 .w600,
                                                                             color: Color(

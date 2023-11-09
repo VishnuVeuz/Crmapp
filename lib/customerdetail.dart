@@ -3613,7 +3613,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "",
                                                                     style: TextStyle (
                                                                       fontFamily: 'Mulish',
-                                                                      fontSize: 12,
+                                                                      fontSize: 11,
                                                                       fontWeight: FontWeight.w600,
                                                                       // height: 1.255*ffem/fem,
                                                                       color: Color(0xff202020),
@@ -3651,9 +3651,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         Container(
                                                           // color: Colors.red,
                                                           // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
-                                                          margin: EdgeInsets.fromLTRB(0,1,1,2),
+                                                          margin: EdgeInsets.fromLTRB(0,1,0,2),
                                                           //width: MediaQuery.of(context).size.width,
-                                                          width:mediaQueryData.size.width/4.2,
+                                                          width:mediaQueryData.size.width/4.3,
                                                           //height: double.infinity,
                                                           child: Stack(
 
@@ -3671,7 +3671,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "",
                                                                     style: TextStyle (
                                                                         fontFamily: 'Mulish',
-                                                                        fontSize: 12,
+                                                                        fontSize: 11,
                                                                         fontWeight: FontWeight.w600,
                                                                         // height: 1.255*ffem/fem,
                                                                         color: Color(int.parse(
@@ -3698,7 +3698,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     textAlign: TextAlign.right,
                                                                     style:  TextStyle (
                                                                       fontFamily:  'Mulish',
-                                                                      fontSize: 12,
+                                                                      fontSize: 11,
                                                                       fontWeight: FontWeight.w600,
                                                                       //  height: 1.255*ffem/fem,
                                                                       color: Color(0xff202020),
