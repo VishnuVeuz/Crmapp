@@ -68,16 +68,16 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           title: Row(
             children: [
               Container(
-                width: 150,
+                width: 120,
                 //color: Colors.red,
                 child: Text(
                   meetingsub!,
                   style: TextStyle(
                       fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
                       color: Colors.white,
-                      decoration: TextDecoration.none),
+                      decoration: TextDecoration.none)
                 ),
               )
             ],
@@ -85,7 +85,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           leading: Builder(
             builder: (context) =>
                 Padding(
-                  padding: const EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 15),
                   child: IconButton(
                     icon: Image.asset("images/back.png"),
                     onPressed: () {
