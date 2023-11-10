@@ -204,19 +204,43 @@ class _LeadConvertState extends State<LeadConvert> {
     }
   }
 
-  convertLeadData() async{
+  convertLeadData() async {
+    try {
+      var data = await convertleadDataGet(widget.leadId, "convert");
+      setState(() {
+        convertType = data['name'] ?? '';
+        _isInitialized = true;
 
-    var data =  await convertleadDataGet(widget.leadId,"convert");
-    setState(() {
-      convertType = data['name']??'';
-      _isInitialized = true;
-
-      convertType == "convert"?tabIds=0:tabIds=1;
-    });
-    return convertType;
+        convertType == "convert" ? tabIds = 0 : tabIds = 1;
+      });
+      return convertType;
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LeadMainPage()));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
-}
+  }
+
+
 
 
 // lead convert to opportunity

@@ -188,7 +188,7 @@ convertleadDataGet(int leadId, String value) async {
 
   var data;
   String? authresponce;
-
+try{
   Response response = await get(
     Uri.parse("${baseUrl}api/lead/${leadId}/${value}"),
     headers: {
@@ -199,17 +199,23 @@ convertleadDataGet(int leadId, String value) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
+    return data;
 
     // authresponce = data['result'].toString();
   }
+} catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
   print(data);
   print("data");
 
-  return data;
+
 }
 
 
@@ -1508,6 +1514,7 @@ createQuotationOpp(
   String token = await getUserJwt();
   String?  resMessage, resMessageText;
   var authresponce;
+  var data;
   print(token);
 
   try {
@@ -1549,7 +1556,7 @@ createQuotationOpp(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       // authresponce = data['result'].toString();
       authresponce = data;
@@ -1557,15 +1564,19 @@ createQuotationOpp(
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return authresponce;
 
       }
 
       if (resMessage == "error") {
+
         resMessageText = data['result']['data'];
+        throw Exception(data['result']['data']);
       }
 
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
   customer_reference = "";
@@ -1574,7 +1585,7 @@ createQuotationOpp(
   delivery_date = "";
 
 
-  return authresponce;
+
 }
 
 editQuotation(

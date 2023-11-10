@@ -15,6 +15,7 @@ import 'drawer.dart';
 import 'globals.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
+import 'opportunitymainpage.dart';
 class OpportunityQuotation extends StatefulWidget {
   var opportunityId;
   OpportunityQuotation(this.opportunityId);
@@ -2464,38 +2465,64 @@ void defaultvalues() async {
 
 
   quotationCreate() async {
-    dropdownValue == "As soon as possible"
-        ? dropdownValueId = "direct"
-        : dropdownValueId = "one";
 
-    print(dropdownValueId);
-    print("dropdownValue");
-    var value = await createQuotationOpp(
-        customerId,
-        quotationtemplateId,
-        pricelistId,
-        paymenttermsId,
-        salespersonId,
-        salesteamId,
-        companyId,
-        tags,
-        fiscalpositionId,
-        campaignId,
-        mediumId,
-        sourceId,
-        customerreference.text,
-        sourcedocument.text,
-        expirationDateTimefinal,
-        deliveryDateTimefinal,
-        isCheckedSignature,
-        isCheckedPayment,
-        dropdownValueId!,
-        orderLineProducts,
-        optionalProducts,
-        null
+    try {
+      dropdownValue == "As soon as possible"
+          ? dropdownValueId = "direct"
+          : dropdownValueId = "one";
 
-    );
-    return value;
+      print(dropdownValueId);
+      print("dropdownValue");
+      var value = await createQuotationOpp(
+          customerId,
+          quotationtemplateId,
+          pricelistId,
+          paymenttermsId,
+          salespersonId,
+          salesteamId,
+          companyId,
+          tags,
+          fiscalpositionId,
+          campaignId,
+          mediumId,
+          sourceId,
+          customerreference.text,
+          sourcedocument.text,
+          expirationDateTimefinal,
+          deliveryDateTimefinal,
+          isCheckedSignature,
+          isCheckedPayment,
+          dropdownValueId!,
+          orderLineProducts,
+          optionalProducts,
+          null
+
+      );
+      return value;
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>   OpportunityMainPage(null,"","","","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
   }
 
 
