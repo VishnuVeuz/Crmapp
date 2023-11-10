@@ -2432,7 +2432,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   Padding(
                     padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 30),
                     child: SizedBox(
-                      width: 180,
+                      width: 171,
                       height: 47,
                       child: ElevatedButton(
                           child: Text(
