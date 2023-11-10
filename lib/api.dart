@@ -2712,7 +2712,7 @@ scheduleActivity(int activity_type_id,user_id,res_id,
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -2739,7 +2739,7 @@ scheduleActivity(int activity_type_id,user_id,res_id,
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
         resMessage = data['result']['message'];
 
@@ -2747,18 +2747,21 @@ scheduleActivity(int activity_type_id,user_id,res_id,
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
         resMessageText = "0";
+        throw Exception(data['result']['data']);
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -2972,7 +2975,7 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
   String? resMessage;
       var resMessageText;
 
-
+  var data;
 
 
   try {
@@ -3001,25 +3004,29 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 
     print(msg);
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
-
+       data = jsonDecode(response.body.toString());
+      print(data);
+      print("djahdjsb");
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result'];
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "failed";
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -3453,7 +3460,7 @@ getattchmentData(int dataId, String activityModel) async {
   String? resMessage;
   var resMessageText;
 
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -3482,23 +3489,26 @@ getattchmentData(int dataId, String activityModel) async {
 
     print(msg);
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result'];
+        return resMessageText;
       }
 
       if (resMessage == "error") {
         resMessageText = "failed";
+        throw Exception(data['result']['data']);
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
-  return resMessageText;
+
 }
 
 // send msg create

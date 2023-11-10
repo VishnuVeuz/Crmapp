@@ -2977,7 +2977,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   attachmentCount = resMessage['data']['att_count'].toString();
                                                   logDataHeader.clear();
                                                   logDataTitle.clear();
-                                                  selectedImagesDisplay.clear();
+                                                  if(selectedImagesDisplay!=null){
+                                                    selectedImagesDisplay.clear();
+                                                  }
                                                   lognoteController.text = "";
                                                   selectedImages.clear();
                                                   myData1.clear();
@@ -3310,7 +3312,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   attachmentCount = resMessage['data']['att_count'].toString();
                                                   logDataHeader.clear();
                                                   logDataTitle.clear();
-                                                  selectedImagesDisplay.clear();
+                                                  if(selectedImagesDisplay!=null){
+                                                    selectedImagesDisplay.clear();
+                                                  }
                                                   lognoteController.text = "";
                                                   selectedImages.clear();
                                                   myData1.clear();
@@ -12695,19 +12699,23 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   activitySchedule() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.customerId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "res.partner",
-        "");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.customerId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "res.partner",
+          "");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   editactivitySchedule(int typeIds) async {
@@ -13993,15 +14001,21 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   logNoteData(List myData1) async {
+    try{
     var value = await logNoteCreate(
         lognoteController.text, "res.partner", widget.customerId, myData1);
 
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod1(e);
+    }
+
   }
 
   createSendmessage(List myData1) async {
+    try{
     var value = await sendMessageCreate(
         bodyController.text,
         "res.partner",
@@ -14014,6 +14028,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   _buildMarkDoneDialog(BuildContext context, int marktypeIds) {
@@ -14170,19 +14187,24 @@ class _CustomerDetailState extends State<CustomerDetail> {
   productDefaultDetails() {}
 
   markDone() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.customerId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "res.partner",
-        "mark_done");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.customerId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "res.partner",
+          "mark_done");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
+
   }
 
   editMarkDone(int typeIds) async {
@@ -15295,6 +15317,54 @@ class _CustomerDetailState extends State<CustomerDetail> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void errorMethod1(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                lognoteController.text="";
+                setState(() {
+                  _isSavingData = false;
+                });
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void errorMethod2(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                setState(() {
+                  _isSavingData=false;
+                });
+
               },
               child: Text('OK'),
             ),

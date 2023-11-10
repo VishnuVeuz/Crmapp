@@ -3175,7 +3175,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                                 logDataHeader.clear();
                                                 logDataTitle.clear();
-                                                selectedImagesDisplay.clear();
+                                                if(selectedImagesDisplay!=null){
+                                                  selectedImagesDisplay.clear();
+                                                }
                                                 lognoteController.text = "";
                                                 selectedImages.clear();
                                                 myData1.clear();
@@ -3488,7 +3490,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                                 logDataHeader.clear();
                                                 logDataTitle.clear();
-                                                selectedImagesDisplay.clear();
+                                                if(selectedImagesDisplay!=null){
+                                                  selectedImagesDisplay.clear();
+                                                }
                                                 lognoteController.text = "";
                                                 selectedImages.clear();
                                                 myData1.clear();
@@ -13066,19 +13070,23 @@ class _QuotationDetailState extends State<QuotationDetail> {
   productDefaultDetails() {}
 
   activitySchedule() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.quotationId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "sale.order",
-        "");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.quotationId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "sale.order",
+          "");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   editactivitySchedule(int typeIds) async {
@@ -13099,19 +13107,24 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   markDone() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.quotationId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "sale.order",
-        "mark_done");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.quotationId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "sale.order",
+          "mark_done");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }
+    catch(e){
+      errorMethod2(e);
+    }
   }
 
   editMarkDone(int typeIds) async {
@@ -13132,12 +13145,16 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   logNoteData(List myData1) async {
+    try{
     var value = await logNoteCreate(
         lognoteController.text, "sale.order", widget.quotationId, myData1);
 
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod1(e);
+    }
   }
 
   void myAlert(String modelType) {
@@ -14029,6 +14046,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   createSendmessage(List myData1) async {
+    try{
     var value = await sendMessageCreate(
         bodyController.text,
         "sale.order",
@@ -14041,6 +14059,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   _buildFollowPopupDialog(BuildContext context, List followers) {
@@ -15440,7 +15461,53 @@ class _QuotationDetailState extends State<QuotationDetail> {
       },
     );
   }
+  void errorMethod1(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                lognoteController.text="";
+                setState(() {
+                  _isSavingData = false;
+                });
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void errorMethod2(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                setState(() {
+                  _isSavingData=false;
+                });
 
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class PostProviderquotation extends ChangeNotifier {

@@ -3672,7 +3672,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                 logDataHeader.clear();
                                                 logDataTitle.clear();
-                                                selectedImagesDisplay.clear();
+                                                if(selectedImagesDisplay!=null){
+                                                  selectedImagesDisplay.clear();
+                                                }
+
                                                 lognoteController.text = "";
                                                 selectedImages.clear();
                                                 myData1.clear();
@@ -3984,7 +3987,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                 logDataHeader.clear();
                                                 logDataTitle.clear();
-                                                selectedImagesDisplay.clear();
+                                                if(selectedImagesDisplay!=null){
+                                                  selectedImagesDisplay.clear();
+                                                }
+
                                                 lognoteController.text = "";
                                                 selectedImages.clear();
                                                 myData1.clear();
@@ -7610,19 +7616,23 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   productDefaultDetails() {}
 
   activitySchedule() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.opportunityId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "crm.lead",
-        "");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.opportunityId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "crm.lead",
+          "");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   editactivitySchedule(int typeIds) async {
@@ -7643,19 +7653,23 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   markDone() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.opportunityId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "crm.lead",
-        "mark_done");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.opportunityId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "crm.lead",
+          "mark_done");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   editMarkDone(int typeIds) async {
@@ -7676,12 +7690,16 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   logNoteData(List myData1) async {
+    try{
     var value = await logNoteCreate(
         lognoteController.text, "crm.lead", widget.opportunityId, myData1);
 
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod1(e);
+    }
   }
 
   void myAlert(String modelType) {
@@ -9313,18 +9331,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   createSendmessage(List myData1) async {
-    var value = await sendMessageCreate(
-        bodyController.text,
-        "crm.lead",
-        subjectController.text,
-        widget.opportunityId,
-        recipient,
-        templateId,
-        myData1);
+    try {
+      var value = await sendMessageCreate(
+          bodyController.text,
+          "crm.lead",
+          subjectController.text,
+          widget.opportunityId,
+          recipient,
+          templateId,
+          myData1);
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod1(e);
+    }
   }
 
   _buildEmojiPopupDialog(BuildContext mcontext) {
@@ -10184,6 +10206,54 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void errorMethod1(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                lognoteController.text="";
+                setState(() {
+                  _isSavingData = false;
+                });
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void errorMethod2(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                setState(() {
+                  _isSavingData=false;
+                });
+
               },
               child: Text('OK'),
             ),

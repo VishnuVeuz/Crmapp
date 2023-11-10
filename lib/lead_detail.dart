@@ -3306,8 +3306,10 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                         logDataHeader.clear();
                                                         logDataTitle.clear();
-                                                        selectedImagesDisplay
-                                                            .clear();
+                                                       if(selectedImagesDisplay!=null){
+                                                         selectedImagesDisplay
+                                                        .clear();
+                                                       }
 
                                                         lognoteController.text =
                                                         "";
@@ -3709,8 +3711,11 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                         logDataHeader.clear();
                                                         logDataTitle.clear();
-                                                        selectedImagesDisplay
-                                                            .clear();
+                                                        if(selectedImagesDisplay!=null){
+                                                          selectedImagesDisplay
+                                                              .clear();
+                                                        }
+
 
                                                         lognoteController.text =
                                                         "";
@@ -8809,19 +8814,23 @@ class _LeadDetailState extends State<LeadDetail> {
   productDefaultDetails() {}
 
   activitySchedule() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.leadId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "lead.lead",
-        "");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.leadId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "lead.lead",
+          "");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   editactivitySchedule(int typeIds) async {
@@ -8842,19 +8851,24 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   markDone() async {
-    String value = await scheduleActivity(
-        activityTypeId,
-        assignedToid,
-        widget.leadId,
-        summaryController.text,
-        DuedateTime.text,
-        commandsController.text,
-        "lead.lead",
-        "mark_done");
+    try {
+      String value = await scheduleActivity(
+          activityTypeId,
+          assignedToid,
+          widget.leadId,
+          summaryController.text,
+          DuedateTime.text,
+          commandsController.text,
+          "lead.lead",
+          "mark_done");
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }
+    catch(e){
+      errorMethod2(e);
+    }
   }
 
   editMarkDone(int typeIds) async {
@@ -8875,12 +8889,17 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   logNoteData(List myData1) async {
-    var value = await logNoteCreate(
-        lognoteController.text, "lead.lead", widget.leadId, myData1);
 
-    print(value);
-    print("valuesss");
-    return value;
+    try {
+      var value = await logNoteCreate(
+          lognoteController.text, "lead.lead", widget.leadId, myData1);
+
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod1(e);
+    }
   }
   logNoteEditData(List myData1,int lognoteId) async {
     var value = await EditlogNote(lognoteEditController.text,"lead.lead",widget.leadId,myData1,lognoteId);
@@ -9353,12 +9372,22 @@ class _LeadDetailState extends State<LeadDetail> {
   //String lognotes,logmodel,subject ,int resId,partnerId,templateId
 
   createSendmessage(List myData1) async {
-    var value = await sendMessageCreate(bodyController.text, "lead.lead",
-        subjectController.text, widget.leadId, recipient, templateId, myData1);
+    try {
+      var value = await sendMessageCreate(
+          bodyController.text,
+          "lead.lead",
+          subjectController.text,
+          widget.leadId,
+          recipient,
+          templateId,
+          myData1);
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   _buildEmojiPopupDialog(BuildContext mcontext) {
@@ -10240,7 +10269,57 @@ return data;
     );
   }
 
+  void errorMethod1(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                lognoteController.text="";
+                setState(() {
+                  _isSavingData = false;
+                });
 
+
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void errorMethod2(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                setState(() {
+
+                  _isSavingData=false;
+                });
+
+
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
 }
