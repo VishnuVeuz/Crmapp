@@ -11,6 +11,7 @@ import 'package:search_choices/search_choices.dart';
 
 import 'api.dart';
 import 'calendardetail.dart';
+import 'calendarmainpage.dart';
 import 'drawer.dart';
 import 'globals.dart';
 import 'notificationactivity.dart';
@@ -1124,85 +1125,155 @@ class _CalendarAddState extends State<CalendarAdd> {
   }
 
   void defaultvalues() async{
+try {
+  token = await getUserJwt();
+  var data = await defaultDropdownCalendar();
+  setState(() {
+    print(data);
+    orgnizerName = data['user_id'];
+    orgnizerId = data['user_id']['id'] ?? null;
+    startTime.text = data['start'].toString() ?? "";
+    stopTime.text = data['stop'].toString() ?? "";
+    meeting_duration.text = data['duration'].toString() ?? "";
+    privacy = data['privacy'] ?? "";
+    print(privacy);
+    print("privacy");
 
-    token = await getUserJwt();
-    var data =  await defaultDropdownCalendar();
-      setState(() {
-      print(data);
-      orgnizerName = data['user_id'];
-      orgnizerId = data['user_id']['id']??null;
-      startTime.text=data['start'].toString()??"";
-      stopTime.text=data['stop'].toString()??"";
-      meeting_duration.text=data['duration'].toString()??"";
-      privacy = data['privacy'] ?? "";
-      print(privacy);
-      print("privacy");
-
-      (privacy == "public")
-          ? dropdownValue = privacylist[0]
-          : (privacy == "private")
-          ? dropdownValue = privacylist[1]
-          : (privacy == "confidential")
-          ? dropdownValue = privacylist[2]
-          : dropdownValue = privacylist[0];
-
-
-      print(dropdownValue);
-
-      show_as = data['show_as'] ?? "";
-
-      (show_as == "free")
-          ? dropdownValues = showaslist.first
-          : (show_as == "busy")
-          ? dropdownValues = showaslist.last
-          : dropdownValues = showaslist.last;
-
-      for(int i=0;i<data['partner_ids'].length;i++)
-      {
-        selctedPartnerName.add(data['partner_ids'][i]);
-
-      }
-
-      for(int i=0;i<selctedPartnerName.length;i++){
-        editPartnerName.add(new ValueItem(label: selctedPartnerName[i]['display_name'],value:selctedPartnerName[i]['id'].toString() ));
-
-      }
-
-      partnerName = editPartnerName.map((item) => item.value).toList();
+    (privacy == "public")
+        ? dropdownValue = privacylist[0]
+        : (privacy == "private")
+        ? dropdownValue = privacylist[1]
+        : (privacy == "confidential")
+        ? dropdownValue = privacylist[2]
+        : dropdownValue = privacylist[0];
 
 
-      meetingsubjectController.text = widget.scheduleSummary;
+    print(dropdownValue);
+
+    show_as = data['show_as'] ?? "";
+
+    (show_as == "free")
+        ? dropdownValues = showaslist.first
+        : (show_as == "busy")
+        ? dropdownValues = showaslist.last
+        : dropdownValues = showaslist.last;
+
+    for (int i = 0; i < data['partner_ids'].length; i++) {
+      selctedPartnerName.add(data['partner_ids'][i]);
+    }
+
+    for (int i = 0; i < selctedPartnerName.length; i++) {
+      editPartnerName.add(new ValueItem(
+          label: selctedPartnerName[i]['display_name'],
+          value: selctedPartnerName[i]['id'].toString()));
+    }
+
+    partnerName = editPartnerName.map((item) => item.value).toList();
 
 
+    meetingsubjectController.text = widget.scheduleSummary;
 
 
-      _isInitialized = true;
+    _isInitialized = true;
+  });
 
-    });
 
-
-    print(token);
+  print(token);
+}catch (e) {
+  // Handle the exception and show the API error message to the user
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text('Failed to load default values. Error: ${e.toString()}'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>    Calender(null,"",DateTime.now(),null,[],"")));
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
 
 
   }
   calendarCreate() async {
     print(DateTime.parse(startTime.text));
     print("DateTime.parse");
+
+    try{
     String value= await createCalendar(orgnizerId,partnerName,reminders,tags,meetingsubjectController.text,
         meeting_duration.text,locationController.text,meetingurlController.text,meeting_discription.text,dropdowncreatevalue,dropdowncreatevalues,startTime.text,stopTime.text,
         widget.calendarmodel,widget.calendarTypeId,widget.activityDataId
     );
 
     return value;
+
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>    Calender(null,"",DateTime.now(),null,[],"")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
   }
 
   calendarEdit()async {
+    try{
     String value= await editCalendar(orgnizerId,partnerName,reminders,tags,meetingsubjectController.text,
       meeting_duration.text,locationController.text,meetingurlController.text,meeting_discription.text,dropdowncreatevalue,dropdowncreatevalues,startTime.text,stopTime.text,widget.calendarId,
         widget.calendarmodel,widget.calendarTypeId,widget.activityDataId );
 
     print(value);
     return value;
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>    Calender(null,"",DateTime.now(),null,[],"")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void getCalendarDetails() async {

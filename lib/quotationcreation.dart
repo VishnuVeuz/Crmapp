@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:crm_project/quotation_detail.dart';
+import 'package:crm_project/scrolling/quotationscrolling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
@@ -2356,10 +2357,10 @@ class _QuotationCreationState extends State<QuotationCreation> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
 
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text('Processing Data')),
-                          );
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   const SnackBar(
+                          //       content: Text('Processing Data')),
+                          // );
 
 
                           setState(() {
@@ -2483,13 +2484,10 @@ class _QuotationCreationState extends State<QuotationCreation> {
   }
 
   void defaultvalues() async {
+    try{
+
     token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
-
-    notificationCount = notificationMessage['activity_count'].toString();
-
-    messageCount = notificationMessage['message_count'].toString();
-    var data = await defaultDropdown("sale.order");
+   var data = await defaultDropdown("sale.order");
 
     print(data);
     print("default data");
@@ -2520,12 +2518,46 @@ class _QuotationCreationState extends State<QuotationCreation> {
       //robabilityController.text = data['probability'].toString()??"0.0";
       _isInitialized = true;
     });
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
+
 
     print(token);
     print("final token ");
+
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to load default values. Error: ${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => QuotationScrolling("","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
   }
 
   quotationCreate() async {
+
+
+    try{
     dropdownValue == "As soon as possible"
         ? dropdownValueId = "direct"
         : dropdownValueId = "one";
@@ -2558,9 +2590,37 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
     );
     return value;
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>    QuotationScrolling("","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
+
   }
 
   quotationEdit() async {
+
+    try{
     dropdownValue == "As soon as possible"
         ? dropdownValueId = "direct"
         : dropdownValueId = "one";
@@ -2591,6 +2651,31 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
     );
     return value;
+
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>    QuotationScrolling("","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
   }
 
   void getQuotationDetails() async {

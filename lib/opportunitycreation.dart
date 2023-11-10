@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:crm_project/opportunity_detail.dart';
+import 'package:crm_project/scrolling/opportunityscrolling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,6 +17,7 @@ import 'drawer.dart';
 import 'globals.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
+import 'opportunitymainpage.dart';
 
 class OpportunityCreation extends StatefulWidget {
   var opportunityId;
@@ -2524,13 +2526,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   }
 
   void defaultvalues() async {
+
+
+    try{
     token = await getUserJwt();
-    var notificationMessage = await getNotificationCount();
-
-    notificationCount = notificationMessage['activity_count'].toString();
-
-    messageCount = notificationMessage['message_count'].toString();
-    var data = await defaultDropdown("crm.lead");
+      var data = await defaultDropdown("crm.lead");
     setState(() {
       print(data);
 
@@ -2546,11 +2546,41 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
       probabilityController.text = data['probability'].toString() ?? "0.0";
       _isInitialized = true;
     });
+    var notificationMessage = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
+
 
     print(token);
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to load default values. Error: ${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>  OpportunityMainPage(null,"","","","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   opportunityCreate() async {
+    try{
     String value = await createOpportunity(
         opportunitynameController.text,
         emailController.text,
@@ -2588,9 +2618,34 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         orderLineProducts);
 
     return value;
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>   OpportunityMainPage(null,"","","","")));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
   }
 
   opportunityEdit() async {
+   try{
     String value = await editOpportunity(
         opportunitynameController.text,
         emailController.text,
@@ -2629,6 +2684,32 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
         orderLineProducts);
 
     return value;
+
+   }catch (e) {
+     // Handle the exception and show the API error message to the user
+     showDialog(
+       context: context,
+       builder: (BuildContext context) {
+         return AlertDialog(
+           title: Text('Error'),
+           content: Text('${e.toString()}'),
+           actions: <Widget>[
+             TextButton(
+               onPressed: () {
+                 Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                         builder: (context) =>   OpportunityMainPage(null,"","","","")));
+               },
+               child: Text('OK'),
+             ),
+           ],
+         );
+       },
+     );
+   }
+
+
   }
 
   void getOpportunityDetails() async {

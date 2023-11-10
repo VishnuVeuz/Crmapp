@@ -73,6 +73,8 @@ defaultDropdown(String model) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
+  print("${baseUrl}api/default_values?model=${model}");
+  print("demooooooo");
 
   try {
     final msg = jsonEncode({
@@ -87,19 +89,26 @@ defaultDropdown(String model) async {
     );
 
     if (response.statusCode != 200) {
-      throw Exception("failed to get data from internet");
+      data = jsonDecode(response.body);
+      print(data['message']);
+      print("deedrdf");
+
+      throw Exception(data['message']);
+    //  data= message
     } else {
       print(response.body);
       print("responce dataa");
       data = jsonDecode(response.body);
 
       authresponce = data.toString();
+      return data;
     }
   } catch (e) {
     print(e.toString());
+    throw Exception(data['message']);
   }
 
-  return data;
+  // return data;
 }
 
 defaultDropdownCustomer() async {
@@ -279,7 +288,7 @@ deleteLeadData(int leadId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try {
   Response response = await delete(
     Uri.parse("${baseUrl}api/lead/${leadId}"),
     headers: {
@@ -290,14 +299,22 @@ deleteLeadData(int leadId) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    print(data);
+    print("finalalallan");
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
-
+    return data;
     // authresponce = data['result'].toString();
   }
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
-  return data;
+
+
 }
 
 createLead(
@@ -336,7 +353,7 @@ createLead(
 
   print("tocken responece");
   String? authresponce, resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -384,7 +401,7 @@ createLead(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -393,14 +410,19 @@ createLead(
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        print(data);
+        throw Exception(data['result']['data']);
+        print("finalalalala");
         resMessageText = '0';
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
@@ -421,7 +443,7 @@ createLead(
   description = "";
 
 
-  return resMessageText;
+
 }
 
 editLead(
@@ -460,7 +482,7 @@ editLead(
 
 
   String? authresponce, resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -509,7 +531,7 @@ editLead(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -519,13 +541,16 @@ editLead(
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
@@ -546,7 +571,7 @@ editLead(
   description = "";
 
 
-  return resMessageText;
+
 }
 
 
@@ -612,6 +637,7 @@ editLeadpriority(
 lostLead(int id, bool value) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -629,7 +655,7 @@ lostLead(int id, bool value) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       //authresponce = data['result'].toString();
 
@@ -638,18 +664,21 @@ lostLead(int id, bool value) async {
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 Future<List<dynamic>> recentLead(String model) async {
@@ -714,6 +743,7 @@ createOpportunity(
 
 
   String? authresponce, resMessage, resMessageText;
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -766,7 +796,7 @@ createOpportunity(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -775,14 +805,17 @@ createOpportunity(
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
   name = "";
@@ -803,7 +836,7 @@ createOpportunity(
   expected_revenue = 0.0;
 
 
-  return resMessageText;
+
 }
 
 //create opportunity
@@ -848,6 +881,7 @@ editOpportunity(
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
 
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -898,7 +932,7 @@ editOpportunity(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -908,13 +942,16 @@ editOpportunity(
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
@@ -936,7 +973,7 @@ editOpportunity(
   expected_revenue = 0.0;
 
 
-  return resMessageText;
+
 }
 
 
@@ -1003,7 +1040,7 @@ deleteOpportunityData(int opportunityId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try{
   Response response = await delete(
     Uri.parse("${baseUrl}api/opportunity/${opportunityId}"),
     headers: {
@@ -1014,13 +1051,19 @@ deleteOpportunityData(int opportunityId) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
+    return data;
   }
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
 
-  return data;
+
 }
 
 getOpportunityData(int opportunityId, String value) async {
@@ -1105,7 +1148,7 @@ Future<List<dynamic>> getOpportunityTypesData(int type) async {
 lostOpportunity(int id, opportunitylostId, String action) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {"action": action, "lost_reason": opportunitylostId}
@@ -1122,30 +1165,33 @@ lostOpportunity(int id, opportunitylostId, String action) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 restoreWonOpportunity(int id, opportunitylostId, String action) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -1164,30 +1210,34 @@ restoreWonOpportunity(int id, opportunitylostId, String action) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 archiveOpportunity(int id, opportunitylostId, bool action) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -1206,24 +1256,27 @@ archiveOpportunity(int id, opportunitylostId, bool action) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 opportunityStageChange(int stateId, opportunityId) async {
@@ -1353,7 +1406,7 @@ createQuotation(
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -1395,21 +1448,24 @@ createQuotation(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
 
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
       }
 
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
   customer_reference = "";
@@ -1418,7 +1474,7 @@ createQuotation(
   delivery_date = "";
 
 
-  return resMessageText;
+
 }
 
 
@@ -1548,7 +1604,7 @@ editQuotation(
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-
+  var data;
   print("hjfgcjsgj");
   try {
     final msg = jsonEncode({
@@ -1590,24 +1646,27 @@ editQuotation(
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 getQuotationData(int quotationId, String value) async {
@@ -1856,7 +1915,7 @@ createCustomer(String company_type, name, street, street2, city, website, email,
 
 
   String? authresponce, resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -1903,7 +1962,7 @@ createCustomer(String company_type, name, street, street2, city, website, email,
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -1912,17 +1971,20 @@ createCustomer(String company_type, name, street, street2, city, website, email,
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
-  return resMessageText;
+
 }
 
 
@@ -1936,7 +1998,7 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
   String token = await getUserJwt();
 
   String? authresponce, resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -1983,7 +2045,7 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
@@ -1991,17 +2053,20 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
-  return resMessageText;
+
 }
 
 
@@ -2177,7 +2242,7 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -2212,27 +2277,30 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
 
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
 
       }
 
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -2243,7 +2311,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
 
   String token = await getUserJwt();
   String? authresponce, resMessage, resMessageText;
-
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -2279,29 +2347,31 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       authresponce = data['result'].toString();
 
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
-
+        return resMessageText;
 
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = '0';
         print("dddddd");
       }
 
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -2336,10 +2406,11 @@ deleteCalendar(int calendarId) async {
 
 
 defaultDropdownCalendar() async {
+
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try{
   Response response = await get(
     Uri.parse("${baseUrl}api/calendar"),
     headers: {
@@ -2348,16 +2419,23 @@ defaultDropdownCalendar() async {
   );
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
 
     data = jsonDecode(response.body);
 
     authresponce = data.toString();
-  }
+    return data;
+  }}
+  catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
 
-  return data;
+
+  // return data;
 }
 
 deleteCalendarData(int calendarId) async {
@@ -3413,6 +3491,7 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
   String? resMessage, resMessageText;
 
   final msg;
+  var data;
 
   try {
 
@@ -3444,23 +3523,26 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = "success";
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "failed";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
-  return resMessageText;
+
 }
 
 

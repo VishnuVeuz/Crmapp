@@ -547,22 +547,29 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             onTap: () async {
                                                               print(
                                                                   widget.leadId);
-                                                              var data = await deleteLeadData(
-                                                                  widget.leadId);
+                                                              try {
+                                                                var data = await deleteLeadData(
+                                                                    widget
+                                                                        .leadId);
 
-                                                              if (data['message'] ==
-                                                                  "Success") {
-                                                                print("responce");
-                                                                Navigator.push(
-                                                                  context,
-                                                                  MaterialPageRoute(
-                                                                      builder: (
-                                                                          context) =>
-                                                                          LeadScrolling(
-                                                                              "",
-                                                                              "",
-                                                                              "")),
-                                                                );
+                                                                if (data['message'] ==
+                                                                    "Success") {
+                                                                  print(
+                                                                      "responce");
+                                                                  Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    MaterialPageRoute(
+                                                                        builder: (
+                                                                            context) =>
+                                                                            LeadScrolling(
+                                                                                "",
+                                                                                "",
+                                                                                "")),
+                                                                  );
+                                                                }
+                                                              }catch (e) {
+                                                                errorMethod(e);
                                                               }
                                                             },
                                                             child: SvgPicture
@@ -8367,37 +8374,45 @@ class _LeadDetailState extends State<LeadDetail> {
                               ? null // Disable the button if saving is in progress
                               :() async {
 
-                            setState(() {
-                              _isSavingData=true;
-                            });
-                            print(subject2Controller.text);
-                            print(phonenumberController.text);
-                            print(smsId);
-                            String resMessagee = await sendSms(
-                                subject2Controller.text,
-                                phonenumberController.text,
-                                smsId,
-                                type);
 
-                            if (resMessagee == "success") {
-
+                            try {
                               setState(() {
-
-                                _isSavingData=false;
+                                _isSavingData = true;
                               });
-                              subject2Controller.clear();
-                              phonenumberController.clear();
-                              nameController.clear();
-                              smsId = 0;
-                              type = "";
+                              print(subject2Controller.text);
+                              print(phonenumberController.text);
+                              print(smsId);
+                              String resMessagee = await sendSms(
+                                  subject2Controller.text,
+                                  phonenumberController.text,
+                                  smsId,
+                                  type);
 
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          LeadDetail(widget.leadId)));
+                              if (resMessagee == "success") {
+                                setState(() {
+                                  _isSavingData = false;
+                                });
+                                subject2Controller.clear();
+                                phonenumberController.clear();
+                                nameController.clear();
+                                smsId = 0;
+                                type = "";
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            LeadDetail(widget.leadId)));
+                              }
+                            }catch(e){
+                              setState(() {
+                                _isSavingData = false;
+                              });
+                              Navigator.pop(context);
+                            errorMethod(e);
                             }
                           },
+
 
 
                           style: ElevatedButton.styleFrom(
@@ -8777,11 +8792,18 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   leadLost(bool valueType) async {
+    try{
     String value = await lostLead(widget.leadId, valueType);
 
     print(value);
     print("valuesss");
     return value;
+
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+     errorMethod(e);
+    }
+
   }
 
   productDefaultDetails() {}
@@ -8902,7 +8924,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     onPressed: () {
                       Navigator.pop(context);
                       modelType == "lognote"
-                          ? getImages():modelType == "lognoteEdit"?getImagesEdit()
+                          ? getImages():modelType == "lognoteEdit"? getImagesEdit()
                           : getImagesAttachment();
                       //getImage(ImageSource.gallery);
                     },
@@ -10196,6 +10218,26 @@ return data;
 
   void _dismissDialog(BuildContext context) {
     Navigator.of(context, rootNavigator: true).pop();
+  }
+
+  void errorMethod(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
 

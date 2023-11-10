@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:crm_project/scrolling/customerscrolling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
@@ -3438,32 +3439,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
   }
 
   customerCreate() async {
-    print(customerController.text);
-    print(streetController.text);
-    print(streettwoController.text);
-    print(cityController.text);
-    print(websiteController.text);
-
-    print(emailController.text);
-    print(jobpositionController.text);
-    print(referenceController.text);
-    print(internalnotesController.text);
-    print(zipController.text);
-
-    print(taxidController.text);
-    print(phoneController.text);
-    print(mobileController.text);
-    print(companyId);
-    print(customerCampanyId);
-
-    print(titleId);
-    print(stateId);
-    print(countryId);
-    print(customerrankController.text);
-    print(supplierrankController.text);
-    print(salespersonId);
-    print(paymenttermsId);
-    print("demoooo");
+  try{
 
     String value = await createCustomer(
         radioInput,
@@ -3497,6 +3473,31 @@ class _CustomerCreationState extends State<CustomerCreation> {
         addNewCustomer);
 
     return value;
+
+  }catch (e) {
+    // Handle the exception and show the API error message to the user
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>   CustomerScrolling("","")));
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   }
 
 
@@ -3504,7 +3505,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
 print(addNewCustomer);
 print("addNewCustomer");
-
+try{
     String value = await EditCustomer(
         radioInput,
         customerController.text,
@@ -3537,6 +3538,29 @@ print("addNewCustomer");
         widget.customnerId,
         personImg);
     return value;
+}catch (e) {
+  // Handle the exception and show the API error message to the user
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text('${e.toString()}'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>   CustomerScrolling("","")));
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
 
   }
 

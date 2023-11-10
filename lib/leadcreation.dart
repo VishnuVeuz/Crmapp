@@ -2015,12 +2015,9 @@ class _LeadCreationState extends State<LeadCreation> {
 
   void defaultvalues() async{
 
+    try{
+
     token = await getUserJwt();
-    var notificationMessage  = await getNotificationCount();
-
-    notificationCount = notificationMessage['activity_count'].toString();
-
-    messageCount = notificationMessage['message_count'].toString();
     var data =  await defaultDropdown("lead.lead");
     setState(() {
       print(data);
@@ -2039,10 +2036,37 @@ class _LeadCreationState extends State<LeadCreation> {
 
     });
 
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
 
     print(token);
 
-
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to load default values. Error: ${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LeadMainPage()));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
 
@@ -2125,6 +2149,7 @@ class _LeadCreationState extends State<LeadCreation> {
   }
 
   leadCreate() async {
+    try{
     String value= await createLead(leadnameController.text, emailController.text, emailccController.text, contactnameController.text,
         companynameController.text, phoneController.text, rtaingValue, languageId, streetController.text, streettwoController.text,
         cityController.text, websiteController.text, jobpositionController.text, refferedbyController.text, internalnotesController.text,
@@ -2132,12 +2157,37 @@ class _LeadCreationState extends State<LeadCreation> {
         countryId, mobileController.text, tags, titleId, mediumId, sourceId, campaignId);
 
     return value;
+    }catch (e) {
+      // Handle the exception and show the API error message to the user
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('${e.toString()}'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LeadMainPage()));
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+
   }
 
   leadEdit() async{
 
 
-
+try{
     String value =await editLead(leadnameController.text, emailController.text, emailccController.text, contactnameController.text,
         companynameController.text, phoneController.text, rtaingValue, languageId, streetController.text, streettwoController.text,
         cityController.text, websiteController.text, jobpositionController.text, refferedbyController.text, internalnotesController.text,
@@ -2145,6 +2195,29 @@ class _LeadCreationState extends State<LeadCreation> {
         countryId, mobileController.text, tags, titleId, mediumId, sourceId, campaignId,widget.leadId);
 
     return value;
+}catch (e) {
+  // Handle the exception and show the API error message to the user
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Error'),
+        content: Text('${e.toString()}'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => LeadMainPage()));
+            },
+            child: Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
+}
 
   }
 

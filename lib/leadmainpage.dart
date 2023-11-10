@@ -377,6 +377,26 @@ class _LeadMainPageState extends State<LeadMainPage> {
                           if (snapshot.hasError) {
                             print(snapshot.hasError);
                             print("snap error");
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Something went wrong while fetching data.',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black
+                                ),
+                              ),
+                              const SizedBox(height: 10,),
+                              TextButton(
+                                  onPressed:  ()  {
+                                    setState(() {
+
+                                    });
+                                  },
+                                  child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+                            ],
+                          );
                           }
                           if (snapshot.connectionState == ConnectionState.done) {
                             if (snapshot.hasData) {

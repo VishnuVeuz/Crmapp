@@ -512,6 +512,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   InkWell(
                                                     onTap: () async {
                                                       print(widget.opportunityId);
+                                                      try{
                                                       var data = await deleteOpportunityData(
                                                           widget.opportunityId);
 
@@ -526,6 +527,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   OpportunityMainPage(
                                                                       null, "", "", "", "")),
                                                         );
+                                                      }
+                                                      }catch (e) {
+                                                        errorMethod(e);
                                                       }
                                                     },
                                                     child: SvgPicture.asset(
@@ -747,6 +751,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 style: TextStyle(fontFamily: 'Mulish', color: Colors.white),
                                                                               ),
                                                                               onPressed: () async {
+                                                                                Navigator.pop(context);
                                                                                 String resmessage = await opportunityLost("lost");
                                                                                 int resmessagevalue = int.parse(resmessage);
                                                                                 print(resmessage);
@@ -6768,21 +6773,34 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   opportunityLost(String action) async {
-    String value =
-        await lostOpportunity(widget.opportunityId, lostreasonId, action);
-    return value;
+    try {
+      String value =
+      await lostOpportunity(widget.opportunityId, lostreasonId, action);
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
+
   }
 
   opportunityWonRestore(String action) async {
-    String value =
-        await restoreWonOpportunity(widget.opportunityId, lostreasonId, action);
-    return value;
+    try {
+      String value =
+      await restoreWonOpportunity(widget.opportunityId, lostreasonId, action);
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   opportunityarchive(bool action) async {
+    try{
     String value =
         await archiveOpportunity(widget.opportunityId, lostreasonId, action);
     return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   StageChangeOpportunity(int state) async {
@@ -8124,6 +8142,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               ? null // Disable the button if saving is in progress
                               : () async {
 
+                            try{
                             setState(() {
                               _isSavingData=true;
                             });
@@ -8157,6 +8176,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       builder: (context) => OpportunityDetail(
                                           widget.opportunityId)));
                             }
+                            }catch(e){
+                              setState(() {
+                                _isSavingData = false;
+                              });
+                              Navigator.pop(context);
+                              errorMethod(e);
+                            }
+
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xFFF9246A),
@@ -10142,6 +10169,26 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(value);
     print("valuesss");
     return value;
+  }
+
+  void errorMethod(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 
