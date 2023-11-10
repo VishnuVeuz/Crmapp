@@ -5011,8 +5011,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                               print(logDataTitle[indexx]
                               [indexs]['attachment_ids']);
-                              print(selectedImagesDisplay);
-
+                              print(logattachmentImagesDisplay.length);
+                              print("hjvdbjsbdvad bs ");
                               print(logDataTitle[indexx]
                               [indexs]['reaction_ids']);
                               print("hjvdbjsbdv");
@@ -5972,11 +5972,12 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                     lognoteEditController.text= "";
                                                     selectedImagesEdit.clear();
-                                                       myData1.clear();
+                                                    myData1.clear();
                                                    selectedItemIndex = -1;
-                                                   postProvider?.fetchPosts(widget.leadId);
+                                                    postProvider?.fetchPosts(widget.leadId);
 
                                                     };
+
                                                   }
                                                   ),
                                                  // TextButton(onPressed:(){}, child: Text("save")),
@@ -6000,10 +6001,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                             .start,
                                         children: [
 
+
                                           selectedImagesDisplay.length == 0 ?
                                           Container(
                                           ) :
                                           Column(
+
                                             children: [
                                               Container(
                                                 width: mediaQueryData
@@ -6031,16 +6034,19 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       crossAxisSpacing: 1.0,
                                                       childAspectRatio: 1,
                                                     ),
+
                                                     itemBuilder: (
                                                         BuildContext context,
                                                         int index) {
-                                                      postProvider?.fetchPosts(widget.leadId);
+                                                     // postProvider?.fetchPosts(widget.leadId);
                                                       print(logattachmentImagesDisplay);
-                                                      print("selectedImagesDisplay.length,");
+                                                      print("selectedImagesDisplay.length11");
+                                                     print( selectedImagesDisplay['images']);
                                                       print(index);
-                                                     // print(logattachmentImagesDisplay[index]["datas"]);
+                                                      print(logattachmentImagesDisplay[index]["datas"]);
                                                       print("selectedImagesDisplay.length,");
                                                       return Container(
+
 
                                                         margin: EdgeInsets
                                                             .fromLTRB(
@@ -6055,6 +6061,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               top: 6,
                                                               child: Align(
                                                                 child: SizedBox(
+
                                                                   width: 75,
                                                                   height: 71,
                                                                   child: Container(
@@ -6062,8 +6069,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       borderRadius: BorderRadius
                                                                           .circular(
                                                                           3),
-                                                                      color: Color(
-                                                                          0xffd9d9d9),
+                                                                      // color: Color(
+                                                                      //     0xffd9d9d9),
+                                                                     // color: Colors.white,
                                                                       image: DecorationImage(
                                                                         fit: BoxFit
                                                                             .cover,

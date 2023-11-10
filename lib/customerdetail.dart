@@ -5498,8 +5498,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                               borderRadius: BorderRadius
                                                                                                   .circular(
                                                                                                   3),
-                                                                                              color: Color(
-                                                                                                  0xffd9d9d9),
+                                                                                              // color: Color(
+                                                                                              //     0xffd9d9d9),
                                                                                               image: DecorationImage(
                                                                                                 fit: BoxFit
                                                                                                     .cover,
