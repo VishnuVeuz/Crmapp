@@ -1670,30 +1670,39 @@ editQuotation(
 }
 
 getQuotationData(int quotationId, String value) async {
-  String token = await getUserJwt();
 
 
-  var data;
-  String? authresponce=   "${baseUrl}api/quotation/${quotationId}?action=${value}";
+    String token = await getUserJwt();
 
 
-  Response response = await get(
-    Uri.parse("${baseUrl}api/quotation/${quotationId}?action=${value}"),
-    headers: {
-      'Authorization': 'Bearer $token',
-    },
-  ).timeout(const Duration(
-    seconds: 10,
-  ));
+    var data;
+    String? authresponce = "${baseUrl}api/quotation/${quotationId}?action=${value}";
 
-  if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
-  } else {
-    data = jsonDecode(response.body);
+    try {
+    Response response = await get(
+      Uri.parse("${baseUrl}api/quotation/${quotationId}?action=${value}"),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    ).timeout(const Duration(
+      seconds: 10,
+    ));
+
+    if (response.statusCode != 200) {
+      data = jsonDecode(response.body);
+      throw Exception(data['message']);
+    } else {
+      data = jsonDecode(response.body);
+      return data;
+    }
+
+
+
+  } catch (e) {
+    print(e.toString());
+    throw Exception(data['message']);
   }
 
-
-  return data;
 }
 
 
@@ -1822,7 +1831,7 @@ deleteQuotationData(int quotationId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try{
   Response response = await delete(
     Uri.parse("${baseUrl}api/quotation/${quotationId}"),
     headers: {
@@ -1833,14 +1842,20 @@ deleteQuotationData(int quotationId) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
+    return data;
   }
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
 
 
-  return data;
+
 }
 
 // customer
@@ -2079,7 +2094,7 @@ getCustomerData(int customerId,String value) async {
   var data;
   String? authresponce="${baseUrl}api/contact/${customerId}?action=${value}";
 
-
+try{
   Response response = await get(Uri.parse(
       "${baseUrl}api/contact/${customerId}?action=${value}"),
     headers: {
@@ -2093,20 +2108,27 @@ getCustomerData(int customerId,String value) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   }
   else{
     data = jsonDecode(response.body);
+    return data;
   }
+} catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
-  return data;
+
+
 }
 
 deleteCustomerData(int customerId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try{
   Response response = await delete(Uri.parse(
       "${baseUrl}api/contact/${customerId}"),
     headers: {
@@ -2121,21 +2143,26 @@ deleteCustomerData(int customerId) async {
 
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   }
   else{
     data = jsonDecode(response.body);
+    return data;
   }
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
 
-  return data;
 }
 
 
 archiveCustomer(int id, bool value) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {"active": value}
@@ -2152,25 +2179,28 @@ archiveCustomer(int id, bool value) async {
 
 
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
+        throw Exception(data['result']['data']);
         resMessageText = "0";
       }
     } else {}
   } catch (e) {
+    throw Exception(data['result']['data']);
     print(e.toString());
   }
 
   print(resMessageText);
 
-  return resMessageText;
+
 }
 
 
@@ -2379,7 +2409,7 @@ deleteCalendar(int calendarId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
-
+try{
   Response response = await delete(
     Uri.parse("${baseUrl}api/calendar/${calendarId}"),
     headers: {
@@ -2390,14 +2420,19 @@ deleteCalendar(int calendarId) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
-
+    return data;
     // authresponce = data['result'].toString();
   }
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
-  return data;
+
 }
 
 

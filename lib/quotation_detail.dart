@@ -442,20 +442,28 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                print(widget.quotationId);
-                                var data = await deleteQuotationData(
-                                    widget.quotationId);
 
-                                if (data['message'] == "Success") {
-                                  print(data);
+                                try {
+                                  var data = await deleteQuotationData(
+                                      widget.quotationId);
 
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            QuotationScrolling("", "")),
-                                  );
+                                  if (data['message'] == "Success") {
+                                    print(data);
+
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              QuotationScrolling("", "")),
+                                    );
+                                  }
+                                }catch (e) {
+                                  // Handle the exception and show the API error message to the user
+                                  errorMethod(e);
                                 }
+
+
+
                               },
                               child: SvgPicture.asset(
                                 "images/delete.svg",
@@ -496,26 +504,39 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                      var data = await getQuotationData(
-                                                          widget.quotationId, "duplicate");
-                                                      String resMessageText;
 
-                                                      if (data['message'].toString() == "success") {
-                                                        resMessageText =
-                                                            data['data']['id'].toString();
-                                                        int resmessagevalue =
-                                                        int.parse(resMessageText);
-                                                        if (resmessagevalue != 0) {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    QuotationCreation(
-                                                                        resmessagevalue)),
-                                                          );
-                                                        }
-                                                      }
-                                                      ;
+                                                     try {
+                                                       var data = await getQuotationData(
+                                                           widget.quotationId,
+                                                           "duplicate");
+                                                       String resMessageText;
+
+                                                       if (data['message']
+                                                           .toString() ==
+                                                           "success") {
+                                                         resMessageText =
+                                                             data['data']['id']
+                                                                 .toString();
+                                                         int resmessagevalue =
+                                                         int.parse(
+                                                             resMessageText);
+                                                         if (resmessagevalue !=
+                                                             0) {
+                                                           Navigator.push(
+                                                             context,
+                                                             MaterialPageRoute(
+                                                                 builder: (
+                                                                     context) =>
+                                                                     QuotationCreation(
+                                                                         resmessagevalue)),
+                                                           );
+                                                         }
+                                                       }
+                                                     }catch (e) {
+                                                       // Handle the exception and show the API error message to the user
+                                                     errorMethod(e);
+                                                     }
+
                                                     },
                                                     child: SvgPicture.asset(
                                                       "images/duplicatee.svg",
@@ -15398,6 +15419,26 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(value);
     print("valuesss");
     return value;
+  }
+
+  void errorMethod(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
 }

@@ -277,19 +277,25 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           InkWell(
                             onTap: ()async{
 
-                              var data =
-                              await deleteCalendar(
-                                  widget.calendarId);
+                             try {
+                               var data =
+                               await deleteCalendar(
+                                   widget.calendarId);
 
-                              if (data['message'] ==
-                                  "Success") {
-                                print("responce");
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Calender(null,"",DateTime.now(),null,[],"")));
-                              }
-
+                               if (data['message'] ==
+                                   "Success") {
+                                 print("responce");
+                                 Navigator.push(
+                                     context,
+                                     MaterialPageRoute(
+                                         builder: (context) =>
+                                             Calender(
+                                                 null, "", DateTime.now(), null,
+                                                 [], "")));
+                               }
+                             }catch(e){
+                               errorMethod(e);
+                             }
 
 
                             },
@@ -1298,6 +1304,26 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
           ));
     });
 
+  }
+
+  void errorMethod(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
 }

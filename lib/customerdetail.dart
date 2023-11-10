@@ -402,9 +402,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           children: [
                             InkWell(
                               onTap: () async {
-                                print(widget.customerId);
-                                var data =
-                                await deleteCustomerData(widget.customerId);
+                              try {
+                                var data = await deleteCustomerData(
+                                    widget.customerId);
 
                                 if (data['message'] == "Success") {
                                   print("responce");
@@ -415,6 +415,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             CustomerScrolling("", "")),
                                   );
                                 }
+                              }catch(e){
+                                errorMethod(e);
+                              }
                               },
                               child: SvgPicture.asset(
                                 "images/delete.svg",
@@ -456,26 +459,39 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 children: [
                                                   InkWell(
                                                     onTap: () async {
-                                                      var data = await getCustomerData(
-                                                          widget.customerId, "duplicate");
-                                                      String resMessageText;
-                                                      print(data['message'].toString());
-                                                      if (data['message'].toString() == "success") {
-                                                        resMessageText =
-                                                            data['data']['id'].toString();
-                                                        print(resMessageText);
+                                                      try {
+                                                        var data = await getCustomerData(
+                                                            widget.customerId,
+                                                            "duplicate");
+                                                        String resMessageText;
+                                                        print(data['message']
+                                                            .toString());
+                                                        if (data['message']
+                                                            .toString() ==
+                                                            "success") {
+                                                          resMessageText =
+                                                              data['data']['id']
+                                                                  .toString();
+                                                          print(resMessageText);
 
-                                                        int resmessagevalue =
-                                                        int.parse(resMessageText);
-                                                        if (resmessagevalue != 0) {
-                                                          Navigator.push(
-                                                            context,
-                                                            MaterialPageRoute(
-                                                                builder: (context) =>
-                                                                    CustomerCreation(
-                                                                        resmessagevalue)),
-                                                          );
+                                                          int resmessagevalue =
+                                                          int.parse(
+                                                              resMessageText);
+                                                          if (resmessagevalue !=
+                                                              0) {
+                                                            Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder: (
+                                                                      context) =>
+                                                                      CustomerCreation(
+                                                                          resmessagevalue)),
+                                                            );
+                                                          }
                                                         }
+                                                      }
+                                                      catch(e){
+                                                        errorMethod(e);
                                                       }
                                                     },
                                                     child: SvgPicture.asset(
@@ -12050,10 +12066,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   customerArchive(bool valueType) async {
-    String value = await archiveCustomer(widget.customerId, valueType);
+    try {
+      String value = await archiveCustomer(widget.customerId, valueType);
 
-    print(value);
-    return value;
+      print(value);
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   defaultScheduleValues() async {
@@ -15262,6 +15282,26 @@ class _CustomerDetailState extends State<CustomerDetail> {
     print(value);
     print("valuesss");
     return value;
+  }
+
+  void errorMethod(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
 

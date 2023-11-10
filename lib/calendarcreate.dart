@@ -1186,7 +1186,7 @@ try {
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text('Error'),
-        content: Text('Failed to load default values. Error: ${e.toString()}'),
+        content: Text(' ${e.toString()}'),
         actions: <Widget>[
           TextButton(
             onPressed: () {
