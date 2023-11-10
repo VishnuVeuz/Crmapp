@@ -751,7 +751,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 style: TextStyle(fontFamily: 'Mulish', color: Colors.white),
                                                                               ),
                                                                               onPressed: () async {
-                                                                                Navigator.pop(context);
+                                                                                //Navigator.pop(context);
                                                                                 String resmessage = await opportunityLost("lost");
                                                                                 int resmessagevalue = int.parse(resmessage);
                                                                                 print(resmessage);
