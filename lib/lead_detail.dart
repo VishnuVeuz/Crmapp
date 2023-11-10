@@ -4095,7 +4095,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 //width: MediaQuery.of(context).size.width,
                                                                 width: mediaQueryData
                                                                     .size
-                                                                    .width / 4.3,
+                                                                    .width / 4.29,
                                                                // width:200,
                                                                 //color:Colors.green,
                                                                 //height: double.infinity,

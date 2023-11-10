@@ -310,7 +310,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 24),
-                  child: Text("Quotations", style: TextStyle(
+                  child: Text("Opportunity", style: TextStyle(
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w500,
                       fontSize: 20,

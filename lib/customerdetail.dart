@@ -3669,7 +3669,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                           // autogroupzuyy9LU (7u5yTPf8hZaysUrow3zUYY)
                                                           margin: EdgeInsets.fromLTRB(0,1,0,2),
                                                           //width: MediaQuery.of(context).size.width,
-                                                          width:mediaQueryData.size.width/4.3,
+                                                          width:mediaQueryData.size.width/4.29,
                                                           //height: double.infinity,
                                                           child: Stack(
 

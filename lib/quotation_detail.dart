@@ -3828,7 +3828,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                                         margin: EdgeInsets.fromLTRB(0,1,0,2),
                                                         //width: MediaQuery.of(context).size.width,
-                                                        width: mediaQueryData.size.width/4.3,
+                                                        width: mediaQueryData.size.width/4.29,
                                                         //height: double.infinity,
                                                         child: Stack(
 
