@@ -761,8 +761,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     context,
                                                                                     MaterialPageRoute(builder: (context) => OpportunityDetail(resmessagevalue)),
                                                                                   );
-                                                                                }
-                                                                                ;
+                                                                                };
+
                                                                               }),
                                                                         ),
                                                                         SizedBox(
@@ -6778,6 +6778,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       await lostOpportunity(widget.opportunityId, lostreasonId, action);
       return value;
     }catch(e){
+
       errorMethod(e);
     }
 
@@ -10181,6 +10182,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
+                Navigator.pop(context);
                 Navigator.pop(context);
               },
               child: Text('OK'),
