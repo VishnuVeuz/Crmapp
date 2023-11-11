@@ -2774,7 +2774,7 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-
+  var data;
 
 
   try {
@@ -2802,25 +2802,28 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
 
     print(msg);
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
         resMessageText = "0";
+        throw Exception(data['result']['data']);
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -2977,7 +2980,7 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 
   var data;
 
-
+  print("exeption333");
   try {
     final msg = jsonEncode({
       "params": {
@@ -3016,12 +3019,14 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
       }
 
       if (resMessage == "error") {
+        print("exeption111");
         throw Exception(data['result']['data']);
         resMessageText = "failed";
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    print("exeption222");
     throw Exception(data['result']['data']);
   }
 
@@ -3034,7 +3039,7 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-
+  var data;
 
   try {
     final msg = jsonEncode({
@@ -3059,29 +3064,34 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
       },
       body: msg,
     );
-
+print('${baseUrl}api/log/${logId}');
     print(msg);
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
 
       if (data['result']['message'].toString() == "success") {
+        print(data);
+        print("demo final data");
 
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
         resMessageText = "0";
+        throw Exception(data['result']['data']);
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return resMessageText;
+
 }
 
 
@@ -3096,28 +3106,34 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
   print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
   print("demo data");
 
-  Response response = await get(
+  try {
+    Response response = await get(
 
+      Uri.parse(
+          "${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}"),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    ).timeout(const Duration(
+      seconds: 10,
+    ));
 
+    if (response.statusCode != 200) {
+      data = jsonDecode(response.body);
+      throw Exception(data['message']);
+    }
+    else {
+      data = jsonDecode(response.body);
+      print(data);
+      print("logdatasss");
 
-    Uri.parse("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}"),
-    headers: {
-      'Authorization': 'Bearer $token',
-    },
-  ).timeout(const Duration(
-    seconds: 10,
-  ));
-
-  if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+      // authresponce = data['result'].toString();
+    }
+  }catch(e){
+    print(data['message']);
+    print("logdatataa");
+    throw Exception(data['message']);
   }
-  else {
-    data = jsonDecode(response.body);
-    print(data);
-
-    // authresponce = data['result'].toString();
-  }
-
 
   return data;
 }
@@ -3125,11 +3141,12 @@ EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
 
 
 deleteLogData(int logId) async {
+
   String token = await getUserJwt();
   var data;
   String? authresponce;
  // print(object)
-
+try{
   Response response = await delete(
     Uri.parse("${baseUrl}api/log/${logId}"),
     headers: {
@@ -3140,15 +3157,19 @@ deleteLogData(int logId) async {
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
   } else {
     data = jsonDecode(response.body);
+    return data;
 
     // authresponce = data['result'].toString();
   }
 
-
-  return data;
+}catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 }
 
 
@@ -3217,14 +3238,31 @@ logStarChange(int logId, bool value) async {
     print(msg);
     if (response.statusCode == 200) {
       data = jsonDecode(response.body.toString());
+      resMessage = data['result']['message'];
+      if (data['result']['message'].toString() == "success") {
+        print(data);
+        print("demo final data");
+
+
+        return data;
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+        throw Exception(data['result']['data']);
+      }
+
+
+
 
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return data;
+
 }
 
 
@@ -3495,6 +3533,8 @@ getattchmentData(int dataId, String activityModel) async {
 
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result'];
+        print(data);
+        print("demodemodemo");
         return resMessageText;
       }
 
@@ -3505,6 +3545,7 @@ getattchmentData(int dataId, String activityModel) async {
     } else {}
   } catch (e) {
     print(e.toString());
+    print("demodemodemo11");
     throw Exception(data['result']['data']);
   }
 
@@ -4024,7 +4065,7 @@ EmojiReaction(String reaction,int logId) async {
   String token = await getUserJwt();
   String? resMessage, resMessageText;
 
-
+  var data;
   try {
     final msg = jsonEncode({
       "params": {
@@ -4044,25 +4085,28 @@ EmojiReaction(String reaction,int logId) async {
 
     print(msg);
     if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
+       data = jsonDecode(response.body.toString());
 
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
         print("121212121212");
         resMessageText = data['result']['data']['id'].toString();
+        return resMessageText;
       }
 
       if (resMessage == "error") {
         resMessageText = "0";
+        throw Exception(data['result']['data']);
       }
     } else {}
   } catch (e) {
     print(e.toString());
+    throw Exception(data['result']['data']);
   }
 
 
-  return resMessageText;
+
 }
 
 

@@ -3183,6 +3183,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                                                 FocusScope.of(context).unfocus();
                                               });
+                                              postProvider?.fetchPosts(widget.quotationId);
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
@@ -3497,6 +3498,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                 bodyController.text = "";
                                                 FocusScope.of(context).unfocus();
                                               });
+                                              postProvider?.fetchPosts(widget.quotationId);
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
@@ -4967,6 +4969,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                 true
                                                                                                 ? InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -4982,6 +4985,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                     false;
                                                                                                   });
                                                                                                 }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
+                                                                                                }
                                                                                               },
                                                                                               child: SvgPicture
                                                                                                   .asset(
@@ -4992,6 +4998,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                             )
                                                                                                 : InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5006,6 +5013,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                     starImage =
                                                                                                     true;
                                                                                                   });
+                                                                                                }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
                                                                                                 }
                                                                                               },
                                                                                               child: SvgPicture
@@ -5072,6 +5082,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                       ),
                                                                                     ),
                                                                                     onTap: () async {
+                                                                                      try{
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                       var data = await deleteLogData(
                                                                                           lodDataId);
@@ -5079,17 +5090,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                       if (data['message'] ==
                                                                                           "Success") {
                                                                                         print("final11");
-                                                                                        // await getLeadDetails();
-                                                                                        // setState(() {
-                                                                                        //   logDataHeader
-                                                                                        //       .clear();
-                                                                                        //   logDataTitle
-                                                                                        //       .clear();
-                                                                                        //   selectedImagesDisplay
-                                                                                        //       .clear();
-                                                                                        // });
 
                                                                                         postProvider?.fetchPosts(widget.quotationId);
+                                                                                      }
+                                                                                      }catch(e){
+                                                                                        errorMethod(e);
                                                                                       }
                                                                                     },
                                                                                   ),
@@ -5168,6 +5173,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                 true
                                                                                                 ? InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5183,6 +5189,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                     false;
                                                                                                   });
                                                                                                 }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
+                                                                                                }
                                                                                               },
                                                                                               child: SvgPicture
                                                                                                   .asset(
@@ -5193,6 +5202,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                             )
                                                                                                 : InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5207,6 +5217,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                                     starImage =
                                                                                                     true;
                                                                                                   });
+                                                                                                }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
                                                                                                 }
                                                                                               },
                                                                                               child: SvgPicture
@@ -5574,6 +5587,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                                 myData1.clear();
                                                                                 selectedItemIndex = -1;
                                                                                 postProvider?.fetchPosts(widget.quotationId);
+
+                                                                                delayMethod();
 
                                                                               };
                                                                             }
@@ -13088,6 +13103,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   editactivitySchedule(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -13102,6 +13118,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   markDone() async {
@@ -13126,6 +13145,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   editMarkDone(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -13140,6 +13160,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
     print(value);
     print("valuesss");
     return value;
+    }
+    catch(e){
+      errorMethod2(e);
+    }
   }
 
   logNoteData(List myData1) async {
@@ -14814,10 +14838,14 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   void emojiClick(mcontext,String emoji) async {
-    print(logDataIdEmoji);
-    String value = await EmojiReaction(emoji, logDataIdEmoji!);
-    postProvider?.fetchPosts(widget.quotationId);
-    _dismissDialog(context);
+    try {
+      print(logDataIdEmoji);
+      String value = await EmojiReaction(emoji, logDataIdEmoji!);
+      postProvider?.fetchPosts(widget.quotationId);
+      _dismissDialog(context);
+    }catch(e){
+      errorMethod3(e);
+    }
   }
 
   Future<void> requestNotificationPermissions() async {
@@ -15432,12 +15460,18 @@ class _QuotationDetailState extends State<QuotationDetail> {
   }
 
   logNoteEditData(List myData1,int lognoteId) async {
-    var value = await EditlogNote(lognoteEditController.text,"sale.order",widget.quotationId,myData1,lognoteId);
+    try {
+      var value = await EditlogNote(
+          lognoteEditController.text, "sale.order", widget.quotationId, myData1,
+          lognoteId);
 
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   void errorMethod(e) {
@@ -15505,6 +15539,39 @@ class _QuotationDetailState extends State<QuotationDetail> {
         );
       },
     );
+  }
+
+  void errorMethod3(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void delayMethod() {
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      // Ensure that the widget is still mounted before rebuilding
+      if (mounted) {
+        postProvider?.fetchPosts(widget.quotationId);
+      }
+    });
   }
 }
 

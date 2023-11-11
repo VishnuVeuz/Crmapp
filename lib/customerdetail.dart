@@ -2985,6 +2985,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   bodyController.text = "";
                                                   FocusScope.of(context).unfocus();
                                                 });
+                                                postProvider?.fetchPosts(widget.customerId);
+
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
@@ -3320,6 +3322,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   bodyController.text = "";
                                                   FocusScope.of(context).unfocus();
                                                 });
+
+                                                postProvider?.fetchPosts(widget.customerId);
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
@@ -4820,6 +4824,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                   true
                                                                                                   ? InkWell(
                                                                                                 onTap: () async {
+                                                                                                  try{
                                                                                                   int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                   var data = await logStarChange(
@@ -4835,6 +4840,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                       false;
                                                                                                     });
                                                                                                   }
+                                                                                                  }catch(e){
+                                                                                                    errorMethod(e);
+                                                                                                  }
                                                                                                 },
                                                                                                 child: SvgPicture
                                                                                                     .asset(
@@ -4845,6 +4853,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                               )
                                                                                                   : InkWell(
                                                                                                 onTap: () async {
+                                                                                                  try{
                                                                                                   int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                   var data = await logStarChange(
@@ -4859,6 +4868,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                       starImage =
                                                                                                       true;
                                                                                                     });
+                                                                                                  }
+                                                                                                  }catch(e){
+                                                                                                    errorMethod(e);
                                                                                                   }
                                                                                                 },
                                                                                                 child: SvgPicture
@@ -4938,6 +4950,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                         ),
                                                                                       ),
                                                                                       onTap: () async {
+                                                                                        try{
                                                                                         int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                         var data = await deleteLogData(
                                                                                             lodDataId);
@@ -4945,17 +4958,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                         if (data['message'] ==
                                                                                             "Success") {
                                                                                           print("final11");
-                                                                                          // await getLeadDetails();
-                                                                                          // setState(() {
-                                                                                          //   logDataHeader
-                                                                                          //       .clear();
-                                                                                          //   logDataTitle
-                                                                                          //       .clear();
-                                                                                          //   selectedImagesDisplay
-                                                                                          //       .clear();
-                                                                                          // });
 
                                                                                           postProvider?.fetchPosts(widget.customerId);
+                                                                                        }
+                                                                                        }catch(e){
+                                                                                          errorMethod(e);
                                                                                         }
                                                                                       },
                                                                                     ),
@@ -5034,6 +5041,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                   true
                                                                                                   ? InkWell(
                                                                                                 onTap: () async {
+                                                                                                  try{
                                                                                                   int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                   var data = await logStarChange(
@@ -5049,6 +5057,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                       false;
                                                                                                     });
                                                                                                   }
+                                                                                                  }catch(e){
+                                                                                                    errorMethod(e);
+                                                                                                  }
                                                                                                 },
                                                                                                 child: SvgPicture
                                                                                                     .asset(
@@ -5059,6 +5070,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                               )
                                                                                                   : InkWell(
                                                                                                 onTap: () async {
+                                                                                                  try{
                                                                                                   int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                   var data = await logStarChange(
@@ -5073,6 +5085,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                       starImage =
                                                                                                       true;
                                                                                                     });
+                                                                                                  }
+                                                                                                  }catch(e){
+                                                                                                    errorMethod(e);
                                                                                                   }
                                                                                                 },
                                                                                                 child: SvgPicture
@@ -5440,6 +5455,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                   myData1.clear();
                                                                                   selectedItemIndex = -1;
                                                                                   postProvider?.fetchPosts(widget.customerId);
+                                                                                  delayMethod();
 
                                                                                 };
                                                                               }
@@ -12718,6 +12734,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   editactivitySchedule(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -12732,6 +12749,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   getScheduleDetails() async {
@@ -14207,6 +14227,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   editMarkDone(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -14221,6 +14242,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   _buildEditfollowersPopupDialog(
@@ -14676,10 +14700,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   void emojiClick(mcontext,String emoji) async {
-    print(logDataIdEmoji);
-    String value = await EmojiReaction(emoji, logDataIdEmoji!);
-    postProvider?.fetchPosts(widget.customerId);
-    _dismissDialog(context);
+    try {
+      print(logDataIdEmoji);
+      String value = await EmojiReaction(emoji, logDataIdEmoji!);
+      postProvider?.fetchPosts(widget.customerId);
+      _dismissDialog(context);
+    }catch(e){
+      errorMethod3(e);
+    }
   }
 
 
@@ -15297,12 +15325,18 @@ class _CustomerDetailState extends State<CustomerDetail> {
   }
 
   logNoteEditData(List myData1,int lognoteId) async {
-    var value = await EditlogNote(lognoteEditController.text,"res.partner",widget.customerId,myData1,lognoteId);
+    try {
+      var value = await EditlogNote(
+          lognoteEditController.text, "res.partner", widget.customerId, myData1,
+          lognoteId);
 
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   void errorMethod(e) {
@@ -15371,6 +15405,38 @@ class _CustomerDetailState extends State<CustomerDetail> {
         );
       },
     );
+  }
+  void errorMethod3(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void delayMethod() {
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      // Ensure that the widget is still mounted before rebuilding
+      if (mounted) {
+        postProvider?.fetchPosts(widget.customerId);
+      }
+    });
   }
 }
 

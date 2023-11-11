@@ -102,37 +102,40 @@ CRM made easy.
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 34),
-                              child: SizedBox(
-                                width: 271,
-                                height: 19,
-                                child: TextFormField(
-                                  controller: urlController,
-                                  textInputAction: TextInputAction.next,
-                                  decoration: InputDecoration(
-                                      border: InputBorder.none,
+                      Visibility(
+                        visible: false,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 34),
+                                child: SizedBox(
+                                  width: 271,
+                                  height: 19,
+                                  child: TextFormField(
+                                    controller: urlController,
+                                    textInputAction: TextInputAction.next,
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none,
 
-                                      hintText: 'Yourcompany.odoo.com',
-                                      hintStyle: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 15)),
+                                        hintText: 'Yourcompany.odoo.com',
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey,
+                                            fontFamily: 'Mulish',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 15)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 35,bottom: 13),
-                              child: SvgPicture.asset("images/url.svg")
-                              //Image.asset("images/user.png"),
-                            )
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(right: 35,bottom: 13),
+                                child: SvgPicture.asset("images/url.svg")
+                                //Image.asset("images/user.png"),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Padding(

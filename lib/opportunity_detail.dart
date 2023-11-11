@@ -3680,6 +3680,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 bodyController.text = "";
                                                 FocusScope.of(context).unfocus();
                                               });
+                                              postProvider?.fetchPosts(widget.opportunityId);
+
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
@@ -3996,6 +3998,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                 FocusScope.of(context).unfocus();
                                               });
+                                              postProvider?.fetchPosts(widget.opportunityId);
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
@@ -5464,6 +5467,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                 true
                                                                                                 ? InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5479,6 +5483,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                     false;
                                                                                                   });
                                                                                                 }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
+                                                                                                }
                                                                                               },
                                                                                               child: SvgPicture
                                                                                                   .asset(
@@ -5489,6 +5496,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             )
                                                                                                 : InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5504,6 +5512,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                     true;
                                                                                                   });
                                                                                                 }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
+                                                                                                }
+
                                                                                               },
                                                                                               child: SvgPicture
                                                                                                   .asset(
@@ -5579,6 +5591,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       ),
                                                                                     ),
                                                                                     onTap: () async {
+                                                                                      try{
                                                                                       int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                       var data = await deleteLogData(
                                                                                           lodDataId);
@@ -5586,17 +5599,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       if (data['message'] ==
                                                                                           "Success") {
                                                                                         print("final11");
-                                                                                        // await getLeadDetails();
-                                                                                        // setState(() {
-                                                                                        //   logDataHeader
-                                                                                        //       .clear();
-                                                                                        //   logDataTitle
-                                                                                        //       .clear();
-                                                                                        //   selectedImagesDisplay
-                                                                                        //       .clear();
-                                                                                        // });
-
                                                                                         postProvider?.fetchPosts(widget.opportunityId);
+                                                                                      }
+
+                                                                                      }catch(e){
+                                                                                        errorMethod(e);
                                                                                       }
                                                                                     },
                                                                                   ),
@@ -5675,6 +5682,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                 true
                                                                                                 ? InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5690,6 +5698,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                     false;
                                                                                                   });
                                                                                                 }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
+                                                                                                }
                                                                                               },
                                                                                               child: SvgPicture
                                                                                                   .asset(
@@ -5700,6 +5711,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                             )
                                                                                                 : InkWell(
                                                                                               onTap: () async {
+                                                                                                try{
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
 
                                                                                                 var data = await logStarChange(
@@ -5714,6 +5726,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                     starImage =
                                                                                                     true;
                                                                                                   });
+                                                                                                }
+                                                                                                }catch(e){
+                                                                                                  errorMethod(e);
                                                                                                 }
                                                                                               },
                                                                                               child: SvgPicture
@@ -6082,6 +6097,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 selectedItemIndex = -1;
                                                                                 postProvider?.fetchPosts(widget.opportunityId);
 
+                                                                                delayMethod();
                                                                               };
                                                                             }
                                                                         ),
@@ -7634,6 +7650,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   editactivitySchedule(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -7648,6 +7665,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   markDone() async {
@@ -7671,6 +7691,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   editMarkDone(int typeIds) async {
+    try{
     String value = await editScheduleActivity(
         activityTypeId,
         assignedToid,
@@ -7685,6 +7706,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(value);
     print("valuesss");
     return value;
+    }catch(e){
+      errorMethod2(e);
+    }
   }
 
   logNoteData(List myData1) async {
@@ -9569,10 +9593,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   void emojiClick(mcontext,String emoji) async {
+    try{
     print(logDataIdEmoji);
     String value = await EmojiReaction(emoji, logDataIdEmoji!);
     postProvider?.fetchPosts(widget.opportunityId);
     _dismissDialog(context);
+    }catch(e){
+      errorMethod3(e);
+    }
   }
 
   Future<void> requestNotificationPermissions() async {
@@ -10184,12 +10212,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
   logNoteEditData(List myData1,int lognoteId) async {
-    var value = await EditlogNote(lognoteEditController.text,"crm.lead",widget.opportunityId,myData1,lognoteId);
+    try {
+      var value = await EditlogNote(
+          lognoteEditController.text, "crm.lead", widget.opportunityId, myData1,
+          lognoteId);
 
 
-    print(value);
-    print("valuesss");
-    return value;
+      print(value);
+      print("valuesss");
+      return value;
+    }catch(e){
+      errorMethod(e);
+    }
   }
 
   void errorMethod(e) {
@@ -10203,7 +10237,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
             TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
+               // Navigator.pop(context);
               },
               child: Text('OK'),
             ),
@@ -10260,6 +10294,39 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       },
     );
   }
+  void errorMethod3(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void delayMethod() {
+
+
+    Future.delayed(Duration(seconds: 1), () {
+      // Ensure that the widget is still mounted before rebuilding
+      if (mounted) {
+        postProvider?.fetchPosts(widget.opportunityId);
+      }
+    });
+  }
+
 }
 
 
