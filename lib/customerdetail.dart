@@ -23,6 +23,7 @@ import 'bottomnavigation.dart';
 import 'custom_shape.dart';
 import 'globals.dart';
 import 'lead_detail.dart';
+import 'main.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
@@ -230,14 +231,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
               child: IconButton(
                 icon: Image.asset("images/back.png"),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) {
-                      return CustomerScrolling("", "");
-                    },
-                    settings: RouteSettings(
-                      name: 'CustomerScrolling',
-                    ),
-                  ));
+
+                  setState(() {
+                    widget.customerId=0;
+                  });
+                  navigatorKey.currentState?.pushNamed('CustomerScrolling');
+
                 },
               ),
             ),

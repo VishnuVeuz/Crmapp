@@ -24,6 +24,7 @@ import 'package:search_choices/search_choices.dart';
 import 'bottomnavigation.dart';
 import 'custom_shape.dart';
 import 'globals.dart';
+import 'main.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
@@ -232,7 +233,7 @@ class _LeadDetailState extends State<LeadDetail> {
     // TODO: implement initState
     super.initState();
     print(widget.leadId);
-    print("leadId");
+    print("leadIdtestttt");
 
 
     getLeadDetails();
@@ -305,14 +306,21 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: IconButton(
                           icon: Image.asset("images/back.png"),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) {
-                                return LeadMainPage();
-                              },
-                              settings: RouteSettings(
-                                name: 'LeadMainPage',
-                              ),
-                            ));
+                            setState(() {
+                              widget.leadId=0;
+                            });
+                            print(widget.leadId);
+                            print("widget.leadId1");
+                            navigatorKey.currentState?.pushNamed('LeadMainPage');
+
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (_) {
+                            //     return LeadMainPage();
+                            //   },
+                            //   settings: RouteSettings(
+                            //     name: 'LeadMainPage',
+                            //   ),
+                            // ));
                           },
                         ),
                       ),
@@ -414,9 +422,11 @@ class _LeadDetailState extends State<LeadDetail> {
                     final mediaQueryData = MediaQuery.of(context);
                 return WillPopScope(
                   onWillPop: () async {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LeadMainPage()));
+                    Navigator.popUntil(context, ModalRoute.withName('LeadMainPage'));
                     return true;
+                    // Navigator.push(context,
+                    //     MaterialPageRoute(builder: (context) => LeadMainPage()));
+                   // return true;
                   },
                   child: Container(
                     width: mediaQueryData
@@ -4923,6 +4933,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                           FutureBuilder(
+
                               future:  postProvider?.fetchPosts(widget.leadId),
                               builder: (context, snapshot) {
                                 logDataHeader.clear();
@@ -4953,6 +4964,7 @@ class _LeadDetailState extends State<LeadDetail> {
           logDataHeader.clear();
           logDataTitle.clear();
           if (provider != null ) {
+
           var postss = provider.posts;
           if(postss!=null){
           postss.forEach((key, value) {
@@ -5463,6 +5475,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                                 selectedItemIndex =  lodDataId;
                                                                 lognoteEditController.text = logdata;
+                                                                print(widget.leadId);
+                                                                print("print1");
                                                                 postProvider?.fetchPosts(widget.leadId);
 
                                                               },
@@ -5502,7 +5516,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   //   selectedImagesDisplay
                                                                   //       .clear();
                                                                   // });
-
+                                                                  print(widget.leadId);
+                                                                  print("print2");
                                                                   postProvider?.fetchPosts(widget.leadId);
                                                                 }
                                                               },
@@ -5795,6 +5810,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       child: IconButton(
                                                           onPressed: (){
                                                             myAlert("lognoteEdit");
+                                                            print(widget.leadId);
+                                                            print("print3");
                                                             postProvider?.fetchPosts(widget.leadId);
                                                           },
                                                           icon: Image.asset("images/pi.png")
@@ -5929,6 +5946,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         lognoteEditController.text= "";
                                                         selectedImagesEdit.clear();
                                                         myData1.clear();
+                                                        print(widget.leadId);
+                                                        print("print4");
                                                         postProvider?.fetchPosts(widget.leadId);
                                                       },
                                                   ),
@@ -5986,6 +6005,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     selectedImagesEdit.clear();
                                                     myData1.clear();
                                                    selectedItemIndex = -1;
+                                                    print(widget.leadId);
+                                                    print("print5");
                                                     postProvider?.fetchPosts(widget.leadId);
 
                                                     };
@@ -6137,6 +6158,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       //   selectedImagesDisplay
                                                                       //       .clear();
                                                                       // });
+                                                                      print(widget.leadId);
+                                                                      print("print6");
                                                                       postProvider?.fetchPosts(widget.leadId);
                                                                     }
                                                                   },
@@ -6372,6 +6395,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             //   selectedImagesDisplay
                                                                             //       .clear();
                                                                             // });
+                                                                            print(widget.leadId);
+                                                                            print("print7");
                                                                             postProvider?.fetchPosts(widget.leadId);
                                                                           }
                                                                         },
@@ -6464,6 +6489,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           requestPermission(
                                                                               itemNamefinal,
                                                                               logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
+                                                                          print(widget.leadId);
+                                                                          print("print8");
                                                                            postProvider?.fetchPosts(widget.leadId);
 
                                                                         },
@@ -6558,6 +6585,8 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                         if (data['result']['message'] ==
                                                             "success") {
+                                                          print(widget.leadId);
+                                                          print("print9");
                                                           postProvider?.fetchPosts(widget.leadId);
 
                                                         }
@@ -9040,6 +9069,8 @@ class _LeadDetailState extends State<LeadDetail> {
       print(shouldFocus);
       isLoading = false;
     // });
+    print(widget.leadId);
+    print("print10");
     postProvider?.fetchPosts(widget.leadId);
   }
 
@@ -9140,6 +9171,8 @@ class _LeadDetailState extends State<LeadDetail> {
         }
     //   },
     // );
+    print(widget.leadId);
+    print("print11");
     postProvider?.fetchPosts(widget.leadId);
   }
 
@@ -9617,6 +9650,8 @@ class _LeadDetailState extends State<LeadDetail> {
   void emojiClick(mcontext,String emoji) async {
     print(logDataIdEmoji);
     String value = await EmojiReaction(emoji, logDataIdEmoji!);
+    print(widget.leadId);
+    print("print12");
     postProvider?.fetchPosts(widget.leadId);
     _dismissDialog(context);
   }
@@ -10331,7 +10366,9 @@ class PostProvider extends ChangeNotifier {
   get posts => _posts;
 
   Future fetchPosts(leadid) async {
-    
+    print(leadid);
+
+    print("SdcondClickss");
     _posts = await getlogNoteData(leadid,"lead.lead");
 
     print("SdcondClick");

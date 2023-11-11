@@ -26,6 +26,7 @@ import 'package:search_choices/search_choices.dart';
 import 'bottomnavigation.dart';
 import 'custom_shape.dart';
 import 'globals.dart';
+import 'main.dart';
 import 'notificationactivity.dart';
 import 'api.dart';
 import 'calendarmainpage.dart';
@@ -276,14 +277,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
             child: IconButton(
               icon: Image.asset("images/back.png"),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) {
-                    return OpportunityMainPage(null, "", "", "", "");
-                  },
-                  settings: RouteSettings(
-                    name: 'OpportunityMainPage',
-                  ),
-                ));
+                setState(() {
+                  widget.opportunityId=0;
+                });
+                navigatorKey.currentState?.pushNamed('OpportunityMainPage');
+
               },
             ),
           ),

@@ -27,6 +27,7 @@ import 'drawer.dart';
 import 'globals.dart';
 import 'lognoteedit.dart';
 import 'globals.dart' as globals;
+import 'main.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
 
@@ -256,14 +257,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
             child: IconButton(
               icon: Image.asset("images/back.png"),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) {
-                    return QuotationScrolling("", "");
-                  },
-                  settings: RouteSettings(
-                    name: 'QuotationScrolling',
-                  ),
-                ));
+                setState(() {
+                  widget.quotationId=0;
+                });
+                navigatorKey.currentState?.pushNamed('QuotationScrolling');
+
               },
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:crm_project/quotation_detail.dart';
+import 'package:crm_project/scrolling/quotationscrolling.dart';
 import 'package:crm_project/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,9 +9,11 @@ import 'package:provider/provider.dart';
 import 'customerdetail.dart';
 import 'lead_detail.dart';
 import 'leadcreation.dart';
+import 'leadmainpage.dart';
 import 'login.dart';
 import 'opportunity_detail.dart';
 import 'opportunitymainpage.dart';
+import 'scrolling/customerscrolling.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
@@ -32,6 +35,7 @@ void main() async{
   });
 
 }
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -48,8 +52,20 @@ class MyApp extends StatelessWidget {
 
       ),
       //home:LeadDetail(267),
-      home:SplashPage(),
+     // home:SplashPage(),
  // home: OpportunityMainPage(),
+
+      navigatorKey: navigatorKey,
+      initialRoute: 'HomePage', // Set the initial route
+      routes: {
+        'HomePage': (context) => SplashPage(),
+        'LeadMainPage': (context) => LeadMainPage(),
+        'LeadCreation': (context) => LeadCreation(0),
+        'OpportunityMainPage': (context) => OpportunityMainPage(null, "", "", "", ""),
+        'QuotationScrolling': (context) => QuotationScrolling("", ""),
+        'CustomerScrolling': (context) => CustomerScrolling("", ""),
+      },
+
     );
   }
 }
