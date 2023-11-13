@@ -58,6 +58,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
         body: Center(
           child: CircularProgressIndicator(),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(1),
       );
     }
     else {

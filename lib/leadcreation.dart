@@ -80,6 +80,10 @@ class _LeadCreationState extends State<LeadCreation> {
   }
 
 
+
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -215,11 +219,13 @@ class _LeadCreationState extends State<LeadCreation> {
           key: _formKey,
           child: WillPopScope(
             onWillPop: () async {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          LeadMainPage()));
+              print("findme");
+              Navigator.pop(context);
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         builder: (context) =>
+              //             LeadMainPage()));
               return true;
             },
             child: Column(

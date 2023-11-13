@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'leadmainpage.dart';
 import 'opportunitymainpage.dart';
 import 'scrolling/scrollpagination.dart';
 
@@ -49,7 +50,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => LeadScrolling('', "", "")));
+                  // builder: (context) => LeadScrolling('', "", "")));
+                  builder: (context) => LeadMainPage()));
         } else if (index == 2) {
           Navigator.push(
               context,

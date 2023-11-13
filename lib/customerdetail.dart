@@ -5176,7 +5176,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                               ),
                                                             ),
 
-
+                                                            postProvider?.savefiles!=logDataTitle[indexx][indexs]['id']?
                                                             Visibility(
                                                               visible:  logDataTitle[indexx][indexs]['id'] == selectedItemIndex?true:false,
                                                               // visible: logDataTitle[indexx][indexs].lognoteEdit,
@@ -5409,7 +5409,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               onTap :()async{
 
 
-                                                                                _isSavingData = true;
+                                                                                int positionId= logDataTitle[indexx][indexs]['id'];
+                                                                                postProvider?.fetchPosts1(positionId);
+
 
 
                                                                                 for (int i = 0;
@@ -5467,7 +5469,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                   ],
                                                                 ),
                                                               ),
-                                                            ),
+                                                            ):
+                                                            Container(
+                                                                width:20,
+                                                                height:20,
+                                                                child: CircularProgressIndicator()),
 
 
                                                             Container(
@@ -15442,18 +15448,26 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 class PostProvidercustomer  extends ChangeNotifier {
   var _posts;
+  int _savefile = -1;
 
-  // List<Post> get posts => _posts!;
   get posts => _posts;
+  get savefiles => _savefile;
+
+  Future fetchPosts1(int positionId) async {
+
+    _savefile = positionId;
+
+    notifyListeners();
+
+  }
 
   Future fetchPosts(customerId) async {
 
     _posts = await getlogNoteData(customerId,"res.partner");
+    _savefile = -1;
 
-    print("SdcondClick");
-    print(_posts);
     notifyListeners();
-    // return _posts;
+
   }
 
 

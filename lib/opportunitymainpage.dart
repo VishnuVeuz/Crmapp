@@ -52,6 +52,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
         body: Center(
           child: CircularProgressIndicator(),
         ),
+        bottomNavigationBar:MyBottomNavigationBar(2),
       );
     }
    else {

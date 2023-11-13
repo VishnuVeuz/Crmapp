@@ -401,6 +401,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 final mediaQueryData = MediaQuery.of(context);
                 return WillPopScope(
                   onWillPop: () async {
+                    print("fibbjbj");
                     Navigator.popUntil(
                         context, ModalRoute.withName('LeadMainPage'));
                     return true;
@@ -427,11 +428,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Navigator.push(
+                                        Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    LeadCreation(0)));
+                                                builder: (context) => LeadCreation(0)));
+
+                                        // Navigator.push(
+                                        //     context,
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) => LeadCreation(0)));
                                       },
                                       child: SvgPicture.asset(
                                         "images/create.svg",
@@ -3301,10 +3306,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       context)
                                                                   .unfocus();
                                                             });
-                                                            postProvider
-                                                                ?.fetchPosts(
-                                                                    widget
-                                                                        .leadId);
+                                                            postProvider?.fetchPosts(widget.leadId);
                                                           }
                                                         },
                                                   style:
@@ -5432,10 +5434,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   ],
                                                                 ),
                                                               ),
+
+                                                            postProvider?.savefiles!=logDataTitle[indexx][indexs]['id']?
                                                               Visibility(
-                                                                visible: logDataTitle[indexx][indexs]
-                                                                            [
-                                                                            'id'] ==
+                                                                visible: logDataTitle[indexx][indexs]['id'] ==
                                                                         selectedItemIndex
                                                                     ? true
                                                                     : false,
@@ -5618,6 +5620,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 onTap: () async {
 
 
+                                                                                  int positionId= logDataTitle[indexx][indexs]['id'];
+                                                                                  postProvider?.fetchPosts1(positionId);
 
                                                                                   for (int i = 0; i < selectedImagesEdit.length; i++) {
                                                                                     imagepath = selectedImagesEdit[i].path.toString();
@@ -5658,7 +5662,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                     ],
                                                                   ),
                                                                 ),
-                                                              ),
+                                                              ):
+                                                                  Container(
+                                                                      width:20,
+                                                                      height:20,
+                                                                      child: CircularProgressIndicator()),
+
+
+
                                                               Container(
                                                                 margin: EdgeInsets
                                                                     .only(
@@ -9873,31 +9884,33 @@ class _LeadDetailState extends State<LeadDetail> {
       if (mounted) {
         postProvider?.fetchPosts(widget.leadId);
       }
+
     });
   }
 }
 
 class PostProvider extends ChangeNotifier {
   var _posts;
+  int _savefile = -1;
 
-
-
-  // List<Post> get posts => _posts!;
   get posts => _posts;
+   get savefiles => _savefile;
 
 
+  Future fetchPosts1(int positionId) async {
 
-
-  Future fetchPosts(leadid) async {
-    print(leadid);
-
-    print("SdcondClickss");
-    _posts = await getlogNoteData(leadid, "lead.lead");
-
-    print("SdcondClick");
-    print(_posts);
+    _savefile = positionId;
 
     notifyListeners();
-    // return _posts;
+
+  }
+
+  Future fetchPosts(leadid) async {
+
+    _posts = await getlogNoteData(leadid, "lead.lead");
+    _savefile = -1;
+
+    notifyListeners();
+
   }
 }

@@ -5308,7 +5308,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                             ),
                                                           ),
 
-
+                                                          postProvider?.savefiles!=logDataTitle[indexx][indexs]['id']?
                                                           Visibility(
                                                             visible:  logDataTitle[indexx][indexs]['id'] == selectedItemIndex?true:false,
                                                             // visible: logDataTitle[indexx][indexs].lognoteEdit,
@@ -5541,8 +5541,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                             onTap :()async{
 
 
-                                                                              _isSavingData = true;
-
+                                                                              int positionId= logDataTitle[indexx][indexs]['id'];
+                                                                              postProvider?.fetchPosts1(positionId);
 
                                                                               for (int i = 0;
                                                                               i < selectedImagesEdit.length;
@@ -5600,7 +5600,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                                 ],
                                                               ),
                                                             ),
-                                                          ),
+                                                          ):
+                                                          Container(
+                                                              width:20,
+                                                              height:20,
+                                                              child: CircularProgressIndicator()),
 
                                                           Container(
 
@@ -15577,18 +15581,21 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
 class PostProviderquotation extends ChangeNotifier {
   var _posts;
+  int _savefile = -1;
 
-  // List<Post> get posts => _posts!;
   get posts => _posts;
+  get savefiles => _savefile;
+
+  Future fetchPosts1(int positionId) async {
+    _savefile = positionId;
+    notifyListeners();
+  }
+
 
   Future fetchPosts(quotationId) async {
-
     _posts = await getlogNoteData(quotationId,"sale.order");
-
-    print("SdcondClick");
-    print(_posts);
+    _savefile = -1;
     notifyListeners();
-    // return _posts;
   }
 
 
