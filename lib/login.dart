@@ -223,9 +223,12 @@ CRM made easy.
                       ),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 20,left: 32,right: 32),
                           child: SizedBox(
-                            width: 334.64,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                             height: 53.12,
                             child: ElevatedButton(
                               child: Text(

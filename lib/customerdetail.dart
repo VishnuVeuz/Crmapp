@@ -1334,12 +1334,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       // height: 39,
                       color: Color(0xFFF5F5F5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left:0, right: 0),
+                                top: 5, bottom: 5, left:25, right: 0),
                             child: Center(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -1410,7 +1410,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left: 0, right: 20),
+                                top: 5, bottom: 5, left: 0, right: 25),
                             child: Center(
                               child: Container(
 
@@ -1868,7 +1868,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left: 17, right: 0),
+                                top: 5, bottom: 5, left: 25, right: 0),
                             child: Center(
                               child: Container(
                                 decoration: BoxDecoration(
@@ -1949,7 +1949,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 5, bottom: 5, left: 0, right: 23),
+                                top: 5, bottom: 5, left: 0, right: 25),
                             child: Center(
                               child: TextButton(
                                   child: Text(
