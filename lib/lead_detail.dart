@@ -5429,18 +5429,20 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 // visible: logDataTitle[indexx][indexs].lognoteEdit,
                                                                 child:
                                                                     Container(
+                                                                      //color: Colors.red,
                                                                   child: Column(
                                                                     children: [
                                                                       Padding(
                                                                         padding: const EdgeInsets.only(
                                                                             left:
-                                                                                58,
+                                                                                76,
                                                                             right:
-                                                                                10),
+                                                                                25),
                                                                         child:
                                                                             Container(
+
                                                                           width:
-                                                                              mediaQueryData.size.width / 1.44,
+                                                                              mediaQueryData.size.width ,
                                                                           // width:200,
 
                                                                           //height: 46,
@@ -5452,6 +5454,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               )),
                                                                           child:
                                                                               Row(
+                                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                             children: [
                                                                               Container(
                                                                                 width: mediaQueryData.size.width / 1.92,
@@ -5490,7 +5493,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 ),
                                                                               ),
                                                                               Padding(
-                                                                                padding: const EdgeInsets.only(left: 10),
+                                                                                padding: const EdgeInsets.only(left: 0),
                                                                                 child: IconButton(
                                                                                     onPressed: () {
                                                                                       myAlert("lognoteEdit");
@@ -5575,7 +5578,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             ),
                                                                       Padding(
                                                                         padding:
-                                                                            const EdgeInsets.only(left: 88),
+                                                                            const EdgeInsets.only(left:75),
                                                                         child:
                                                                             Row(
                                                                           children: [

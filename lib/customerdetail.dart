@@ -5188,12 +5188,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                   children: [
                                                                     Padding(
                                                                       padding: const EdgeInsets.only(
-                                                                          left: 58, right: 10),
+                                                                          left:76, right: 25),
                                                                       child: Container(
                                                                         width: mediaQueryData
                                                                             .size
-                                                                            .width /
-                                                                            1.44,
+                                                                            .width ,
                                                                         // width:200,
 
                                                                         //height: 46,
@@ -5205,6 +5204,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               color: Color(0xFFEBEBEB),
                                                                             )),
                                                                         child: Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                           children: [
                                                                             Container(
                                                                               width:mediaQueryData
@@ -5390,7 +5390,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
                                                                     Padding(
-                                                                      padding: const EdgeInsets.only(left:88),
+                                                                      padding: const EdgeInsets.only(left:75),
                                                                       child: Row(
                                                                         children: [
                                                                           Text("escape to",style: TextStyle(color: Colors.grey),),
