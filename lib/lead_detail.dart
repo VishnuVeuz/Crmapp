@@ -5659,11 +5659,9 @@ class _LeadDetailState extends State<LeadDetail> {
 
 
                                                               Container(
-                                                                margin: EdgeInsets
-                                                                    .only(
-                                                                        top:
-                                                                            25),
-                                                                width: 350,
+                                                                margin: EdgeInsets.only(top: 25,left: 24,right: 24),
+                                                                //width: 350,
+                                                                width:mediaQueryData.size.width,
                                                                 // color:Colors.red,
                                                                 // height: 450,
                                                                 child: Column(

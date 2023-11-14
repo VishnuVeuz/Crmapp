@@ -2910,6 +2910,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 ),
                                                 itemBuilder: (BuildContext context, int index) {
                                                   return Container(
+                                                    //color: Colors.red,
 
                                                     margin: EdgeInsets.fromLTRB(2, 0, 2, 0),
                                                     width: 80,
@@ -6128,10 +6129,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                           Container(
 
-                                                            margin: EdgeInsets.only(top: 25),
+                                                            margin: EdgeInsets.only(top: 25,left: 24,right: 24),
                                                             //width: 350,
                                                             width:mediaQueryData.size.width,
-                                                            //color:Colors.red,
+                                                           // color:Colors.red,
                                                             // height: 450,
                                                             child: Column(
                                                               crossAxisAlignment: CrossAxisAlignment
@@ -6143,6 +6144,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                 Column(
                                                                   children: [
                                                                     Container(
+                                                                     // color: Colors.red,
                                                                       width:mediaQueryData
                                                                           .size
                                                                           .width,
