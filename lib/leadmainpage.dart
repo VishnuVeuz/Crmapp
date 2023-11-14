@@ -674,6 +674,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                           ),
                                         ),
                                         onTap: () {
+
+
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(

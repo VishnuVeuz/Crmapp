@@ -586,6 +586,8 @@ class _LeadScrollingState extends State<LeadScrolling> {
                   leadType = leadType?.replaceAll('[', '').replaceAll(']', '');
 
                    _pageNumber = 1;
+                  _loading = true;
+                  _error = false;
                   _LeadModels.clear();
                   fetchData("");
 

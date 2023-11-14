@@ -39,7 +39,7 @@ import 'globals.dart' as globals;
 class OpportunityDetail extends StatefulWidget {
   var opportunityId;
   OpportunityDetail(this.opportunityId);
-
+  static final _editFormKey = GlobalKey<FormState>();
   @override
   State<OpportunityDetail> createState() => _OpportunityDetailState();
 }
@@ -2000,6 +2000,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 children: [
                                   InkWell(
                                     child: Container(
+                                      color: Colors.red,
+                                      width: mediaQueryData.size.width/5,
+                                      height: 20,
                                       child: Stack(
                                         children: [
 
@@ -5214,7 +5217,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         children: [
                                                           Container(
                                                             margin: EdgeInsets.only(top: 10),
-                                                            width: 340,
+                                                            width:mediaQueryData
+                                                                .size
+                                                                .width,
                                                             //height:80,
                                                             //  color: Colors.yellow,
                                                             child: Row(
@@ -5857,45 +5862,48 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               padding: const EdgeInsets
                                                                                   .only(
                                                                                   left: 10),
-                                                                              child:  TextField(
-                                                                                  textAlignVertical:
-                                                                                  TextAlignVertical
-                                                                                      .top,
-                                                                                  style: TextStyle(
-                                                                                    fontWeight: FontWeight
-                                                                                        .w400,
-                                                                                    fontFamily: 'Mulish',
-                                                                                    fontSize: 11,
-                                                                                    color: Color(
-                                                                                        0xFF000000),
-                                                                                  ),
+                                                                              child:  Form(
+                                                                                key: OpportunityDetail._editFormKey,
+                                                                                child: TextField(
+                                                                                    textAlignVertical:
+                                                                                    TextAlignVertical
+                                                                                        .top,
+                                                                                    style: TextStyle(
+                                                                                      fontWeight: FontWeight
+                                                                                          .w400,
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      color: Color(
+                                                                                          0xFF000000),
+                                                                                    ),
 
 
-                                                                                  maxLines: null,
+                                                                                    maxLines: null,
 
-                                                                                  onChanged: (newValue) {
-                                                                                    print("demodatatataadsaf");
-                                                                                    // Handle text changes here if necessary
-                                                                                  },
-                                                                                  controller: lognoteEditController,
+                                                                                    onChanged: (newValue) {
+                                                                                      print("demodatatataadsaf");
+                                                                                      // Handle text changes here if necessary
+                                                                                    },
+                                                                                    controller: lognoteEditController,
 
-                                                                                  decoration:
-                                                                                  const InputDecoration(
-                                                                                      border:
-                                                                                      InputBorder
-                                                                                          .none,
-                                                                                      hintText:
-                                                                                      "Send a message to followers",
-                                                                                      hintStyle: TextStyle(
-                                                                                        //fontFamily: "inter",
-                                                                                          fontWeight:
-                                                                                          FontWeight
-                                                                                              .w400,
-                                                                                          fontFamily:
-                                                                                          'Mulish',
-                                                                                          fontSize: 11,
-                                                                                          color: Color(
-                                                                                              0xFFAFAFAF)))),
+                                                                                    decoration:
+                                                                                    const InputDecoration(
+                                                                                        border:
+                                                                                        InputBorder
+                                                                                            .none,
+                                                                                        hintText:
+                                                                                        "Send a message to followers",
+                                                                                        hintStyle: TextStyle(
+                                                                                          //fontFamily: "inter",
+                                                                                            fontWeight:
+                                                                                            FontWeight
+                                                                                                .w400,
+                                                                                            fontFamily:
+                                                                                            'Mulish',
+                                                                                            fontSize: 11,
+                                                                                            color: Color(
+                                                                                                0xFFAFAFAF)))),
+                                                                              ),
                                                                             ),
                                                                           ),
                                                                           Padding(

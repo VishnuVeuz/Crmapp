@@ -71,11 +71,9 @@ class _LeadCreationState extends State<LeadCreation> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
-
     widget.leadId==0 ? defaultvalues() : getLeadDetails();
-
-
+    print(Navigator.of(context).toString());
+    print("Navigator.of(context).toString()");
 
   }
 
@@ -83,9 +81,9 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
+    
 
     if (!_isInitialized) {
       return Scaffold(
@@ -98,6 +96,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
     else {
       return Scaffold(
+
         drawer: MainDrawer(),
         appBar: AppBar(
           backgroundColor: Theme
@@ -217,16 +216,14 @@ class _LeadCreationState extends State<LeadCreation> {
         ),
         body: Form(
           key: _formKey,
-          child: WillPopScope(
+          child:  WillPopScope(
             onWillPop: () async {
-              print("findme");
-              Navigator.pop(context);
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) =>
-              //             LeadMainPage()));
+              print("fibbjbj");
+
               return true;
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => LeadMainPage()));
+              // return true;
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -42,6 +42,7 @@ class LeadDetail extends StatefulWidget {
   var leadId;
   LeadDetail(this.leadId);
   static final _formKey = GlobalKey<FormState>();
+  static final _editFormKey = GlobalKey<FormState>();
 
   @override
   State<LeadDetail> createState() => _LeadDetailState();
@@ -428,11 +429,16 @@ class _LeadDetailState extends State<LeadDetail> {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Navigator.pushReplacement(
+                                        // Navigator.pushReplacement(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //     builder: (context) => LeadCreation(0)));
+                                        //
+
+                                        Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => LeadCreation(0)));
-
                                         // Navigator.push(
                                         //     context,
                                         //     MaterialPageRoute(
@@ -5191,30 +5197,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                 int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                                                 String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
 
-                                                                                                // Navigator.push(
-                                                                                                //     context,
-                                                                                                //     MaterialPageRoute(
-                                                                                                //         builder: (
-                                                                                                //             context) =>
-                                                                                                //             LogNoteEdit(
-                                                                                                //                 lodDataId,
-                                                                                                //                 salesperImg!,
-                                                                                                //                 token!,
-                                                                                                //                 widget
-                                                                                                //                     .leadId,
-                                                                                                //                 logdata,
-                                                                                                //                 "lead.lead")));
-                                                                                                // setState(() {
-                                                                                                //   lognoteEdit = true;
-                                                                                                // });
-
-                                                                                                print("fdsfdc11");
-                                                                                                print(indexs);
-                                                                                                print(logDataTitle[indexx][indexs]);
-                                                                                                print("fdsfdc");
-                                                                                                // lognoteEdit == false?lognoteEdit = true: lognoteEdit = false;
-                                                                                                // selectedItemIndex = selectedItemIndex == logDataTitle[indexx][indexs] ? -1 : logDataTitle[indexx][indexs];
-
                                                                                                 selectedItemIndex = lodDataId;
                                                                                                 lognoteEditController.text = logdata;
                                                                                                 print(widget.leadId);
@@ -5476,29 +5458,32 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 //color: Colors.red,
                                                                                 child: Padding(
                                                                                   padding: const EdgeInsets.only(left: 10),
-                                                                                  child: TextField(
-                                                                                      textAlignVertical: TextAlignVertical.top,
-                                                                                      style: TextStyle(
-                                                                                        fontWeight: FontWeight.w400,
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 11,
-                                                                                        color: Color(0xFF000000),
-                                                                                      ),
-                                                                                      maxLines: null,
-                                                                                      onChanged: (newValue) {
-                                                                                        print("demodatatataadsaf");
-                                                                                        // Handle text changes here if necessary
-                                                                                      },
-                                                                                      controller: lognoteEditController,
-                                                                                      decoration: const InputDecoration(
-                                                                                          border: InputBorder.none,
-                                                                                          hintText: "Send a message to followers",
-                                                                                          hintStyle: TextStyle(
-                                                                                              //fontFamily: "inter",
-                                                                                              fontWeight: FontWeight.w400,
-                                                                                              fontFamily: 'Mulish',
-                                                                                              fontSize: 11,
-                                                                                              color: Color(0xFFAFAFAF)))),
+                                                                                  child: Form(
+                                                                                    key: LeadDetail._editFormKey,
+                                                                                    child: TextField(
+                                                                                        textAlignVertical: TextAlignVertical.top,
+                                                                                        style: TextStyle(
+                                                                                          fontWeight: FontWeight.w400,
+                                                                                          fontFamily: 'Mulish',
+                                                                                          fontSize: 11,
+                                                                                          color: Color(0xFF000000),
+                                                                                        ),
+                                                                                        maxLines: null,
+                                                                                        onChanged: (newValue) {
+                                                                                          print("demodatatataadsaf");
+                                                                                          // Handle text changes here if necessary
+                                                                                        },
+                                                                                        controller: lognoteEditController,
+                                                                                        decoration: const InputDecoration(
+                                                                                            border: InputBorder.none,
+                                                                                            hintText: "Send a message to followers",
+                                                                                            hintStyle: TextStyle(
+                                                                                                //fontFamily: "inter",
+                                                                                                fontWeight: FontWeight.w400,
+                                                                                                fontFamily: 'Mulish',
+                                                                                                fontSize: 11,
+                                                                                                color: Color(0xFFAFAFAF)))),
+                                                                                  ),
                                                                                 ),
                                                                               ),
                                                                               Padding(
