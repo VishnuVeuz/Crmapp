@@ -178,7 +178,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   //   ),
                   // ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 25),
                     child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
                       onPressed: (){
                         Scaffold.of(context).openDrawer();
@@ -263,7 +263,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20),
+                            padding: const EdgeInsets.only(right: 25),
                             child: Container(
                               child: IconButton(
                                 icon: Image.asset("images/Vector7.png"),
@@ -315,7 +315,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(right: 20),
+                            padding: const EdgeInsets.only(right: 25),
                             child: Container(
                               child: IconButton(
                                 icon: Image.asset("images/Vector7.png"),

@@ -612,7 +612,11 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       selectedValueWidgetFn: (item) {
                                         return (Center(
                                             child: Container(
-                                              width: 320,
+                                              //width: 320,
+                                              width: MediaQuery
+                                                  .of(context)
+                                                  .size
+                                                  .width,
                                               child: Text(
                                                 item["name"],
                                                    style: TextStyle(
@@ -1049,7 +1053,11 @@ class _CalendarAddState extends State<CalendarAdd> {
               Padding(
                 padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 20),
                 child: SizedBox(
-                  width: 360,
+                  //width: 360,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 47,
                   child: ElevatedButton(
                       child: Text(

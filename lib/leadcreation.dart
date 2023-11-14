@@ -361,7 +361,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -552,7 +556,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -668,7 +676,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -830,7 +842,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1062,7 +1078,12 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      //color: Colors.red,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1178,7 +1199,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1293,7 +1318,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1566,7 +1595,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
 
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
@@ -1685,7 +1718,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1800,7 +1837,11 @@ class _LeadCreationState extends State<LeadCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(item["name"], style: TextStyle(
                                           fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
                                     )));
@@ -1948,8 +1989,12 @@ class _LeadCreationState extends State<LeadCreation> {
                 Padding(
                   padding: const EdgeInsets.only(left: 25, top: 15, right: 25,bottom: 30),
                   child: SizedBox(
-                    width: 360,
+                    //width: 360,
                     height: 47,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
 
                     child: ElevatedButton(
 

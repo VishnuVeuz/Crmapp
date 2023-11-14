@@ -731,7 +731,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               selectedValueWidgetFn: (item) {
                                 return (Center(
                                     child: Container(
-                                      width: 320,
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
                                       child: Text(
                                         item["display_name"],
                                         style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -901,7 +905,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1009,7 +1017,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1163,7 +1175,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1440,7 +1456,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1538,7 +1558,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1743,7 +1767,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1849,7 +1877,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1944,7 +1976,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -2055,7 +2091,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -2428,11 +2468,16 @@ class _CustomerCreationState extends State<CustomerCreation> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20, right: 5,bottom: 30),
+                    padding: const EdgeInsets.only(left: 25, top: 20, right: 0,bottom: 30),
                     child: SizedBox(
-                      width: 171,
+                      //width: 171,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width/2.3,
                       height: 47,
                       child: ElevatedButton(
                           child: Text(
@@ -2483,10 +2528,14 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 30,left: 5,right: 25),
+                    padding: const EdgeInsets.only(top: 20, bottom: 30,left: 0,right: 25),
                     child: Center(
                       child: SizedBox(
-                        width: 171,
+                       // width: 171,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width/2.3,
                         height: 47,
                         child: ElevatedButton(
                             child: Text(
@@ -2801,7 +2850,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
+                                 // width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
@@ -2913,7 +2966,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
+                                 // width: 300,
+                                   width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
@@ -3007,7 +3064,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 5),
+                            horizontal: 10, vertical: 0),
                         child: SearchChoices.single(
                           //items: items,
                           fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
@@ -3055,7 +3112,11 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
+                                  //width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(

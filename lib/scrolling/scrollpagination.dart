@@ -460,9 +460,9 @@ class _LeadScrollingState extends State<LeadScrolling> {
         Visibility(
           visible: searchBanner,
           child: Padding(
-            padding: const EdgeInsets.only(top: 10,left: 160),
+            padding: const EdgeInsets.only(top: 10,left: 0),
             child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Column(
                   children: [
@@ -495,7 +495,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 30),
+                  padding: const EdgeInsets.only(left: 0),
                   child: Column(
                     children: [
                       InkWell(

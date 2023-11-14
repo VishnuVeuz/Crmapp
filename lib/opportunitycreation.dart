@@ -377,7 +377,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["display_name"],
                                   style: TextStyle(
@@ -495,7 +499,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -675,7 +683,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                               // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -783,7 +795,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                               // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -933,7 +949,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                              //  width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1159,7 +1179,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                               // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1257,7 +1281,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1365,7 +1393,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1474,7 +1506,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1711,7 +1747,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                               // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1823,7 +1863,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -1932,7 +1976,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                width: 320,
+                                //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                 child: Text(
                                   item["name"],
                                   style: TextStyle(
@@ -2393,12 +2441,17 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
               ),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding:
-                    const EdgeInsets.only(left: 25, top: 20, right:5,bottom: 30),
+                    const EdgeInsets.only(left: 25, top: 20, right:0,bottom: 30),
                     child: SizedBox(
-                      width: 180,
+                      //width: 180,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width/2.3,
                       height: 47,
                       child: ElevatedButton(
                           child: Text(
@@ -2482,11 +2535,16 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           )),
                     ),
                   ),
+
                   Padding(
-                    padding: const EdgeInsets.only(left: 5, top: 20, right:25,bottom: 30),
+                    padding: const EdgeInsets.only(left: 0, top: 20, right:25,bottom: 30),
                     child: Center(
                       child: SizedBox(
-                        width: 171,
+                       // width: 171,
+                        width: MediaQuery
+                            .of(context)
+                            .size
+                            .width/2.3,
                         height: 47,
                         child: ElevatedButton(
                             child: Text(
@@ -2889,7 +2947,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                          width: 300,
+                         // width: 300,
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width,
                           child: Text(
                             item["display_name"],
                             style: TextStyle(
@@ -3019,7 +3081,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       selectedValueWidgetFn: (item) {
                         return (Center(
                             child: Container(
-                          width: 300,
+                          //width: 300,
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width,
                           child: Text(
                             item["name"],
                             style: TextStyle(

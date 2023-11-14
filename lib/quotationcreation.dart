@@ -329,7 +329,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["display_name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -429,7 +433,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -552,7 +560,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -645,7 +657,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -751,7 +767,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -841,7 +861,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -937,7 +961,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1281,7 +1309,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1385,7 +1417,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1475,7 +1511,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1562,7 +1602,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1715,10 +1759,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         Visibility(
                           visible: ordervisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 1, bottom: 10),
+                            padding: const EdgeInsets.only(top: 1, bottom: 10,left: 25,right: 25),
                             child: Center(
                               child: SizedBox(
-                                width: 360,
+                                //width: 360,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
                                 height: 47,
 
                                 child: ElevatedButton(
@@ -2019,10 +2067,14 @@ class _QuotationCreationState extends State<QuotationCreation> {
                         Visibility(
                           visible: optvisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 1, bottom: 10),
+                            padding: const EdgeInsets.only(top: 1, bottom: 10,left: 25,right: 25),
                             child: Center(
                               child: SizedBox(
-                                width: 360,
+                               // width: 360,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
                                 height: 47,
 
                                 child: ElevatedButton(
@@ -2344,7 +2396,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
               Padding(
                 padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 30),
                 child: SizedBox(
-                  width: 360,
+                  //width: 360,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 47,
                   child: ElevatedButton(
                       child: Text(
@@ -2880,7 +2936,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
+                                  //width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                                   child: Text(
                                     item["display_name"],
                                     style: TextStyle(
@@ -3014,7 +3074,11 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                                  width: 300,
+                                 // width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
