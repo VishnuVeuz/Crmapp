@@ -1158,7 +1158,9 @@ lostOpportunity(int id, opportunitylostId, String action) async {
   try {
     final msg = jsonEncode({
       "params": {"action": action, "lost_reason": opportunitylostId}
+
     });
+    print(msg);
 
     Response response = await put(
       Uri.parse('${baseUrl}api/opportunity/${id}'),

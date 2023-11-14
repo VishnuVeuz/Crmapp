@@ -4570,8 +4570,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                           children: [
                                                             Container(
-                                                              margin: EdgeInsets.only(top: 10),
-                                                              width: 340,
+                                                              margin: EdgeInsets.only(top: 10,left: 24,right: 24),
+                                                              //width: 340,
+                                                              width:mediaQueryData
+                                                                  .size
+                                                                  .width,
                                                               //height:80,
                                                               //  color: Colors.yellow,
                                                               child: Row(

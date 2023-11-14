@@ -5216,7 +5216,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                         children: [
                                                           Container(
-                                                            margin: EdgeInsets.only(top: 10),
+                                                            margin: EdgeInsets.only(top: 10,left: 24,right: 24),
                                                             width:mediaQueryData
                                                                 .size
                                                                 .width,
@@ -6129,7 +6129,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           Container(
 
                                                             margin: EdgeInsets.only(top: 25),
-                                                            width: 350,
+                                                            //width: 350,
+                                                            width:mediaQueryData.size.width,
                                                             //color:Colors.red,
                                                             // height: 450,
                                                             child: Column(
