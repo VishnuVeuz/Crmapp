@@ -12365,17 +12365,40 @@ class _QuotationDetailState extends State<QuotationDetail> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
+                    fieldPresentationFn: (Widget fieldWidget,
+                        {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide:
+                              BorderSide(color: Color(0xFFAFAFAF)),
+                            ),
+                            labelText: 'Activity Type',
+                            isDense: true,
+                            labelStyle: TextStyle(
+                                color: Color(0xFF666666),
+                                fontSize: 14,
+                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
                     //items: items,
 
                     value: activityTypeName,
-                    hint: Text(
-                      "Activity Type",
-                      style: TextStyle(
-                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                      ),
-                    ),
+                    // hint: Text(
+                    //   "Activity Type",
+                    //   style: TextStyle(
+                    //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
+                    //   ),
+                    // ),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async {
@@ -12423,7 +12446,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                        width: 300,
+                       // width: 300,
+                                 width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                         child: Text(
                           item["name"],
                           style: TextStyle(
@@ -12523,17 +12550,40 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 5, vertical: 0),
+                            horizontal: 15, vertical: 0),
                         child: SearchChoices.single(
+                          fieldPresentationFn: (Widget fieldWidget,
+                              {bool? selectionIsValid}) {
+                            return Container(
+                              padding: const EdgeInsets.all(0),
+                              child: InputDecorator(
+                                decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                    BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Assigned To',
+                                  isDense: true,
+                                  labelStyle: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 14,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500),
+                                  fillColor: Colors.white,
+                                ),
+                                child: fieldWidget,
+                              ),
+                            );
+                          },
                           //items: items,
 
                           value: assignedToname,
-                          hint: Text(
-                            "Assigned To",
-                            style: TextStyle(
-                                color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                            ),
-                          ),
+                          // hint: Text(
+                          //   "Assigned To",
+                          //   style: TextStyle(
+                          //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
+                          //   ),
+                          // ),
                           searchHint: null,
                           autofocus: false,
                           onChanged: (value) async {
@@ -12555,7 +12605,11 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                              width: 300,
+                              //width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(

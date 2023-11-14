@@ -12246,7 +12246,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                        width: 300,
+                        //width: 300,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                         child: Text(
                           item["name"],
                           style: TextStyle(
@@ -12378,7 +12382,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           selectedValueWidgetFn: (item) {
                             return (Center(
                                 child: Container(
-                              width: 300,
+                             // width: 300,
+                                  width: MediaQuery
+                                      .of(context)
+                                      .size
+                                      .width,
                               child: Text(
                                 item["name"],
                                 style: TextStyle(

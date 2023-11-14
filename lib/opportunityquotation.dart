@@ -309,7 +309,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["display_name"], style: TextStyle(
                                         fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
@@ -413,7 +417,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"], style: TextStyle(
                                         fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -531,7 +539,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                         style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -628,7 +640,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),                            ),
@@ -736,7 +752,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -825,7 +845,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -917,7 +941,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(  fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1265,7 +1293,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1372,7 +1404,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1464,7 +1500,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                    //width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1553,7 +1593,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             selectedValueWidgetFn: (item) {
                               return (Center(
                                   child: Container(
-                                    width: 320,
+                                   // width: 320,
+                                    width: MediaQuery
+                                        .of(context)
+                                        .size
+                                        .width,
                                     child: Text(
                                       item["name"],
                                       style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
@@ -1709,10 +1753,14 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                         Visibility(
                           visible: ordervisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 1, bottom: 30),
+                            padding: const EdgeInsets.only(top: 1, bottom: 30,left: 25,right: 25),
                             child: Center(
                               child: SizedBox(
-                                width: 360,
+                                //width: 360,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
                                 height: 47,
 
                                 child: ElevatedButton(
@@ -1991,11 +2039,15 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                         Visibility(
                           visible: optvisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(top: 1, bottom: 30),
+                            padding: const EdgeInsets.only(top: 1, bottom: 30,left: 25,right: 25),
                             child: Center(
                               child: SizedBox(
-                                width: 346,
-                                height: 33,
+                                //width: 346,
+                                width: MediaQuery
+                                    .of(context)
+                                    .size
+                                    .width,
+                                height: 47,
 
                                 child: ElevatedButton(
                                     child: Text(
@@ -2295,7 +2347,11 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
               Padding(
                 padding: const EdgeInsets.only(left: 25, top: 20, right: 25,bottom: 30),
                 child: SizedBox(
-                  width: 360,
+                  //width: 360,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 47,
                   child: ElevatedButton(
                       child: Text(
@@ -2639,10 +2695,10 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 290),
+                  padding: const EdgeInsets.only(left: 0, right:8),
                   child: IconButton(
                     icon:SvgPicture.asset("images/cr.svg"),
                     onPressed: () {
@@ -2670,7 +2726,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
                     //items: items,
                     validator: (value) {
@@ -2679,11 +2735,26 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                       }
                       return null;
                     },
+                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            labelText:'Product',
+                            isDense: true,
+                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
                     value: productTiltleName,
-                    hint: Text(
-                      "Product",
-                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                    ),
+                    // hint: Text(
+                    //   "Product",
+                    //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                    // ),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) async {
@@ -2715,7 +2786,11 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
+                           // width: 300,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                             child: Text(
                               item["display_name"],
                               style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -2799,15 +2874,30 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+                  const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: SearchChoices.single(
+                    fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                      return Container(
+                        padding: const EdgeInsets.all(0),
+                        child: InputDecorator(
+                          decoration: InputDecoration(
+                            labelText:'Uom',
+                            isDense: true,
+                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            fillColor: Colors.white,
+
+                          ),
+                          child: fieldWidget,
+                        ),
+                      );
+                    },
                     //items: items,
 
                     value: productUomName,
-                    hint: Text(
-                      "Uom",
-                      style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                    ),
+                    // hint: Text(
+                    //   "Uom",
+                    //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                    // ),
                     searchHint: null,
                     autofocus: false,
                     onChanged: (value) {
@@ -2828,7 +2918,11 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 300,
+                            //width: 300,
+                            width: MediaQuery
+                                .of(context)
+                                .size
+                                .width,
                             child: Text(
                               item["name"],
                               style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
@@ -2897,73 +2991,93 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                   ),
                 ),
                 SizedBox(
-                  height: 0,
+                  height: 5,
                 ),
                 Visibility(
                   visible: tvisibility,
                   child: Padding(
                     padding:
-                    const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                    child: MultiSelectDropDown.network(
-                       hint: 'Taxes',
-                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                      selectedOptions: editProductTaxName
-                          .map((tag) =>
-                          ValueItem(label: tag.label, value: tag.value))
-                          .toList(),
-                      onOptionSelected: (options) {
-                        print(options);
-                        productTax.clear();
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Taxes',
+                          style: TextStyle(
+                            color: Color(0xFF666666),
+                            fontSize: 12,
+                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w500,
 
-                        for (var options in options) {
-                          productTax.add(options.value);
-                          editProductTaxName.add(new ValueItem(
-                              label: options.label,
-                              value: options.value.toString()));
+                          ),
+                        ),
+                        Container(
+                          height:30,
+                          child: MultiSelectDropDown.network(
+                             hint: '',
+                            borderColor: Colors.transparent,
+                            hintStyle:
+                            TextStyle(fontSize: 13.6, fontFamily: 'Mulish'),
+                            selectedOptions: editProductTaxName
+                                .map((tag) =>
+                                ValueItem(label: tag.label, value: tag.value))
+                                .toList(),
+                            onOptionSelected: (options) {
+                              print(options);
+                              productTax.clear();
+
+                              for (var options in options) {
+                                productTax.add(options.value);
+                                editProductTaxName.add(new ValueItem(
+                                    label: options.label,
+                                    value: options.value.toString()));
 
 
-                          print('Label: ${options.label}');
-                          print('Value: ${options.value}');
-                          print(productTax);
-                          print(editProductTaxName);
-                          print(selectedProductTax);
-                          print('tax valuessss');
-                        }
-                      },
-                      networkConfig: NetworkConfig(
-                        url:
-                        "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
-                        method: RequestMethod.get,
-                        headers: {
-                          'Authorization': 'Bearer $token',
-                        },
-                      ),
-                      chipConfig: const ChipConfig(
-                        wrapType: WrapType.scroll,
-                        autoScroll: true,
-                      ),
-                      responseParser: (response) {
-                        debugPrint('Response: $response');
+                                print('Label: ${options.label}');
+                                print('Value: ${options.value}');
+                                print(productTax);
+                                print(editProductTaxName);
+                                print(selectedProductTax);
+                                print('tax valuessss');
+                              }
+                            },
+                            networkConfig: NetworkConfig(
+                              url:
+                              "${baseUrl}api/tax?${companyId == null ? "" : "&company_id=$companyId"}",
+                              method: RequestMethod.get,
+                              headers: {
+                                'Authorization': 'Bearer $token',
+                              },
+                            ),
+                            chipConfig: const ChipConfig(
+                              wrapType: WrapType.scroll,
+                              autoScroll: true,
+                            ),
+                            responseParser: (response) {
+                              debugPrint('Response: $response');
 
-                        final list =
-                        (response['records'] as List<dynamic>).map((e) {
-                          final item = e as Map<String, dynamic>;
-                          return ValueItem(
-                            label: item['name'],
-                            value: item['id'].toString(),
-                          );
-                        }).toList();
+                              final list =
+                              (response['records'] as List<dynamic>).map((e) {
+                                final item = e as Map<String, dynamic>;
+                                return ValueItem(
+                                  label: item['name'],
+                                  value: item['id'].toString(),
+                                );
+                              }).toList();
 
-                        return Future.value(list);
-                      },
-                      responseErrorBuilder: ((context, body) {
-                        print(body);
-                        print(token);
-                        return const Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Text('Error fetching the data'),
-                        );
-                      }),
+                              return Future.value(list);
+                            },
+                            responseErrorBuilder: ((context, body) {
+                              print(body);
+                              print(token);
+                              return const Padding(
+                                padding: EdgeInsets.all(16.0),
+                                child: Text('Error fetching the data'),
+                              );
+                            }),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

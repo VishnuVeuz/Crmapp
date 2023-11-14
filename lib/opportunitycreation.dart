@@ -2870,10 +2870,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 280, right: 20),
+                    padding: const EdgeInsets.only(left: 0, right:8),
                     child: IconButton(
                       icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
