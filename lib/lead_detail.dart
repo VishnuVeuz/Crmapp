@@ -10418,7 +10418,7 @@ class _LeadDetailState extends State<LeadDetail> {
       }
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
     });
-  await  postProvider?.fetchPosts(widget.leadId);
+    await  postProvider?.fetchPosts(widget.leadId);
 
     await getScheduleDetails();
   }

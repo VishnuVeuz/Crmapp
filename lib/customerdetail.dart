@@ -36,6 +36,7 @@ import 'lognoteedit.dart';
 class CustomerDetail extends StatefulWidget {
   var customerId;
   CustomerDetail(this.customerId);
+  static final _editFormKey = GlobalKey<FormState>();
 
   @override
   State<CustomerDetail> createState() => _CustomerDetailState();
@@ -2998,7 +2999,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   FocusScope.of(context).unfocus();
                                                 });
                                                 postProvider?.fetchPosts(widget.customerId);
-
+                                                delayMethod();
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
@@ -3329,6 +3330,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 });
 
                                                 postProvider?.fetchPosts(widget.customerId);
+                                                delayMethod();
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
@@ -4399,1667 +4401,3289 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     ),
 
 
-                    FutureBuilder(
-                        future:  postProvider?.fetchPosts(widget.customerId),
-                        builder: (context, snapshot) {
-                          logDataHeader.clear();
-                          logDataTitle.clear();
-                          print(snapshot.hasData);
-                          print("snapshot.data");
-                          print("snap data final ");
+                    // FutureBuilder(
+                    //     future:  postProvider?.fetchPosts(widget.customerId),
+                    //     builder: (context, snapshot) {
+                    //       logDataHeader.clear();
+                    //       logDataTitle.clear();
+                    //       print(snapshot.hasData);
+                    //       print("snapshot.data");
+                    //       print("snap data final ");
+                    //
+                    //       if (snapshot.connectionState == ConnectionState.waiting) {
+                    //
+                    //         return Center(child: CircularProgressIndicator());
+                    //       }
+                    //       else {
+                    //
+                    //         if (snapshot.hasError) {
+                    //
+                    //           return Center(child: Text('Error: ${snapshot.error}'));
+                    //         }
+                    //         else{
+                    //
+                    //           if (postProvider?.posts.length != 0) {
+                    //
+                    //
+                    //
+                    //             return Consumer<PostProvidercustomer>(
+                    //                 builder: (mcontext, provider, child) {
+                    //
+                    //                   logDataHeader.clear();
+                    //                   logDataTitle.clear();
+                    //                   if (provider != null ) {
+                    //                     var postss = provider.posts;
+                    //                     if(postss!=null){
+                    //                       postss.forEach((key, value) {
+                    //                         logDataHeader.add(key);
+                    //                         logDataTitle.add(value);
+                    //
+                    //
+                    //                       } );
+                    //
+                    //                     }
+                    //                   }
+                    //                   print("ddd1.lengthtest2");
+                    //
+                    //                   return ListView.builder(
+                    //                       scrollDirection: Axis.vertical,
+                    //                       physics: NeverScrollableScrollPhysics(),
+                    //                       shrinkWrap: true,
+                    //                       itemCount: logDataHeader.length,
+                    //                       itemBuilder:
+                    //                           (BuildContext context, int indexx) {
+                    //                         return Column(
+                    //                           children: [
+                    //                             Padding(
+                    //                               padding: const EdgeInsets.only(
+                    //                                   top: 0, bottom: 0),
+                    //                               child: Container(
+                    //                                 width:mediaQueryData
+                    //                                     .size
+                    //                                     .width,
+                    //                                 height: 42,
+                    //                                 color: Color(0xff3D418E),
+                    //                                 child: Center(
+                    //                                     child: Text(
+                    //                                       logDataHeader[indexx],
+                    //                                       style: TextStyle(
+                    //                                           fontWeight: FontWeight.w700,
+                    //                                           fontSize: 12,
+                    //                                           fontFamily: 'Mulish',
+                    //                                           color: Colors.white),
+                    //
+                    //                                     )),
+                    //                               ),
+                    //                             ),
+                    //                             ListView.builder(
+                    //                                 scrollDirection: Axis.vertical,
+                    //                                 physics:
+                    //                                 NeverScrollableScrollPhysics(),
+                    //                                 shrinkWrap: true,
+                    //                                 itemCount:
+                    //                                 logDataTitle[indexx].length,
+                    //                                 itemBuilder:
+                    //                                     (BuildContext context,
+                    //                                     int indexs) {
+                    //                                   selectedImagesDisplay =
+                    //                                   logDataTitle[indexx][indexs]
+                    //                                   ['attachment_ids'];
+                    //
+                    //                                   if (selectedImagesDisplay.length != 0) {
+                    //                                     logattachmentImagesDisplay =
+                    //                                     selectedImagesDisplay['images'];
+                    //                                     logattachmentFileDisplay =
+                    //                                     selectedImagesDisplay['files'];
+                    //                                   }
+                    //
+                    //                                   print(logDataTitle[indexx]
+                    //                                   [indexs]['attachment_ids']);
+                    //
+                    //                                   print(logDataTitle[indexx]
+                    //                                   [indexs]['reaction_ids']);
+                    //                                   print("hjvdbjsbdv");
+                    //
+                    //
+                    //                                   List emojiSet =
+                    //                                   logDataTitle[indexx][indexs]
+                    //                                   ['reaction_ids'];
+                    //
+                    //                                   if (emojiSet.length > 0) {
+                    //                                     print(emojiSet[0]['emoji']);
+                    //                                     print(emojiSet[0]['count']);
+                    //                                     print("fsvdsvdvdv");
+                    //                                   }
+                    //
+                    //                                   print(emojiSet);
+                    //                                   print("various hbfuhebin");
+                    //                                   print(logDataTitle[indexx][indexs]
+                    //                                   ['reaction_ids']);
+                    //                                   print("hbfuhebin");
+                    //
+                    //                                   print("selectedImagesDisplaysss");
+                    //
+                    //                                   starImage = logDataTitle[indexx]
+                    //                                   [indexs]['starred'] ??
+                    //                                       false;
+                    //                                   lognoteoptions =
+                    //                                       logDataTitle[indexx][indexs]
+                    //                                       ['is_editable'] ??
+                    //                                           true;
+                    //
+                    //                                   print(logDataTitle[indexx]
+                    //                                   [indexs]['is_editable']);
+                    //
+                    //                                   print('is_editable');
+                    //
+                    //                                   logDataTitle[indexx][indexs]
+                    //                                   ['icon'] ==
+                    //                                       "envelope"
+                    //                                       ? logNoteIcon = const Icon(
+                    //                                     Icons.email,
+                    //                                     color: Colors.red,
+                    //                                     size: 15,
+                    //                                   )
+                    //                                       : logDataTitle[indexx]
+                    //                                   [indexs]
+                    //                                   ['icon'] ==
+                    //                                       "ad_units"
+                    //                                       ? logNoteIcon = Icon(
+                    //                                     Icons.phone,
+                    //                                     color: Colors.red,
+                    //                                     size: 15,
+                    //                                   )
+                    //                                       : logDataTitle[indexx]
+                    //                                   [indexs]
+                    //                                   ['icon'] ==
+                    //                                       "telegram"
+                    //                                       ? logNoteIcon =
+                    //                                       Icon(
+                    //                                         Icons.telegram,
+                    //                                         color:
+                    //                                         Colors.red,
+                    //                                         size: 15,
+                    //                                       )
+                    //                                       : Icon(
+                    //                                     Icons.circle,
+                    //                                     color: Colors
+                    //                                         .white,
+                    //                                     size: 8,
+                    //                                   );
+                    //
+                    //                                   return Card(
+                    //                                     elevation: 1,
+                    //                                     child: Column(
+                    //                                       // crossAxisAlignment: CrossAxisAlignment.center,
+                    //                                       mainAxisAlignment: MainAxisAlignment.center,
+                    //                                       children: [
+                    //                                         Container(
+                    //                                           margin: EdgeInsets.only(top: 10,left: 24,right: 24),
+                    //                                           //width: 340,
+                    //                                           width:mediaQueryData
+                    //                                               .size
+                    //                                               .width,
+                    //                                           //height:80,
+                    //                                           //  color: Colors.yellow,
+                    //                                           child: Row(
+                    //                                             crossAxisAlignment: CrossAxisAlignment
+                    //                                                 .start,
+                    //
+                    //                                             children: [
+                    //                                               Container(
+                    //                                                 // group20507jZA (1636:7)
+                    //                                                 padding: EdgeInsets.fromLTRB(
+                    //                                                     25, 27, 3, 0),
+                    //                                                 width: 35,
+                    //                                                 height: 35,
+                    //                                                 decoration: BoxDecoration(
+                    //
+                    //                                                   borderRadius: BorderRadius.circular(
+                    //                                                       17.5),
+                    //                                                   image: DecorationImage(
+                    //                                                     fit: BoxFit.cover,
+                    //                                                     image: NetworkImage(
+                    //                                                         "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
+                    //                                                   ),
+                    //                                                 ),
+                    //                                                 child: Align(
+                    //                                                   // ellipse123qs6 (1636:32)
+                    //                                                   alignment: Alignment.bottomRight,
+                    //                                                   child: SizedBox(
+                    //                                                     width: double.infinity,
+                    //                                                     height: 7,
+                    //                                                     child: Container(
+                    //                                                       decoration: BoxDecoration(
+                    //                                                         borderRadius: BorderRadius
+                    //                                                             .circular(3),
+                    //                                                         border: Border.all(
+                    //                                                             color: Color(0xffffffff)),
+                    //                                                         color: Color(0xff167b33),
+                    //                                                       ),
+                    //                                                     ),
+                    //                                                   ),
+                    //                                                 ),
+                    //                                               ),
+                    //                                               Expanded(
+                    //                                                 child: Container(
+                    //
+                    //                                                   // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
+                    //                                                   padding: EdgeInsets.fromLTRB(
+                    //                                                       19, 2, 2, 2),
+                    //
+                    //                                                   child: Row(
+                    //                                                     crossAxisAlignment: CrossAxisAlignment
+                    //                                                         .start,
+                    //                                                     children: [
+                    //                                                       Expanded(
+                    //                                                         flex: 3,
+                    //                                                         child: Container(
+                    //                                                           //  color: Colors.blue,
+                    //                                                           margin: EdgeInsets.fromLTRB(
+                    //                                                               0, 0, 20, 0),
+                    //                                                           // height: double.infinity,
+                    //                                                           child: Column(
+                    //                                                             crossAxisAlignment: CrossAxisAlignment
+                    //                                                                 .start,
+                    //                                                             mainAxisAlignment: MainAxisAlignment
+                    //                                                                 .start,
+                    //                                                             children: [
+                    //                                                               Container(
+                    //                                                                 // color:Colors.red,
+                    //
+                    //                                                                 margin: EdgeInsets
+                    //                                                                     .fromLTRB(
+                    //                                                                     0, 0, 0, 2),
+                    //                                                                 child: RichText(
+                    //                                                                   text: TextSpan(
+                    //                                                                     style: TextStyle(
+                    //                                                                       fontFamily: 'Mulish',
+                    //                                                                       fontSize: 12,
+                    //                                                                       fontWeight: FontWeight
+                    //                                                                           .w700,
+                    //                                                                       height: 0,
+                    //                                                                       color: Color(
+                    //                                                                           0xff000000),
+                    //                                                                     ),
+                    //                                                                     children: [
+                    //                                                                       TextSpan(
+                    //                                                                         text: logDataTitle[indexx][indexs]['create_uid'][1],
+                    //                                                                         style: TextStyle(
+                    //                                                                           fontFamily: 'Mulish',
+                    //                                                                           fontSize: 11,
+                    //                                                                           fontWeight: FontWeight
+                    //                                                                               .w500,
+                    //                                                                           height: 1,
+                    //                                                                           color: Color(
+                    //                                                                               0xff000000),
+                    //
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                       TextSpan(
+                    //                                                                         text: ' -',
+                    //                                                                         style: TextStyle(
+                    //                                                                           fontFamily: 'Mulish',
+                    //                                                                           fontSize: 11,
+                    //                                                                           fontWeight: FontWeight
+                    //                                                                               .w500,
+                    //                                                                           height: 1,
+                    //                                                                           color: Color(
+                    //                                                                               0xffa29d9d),
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                       TextSpan(
+                    //                                                                         text: ' ',
+                    //                                                                         style: TextStyle(
+                    //                                                                           fontFamily: 'Mulish',
+                    //                                                                           fontSize: 11,
+                    //                                                                           fontWeight: FontWeight
+                    //                                                                               .w500,
+                    //                                                                           height: 1,
+                    //                                                                           color: Color(
+                    //                                                                               0xff000000),
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                       TextSpan(
+                    //                                                                         text: logDataTitle[indexx][indexs]["period"],
+                    //                                                                         style: TextStyle(
+                    //                                                                           fontFamily: 'Mulish',
+                    //                                                                           fontSize: 9,
+                    //                                                                           fontWeight: FontWeight
+                    //                                                                               .w500,
+                    //                                                                           height: 1.5,
+                    //                                                                           color: Color(
+                    //                                                                               0xff948e8e),
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                     ],
+                    //                                                                   ),
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               Container(
+                    //                                                                 // color:Colors.pink,
+                    //                                                                 //height:60,
+                    //                                                                 child: Text(
+                    //
+                    //
+                    //                                                                   removeHtmlTagsAndSpaces(
+                    //                                                                       logDataTitle[indexx][indexs]['body']
+                    //                                                                           .toString() ??
+                    //                                                                           ""),
+                    //
+                    //                                                                   // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                    //                                                                   //     .toString() ??
+                    //                                                                   //     "",
+                    //                                                                   style: TextStyle(
+                    //                                                                     fontFamily: 'Mulish',
+                    //                                                                     fontSize: 9,
+                    //                                                                     fontWeight: FontWeight
+                    //                                                                         .w600,
+                    //                                                                     // height: 1.5,
+                    //                                                                     color: Color(
+                    //                                                                         0xff787878),
+                    //                                                                   ),
+                    //
+                    //                                                                 ),
+                    //                                                               ),
+                    //
+                    //
+                    //                                                             ],
+                    //                                                           ),
+                    //                                                         ),
+                    //                                                       ),
+                    //
+                    //                                                       Expanded(
+                    //                                                         flex: 1,
+                    //                                                         child: Container(
+                    //
+                    //                                                           margin: EdgeInsets.fromLTRB(
+                    //                                                               0, 0, 0, 1),
+                    //                                                           width: 25,
+                    //                                                           height: 20,
+                    //                                                           child: Container(
+                    //                                                               child: logNoteIcon),
+                    //                                                         ),
+                    //                                                       ),
+                    //                                                       lognoteoptions == true
+                    //                                                           ? Expanded(
+                    //                                                         flex: 2,
+                    //                                                         child: Container(
+                    //                                                           padding: EdgeInsets.all(
+                    //                                                               1.0),
+                    //                                                           decoration: BoxDecoration(
+                    //
+                    //                                                             borderRadius: BorderRadius
+                    //                                                                 .circular(5.0),
+                    //                                                             // Specifies rounded corners
+                    //                                                             border: Border.all(
+                    //                                                               color: Color(
+                    //                                                                   0XFFD9D9D9),
+                    //                                                               // Border color
+                    //
+                    //                                                               width: 1.0, // Border width
+                    //                                                             ),
+                    //                                                           ),
+                    //                                                           child: Row(
+                    //                                                             children: [
+                    //                                                               SizedBox(width: 3,),
+                    //                                                               Expanded(
+                    //                                                                 child: InkWell(
+                    //                                                                   child: Container(
+                    //                                                                     margin: EdgeInsets
+                    //                                                                         .fromLTRB(
+                    //                                                                         0, 0, 0, 1),
+                    //                                                                     width: 13,
+                    //                                                                     height: 13,
+                    //                                                                     child: SvgPicture
+                    //                                                                         .asset(
+                    //                                                                       'images/emoji6.svg',
+                    //                                                                       // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                   onTap: () {
+                    //                                                                     logDataIdEmoji =
+                    //                                                                     logDataTitle[indexx][indexs]['id'];
+                    //                                                                     showDialog(
+                    //                                                                       context: context,
+                    //                                                                       builder: (
+                    //                                                                           BuildContext context) =>
+                    //                                                                           _buildEmojiPopupDialog(
+                    //                                                                               mcontext),
+                    //                                                                     );
+                    //                                                                   },
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 5,),
+                    //
+                    //                                                               Expanded(
+                    //
+                    //                                                                 child: StatefulBuilder(
+                    //                                                                     builder: (
+                    //                                                                         BuildContext
+                    //                                                                         context,
+                    //                                                                         StateSetter
+                    //                                                                         setState) {
+                    //                                                                       return Container(
+                    //                                                                           margin: EdgeInsets
+                    //                                                                               .fromLTRB(
+                    //                                                                               0, 0, 0,
+                    //                                                                               1),
+                    //                                                                           width: 13,
+                    //                                                                           height: 13,
+                    //                                                                           child: starImage ==
+                    //                                                                               true
+                    //                                                                               ? InkWell(
+                    //                                                                             onTap: () async {
+                    //                                                                               try{
+                    //                                                                               int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //
+                    //                                                                               var data = await logStarChange(
+                    //                                                                                   lodDataId,
+                    //                                                                                   false);
+                    //
+                    //                                                                               if (data['result']['message'] ==
+                    //                                                                                   "success") {
+                    //                                                                                 print(
+                    //                                                                                     "startrue");
+                    //                                                                                 setState(() {
+                    //                                                                                   starImage =
+                    //                                                                                   false;
+                    //                                                                                 });
+                    //                                                                               }
+                    //                                                                               }catch(e){
+                    //                                                                                 errorMethod(e);
+                    //                                                                               }
+                    //                                                                             },
+                    //                                                                             child: SvgPicture
+                    //                                                                                 .asset(
+                    //                                                                               'images/st3.svg',
+                    //                                                                               // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                             ),
+                    //                                                                           )
+                    //                                                                               : InkWell(
+                    //                                                                             onTap: () async {
+                    //                                                                               try{
+                    //                                                                               int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //
+                    //                                                                               var data = await logStarChange(
+                    //                                                                                   lodDataId,
+                    //                                                                                   true);
+                    //
+                    //                                                                               if (data['result']['message'] ==
+                    //                                                                                   "success") {
+                    //                                                                                 print(
+                    //                                                                                     "starfalse");
+                    //                                                                                 setState(() {
+                    //                                                                                   starImage =
+                    //                                                                                   true;
+                    //                                                                                 });
+                    //                                                                               }
+                    //                                                                               }catch(e){
+                    //                                                                                 errorMethod(e);
+                    //                                                                               }
+                    //                                                                             },
+                    //                                                                             child: SvgPicture
+                    //                                                                                 .asset(
+                    //                                                                               'images/star6.svg',
+                    //                                                                               // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                             ),
+                    //                                                                           )
+                    //                                                                       );
+                    //                                                                     }
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 5,),
+                    //
+                    //                                                               Expanded(
+                    //                                                                 child: InkWell(
+                    //                                                                   child: Container(
+                    //                                                                     margin: EdgeInsets
+                    //                                                                         .fromLTRB(
+                    //                                                                         0, 0, 0, 1),
+                    //                                                                     width: 13,
+                    //                                                                     height: 13,
+                    //                                                                     //color:Colors.red,
+                    //                                                                     child: SvgPicture
+                    //                                                                         .asset(
+                    //                                                                       'images/edit6.svg',
+                    //                                                                       // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                   onTap: () {
+                    //                                                                     int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //                                                                     String logdata = logDataTitle[indexx][indexs]['body']
+                    //                                                                         .replaceAll(
+                    //                                                                         RegExp(
+                    //                                                                             r'<[^>]*>|&[^;]+;'),
+                    //                                                                         ' ') ?? "";
+                    //                                                                     // Navigator.push(
+                    //                                                                     //     context,
+                    //                                                                     //     MaterialPageRoute(
+                    //                                                                     //         builder: (
+                    //                                                                     //             context) =>
+                    //                                                                     //             LogNoteEdit(
+                    //                                                                     //                 lodDataId,
+                    //                                                                     //                 salesperImg!,
+                    //                                                                     //                 token!,
+                    //                                                                     //                 widget
+                    //                                                                     //                     .customerId,
+                    //                                                                     //                 logdata,
+                    //                                                                     //                 "res.partner")));
+                    //
+                    //
+                    //                                                                     selectedItemIndex =  lodDataId;
+                    //                                                                     lognoteEditController.text = logdata;
+                    //                                                                     postProvider?.fetchPosts(widget.customerId);
+                    //
+                    //
+                    //                                                                   },
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 5,),
+                    //
+                    //                                                               Expanded(
+                    //                                                                 child: InkWell(
+                    //                                                                   child: Container(
+                    //                                                                     margin: EdgeInsets
+                    //                                                                         .fromLTRB(
+                    //                                                                         0, 0, 0, 1),
+                    //                                                                     width: 13,
+                    //                                                                     height: 13,
+                    //                                                                     child: SvgPicture
+                    //                                                                         .asset(
+                    //                                                                       'images/delete6.svg',
+                    //                                                                       // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                   onTap: () async {
+                    //                                                                     try{
+                    //                                                                     int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //                                                                     var data = await deleteLogData(
+                    //                                                                         lodDataId);
+                    //
+                    //                                                                     if (data['message'] ==
+                    //                                                                         "Success") {
+                    //                                                                       print("final11");
+                    //
+                    //                                                                       postProvider?.fetchPosts(widget.customerId);
+                    //                                                                     }
+                    //                                                                     }catch(e){
+                    //                                                                       errorMethod(e);
+                    //                                                                     }
+                    //                                                                   },
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 3,),
+                    //                                                             ],
+                    //                                                           ),
+                    //                                                         ),
+                    //                                                       )
+                    //                                                           :
+                    //                                                       Expanded(
+                    //                                                         flex: 1,
+                    //                                                         child: Container(
+                    //                                                           padding: EdgeInsets.all(
+                    //                                                               1.0),
+                    //                                                           decoration: BoxDecoration(
+                    //                                                             borderRadius: BorderRadius
+                    //                                                                 .circular(5.0),
+                    //                                                             // Specifies rounded corners
+                    //                                                             border: Border.all(
+                    //                                                               color: Color(
+                    //                                                                   0XFFD9D9D9),
+                    //                                                               // Border color
+                    //                                                               width: 1.0, // Border width
+                    //                                                             ),
+                    //                                                           ),
+                    //                                                           child: Row(
+                    //                                                             children: [
+                    //                                                               SizedBox(width: 3,),
+                    //                                                               Expanded(
+                    //                                                                 child: InkWell(
+                    //                                                                   child: Container(
+                    //                                                                     margin: EdgeInsets
+                    //                                                                         .fromLTRB(
+                    //                                                                         0, 0, 0, 1),
+                    //                                                                     width: 13,
+                    //                                                                     height: 13,
+                    //                                                                     child: SvgPicture
+                    //                                                                         .asset(
+                    //                                                                       'images/emoji6.svg',
+                    //                                                                       // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                   onTap: () {
+                    //                                                                     logDataIdEmoji =
+                    //                                                                     logDataTitle[indexx][indexs]['id'];
+                    //                                                                     showDialog(
+                    //                                                                       context: context,
+                    //                                                                       builder: (
+                    //                                                                           BuildContext context) =>
+                    //                                                                           _buildEmojiPopupDialog(
+                    //                                                                               mcontext),
+                    //                                                                     );
+                    //                                                                   },
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 5,),
+                    //
+                    //                                                               Expanded(
+                    //
+                    //                                                                 child: StatefulBuilder(
+                    //                                                                     builder: (
+                    //                                                                         BuildContext
+                    //                                                                         context,
+                    //                                                                         StateSetter
+                    //                                                                         setState) {
+                    //                                                                       return Container(
+                    //                                                                           margin: EdgeInsets
+                    //                                                                               .fromLTRB(
+                    //                                                                               0, 0, 0,
+                    //                                                                               1),
+                    //                                                                           width: 13,
+                    //                                                                           height: 13,
+                    //                                                                           child: starImage ==
+                    //                                                                               true
+                    //                                                                               ? InkWell(
+                    //                                                                             onTap: () async {
+                    //                                                                               try{
+                    //                                                                               int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //
+                    //                                                                               var data = await logStarChange(
+                    //                                                                                   lodDataId,
+                    //                                                                                   false);
+                    //
+                    //                                                                               if (data['result']['message'] ==
+                    //                                                                                   "success") {
+                    //                                                                                 print(
+                    //                                                                                     "startrue");
+                    //                                                                                 setState(() {
+                    //                                                                                   starImage =
+                    //                                                                                   false;
+                    //                                                                                 });
+                    //                                                                               }
+                    //                                                                               }catch(e){
+                    //                                                                                 errorMethod(e);
+                    //                                                                               }
+                    //                                                                             },
+                    //                                                                             child: SvgPicture
+                    //                                                                                 .asset(
+                    //                                                                               'images/st3.svg',
+                    //                                                                               // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                             ),
+                    //                                                                           )
+                    //                                                                               : InkWell(
+                    //                                                                             onTap: () async {
+                    //                                                                               try{
+                    //                                                                               int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //
+                    //                                                                               var data = await logStarChange(
+                    //                                                                                   lodDataId,
+                    //                                                                                   true);
+                    //
+                    //                                                                               if (data['result']['message'] ==
+                    //                                                                                   "success") {
+                    //                                                                                 print(
+                    //                                                                                     "starfalse");
+                    //                                                                                 setState(() {
+                    //                                                                                   starImage =
+                    //                                                                                   true;
+                    //                                                                                 });
+                    //                                                                               }
+                    //                                                                               }catch(e){
+                    //                                                                                 errorMethod(e);
+                    //                                                                               }
+                    //                                                                             },
+                    //                                                                             child: SvgPicture
+                    //                                                                                 .asset(
+                    //                                                                               'images/star6.svg',
+                    //                                                                               // 'assets/page-1/images/group-20576.png',
+                    //
+                    //                                                                             ),
+                    //                                                                           )
+                    //                                                                       );
+                    //                                                                     }
+                    //                                                                 ),
+                    //                                                               ),
+                    //                                                               SizedBox(width: 3,),
+                    //                                                               // SizedBox(width: 5,),
+                    //                                                               //
+                    //                                                               // Visibility(
+                    //                                                               //   visible: lognoteoptions,
+                    //                                                               //
+                    //                                                               //   child: Expanded(
+                    //                                                               //     child: InkWell(
+                    //                                                               //       child: Container(
+                    //                                                               //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                    //                                                               //         width: 13,
+                    //                                                               //         height: 13,
+                    //                                                               //         //color:Colors.red,
+                    //                                                               //         child: SvgPicture.asset(
+                    //                                                               //           'images/edit6.svg',
+                    //                                                               //           // 'assets/page-1/images/group-20576.png',
+                    //                                                               //
+                    //                                                               //         ),
+                    //                                                               //       ),
+                    //                                                               //       onTap: (){
+                    //                                                               //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //                                                               //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                    //                                                               //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                    //                                                               //
+                    //                                                               //       },
+                    //                                                               //     ),
+                    //                                                               //   ),
+                    //                                                               // ),
+                    //                                                               // SizedBox(width: 5,),
+                    //                                                               //
+                    //                                                               // Visibility(
+                    //                                                               //   visible: lognoteoptions,
+                    //                                                               //
+                    //                                                               //   child: Expanded(
+                    //                                                               //     child: InkWell(
+                    //                                                               //       child: Container(
+                    //                                                               //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                    //                                                               //         width: 13,
+                    //                                                               //         height: 13,
+                    //                                                               //         child: SvgPicture.asset(
+                    //                                                               //           'images/delete6.svg',
+                    //                                                               //           // 'assets/page-1/images/group-20576.png',
+                    //                                                               //
+                    //                                                               //         ),
+                    //                                                               //       ),
+                    //                                                               //       onTap: ()async{
+                    //                                                               //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                    //                                                               //         var data = await deleteLogData(lodDataId);
+                    //                                                               //
+                    //                                                               //         if (data['message'] == "Success") {
+                    //                                                               //           print("final11");
+                    //                                                               //           await getLeadDetails();
+                    //                                                               //           setState(() {
+                    //                                                               //             logDataHeader.clear();
+                    //                                                               //             logDataTitle.clear();
+                    //                                                               //             selectedImagesDisplay.clear();
+                    //                                                               //           });
+                    //                                                               //         }
+                    //                                                               //       },
+                    //                                                               //     ),
+                    //                                                               //   ),
+                    //                                                               // ),
+                    //                                                               // SizedBox(width: 3,),
+                    //                                                             ],
+                    //                                                           ),
+                    //                                                         ),
+                    //                                                       ),
+                    //                                                     ],
+                    //                                                   ),
+                    //                                                 ),
+                    //                                               ),
+                    //                                             ],
+                    //                                           ),
+                    //                                         ),
+                    //
+                    //                                         postProvider?.savefiles!=logDataTitle[indexx][indexs]['id']?
+                    //                                         Visibility(
+                    //                                           visible:  logDataTitle[indexx][indexs]['id'] == selectedItemIndex?true:false,
+                    //                                           // visible: logDataTitle[indexx][indexs].lognoteEdit,
+                    //                                           child: Container(
+                    //                                             child: Column(
+                    //                                               children: [
+                    //                                                 Padding(
+                    //                                                   padding: const EdgeInsets.only(
+                    //                                                       left:76, right: 25),
+                    //                                                   child: Container(
+                    //                                                     width: mediaQueryData
+                    //                                                         .size
+                    //                                                         .width ,
+                    //                                                     // width:200,
+                    //
+                    //                                                     //height: 46,
+                    //                                                     decoration: BoxDecoration(
+                    //                                                         borderRadius: BorderRadius.all(
+                    //                                                             Radius.circular(5)),
+                    //                                                         color: Color(0xFFF6F6F6),
+                    //                                                         border: Border.all(
+                    //                                                           color: Color(0xFFEBEBEB),
+                    //                                                         )),
+                    //                                                     child: Row(
+                    //                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //                                                       children: [
+                    //                                                         Container(
+                    //                                                           width:mediaQueryData
+                    //                                                               .size
+                    //                                                               .width /
+                    //                                                               1.92,
+                    //
+                    //                                                           // width:300,
+                    //                                                           // height: 40,
+                    //                                                           //color: Colors.red,
+                    //                                                           child: Padding(
+                    //                                                             padding: const EdgeInsets
+                    //                                                                 .only(
+                    //                                                                 left: 10),
+                    //                                                             child:  TextField(
+                    //                                                                 textAlignVertical:
+                    //                                                                 TextAlignVertical
+                    //                                                                     .top,
+                    //                                                                 style: TextStyle(
+                    //                                                                   fontWeight: FontWeight
+                    //                                                                       .w400,
+                    //                                                                   fontFamily: 'Mulish',
+                    //                                                                   fontSize: 11,
+                    //                                                                   color: Color(
+                    //                                                                       0xFF000000),
+                    //                                                                 ),
+                    //
+                    //
+                    //                                                                 maxLines: null,
+                    //
+                    //                                                                 onChanged: (newValue) {
+                    //                                                                   print("demodatatataadsaf");
+                    //                                                                   // Handle text changes here if necessary
+                    //                                                                 },
+                    //                                                                 controller: lognoteEditController,
+                    //
+                    //                                                                 decoration:
+                    //                                                                 const InputDecoration(
+                    //                                                                     border:
+                    //                                                                     InputBorder
+                    //                                                                         .none,
+                    //                                                                     hintText:
+                    //                                                                     "Send a message to followers",
+                    //                                                                     hintStyle: TextStyle(
+                    //                                                                       //fontFamily: "inter",
+                    //                                                                         fontWeight:
+                    //                                                                         FontWeight
+                    //                                                                             .w400,
+                    //                                                                         fontFamily:
+                    //                                                                         'Mulish',
+                    //                                                                         fontSize: 11,
+                    //                                                                         color: Color(
+                    //                                                                             0xFFAFAFAF)))),
+                    //                                                           ),
+                    //                                                         ),
+                    //                                                         Padding(
+                    //                                                           padding: const EdgeInsets
+                    //                                                               .only(left: 10),
+                    //                                                           child: IconButton(
+                    //                                                               onPressed: (){
+                    //                                                                 myAlert("lognoteEdit");
+                    //                                                                 postProvider?.fetchPosts(widget.customerId);
+                    //                                                               },
+                    //                                                               icon: Image.asset("images/pi.png")
+                    //                                                           ),
+                    //                                                         ),
+                    //                                                       ],
+                    //                                                     ),
+                    //                                                   ),
+                    //                                                 ),
+                    //
+                    //
+                    //                                                 selectedImagesEdit.isEmpty
+                    //                                                     ? Padding(
+                    //                                                   padding: const EdgeInsets.only(left: 73),
+                    //                                                   child: Container(
+                    //                                                     width:
+                    //                                                     mediaQueryData
+                    //                                                         .size
+                    //                                                         .width,
+                    //                                                     //width:400,
+                    //                                                     //height: 40,
+                    //                                                     //color: Colors.red,
+                    //                                                   ),
+                    //                                                 )
+                    //                                                     : Padding(
+                    //                                                   padding: const EdgeInsets.only(
+                    //                                                       left: 70, right: 50, top: 5),
+                    //                                                   child: Container(
+                    //                                                     width:
+                    //                                                     mediaQueryData
+                    //                                                         .size
+                    //                                                         .width,
+                    //                                                     // width:400,
+                    //                                                     // height: 40,
+                    //                                                     child: Container(
+                    //                                                       width: 40,
+                    //                                                       //height: 40,
+                    //                                                       child: GridView.builder(
+                    //                                                         shrinkWrap: true,
+                    //                                                         // Avoid scrolling
+                    //                                                         physics:
+                    //                                                         NeverScrollableScrollPhysics(),
+                    //                                                         itemCount: selectedImagesEdit.length,
+                    //                                                         gridDelegate:
+                    //                                                         const SliverGridDelegateWithFixedCrossAxisCount(
+                    //                                                             crossAxisCount: 8),
+                    //                                                         itemBuilder: (BuildContext context,
+                    //                                                             int index) {
+                    //                                                           print("pdfffffffffff2");
+                    //                                                           return selectedImagesEdit[index]
+                    //                                                               .path
+                    //                                                               .contains(".pdf")
+                    //                                                               ? Container(
+                    //                                                             width: 40,
+                    //                                                             height: 40,
+                    //                                                             color: Color(0xFFEF5350),
+                    //                                                             child: Icon(Icons
+                    //                                                                 .picture_as_pdf_sharp),
+                    //                                                           )
+                    //                                                               : selectedImagesEdit[index]
+                    //                                                               .path
+                    //                                                               .contains(".zip")
+                    //                                                               ? Container(
+                    //                                                             width: 40,
+                    //                                                             height: 40,
+                    //                                                             color:
+                    //                                                             Color(0xFFFDD835),
+                    //                                                             child: Icon(Icons
+                    //                                                                 .folder_zip_outlined),
+                    //                                                           )
+                    //                                                               : selectedImagesEdit[index]
+                    //                                                               .path
+                    //                                                               .contains(".xlsx")
+                    //                                                               ? Container(
+                    //                                                             width: 40,
+                    //                                                             height: 40,
+                    //                                                             color: Color(
+                    //                                                                 0xFF4CAF50),
+                    //                                                             child: Icon(
+                    //                                                                 Icons.clear),
+                    //                                                           )
+                    //                                                               : selectedImagesEdit[
+                    //                                                           index]
+                    //                                                               .path
+                    //                                                               .contains(
+                    //                                                               ".xml")
+                    //                                                               ? Container(
+                    //                                                             width: 40,
+                    //                                                             height: 40,
+                    //                                                             color: Color(
+                    //                                                                 0xFF0277BD),
+                    //                                                             child: Icon(Icons
+                    //                                                                 .code_off),
+                    //                                                           )
+                    //                                                               : selectedImagesEdit[
+                    //                                                           index]
+                    //                                                               .path
+                    //                                                               .contains(
+                    //                                                               ".doc")
+                    //                                                               ? Container(
+                    //                                                             width: 40,
+                    //                                                             height:
+                    //                                                             40,
+                    //                                                             color: Color(
+                    //                                                                 0xFF2196F3),
+                    //                                                             child: Icon(
+                    //                                                                 Icons
+                    //                                                                     .article_outlined),
+                    //                                                           )
+                    //                                                               : Center(
+                    //                                                               child: kIsWeb
+                    //                                                                   ? Image.network(
+                    //                                                                   selectedImagesEdit[index]
+                    //                                                                       .path)
+                    //                                                                   : Image.file(
+                    //                                                                   selectedImagesEdit[index]));
+                    //                                                         },
+                    //                                                       ),
+                    //                                                     ),
+                    //                                                   ),
+                    //                                                 ),
+                    //
+                    //
+                    //                                                 Padding(
+                    //                                                   padding: const EdgeInsets.only(left:75),
+                    //                                                   child: Row(
+                    //                                                     children: [
+                    //                                                       Text("escape to",style: TextStyle(color: Colors.grey),),
+                    //                                                       InkWell(child: Container(child: Text("  cancel  ")),
+                    //                                                         onTap: (){
+                    //                                                           selectedItemIndex = -1;
+                    //                                                           lognoteEditController.text= "";
+                    //                                                           selectedImagesEdit.clear();
+                    //                                                           myData1.clear();
+                    //                                                           postProvider?.fetchPosts(widget.customerId);
+                    //                                                         },
+                    //                                                       ),
+                    //                                                       //TextButton(onPressed:(){}, child: Text("cancel")),
+                    //                                                       Text(","),
+                    //                                                       Text("  enter to",style: TextStyle(color: Colors.grey),),
+                    //                                                       InkWell(child: Container(child: Text("  save")),
+                    //                                                           // onTap:_isSavingData
+                    //                                                           //     ? null
+                    //                                                           onTap :()async{
+                    //
+                    //
+                    //                                                             int positionId= logDataTitle[indexx][indexs]['id'];
+                    //                                                             postProvider?.fetchPosts1(positionId);
+                    //
+                    //
+                    //
+                    //                                                             for (int i = 0;
+                    //                                                             i < selectedImagesEdit.length;
+                    //                                                             i++) {
+                    //                                                               imagepath =
+                    //                                                                   selectedImagesEdit[i]
+                    //                                                                       .path
+                    //                                                                       .toString();
+                    //                                                               File imagefile =
+                    //                                                               File(imagepath);
+                    //
+                    //                                                               Uint8List imagebytes =
+                    //                                                               await imagefile
+                    //                                                                   .readAsBytes(); //convert to bytes
+                    //                                                               base64string =
+                    //                                                                   base64.encode(
+                    //                                                                       imagebytes);
+                    //
+                    //                                                               //
+                    //
+                    //                                                               String dataImages =
+                    //                                                                   '{"name":"name","type":"binary","datas":"${base64string
+                    //                                                                   .toString()}"}';
+                    //
+                    //                                                               Map<String,
+                    //                                                                   dynamic> jsondata =
+                    //                                                               jsonDecode(dataImages);
+                    //                                                               myData1.add(jsondata);
+                    //                                                             }
+                    //
+                    //
+                    //
+                    //
+                    //                                                             int lognoteId  = logDataTitle[indexx][indexs]['id'];
+                    //                                                             String resMessage = await logNoteEditData(myData1,lognoteId);
+                    //
+                    //                                                             if(resMessage != 0){
+                    //
+                    //
+                    //                                                               lognoteEditController.text= "";
+                    //                                                               selectedImagesEdit.clear();
+                    //                                                               myData1.clear();
+                    //                                                               selectedItemIndex = -1;
+                    //                                                               postProvider?.fetchPosts(widget.customerId);
+                    //                                                               delayMethod();
+                    //
+                    //                                                             };
+                    //                                                           }
+                    //                                                       ),
+                    //                                                       // TextButton(onPressed:(){}, child: Text("save")),
+                    //                                                     ],
+                    //                                                   ),
+                    //                                                 )
+                    //                                               ],
+                    //                                             ),
+                    //                                           ),
+                    //                                         ):
+                    //                                         Container(
+                    //                                             width:20,
+                    //                                             height:20,
+                    //                                             child: CircularProgressIndicator()),
+                    //
+                    //
+                    //                                         Container(
+                    //
+                    //                                           margin: EdgeInsets.only(top: 25,left: 24,right: 24),
+                    //                                           //width: 350,
+                    //                                           width:mediaQueryData.size.width,
+                    //                                           //color:Colors.red,
+                    //                                           // height: 450,
+                    //                                           child: Column(
+                    //                                             crossAxisAlignment: CrossAxisAlignment
+                    //                                                 .start,
+                    //                                             children: [
+                    //
+                    //                                               selectedImagesDisplay.length == 0 ?
+                    //                                               Container() :
+                    //                                               Column(
+                    //                                                 children: [
+                    //                                                   Container(
+                    //                                                     width:mediaQueryData
+                    //                                                         .size
+                    //                                                         .width,
+                    //                                                     child: logattachmentImagesDisplay
+                    //                                                         .length > 0 ? GridView
+                    //                                                         .builder(
+                    //                                                         shrinkWrap: true,
+                    //                                                         // Avoid scrolling
+                    //                                                         physics: NeverScrollableScrollPhysics(),
+                    //                                                         itemCount: logattachmentImagesDisplay
+                    //                                                             .length,
+                    //                                                         // itemCount: 15,
+                    //                                                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //                                                           crossAxisCount: 4,
+                    //                                                           mainAxisSpacing: 1.0,
+                    //                                                           crossAxisSpacing: 1.0,
+                    //                                                           childAspectRatio: 1,
+                    //                                                         ),
+                    //                                                         itemBuilder: (
+                    //                                                             BuildContext context,
+                    //                                                             int index) {
+                    //                                                           print(
+                    //                                                               logattachmentImagesDisplay[index]["datas"]);
+                    //                                                           print(
+                    //                                                               "selectedImagesDisplay.length,");
+                    //                                                           return Container(
+                    //
+                    //                                                             margin: EdgeInsets
+                    //                                                                 .fromLTRB(
+                    //                                                                 10, 0, 2, 0),
+                    //                                                             width: 80,
+                    //                                                             height: double.infinity,
+                    //                                                             child: Stack(
+                    //                                                               children: [
+                    //                                                                 Positioned(
+                    //                                                                   // rectangle4756kQ (1652:322)
+                    //                                                                   left: 0,
+                    //                                                                   top: 6,
+                    //                                                                   child: Align(
+                    //                                                                     child: SizedBox(
+                    //                                                                       width: 75,
+                    //                                                                       height: 71,
+                    //                                                                       child: Container(
+                    //                                                                         decoration: BoxDecoration(
+                    //                                                                           borderRadius: BorderRadius
+                    //                                                                               .circular(
+                    //                                                                               3),
+                    //                                                                           // color: Color(
+                    //                                                                           //     0xffd9d9d9),
+                    //                                                                           image: DecorationImage(
+                    //                                                                             fit: BoxFit
+                    //                                                                                 .cover,
+                    //                                                                             image: NetworkImage(
+                    //                                                                                 logattachmentImagesDisplay[index]["datas"]
+                    //                                                                             ),
+                    //                                                                           ),
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                 ),
+                    //                                                                 Positioned(
+                    //                                                                   // group20514mrY (1652:323)
+                    //                                                                   left: 60,
+                    //                                                                   top: 0,
+                    //                                                                   child: Align(
+                    //                                                                     child: SizedBox(
+                    //                                                                       width: 20,
+                    //                                                                       height: 20,
+                    //                                                                       child: Image
+                    //                                                                           .asset(
+                    //                                                                         'images/logimagedelete.png',
+                    //                                                                         width: 20,
+                    //                                                                         height: 20,
+                    //                                                                       ),
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                 ),
+                    //                                                                 Positioned(
+                    //                                                                   // trash2G2c (1652:325)
+                    //                                                                   left: 65,
+                    //                                                                   top: 5,
+                    //                                                                   child: Align(
+                    //                                                                     child: InkWell(
+                    //                                                                       onTap: () async {
+                    //                                                                         int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['images'][index]["id"];
+                    //                                                                         var data = await deleteLogAttachment(
+                    //                                                                             lodAttachmentId);
+                    //
+                    //                                                                         if (data['message'] ==
+                    //                                                                             "Success") {
+                    //                                                                           print(
+                    //                                                                               "jhbdndsjbv");
+                    //                                                                           // await getLeadDetails();
+                    //                                                                           // setState(() {
+                    //                                                                           //   logDataHeader
+                    //                                                                           //       .clear();
+                    //                                                                           //   logDataTitle
+                    //                                                                           //       .clear();
+                    //                                                                           //   selectedImagesDisplay
+                    //                                                                           //       .clear();
+                    //                                                                           // });
+                    //                                                                           postProvider?.fetchPosts(widget.customerId);
+                    //                                                                         }
+                    //                                                                       },
+                    //                                                                       child: SizedBox(
+                    //                                                                         width: 9,
+                    //                                                                         height: 10,
+                    //                                                                         child: Image
+                    //                                                                             .asset(
+                    //                                                                           'images/logtrash.png',
+                    //                                                                           width: 9,
+                    //                                                                           height: 10,
+                    //                                                                         ),
+                    //                                                                       ),
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                 ),
+                    //
+                    //
+                    //                                                               ],
+                    //                                                             ),
+                    //                                                           );
+                    //                                                         }
+                    //                                                     ) :
+                    //                                                     Container(),
+                    //                                                   ),
+                    //
+                    //                                                   SizedBox(height: 5),
+                    //                                                   Container(
+                    //                                                     width:
+                    //                                                     mediaQueryData
+                    //                                                         .size
+                    //                                                         .width,
+                    //                                                     child: logattachmentFileDisplay
+                    //                                                         .length > 0 ? GridView
+                    //                                                         .builder(
+                    //                                                         shrinkWrap: true,
+                    //                                                         // Avoid scrolling
+                    //                                                         physics: NeverScrollableScrollPhysics(),
+                    //                                                         itemCount: logattachmentFileDisplay
+                    //                                                             .length,
+                    //                                                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //                                                           crossAxisCount: 1,
+                    //                                                           //mainAxisSpacing: 5.0,
+                    //                                                           crossAxisSpacing: 1.0,
+                    //                                                           childAspectRatio: 5.5,
+                    //                                                         ),
+                    //                                                         itemBuilder: (
+                    //                                                             BuildContext context,
+                    //                                                             int index) {
+                    //                                                           return
+                    //                                                             Container(
+                    //                                                               margin: EdgeInsets
+                    //                                                                   .fromLTRB(
+                    //                                                                   10, 0, 0, 2),
+                    //                                                               // group20585QEc (1652:502)
+                    //                                                               width: double.infinity,
+                    //                                                               child: Column(
+                    //                                                                 crossAxisAlignment: CrossAxisAlignment
+                    //                                                                     .center,
+                    //                                                                 children: [
+                    //                                                                   Container(
+                    //                                                                     // group20565Yrc (1652:364)
+                    //                                                                     padding: EdgeInsets
+                    //                                                                         .fromLTRB(
+                    //                                                                         14, 11, 18,
+                    //                                                                         9),
+                    //                                                                     width: double
+                    //                                                                         .infinity,
+                    //                                                                     height: 52,
+                    //                                                                     decoration: BoxDecoration(
+                    //                                                                       border: Border
+                    //                                                                           .all(
+                    //                                                                           color: Color(
+                    //                                                                               0xffebebeb)),
+                    //                                                                       borderRadius: BorderRadius
+                    //                                                                           .circular(
+                    //                                                                           6),
+                    //                                                                     ),
+                    //                                                                     child: Row(
+                    //                                                                       crossAxisAlignment: CrossAxisAlignment
+                    //                                                                           .center,
+                    //                                                                       children: [
+                    //                                                                         Container(
+                    //                                                                           // pdffile21FW8 (1652:378)
+                    //                                                                           margin: EdgeInsets
+                    //                                                                               .fromLTRB(
+                    //                                                                               0, 0,
+                    //                                                                               12, 0),
+                    //                                                                           width: 23,
+                    //                                                                           height: 29,
+                    //                                                                           child: Image
+                    //                                                                               .asset(
+                    //                                                                             logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                 "application/pdf"
+                    //                                                                                 ? 'images/logpdf.png'
+                    //                                                                                 : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                 "application/msword"
+                    //                                                                                 ? 'images/logword.png'
+                    //                                                                                 : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    //                                                                                 ? 'images/logexcel.png'
+                    //                                                                                 : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                 "application/xml"
+                    //                                                                                 ? 'images/logxml.png'
+                    //                                                                                 : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                 "application/zip"
+                    //                                                                                 ? 'images/logzip.png'
+                    //                                                                                 : '',
+                    //
+                    //
+                    //                                                                             width: 23,
+                    //                                                                             height: 29,
+                    //                                                                           ),
+                    //                                                                         ),
+                    //                                                                         Container(
+                    //
+                    //                                                                           width:mediaQueryData
+                    //                                                                               .size
+                    //                                                                               .width /
+                    //                                                                               2,
+                    //                                                                           //height: double.infinity,
+                    //                                                                           child: Stack(
+                    //                                                                             children: [
+                    //                                                                               Positioned(
+                    //                                                                                 // pdfnamearea1tc (1652:376)
+                    //                                                                                 left: 0,
+                    //                                                                                 top: 00,
+                    //                                                                                 child: Align(
+                    //                                                                                   child: SizedBox(
+                    //                                                                                     width:mediaQueryData
+                    //                                                                                         .size
+                    //                                                                                         .width /
+                    //                                                                                         2,
+                    //                                                                                     child: Text(
+                    //                                                                                       logattachmentFileDisplay[index]["name"],
+                    //                                                                                       style: TextStyle(
+                    //                                                                                         fontFamily: 'Mulish',
+                    //                                                                                         fontSize: 12,
+                    //                                                                                         fontWeight: FontWeight
+                    //                                                                                             .w600,
+                    //                                                                                         color: Color(
+                    //                                                                                             0xff202020),
+                    //                                                                                       ),
+                    //                                                                                     ),
+                    //                                                                                   ),
+                    //                                                                                 ),
+                    //                                                                               ),
+                    //                                                                               Positioned(
+                    //                                                                                 // pdfuDJ (1652:377)
+                    //                                                                                 left: 0,
+                    //                                                                                 top: 18,
+                    //                                                                                 child: Align(
+                    //                                                                                   child: SizedBox(
+                    //                                                                                     width: 50,
+                    //                                                                                     // height: 15,
+                    //                                                                                     child: Text(
+                    //                                                                                       logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                           "application/pdf"
+                    //                                                                                           ?
+                    //                                                                                       "PDF"
+                    //                                                                                           : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                           "application/msword"
+                    //                                                                                           ?
+                    //                                                                                       "WORD"
+                    //                                                                                           : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    //                                                                                           ?
+                    //                                                                                       "EXCEL"
+                    //                                                                                           : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                           "application/xml"
+                    //                                                                                           ?
+                    //                                                                                       "XML"
+                    //                                                                                           : logattachmentFileDisplay[index]["mimetype"] ==
+                    //                                                                                           "application/zip"
+                    //                                                                                           ?
+                    //                                                                                       "ZIP"
+                    //                                                                                           : "",
+                    //
+                    //                                                                                       style: TextStyle(
+                    //                                                                                         fontFamily: 'Mulish',
+                    //                                                                                         fontSize: 9,
+                    //                                                                                         fontWeight: FontWeight
+                    //                                                                                             .w500,
+                    //
+                    //                                                                                         color: Color(
+                    //                                                                                             0xff666666),
+                    //                                                                                       ),
+                    //                                                                                     ),
+                    //                                                                                   ),
+                    //                                                                                 ),
+                    //                                                                               ),
+                    //                                                                             ],
+                    //                                                                           ),
+                    //                                                                         ),
+                    //                                                                         Spacer(),
+                    //                                                                         Container(
+                    //
+                    //                                                                           child: InkWell(
+                    //                                                                             child: Container(
+                    //                                                                               // trash2Qvk (1652:366)
+                    //                                                                               margin: EdgeInsets
+                    //                                                                                   .fromLTRB(
+                    //                                                                                   0,
+                    //                                                                                   0,
+                    //                                                                                   15,
+                    //                                                                                   1),
+                    //                                                                               width: 15,
+                    //                                                                               height: 16,
+                    //                                                                               child: Image
+                    //                                                                                   .asset(
+                    //                                                                                 'images/logtrash.png',
+                    //                                                                                 width: 15,
+                    //                                                                                 height: 16,
+                    //                                                                               ),
+                    //                                                                             ),
+                    //                                                                             onTap: () async {
+                    //                                                                               int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
+                    //                                                                               var data = await deleteLogAttachment(
+                    //                                                                                   lodAttachmentId);
+                    //
+                    //                                                                               if (data['message'] ==
+                    //                                                                                   "Success") {
+                    //                                                                                 print(
+                    //                                                                                     "jhbdndsjbv");
+                    //                                                                                 // await getLeadDetails();
+                    //                                                                                 // setState(() {
+                    //                                                                                 //   logDataHeader
+                    //                                                                                 //       .clear();
+                    //                                                                                 //   logDataTitle
+                    //                                                                                 //       .clear();
+                    //                                                                                 //   selectedImagesDisplay
+                    //                                                                                 //       .clear();
+                    //                                                                                 // });
+                    //                                                                                 postProvider?.fetchPosts(widget.customerId);
+                    //                                                                               }
+                    //                                                                             },
+                    //                                                                           ),
+                    //                                                                         ),
+                    //                                                                         Container(
+                    //                                                                           child: InkWell(
+                    //                                                                             child: Container(
+                    //                                                                               // download6oa (1652:371)
+                    //                                                                               margin: EdgeInsets
+                    //                                                                                   .fromLTRB(
+                    //                                                                                   0,
+                    //                                                                                   0,
+                    //                                                                                   0,
+                    //                                                                                   2),
+                    //                                                                               width: 14,
+                    //                                                                               height: 14,
+                    //                                                                               child: Image
+                    //                                                                                   .asset(
+                    //                                                                                 'images/logdownload.png',
+                    //                                                                                 width: 14,
+                    //                                                                                 height: 14,
+                    //                                                                               ),
+                    //                                                                             ),
+                    //                                                                             onTap: () {
+                    //                                                                               String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
+                    //                                                                               //String mimetypes = "application/pdf";
+                    //
+                    //                                                                               String itemName,
+                    //                                                                                   itemNamefinal;
+                    //
+                    //                                                                               itemName =
+                    //                                                                               logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
+                    //
+                    //                                                                               mimetypes ==
+                    //                                                                                   "application/pdf"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.pdf"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "application/msword"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.doc"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.xlsx"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "application/xml"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.xml"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "application/zip"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.zip"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "image/jpeg"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.jpeg"
+                    //                                                                                   : mimetypes ==
+                    //                                                                                   "image/png"
+                    //                                                                                   ?
+                    //                                                                               itemNamefinal =
+                    //                                                                               "${itemName}.png"
+                    //                                                                                   : itemNamefinal =
+                    //                                                                               "${itemName}";
+                    //
+                    //                                                                               print(
+                    //                                                                                   index);
+                    //
+                    //                                                                               print(
+                    //                                                                                   logattachmentFileDisplay);
+                    //
+                    //                                                                               print(
+                    //                                                                                   itemNamefinal);
+                    //                                                                               print(
+                    //                                                                                   mimetypes);
+                    //                                                                               print(
+                    //                                                                                   "final print dataaa");
+                    //
+                    //                                                                               FlutterDownloader
+                    //                                                                                   .registerCallback(
+                    //                                                                                   downloadCallback);
+                    //
+                    //                                                                               requestPermission(
+                    //                                                                                   itemNamefinal,
+                    //                                                                                   logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
+                    //                                                                               postProvider?.fetchPosts(widget.customerId);
+                    //
+                    //                                                                             },
+                    //                                                                           ),
+                    //                                                                         ),
+                    //                                                                       ],
+                    //                                                                     ),
+                    //                                                                   ),
+                    //                                                                   SizedBox(
+                    //                                                                     height: 9,
+                    //                                                                   ),
+                    //
+                    //
+                    //                                                                 ],
+                    //                                                               ),
+                    //                                                             );
+                    //                                                         }
+                    //                                                     ) :
+                    //                                                     Container(),
+                    //                                                   ),
+                    //
+                    //                                                 ],
+                    //                                               ),
+                    //                                               emojiSet.length > 0 ?
+                    //                                               Container(
+                    //                                                 width:mediaQueryData
+                    //                                                     .size
+                    //                                                     .width,
+                    //
+                    //                                                 child: GridView.builder(
+                    //                                                     shrinkWrap: true,
+                    //                                                     // Avoid scrolling
+                    //                                                     physics: NeverScrollableScrollPhysics(),
+                    //                                                     itemCount: emojiSet.length,
+                    //                                                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    //                                                       crossAxisCount: 6,
+                    //                                                       mainAxisSpacing: 5.0,
+                    //                                                       crossAxisSpacing: 5.0,
+                    //                                                       childAspectRatio: 2.1,
+                    //                                                     ),
+                    //                                                     itemBuilder: (
+                    //                                                         BuildContext context,
+                    //                                                         int index) {
+                    //                                                       return InkWell(
+                    //
+                    //                                                           child: Container(
+                    //
+                    //                                                             margin: EdgeInsets
+                    //                                                                 .fromLTRB(
+                    //                                                                 10, 0, 0, 2),
+                    //                                                             // width: 40,
+                    //                                                             height: 15,
+                    //                                                             decoration: BoxDecoration(
+                    //                                                                 color: Colors.white,
+                    //                                                                 borderRadius: BorderRadius
+                    //                                                                     .all(
+                    //                                                                     Radius.circular(
+                    //                                                                         3)),
+                    //                                                                 border: Border.all(
+                    //                                                                     color: Color(
+                    //                                                                         0XFFEBEBEB),
+                    //
+                    //                                                                     width: 1)),
+                    //                                                             // color: Colors.red,
+                    //                                                             child: Row(
+                    //
+                    //                                                               children: [
+                    //                                                                 Padding(
+                    //                                                                   padding: const EdgeInsets
+                    //                                                                       .only(left: 5),
+                    //                                                                   child: Container(
+                    //                                                                     // width:18,
+                    //                                                                       height: 19,
+                    //                                                                       child: Text(
+                    //                                                                           emojiSet[index]['emoji'])),
+                    //                                                                 ),
+                    //                                                                 SizedBox(width: 3),
+                    //
+                    //                                                                 Text(
+                    //                                                                   emojiSet[index]['count']
+                    //                                                                       .toString(),
+                    //                                                                   style: TextStyle(
+                    //                                                                       fontSize: 10
+                    //                                                                   ),),
+                    //                                                               ],
+                    //                                                             ),
+                    //                                                           ),
+                    //                                                           onTap: () async {
+                    //                                                             var data = await deleteEmoji(
+                    //                                                                 emojiSet[index]['emoji'],
+                    //                                                                 logDataTitle[indexx][indexs]['id']);
+                    //
+                    //                                                             if (data['result']['message'] ==
+                    //                                                                 "success") {
+                    //                                                               postProvider?.fetchPosts(widget.customerId);
+                    //
+                    //                                                             }
+                    //                                                           }
+                    //                                                       );
+                    //                                                     }
+                    //                                                 ),
+                    //                                               ) :
+                    //                                               Container(),
+                    //                                             ],
+                    //                                           ),
+                    //                                         ),
+                    //
+                    //                                       ],
+                    //                                     ),
+                    //                                   );
+                    //                                 })
+                    //                           ],
+                    //                         );
+                    //                       });
+                    //
+                    //                 } );
+                    //
+                    //
+                    //
+                    //           } else {
+                    //             return Container();
+                    //           }
+                    //         }
+                    //
+                    //       }
+                    //
+                    //
+                    //       return Center(
+                    //           child: const CircularProgressIndicator());
+                    //
+                    //
+                    //     }),
 
-                          if (snapshot.connectionState == ConnectionState.waiting) {
 
-                            return Center(child: CircularProgressIndicator());
-                          }
-                          else {
+                                        postProvider?.posts != null?
+                    Consumer<PostProvidercustomer>(
+                        builder: (mcontext, provider, child) {
 
-                            if (snapshot.hasError) {
+                          return   ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: postProvider?.posts.length ?? 0,
+                            itemBuilder: (BuildContext context, int index) {
+                              var entry = postProvider?.posts.entries.elementAt(index);
 
-                              return Center(child: Text('Error: ${snapshot.error}'));
-                            }
-                            else{
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 0, bottom: 0),
+                                    child: Container(
+                                      width:mediaQueryData
+                                          .size
+                                          .width,
+                                      height: 42,
+                                      color: Color(0xff3D418E),
+                                      child: Center(
+                                          child: Text(entry.key,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12,
+                                                fontFamily: 'Mulish',
+                                                color: Colors.white),
 
-                              if (postProvider?.posts.length != 0) {
+                                          )),
+                                    ),
+                                  ),
 
-
-
-                                return Consumer<PostProvidercustomer>(
-                                    builder: (mcontext, provider, child) {
-
-                                      logDataHeader.clear();
-                                      logDataTitle.clear();
-                                      if (provider != null ) {
-                                        var postss = provider.posts;
-                                        if(postss!=null){
-                                          postss.forEach((key, value) {
-                                            logDataHeader.add(key);
-                                            logDataTitle.add(value);
-
-
-                                          } );
-
-                                        }
-                                      }
-                                      print("ddd1.lengthtest2");
-
-                                      return ListView.builder(
-                                          scrollDirection: Axis.vertical,
-                                          physics: NeverScrollableScrollPhysics(),
-                                          shrinkWrap: true,
-                                          itemCount: logDataHeader.length,
-                                          itemBuilder:
-                                              (BuildContext context, int indexx) {
-                                            return Column(
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      top: 0, bottom: 0),
-                                                  child: Container(
-                                                    width:mediaQueryData
-                                                        .size
-                                                        .width,
-                                                    height: 42,
-                                                    color: Color(0xff3D418E),
-                                                    child: Center(
-                                                        child: Text(
-                                                          logDataHeader[indexx],
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.w700,
-                                                              fontSize: 12,
-                                                              fontFamily: 'Mulish',
-                                                              color: Colors.white),
-
-                                                        )),
-                                                  ),
-                                                ),
-                                                ListView.builder(
-                                                    scrollDirection: Axis.vertical,
-                                                    physics:
-                                                    NeverScrollableScrollPhysics(),
-                                                    shrinkWrap: true,
-                                                    itemCount:
-                                                    logDataTitle[indexx].length,
-                                                    itemBuilder:
-                                                        (BuildContext context,
-                                                        int indexs) {
-                                                      selectedImagesDisplay =
-                                                      logDataTitle[indexx][indexs]
-                                                      ['attachment_ids'];
-
-                                                      if (selectedImagesDisplay.length != 0) {
-                                                        logattachmentImagesDisplay =
-                                                        selectedImagesDisplay['images'];
-                                                        logattachmentFileDisplay =
-                                                        selectedImagesDisplay['files'];
-                                                      }
-
-                                                      print(logDataTitle[indexx]
-                                                      [indexs]['attachment_ids']);
-
-                                                      print(logDataTitle[indexx]
-                                                      [indexs]['reaction_ids']);
-                                                      print("hjvdbjsbdv");
+                                  Column(
+                                    children: entry.value.map<Widget>((item) {
+                                      return
+                                        ListView.builder(
+                                            scrollDirection: Axis.vertical,
+                                            physics:
+                                            NeverScrollableScrollPhysics(),
+                                            shrinkWrap: true,
+                                            itemCount:
+                                            entry.key[index].length,
+                                            itemBuilder:
+                                                (BuildContext context,
+                                                int indexs) {
+                                              print(indexs);
+                                              print(entry.value.length);
+                                              print("logitemss");
+                                              print(item['body']);
+                                              print( item['attachment_ids']);
 
 
-                                                      List emojiSet =
-                                                      logDataTitle[indexx][indexs]
-                                                      ['reaction_ids'];
+                                              selectedImagesDisplay =
+                                              item['attachment_ids'];
 
-                                                      if (emojiSet.length > 0) {
-                                                        print(emojiSet[0]['emoji']);
-                                                        print(emojiSet[0]['count']);
-                                                        print("fsvdsvdvdv");
-                                                      }
 
-                                                      print(emojiSet);
-                                                      print("various hbfuhebin");
-                                                      print(logDataTitle[indexx][indexs]
-                                                      ['reaction_ids']);
-                                                      print("hbfuhebin");
+                                              if (selectedImagesDisplay.length != 0) {
+                                                logattachmentImagesDisplay =
+                                                selectedImagesDisplay['images'];
+                                                logattachmentFileDisplay =
+                                                selectedImagesDisplay['files'];
+                                              }
 
-                                                      print("selectedImagesDisplaysss");
+                                              print(item['attachment_ids']);
 
-                                                      starImage = logDataTitle[indexx]
-                                                      [indexs]['starred'] ??
-                                                          false;
-                                                      lognoteoptions =
-                                                          logDataTitle[indexx][indexs]
-                                                          ['is_editable'] ??
-                                                              true;
+                                              print(item['reaction_ids']);
+                                              print("hjvdbjsbdv");
 
-                                                      print(logDataTitle[indexx]
-                                                      [indexs]['is_editable']);
 
-                                                      print('is_editable');
+                                              List emojiSet =
+                                              item
+                                              ['reaction_ids'];
 
-                                                      logDataTitle[indexx][indexs]
-                                                      ['icon'] ==
-                                                          "envelope"
-                                                          ? logNoteIcon = const Icon(
-                                                        Icons.email,
-                                                        color: Colors.red,
-                                                        size: 15,
-                                                      )
-                                                          : logDataTitle[indexx]
-                                                      [indexs]
-                                                      ['icon'] ==
-                                                          "ad_units"
-                                                          ? logNoteIcon = Icon(
-                                                        Icons.phone,
-                                                        color: Colors.red,
-                                                        size: 15,
-                                                      )
-                                                          : logDataTitle[indexx]
-                                                      [indexs]
-                                                      ['icon'] ==
-                                                          "telegram"
-                                                          ? logNoteIcon =
-                                                          Icon(
-                                                            Icons.telegram,
-                                                            color:
-                                                            Colors.red,
-                                                            size: 15,
-                                                          )
-                                                          : Icon(
-                                                        Icons.circle,
-                                                        color: Colors
-                                                            .white,
-                                                        size: 8,
-                                                      );
+                                              if (emojiSet.length > 0) {
+                                                print(emojiSet[0]['emoji']);
+                                                print(emojiSet[0]['count']);
+                                                print("fsvdsvdvdv");
+                                              }
 
-                                                      return Card(
-                                                        elevation: 1,
-                                                        child: Column(
-                                                          // crossAxisAlignment: CrossAxisAlignment.center,
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Container(
-                                                              margin: EdgeInsets.only(top: 10,left: 24,right: 24),
-                                                              //width: 340,
-                                                              width:mediaQueryData
-                                                                  .size
-                                                                  .width,
-                                                              //height:80,
-                                                              //  color: Colors.yellow,
+                                              print(emojiSet);
+                                              print("various hbfuhebin");
+                                              print(  item
+                                              ['reaction_ids']);
+                                              print("hbfuhebin");
+
+                                              print("selectedImagesDisplaysss");
+
+                                              starImage = item['starred'] ??
+                                                  false;
+                                              lognoteoptions =
+                                                  item
+                                                  ['is_editable'] ??
+                                                      true;
+
+                                              print( item['is_editable']);
+
+                                              print('is_editable');
+
+                                              item
+                                              ['icon'] ==
+                                                  "envelope"
+                                                  ? logNoteIcon = const Icon(
+                                                Icons.email,
+                                                color: Colors.red,
+                                                size: 15,
+                                              )
+                                                  : item
+                                              ['icon'] ==
+                                                  "ad_units"
+                                                  ? logNoteIcon = Icon(
+                                                Icons.phone,
+                                                color: Colors.red,
+                                                size: 15,
+                                              )
+                                                  : item
+                                              ['icon'] ==
+                                                  "telegram"
+                                                  ? logNoteIcon =
+                                                  Icon(
+                                                    Icons.telegram,
+                                                    color:
+                                                    Colors.red,
+                                                    size: 15,
+                                                  )
+                                                  : Icon(
+                                                Icons.circle,
+                                                color: Colors
+                                                    .white,
+                                                size: 8,
+                                              );
+
+                                              return Card(
+                                                elevation: 1,
+                                                child: Column(
+                                                  // crossAxisAlignment: CrossAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin: EdgeInsets.only(top: 10,left: 24,right: 24),
+                                                      width:mediaQueryData
+                                                          .size
+                                                          .width,
+                                                      //height:80,
+                                                      //  color: Colors.yellow,
+                                                      child: Row(
+                                                        crossAxisAlignment: CrossAxisAlignment
+                                                            .start,
+
+                                                        children: [
+                                                          Container(
+                                                            // group20507jZA (1636:7)
+                                                            padding: EdgeInsets.fromLTRB(
+                                                                25, 27, 3, 0),
+                                                            width: 35,
+                                                            height: 35,
+                                                            decoration: BoxDecoration(
+
+                                                              borderRadius: BorderRadius.circular(
+                                                                  17.5),
+                                                              image: DecorationImage(
+                                                                fit: BoxFit.cover,
+                                                                image: NetworkImage(
+                                                                    "${  item['image']}?token=${token}"),
+                                                              ),
+                                                            ),
+                                                            child: Align(
+                                                              // ellipse123qs6 (1636:32)
+                                                              alignment: Alignment.bottomRight,
+                                                              child: SizedBox(
+                                                                width: double.infinity,
+                                                                height: 7,
+                                                                child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                    borderRadius: BorderRadius
+                                                                        .circular(3),
+                                                                    border: Border.all(
+                                                                        color: Color(0xffffffff)),
+                                                                    color: Color(0xff167b33),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Expanded(
+                                                            child: Container(
+
+                                                              // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
+                                                              padding: EdgeInsets.fromLTRB(
+                                                                  19, 2, 2, 2),
+
                                                               child: Row(
                                                                 crossAxisAlignment: CrossAxisAlignment
                                                                     .start,
-
                                                                 children: [
-                                                                  Container(
-                                                                    // group20507jZA (1636:7)
-                                                                    padding: EdgeInsets.fromLTRB(
-                                                                        25, 27, 3, 0),
-                                                                    width: 35,
-                                                                    height: 35,
-                                                                    decoration: BoxDecoration(
+                                                                  Expanded(
+                                                                    flex: 3,
+                                                                    child: Container(
+                                                                      //  color: Colors.blue,
+                                                                      margin: EdgeInsets.fromLTRB(
+                                                                          0, 0, 20, 0),
+                                                                      // height: double.infinity,
+                                                                      child: Column(
+                                                                        crossAxisAlignment: CrossAxisAlignment
+                                                                            .start,
+                                                                        mainAxisAlignment: MainAxisAlignment
+                                                                            .start,
+                                                                        children: [
+                                                                          Container(
+                                                                            // color:Colors.red,
 
-                                                                      borderRadius: BorderRadius.circular(
-                                                                          17.5),
-                                                                      image: DecorationImage(
-                                                                        fit: BoxFit.cover,
-                                                                        image: NetworkImage(
-                                                                            "${logDataTitle[indexx][indexs]['image']}?token=${token}"),
-                                                                      ),
-                                                                    ),
-                                                                    child: Align(
-                                                                      // ellipse123qs6 (1636:32)
-                                                                      alignment: Alignment.bottomRight,
-                                                                      child: SizedBox(
-                                                                        width: double.infinity,
-                                                                        height: 7,
-                                                                        child: Container(
-                                                                          decoration: BoxDecoration(
-                                                                            borderRadius: BorderRadius
-                                                                                .circular(3),
-                                                                            border: Border.all(
-                                                                                color: Color(0xffffffff)),
-                                                                            color: Color(0xff167b33),
+                                                                            margin: EdgeInsets
+                                                                                .fromLTRB(
+                                                                                0, 0, 0, 2),
+                                                                            child: RichText(
+                                                                              text: TextSpan(
+                                                                                style: TextStyle(
+                                                                                  fontFamily: 'Mulish',
+                                                                                  fontSize: 12,
+                                                                                  fontWeight: FontWeight
+                                                                                      .w700,
+                                                                                  height: 0,
+                                                                                  color: Color(
+                                                                                      0xff000000),
+                                                                                ),
+                                                                                children: [
+                                                                                  TextSpan(
+                                                                                    text:   item['create_uid'][1],
+                                                                                    style: TextStyle(
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight
+                                                                                          .w500,
+                                                                                      height: 1,
+                                                                                      color: Color(
+                                                                                          0xff000000),
+
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text: ' -',
+                                                                                    style: TextStyle(
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight
+                                                                                          .w500,
+                                                                                      height: 1,
+                                                                                      color: Color(
+                                                                                          0xffa29d9d),
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text: ' ',
+                                                                                    style: TextStyle(
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      fontWeight: FontWeight
+                                                                                          .w500,
+                                                                                      height: 1,
+                                                                                      color: Color(
+                                                                                          0xff000000),
+                                                                                    ),
+                                                                                  ),
+                                                                                  TextSpan(
+                                                                                    text:   item["period"],
+                                                                                    style: TextStyle(
+                                                                                      fontFamily: 'Mulish',
+                                                                                      fontSize: 9,
+                                                                                      fontWeight: FontWeight
+                                                                                          .w500,
+                                                                                      height: 1.5,
+                                                                                      color: Color(
+                                                                                          0xff948e8e),
+                                                                                    ),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            ),
                                                                           ),
-                                                                        ),
+                                                                          Container(
+                                                                            // color:Colors.pink,
+                                                                            //height:60,
+                                                                            child: Text(
+
+
+                                                                              removeHtmlTagsAndSpaces(
+                                                                                  item['body']
+                                                                                      .toString() ??
+                                                                                      ""),
+
+                                                                              // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
+                                                                              //     .toString() ??
+                                                                              //     "",
+                                                                              style: TextStyle(
+                                                                                fontFamily: 'Mulish',
+                                                                                fontSize: 9,
+                                                                                fontWeight: FontWeight
+                                                                                    .w600,
+                                                                                // height: 1.5,
+                                                                                color: Color(
+                                                                                    0xff787878),
+                                                                              ),
+
+                                                                            ),
+                                                                          ),
+
+
+                                                                        ],
                                                                       ),
                                                                     ),
                                                                   ),
+
                                                                   Expanded(
+                                                                    flex: 1,
                                                                     child: Container(
 
-                                                                      // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
-                                                                      padding: EdgeInsets.fromLTRB(
-                                                                          19, 2, 2, 2),
+                                                                      margin: EdgeInsets.fromLTRB(
+                                                                          0, 0, 0, 1),
+                                                                      width: 25,
+                                                                      height: 20,
+                                                                      child: Container(
+                                                                          child: logNoteIcon),
+                                                                    ),
+                                                                  ),
+                                                                  lognoteoptions == true
+                                                                      ? Expanded(
+                                                                    flex: 2,
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.all(
+                                                                          1.0),
+                                                                      decoration: BoxDecoration(
 
+                                                                        borderRadius: BorderRadius
+                                                                            .circular(5.0),
+                                                                        // Specifies rounded corners
+                                                                        border: Border.all(
+                                                                          color: Color(
+                                                                              0XFFD9D9D9),
+                                                                          // Border color
+
+                                                                          width: 1.0, // Border width
+                                                                        ),
+                                                                      ),
                                                                       child: Row(
-                                                                        crossAxisAlignment: CrossAxisAlignment
-                                                                            .start,
                                                                         children: [
+                                                                          SizedBox(width: 3,),
                                                                           Expanded(
-                                                                            flex: 3,
-                                                                            child: Container(
-                                                                              //  color: Colors.blue,
-                                                                              margin: EdgeInsets.fromLTRB(
-                                                                                  0, 0, 20, 0),
-                                                                              // height: double.infinity,
-                                                                              child: Column(
-                                                                                crossAxisAlignment: CrossAxisAlignment
-                                                                                    .start,
-                                                                                mainAxisAlignment: MainAxisAlignment
-                                                                                    .start,
-                                                                                children: [
-                                                                                  Container(
-                                                                                    // color:Colors.red,
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets
+                                                                                    .fromLTRB(
+                                                                                    0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'images/emoji6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
 
-                                                                                    margin: EdgeInsets
-                                                                                        .fromLTRB(
-                                                                                        0, 0, 0, 2),
-                                                                                    child: RichText(
-                                                                                      text: TextSpan(
-                                                                                        style: TextStyle(
-                                                                                          fontFamily: 'Mulish',
-                                                                                          fontSize: 12,
-                                                                                          fontWeight: FontWeight
-                                                                                              .w700,
-                                                                                          height: 0,
-                                                                                          color: Color(
-                                                                                              0xff000000),
+                                                                                ),
+                                                                              ),
+                                                                              onTap: () {
+                                                                                logDataIdEmoji =
+                                                                                item['id'];
+                                                                                showDialog(
+                                                                                  context: context,
+                                                                                  builder: (
+                                                                                      BuildContext context) =>
+                                                                                      _buildEmojiPopupDialog(
+                                                                                          mcontext),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Expanded(
+
+                                                                            child: StatefulBuilder(
+                                                                                builder: (
+                                                                                    BuildContext
+                                                                                    context,
+                                                                                    StateSetter
+                                                                                    setState) {
+                                                                                  return Container(
+                                                                                      margin: EdgeInsets
+                                                                                          .fromLTRB(
+                                                                                          0, 0, 0,
+                                                                                          1),
+                                                                                      width: 13,
+                                                                                      height: 13,
+                                                                                      child: starImage ==
+                                                                                          true
+                                                                                          ? InkWell(
+                                                                                        onTap: () async {
+                                                                                          try{
+                                                                                            int lodDataId =   item['id'];
+
+                                                                                            var data = await logStarChange(
+                                                                                                lodDataId,
+                                                                                                false);
+
+                                                                                            if (data['result']['message'] ==
+                                                                                                "success") {
+                                                                                              print(
+                                                                                                  "startrue");
+                                                                                              setState(() {
+                                                                                                starImage =
+                                                                                                false;
+                                                                                              });
+                                                                                            }
+                                                                                          }catch(e){
+                                                                                            errorMethod(e);
+                                                                                          }
+                                                                                        },
+                                                                                        child: SvgPicture
+                                                                                            .asset(
+                                                                                          'images/st3.svg',
+                                                                                          // 'assets/page-1/images/group-20576.png',
+
                                                                                         ),
-                                                                                        children: [
-                                                                                          TextSpan(
-                                                                                            text: logDataTitle[indexx][indexs]['create_uid'][1],
-                                                                                            style: TextStyle(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              fontSize: 11,
-                                                                                              fontWeight: FontWeight
-                                                                                                  .w500,
-                                                                                              height: 1,
-                                                                                              color: Color(
-                                                                                                  0xff000000),
+                                                                                      )
+                                                                                          : InkWell(
+                                                                                        onTap: () async {
+                                                                                          try{
+                                                                                            int lodDataId =   item['id'];
 
+                                                                                            var data = await logStarChange(
+                                                                                                lodDataId,
+                                                                                                true);
+
+                                                                                            if (data['result']['message'] ==
+                                                                                                "success") {
+                                                                                              print(
+                                                                                                  "starfalse");
+                                                                                              setState(() {
+                                                                                                starImage =
+                                                                                                true;
+                                                                                              });
+                                                                                            }
+                                                                                          }catch(e){
+                                                                                            errorMethod(e);
+                                                                                          }
+
+                                                                                        },
+                                                                                        child: SvgPicture
+                                                                                            .asset(
+                                                                                          'images/star6.svg',
+                                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                                        ),
+                                                                                      )
+                                                                                  );
+                                                                                }
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets
+                                                                                    .fromLTRB(
+                                                                                    0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                //color:Colors.red,
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'images/edit6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                                ),
+                                                                              ),
+                                                                              onTap: () {
+                                                                                int lodDataId =   item['id'];
+                                                                                String logdata =   item['body']
+                                                                                    .replaceAll(
+                                                                                    RegExp(
+                                                                                        r'<[^>]*>|&[^;]+;'),
+                                                                                    ' ') ?? "";
+                                                                                // Navigator.push(
+                                                                                //     context,
+                                                                                //     MaterialPageRoute(
+                                                                                //         builder: (
+                                                                                //             context) =>
+                                                                                //             LogNoteEdit(
+                                                                                //                 lodDataId,
+                                                                                //                 salesperImg!,
+                                                                                //                 token!,
+                                                                                //                 widget
+                                                                                //                     .opportunityId,
+                                                                                //                 logdata,
+                                                                                //                 "crm.lead")));
+
+                                                                                selectedItemIndex =  lodDataId;
+                                                                                lognoteEditController.text = logdata;
+                                                                                postProvider?.fetchPosts(widget.customerId);
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets
+                                                                                    .fromLTRB(
+                                                                                    0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'images/delete6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                                ),
+                                                                              ),
+                                                                              onTap: () async {
+                                                                                try{
+                                                                                  int lodDataId =   item['id'];
+                                                                                  var data = await deleteLogData(
+                                                                                      lodDataId);
+
+                                                                                  if (data['message'] ==
+                                                                                      "Success") {
+                                                                                    print("final11");
+                                                                                    postProvider?.fetchPosts(widget.customerId);
+                                                                                  }
+
+                                                                                }catch(e){
+                                                                                  errorMethod(e);
+                                                                                }
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 3,),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  )
+                                                                      :
+                                                                  Expanded(
+                                                                    flex: 1,
+                                                                    child: Container(
+                                                                      padding: EdgeInsets.all(
+                                                                          1.0),
+                                                                      decoration: BoxDecoration(
+                                                                        borderRadius: BorderRadius
+                                                                            .circular(5.0),
+                                                                        // Specifies rounded corners
+                                                                        border: Border.all(
+                                                                          color: Color(
+                                                                              0XFFD9D9D9),
+                                                                          // Border color
+                                                                          width: 1.0, // Border width
+                                                                        ),
+                                                                      ),
+                                                                      child: Row(
+                                                                        children: [
+                                                                          SizedBox(width: 3,),
+                                                                          Expanded(
+                                                                            child: InkWell(
+                                                                              child: Container(
+                                                                                margin: EdgeInsets
+                                                                                    .fromLTRB(
+                                                                                    0, 0, 0, 1),
+                                                                                width: 13,
+                                                                                height: 13,
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'images/emoji6.svg',
+                                                                                  // 'assets/page-1/images/group-20576.png',
+
+                                                                                ),
+                                                                              ),
+                                                                              onTap: () {
+                                                                                logDataIdEmoji =
+                                                                                item['id'];
+                                                                                showDialog(
+                                                                                  context: context,
+                                                                                  builder: (
+                                                                                      BuildContext context) =>
+                                                                                      _buildEmojiPopupDialog(
+                                                                                          mcontext),
+                                                                                );
+                                                                              },
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 5,),
+
+                                                                          Expanded(
+
+                                                                            child: StatefulBuilder(
+                                                                                builder: (
+                                                                                    BuildContext
+                                                                                    context,
+                                                                                    StateSetter
+                                                                                    setState) {
+                                                                                  return Container(
+                                                                                      margin: EdgeInsets
+                                                                                          .fromLTRB(
+                                                                                          0, 0, 0,
+                                                                                          1),
+                                                                                      width: 13,
+                                                                                      height: 13,
+                                                                                      child: starImage ==
+                                                                                          true
+                                                                                          ? InkWell(
+                                                                                        onTap: () async {
+                                                                                          try{
+                                                                                            int lodDataId =   item['id'];
+
+                                                                                            var data = await logStarChange(
+                                                                                                lodDataId,
+                                                                                                false);
+
+                                                                                            if (data['result']['message'] ==
+                                                                                                "success") {
+                                                                                              print(
+                                                                                                  "startrue");
+                                                                                              setState(() {
+                                                                                                starImage =
+                                                                                                false;
+                                                                                              });
+                                                                                            }
+                                                                                          }catch(e){
+                                                                                            errorMethod(e);
+                                                                                          }
+                                                                                        },
+                                                                                        child: SvgPicture
+                                                                                            .asset(
+                                                                                          'images/st3.svg',
+                                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                                        ),
+                                                                                      )
+                                                                                          : InkWell(
+                                                                                        onTap: () async {
+                                                                                          try{
+                                                                                            int lodDataId =   item['id'];
+
+                                                                                            var data = await logStarChange(
+                                                                                                lodDataId,
+                                                                                                true);
+
+                                                                                            if (data['result']['message'] ==
+                                                                                                "success") {
+                                                                                              print(
+                                                                                                  "starfalse");
+                                                                                              setState(() {
+                                                                                                starImage =
+                                                                                                true;
+                                                                                              });
+                                                                                            }
+                                                                                          }catch(e){
+                                                                                            errorMethod(e);
+                                                                                          }
+                                                                                        },
+                                                                                        child: SvgPicture
+                                                                                            .asset(
+                                                                                          'images/star6.svg',
+                                                                                          // 'assets/page-1/images/group-20576.png',
+
+                                                                                        ),
+                                                                                      )
+                                                                                  );
+                                                                                }
+                                                                            ),
+                                                                          ),
+                                                                          SizedBox(width: 3,),
+                                                                          // SizedBox(width: 5,),
+                                                                          //
+                                                                          // Visibility(
+                                                                          //   visible: lognoteoptions,
+                                                                          //
+                                                                          //   child: Expanded(
+                                                                          //     child: InkWell(
+                                                                          //       child: Container(
+                                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                          //         width: 13,
+                                                                          //         height: 13,
+                                                                          //         //color:Colors.red,
+                                                                          //         child: SvgPicture.asset(
+                                                                          //           'images/edit6.svg',
+                                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                                          //
+                                                                          //         ),
+                                                                          //       ),
+                                                                          //       onTap: (){
+                                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                          //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
+                                                                          //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                                                                          //
+                                                                          //       },
+                                                                          //     ),
+                                                                          //   ),
+                                                                          // ),
+                                                                          // SizedBox(width: 5,),
+                                                                          //
+                                                                          // Visibility(
+                                                                          //   visible: lognoteoptions,
+                                                                          //
+                                                                          //   child: Expanded(
+                                                                          //     child: InkWell(
+                                                                          //       child: Container(
+                                                                          //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
+                                                                          //         width: 13,
+                                                                          //         height: 13,
+                                                                          //         child: SvgPicture.asset(
+                                                                          //           'images/delete6.svg',
+                                                                          //           // 'assets/page-1/images/group-20576.png',
+                                                                          //
+                                                                          //         ),
+                                                                          //       ),
+                                                                          //       onTap: ()async{
+                                                                          //         int lodDataId = logDataTitle[indexx][indexs]['id'];
+                                                                          //         var data = await deleteLogData(lodDataId);
+                                                                          //
+                                                                          //         if (data['message'] == "Success") {
+                                                                          //           print("final11");
+                                                                          //           await getLeadDetails();
+                                                                          //           setState(() {
+                                                                          //             logDataHeader.clear();
+                                                                          //             logDataTitle.clear();
+                                                                          //             selectedImagesDisplay.clear();
+                                                                          //           });
+                                                                          //         }
+                                                                          //       },
+                                                                          //     ),
+                                                                          //   ),
+                                                                          // ),
+                                                                          // SizedBox(width: 3,),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+
+                                                    postProvider?.savefiles!=  item['id']?
+                                                    Visibility(
+                                                      visible:    item['id'] == selectedItemIndex?true:false,
+                                                      // visible: logDataTitle[indexx][indexs].lognoteEdit,
+                                                      child: Container(
+                                                        child: Column(
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.only(
+                                                                  left: 76, right: 25),
+                                                              child: Container(
+                                                                width: mediaQueryData
+                                                                    .size
+                                                                    .width ,
+
+                                                                // width:200,
+
+                                                                //height: 46,
+                                                                decoration: BoxDecoration(
+                                                                    borderRadius: BorderRadius.all(
+                                                                        Radius.circular(5)),
+                                                                    color: Color(0xFFF6F6F6),
+                                                                    border: Border.all(
+                                                                      color: Color(0xFFEBEBEB),
+                                                                    )),
+                                                                child: Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                  children: [
+                                                                    Container(
+                                                                      width:mediaQueryData
+                                                                          .size
+                                                                          .width /
+                                                                          1.92,
+
+                                                                      // width:300,
+                                                                      // height: 40,
+                                                                      //color: Colors.red,
+                                                                      child: Padding(
+                                                                        padding: const EdgeInsets
+                                                                            .only(
+                                                                            left: 10),
+                                                                        child:  Form(
+                                                                          key: CustomerDetail._editFormKey,
+                                                                          child:  TextField(
+                                                                              textAlignVertical:
+                                                                              TextAlignVertical
+                                                                                  .top,
+                                                                              style: TextStyle(
+                                                                                fontWeight: FontWeight
+                                                                                    .w400,
+                                                                                fontFamily: 'Mulish',
+                                                                                fontSize: 11,
+                                                                                color: Color(
+                                                                                    0xFF000000),
+                                                                              ),
+
+
+                                                                              maxLines: null,
+
+                                                                              // onChanged: (newValue) {
+                                                                              //   print("demodatatataadsaf");
+                                                                              //   // Handle text changes here if necessary
+                                                                              // },
+                                                                              controller:  lognoteEditController,
+
+                                                                              decoration:
+                                                                              const InputDecoration(
+                                                                                  border:
+                                                                                  InputBorder
+                                                                                      .none,
+                                                                                  hintText:
+                                                                                  "Send a message to followers",
+                                                                                  hintStyle: TextStyle(
+                                                                                    //fontFamily: "inter",
+                                                                                      fontWeight:
+                                                                                      FontWeight
+                                                                                          .w400,
+                                                                                      fontFamily:
+                                                                                      'Mulish',
+                                                                                      fontSize: 11,
+                                                                                      color: Color(
+                                                                                          0xFFAFAFAF)))),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .only(left: 10),
+                                                                      child: IconButton(
+                                                                          onPressed: (){
+                                                                            myAlert("lognoteEdit");
+                                                                            postProvider?.fetchPosts(widget.customerId);
+                                                                          },
+                                                                          icon: Image.asset("images/pi.png")
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+
+
+                                                            selectedImagesEdit.isEmpty
+                                                                ? Padding(
+                                                              padding: const EdgeInsets.only(left: 73),
+                                                              child: Container(
+                                                                width:
+                                                                mediaQueryData
+                                                                    .size
+                                                                    .width,
+                                                                //width:400,
+                                                                //height: 40,
+                                                                //color: Colors.red,
+                                                              ),
+                                                            )
+                                                                : Padding(
+                                                              padding: const EdgeInsets.only(
+                                                                  left: 70, right: 50, top: 5),
+                                                              child: Container(
+                                                                width:
+                                                                mediaQueryData
+                                                                    .size
+                                                                    .width,
+                                                                // width:400,
+                                                                // height: 40,
+                                                                child: Container(
+                                                                  width: 40,
+                                                                  //height: 40,
+                                                                  child: GridView.builder(
+                                                                    shrinkWrap: true,
+                                                                    // Avoid scrolling
+                                                                    physics:
+                                                                    NeverScrollableScrollPhysics(),
+                                                                    itemCount: selectedImagesEdit.length,
+                                                                    gridDelegate:
+                                                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                        crossAxisCount: 8),
+                                                                    itemBuilder: (BuildContext context,
+                                                                        int index) {
+                                                                      print("pdfffffffffff2");
+                                                                      return selectedImagesEdit[index]
+                                                                          .path
+                                                                          .contains(".pdf")
+                                                                          ? Container(
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        color: Color(0xFFEF5350),
+                                                                        child: Icon(Icons
+                                                                            .picture_as_pdf_sharp),
+                                                                      )
+                                                                          : selectedImagesEdit[index]
+                                                                          .path
+                                                                          .contains(".zip")
+                                                                          ? Container(
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        color:
+                                                                        Color(0xFFFDD835),
+                                                                        child: Icon(Icons
+                                                                            .folder_zip_outlined),
+                                                                      )
+                                                                          : selectedImagesEdit[index]
+                                                                          .path
+                                                                          .contains(".xlsx")
+                                                                          ? Container(
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        color: Color(
+                                                                            0xFF4CAF50),
+                                                                        child: Icon(
+                                                                            Icons.clear),
+                                                                      )
+                                                                          : selectedImagesEdit[
+                                                                      index]
+                                                                          .path
+                                                                          .contains(
+                                                                          ".xml")
+                                                                          ? Container(
+                                                                        width: 40,
+                                                                        height: 40,
+                                                                        color: Color(
+                                                                            0xFF0277BD),
+                                                                        child: Icon(Icons
+                                                                            .code_off),
+                                                                      )
+                                                                          : selectedImagesEdit[
+                                                                      index]
+                                                                          .path
+                                                                          .contains(
+                                                                          ".doc")
+                                                                          ? Container(
+                                                                        width: 40,
+                                                                        height:
+                                                                        40,
+                                                                        color: Color(
+                                                                            0xFF2196F3),
+                                                                        child: Icon(
+                                                                            Icons
+                                                                                .article_outlined),
+                                                                      )
+                                                                          : Center(
+                                                                          child: kIsWeb
+                                                                              ? Image.network(
+                                                                              selectedImagesEdit[index]
+                                                                                  .path)
+                                                                              : Image.file(
+                                                                              selectedImagesEdit[index]));
+                                                                    },
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+
+
+                                                            Padding(
+                                                              padding: const EdgeInsets.only(left:75),
+                                                              child: Row(
+                                                                children: [
+                                                                  Text("escape to",style: TextStyle(color: Colors.grey),),
+                                                                  InkWell(child: Container(child: Text("  cancel  ")),
+                                                                    onTap: (){
+                                                                      selectedItemIndex = -1;
+                                                                      lognoteEditController.text= "";
+                                                                      selectedImagesEdit.clear();
+                                                                      myData1.clear();
+                                                                      postProvider?.fetchPosts(widget.customerId);
+                                                                    },
+                                                                  ),
+                                                                  //TextButton(onPressed:(){}, child: Text("cancel")),
+                                                                  Text(","),
+                                                                  Text("  enter to",style: TextStyle(color: Colors.grey),),
+                                                                  InkWell(child: Container(child: Text("  save")),
+                                                                      // onTap:_isSavingData
+                                                                      //     ? null
+                                                                      onTap :()async{
+
+
+                                                                        int positionId=   item['id'];
+                                                                        postProvider?.fetchPosts1(positionId);
+
+
+
+                                                                        for (int i = 0;
+                                                                        i < selectedImagesEdit.length;
+                                                                        i++) {
+                                                                          imagepath =
+                                                                              selectedImagesEdit[i]
+                                                                                  .path
+                                                                                  .toString();
+                                                                          File imagefile =
+                                                                          File(imagepath);
+
+                                                                          Uint8List imagebytes =
+                                                                          await imagefile
+                                                                              .readAsBytes(); //convert to bytes
+                                                                          base64string =
+                                                                              base64.encode(
+                                                                                  imagebytes);
+
+                                                                          //
+
+                                                                          String dataImages =
+                                                                              '{"name":"name","type":"binary","datas":"${base64string
+                                                                              .toString()}"}';
+
+                                                                          Map<String,
+                                                                              dynamic> jsondata =
+                                                                          jsonDecode(dataImages);
+                                                                          myData1.add(jsondata);
+                                                                        }
+
+
+
+
+                                                                        int lognoteId  =   item['id'];
+                                                                        String resMessage = await logNoteEditData(myData1,lognoteId);
+
+                                                                        if(resMessage != 0){
+
+
+                                                                          lognoteEditController.text= "";
+                                                                          selectedImagesEdit.clear();
+                                                                          myData1.clear();
+                                                                          selectedItemIndex = -1;
+                                                                          postProvider?.fetchPosts(widget.customerId);
+
+                                                                          delayMethod();
+                                                                        };
+                                                                      }
+                                                                  ),
+                                                                  // TextButton(onPressed:(){}, child: Text("save")),
+                                                                ],
+                                                              ),
+                                                            )
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ):
+                                                    Container(
+                                                        width:20,
+                                                        height:20,
+                                                        child: CircularProgressIndicator()),
+
+
+
+                                                    Container(
+
+                                                      margin: EdgeInsets.only(top: 25,left: 24,right: 24),
+                                                      //width: 350,
+                                                      width:mediaQueryData.size.width,
+                                                      // color:Colors.red,
+                                                      // height: 450,
+                                                      child: Column(
+                                                        crossAxisAlignment: CrossAxisAlignment
+                                                            .start,
+                                                        children: [
+
+                                                          selectedImagesDisplay.length == 0 ?
+                                                          Container() :
+                                                          Column(
+                                                            children: [
+                                                              Container(
+                                                                // color: Colors.red,
+                                                                width:mediaQueryData
+                                                                    .size
+                                                                    .width,
+                                                                child: logattachmentImagesDisplay
+                                                                    .length > 0 ? GridView
+                                                                    .builder(
+                                                                    shrinkWrap: true,
+                                                                    // Avoid scrolling
+                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                    itemCount: logattachmentImagesDisplay
+                                                                        .length,
+                                                                    // itemCount: 15,
+                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                      crossAxisCount: 4,
+                                                                      mainAxisSpacing: 1.0,
+                                                                      crossAxisSpacing: 1.0,
+                                                                      childAspectRatio: 1,
+                                                                    ),
+                                                                    itemBuilder: (
+                                                                        BuildContext context,
+                                                                        int index) {
+                                                                      print(
+                                                                          logattachmentImagesDisplay[index]["datas"]);
+                                                                      print(
+                                                                          "selectedImagesDisplay.length,");
+                                                                      return Container(
+
+                                                                        margin: EdgeInsets
+                                                                            .fromLTRB(
+                                                                            10, 0, 2, 0),
+                                                                        width: 80,
+                                                                        height: double.infinity,
+                                                                        child: Stack(
+                                                                          children: [
+                                                                            Positioned(
+                                                                              // rectangle4756kQ (1652:322)
+                                                                              left: 0,
+                                                                              top: 6,
+                                                                              child: Align(
+                                                                                child: SizedBox(
+                                                                                  width: 75,
+                                                                                  height: 71,
+                                                                                  child: Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      borderRadius: BorderRadius
+                                                                                          .circular(
+                                                                                          3),
+                                                                                      // color: Color(
+                                                                                      //     0xffd9d9d9),
+                                                                                      image: DecorationImage(
+                                                                                        fit: BoxFit
+                                                                                            .cover,
+                                                                                        image: NetworkImage(
+                                                                                            logattachmentImagesDisplay[index]["datas"]
+                                                                                        ),
+                                                                                      ),
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Positioned(
+                                                                              // group20514mrY (1652:323)
+                                                                              left: 60,
+                                                                              top: 0,
+                                                                              child: Align(
+                                                                                child: SizedBox(
+                                                                                  width: 20,
+                                                                                  height: 20,
+                                                                                  child: Image
+                                                                                      .asset(
+                                                                                    'images/logimagedelete.png',
+                                                                                    width: 20,
+                                                                                    height: 20,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Positioned(
+                                                                              // trash2G2c (1652:325)
+                                                                              left: 65,
+                                                                              top: 5,
+                                                                              child: Align(
+                                                                                child: InkWell(
+                                                                                  onTap: () async {
+                                                                                    int lodAttachmentId =   item['attachment_ids']['images'][index]["id"];
+                                                                                    var data = await deleteLogAttachment(
+                                                                                        lodAttachmentId);
+
+                                                                                    if (data['message'] ==
+                                                                                        "Success") {
+                                                                                      print(
+                                                                                          "jhbdndsjbv");
+                                                                                      // await getLeadDetails();
+                                                                                      // setState(() {
+                                                                                      //   logDataHeader
+                                                                                      //       .clear();
+                                                                                      //   logDataTitle
+                                                                                      //       .clear();
+                                                                                      //   selectedImagesDisplay
+                                                                                      //       .clear();
+                                                                                      // });
+                                                                                      postProvider?.fetchPosts(widget.customerId);
+                                                                                    }
+                                                                                  },
+                                                                                  child: SizedBox(
+                                                                                    width: 9,
+                                                                                    height: 10,
+                                                                                    child: Image
+                                                                                        .asset(
+                                                                                      'images/logtrash.png',
+                                                                                      width: 9,
+                                                                                      height: 10,
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+
+
+                                                                          ],
+                                                                        ),
+                                                                      );
+                                                                    }
+                                                                ) :
+                                                                Container(),
+                                                              ),
+
+                                                              SizedBox(height: 5),
+                                                              Container(
+                                                                width:mediaQueryData
+                                                                    .size
+                                                                    .width,
+                                                                child: logattachmentFileDisplay
+                                                                    .length > 0 ? GridView
+                                                                    .builder(
+                                                                    shrinkWrap: true,
+                                                                    // Avoid scrolling
+                                                                    physics: NeverScrollableScrollPhysics(),
+                                                                    itemCount: logattachmentFileDisplay
+                                                                        .length,
+                                                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                      crossAxisCount: 1,
+                                                                      //mainAxisSpacing: 5.0,
+                                                                      crossAxisSpacing: 1.0,
+                                                                      childAspectRatio: 5.5,
+                                                                    ),
+                                                                    itemBuilder: (
+                                                                        BuildContext context,
+                                                                        int index) {
+                                                                      return
+                                                                        Container(
+                                                                          margin: EdgeInsets
+                                                                              .fromLTRB(
+                                                                              10, 0, 0, 2),
+                                                                          // group20585QEc (1652:502)
+                                                                          width: double.infinity,
+                                                                          child: Column(
+                                                                            crossAxisAlignment: CrossAxisAlignment
+                                                                                .center,
+                                                                            children: [
+                                                                              Container(
+                                                                                // group20565Yrc (1652:364)
+                                                                                padding: EdgeInsets
+                                                                                    .fromLTRB(
+                                                                                    14, 11, 18,
+                                                                                    9),
+                                                                                width: double
+                                                                                    .infinity,
+                                                                                height: 52,
+                                                                                decoration: BoxDecoration(
+                                                                                  border: Border
+                                                                                      .all(
+                                                                                      color: Color(
+                                                                                          0xffebebeb)),
+                                                                                  borderRadius: BorderRadius
+                                                                                      .circular(
+                                                                                      6),
+                                                                                ),
+                                                                                child: Row(
+                                                                                  crossAxisAlignment: CrossAxisAlignment
+                                                                                      .center,
+                                                                                  children: [
+                                                                                    Container(
+                                                                                      // pdffile21FW8 (1652:378)
+                                                                                      margin: EdgeInsets
+                                                                                          .fromLTRB(
+                                                                                          0, 0,
+                                                                                          12, 0),
+                                                                                      width: 23,
+                                                                                      height: 29,
+                                                                                      child: Image
+                                                                                          .asset(
+                                                                                        logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                            "application/pdf"
+                                                                                            ? 'images/logpdf.png'
+                                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                            "application/msword"
+                                                                                            ? 'images/logword.png'
+                                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                            ? 'images/logexcel.png'
+                                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                            "application/xml"
+                                                                                            ? 'images/logxml.png'
+                                                                                            : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                            "application/zip"
+                                                                                            ? 'images/logzip.png'
+                                                                                            : '',
+
+
+                                                                                        width: 23,
+                                                                                        height: 29,
+                                                                                      ),
+                                                                                    ),
+                                                                                    Container(
+
+                                                                                      width:mediaQueryData
+                                                                                          .size
+                                                                                          .width /
+                                                                                          2,
+                                                                                      //height: double.infinity,
+                                                                                      child: Stack(
+                                                                                        children: [
+                                                                                          Positioned(
+                                                                                            // pdfnamearea1tc (1652:376)
+                                                                                            left: 0,
+                                                                                            top: 00,
+                                                                                            child: Align(
+                                                                                              child: SizedBox(
+                                                                                                width:mediaQueryData
+                                                                                                    .size
+                                                                                                    .width /
+                                                                                                    2,
+                                                                                                child: Text(
+                                                                                                  logattachmentFileDisplay[index]["name"],
+                                                                                                  style: TextStyle(
+                                                                                                    fontFamily: 'Mulish',
+                                                                                                    fontSize: 12,
+                                                                                                    fontWeight: FontWeight
+                                                                                                        .w600,
+                                                                                                    color: Color(
+                                                                                                        0xff202020),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
                                                                                             ),
                                                                                           ),
-                                                                                          TextSpan(
-                                                                                            text: ' -',
-                                                                                            style: TextStyle(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              fontSize: 11,
-                                                                                              fontWeight: FontWeight
-                                                                                                  .w500,
-                                                                                              height: 1,
-                                                                                              color: Color(
-                                                                                                  0xffa29d9d),
-                                                                                            ),
-                                                                                          ),
-                                                                                          TextSpan(
-                                                                                            text: ' ',
-                                                                                            style: TextStyle(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              fontSize: 11,
-                                                                                              fontWeight: FontWeight
-                                                                                                  .w500,
-                                                                                              height: 1,
-                                                                                              color: Color(
-                                                                                                  0xff000000),
-                                                                                            ),
-                                                                                          ),
-                                                                                          TextSpan(
-                                                                                            text: logDataTitle[indexx][indexs]["period"],
-                                                                                            style: TextStyle(
-                                                                                              fontFamily: 'Mulish',
-                                                                                              fontSize: 9,
-                                                                                              fontWeight: FontWeight
-                                                                                                  .w500,
-                                                                                              height: 1.5,
-                                                                                              color: Color(
-                                                                                                  0xff948e8e),
+                                                                                          Positioned(
+                                                                                            // pdfuDJ (1652:377)
+                                                                                            left: 0,
+                                                                                            top: 18,
+                                                                                            child: Align(
+                                                                                              child: SizedBox(
+                                                                                                width: 50,
+                                                                                                // height: 15,
+                                                                                                child: Text(
+                                                                                                  logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                                      "application/pdf"
+                                                                                                      ?
+                                                                                                  "PDF"
+                                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                                      "application/msword"
+                                                                                                      ?
+                                                                                                  "WORD"
+                                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                                      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                                      ?
+                                                                                                  "EXCEL"
+                                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                                      "application/xml"
+                                                                                                      ?
+                                                                                                  "XML"
+                                                                                                      : logattachmentFileDisplay[index]["mimetype"] ==
+                                                                                                      "application/zip"
+                                                                                                      ?
+                                                                                                  "ZIP"
+                                                                                                      : "",
+
+                                                                                                  style: TextStyle(
+                                                                                                    fontFamily: 'Mulish',
+                                                                                                    fontSize: 9,
+                                                                                                    fontWeight: FontWeight
+                                                                                                        .w500,
+
+                                                                                                    color: Color(
+                                                                                                        0xff666666),
+                                                                                                  ),
+                                                                                                ),
+                                                                                              ),
                                                                                             ),
                                                                                           ),
                                                                                         ],
                                                                                       ),
                                                                                     ),
-                                                                                  ),
-                                                                                  Container(
-                                                                                    // color:Colors.pink,
-                                                                                    //height:60,
-                                                                                    child: Text(
+                                                                                    Spacer(),
+                                                                                    Container(
 
-
-                                                                                      removeHtmlTagsAndSpaces(
-                                                                                          logDataTitle[indexx][indexs]['body']
-                                                                                              .toString() ??
-                                                                                              ""),
-
-                                                                                      // logDataTitle[indexx][indexs]['body'] .replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ')
-                                                                                      //     .toString() ??
-                                                                                      //     "",
-                                                                                      style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 9,
-                                                                                        fontWeight: FontWeight
-                                                                                            .w600,
-                                                                                        // height: 1.5,
-                                                                                        color: Color(
-                                                                                            0xff787878),
-                                                                                      ),
-
-                                                                                    ),
-                                                                                  ),
-
-
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          ),
-
-                                                                          Expanded(
-                                                                            flex: 1,
-                                                                            child: Container(
-
-                                                                              margin: EdgeInsets.fromLTRB(
-                                                                                  0, 0, 0, 1),
-                                                                              width: 25,
-                                                                              height: 20,
-                                                                              child: Container(
-                                                                                  child: logNoteIcon),
-                                                                            ),
-                                                                          ),
-                                                                          lognoteoptions == true
-                                                                              ? Expanded(
-                                                                            flex: 2,
-                                                                            child: Container(
-                                                                              padding: EdgeInsets.all(
-                                                                                  1.0),
-                                                                              decoration: BoxDecoration(
-
-                                                                                borderRadius: BorderRadius
-                                                                                    .circular(5.0),
-                                                                                // Specifies rounded corners
-                                                                                border: Border.all(
-                                                                                  color: Color(
-                                                                                      0XFFD9D9D9),
-                                                                                  // Border color
-
-                                                                                  width: 1.0, // Border width
-                                                                                ),
-                                                                              ),
-                                                                              child: Row(
-                                                                                children: [
-                                                                                  SizedBox(width: 3,),
-                                                                                  Expanded(
-                                                                                    child: InkWell(
-                                                                                      child: Container(
-                                                                                        margin: EdgeInsets
-                                                                                            .fromLTRB(
-                                                                                            0, 0, 0, 1),
-                                                                                        width: 13,
-                                                                                        height: 13,
-                                                                                        child: SvgPicture
-                                                                                            .asset(
-                                                                                          'images/emoji6.svg',
-                                                                                          // 'assets/page-1/images/group-20576.png',
-
+                                                                                      child: InkWell(
+                                                                                        child: Container(
+                                                                                          // trash2Qvk (1652:366)
+                                                                                          margin: EdgeInsets
+                                                                                              .fromLTRB(
+                                                                                              0,
+                                                                                              0,
+                                                                                              15,
+                                                                                              1),
+                                                                                          width: 15,
+                                                                                          height: 16,
+                                                                                          child: Image
+                                                                                              .asset(
+                                                                                            'images/logtrash.png',
+                                                                                            width: 15,
+                                                                                            height: 16,
+                                                                                          ),
                                                                                         ),
+                                                                                        onTap: () async {
+                                                                                          int lodAttachmentId =   item['attachment_ids']['files'][index]["id"];
+                                                                                          var data = await deleteLogAttachment(
+                                                                                              lodAttachmentId);
+
+                                                                                          if (data['message'] ==
+                                                                                              "Success") {
+                                                                                            print(
+                                                                                                "jhbdndsjbv");
+                                                                                            // await getLeadDetails();
+                                                                                            // setState(() {
+                                                                                            //   logDataHeader
+                                                                                            //       .clear();
+                                                                                            //   logDataTitle
+                                                                                            //       .clear();
+                                                                                            //   selectedImagesDisplay
+                                                                                            //       .clear();
+                                                                                            // });
+                                                                                            postProvider?.fetchPosts(widget.customerId);
+                                                                                          }
+                                                                                        },
                                                                                       ),
-                                                                                      onTap: () {
-                                                                                        logDataIdEmoji =
-                                                                                        logDataTitle[indexx][indexs]['id'];
-                                                                                        showDialog(
-                                                                                          context: context,
-                                                                                          builder: (
-                                                                                              BuildContext context) =>
-                                                                                              _buildEmojiPopupDialog(
-                                                                                                  mcontext),
-                                                                                        );
-                                                                                      },
                                                                                     ),
-                                                                                  ),
-                                                                                  SizedBox(width: 5,),
-
-                                                                                  Expanded(
-
-                                                                                    child: StatefulBuilder(
-                                                                                        builder: (
-                                                                                            BuildContext
-                                                                                            context,
-                                                                                            StateSetter
-                                                                                            setState) {
-                                                                                          return Container(
-                                                                                              margin: EdgeInsets
-                                                                                                  .fromLTRB(
-                                                                                                  0, 0, 0,
-                                                                                                  1),
-                                                                                              width: 13,
-                                                                                              height: 13,
-                                                                                              child: starImage ==
-                                                                                                  true
-                                                                                                  ? InkWell(
-                                                                                                onTap: () async {
-                                                                                                  try{
-                                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                                  var data = await logStarChange(
-                                                                                                      lodDataId,
-                                                                                                      false);
-
-                                                                                                  if (data['result']['message'] ==
-                                                                                                      "success") {
-                                                                                                    print(
-                                                                                                        "startrue");
-                                                                                                    setState(() {
-                                                                                                      starImage =
-                                                                                                      false;
-                                                                                                    });
-                                                                                                  }
-                                                                                                  }catch(e){
-                                                                                                    errorMethod(e);
-                                                                                                  }
-                                                                                                },
-                                                                                                child: SvgPicture
-                                                                                                    .asset(
-                                                                                                  'images/st3.svg',
-                                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                                ),
-                                                                                              )
-                                                                                                  : InkWell(
-                                                                                                onTap: () async {
-                                                                                                  try{
-                                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                                  var data = await logStarChange(
-                                                                                                      lodDataId,
-                                                                                                      true);
-
-                                                                                                  if (data['result']['message'] ==
-                                                                                                      "success") {
-                                                                                                    print(
-                                                                                                        "starfalse");
-                                                                                                    setState(() {
-                                                                                                      starImage =
-                                                                                                      true;
-                                                                                                    });
-                                                                                                  }
-                                                                                                  }catch(e){
-                                                                                                    errorMethod(e);
-                                                                                                  }
-                                                                                                },
-                                                                                                child: SvgPicture
-                                                                                                    .asset(
-                                                                                                  'images/star6.svg',
-                                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                                ),
-                                                                                              )
-                                                                                          );
-                                                                                        }
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(width: 5,),
-
-                                                                                  Expanded(
-                                                                                    child: InkWell(
-                                                                                      child: Container(
-                                                                                        margin: EdgeInsets
-                                                                                            .fromLTRB(
-                                                                                            0, 0, 0, 1),
-                                                                                        width: 13,
-                                                                                        height: 13,
-                                                                                        //color:Colors.red,
-                                                                                        child: SvgPicture
-                                                                                            .asset(
-                                                                                          'images/edit6.svg',
-                                                                                          // 'assets/page-1/images/group-20576.png',
-
+                                                                                    Container(
+                                                                                      child: InkWell(
+                                                                                        child: Container(
+                                                                                          // download6oa (1652:371)
+                                                                                          margin: EdgeInsets
+                                                                                              .fromLTRB(
+                                                                                              0,
+                                                                                              0,
+                                                                                              0,
+                                                                                              2),
+                                                                                          width: 14,
+                                                                                          height: 14,
+                                                                                          child: Image
+                                                                                              .asset(
+                                                                                            'images/logdownload.png',
+                                                                                            width: 14,
+                                                                                            height: 14,
+                                                                                          ),
                                                                                         ),
-                                                                                      ),
-                                                                                      onTap: () {
-                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                        String logdata = logDataTitle[indexx][indexs]['body']
-                                                                                            .replaceAll(
-                                                                                            RegExp(
-                                                                                                r'<[^>]*>|&[^;]+;'),
-                                                                                            ' ') ?? "";
-                                                                                        // Navigator.push(
-                                                                                        //     context,
-                                                                                        //     MaterialPageRoute(
-                                                                                        //         builder: (
-                                                                                        //             context) =>
-                                                                                        //             LogNoteEdit(
-                                                                                        //                 lodDataId,
-                                                                                        //                 salesperImg!,
-                                                                                        //                 token!,
-                                                                                        //                 widget
-                                                                                        //                     .customerId,
-                                                                                        //                 logdata,
-                                                                                        //                 "res.partner")));
+                                                                                        onTap: () {
+                                                                                          String mimetypes =   item['attachment_ids']['files'][index]["mimetype"];
+                                                                                          //String mimetypes = "application/pdf";
 
+                                                                                          String itemName,
+                                                                                              itemNamefinal;
 
-                                                                                        selectedItemIndex =  lodDataId;
-                                                                                        lognoteEditController.text = logdata;
-                                                                                        postProvider?.fetchPosts(widget.customerId);
+                                                                                          itemName =
+                                                                                          item['attachment_ids']['files'][index]["name"];
 
+                                                                                          mimetypes ==
+                                                                                              "application/pdf"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.pdf"
+                                                                                              : mimetypes ==
+                                                                                              "application/msword"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.doc"
+                                                                                              : mimetypes ==
+                                                                                              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.xlsx"
+                                                                                              : mimetypes ==
+                                                                                              "application/xml"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.xml"
+                                                                                              : mimetypes ==
+                                                                                              "application/zip"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.zip"
+                                                                                              : mimetypes ==
+                                                                                              "image/jpeg"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.jpeg"
+                                                                                              : mimetypes ==
+                                                                                              "image/png"
+                                                                                              ?
+                                                                                          itemNamefinal =
+                                                                                          "${itemName}.png"
+                                                                                              : itemNamefinal =
+                                                                                          "${itemName}";
 
-                                                                                      },
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(width: 5,),
+                                                                                          print(
+                                                                                              index);
 
-                                                                                  Expanded(
-                                                                                    child: InkWell(
-                                                                                      child: Container(
-                                                                                        margin: EdgeInsets
-                                                                                            .fromLTRB(
-                                                                                            0, 0, 0, 1),
-                                                                                        width: 13,
-                                                                                        height: 13,
-                                                                                        child: SvgPicture
-                                                                                            .asset(
-                                                                                          'images/delete6.svg',
-                                                                                          // 'assets/page-1/images/group-20576.png',
+                                                                                          print(
+                                                                                              logattachmentFileDisplay);
 
-                                                                                        ),
-                                                                                      ),
-                                                                                      onTap: () async {
-                                                                                        try{
-                                                                                        int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                        var data = await deleteLogData(
-                                                                                            lodDataId);
+                                                                                          print(
+                                                                                              itemNamefinal);
+                                                                                          print(
+                                                                                              mimetypes);
+                                                                                          print(
+                                                                                              "final print dataaa");
 
-                                                                                        if (data['message'] ==
-                                                                                            "Success") {
-                                                                                          print("final11");
+                                                                                          FlutterDownloader
+                                                                                              .registerCallback(
+                                                                                              downloadCallback);
 
+                                                                                          requestPermission(
+                                                                                              itemNamefinal,
+                                                                                              item['attachment_ids']['files'][index]["datas"]);
                                                                                           postProvider?.fetchPosts(widget.customerId);
-                                                                                        }
-                                                                                        }catch(e){
-                                                                                          errorMethod(e);
-                                                                                        }
-                                                                                      },
+
+                                                                                        },
+                                                                                      ),
                                                                                     ),
-                                                                                  ),
-                                                                                  SizedBox(width: 3,),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                          )
-                                                                              :
-                                                                          Expanded(
-                                                                            flex: 1,
-                                                                            child: Container(
-                                                                              padding: EdgeInsets.all(
-                                                                                  1.0),
-                                                                              decoration: BoxDecoration(
-                                                                                borderRadius: BorderRadius
-                                                                                    .circular(5.0),
-                                                                                // Specifies rounded corners
-                                                                                border: Border.all(
-                                                                                  color: Color(
-                                                                                      0XFFD9D9D9),
-                                                                                  // Border color
-                                                                                  width: 1.0, // Border width
+                                                                                  ],
                                                                                 ),
                                                                               ),
-                                                                              child: Row(
-                                                                                children: [
-                                                                                  SizedBox(width: 3,),
-                                                                                  Expanded(
-                                                                                    child: InkWell(
-                                                                                      child: Container(
-                                                                                        margin: EdgeInsets
-                                                                                            .fromLTRB(
-                                                                                            0, 0, 0, 1),
-                                                                                        width: 13,
-                                                                                        height: 13,
-                                                                                        child: SvgPicture
-                                                                                            .asset(
-                                                                                          'images/emoji6.svg',
-                                                                                          // 'assets/page-1/images/group-20576.png',
-
-                                                                                        ),
-                                                                                      ),
-                                                                                      onTap: () {
-                                                                                        logDataIdEmoji =
-                                                                                        logDataTitle[indexx][indexs]['id'];
-                                                                                        showDialog(
-                                                                                          context: context,
-                                                                                          builder: (
-                                                                                              BuildContext context) =>
-                                                                                              _buildEmojiPopupDialog(
-                                                                                                  mcontext),
-                                                                                        );
-                                                                                      },
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(width: 5,),
-
-                                                                                  Expanded(
-
-                                                                                    child: StatefulBuilder(
-                                                                                        builder: (
-                                                                                            BuildContext
-                                                                                            context,
-                                                                                            StateSetter
-                                                                                            setState) {
-                                                                                          return Container(
-                                                                                              margin: EdgeInsets
-                                                                                                  .fromLTRB(
-                                                                                                  0, 0, 0,
-                                                                                                  1),
-                                                                                              width: 13,
-                                                                                              height: 13,
-                                                                                              child: starImage ==
-                                                                                                  true
-                                                                                                  ? InkWell(
-                                                                                                onTap: () async {
-                                                                                                  try{
-                                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                                  var data = await logStarChange(
-                                                                                                      lodDataId,
-                                                                                                      false);
-
-                                                                                                  if (data['result']['message'] ==
-                                                                                                      "success") {
-                                                                                                    print(
-                                                                                                        "startrue");
-                                                                                                    setState(() {
-                                                                                                      starImage =
-                                                                                                      false;
-                                                                                                    });
-                                                                                                  }
-                                                                                                  }catch(e){
-                                                                                                    errorMethod(e);
-                                                                                                  }
-                                                                                                },
-                                                                                                child: SvgPicture
-                                                                                                    .asset(
-                                                                                                  'images/st3.svg',
-                                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                                ),
-                                                                                              )
-                                                                                                  : InkWell(
-                                                                                                onTap: () async {
-                                                                                                  try{
-                                                                                                  int lodDataId = logDataTitle[indexx][indexs]['id'];
-
-                                                                                                  var data = await logStarChange(
-                                                                                                      lodDataId,
-                                                                                                      true);
-
-                                                                                                  if (data['result']['message'] ==
-                                                                                                      "success") {
-                                                                                                    print(
-                                                                                                        "starfalse");
-                                                                                                    setState(() {
-                                                                                                      starImage =
-                                                                                                      true;
-                                                                                                    });
-                                                                                                  }
-                                                                                                  }catch(e){
-                                                                                                    errorMethod(e);
-                                                                                                  }
-                                                                                                },
-                                                                                                child: SvgPicture
-                                                                                                    .asset(
-                                                                                                  'images/star6.svg',
-                                                                                                  // 'assets/page-1/images/group-20576.png',
-
-                                                                                                ),
-                                                                                              )
-                                                                                          );
-                                                                                        }
-                                                                                    ),
-                                                                                  ),
-                                                                                  SizedBox(width: 3,),
-                                                                                  // SizedBox(width: 5,),
-                                                                                  //
-                                                                                  // Visibility(
-                                                                                  //   visible: lognoteoptions,
-                                                                                  //
-                                                                                  //   child: Expanded(
-                                                                                  //     child: InkWell(
-                                                                                  //       child: Container(
-                                                                                  //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                                  //         width: 13,
-                                                                                  //         height: 13,
-                                                                                  //         //color:Colors.red,
-                                                                                  //         child: SvgPicture.asset(
-                                                                                  //           'images/edit6.svg',
-                                                                                  //           // 'assets/page-1/images/group-20576.png',
-                                                                                  //
-                                                                                  //         ),
-                                                                                  //       ),
-                                                                                  //       onTap: (){
-                                                                                  //         int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                  //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                                  //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
-                                                                                  //
-                                                                                  //       },
-                                                                                  //     ),
-                                                                                  //   ),
-                                                                                  // ),
-                                                                                  // SizedBox(width: 5,),
-                                                                                  //
-                                                                                  // Visibility(
-                                                                                  //   visible: lognoteoptions,
-                                                                                  //
-                                                                                  //   child: Expanded(
-                                                                                  //     child: InkWell(
-                                                                                  //       child: Container(
-                                                                                  //         margin: EdgeInsets.fromLTRB(0, 0, 0, 1),
-                                                                                  //         width: 13,
-                                                                                  //         height: 13,
-                                                                                  //         child: SvgPicture.asset(
-                                                                                  //           'images/delete6.svg',
-                                                                                  //           // 'assets/page-1/images/group-20576.png',
-                                                                                  //
-                                                                                  //         ),
-                                                                                  //       ),
-                                                                                  //       onTap: ()async{
-                                                                                  //         int lodDataId = logDataTitle[indexx][indexs]['id'];
-                                                                                  //         var data = await deleteLogData(lodDataId);
-                                                                                  //
-                                                                                  //         if (data['message'] == "Success") {
-                                                                                  //           print("final11");
-                                                                                  //           await getLeadDetails();
-                                                                                  //           setState(() {
-                                                                                  //             logDataHeader.clear();
-                                                                                  //             logDataTitle.clear();
-                                                                                  //             selectedImagesDisplay.clear();
-                                                                                  //           });
-                                                                                  //         }
-                                                                                  //       },
-                                                                                  //     ),
-                                                                                  //   ),
-                                                                                  // ),
-                                                                                  // SizedBox(width: 3,),
-                                                                                ],
+                                                                              SizedBox(
+                                                                                height: 9,
                                                                               ),
-                                                                            ),
+
+
+                                                                            ],
                                                                           ),
-                                                                        ],
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
+                                                                        );
+                                                                    }
+                                                                ) :
+                                                                Container(),
                                                               ),
-                                                            ),
 
-                                                            postProvider?.savefiles!=logDataTitle[indexx][indexs]['id']?
-                                                            Visibility(
-                                                              visible:  logDataTitle[indexx][indexs]['id'] == selectedItemIndex?true:false,
-                                                              // visible: logDataTitle[indexx][indexs].lognoteEdit,
-                                                              child: Container(
-                                                                child: Column(
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: const EdgeInsets.only(
-                                                                          left:76, right: 25),
+                                                            ],
+                                                          ),
+                                                          emojiSet.length > 0 ?
+                                                          Container(
+                                                            width:mediaQueryData
+                                                                .size
+                                                                .width,
+
+                                                            child: GridView.builder(
+                                                                shrinkWrap: true,
+                                                                // Avoid scrolling
+                                                                physics: NeverScrollableScrollPhysics(),
+                                                                itemCount: emojiSet.length,
+                                                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                  crossAxisCount: 6,
+                                                                  mainAxisSpacing: 5.0,
+                                                                  crossAxisSpacing: 5.0,
+                                                                  childAspectRatio: 2.1,
+                                                                ),
+                                                                itemBuilder: (
+                                                                    BuildContext context,
+                                                                    int index) {
+                                                                  return InkWell(
+
                                                                       child: Container(
-                                                                        width: mediaQueryData
-                                                                            .size
-                                                                            .width ,
-                                                                        // width:200,
 
-                                                                        //height: 46,
+                                                                        margin: EdgeInsets
+                                                                            .fromLTRB(
+                                                                            10, 0, 0, 2),
+                                                                        // width: 40,
+                                                                        height: 15,
                                                                         decoration: BoxDecoration(
-                                                                            borderRadius: BorderRadius.all(
-                                                                                Radius.circular(5)),
-                                                                            color: Color(0xFFF6F6F6),
+                                                                            color: Colors.white,
+                                                                            borderRadius: BorderRadius
+                                                                                .all(
+                                                                                Radius.circular(
+                                                                                    3)),
                                                                             border: Border.all(
-                                                                              color: Color(0xFFEBEBEB),
-                                                                            )),
+                                                                                color: Color(
+                                                                                    0XFFEBEBEB),
+
+                                                                                width: 1)),
+                                                                        // color: Colors.red,
                                                                         child: Row(
-                                                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                                                                           children: [
-                                                                            Container(
-                                                                              width:mediaQueryData
-                                                                                  .size
-                                                                                  .width /
-                                                                                  1.92,
-
-                                                                              // width:300,
-                                                                              // height: 40,
-                                                                              //color: Colors.red,
-                                                                              child: Padding(
-                                                                                padding: const EdgeInsets
-                                                                                    .only(
-                                                                                    left: 10),
-                                                                                child:  TextField(
-                                                                                    textAlignVertical:
-                                                                                    TextAlignVertical
-                                                                                        .top,
-                                                                                    style: TextStyle(
-                                                                                      fontWeight: FontWeight
-                                                                                          .w400,
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
-                                                                                      color: Color(
-                                                                                          0xFF000000),
-                                                                                    ),
-
-
-                                                                                    maxLines: null,
-
-                                                                                    onChanged: (newValue) {
-                                                                                      print("demodatatataadsaf");
-                                                                                      // Handle text changes here if necessary
-                                                                                    },
-                                                                                    controller: lognoteEditController,
-
-                                                                                    decoration:
-                                                                                    const InputDecoration(
-                                                                                        border:
-                                                                                        InputBorder
-                                                                                            .none,
-                                                                                        hintText:
-                                                                                        "Send a message to followers",
-                                                                                        hintStyle: TextStyle(
-                                                                                          //fontFamily: "inter",
-                                                                                            fontWeight:
-                                                                                            FontWeight
-                                                                                                .w400,
-                                                                                            fontFamily:
-                                                                                            'Mulish',
-                                                                                            fontSize: 11,
-                                                                                            color: Color(
-                                                                                                0xFFAFAFAF)))),
-                                                                              ),
-                                                                            ),
                                                                             Padding(
                                                                               padding: const EdgeInsets
-                                                                                  .only(left: 10),
-                                                                              child: IconButton(
-                                                                                  onPressed: (){
-                                                                                    myAlert("lognoteEdit");
-                                                                                    postProvider?.fetchPosts(widget.customerId);
-                                                                                  },
-                                                                                  icon: Image.asset("images/pi.png")
-                                                                              ),
+                                                                                  .only(left: 5),
+                                                                              child: Container(
+                                                                                // width:18,
+                                                                                  height: 19,
+                                                                                  child: Text(
+                                                                                      emojiSet[index]['emoji'])),
                                                                             ),
+                                                                            SizedBox(width: 3),
+
+                                                                            Text(
+                                                                              emojiSet[index]['count']
+                                                                                  .toString(),
+                                                                              style: TextStyle(
+                                                                                  fontSize: 10
+                                                                              ),),
                                                                           ],
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                      onTap: () async {
+                                                                        var data = await deleteEmoji(
+                                                                            emojiSet[index]['emoji'],
+                                                                            item['id']);
 
+                                                                        if (data['result']['message'] ==
+                                                                            "success") {
+                                                                          postProvider?.fetchPosts(widget.customerId);
 
-                                                                    selectedImagesEdit.isEmpty
-                                                                        ? Padding(
-                                                                      padding: const EdgeInsets.only(left: 73),
-                                                                      child: Container(
-                                                                        width:
-                                                                        mediaQueryData
-                                                                            .size
-                                                                            .width,
-                                                                        //width:400,
-                                                                        //height: 40,
-                                                                        //color: Colors.red,
-                                                                      ),
-                                                                    )
-                                                                        : Padding(
-                                                                      padding: const EdgeInsets.only(
-                                                                          left: 70, right: 50, top: 5),
-                                                                      child: Container(
-                                                                        width:
-                                                                        mediaQueryData
-                                                                            .size
-                                                                            .width,
-                                                                        // width:400,
-                                                                        // height: 40,
-                                                                        child: Container(
-                                                                          width: 40,
-                                                                          //height: 40,
-                                                                          child: GridView.builder(
-                                                                            shrinkWrap: true,
-                                                                            // Avoid scrolling
-                                                                            physics:
-                                                                            NeverScrollableScrollPhysics(),
-                                                                            itemCount: selectedImagesEdit.length,
-                                                                            gridDelegate:
-                                                                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                                crossAxisCount: 8),
-                                                                            itemBuilder: (BuildContext context,
-                                                                                int index) {
-                                                                              print("pdfffffffffff2");
-                                                                              return selectedImagesEdit[index]
-                                                                                  .path
-                                                                                  .contains(".pdf")
-                                                                                  ? Container(
-                                                                                width: 40,
-                                                                                height: 40,
-                                                                                color: Color(0xFFEF5350),
-                                                                                child: Icon(Icons
-                                                                                    .picture_as_pdf_sharp),
-                                                                              )
-                                                                                  : selectedImagesEdit[index]
-                                                                                  .path
-                                                                                  .contains(".zip")
-                                                                                  ? Container(
-                                                                                width: 40,
-                                                                                height: 40,
-                                                                                color:
-                                                                                Color(0xFFFDD835),
-                                                                                child: Icon(Icons
-                                                                                    .folder_zip_outlined),
-                                                                              )
-                                                                                  : selectedImagesEdit[index]
-                                                                                  .path
-                                                                                  .contains(".xlsx")
-                                                                                  ? Container(
-                                                                                width: 40,
-                                                                                height: 40,
-                                                                                color: Color(
-                                                                                    0xFF4CAF50),
-                                                                                child: Icon(
-                                                                                    Icons.clear),
-                                                                              )
-                                                                                  : selectedImagesEdit[
-                                                                              index]
-                                                                                  .path
-                                                                                  .contains(
-                                                                                  ".xml")
-                                                                                  ? Container(
-                                                                                width: 40,
-                                                                                height: 40,
-                                                                                color: Color(
-                                                                                    0xFF0277BD),
-                                                                                child: Icon(Icons
-                                                                                    .code_off),
-                                                                              )
-                                                                                  : selectedImagesEdit[
-                                                                              index]
-                                                                                  .path
-                                                                                  .contains(
-                                                                                  ".doc")
-                                                                                  ? Container(
-                                                                                width: 40,
-                                                                                height:
-                                                                                40,
-                                                                                color: Color(
-                                                                                    0xFF2196F3),
-                                                                                child: Icon(
-                                                                                    Icons
-                                                                                        .article_outlined),
-                                                                              )
-                                                                                  : Center(
-                                                                                  child: kIsWeb
-                                                                                      ? Image.network(
-                                                                                      selectedImagesEdit[index]
-                                                                                          .path)
-                                                                                      : Image.file(
-                                                                                      selectedImagesEdit[index]));
-                                                                            },
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    ),
-
-
-                                                                    Padding(
-                                                                      padding: const EdgeInsets.only(left:75),
-                                                                      child: Row(
-                                                                        children: [
-                                                                          Text("escape to",style: TextStyle(color: Colors.grey),),
-                                                                          InkWell(child: Container(child: Text("  cancel  ")),
-                                                                            onTap: (){
-                                                                              selectedItemIndex = -1;
-                                                                              lognoteEditController.text= "";
-                                                                              selectedImagesEdit.clear();
-                                                                              myData1.clear();
-                                                                              postProvider?.fetchPosts(widget.customerId);
-                                                                            },
-                                                                          ),
-                                                                          //TextButton(onPressed:(){}, child: Text("cancel")),
-                                                                          Text(","),
-                                                                          Text("  enter to",style: TextStyle(color: Colors.grey),),
-                                                                          InkWell(child: Container(child: Text("  save")),
-                                                                              // onTap:_isSavingData
-                                                                              //     ? null
-                                                                              onTap :()async{
-
-
-                                                                                int positionId= logDataTitle[indexx][indexs]['id'];
-                                                                                postProvider?.fetchPosts1(positionId);
-
-
-
-                                                                                for (int i = 0;
-                                                                                i < selectedImagesEdit.length;
-                                                                                i++) {
-                                                                                  imagepath =
-                                                                                      selectedImagesEdit[i]
-                                                                                          .path
-                                                                                          .toString();
-                                                                                  File imagefile =
-                                                                                  File(imagepath);
-
-                                                                                  Uint8List imagebytes =
-                                                                                  await imagefile
-                                                                                      .readAsBytes(); //convert to bytes
-                                                                                  base64string =
-                                                                                      base64.encode(
-                                                                                          imagebytes);
-
-                                                                                  //
-
-                                                                                  String dataImages =
-                                                                                      '{"name":"name","type":"binary","datas":"${base64string
-                                                                                      .toString()}"}';
-
-                                                                                  Map<String,
-                                                                                      dynamic> jsondata =
-                                                                                  jsonDecode(dataImages);
-                                                                                  myData1.add(jsondata);
-                                                                                }
-
-
-
-
-                                                                                int lognoteId  = logDataTitle[indexx][indexs]['id'];
-                                                                                String resMessage = await logNoteEditData(myData1,lognoteId);
-
-                                                                                if(resMessage != 0){
-
-
-                                                                                  lognoteEditController.text= "";
-                                                                                  selectedImagesEdit.clear();
-                                                                                  myData1.clear();
-                                                                                  selectedItemIndex = -1;
-                                                                                  postProvider?.fetchPosts(widget.customerId);
-                                                                                  delayMethod();
-
-                                                                                };
-                                                                              }
-                                                                          ),
-                                                                          // TextButton(onPressed:(){}, child: Text("save")),
-                                                                        ],
-                                                                      ),
-                                                                    )
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ):
-                                                            Container(
-                                                                width:20,
-                                                                height:20,
-                                                                child: CircularProgressIndicator()),
-
-
-                                                            Container(
-
-                                                              margin: EdgeInsets.only(top: 25,left: 24,right: 24),
-                                                              //width: 350,
-                                                              width:mediaQueryData.size.width,
-                                                              //color:Colors.red,
-                                                              // height: 450,
-                                                              child: Column(
-                                                                crossAxisAlignment: CrossAxisAlignment
-                                                                    .start,
-                                                                children: [
-
-                                                                  selectedImagesDisplay.length == 0 ?
-                                                                  Container() :
-                                                                  Column(
-                                                                    children: [
-                                                                      Container(
-                                                                        width:mediaQueryData
-                                                                            .size
-                                                                            .width,
-                                                                        child: logattachmentImagesDisplay
-                                                                            .length > 0 ? GridView
-                                                                            .builder(
-                                                                            shrinkWrap: true,
-                                                                            // Avoid scrolling
-                                                                            physics: NeverScrollableScrollPhysics(),
-                                                                            itemCount: logattachmentImagesDisplay
-                                                                                .length,
-                                                                            // itemCount: 15,
-                                                                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                              crossAxisCount: 4,
-                                                                              mainAxisSpacing: 1.0,
-                                                                              crossAxisSpacing: 1.0,
-                                                                              childAspectRatio: 1,
-                                                                            ),
-                                                                            itemBuilder: (
-                                                                                BuildContext context,
-                                                                                int index) {
-                                                                              print(
-                                                                                  logattachmentImagesDisplay[index]["datas"]);
-                                                                              print(
-                                                                                  "selectedImagesDisplay.length,");
-                                                                              return Container(
-
-                                                                                margin: EdgeInsets
-                                                                                    .fromLTRB(
-                                                                                    10, 0, 2, 0),
-                                                                                width: 80,
-                                                                                height: double.infinity,
-                                                                                child: Stack(
-                                                                                  children: [
-                                                                                    Positioned(
-                                                                                      // rectangle4756kQ (1652:322)
-                                                                                      left: 0,
-                                                                                      top: 6,
-                                                                                      child: Align(
-                                                                                        child: SizedBox(
-                                                                                          width: 75,
-                                                                                          height: 71,
-                                                                                          child: Container(
-                                                                                            decoration: BoxDecoration(
-                                                                                              borderRadius: BorderRadius
-                                                                                                  .circular(
-                                                                                                  3),
-                                                                                              // color: Color(
-                                                                                              //     0xffd9d9d9),
-                                                                                              image: DecorationImage(
-                                                                                                fit: BoxFit
-                                                                                                    .cover,
-                                                                                                image: NetworkImage(
-                                                                                                    logattachmentImagesDisplay[index]["datas"]
-                                                                                                ),
-                                                                                              ),
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Positioned(
-                                                                                      // group20514mrY (1652:323)
-                                                                                      left: 60,
-                                                                                      top: 0,
-                                                                                      child: Align(
-                                                                                        child: SizedBox(
-                                                                                          width: 20,
-                                                                                          height: 20,
-                                                                                          child: Image
-                                                                                              .asset(
-                                                                                            'images/logimagedelete.png',
-                                                                                            width: 20,
-                                                                                            height: 20,
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Positioned(
-                                                                                      // trash2G2c (1652:325)
-                                                                                      left: 65,
-                                                                                      top: 5,
-                                                                                      child: Align(
-                                                                                        child: InkWell(
-                                                                                          onTap: () async {
-                                                                                            int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['images'][index]["id"];
-                                                                                            var data = await deleteLogAttachment(
-                                                                                                lodAttachmentId);
-
-                                                                                            if (data['message'] ==
-                                                                                                "Success") {
-                                                                                              print(
-                                                                                                  "jhbdndsjbv");
-                                                                                              // await getLeadDetails();
-                                                                                              // setState(() {
-                                                                                              //   logDataHeader
-                                                                                              //       .clear();
-                                                                                              //   logDataTitle
-                                                                                              //       .clear();
-                                                                                              //   selectedImagesDisplay
-                                                                                              //       .clear();
-                                                                                              // });
-                                                                                              postProvider?.fetchPosts(widget.customerId);
-                                                                                            }
-                                                                                          },
-                                                                                          child: SizedBox(
-                                                                                            width: 9,
-                                                                                            height: 10,
-                                                                                            child: Image
-                                                                                                .asset(
-                                                                                              'images/logtrash.png',
-                                                                                              width: 9,
-                                                                                              height: 10,
-                                                                                            ),
-                                                                                          ),
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-
-
-                                                                                  ],
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                        ) :
-                                                                        Container(),
-                                                                      ),
-
-                                                                      SizedBox(height: 5),
-                                                                      Container(
-                                                                        width:
-                                                                        mediaQueryData
-                                                                            .size
-                                                                            .width,
-                                                                        child: logattachmentFileDisplay
-                                                                            .length > 0 ? GridView
-                                                                            .builder(
-                                                                            shrinkWrap: true,
-                                                                            // Avoid scrolling
-                                                                            physics: NeverScrollableScrollPhysics(),
-                                                                            itemCount: logattachmentFileDisplay
-                                                                                .length,
-                                                                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                              crossAxisCount: 1,
-                                                                              //mainAxisSpacing: 5.0,
-                                                                              crossAxisSpacing: 1.0,
-                                                                              childAspectRatio: 5.5,
-                                                                            ),
-                                                                            itemBuilder: (
-                                                                                BuildContext context,
-                                                                                int index) {
-                                                                              return
-                                                                                Container(
-                                                                                  margin: EdgeInsets
-                                                                                      .fromLTRB(
-                                                                                      10, 0, 0, 2),
-                                                                                  // group20585QEc (1652:502)
-                                                                                  width: double.infinity,
-                                                                                  child: Column(
-                                                                                    crossAxisAlignment: CrossAxisAlignment
-                                                                                        .center,
-                                                                                    children: [
-                                                                                      Container(
-                                                                                        // group20565Yrc (1652:364)
-                                                                                        padding: EdgeInsets
-                                                                                            .fromLTRB(
-                                                                                            14, 11, 18,
-                                                                                            9),
-                                                                                        width: double
-                                                                                            .infinity,
-                                                                                        height: 52,
-                                                                                        decoration: BoxDecoration(
-                                                                                          border: Border
-                                                                                              .all(
-                                                                                              color: Color(
-                                                                                                  0xffebebeb)),
-                                                                                          borderRadius: BorderRadius
-                                                                                              .circular(
-                                                                                              6),
-                                                                                        ),
-                                                                                        child: Row(
-                                                                                          crossAxisAlignment: CrossAxisAlignment
-                                                                                              .center,
-                                                                                          children: [
-                                                                                            Container(
-                                                                                              // pdffile21FW8 (1652:378)
-                                                                                              margin: EdgeInsets
-                                                                                                  .fromLTRB(
-                                                                                                  0, 0,
-                                                                                                  12, 0),
-                                                                                              width: 23,
-                                                                                              height: 29,
-                                                                                              child: Image
-                                                                                                  .asset(
-                                                                                                logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                    "application/pdf"
-                                                                                                    ? 'images/logpdf.png'
-                                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                    "application/msword"
-                                                                                                    ? 'images/logword.png'
-                                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                    ? 'images/logexcel.png'
-                                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                    "application/xml"
-                                                                                                    ? 'images/logxml.png'
-                                                                                                    : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                    "application/zip"
-                                                                                                    ? 'images/logzip.png'
-                                                                                                    : '',
-
-
-                                                                                                width: 23,
-                                                                                                height: 29,
-                                                                                              ),
-                                                                                            ),
-                                                                                            Container(
-
-                                                                                              width:mediaQueryData
-                                                                                                  .size
-                                                                                                  .width /
-                                                                                                  2,
-                                                                                              //height: double.infinity,
-                                                                                              child: Stack(
-                                                                                                children: [
-                                                                                                  Positioned(
-                                                                                                    // pdfnamearea1tc (1652:376)
-                                                                                                    left: 0,
-                                                                                                    top: 00,
-                                                                                                    child: Align(
-                                                                                                      child: SizedBox(
-                                                                                                        width:mediaQueryData
-                                                                                                            .size
-                                                                                                            .width /
-                                                                                                            2,
-                                                                                                        child: Text(
-                                                                                                          logattachmentFileDisplay[index]["name"],
-                                                                                                          style: TextStyle(
-                                                                                                            fontFamily: 'Mulish',
-                                                                                                            fontSize: 12,
-                                                                                                            fontWeight: FontWeight
-                                                                                                                .w600,
-                                                                                                            color: Color(
-                                                                                                                0xff202020),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                  Positioned(
-                                                                                                    // pdfuDJ (1652:377)
-                                                                                                    left: 0,
-                                                                                                    top: 18,
-                                                                                                    child: Align(
-                                                                                                      child: SizedBox(
-                                                                                                        width: 50,
-                                                                                                        // height: 15,
-                                                                                                        child: Text(
-                                                                                                          logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                              "application/pdf"
-                                                                                                              ?
-                                                                                                          "PDF"
-                                                                                                              : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                              "application/msword"
-                                                                                                              ?
-                                                                                                          "WORD"
-                                                                                                              : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                              ?
-                                                                                                          "EXCEL"
-                                                                                                              : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                              "application/xml"
-                                                                                                              ?
-                                                                                                          "XML"
-                                                                                                              : logattachmentFileDisplay[index]["mimetype"] ==
-                                                                                                              "application/zip"
-                                                                                                              ?
-                                                                                                          "ZIP"
-                                                                                                              : "",
-
-                                                                                                          style: TextStyle(
-                                                                                                            fontFamily: 'Mulish',
-                                                                                                            fontSize: 9,
-                                                                                                            fontWeight: FontWeight
-                                                                                                                .w500,
-
-                                                                                                            color: Color(
-                                                                                                                0xff666666),
-                                                                                                          ),
-                                                                                                        ),
-                                                                                                      ),
-                                                                                                    ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ),
-                                                                                            Spacer(),
-                                                                                            Container(
-
-                                                                                              child: InkWell(
-                                                                                                child: Container(
-                                                                                                  // trash2Qvk (1652:366)
-                                                                                                  margin: EdgeInsets
-                                                                                                      .fromLTRB(
-                                                                                                      0,
-                                                                                                      0,
-                                                                                                      15,
-                                                                                                      1),
-                                                                                                  width: 15,
-                                                                                                  height: 16,
-                                                                                                  child: Image
-                                                                                                      .asset(
-                                                                                                    'images/logtrash.png',
-                                                                                                    width: 15,
-                                                                                                    height: 16,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                onTap: () async {
-                                                                                                  int lodAttachmentId = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["id"];
-                                                                                                  var data = await deleteLogAttachment(
-                                                                                                      lodAttachmentId);
-
-                                                                                                  if (data['message'] ==
-                                                                                                      "Success") {
-                                                                                                    print(
-                                                                                                        "jhbdndsjbv");
-                                                                                                    // await getLeadDetails();
-                                                                                                    // setState(() {
-                                                                                                    //   logDataHeader
-                                                                                                    //       .clear();
-                                                                                                    //   logDataTitle
-                                                                                                    //       .clear();
-                                                                                                    //   selectedImagesDisplay
-                                                                                                    //       .clear();
-                                                                                                    // });
-                                                                                                    postProvider?.fetchPosts(widget.customerId);
-                                                                                                  }
-                                                                                                },
-                                                                                              ),
-                                                                                            ),
-                                                                                            Container(
-                                                                                              child: InkWell(
-                                                                                                child: Container(
-                                                                                                  // download6oa (1652:371)
-                                                                                                  margin: EdgeInsets
-                                                                                                      .fromLTRB(
-                                                                                                      0,
-                                                                                                      0,
-                                                                                                      0,
-                                                                                                      2),
-                                                                                                  width: 14,
-                                                                                                  height: 14,
-                                                                                                  child: Image
-                                                                                                      .asset(
-                                                                                                    'images/logdownload.png',
-                                                                                                    width: 14,
-                                                                                                    height: 14,
-                                                                                                  ),
-                                                                                                ),
-                                                                                                onTap: () {
-                                                                                                  String mimetypes = logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["mimetype"];
-                                                                                                  //String mimetypes = "application/pdf";
-
-                                                                                                  String itemName,
-                                                                                                      itemNamefinal;
-
-                                                                                                  itemName =
-                                                                                                  logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["name"];
-
-                                                                                                  mimetypes ==
-                                                                                                      "application/pdf"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.pdf"
-                                                                                                      : mimetypes ==
-                                                                                                      "application/msword"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.doc"
-                                                                                                      : mimetypes ==
-                                                                                                      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.xlsx"
-                                                                                                      : mimetypes ==
-                                                                                                      "application/xml"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.xml"
-                                                                                                      : mimetypes ==
-                                                                                                      "application/zip"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.zip"
-                                                                                                      : mimetypes ==
-                                                                                                      "image/jpeg"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.jpeg"
-                                                                                                      : mimetypes ==
-                                                                                                      "image/png"
-                                                                                                      ?
-                                                                                                  itemNamefinal =
-                                                                                                  "${itemName}.png"
-                                                                                                      : itemNamefinal =
-                                                                                                  "${itemName}";
-
-                                                                                                  print(
-                                                                                                      index);
-
-                                                                                                  print(
-                                                                                                      logattachmentFileDisplay);
-
-                                                                                                  print(
-                                                                                                      itemNamefinal);
-                                                                                                  print(
-                                                                                                      mimetypes);
-                                                                                                  print(
-                                                                                                      "final print dataaa");
-
-                                                                                                  FlutterDownloader
-                                                                                                      .registerCallback(
-                                                                                                      downloadCallback);
-
-                                                                                                  requestPermission(
-                                                                                                      itemNamefinal,
-                                                                                                      logDataTitle[indexx][indexs]['attachment_ids']['files'][index]["datas"]);
-                                                                                                  postProvider?.fetchPosts(widget.customerId);
-
-                                                                                                },
-                                                                                              ),
-                                                                                            ),
-                                                                                          ],
-                                                                                        ),
-                                                                                      ),
-                                                                                      SizedBox(
-                                                                                        height: 9,
-                                                                                      ),
-
-
-                                                                                    ],
-                                                                                  ),
-                                                                                );
-                                                                            }
-                                                                        ) :
-                                                                        Container(),
-                                                                      ),
-
-                                                                    ],
-                                                                  ),
-                                                                  emojiSet.length > 0 ?
-                                                                  Container(
-                                                                    width:mediaQueryData
-                                                                        .size
-                                                                        .width,
-
-                                                                    child: GridView.builder(
-                                                                        shrinkWrap: true,
-                                                                        // Avoid scrolling
-                                                                        physics: NeverScrollableScrollPhysics(),
-                                                                        itemCount: emojiSet.length,
-                                                                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                                                          crossAxisCount: 6,
-                                                                          mainAxisSpacing: 5.0,
-                                                                          crossAxisSpacing: 5.0,
-                                                                          childAspectRatio: 2.1,
-                                                                        ),
-                                                                        itemBuilder: (
-                                                                            BuildContext context,
-                                                                            int index) {
-                                                                          return InkWell(
-
-                                                                              child: Container(
-
-                                                                                margin: EdgeInsets
-                                                                                    .fromLTRB(
-                                                                                    10, 0, 0, 2),
-                                                                                // width: 40,
-                                                                                height: 15,
-                                                                                decoration: BoxDecoration(
-                                                                                    color: Colors.white,
-                                                                                    borderRadius: BorderRadius
-                                                                                        .all(
-                                                                                        Radius.circular(
-                                                                                            3)),
-                                                                                    border: Border.all(
-                                                                                        color: Color(
-                                                                                            0XFFEBEBEB),
-
-                                                                                        width: 1)),
-                                                                                // color: Colors.red,
-                                                                                child: Row(
-
-                                                                                  children: [
-                                                                                    Padding(
-                                                                                      padding: const EdgeInsets
-                                                                                          .only(left: 5),
-                                                                                      child: Container(
-                                                                                        // width:18,
-                                                                                          height: 19,
-                                                                                          child: Text(
-                                                                                              emojiSet[index]['emoji'])),
-                                                                                    ),
-                                                                                    SizedBox(width: 3),
-
-                                                                                    Text(
-                                                                                      emojiSet[index]['count']
-                                                                                          .toString(),
-                                                                                      style: TextStyle(
-                                                                                          fontSize: 10
-                                                                                      ),),
-                                                                                  ],
-                                                                                ),
-                                                                              ),
-                                                                              onTap: () async {
-                                                                                var data = await deleteEmoji(
-                                                                                    emojiSet[index]['emoji'],
-                                                                                    logDataTitle[indexx][indexs]['id']);
-
-                                                                                if (data['result']['message'] ==
-                                                                                    "success") {
-                                                                                  postProvider?.fetchPosts(widget.customerId);
-
-                                                                                }
-                                                                              }
-                                                                          );
                                                                         }
-                                                                    ),
-                                                                  ) :
-                                                                  Container(),
-                                                                ],
-                                                              ),
+                                                                      }
+                                                                  );
+                                                                }
                                                             ),
+                                                          ) :
+                                                          Container(),
+                                                        ],
+                                                      ),
+                                                    ),
 
-                                                          ],
-                                                        ),
-                                                      );
-                                                    })
-                                              ],
-                                            );
-                                          });
+                                                  ],
+                                                ),
+                                              );
+                                            });
 
-                                    } );
-
-
-
-                              } else {
-                                return Container();
-                              }
-                            }
-
-                          }
-
-
-                          return Center(
-                              child: const CircularProgressIndicator());
+                                    }).toList(),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                    ):
+                    CircularProgressIndicator(),
 
 
-                        }),
 
                   ],
                 ),
@@ -12096,6 +13720,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
       _isInitialized = true;
     });
+
+    await  postProvider?.fetchPosts(widget.customerId);
+
     await getScheduleDetails();
   }
 
@@ -15464,7 +17091,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 }
 
 class PostProvidercustomer  extends ChangeNotifier {
-  var _posts;
+  Map<String, List<Map<String, dynamic>>>? _posts;
   int _savefile = -1;
 
   get posts => _posts;
