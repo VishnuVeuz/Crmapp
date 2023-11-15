@@ -2980,12 +2980,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                             child: Container(
                                               width: mediaQueryData.size.width /
                                                   1.32,
+                                             // color: Colors.red,
                                               //width:250,
                                               //height: 46,
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(5)),
+
                                                   color: Color(0xFFF6F6F6),
                                                   border: Border.all(
                                                     color: Color(0xFFEBEBEB),
