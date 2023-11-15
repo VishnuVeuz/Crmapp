@@ -2993,57 +2993,47 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     color: Color(0xFFEBEBEB),
                                                   )),
                                               child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: mediaQueryData
-                                                                .size.width /
-                                                            1.8,
-                                                        //width:250,
-                                                        // height: 40,
-                                                        //color: Colors.red,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 10),
-                                                          child: TextField(
-                                                              textAlignVertical:
-                                                                  TextAlignVertical
-                                                                      .top,
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFF000000),
-                                                              ),
-                                                              maxLines: null,
-                                                              controller:
-                                                                  lognoteController,
-                                                              decoration: const InputDecoration(
-                                                                  border: InputBorder.none,
-                                                                  hintText: "Send a message to followers",
-                                                                  hintStyle: TextStyle(
-                                                                      //fontFamily: "inter",
-                                                                      fontWeight: FontWeight.w400,
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 11,
-                                                                      color: Color(0xFFAFAFAF)))),
-                                                        ),
-                                                      ),
-                                                      // Divider(
-                                                      //   color: Colors.grey[350],
-                                                      //   thickness: 1,
-                                                      // ),
-                                                    ],
+                                                  Container(
+                                                    width: mediaQueryData
+                                                            .size.width /
+                                                        1.8,
+                                                    //width:250,
+                                                    // height: 40,
+                                                    //color: Colors.red,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets
+                                                                  .only(
+                                                              left: 10),
+                                                      child: TextField(
+                                                          textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 11,
+                                                            color: Color(
+                                                                0xFF000000),
+                                                          ),
+                                                          maxLines: null,
+                                                          controller:
+                                                              lognoteController,
+                                                          decoration: const InputDecoration(
+                                                              border: InputBorder.none,
+                                                              hintText: "Send a message to followers",
+                                                              hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontFamily: 'Mulish',
+                                                                  fontSize: 11,
+                                                                  color: Color(0xFFAFAFAF)))),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -3428,54 +3418,48 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     color: Color(0xFFEBEBEB),
                                                   )),
                                               child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: mediaQueryData
-                                                                .size.width /
-                                                            1.8,
-                                                        //width:300,
-                                                        // height: 40,
-                                                        //color: Colors.red,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 10),
-                                                          child: TextField(
-                                                              textAlignVertical:
-                                                                  TextAlignVertical
-                                                                      .top,
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFF000000),
-                                                              ),
-                                                              //expands: true,
-                                                              maxLines: null,
-                                                              controller:
-                                                                  lognoteController,
-                                                              decoration: const InputDecoration(
-                                                                  border: InputBorder.none,
-                                                                  hintText: "Log an internal note",
-                                                                  hintStyle: TextStyle(
-                                                                      //fontFamily: "inter",
-                                                                      fontWeight: FontWeight.w400,
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 12,
-                                                                      color: Color(0xFFAFAFAF)))),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                  Container(
+                                                    width: mediaQueryData
+                                                            .size.width /
+                                                        1.8,
+                                                    //width:300,
+                                                    // height: 40,
+                                                    //color: Colors.red,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets
+                                                                  .only(
+                                                              left: 10),
+                                                      child: TextField(
+                                                          textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 11,
+                                                            color: Color(
+                                                                0xFF000000),
+                                                          ),
+                                                          //expands: true,
+                                                          maxLines: null,
+                                                          controller:
+                                                              lognoteController,
+                                                          decoration: const InputDecoration(
+                                                              border: InputBorder.none,
+                                                              hintText: "Log an internal note",
+                                                              hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontFamily: 'Mulish',
+                                                                  fontSize: 12,
+                                                                  color: Color(0xFFAFAFAF)))),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:

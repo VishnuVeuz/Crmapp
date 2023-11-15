@@ -2967,48 +2967,42 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                           border:
                                           Border.all(color: Color(0xFFEBEBEB))),
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width:mediaQueryData.size.width /
-                                                    1.8,
+                                          Container(
+                                            width:mediaQueryData.size.width /
+                                                1.8,
 
-                                                child: Padding(
-                                                  padding:
-                                                  const EdgeInsets.only(left: 10),
-                                                  child: TextField(
-                                                      textAlignVertical:
-                                                      TextAlignVertical.top,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 11,
-                                                        color: Color(0xFF000000),
-                                                      ),
-                                                      //expands: true,
-                                                      maxLines: null,
-                                                      controller: lognoteController,
-                                                      decoration: const InputDecoration(
-                                                          border: InputBorder.none,
-                                                          hintText:
-                                                          "Send a message to followers",
-                                                          hintStyle: TextStyle(
-                                                            //fontFamily: "inter",
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .w400,
-                                                              fontFamily:
-                                                              'Mulish',
-                                                              fontSize: 11,
-                                                              color: Color(
-                                                                  0xFFAFAFAF)))),
-                                                ),
-                                              ),
-
-
-                                            ],
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.only(left: 10),
+                                              child: TextField(
+                                                  textAlignVertical:
+                                                  TextAlignVertical.top,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: 'Mulish',
+                                                    fontSize: 11,
+                                                    color: Color(0xFF000000),
+                                                  ),
+                                                  //expands: true,
+                                                  maxLines: null,
+                                                  controller: lognoteController,
+                                                  decoration: const InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                      "Send a message to followers",
+                                                      hintStyle: TextStyle(
+                                                        //fontFamily: "inter",
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .w400,
+                                                          fontFamily:
+                                                          'Mulish',
+                                                          fontSize: 11,
+                                                          color: Color(
+                                                              0xFFAFAFAF)))),
+                                            ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(left: 10),
@@ -3283,48 +3277,42 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                           border:
                                           Border.all(color: Color(0xFFEBEBEB))),
                                       child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                width:mediaQueryData.size.width /
-                                                    1.8,
+                                          Container(
+                                            width:mediaQueryData.size.width /
+                                                1.8,
 
-                                                child: Padding(
-                                                  padding:
-                                                  const EdgeInsets.only(left: 10),
-                                                  child: TextField(
-                                                      textAlignVertical:
-                                                      TextAlignVertical.top,
-                                                      style: TextStyle(
-                                                        fontWeight: FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 11,
-                                                        color: Color(0xFF000000),
-                                                      ),
-                                                      //expands: true,
-                                                      maxLines: null,
-                                                      controller: lognoteController,
-                                                      decoration: const InputDecoration(
-                                                          border: InputBorder.none,
-                                                          hintText:
-                                                          "Log an internal note",
-                                                          hintStyle: TextStyle(
-                                                            //fontFamily: "inter",
-                                                              fontWeight:
-                                                              FontWeight
-                                                                  .w400,
-                                                              fontFamily:
-                                                              'Mulish',
-                                                              fontSize: 11,
-                                                              color: Color(
-                                                                  0xFFAFAFAF)))),
-                                                ),
-                                              ),
-
-
-                                            ],
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsets.only(left: 10),
+                                              child: TextField(
+                                                  textAlignVertical:
+                                                  TextAlignVertical.top,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    fontFamily: 'Mulish',
+                                                    fontSize: 11,
+                                                    color: Color(0xFF000000),
+                                                  ),
+                                                  //expands: true,
+                                                  maxLines: null,
+                                                  controller: lognoteController,
+                                                  decoration: const InputDecoration(
+                                                      border: InputBorder.none,
+                                                      hintText:
+                                                      "Log an internal note",
+                                                      hintStyle: TextStyle(
+                                                        //fontFamily: "inter",
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .w400,
+                                                          fontFamily:
+                                                          'Mulish',
+                                                          fontSize: 11,
+                                                          color: Color(
+                                                              0xFFAFAFAF)))),
+                                            ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(left: 20),
