@@ -2125,10 +2125,10 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 0, left: 25, right: 0),
+                                top: 0, left: 25, right: 20),
                             child: Center(
                               child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     child: Row(
@@ -2166,10 +2166,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                       ],
                                     ),
                                   ),
-                                  followerStatus == false
-                                      ? Padding(
+                                  Container(
+                                  child: Row(
+                                      children: [
+                                        followerStatus == false
+                                            ? Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 180),
+                                          const EdgeInsets.only(left: 0),
                                           child: Row(
                                             children: [
                                               Icon(
@@ -2180,9 +2183,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                               TextButton(
                                                   onPressed: () async {
                                                     String resMessage =
-                                                        await followerFollow(
-                                                            widget.leadId,
-                                                            "lead.lead");
+                                                    await followerFollow(
+                                                        widget.leadId,
+                                                        "lead.lead");
 
                                                     if (resMessage ==
                                                         "success") {
@@ -2210,14 +2213,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         color: Colors.green,
                                                         fontFamily: 'Mulish',
                                                         fontWeight:
-                                                            FontWeight.w600),
+                                                        FontWeight.w600),
                                                   )),
                                             ],
                                           ),
                                         )
-                                      : Padding(
+                                            : Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 180),
+                                          const EdgeInsets.only(left: 0),
                                           child: Row(
                                             children: [
                                               Icon(
@@ -2228,9 +2231,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                               TextButton(
                                                   onPressed: () async {
                                                     String resMessage =
-                                                        await followerUnFollow(
-                                                            widget.leadId,
-                                                            "lead.lead");
+                                                    await followerUnFollow(
+                                                        widget.leadId,
+                                                        "lead.lead");
 
                                                     if (resMessage ==
                                                         "success") {
@@ -2257,40 +2260,44 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         color: Colors.red,
                                                         fontFamily: 'Mulish',
                                                         fontWeight:
-                                                            FontWeight.w600),
+                                                        FontWeight.w600),
                                                   )),
                                             ],
                                           ),
                                         ),
-                                  InkWell(
-                                    child: Container(
-                                        width: 18,
-                                        child: SvgPicture.asset(
-                                            "images/user.svg")),
-                                    onTap: () async {
-                                      List followers = await getFollowers(
-                                          widget.leadId, "lead.lead");
+                                        InkWell(
+                                          child: Container(
+                                              width: 18,
+                                              child: SvgPicture.asset(
+                                                  "images/user.svg")),
+                                          onTap: () async {
+                                            List followers = await getFollowers(
+                                                widget.leadId, "lead.lead");
 
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            _buildFollowPopupDialog(
-                                                context, followers),
-                                      ).then((value) => setState(() {}));
-                                    },
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  _buildFollowPopupDialog(
+                                                      context, followers),
+                                            ).then((value) => setState(() {}));
+                                          },
+                                        ),
+                                        Container(
+                                          width: 25,
+                                          //color: Colors.green,
+                                          child: Text(
+                                            followerCount!,
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: 'Mulish',
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xFF000000)),
+                                          ),
+                                        ),
+                                      ],
                                   ),
-                                  Container(
-                                    width: 25,
-                                    //color: Colors.green,
-                                    child: Text(
-                                      followerCount!,
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xFF000000)),
-                                    ),
                                   ),
+
                                 ],
                               ),
                             ),

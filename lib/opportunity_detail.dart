@@ -2720,155 +2720,173 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 0, left: 25, right: 0),
+                    padding: const EdgeInsets.only(top: 0, left: 25, right:20),
                     child: Center(
                       child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            child: Container(
-                              width: 18,
-                              child: Image.asset(
-                                "images/pi.png",
-                                color: Colors.black,width: 0,),
-
-
-                            ),
-                            onTap: (){
-                              setState(() {
-                                attachmentVisibility == true
-                                    ? attachmentVisibility = false
-                                    : attachmentVisibility = true;
-                              }
-                              );
-                            },
-                          ),
                           Container(
-                            width: 25,
-                            // color: Colors.green,
-                            child: Text(
-                              attachmentCount!,
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontFamily: 'Mulish',
-                              ),
-                            ),
-                          ),
-                          followerStatus == false
-                              ? Padding(
-                            padding: const EdgeInsets.only(left: 180),
                             child: Row(
-                              children: [
-                                Icon(
-                                  Icons.check_sharp,
-                                  size: 14,
-                                  color: Colors.green,
-                                ),
-                                TextButton(
-                                    onPressed: () async {
-                                      String resMessage =
-                                      await followerFollow(
-                                          widget.opportunityId,
-                                          "crm.lead");
+                                children: [
+                                  InkWell(
+                                    child: Container(
+                                      width: 18,
+                                      child: Image.asset(
+                                        "images/pi.png",
+                                        color: Colors.black,width: 0,),
 
-                                      if (resMessage == "success") {
-                                        setState(() {
-                                          int followCount;
-                                          followCount =
-                                              int.parse(followerCount!);
-                                          followerStatus = true;
-                                          followCount = followCount + 1;
-                                          followerCount =
-                                              followCount.toString();
-                                        });
 
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                    ),
+                                    onTap: (){
+                                      setState(() {
+                                        attachmentVisibility == true
+                                            ? attachmentVisibility = false
+                                            : attachmentVisibility = true;
                                       }
+                                      );
                                     },
+                                  ),
+                                  SizedBox(
+                                    width: 1,
+                                  ),
+                                  Container(
+                                    width: 25,
+                                    // color: Colors.green,
                                     child: Text(
-                                      "Follow",
+                                      attachmentCount!,
                                       style: TextStyle(
-                                          color: Colors.green,
-                                          fontFamily: 'Mulish'),
-                                    )),
-                              ],
+                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                      ),
+                                    ),
+                                  ),
+                                ],
                             ),
-                          )
-                              : Padding(
-                            padding: const EdgeInsets.only(left: 180),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.close,
-                                  size: 14,
-                                  color: Colors.red,
-                                ),
-                                TextButton(
-
-                                    onPressed: () async {
-                                      String resMessage =
-                                      await followerUnFollow(
-                                          widget.opportunityId,
-                                          "crm.lead");
-
-                                      if (resMessage == "success") {
-                                        setState(() {
-                                          int followCount;
-                                          followCount =
-                                              int.parse(followerCount!);
-                                          followerStatus = false;
-                                          followCount = followCount - 1;
-                                          followerCount =
-                                              followCount.toString();
-                                        });
-
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //         builder: (context) => OpportunityDetail(widget.opportunityId)));
-                                      }
-                                    },
-                                    child: Text(
-                                      "Unfollow",
-                                      style: TextStyle(
-                                          color: Colors.red,
-                                          fontFamily: 'Mulish'),
-                                    )),
-                              ],
-                            ),
-                          ),
-                          InkWell(
-                            child: Container(
-                                width: 20,
-                                child: SvgPicture.asset("images/user.svg")
-
-                            ),
-                            onTap: ()async{
-                              List followers = await getFollowers(
-                                  widget.opportunityId, "crm.lead");
-
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    _buildFollowPopupDialog(
-                                        context, followers),
-                              ).then((value) => setState(() {}));
-                            },
                           ),
 
                           Container(
-                            width: 25,
-                            //color: Colors.green,
-                            child: Text(
-                              followerCount!,
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontFamily: 'Mulish',
-                              ),
+                            child: Row(
+                              children: [
+                                followerStatus == false
+                                    ? Padding(
+                                  padding: const EdgeInsets.only(left: 0),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.check_sharp,
+                                        size: 14,
+                                        color: Colors.green,
+                                      ),
+                                      TextButton(
+                                          onPressed: () async {
+                                            String resMessage =
+                                            await followerFollow(
+                                                widget.opportunityId,
+                                                "crm.lead");
+
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = true;
+                                                followCount = followCount + 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
+
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Follow",
+                                            style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                )
+                                    : Padding(
+                                  padding: const EdgeInsets.only(left: 0),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.close,
+                                        size: 14,
+                                        color: Colors.red,
+                                      ),
+                                      TextButton(
+
+                                          onPressed: () async {
+                                            String resMessage =
+                                            await followerUnFollow(
+                                                widget.opportunityId,
+                                                "crm.lead");
+
+                                            if (resMessage == "success") {
+                                              setState(() {
+                                                int followCount;
+                                                followCount =
+                                                    int.parse(followerCount!);
+                                                followerStatus = false;
+                                                followCount = followCount - 1;
+                                                followerCount =
+                                                    followCount.toString();
+                                              });
+
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (context) => OpportunityDetail(widget.opportunityId)));
+                                            }
+                                          },
+                                          child: Text(
+                                            "Unfollow",
+                                            style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: 'Mulish'),
+                                          )),
+                                    ],
+                                  ),
+                                ),
+                                InkWell(
+                                  child: Container(
+                                      width: 20,
+                                      child: SvgPicture.asset("images/user.svg")
+
+                                  ),
+                                  onTap: ()async{
+                                    List followers = await getFollowers(
+                                        widget.opportunityId, "crm.lead");
+
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          _buildFollowPopupDialog(
+                                              context, followers),
+                                    ).then((value) => setState(() {}));
+                                  },
+                                ),
+
+                                Container(
+                                  width: 25,
+                                  //color: Colors.green,
+                                  child: Text(
+                                    followerCount!,
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontFamily: 'Mulish',
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
+
                         ],
                       ),
                     ),
