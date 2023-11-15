@@ -28,6 +28,7 @@ void main() async{
              ChangeNotifierProvider(create: (context) => PostProvideropportunity()),
              ChangeNotifierProvider(create: (context) => PostProviderquotation()),
              ChangeNotifierProvider(create: (context) => PostProvidercustomer()),
+
           ],
           child: MyApp()
         ),
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 
 
 

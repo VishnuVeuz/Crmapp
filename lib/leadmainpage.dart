@@ -46,6 +46,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
     super.initState();
     companyData();
     profilePreference();
+    print("leadmainpage");
   }
   String? token;
 
@@ -63,6 +64,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
     }
     else {
       print(Theme.of(context).primaryColor);
+      print("dummy dummy");
       print("primaryColor");
       return Scaffold(
         drawer: MainDrawer(),

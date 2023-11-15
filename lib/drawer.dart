@@ -5,6 +5,7 @@ import 'package:crm_project/scrolling/customerscrolling.dart';
 import 'package:crm_project/scrolling/quotationscrolling.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'api.dart';
@@ -12,6 +13,7 @@ import 'calendarmainpage.dart';
 import 'calendardetail.dart';
 import 'leadmainpage.dart';
 import 'login.dart';
+import 'main.dart';
 import 'model/multicompany.dart';
 import 'globals.dart' as globals;
 import 'opportunity_detail.dart';
@@ -201,6 +203,10 @@ class _MainDrawerState extends State<MainDrawer> {
                     ),
                   ),
                   onTap: () {
+                    print("clickedclicked");
+
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (context) =>  OpportunityMainPage(null,"","","","")));
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -374,10 +380,11 @@ class _MainDrawerState extends State<MainDrawer> {
                               ),
                               InkWell(
                                 onTap: (){
-                                  Navigator.push(
+                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
+
                                               OpportunityMainPage(
                                                   null, "", "notification",
                                                   "[assigned_to_me]","")));

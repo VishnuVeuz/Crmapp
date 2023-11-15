@@ -40,12 +40,14 @@ class OpportunityDetail extends StatefulWidget {
   var opportunityId;
   OpportunityDetail(this.opportunityId);
   static final _editFormKey = GlobalKey<FormState>();
+
   @override
   State<OpportunityDetail> createState() => _OpportunityDetailState();
 }
 
-class _OpportunityDetailState extends State<OpportunityDetail> {
+class _OpportunityDetailState extends State<OpportunityDetail>{
 
+  final _textValue = ValueNotifier<String>('');
 
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
   dynamic lostreasonName, lostreasonId;
@@ -169,7 +171,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   // lognote
 
   TextEditingController lognoteController = TextEditingController();
-  TextEditingController lognoteEditController = TextEditingController();
+   TextEditingController lognoteEditController = TextEditingController();
 
   final ImagePicker picker = ImagePicker();
   List<File> selectedImages = [];
@@ -235,6 +237,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
   Widget build(BuildContext context) {
 
+
+    print("builddataa");
     if (postProvider == null) {
       postProvider = Provider.of<PostProvideropportunity>(context, listen: false);
     }
@@ -250,6 +254,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       ),
     ):
     Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: MainDrawer(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
@@ -382,6 +387,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
             final mediaQueryData = MediaQuery.of(context);
             return WillPopScope(
           onWillPop: () async {
+            print("fin alalalal");
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -2000,9 +2006,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 children: [
                                   InkWell(
                                     child: Container(
-                                      color: Colors.red,
-                                      width: mediaQueryData.size.width/5,
-                                      height: 20,
+                                     // color: Colors.red,
+                                      //width: mediaQueryData.size.width/3,
+                                      width:mediaQueryData.size.width/4.1,
+                                     // height: 50,
                                       child: Stack(
                                         children: [
 
@@ -5866,7 +5873,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   left: 10),
                                                                               child:  Form(
                                                                                 key: OpportunityDetail._editFormKey,
-                                                                                child: TextField(
+                                                                                child:  TextField(
                                                                                     textAlignVertical:
                                                                                     TextAlignVertical
                                                                                         .top,
@@ -5882,11 +5889,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
 
                                                                                     maxLines: null,
 
-                                                                                    onChanged: (newValue) {
-                                                                                      print("demodatatataadsaf");
-                                                                                      // Handle text changes here if necessary
-                                                                                    },
-                                                                                    controller: lognoteEditController,
+                                                                                    // onChanged: (newValue) {
+                                                                                    //   print("demodatatataadsaf");
+                                                                                    //   // Handle text changes here if necessary
+                                                                                    // },
+                                                                                    controller:  lognoteEditController,
 
                                                                                     decoration:
                                                                                     const InputDecoration(
@@ -10402,6 +10409,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
   }
 
 }
+
 
 
 class PostProvideropportunity extends ChangeNotifier {

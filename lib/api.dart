@@ -3141,6 +3141,64 @@ print('${baseUrl}api/log/${logId}');
 }
 
 
+// Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, String activityModel) async {
+//   String token = await getUserJwt();
+//
+//
+//   var data;
+//   String? authresponce;
+//   print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
+//   print("demo data");
+//
+//   try {
+//     Response response = await get(
+//
+//       Uri.parse(
+//           "${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}"),
+//       headers: {
+//         'Authorization': 'Bearer $token',
+//       },
+//     ).timeout(const Duration(
+//       seconds: 10,
+//     ));
+//
+//     if (response.statusCode != 200) {
+//       data = jsonDecode(response.body);
+//       throw Exception(data['message']);
+//     }
+//     else {
+//       print(jsonDecode(response.body));
+//       final String responseBody = response.body ?? '';
+//       final Map<String, dynamic> decodedData = jsonDecode(responseBody);
+//
+//       final Map<String, List<Map<String, dynamic>>> apiData = {};
+//
+//       decodedData.forEach((key, value) {
+//         // Check if the value is a List<dynamic>
+//         if (value is List<dynamic>) {
+//           // Cast each item in the list to Map<String, dynamic>
+//           final List<Map<String, dynamic>> dataList = value.cast<Map<String, dynamic>>();
+//           apiData[key] = dataList;
+//         } else {
+//           // Handle unexpected structure or type
+//           print('Unexpected structure or type for key: $key');
+//           // You might want to throw an error or handle this accordingly
+//         }
+//       });
+//
+//       return apiData;
+//     }
+//   }catch(e){
+//     print(data['message']);
+//     print("logdatataa");
+//     throw Exception(data['message']);
+//   }
+//
+//   //return data;
+// }
+//
+
+
 
 deleteLogData(int logId) async {
 

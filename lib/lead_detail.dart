@@ -43,6 +43,8 @@ class LeadDetail extends StatefulWidget {
   LeadDetail(this.leadId);
   static final _formKey = GlobalKey<FormState>();
   static final _editFormKey = GlobalKey<FormState>();
+  static final TextEditingController lognoteEditController = TextEditingController();
+
 
   @override
   State<LeadDetail> createState() => _LeadDetailState();
@@ -52,6 +54,10 @@ class _LeadDetailState extends State<LeadDetail> {
   final GlobalKey<State> _dialogKey = GlobalKey<State>();
 
   PointerThisPlease<int> currentPage = PointerThisPlease<int>(1);
+
+
+
+
   dynamic companyName, companyId;
   String notificationCount = "0";
   String messageCount = "0";
@@ -172,7 +178,7 @@ class _LeadDetailState extends State<LeadDetail> {
   // lognote
 
   TextEditingController lognoteController = TextEditingController();
-  TextEditingController lognoteEditController = TextEditingController();
+  // TextEditingController lognoteEditController = TextEditingController();
 
   final ImagePicker picker = ImagePicker();
   List<File> selectedImages = [];
@@ -227,10 +233,15 @@ class _LeadDetailState extends State<LeadDetail> {
     print("leadIdtestttt");
 
     getLeadDetails();
+
     // requestPermission();
     requestNotificationPermissions();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
+
+    // setState(() {
+    //
+    // });
   }
 
   String? token;
@@ -243,6 +254,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   @override
   Widget build(BuildContext context) {
+    print("builddataa1");
     if (postProvider == null) {
       postProvider = Provider.of<PostProvider>(context, listen: false);
     }
@@ -5201,7 +5213,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                 String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
 
                                                                                                 selectedItemIndex = lodDataId;
-                                                                                                lognoteEditController.text = logdata;
+                                                                                                LeadDetail.lognoteEditController.text = logdata;
                                                                                                 print(widget.leadId);
                                                                                                 print("print1");
                                                                                                 postProvider?.fetchPosts(widget.leadId);
@@ -5479,7 +5491,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                           print("demodatatataadsaf");
                                                                                           // Handle text changes here if necessary
                                                                                         },
-                                                                                        controller: lognoteEditController,
+                                                                                        controller: LeadDetail.lognoteEditController,
                                                                                         decoration: const InputDecoration(
                                                                                             border: InputBorder.none,
                                                                                             hintText: "Send a message to followers",
@@ -5590,7 +5602,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               child: Container(child: Text("  cancel  ")),
                                                                               onTap: () {
                                                                                 selectedItemIndex = -1;
-                                                                                lognoteEditController.text = "";
+                                                                                LeadDetail.lognoteEditController.text = "";
                                                                                 selectedImagesEdit.clear();
                                                                                 myData1.clear();
                                                                                 print(widget.leadId);
@@ -5633,7 +5645,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   String resMessage = await logNoteEditData(myData1, lognoteId);
 
                                                                                   if (resMessage != 0) {
-                                                                                    lognoteEditController.text = "";
+                                                                                    LeadDetail.lognoteEditController.text = "";
                                                                                     selectedImagesEdit.clear();
                                                                                     myData1.clear();
                                                                                     selectedItemIndex = -1;
@@ -6096,6 +6108,45 @@ class _LeadDetailState extends State<LeadDetail> {
                                 return Center(
                                     child: const CircularProgressIndicator());
                               }),
+
+                          // postProvider?.posts != null?
+                          // Container(
+                          //   height:500,
+                          //   child: ListView.builder(
+                          //     itemCount: postProvider?.posts.length ?? 0,
+                          //     itemBuilder: (BuildContext context, int index) {
+                          //       var entry = postProvider?.posts.entries.elementAt(index);
+                          //
+                          //       return Column(
+                          //         crossAxisAlignment: CrossAxisAlignment.start,
+                          //         children: [
+                          //           Padding(
+                          //             padding: const EdgeInsets.all(8.0),
+                          //             child: Text(
+                          //               entry.key,
+                          //               style: TextStyle(
+                          //                 fontSize: 18,
+                          //                 fontWeight: FontWeight.bold,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //           Column(
+                          //             children: entry.value.map<Widget>((item) {
+                          //               return ListTile(
+                          //                 title: Text(item['date']),
+                          //                 subtitle: Text(item['body']),
+                          //                 // ... other details
+                          //               );
+                          //             }).toList(),
+                          //           ),
+                          //         ],
+                          //       );
+                          //     },
+                          //   ),
+                          // ):
+                          // CircularProgressIndicator(),
+
+
                         ],
                       ),
                     ),
@@ -8430,7 +8481,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   logNoteEditData(List myData1, int lognoteId) async {
     try {
-      var value = await EditlogNote(lognoteEditController.text, "lead.lead",
+      var value = await EditlogNote(LeadDetail.lognoteEditController.text, "lead.lead",
           widget.leadId, myData1, lognoteId);
       print(value);
       print("valuesss");
@@ -8790,6 +8841,7 @@ class _LeadDetailState extends State<LeadDetail> {
       }
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
     });
+  //await  postProvider?.fetchPosts(widget.leadId);
 
     await getScheduleDetails();
   }
@@ -9911,3 +9963,32 @@ class PostProvider extends ChangeNotifier {
 
   }
 }
+
+// class PostProvider extends ChangeNotifier {
+//   Map<String, List<Map<String, dynamic>>>? _posts;
+//   int _savefile = -1;
+//
+//   get posts => _posts;
+//   get savefiles => _savefile;
+//
+//
+//   Future fetchPosts1(int positionId) async {
+//
+//     _savefile = positionId;
+//
+//     notifyListeners();
+//
+//   }
+//
+//   Future fetchPosts(leadid) async {
+//     print("finaldatta padsss11");
+//
+//     _posts = await getlogNoteData(leadid, "lead.lead");
+//     _savefile = -1;
+//     print(_posts);
+//     print("finaldatta padsss");
+//
+//     notifyListeners();
+//
+//   }
+// }

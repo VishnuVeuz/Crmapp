@@ -261,6 +261,10 @@ class _CommonOpportunityState extends State<CommonOpportunity> {
               ),
             ),
             onTap: (){
+              print("common op");
+              // Navigator.of(context).push(
+              //     MaterialPageRoute(builder: (context) =>  OpportunityDetail(widget.id)));
+              //
 
               Navigator.push(
                   context,
