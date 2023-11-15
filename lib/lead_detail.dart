@@ -2125,10 +2125,10 @@ class _LeadDetailState extends State<LeadDetail> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 0, left: 25, right: 0),
+                                top: 0, left: 25, right: 20),
                             child: Center(
                               child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
                                     child: Row(
@@ -2166,10 +2166,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                       ],
                                     ),
                                   ),
-                                  followerStatus == false
-                                      ? Padding(
+                                  Container(
+                                  child: Row(
+                                      children: [
+                                        followerStatus == false
+                                            ? Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 180),
+                                          const EdgeInsets.only(left: 0),
                                           child: Row(
                                             children: [
                                               Icon(
@@ -2180,9 +2183,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                               TextButton(
                                                   onPressed: () async {
                                                     String resMessage =
-                                                        await followerFollow(
-                                                            widget.leadId,
-                                                            "lead.lead");
+                                                    await followerFollow(
+                                                        widget.leadId,
+                                                        "lead.lead");
 
                                                     if (resMessage ==
                                                         "success") {
@@ -2210,14 +2213,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         color: Colors.green,
                                                         fontFamily: 'Mulish',
                                                         fontWeight:
-                                                            FontWeight.w600),
+                                                        FontWeight.w600),
                                                   )),
                                             ],
                                           ),
                                         )
-                                      : Padding(
+                                            : Padding(
                                           padding:
-                                              const EdgeInsets.only(left: 180),
+                                          const EdgeInsets.only(left: 0),
                                           child: Row(
                                             children: [
                                               Icon(
@@ -2228,9 +2231,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                               TextButton(
                                                   onPressed: () async {
                                                     String resMessage =
-                                                        await followerUnFollow(
-                                                            widget.leadId,
-                                                            "lead.lead");
+                                                    await followerUnFollow(
+                                                        widget.leadId,
+                                                        "lead.lead");
 
                                                     if (resMessage ==
                                                         "success") {
@@ -2257,40 +2260,44 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         color: Colors.red,
                                                         fontFamily: 'Mulish',
                                                         fontWeight:
-                                                            FontWeight.w600),
+                                                        FontWeight.w600),
                                                   )),
                                             ],
                                           ),
                                         ),
-                                  InkWell(
-                                    child: Container(
-                                        width: 18,
-                                        child: SvgPicture.asset(
-                                            "images/user.svg")),
-                                    onTap: () async {
-                                      List followers = await getFollowers(
-                                          widget.leadId, "lead.lead");
+                                        InkWell(
+                                          child: Container(
+                                              width: 18,
+                                              child: SvgPicture.asset(
+                                                  "images/user.svg")),
+                                          onTap: () async {
+                                            List followers = await getFollowers(
+                                                widget.leadId, "lead.lead");
 
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            _buildFollowPopupDialog(
-                                                context, followers),
-                                      ).then((value) => setState(() {}));
-                                    },
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  _buildFollowPopupDialog(
+                                                      context, followers),
+                                            ).then((value) => setState(() {}));
+                                          },
+                                        ),
+                                        Container(
+                                          width: 25,
+                                          //color: Colors.green,
+                                          child: Text(
+                                            followerCount!,
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: 'Mulish',
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xFF000000)),
+                                          ),
+                                        ),
+                                      ],
                                   ),
-                                  Container(
-                                    width: 25,
-                                    //color: Colors.green,
-                                    child: Text(
-                                      followerCount!,
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w600,
-                                          color: Color(0xFF000000)),
-                                    ),
                                   ),
+
                                 ],
                               ),
                             ),
@@ -2973,68 +2980,60 @@ class _LeadDetailState extends State<LeadDetail> {
                                             child: Container(
                                               width: mediaQueryData.size.width /
                                                   1.32,
+                                             // color: Colors.red,
                                               //width:250,
                                               //height: 46,
                                               decoration: BoxDecoration(
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(5)),
+
                                                   color: Color(0xFFF6F6F6),
                                                   border: Border.all(
                                                     color: Color(0xFFEBEBEB),
                                                   )),
                                               child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: mediaQueryData
-                                                                .size.width /
-                                                            1.8,
-                                                        //width:250,
-                                                        // height: 40,
-                                                        //color: Colors.red,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 10),
-                                                          child: TextField(
-                                                              textAlignVertical:
-                                                                  TextAlignVertical
-                                                                      .top,
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFF000000),
-                                                              ),
-                                                              maxLines: null,
-                                                              controller:
-                                                                  lognoteController,
-                                                              decoration: const InputDecoration(
-                                                                  border: InputBorder.none,
-                                                                  hintText: "Send a message to followers",
-                                                                  hintStyle: TextStyle(
-                                                                      //fontFamily: "inter",
-                                                                      fontWeight: FontWeight.w400,
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 11,
-                                                                      color: Color(0xFFAFAFAF)))),
-                                                        ),
-                                                      ),
-                                                      // Divider(
-                                                      //   color: Colors.grey[350],
-                                                      //   thickness: 1,
-                                                      // ),
-                                                    ],
+                                                  Container(
+                                                    width: mediaQueryData
+                                                            .size.width /
+                                                        1.8,
+                                                    //width:250,
+                                                    // height: 40,
+                                                    //color: Colors.red,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets
+                                                                  .only(
+                                                              left: 10),
+                                                      child: TextField(
+                                                          textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 11,
+                                                            color: Color(
+                                                                0xFF000000),
+                                                          ),
+                                                          maxLines: null,
+                                                          controller:
+                                                              lognoteController,
+                                                          decoration: const InputDecoration(
+                                                              border: InputBorder.none,
+                                                              hintText: "Send a message to followers",
+                                                              hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontFamily: 'Mulish',
+                                                                  fontSize: 11,
+                                                                  color: Color(0xFFAFAFAF)))),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:
@@ -3420,54 +3419,48 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     color: Color(0xFFEBEBEB),
                                                   )),
                                               child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        width: mediaQueryData
-                                                                .size.width /
-                                                            1.8,
-                                                        //width:300,
-                                                        // height: 40,
-                                                        //color: Colors.red,
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 10),
-                                                          child: TextField(
-                                                              textAlignVertical:
-                                                                  TextAlignVertical
-                                                                      .top,
-                                                              style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontFamily:
-                                                                    'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFF000000),
-                                                              ),
-                                                              //expands: true,
-                                                              maxLines: null,
-                                                              controller:
-                                                                  lognoteController,
-                                                              decoration: const InputDecoration(
-                                                                  border: InputBorder.none,
-                                                                  hintText: "Log an internal note",
-                                                                  hintStyle: TextStyle(
-                                                                      //fontFamily: "inter",
-                                                                      fontWeight: FontWeight.w400,
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 12,
-                                                                      color: Color(0xFFAFAFAF)))),
-                                                        ),
-                                                      ),
-                                                    ],
+                                                  Container(
+                                                    width: mediaQueryData
+                                                            .size.width /
+                                                        1.8,
+                                                    //width:300,
+                                                    // height: 40,
+                                                    //color: Colors.red,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets
+                                                                  .only(
+                                                              left: 10),
+                                                      child: TextField(
+                                                          textAlignVertical:
+                                                              TextAlignVertical
+                                                                  .top,
+                                                          style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w400,
+                                                            fontFamily:
+                                                                'Mulish',
+                                                            fontSize: 11,
+                                                            color: Color(
+                                                                0xFF000000),
+                                                          ),
+                                                          //expands: true,
+                                                          maxLines: null,
+                                                          controller:
+                                                              lognoteController,
+                                                          decoration: const InputDecoration(
+                                                              border: InputBorder.none,
+                                                              hintText: "Log an internal note",
+                                                              hintStyle: TextStyle(
+                                                                  //fontFamily: "inter",
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontFamily: 'Mulish',
+                                                                  fontSize: 12,
+                                                                  color: Color(0xFFAFAFAF)))),
+                                                    ),
                                                   ),
                                                   Padding(
                                                     padding:

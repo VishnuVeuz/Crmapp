@@ -1981,156 +1981,175 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     ),
                     Padding(
                       padding:
-                      const EdgeInsets.only(top: 0, left: 25, right: 0),
+                      const EdgeInsets.only(top: 0, left: 25, right: 20),
 
                       child: Center(
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            InkWell(
-                              child: Container(
-                                width: 18,
-                                child: Image.asset(
-                                  "images/pi.png",
-                                  color: Colors.black,width: 0,),
-
-
-                              ),
-                              onTap: (){
-                                setState(() {
-                                  attachmentVisibility == true
-                                      ? attachmentVisibility = false
-                                      : attachmentVisibility = true;
-                                }
-                                );
-                              },
-                            ),
                             Container(
-                              width: 25,
-                              // color: Colors.green,
-                              child: Text(
-                                attachmentCount!,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: 'Mulish',
+                                child: Row(
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          width: 18,
+                                          child: Image.asset(
+                                            "images/pi.png",
+                                            color: Colors.black,width: 0,),
+
+
+                                        ),
+                                        onTap: (){
+                                          setState(() {
+                                            attachmentVisibility == true
+                                                ? attachmentVisibility = false
+                                                : attachmentVisibility = true;
+                                          }
+                                          );
+                                        },
+                                      ),
+                                      SizedBox(
+                                        width: 1,
+                                      ),
+                                      Container(
+                                        width: 25,
+                                        // color: Colors.green,
+                                        child: Text(
+                                          attachmentCount!,
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            fontFamily: 'Mulish',
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                 ),
-                              ),
                             ),
-                            followerStatus == false
-                                ? Padding(
-                              padding: const EdgeInsets.only(left: 180),
+
+
+                            Container(
                               child: Row(
                                 children: [
-                                  Icon(
-                                    Icons.check_sharp,
-                                    size: 14,
-                                    color: Colors.green,
-                                  ),
-                                  TextButton(
-                                      onPressed: () async {
-                                        String resMessage =
-                                        await followerFollow(
-                                            widget.customerId,
-                                            "res.partner");
-
-                                        if (resMessage == "success") {
-                                          setState(() {
-                                            int followCount;
-                                            followCount =
-                                                int.parse(followerCount!);
-                                            followerStatus = true;
-                                            followCount = followCount + 1;
-                                            followerCount =
-                                                followCount.toString();
-                                          });
-
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) => LeadDetail(widget.customerId)));
-                                        }
-                                      },
-                                      child: Text(
-                                        "Follow",
-                                        style: TextStyle(
+                                  followerStatus == false
+                                      ? Padding(
+                                    padding: const EdgeInsets.only(left: 0),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.check_sharp,
+                                          size: 14,
                                           color: Colors.green,
-                                          fontFamily: 'Mulish',
                                         ),
-                                      )),
-                                ],
-                              ),
-                            )
-                                : Padding(
-                              padding: const EdgeInsets.only(left:180),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.close,
-                                    size: 14,
-                                    color: Colors.red,
-                                  ),
-                                  TextButton(
-                                      onPressed: () async {
-                                        String resMessage =
-                                        await followerUnFollow(
-                                            widget.customerId,
-                                            "res.partner");
+                                        TextButton(
+                                            onPressed: () async {
+                                              String resMessage =
+                                              await followerFollow(
+                                                  widget.customerId,
+                                                  "res.partner");
 
-                                        if (resMessage == "success") {
-                                          setState(() {
-                                            int followCount;
-                                            followCount =
-                                                int.parse(followerCount!);
-                                            followerStatus = false;
-                                            followCount = followCount - 1;
-                                            followerCount =
-                                                followCount.toString();
-                                          });
-                                          // Navigator.push(
-                                          //     context,
-                                          //     MaterialPageRoute(
-                                          //         builder: (context) => LeadDetail(widget.customerId)));
-                                        }
-                                      },
-                                      child: Text(
-                                        "Unfollow",
-                                        style: TextStyle(
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  int followCount;
+                                                  followCount =
+                                                      int.parse(followerCount!);
+                                                  followerStatus = true;
+                                                  followCount = followCount + 1;
+                                                  followerCount =
+                                                      followCount.toString();
+                                                });
+
+                                                // Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) => LeadDetail(widget.customerId)));
+                                              }
+                                            },
+                                            child: Text(
+                                              "Follow",
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontFamily: 'Mulish',
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  )
+                                      : Padding(
+                                    padding: const EdgeInsets.only(left:0),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.close,
+                                          size: 14,
                                           color: Colors.red,
-                                          fontFamily: 'Mulish',
                                         ),
-                                      )),
+                                        TextButton(
+                                            onPressed: () async {
+                                              String resMessage =
+                                              await followerUnFollow(
+                                                  widget.customerId,
+                                                  "res.partner");
+
+                                              if (resMessage == "success") {
+                                                setState(() {
+                                                  int followCount;
+                                                  followCount =
+                                                      int.parse(followerCount!);
+                                                  followerStatus = false;
+                                                  followCount = followCount - 1;
+                                                  followerCount =
+                                                      followCount.toString();
+                                                });
+                                                // Navigator.push(
+                                                //     context,
+                                                //     MaterialPageRoute(
+                                                //         builder: (context) => LeadDetail(widget.customerId)));
+                                              }
+                                            },
+                                            child: Text(
+                                              "Unfollow",
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                                fontFamily: 'Mulish',
+                                              ),
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  InkWell(
+                                    child: Container(
+                                        width: 20,
+                                        child: SvgPicture.asset("images/user.svg")
+
+                                    ),
+                                    onTap: ()async{
+                                      List followers = await getFollowers(
+                                          widget.customerId, "res.partner");
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            _buildFollowPopupDialog(
+                                                context, followers),
+                                      ).then((value) => setState(() {}));
+                                    },
+                                  ),
+
+                                  Container(
+                                    width: 25,
+                                    //color: Colors.green,
+                                    child: Text(
+                                      followerCount!,
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontFamily: 'Mulish',
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            InkWell(
-                              child: Container(
-                                  width: 20,
-                                  child: SvgPicture.asset("images/user.svg")
 
-                              ),
-                              onTap: ()async{
-                                List followers = await getFollowers(
-                                    widget.customerId, "res.partner");
-
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      _buildFollowPopupDialog(
-                                          context, followers),
-                                ).then((value) => setState(() {}));
-                              },
-                            ),
-
-                            Container(
-                              width: 25,
-                              //color: Colors.green,
-                              child: Text(
-                                followerCount!,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontFamily: 'Mulish',
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -2729,52 +2748,45 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               color: Color(0xFFEBEBEB),
                                             )),
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width:
-                                                  mediaQueryData.size.width /
-                                                      1.8,
+                                            Container(
+                                              width:
+                                              mediaQueryData.size.width /
+                                                  1.8,
 
-                                                  // height: 40,
-                                                  //color: Colors.red,
-                                                  child: Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(left: 10),
-                                                    child: TextField(
-                                                        textAlignVertical:
-                                                        TextAlignVertical.top,
-                                                        style: TextStyle(
-                                                          fontWeight: FontWeight.w400,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 11,
-                                                          color: Color(0xFF000000),
-                                                        ),
-                                                        //expands: true,
-                                                        maxLines: null,
-                                                        controller: lognoteController,
-                                                        decoration: const InputDecoration(
-                                                            border: InputBorder.none,
-                                                            hintText:
-                                                            "Send a message to followers",
-                                                            hintStyle:  TextStyle(
-                                                              //fontFamily: "inter",
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontSize: 11,
-                                                                color: Color(
-                                                                    0xFFAFAFAF)))),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                              // height: 40,
+                                              //color: Colors.red,
+                                              child: Padding(
+                                                padding:
+                                                const EdgeInsets.only(left: 10),
+                                                child: TextField(
+                                                    textAlignVertical:
+                                                    TextAlignVertical.top,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 11,
+                                                      color: Color(0xFF000000),
+                                                    ),
+                                                    //expands: true,
+                                                    maxLines: null,
+                                                    controller: lognoteController,
+                                                    decoration: const InputDecoration(
+                                                        border: InputBorder.none,
+                                                        hintText:
+                                                        "Send a message to followers",
+                                                        hintStyle:  TextStyle(
+                                                          //fontFamily: "inter",
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w400,
+                                                            fontFamily:
+                                                            'Mulish',
+                                                            fontSize: 11,
+                                                            color: Color(
+                                                                0xFFAFAFAF)))),
+                                              ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(left: 10),
@@ -3070,52 +3082,45 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               color: Color(0xFFEBEBEB),
                                             )),
                                         child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width:
-                                                  mediaQueryData.size.width /
-                                                      1.8,
+                                            Container(
+                                              width:
+                                              mediaQueryData.size.width /
+                                                  1.8,
 
-                                                  // height: 40,
-                                                  //color: Colors.red,
-                                                  child: Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(left: 10),
-                                                    child: TextField(
-                                                        textAlignVertical:
-                                                        TextAlignVertical.top,
-                                                        style: TextStyle(
-                                                          fontWeight: FontWeight.w400,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 11,
-                                                          color: Color(0xFF000000),
-                                                        ),
-                                                        //expands: true,
-                                                        maxLines: null,
-                                                        controller: lognoteController,
-                                                        decoration: const InputDecoration(
-                                                            border: InputBorder.none,
-                                                            hintText:
-                                                            "Log an internal note",
-                                                            hintStyle:  TextStyle(
-                                                              //fontFamily: "inter",
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                fontFamily:
-                                                                'Mulish',
-                                                                fontSize: 12,
-                                                                color: Color(
-                                                                    0xFFAFAFAF)))),
-                                                  ),
-                                                ),
-
-
-                                              ],
+                                              // height: 40,
+                                              //color: Colors.red,
+                                              child: Padding(
+                                                padding:
+                                                const EdgeInsets.only(left: 10),
+                                                child: TextField(
+                                                    textAlignVertical:
+                                                    TextAlignVertical.top,
+                                                    style: TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 11,
+                                                      color: Color(0xFF000000),
+                                                    ),
+                                                    //expands: true,
+                                                    maxLines: null,
+                                                    controller: lognoteController,
+                                                    decoration: const InputDecoration(
+                                                        border: InputBorder.none,
+                                                        hintText:
+                                                        "Log an internal note",
+                                                        hintStyle:  TextStyle(
+                                                          //fontFamily: "inter",
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .w400,
+                                                            fontFamily:
+                                                            'Mulish',
+                                                            fontSize: 12,
+                                                            color: Color(
+                                                                0xFFAFAFAF)))),
+                                              ),
                                             ),
                                             Padding(
                                               padding: const EdgeInsets.only(left: 20),

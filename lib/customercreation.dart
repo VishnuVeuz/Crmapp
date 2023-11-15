@@ -248,434 +248,615 @@ class _CustomerCreationState extends State<CustomerCreation> {
             })
           ],
         ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        body: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
 
-              Expanded(
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                Expanded(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
 
-                        Row(
-                          children: [
-                            Flexible(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  RadioListTile(
-                                    title: Text(
-                                      "Individual",
-                                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                                    ),
-                                    value: "person",
-                                    groupValue: radioInput,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        radioInput = value.toString();
-                                        cmpVisibility = true;
-                                      });
-                                    },
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 25,right:10 ),
-                                    child: Divider(color: Colors.grey,),
-                                  ),
-                                  RadioListTile(
-                                    title: Text(
-                                      "Company",
-                                      style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                                    ),
-                                    value: "company",
-                                    groupValue: radioInput,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        radioInput = value.toString();
-                                        cmpVisibility = false;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 40),
-                              child: Container(
-                                width: 80,
-                                height: 87,
-                                // color: Colors.black,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border:
-                                    Border.all(color: Color(0xFFF5F5F5), width: 1)),
+                          Row(
+                            children: [
+                              Flexible(
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-
-                                    personImg !=""
-                                        ?
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      width: 80,
-                                      // color: Colors.red,
-                                      height: 80,
-                                      child: Stack(
-                                        children: [
-                                          Positioned(
-                                            // rectangle4756kQ (1652:322)
-                                            left: 0,
-                                            top: 6,
-                                            child: Align(
-                                              child: SizedBox(
-                                                width: 75,
-                                                height: 71,
-                                                child: Container(
-                                                  child: ClipRRect(
-                                                          // borderRadius: BorderRadius
-                                                          //     .circular(0),
-                                                          child: Image.memory(
-                                                            base64Decode(personImg!),
-                                                            fit: BoxFit.cover,
-                                                            width: MediaQuery
-                                                                .of(context)
-                                                                .size
-                                                                .width,
-                                                            height: 300,
-                                                          ),
-                                                        ),
-
-                                                  decoration: BoxDecoration (
-                                                    borderRadius: BorderRadius.circular(3),
-                                                    color: Color(0xffd9d9d9),
-                                                    // image: DecorationImage (
-                                                    //   fit: BoxFit.cover,
-                                                    //   image: AssetImage (
-                                                    //       "images/test.png",
-                                                    //   ),
-                                                    // ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            // group20514mrY (1652:323)
-                                            left: 60,
-                                            top: 0,
-                                            child: Align(
-                                              child: InkWell(
-                                                onTap: (){
-                                                  print("demo clicked");
-                                                  setState(() {
-                                                    selectedImages.clear();
-                                                    personImg="";
-                                                  });
-                                                },
-                                                child: SizedBox(
-                                                  width: 20,
-                                                  height: 20,
-                                                  child: Image.asset(
-                                                    'images/logimagedelete.png',
-                                                    width: 20,
-                                                    height: 20,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            // trash2G2c (1652:325)
-                                            left: 65,
-                                            top: 5,
-                                            child: Align(
-                                              child: InkWell(
-                                                onTap: (){
-                                                  print("demo clicked1");
-                                                  setState(() {
-                                                    selectedImages.clear();
-                                                    personImg="";
-                                                  });
-                                                },
-                                                child: SizedBox(
-                                                  width: 9,
-                                                  height: 10,
-                                                  child: Image.asset(
-                                                    'images/logtrash.png',
-                                                    width: 9,
-                                                    height: 10,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-
-                                          Positioned(
-                                            // group20514mrY (1652:323)
-                                            left: 38,
-                                            top: 0,
-                                            child: Align(
-                                              child: InkWell(
-                                                onTap: (){
-                                                  myAlert();
-                                                },
-                                                child: SizedBox(
-                                                  width: 20,
-                                                  height: 20,
-                                                  child: Image.asset(
-                                                    'images/logimagedelete.png',
-                                                    width: 20,
-                                                    height: 20,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            // trash2G2c (1652:325)
-                                            left: 43,
-                                            top: 5,
-                                            child: Align(
-                                              child:  InkWell(
-                                                onTap: (){
-                                                  myAlert();
-                                                },
-                                                child: SizedBox(
-                                                  width: 9,
-                                                  height: 10,
-                                                  child: SvgPicture.asset(
-                                                    "images/logedits.svg",
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                    RadioListTile(
+                                      title: Text(
+                                        "Individual",
+                                        style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
                                       ),
-                                    ):
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                      width: 80,
-                                      // color: Colors.red,
-                                      height: 80,
-                                      child: Stack(
-                                        children: [
-                                          Positioned(
-                                            // rectangle4756kQ (1652:322)
-                                            left: 0,
-                                            top: 6,
-                                            child: Align(
-                                              child: SizedBox(
-                                                width: 75,
-                                                height: 71,
-                                                child: Container(
-                                                  child: SvgPicture.asset(
-                                                    "images/user.svg",
-                                                  ),
-
-                                                  decoration: BoxDecoration (
-                                                    borderRadius: BorderRadius.circular(3),
-                                                    color: Color(0xffd9d9d9),
-                                                    // image: DecorationImage (
-                                                    //   fit: BoxFit.cover,
-                                                    //   image: AssetImage (
-                                                    //       "images/user.png",
-                                                    //   ),
-                                                    // ),
-                                                  ),
-
-
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            // group20514mrY (1652:323)
-                                            left: 60,
-                                            top: 0,
-                                            child: Align(
-                                              child: InkWell(
-                                                onTap: (){
-                                                  myAlert();
-                                                },
-                                                child: SizedBox(
-                                                  width: 20,
-                                                  height: 20,
-                                                  child: Image.asset(
-                                                    'images/logimagedelete.png',
-                                                    width: 20,
-                                                    height: 20,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          Positioned(
-                                            // trash2G2c (1652:325)
-                                            left: 65,
-                                            top: 5,
-                                            child: Align(
-                                              child: InkWell(
-                                                onTap: (){
-                                                  myAlert();
-                                                }
-                                                ,
-                                                child: SizedBox(
-                                                  width: 9,
-                                                  height: 10,
-                                                  child:SvgPicture.asset(
-                                                    "images/logedits.svg",
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-
-                                          // Positioned(
-                                          //   // group20514mrY (1652:323)
-                                          //   left: 35,
-                                          //   top: 0,
-                                          //   child: Align(
-                                          //     child: SizedBox(
-                                          //       width: 20,
-                                          //       height: 20,
-                                          //       child: Image.asset(
-                                          //         'images/logimagedelete.png',
-                                          //         width: 20,
-                                          //         height: 20,
-                                          //       ),
-                                          //     ),
-                                          //   ),
-                                          // ),
-                                          // Positioned(
-                                          //   // trash2G2c (1652:325)
-                                          //   left: 40,
-                                          //   top: 5,
-                                          //   child: Align(
-                                          //     child: SizedBox(
-                                          //       width: 9,
-                                          //       height: 10,
-                                          //       child: Image.asset(
-                                          //         'images/logtrash.png',
-                                          //         width: 9,
-                                          //         height: 10,
-                                          //       ),
-                                          //     ),
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
+                                      value: "person",
+                                      groupValue: radioInput,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          radioInput = value.toString();
+                                          cmpVisibility = true;
+                                        });
+                                      },
                                     ),
-
-
-
-
-
-                                        // code change customer
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(top: 1),
-                                    //   child: Container(
-                                    //     width: 70,
-                                    //     height: 55,
-                                    //
-                                    //     child: ClipRRect(
-                                    //       // borderRadius: BorderRadius
-                                    //       //     .circular(0),
-                                    //       child: Image.memory(
-                                    //         base64Decode(personImg!),
-                                    //         fit: BoxFit.cover,
-                                    //         width: MediaQuery
-                                    //             .of(context)
-                                    //             .size
-                                    //             .width,
-                                    //         height: 300,
-                                    //       ),
-                                    //     ),
-                                    //   ),
-                                    // ):Padding(
-                                    //   padding: const EdgeInsets.only(top: 15),
-                                    //   child: Image.asset("images/cam.png"),
-                                    // ),
-                                    // Padding(
-                                    //   padding: const EdgeInsets.only(top: 10),
-                                    //   child: Row(
-                                    //     children: [
-                                    //       SizedBox(
-                                    //           width: 37,
-                                    //           height: 18,
-                                    //           child: ElevatedButton(
-                                    //             child: Image.asset("images/pencil.png"),
-                                    //             onPressed: () {
-                                    //               myAlert();
-                                    //             },
-                                    //             style: ElevatedButton.styleFrom(
-                                    //               primary: Color(0xFF3D418E),
-                                    //             ),
-                                    //           )),
-                                    //       SizedBox(
-                                    //           width: 41,
-                                    //           height: 18,
-                                    //           child: ElevatedButton(
-                                    //               child: Image.asset("images/del.png"),
-                                    //               onPressed: () {
-                                    //                 setState(() {
-                                    //                   selectedImages.clear();
-                                    //                   personImg="";
-                                    //                 });
-                                    //               },
-                                    //               style: ElevatedButton.styleFrom(
-                                    //                 primary: Color(0xFFB8000B),
-                                    //               )))
-                                    //     ],
-                                    //   ),
-                                    // )
-
-                                    //code change customer
-
-
-
-
-
-
-
-
-
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 25,right:10 ),
+                                      child: Divider(color: Colors.grey,),
+                                    ),
+                                    RadioListTile(
+                                      title: Text(
+                                        "Company",
+                                        style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                      ),
+                                      value: "company",
+                                      groupValue: radioInput,
+                                      onChanged: (value) {
+                                        setState(() {
+                                          radioInput = value.toString();
+                                          cmpVisibility = false;
+                                        });
+                                      },
+                                    ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter the name';
-                              }
-                              return null;
-                            },
-                            controller: customerController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 40),
+                                child: Container(
+                                  width: 80,
+                                  height: 87,
+                                  // color: Colors.black,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border:
+                                      Border.all(color: Color(0xFFF5F5F5), width: 1)),
+                                  child: Column(
+                                    children: [
+
+                                      personImg !=""
+                                          ?
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        width: 80,
+                                        // color: Colors.red,
+                                        height: 80,
+                                        child: Stack(
+                                          children: [
+                                            Positioned(
+                                              // rectangle4756kQ (1652:322)
+                                              left: 0,
+                                              top: 6,
+                                              child: Align(
+                                                child: SizedBox(
+                                                  width: 75,
+                                                  height: 71,
+                                                  child: Container(
+                                                    child: ClipRRect(
+                                                            // borderRadius: BorderRadius
+                                                            //     .circular(0),
+                                                            child: Image.memory(
+                                                              base64Decode(personImg!),
+                                                              fit: BoxFit.cover,
+                                                              width: MediaQuery
+                                                                  .of(context)
+                                                                  .size
+                                                                  .width,
+                                                              height: 300,
+                                                            ),
+                                                          ),
+
+                                                    decoration: BoxDecoration (
+                                                      borderRadius: BorderRadius.circular(3),
+                                                      color: Color(0xffd9d9d9),
+                                                      // image: DecorationImage (
+                                                      //   fit: BoxFit.cover,
+                                                      //   image: AssetImage (
+                                                      //       "images/test.png",
+                                                      //   ),
+                                                      // ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              // group20514mrY (1652:323)
+                                              left: 60,
+                                              top: 0,
+                                              child: Align(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    print("demo clicked");
+                                                    setState(() {
+                                                      selectedImages.clear();
+                                                      personImg="";
+                                                    });
+                                                  },
+                                                  child: SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: Image.asset(
+                                                      'images/logimagedelete.png',
+                                                      width: 20,
+                                                      height: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              // trash2G2c (1652:325)
+                                              left: 65,
+                                              top: 5,
+                                              child: Align(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    print("demo clicked1");
+                                                    setState(() {
+                                                      selectedImages.clear();
+                                                      personImg="";
+                                                    });
+                                                  },
+                                                  child: SizedBox(
+                                                    width: 9,
+                                                    height: 10,
+                                                    child: Image.asset(
+                                                      'images/logtrash.png',
+                                                      width: 9,
+                                                      height: 10,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            Positioned(
+                                              // group20514mrY (1652:323)
+                                              left: 38,
+                                              top: 0,
+                                              child: Align(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    myAlert();
+                                                  },
+                                                  child: SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: Image.asset(
+                                                      'images/logimagedelete.png',
+                                                      width: 20,
+                                                      height: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              // trash2G2c (1652:325)
+                                              left: 43,
+                                              top: 5,
+                                              child: Align(
+                                                child:  InkWell(
+                                                  onTap: (){
+                                                    myAlert();
+                                                  },
+                                                  child: SizedBox(
+                                                    width: 9,
+                                                    height: 10,
+                                                    child: SvgPicture.asset(
+                                                      "images/logedits.svg",
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ):
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        width: 80,
+                                        // color: Colors.red,
+                                        height: 80,
+                                        child: Stack(
+                                          children: [
+                                            Positioned(
+                                              // rectangle4756kQ (1652:322)
+                                              left: 0,
+                                              top: 6,
+                                              child: Align(
+                                                child: SizedBox(
+                                                  width: 75,
+                                                  height: 71,
+                                                  child: Container(
+                                                    child: SvgPicture.asset(
+                                                      "images/user.svg",
+                                                    ),
+
+                                                    decoration: BoxDecoration (
+                                                      borderRadius: BorderRadius.circular(3),
+                                                      color: Color(0xffd9d9d9),
+                                                      // image: DecorationImage (
+                                                      //   fit: BoxFit.cover,
+                                                      //   image: AssetImage (
+                                                      //       "images/user.png",
+                                                      //   ),
+                                                      // ),
+                                                    ),
+
+
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              // group20514mrY (1652:323)
+                                              left: 60,
+                                              top: 0,
+                                              child: Align(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    myAlert();
+                                                  },
+                                                  child: SizedBox(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: Image.asset(
+                                                      'images/logimagedelete.png',
+                                                      width: 20,
+                                                      height: 20,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(
+                                              // trash2G2c (1652:325)
+                                              left: 65,
+                                              top: 5,
+                                              child: Align(
+                                                child: InkWell(
+                                                  onTap: (){
+                                                    myAlert();
+                                                  }
+                                                  ,
+                                                  child: SizedBox(
+                                                    width: 9,
+                                                    height: 10,
+                                                    child:SvgPicture.asset(
+                                                      "images/logedits.svg",
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+
+                                            // Positioned(
+                                            //   // group20514mrY (1652:323)
+                                            //   left: 35,
+                                            //   top: 0,
+                                            //   child: Align(
+                                            //     child: SizedBox(
+                                            //       width: 20,
+                                            //       height: 20,
+                                            //       child: Image.asset(
+                                            //         'images/logimagedelete.png',
+                                            //         width: 20,
+                                            //         height: 20,
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                            // Positioned(
+                                            //   // trash2G2c (1652:325)
+                                            //   left: 40,
+                                            //   top: 5,
+                                            //   child: Align(
+                                            //     child: SizedBox(
+                                            //       width: 9,
+                                            //       height: 10,
+                                            //       child: Image.asset(
+                                            //         'images/logtrash.png',
+                                            //         width: 9,
+                                            //         height: 10,
+                                            //       ),
+                                            //     ),
+                                            //   ),
+                                            // ),
+                                          ],
+                                        ),
+                                      ),
+
+
+
+
+
+                                          // code change customer
+                                      // Padding(
+                                      //   padding: const EdgeInsets.only(top: 1),
+                                      //   child: Container(
+                                      //     width: 70,
+                                      //     height: 55,
+                                      //
+                                      //     child: ClipRRect(
+                                      //       // borderRadius: BorderRadius
+                                      //       //     .circular(0),
+                                      //       child: Image.memory(
+                                      //         base64Decode(personImg!),
+                                      //         fit: BoxFit.cover,
+                                      //         width: MediaQuery
+                                      //             .of(context)
+                                      //             .size
+                                      //             .width,
+                                      //         height: 300,
+                                      //       ),
+                                      //     ),
+                                      //   ),
+                                      // ):Padding(
+                                      //   padding: const EdgeInsets.only(top: 15),
+                                      //   child: Image.asset("images/cam.png"),
+                                      // ),
+                                      // Padding(
+                                      //   padding: const EdgeInsets.only(top: 10),
+                                      //   child: Row(
+                                      //     children: [
+                                      //       SizedBox(
+                                      //           width: 37,
+                                      //           height: 18,
+                                      //           child: ElevatedButton(
+                                      //             child: Image.asset("images/pencil.png"),
+                                      //             onPressed: () {
+                                      //               myAlert();
+                                      //             },
+                                      //             style: ElevatedButton.styleFrom(
+                                      //               primary: Color(0xFF3D418E),
+                                      //             ),
+                                      //           )),
+                                      //       SizedBox(
+                                      //           width: 41,
+                                      //           height: 18,
+                                      //           child: ElevatedButton(
+                                      //               child: Image.asset("images/del.png"),
+                                      //               onPressed: () {
+                                      //                 setState(() {
+                                      //                   selectedImages.clear();
+                                      //                   personImg="";
+                                      //                 });
+                                      //               },
+                                      //               style: ElevatedButton.styleFrom(
+                                      //                 primary: Color(0xFFB8000B),
+                                      //               )))
+                                      //     ],
+                                      //   ),
+                                      // )
+
+                                      //code change customer
+
+
+
+
+
+
+
+
+
+                                    ],
+                                  ),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Customer Name',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              ),
+                            ],
                           ),
-                        ),
-                        Visibility(
-                          visible: cmpVisibility,
-                          child: Padding(
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter the name';
+                                }
+                                return null;
+                              },
+                              controller: customerController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Customer Name',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Visibility(
+                            visible: cmpVisibility,
+                            child: Padding(
+                              padding:
+                              const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                              child: SearchChoices.single(
+                                icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                                //items: items,
+                                fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                  return Container(
+                                    padding: const EdgeInsets.all(0),
+                                    child: InputDecorator(
+                                      decoration: InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                        ),
+                                        labelText:'Company Name',
+                                        isDense: true,
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        fillColor: Colors.white,
+
+                                      ),
+                                      child: fieldWidget,
+                                    ),
+                                  );
+                                },
+
+                                value: companyName,
+                                // hint: Text(
+                                //   "Company Name",
+                                //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                                // ),
+                                searchHint: null,
+                                autofocus: false,
+                                onClear: () {
+                                  setState(() {
+                                    cmpbasedVisible = true;
+                                  });
+                                },
+                                onChanged: (value) async {
+                                  setState(() {
+                                    cmpbasedVisible = false;
+                                    companyName = value;
+                                    companyId = value["id"];
+                                  });
+
+                                  await getCustomerCompanyDetail(companyId);
+                                },
+
+                                dialogBox: false,
+                                isExpanded: true,
+                                menuConstraints:
+                                BoxConstraints.tight(const Size.fromHeight(350)),
+                                itemsPerPage: 10,
+                                currentPage: currentPage,
+                                selectedValueWidgetFn: (item) {
+                                  return (Center(
+                                      child: Container(
+                                       // width: 320,
+                                        width: MediaQuery
+                                            .of(context)
+                                            .size
+                                            .width,
+                                        child: Text(
+                                          item["display_name"],
+                                          style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        ),
+                                      )));
+                                },
+                                futureSearchFn: (String? keyword,
+                                    String? orderBy,
+                                    bool? orderAsc,
+                                    List<Tuple2<String, String>>? filters,
+                                    int? pageNb) async {
+                                  token = await getUserJwt();
+                                  Response response = await get(
+                                    Uri.parse(
+                                        "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
+                                    headers: {
+                                      'Authorization': 'Bearer $token',
+                                    },
+                                  ).timeout(const Duration(
+                                    seconds: 10,
+                                  ));
+
+                                  if (response.statusCode != 200) {
+                                    throw Exception("failed to get data from internet");
+                                  }
+
+                                  dynamic data = jsonDecode(response.body);
+
+                                  int nbResults = data["length"];
+
+                                  List<DropdownMenuItem> results = (data["records"]
+                                  as List<dynamic>)
+                                      .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                    value: item,
+                                    child: Card(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(0),
+                                        child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      ),
+                                    ),
+                                  ))
+                                      .toList();
+                                  return (Tuple2<List<DropdownMenuItem>, int>(
+                                      results, nbResults));
+                                },
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                            child: Text(
+                              "Address",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              enabled: cmpbasedVisible,
+                              controller: streetController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Street',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              enabled: cmpbasedVisible,
+                              controller: streettwoController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Street2',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              enabled: cmpbasedVisible,
+                              controller: cityController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'City',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
                             padding:
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: SearchChoices.single(
@@ -689,7 +870,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
                                       ),
-                                      labelText:'Company Name',
+                                      labelText:'Country',
                                       isDense: true,
                                       labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
@@ -700,26 +881,885 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 );
                               },
 
-                              value: companyName,
+                              value: countryName,
                               // hint: Text(
-                              //   "Company Name",
+                              //   "Country",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: cmpbasedVisible
+                                  ? (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  countryName = value;
+                                  countryId = value['id'];
+                                });
+                              }
+                                  : null,
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                print(keyword);
+                                print("lalalalalla");
+                                String filtersString = "";
+
+                                print(filters);
+                                print(filtersString);
+                                print(keyword);
+
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.country"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                print(response.toString());
+                                print("datatatapassss");
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+                                print("fjbnkdttthgfgyv");
+                                dynamic data = jsonDecode(response.body);
+                                print(data);
+                                print("fjbnkdttt");
+                                int nbResults = data["length"];
+                                print("fjbnkd");
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'State',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+                              value: stateName,
+                              // hint: Text(
+                              //   "State",
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
                               autofocus: false,
-                              onClear: () {
+                              onChanged: cmpbasedVisible
+                                  ? (value) {
                                 setState(() {
-                                  cmpbasedVisible = true;
+                                  print(value['capital']);
+                                  print("value");
+                                  stateName = value;
+                                  stateId = value["id"];
+                                });
+                              }
+                                  : null,
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                print(keyword);
+                                print("lalalalalla");
+                                String filtersString = "";
+
+                                print(filters);
+                                print(filtersString);
+                                print(keyword);
+                                print(countryId);
+                                print("afna");
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/states?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${countryId == null ? "" : "&country_id=$countryId"}"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                print(response.toString());
+                                print("datatatapassss");
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+                                print("fjbnkdttthgfgyv");
+                                dynamic data = jsonDecode(response.body);
+                                print(data);
+                                print("fjbnkdttt");
+                                int nbResults = data["length"];
+                                print("fjbnkd");
+                                List<DropdownMenuItem> results =
+                                (data["records"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.number,
+                              enabled: cmpbasedVisible,
+                              controller: zipController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              maxLength: 6,
+                              decoration: const InputDecoration(
+                                  counterText: "",
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Zip',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              enabled: cmpbasedVisible,
+                              controller: taxidController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Tax ID',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Company',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+
+                              value: customerCampanyName,
+                              // hint: Text(
+                              //   "Company",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: cmpbasedVisible
+                                  ? (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  customerCampanyName = value;
+                                  customerCampanyId = value["id"];
+                                });
+                              }
+                                  : null,
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                print(keyword);
+                                print("lalalalalla");
+                                String filtersString = "";
+
+                                print(filters);
+                                print(filtersString);
+                                print(keyword);
+                                print("afna");
+
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/companies?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&company_ids=[1]"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                print(response.toString());
+                                print("datatatapassss");
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+                                print("fjbnkdttthgfgyv");
+                                dynamic data = jsonDecode(response.body);
+                                print(data);
+                                print("fjbnkdttt");
+                                int nbResults = data["length"];
+                                print("fjbnkd");
+                                List<DropdownMenuItem> results =
+                                (data["records"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: jobpositionController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Job Position',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.phone,
+                              maxLength: 10,
+                              controller: phoneController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  counterText: "",
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Phone',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return null;
+                                }
+
+                                if (int.tryParse(value) == null) {
+                                  return 'Phone number should only contain digits';
+                                }
+
+                                if (value.length < 10) {
+                                  return 'Phone number should contain at least 10 digits';
+                                }
+
+                                return null;
+                              },
+
+
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              keyboardType: TextInputType.phone,
+                              //maxLength: 10,
+                              controller: mobileController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  counterText: "",
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Mobile',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return null;
+                                }
+
+                                if (int.tryParse(value) == null) {
+                                  return 'Mobile number should only contain digits';
+                                }
+
+                                if (value.length < 10) {
+                                  return 'Mobile number should contain at least 10 digits';
+                                }
+
+                                return null;
+                              },
+
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: customerrankController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Customer Rank',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: supplierrankController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Supplier Rank',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: emailController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Email',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: websiteController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Website',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Language',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+
+                              value: languageName,
+                              // hint: Text(
+                              //   "Language",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: cmpbasedVisible
+                                  ? (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  languageName = value;
+                                  languageId = value["id"];
+                                });
+                              }
+                                  : null,
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                token = await getUserJwt();
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.lang"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+
+                                int nbResults = data["length"];
+
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Title',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+                              value: titleName,
+                              // hint: Text(
+                              //   "Title",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  titleName = value;
+                                  titleId = value["id"];
                                 });
                               },
-                              onChanged: (value) async {
-                                setState(() {
-                                  cmpbasedVisible = false;
-                                  companyName = value;
-                                  companyId = value["id"];
-                                });
 
-                                await getCustomerCompanyDetail(companyId);
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                token = await getUserJwt();
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+
+                                int nbResults = data["length"];
+
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            height: 0,
+                          ),
+
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal:17, vertical:1),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Tags',
+                                    style: TextStyle(
+                                      color: Color(0xFF666666),
+                                      fontSize: 12,
+                                      fontFamily: 'Mulish',
+                                      fontWeight: FontWeight.w500,
+
+                                    ),
+                                  ),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 2),
+                                  child: Container(
+                                    height:30,
+                                    child: MultiSelectDropDown.network(
+                                      hint: '',
+                                      borderColor: Colors.transparent,
+                                      backgroundColor: Colors.grey[50],
+                                      borderWidth: 0,
+
+                                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                      selectedOptions: editTagName
+                                          .map((tag) =>
+                                          ValueItem(label: tag.label, value: tag.value))
+                                          .toList(),
+                                      onOptionSelected: (options) {
+                                        print(options);
+                                        tags.clear();
+                                        for (var options in options) {
+                                          tags.add(options.value);
+                                          print('Label: ${options.label}');
+                                          print('Value: ${options.value}');
+                                          print(tags);
+                                          print('---');
+                                        }
+                                      },
+                                      networkConfig: NetworkConfig(
+                                        url:
+                                        "${baseUrl}api/common_dropdowns?model=res.partner.category",
+                                        method: RequestMethod.get,
+                                        headers: {
+                                          'Authorization': 'Bearer $token',
+                                        },
+                                      ),
+                                      chipConfig: const ChipConfig(wrapType: WrapType.scroll),
+                                      responseParser: (response) {
+                                        debugPrint('Response: $response');
+
+                                        final list =
+                                        (response['record'] as List<dynamic>).map((e) {
+                                          final item = e as Map<String, dynamic>;
+                                          return ValueItem(
+                                            label: item['name'],
+                                            value: item['id'].toString(),
+                                          );
+                                        }).toList();
+
+                                        return Future.value(list);
+                                      },
+                                      responseErrorBuilder: ((context, body) {
+                                        print(body);
+                                        print(token);
+                                        return const Padding(
+                                          padding: EdgeInsets.all(16.0),
+                                          child: Text('Error fetching the data'),
+                                        );
+                                      }),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
+                            child: Divider(
+                              color: Colors.grey,
+                              thickness: 0.5,
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                            child: Text(
+                              "Sales",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Salesperson',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+                              value: salespersonName,
+                              // hint: Text(
+                              //   "Salesperson",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  salespersonName = value;
+                                  salespersonId = value["id"];
+                                });
                               },
 
                               dialogBox: false,
@@ -737,8 +1777,8 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .size
                                           .width,
                                       child: Text(
-                                        item["display_name"],
-                                        style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
                                       ),
                                     )));
                               },
@@ -747,10 +1787,119 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   bool? orderAsc,
                                   List<Tuple2<String, String>>? filters,
                                   int? pageNb) async {
-                                token = await getUserJwt();
+                                print(keyword);
+                                print("lalalalalla");
+                                String filtersString = "";
+
+                                print(filters);
+                                print(filtersString);
+                                print(keyword);
+                                print("afna");
                                 Response response = await get(
                                   Uri.parse(
-                                      "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
+                                      "${baseUrl}api/salespersons?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+
+                                print(response.toString());
+
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+                                print(data);
+
+                                int nbResults = data["length"];
+
+                                List<DropdownMenuItem> results =
+                                (data["records"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Payment Terms',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+                              value: paymenttermsName,
+                              // hint: Text(
+                              //   "Payment Terms",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  paymenttermsName = value;
+                                  paymenttermsId = value["id"];
+                                });
+                              },
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=account.payment.term"),
                                   headers: {
                                     'Authorization': 'Bearer $token',
                                   },
@@ -766,14 +1915,14 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
                                 int nbResults = data["length"];
 
-                                List<DropdownMenuItem> results = (data["records"]
-                                as List<dynamic>)
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
                                     .map<DropdownMenuItem>((item) => DropdownMenuItem(
                                   value: item,
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                     ),
                                   ),
                                 ))
@@ -783,1755 +1932,552 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               },
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                          child: Text(
-                            "Address",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF000000),fontFamily: 'Mulish'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            enabled: cmpbasedVisible,
-                            controller: streetController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Street',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            enabled: cmpbasedVisible,
-                            controller: streettwoController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Street2',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            enabled: cmpbasedVisible,
-                            controller: cityController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'City',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Pricelist',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
                                     ),
-                                    labelText:'Country',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
+                                    child: fieldWidget,
                                   ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
+                                );
+                              },
 
-                            value: countryName,
-                            // hint: Text(
-                            //   "Country",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
+                              value: pricelistName,
+                              // hint: Text(
+                              //   "Pricelist",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  pricelistName = value;
+                                  pricelistId = value["id"];
+                                });
+                              },
 
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: cmpbasedVisible
-                                ? (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                countryName = value;
-                                countryId = value['id'];
-                              });
-                            }
-                                : null,
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                     // width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
+                                Response response = await get(
+                                  Uri.parse(
+                                      "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
+                                  headers: {
+                                    'Authorization': 'Bearer $token',
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
 
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                   // width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+                                // print(data);
+                                // print("customer data");
+                                int nbResults = data["length"];
+
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                     ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              print(keyword);
-                              print("lalalalalla");
-                              String filtersString = "";
-
-                              print(filters);
-                              print(filtersString);
-                              print(keyword);
-
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.country"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              print(response.toString());
-                              print("datatatapassss");
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-                              print("fjbnkdttthgfgyv");
-                              dynamic data = jsonDecode(response.body);
-                              print(data);
-                              print("fjbnkdttt");
-                              int nbResults = data["length"];
-                              print("fjbnkd");
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
                                   ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'State',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: stateName,
-                            // hint: Text(
-                            //   "State",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: cmpbasedVisible
-                                ? (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                stateName = value;
-                                stateId = value["id"];
-                              });
-                            }
-                                : null,
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                    //width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              print(keyword);
-                              print("lalalalalla");
-                              String filtersString = "";
-
-                              print(filters);
-                              print(filtersString);
-                              print(keyword);
-                              print(countryId);
-                              print("afna");
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/states?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${countryId == null ? "" : "&country_id=$countryId"}"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              print(response.toString());
-                              print("datatatapassss");
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-                              print("fjbnkdttthgfgyv");
-                              dynamic data = jsonDecode(response.body);
-                              print(data);
-                              print("fjbnkdttt");
-                              int nbResults = data["length"];
-                              print("fjbnkd");
-                              List<DropdownMenuItem> results =
-                              (data["records"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.number,
-                            enabled: cmpbasedVisible,
-                            controller: zipController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            maxLength: 6,
-                            decoration: const InputDecoration(
-                                counterText: "",
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Zip',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            enabled: cmpbasedVisible,
-                            controller: taxidController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Tax ID',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Company',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-
-                            value: customerCampanyName,
-                            // hint: Text(
-                            //   "Company",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: cmpbasedVisible
-                                ? (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                customerCampanyName = value;
-                                customerCampanyId = value["id"];
-                              });
-                            }
-                                : null,
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                    //width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              print(keyword);
-                              print("lalalalalla");
-                              String filtersString = "";
-
-                              print(filters);
-                              print(filtersString);
-                              print(keyword);
-                              print("afna");
-
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/companies?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&company_ids=[1]"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              print(response.toString());
-                              print("datatatapassss");
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-                              print("fjbnkdttthgfgyv");
-                              dynamic data = jsonDecode(response.body);
-                              print(data);
-                              print("fjbnkdttt");
-                              int nbResults = data["length"];
-                              print("fjbnkd");
-                              List<DropdownMenuItem> results =
-                              (data["records"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: jobpositionController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Job Position',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.phone,
-                            maxLength: 10,
-                            controller: phoneController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                counterText: "",
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Phone',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return null;
-                              }
-
-                              if (int.tryParse(value) == null) {
-                                return 'Phone number should only contain digits';
-                              }
-
-                              if (value.length < 10) {
-                                return 'Phone number should contain at least 10 digits';
-                              }
-
-                              return null;
-                            },
-
-
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            keyboardType: TextInputType.phone,
-                            //maxLength: 10,
-                            controller: mobileController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                counterText: "",
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Mobile',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return null;
-                              }
-
-                              if (int.tryParse(value) == null) {
-                                return 'Mobile number should only contain digits';
-                              }
-
-                              if (value.length < 10) {
-                                return 'Mobile number should contain at least 10 digits';
-                              }
-
-                              return null;
-                            },
-
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: customerrankController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Customer Rank',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: supplierrankController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Supplier Rank',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: emailController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Email',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: websiteController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Website',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Language',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-
-                            value: languageName,
-                            // hint: Text(
-                            //   "Language",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: cmpbasedVisible
-                                ? (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                languageName = value;
-                                languageId = value["id"];
-                              });
-                            }
-                                : null,
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                    //width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              token = await getUserJwt();
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.lang"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-
-                              int nbResults = data["length"];
-
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Title',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: titleName,
-                            // hint: Text(
-                            //   "Title",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                titleName = value;
-                                titleId = value["id"];
-                              });
-                            },
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                    //width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              token = await getUserJwt();
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-
-                              int nbResults = data["length"];
-
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        SizedBox(
-                          height: 0,
-                        ),
-
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal:17, vertical:1),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text(
-                                  'Tags',
-                                  style: TextStyle(
-                                    color: Color(0xFF666666),
-                                    fontSize: 12,
-                                    fontFamily: 'Mulish',
-                                    fontWeight: FontWeight.w500,
-
-                                  ),
-                                ),
-                              ),
-
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2),
-                                child: Container(
-                                  height:30,
-                                  child: MultiSelectDropDown.network(
-                                    hint: '',
-                                    borderColor: Colors.transparent,
-                                    backgroundColor: Colors.grey[50],
-                                    borderWidth: 0,
-
-                                    hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
-                                    selectedOptions: editTagName
-                                        .map((tag) =>
-                                        ValueItem(label: tag.label, value: tag.value))
-                                        .toList(),
-                                    onOptionSelected: (options) {
-                                      print(options);
-                                      tags.clear();
-                                      for (var options in options) {
-                                        tags.add(options.value);
-                                        print('Label: ${options.label}');
-                                        print('Value: ${options.value}');
-                                        print(tags);
-                                        print('---');
-                                      }
-                                    },
-                                    networkConfig: NetworkConfig(
-                                      url:
-                                      "${baseUrl}api/common_dropdowns?model=res.partner.category",
-                                      method: RequestMethod.get,
-                                      headers: {
-                                        'Authorization': 'Bearer $token',
-                                      },
-                                    ),
-                                    chipConfig: const ChipConfig(wrapType: WrapType.scroll),
-                                    responseParser: (response) {
-                                      debugPrint('Response: $response');
-
-                                      final list =
-                                      (response['record'] as List<dynamic>).map((e) {
-                                        final item = e as Map<String, dynamic>;
-                                        return ValueItem(
-                                          label: item['name'],
-                                          value: item['id'].toString(),
-                                        );
-                                      }).toList();
-
-                                      return Future.value(list);
-                                    },
-                                    responseErrorBuilder: ((context, body) {
-                                      print(body);
-                                      print(token);
-                                      return const Padding(
-                                        padding: EdgeInsets.all(16.0),
-                                        child: Text('Error fetching the data'),
-                                      );
-                                    }),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25,right: 25,bottom: 0),
-                          child: Divider(
-                            color: Colors.grey,
-                            thickness: 0.5,
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                          child: Text(
-                            "Sales",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF000000),fontFamily: 'Mulish'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Salesperson',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: salespersonName,
-                            // hint: Text(
-                            //   "Salesperson",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                salespersonName = value;
-                                salespersonId = value["id"];
-                              });
-                            },
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                   // width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              print(keyword);
-                              print("lalalalalla");
-                              String filtersString = "";
-
-                              print(filters);
-                              print(filtersString);
-                              print(keyword);
-                              print("afna");
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/salespersons?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              print(response.toString());
-
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-                              print(data);
-
-                              int nbResults = data["length"];
-
-                              List<DropdownMenuItem> results =
-                              (data["records"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Payment Terms',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: paymenttermsName,
-                            // hint: Text(
-                            //   "Payment Terms",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: (value) {
-                              setState(() {
-                                paymenttermsName = value;
-                                paymenttermsId = value["id"];
-                              });
-                            },
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                   // width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=account.payment.term"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-
-                              int nbResults = data["length"];
-
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Pricelist',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: pricelistName,
-                            // hint: Text(
-                            //   "Pricelist",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: (value) {
-                              setState(() {
-                                pricelistName = value;
-                                pricelistId = value["id"];
-                              });
-                            },
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                   // width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              //     /api/customers?filter='lakshmi'&count=10&page_no=1&model=lead
-                              Response response = await get(
-                                Uri.parse(
-                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword${companyId == null ? "" : "&company_id=$companyId"}"}&model=product.pricelist"),
-                                headers: {
-                                  'Authorization': 'Bearer $token',
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-                              // print(data);
-                              // print("customer data");
-                              int nbResults = data["length"];
-
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                          child: Text(
-                            "Fiscal Information",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF000000),fontFamily: 'Mulish'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: SearchChoices.single(
-                            icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
-                            //items: items,
-                            fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
-                              return Container(
-                                padding: const EdgeInsets.all(0),
-                                child: InputDecorator(
-                                  decoration: InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    labelText:'Fiscal Position',
-                                    isDense: true,
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
-                                    fillColor: Colors.white,
-
-                                  ),
-                                  child: fieldWidget,
-                                ),
-                              );
-                            },
-
-                            value: fiscalpositionName,
-                            // hint: Text(
-                            //   "Fiscal Position",
-                            //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
-                            // ),
-
-                            searchHint: null,
-                            autofocus: false,
-                            onChanged: (value) {
-                              setState(() {
-                                print(value['capital']);
-                                print("value");
-                                fiscalpositionName = value;
-                                fiscalpositionId = value["id"];
-                              });
-                            },
-
-                            dialogBox: false,
-                            isExpanded: true,
-                            menuConstraints:
-                            BoxConstraints.tight(const Size.fromHeight(350)),
-                            itemsPerPage: 10,
-                            currentPage: currentPage,
-                            selectedValueWidgetFn: (item) {
-                              return (Center(
-                                  child: Container(
-                                    //width: 320,
-                                    width: MediaQuery
-                                        .of(context)
-                                        .size
-                                        .width,
-                                    child: Text(
-                                      item["name"],
-                                      style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                                    ),
-                                  )));
-                            },
-                            futureSearchFn: (String? keyword,
-                                String? orderBy,
-                                bool? orderAsc,
-                                List<Tuple2<String, String>>? filters,
-                                int? pageNb) async {
-                              Response response = await get(Uri.parse(
-                                  "${baseUrl}api/common_dropdowns?page_no=${pageNb ??
-                                      1}&count=10${keyword == null
-                                      ? ""
-                                      : "&filter=$keyword"}&model=account.fiscal.position&company_id=${companyId == null ? "" : "&company_id=$companyId"}"),
-                                headers: {
-
-                                  'Authorization': 'Bearer $token',
-
-                                },
-                              ).timeout(const Duration(
-                                seconds: 10,
-                              ));
-                              if (response.statusCode != 200) {
-                                throw Exception("failed to get data from internet");
-                              }
-
-                              dynamic data = jsonDecode(response.body);
-                              print(data);
-                              int nbResults = data["length"];
-                              List<DropdownMenuItem> results =
-                              (data["record"] as List<dynamic>)
-                                  .map<DropdownMenuItem>((item) => DropdownMenuItem(
-                                value: item,
-                                child: Card(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(0),
-                                    child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
-                                  ),
-                                ),
-                              ))
-                                  .toList();
-                              return (Tuple2<List<DropdownMenuItem>, int>(
-                                  results, nbResults));
-                            },
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-                          child: Text(
-                            "Misc",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFF000000),fontFamily: 'Mulish'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                          child: TextFormField(
-                            controller: referenceController,
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
-                            decoration: const InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                ),
-                                labelText: 'Reference',
-                                labelStyle:
-                                TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
-                          ),
-                        ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 25, top: 10),
-                        //   child: Text(
-                        //
-                        //     "Internal Notes", style: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),),
-                        // ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25,right: 25),
-                          child: Container(
-                            width: MediaQuery.of(context)
-                                .size
-                                .width /
-                                1,
-
-                            // height: 40,
-                            //color: Colors.red,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 0),
-                              child: TextField(
-                                  textAlignVertical:
-                                  TextAlignVertical.top,
-                                  style: TextStyle(
-                                      fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                                  ),
-
-
-                                  maxLines: null,
-                                  controller: internalnotesController,
-                                decoration: const InputDecoration(
-                                    enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: Color(0xFFAFAFAF)),
-                                    ),
-
-                                    // border: UnderlineInputBorder(),
-                                    labelText: 'Internal Notes',
-                                    labelStyle: TextStyle(
-                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
                             ),
                           ),
-                        ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
-                        //   child: Divider(
-                        //     color: Colors.grey,
-                        //     thickness: 0.5,
-                        //   ),
-                        // ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                            child: Text(
+                              "Fiscal Information",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: SearchChoices.single(
+                              icon:Icon(Icons.arrow_drop_down,color: Colors.grey,size: 30,) ,
+                              //items: items,
+                              fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                                return Container(
+                                  padding: const EdgeInsets.all(0),
+                                  child: InputDecorator(
+                                    decoration: InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      labelText:'Fiscal Position',
+                                      isDense: true,
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      fillColor: Colors.white,
+
+                                    ),
+                                    child: fieldWidget,
+                                  ),
+                                );
+                              },
+
+                              value: fiscalpositionName,
+                              // hint: Text(
+                              //   "Fiscal Position",
+                              //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
+                              // ),
+
+                              searchHint: null,
+                              autofocus: false,
+                              onChanged: (value) {
+                                setState(() {
+                                  print(value['capital']);
+                                  print("value");
+                                  fiscalpositionName = value;
+                                  fiscalpositionId = value["id"];
+                                });
+                              },
+
+                              dialogBox: false,
+                              isExpanded: true,
+                              menuConstraints:
+                              BoxConstraints.tight(const Size.fromHeight(350)),
+                              itemsPerPage: 10,
+                              currentPage: currentPage,
+                              selectedValueWidgetFn: (item) {
+                                return (Center(
+                                    child: Container(
+                                      //width: 320,
+                                      width: MediaQuery
+                                          .of(context)
+                                          .size
+                                          .width,
+                                      child: Text(
+                                        item["name"],
+                                        style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      ),
+                                    )));
+                              },
+                              futureSearchFn: (String? keyword,
+                                  String? orderBy,
+                                  bool? orderAsc,
+                                  List<Tuple2<String, String>>? filters,
+                                  int? pageNb) async {
+                                Response response = await get(Uri.parse(
+                                    "${baseUrl}api/common_dropdowns?page_no=${pageNb ??
+                                        1}&count=10${keyword == null
+                                        ? ""
+                                        : "&filter=$keyword"}&model=account.fiscal.position&company_id=${companyId == null ? "" : "&company_id=$companyId"}"),
+                                  headers: {
+
+                                    'Authorization': 'Bearer $token',
+
+                                  },
+                                ).timeout(const Duration(
+                                  seconds: 10,
+                                ));
+                                if (response.statusCode != 200) {
+                                  throw Exception("failed to get data from internet");
+                                }
+
+                                dynamic data = jsonDecode(response.body);
+                                print(data);
+                                int nbResults = data["length"];
+                                List<DropdownMenuItem> results =
+                                (data["record"] as List<dynamic>)
+                                    .map<DropdownMenuItem>((item) => DropdownMenuItem(
+                                  value: item,
+                                  child: Card(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                    ),
+                                  ),
+                                ))
+                                    .toList();
+                                return (Tuple2<List<DropdownMenuItem>, int>(
+                                    results, nbResults));
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 5),
+                            child: Text(
+                              "Misc",
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                            const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                            child: TextFormField(
+                              controller: referenceController,
+                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              decoration: const InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                  ),
+                                  labelText: 'Reference',
+                                  labelStyle:
+                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            ),
+                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 25, top: 10),
+                          //   child: Text(
+                          //
+                          //     "Internal Notes", style: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),),
+                          // ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(left: 25,right: 25),
+                            child: Container(
+                              width: MediaQuery.of(context)
+                                  .size
+                                  .width /
+                                  1,
+
+                              // height: 40,
+                              //color: Colors.red,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 0),
+                                child: TextField(
+                                    textAlignVertical:
+                                    TextAlignVertical.top,
+                                    style: TextStyle(
+                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
+                                    ),
 
 
-                        Container(
-                          color: Colors.white70,
-                          //height: MediaQuery.of(context).size.height / 1.8,
-                          child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: addNewCustomer.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                addNewCustomerData = addNewCustomer[index];
-                                return InkWell(
-                                    onTap: () {
-                                      print(index);
-                                      print("listindex");
+                                    maxLines: null,
+                                    controller: internalnotesController,
+                                  decoration: const InputDecoration(
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                                      ),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: Color(0xFFAFAFAF)),
+                                      ),
 
-                                      setState(() {
-                                        addCustomerId = addNewCustomer[index]['id']??null;
-                                        alertradioSelect = addNewCustomer[index]['type']??"";
-                                        alertCompanyNameController.text = addNewCustomer[index]['name']??"";
-                                        alertStreetController.text = addNewCustomer[index]['street']??"";
-                                        alertStreetTwoController.text = addNewCustomer[index]['street2']??"".toString();
-                                        alertCityController.text = addNewCustomer[index]['city']??"".toString();
-                                        alertCountryName=addNewCustomer[index]['country_id']??"";
-                                        alertCountryId = addNewCustomer[index]['country_id']['id']??null;
-                                        alertStateName = addNewCustomer[index]['state_id']??"";
-                                        alertStateId = addNewCustomer[index]['state_id']['id']??null;
-                                        alertZipController.text = addNewCustomer[index]['zip']??"";
-                                        alerTitleName = addNewCustomer[index]['title']??"";
-                                        alertTitleId = addNewCustomer[index]['title']['id']??null;
-                                        alertJobController.text = addNewCustomer[index]['function']??"";
-                                        alertEmailController.text  = addNewCustomer[index]['email']??"";
-                                        alertMobileController.text =  addNewCustomer[index]['mobile']??"";
-                                        alertPhoneController.text = addNewCustomer[index]['phone']??"";
-                                        alertNotesController.text =  addNewCustomer[index]['comment']??"";
+                                      // border: UnderlineInputBorder(),
+                                      labelText: 'Internal Notes',
+                                      labelStyle: TextStyle(
+                                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),),
+                              ),
+                            ),
+                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(left: 25,right: 25,bottom: 20),
+                          //   child: Divider(
+                          //     color: Colors.grey,
+                          //     thickness: 0.5,
+                          //   ),
+                          // ),
 
 
+                          Container(
+                            color: Colors.white70,
+                            //height: MediaQuery.of(context).size.height / 1.8,
+                            child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: addNewCustomer.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  addNewCustomerData = addNewCustomer[index];
+                                  return InkWell(
+                                      onTap: () {
+                                        print(index);
+                                        print("listindex");
+
+                                        setState(() {
+                                          addCustomerId = addNewCustomer[index]['id']??null;
+                                          alertradioSelect = addNewCustomer[index]['type']??"";
+                                          alertCompanyNameController.text = addNewCustomer[index]['name']??"";
+                                          alertStreetController.text = addNewCustomer[index]['street']??"";
+                                          alertStreetTwoController.text = addNewCustomer[index]['street2']??"".toString();
+                                          alertCityController.text = addNewCustomer[index]['city']??"".toString();
+                                          alertCountryName=addNewCustomer[index]['country_id']??"";
+                                          alertCountryId = addNewCustomer[index]['country_id']['id']??null;
+                                          alertStateName = addNewCustomer[index]['state_id']??"";
+                                          alertStateId = addNewCustomer[index]['state_id']['id']??null;
+                                          alertZipController.text = addNewCustomer[index]['zip']??"";
+                                          alerTitleName = addNewCustomer[index]['title']??"";
+                                          alertTitleId = addNewCustomer[index]['title']['id']??null;
+                                          alertJobController.text = addNewCustomer[index]['function']??"";
+                                          alertEmailController.text  = addNewCustomer[index]['email']??"";
+                                          alertMobileController.text =  addNewCustomer[index]['mobile']??"";
+                                          alertPhoneController.text = addNewCustomer[index]['phone']??"";
+                                          alertNotesController.text =  addNewCustomer[index]['comment']??"";
 
 
 
 
 
-                                      });
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            _buildSchedulePopupDialog(context, index),
-                                      ).then((value) => setState(() {}));
-
-                                      print("orderLineProducts[index];");
-                                    },
-                                    child: Card(
-                                      child: Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        //height: MediaQuery.of(context).size.height/8.5,
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 10),
-                                              child: Row(
-                                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  addNewCustomerData!['image_1920']!=""?
-
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .only(left: 10),
-                                                    child: Container(
-
-                                                      height: 100,
-                                                      width:MediaQuery.of(context).size.width/4 ,
-
-                                                      decoration: BoxDecoration(
-                                                        //  color: Colors.red,
-                                                        border: Border.all(
-                                                        ),
-                                                        borderRadius: BorderRadius
-                                                            .all(
-                                                            Radius.circular(
-                                                                1)),
-
-                                                      ),
-                                                      child: ClipRRect(
-
-                                                        borderRadius:
-                                                        BorderRadius
-                                                            .circular(0),
-                                                        child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
 
 
-                                                      ),
-                                                    ),
-                                                  )
-                                                      :
+                                        });
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              _buildSchedulePopupDialog(context, index),
+                                        ).then((value) => setState(() {}));
 
-                                                  Container(
-                                                    height: 100,
-                                                    width: MediaQuery.of(context)
-                                                        .size
-                                                        .width /
-                                                        4,
-                                                    // color: Colors.red,
-                                                    child: Icon(
-                                                      Icons.person,
-                                                      size: 80,
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                    children: [
-                                                      Row(
-                                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                            const EdgeInsets.only(
-                                                                left: 15),
-                                                            child: Container(
-                                                              width:
-                                                              MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                                  2,
-                                                              //color: Colors.green,
-                                                              child: Text(
-                                                                addNewCustomerData!['name']??"",
-                                                                style: TextStyle(
-                                                                    fontWeight:
-                                                                    FontWeight.w600,
-                                                                    fontSize: 14,
-                                                                    color: Colors.black,  fontFamily: 'Mulish'),
-                                                              ),
-                                                            ),
+                                        print("orderLineProducts[index];");
+                                      },
+                                      child: Card(
+                                        child: Container(
+                                          width: MediaQuery.of(context).size.width,
+                                          //height: MediaQuery.of(context).size.height/8.5,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 10),
+                                                child: Row(
+                                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    addNewCustomerData!['image_1920']!=""?
+
+                                                    Padding(
+                                                      padding: const EdgeInsets
+                                                          .only(left: 10),
+                                                      child: Container(
+
+                                                        height: 100,
+                                                        width:MediaQuery.of(context).size.width/4 ,
+
+                                                        decoration: BoxDecoration(
+                                                          //  color: Colors.red,
+                                                          border: Border.all(
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                            const EdgeInsets.only(
-                                                                left: 0, right: 20),
-                                                            child: InkWell(
-                                                              onTap: (){
-                                                                addNewCustomer
-                                                                    .removeAt(
-                                                                    index);
-                                                                setState(() {});
-                                                              },
-                                                              child: Container(
-                                                                width: 30,
-                                                                height: 30,
+                                                          borderRadius: BorderRadius
+                                                              .all(
+                                                              Radius.circular(
+                                                                  1)),
 
-                                                                child: Icon(
-                                                                  Icons.delete,
-                                                                  size: 20,
-                                                                  color: Colors.black,
+                                                        ),
+                                                        child: ClipRRect(
+
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(0),
+                                                          child:Image.network("${addNewCustomerData!['image_1920']}?token=${token}"),
+
+
+                                                        ),
+                                                      ),
+                                                    )
+                                                        :
+
+                                                    Container(
+                                                      height: 100,
+                                                      width: MediaQuery.of(context)
+                                                          .size
+                                                          .width /
+                                                          4,
+                                                      // color: Colors.red,
+                                                      child: Icon(
+                                                        Icons.person,
+                                                        size: 80,
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Row(
+                                                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                              const EdgeInsets.only(
+                                                                  left: 15),
+                                                              child: Container(
+                                                                width:
+                                                                MediaQuery.of(context)
+                                                                    .size
+                                                                    .width /
+                                                                    2,
+                                                                //color: Colors.green,
+                                                                child: Text(
+                                                                  addNewCustomerData!['name']??"",
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                      FontWeight.w600,
+                                                                      fontSize: 14,
+                                                                      color: Colors.black,  fontFamily: 'Mulish'),
                                                                 ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(
-                                                            left: 15, top: 4),
-                                                        child: Text(
-                                                          addNewCustomerData!['email']??"",
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.w400,
-                                                              fontSize: 12,
-                                                              color: Colors.black,  fontFamily: 'Mulish'),
-                                                        ),
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                            const EdgeInsets.only(
-                                                                left: 15, top: 4),
-                                                            child: Text(
-                                                              addNewCustomerData!['state_id'][1]??"",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                  FontWeight.w400,
-                                                                  fontSize: 12,
-                                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                                            Padding(
+                                                              padding:
+                                                              const EdgeInsets.only(
+                                                                  left: 0, right: 20),
+                                                              child: InkWell(
+                                                                onTap: (){
+                                                                  addNewCustomer
+                                                                      .removeAt(
+                                                                      index);
+                                                                  setState(() {});
+                                                                },
+                                                                child: Container(
+                                                                  width: 30,
+                                                                  height: 30,
+
+                                                                  child: Icon(
+                                                                    Icons.delete,
+                                                                    size: 20,
+                                                                    color: Colors.black,
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                              left: 15, top: 4),
+                                                          child: Text(
+                                                            addNewCustomerData!['email']??"",
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.w400,
+                                                                fontSize: 12,
+                                                                color: Colors.black,  fontFamily: 'Mulish'),
                                                           ),
-                                                          Padding(
-                                                            padding:
-                                                            const EdgeInsets.only(
-                                                                left: 5, top: 4),
-                                                            child: Text(
-                                                              addNewCustomerData!['country_id'][1]??"",
-                                                              style: TextStyle(
-                                                                  fontWeight:
-                                                                  FontWeight.w400,
-                                                                  fontSize: 12,
-                                                                  color: Colors.black,  fontFamily: 'Mulish'),
+                                                        ),
+                                                        Row(
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                              const EdgeInsets.only(
+                                                                  left: 15, top: 4),
+                                                              child: Text(
+                                                                addNewCustomerData!['state_id'][1]??"",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                    FontWeight.w400,
+                                                                    fontSize: 12,
+                                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                                              ),
                                                             ),
+                                                            Padding(
+                                                              padding:
+                                                              const EdgeInsets.only(
+                                                                  left: 5, top: 4),
+                                                              child: Text(
+                                                                addNewCustomerData!['country_id'][1]??"",
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                    FontWeight.w400,
+                                                                    fontSize: 12,
+                                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                              left: 15, top: 4),
+                                                          child: Text(
+                                                            addNewCustomerData!['phone']??"",
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.w400,
+                                                                fontSize: 12,
+                                                                color: Colors.black,  fontFamily: 'Mulish'),
                                                           ),
-                                                        ],
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(
-                                                            left: 15, top: 4),
-                                                        child: Text(
-                                                          addNewCustomerData!['phone']??"",
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.w400,
-                                                              fontSize: 12,
-                                                              color: Colors.black,  fontFamily: 'Mulish'),
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(
-                                                            left: 15, top: 4),
-                                                        child: Text(
-                                                          addNewCustomerData!['mobile']??"",
-                                                          style: TextStyle(
-                                                              fontWeight: FontWeight.w400,
-                                                              fontSize: 12,
-                                                              color: Colors.black,  fontFamily: 'Mulish'),
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(
+                                                              left: 15, top: 4),
+                                                          child: Text(
+                                                            addNewCustomerData!['mobile']??"",
+                                                            style: TextStyle(
+                                                                fontWeight: FontWeight.w400,
+                                                                fontSize: 12,
+                                                                color: Colors.black,  fontFamily: 'Mulish'),
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ));
-                              }),
-                        ),
-                      ],
+                                      ));
+                                }),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25, top: 20, right: 0,bottom: 30),
-                    child: SizedBox(
-                      //width: 171,
-                      width: MediaQuery
-                          .of(context)
-                          .size
-                          .width/2.3,
-                      height: 47,
-                      child: ElevatedButton(
-                          child: Text(
-                            "Save",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 13.57,
-                                color: Colors.white,fontFamily: 'Mulish'),
-                          ),
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
-
-
-
-
-                              setState(() {
-                                _isInitialized = false;
-                              });
-                              String resmessage;
-
-                              print("tagsss");
-
-                              widget.customnerId == 0
-                                  ? resmessage = await customerCreate()
-                                  : resmessage = await customerEdit();
-
-                              print(resmessage);
-
-                              print("titleId");
-
-                              int resmessagevalue = int.parse(resmessage);
-                              if (resmessagevalue != 0) {
-                                setState(() {
-                                  _isInitialized = true;
-                                });
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          CustomerDetail(resmessagevalue)),
-                                );
-                              }
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
-                          )),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 30,left: 0,right: 25),
-                    child: Center(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 25, top: 20, right: 0,bottom: 30),
                       child: SizedBox(
-                       // width: 171,
+                        //width: 171,
                         width: MediaQuery
                             .of(context)
                             .size
@@ -2539,28 +2485,87 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         height: 47,
                         child: ElevatedButton(
                             child: Text(
-                              "Add",
+                              "Save",
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Color(0xFF212121),fontFamily: 'Mulish'),
+                                  color: Colors.white,fontFamily: 'Mulish'),
                             ),
-                            onPressed: () {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    _buildSchedulePopupDialog(context, -1),
-                              ).then((value) => setState(() {}));
+                            onPressed: () async {
+                              if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
+
+
+
+
+                                setState(() {
+                                  _isInitialized = false;
+                                });
+                                String resmessage;
+
+                                print("tagsss");
+
+                                widget.customnerId == 0
+                                    ? resmessage = await customerCreate()
+                                    : resmessage = await customerEdit();
+
+                                print(resmessage);
+
+                                print("titleId");
+
+                                int resmessagevalue = int.parse(resmessage);
+                                if (resmessagevalue != 0) {
+                                  setState(() {
+                                    _isInitialized = true;
+                                  });
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CustomerDetail(resmessagevalue)),
+                                  );
+                                }
+                              }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF6F6F6),
+                              primary: Color(0xFFF9246A),
                             )),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 30,left: 0,right: 25),
+                      child: Center(
+                        child: SizedBox(
+                         // width: 171,
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width/2.3,
+                          height: 47,
+                          child: ElevatedButton(
+                              child: Text(
+                                "Add",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13.57,
+                                    color: Color(0xFF212121),fontFamily: 'Mulish'),
+                              ),
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      _buildSchedulePopupDialog(context, -1),
+                                ).then((value) => setState(() {}));
+                              },
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFF6F6F6),
+                              )),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
         bottomNavigationBar:MyBottomNavigationBar(3),
