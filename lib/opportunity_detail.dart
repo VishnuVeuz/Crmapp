@@ -254,7 +254,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
       ),
     ):
     Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       drawer: MainDrawer(),
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
