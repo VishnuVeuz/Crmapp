@@ -1001,13 +1001,16 @@ class _LeadDetailState extends State<LeadDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(
                                     top: 10, left: 24, right: 25),
-                                child: Text(leadname!,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
-                                      fontSize: 17,
-                                      color: Colors.black,
-                                    )),
+                                child: Container(
+                                  width: mediaQueryData.size.width/1.4,
+                                  child: Text(leadname!,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Mulish',
+                                        fontSize: 17,
+                                        color: Colors.black,
+                                      )),
+                                ),
                               ),
                               leadType == true
                                   ? Padding(

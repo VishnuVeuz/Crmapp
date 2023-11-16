@@ -586,12 +586,15 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   Padding(
                     padding:
                     const EdgeInsets.only(top: 20, left: 25, right: 25),
-                    child: Text(quotationname!,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 17,
-                          color: Colors.black,
-                        )),
+                    child: Container(
+                        width: mediaQueryData.size.width/1.4,
+                      child: Text(quotationname!,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17,
+                            color: Colors.black,
+                          )),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),

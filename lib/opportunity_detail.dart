@@ -1338,13 +1338,16 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       Padding(
                         padding:
                         const EdgeInsets.only(top: 20, left: 25, right: 25),
-                        child: Text(opportunityname!,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'Mulish',
-                              fontSize: 17,
-                              color: Colors.black,
-                            )),
+                        child: Container(
+                          width: mediaQueryData.size.width/1.4,
+                          child: Text(opportunityname!,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'Mulish',
+                                fontSize: 17,
+                                color: Colors.black,
+                              )),
+                        ),
                       ),
                       opportunityType == true
                           ? opportunityTypeWon == true

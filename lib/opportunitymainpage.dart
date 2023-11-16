@@ -277,7 +277,8 @@ setState(() {
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
             title: InkWell(
               child: Container(
-
+               // width: 30,
+                 //color: Colors.red,
                 child: Center(
                   child: Text(
                     "Lost",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),
