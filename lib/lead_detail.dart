@@ -9521,7 +9521,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   padding: const EdgeInsets.only(top: 20, left: 2, right: 2),
                   child: Center(
                     child: SizedBox(
-                      width: 326,
+                      width: MediaQuery.of(context).size.width,
+                     // width: 326,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -11036,7 +11037,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                        width: 320,
+                       // width: 320,
+                            width: MediaQuery.of(context).size.width,
                         child: Text(
                           item["display_name"],
                           style: TextStyle(

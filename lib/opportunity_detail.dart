@@ -1048,6 +1048,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                       "images/sendsmss.svg",
                                                       width: 28,
                                                       height: 28,
+
                                                     ),
                                                   ),
                                                   Padding(
@@ -1100,7 +1101,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       height: 39,
                       color: Color(0xFFF5F5F5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
                             child: Container(
@@ -1154,6 +1155,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                               color: Color(0xFFED2449)),
                                         ),
                                       )),
+                                  Divider(color: Colors.grey),
                                 ],
                               ),
                             ),
@@ -1226,6 +1228,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                               color: Color(0xFFED2449)),
                                         ),
                                       )),
+                                  Divider(color: Colors.grey,
+
+                                  ),
                                 ],
                               ),
                             ),
@@ -1306,6 +1311,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                 color: Color(0xFFED2449)),
                                           ),
                                         )),
+                                    Divider(color: Colors.grey),
                                   ],
                                 ),
                               ),
@@ -2324,7 +2330,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     child: Container(
                       color: Color(0xFFF6F6F6),
                       child: Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
@@ -9876,7 +9882,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   padding: const EdgeInsets.only(top: 20, left: 3, right: 3),
                   child: Center(
                     child: SizedBox(
-                      width: 340,
+                      //width: 340,
+                      width: MediaQuery.of(context).size.width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -11554,7 +11561,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 320,
+                            //width: 320,
+                            width: MediaQuery.of(context).size.width,
                             child: Text(
                               item["display_name"],
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),

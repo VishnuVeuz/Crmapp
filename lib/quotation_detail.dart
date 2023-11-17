@@ -16786,7 +16786,8 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 320,
+                            width: MediaQuery.of(context).size.width,
+                            //width: 320,
                             child: Text(
                               item["display_name"],
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),

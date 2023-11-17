@@ -16615,7 +16615,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 320,
+                            //width: 320,
+                            width: MediaQuery.of(context).size.width,
                             child: Text(
                               item["display_name"],
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
