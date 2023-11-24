@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor:Color(0xFFAA82E3) ,
 
       body: Column(
 
@@ -38,12 +38,12 @@ class _LoginPageState extends State<LoginPage> {
           Container(
             width: MediaQuery.of(context).size.width/1,
             height: MediaQuery.of(context).size.height/1.8,
-            color: Color(0xFF3D418E),
+            color: Color(0xFFAA82E3),
             child: Column(
 
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 62, left: 49),
+                  padding: const EdgeInsets.only(top: 62, left: 0,right: 30),
                   child: SizedBox(
                     width: 261,
                     height: 70,
@@ -294,7 +294,7 @@ CRM made easy.
 
                               },
                               style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFEF4253),
+                                  primary: Color(0xFF043565),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(16))),
                             ),

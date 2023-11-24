@@ -1029,7 +1029,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 17),
                                 child: Checkbox(
-                                  activeColor:  Color(0xFFF9246A),
+                                  activeColor:  Color(0xFF043565),
                                   value: isCheckedSignature,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -1056,7 +1056,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               Padding(
                                 padding: const EdgeInsets.only(right:17),
                                 child: Checkbox(
-                                  activeColor:  Color(0xFFF9246A),
+                                  activeColor:  Color(0xFF043565),
                                   value: isCheckedPayment,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -1796,9 +1796,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                               ),
                                         ).then((value) => setState(() {}));
                                       },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF9246A),
-                                      )),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(13), // <-- Radius
+                                      ),
+                                      primary:  Color(0xFF043565),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2104,9 +2108,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                               ),
                                         ).then((value) => setState(() {}));
                                       },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFFF9246A),
-                                      )),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(13), // <-- Radius
+                                      ),
+                                      primary:  Color(0xFF043565),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -2473,9 +2481,13 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           }
 
                         },
-                        style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF9246A),
-                        )),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13), // <-- Radius
+                        ),
+                        primary:  Color(0xFF043565),
+                      ),
+                    ),
                   ),
                 ),
               ],

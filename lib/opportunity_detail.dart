@@ -245,7 +245,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Color(0xFF3D418E),
+        primaryColor: Color(0xFFAA82E3),
       ),
       home: !_isInitialized ?
     Scaffold(
@@ -398,6 +398,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
           child: Container(
             width: mediaQueryData.size.width,
             height: mediaQueryData.size.height,
+            color: Colors.white,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -619,19 +620,30 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                           builder: (BuildContext
                                                           context) =>
                                                               AlertDialog(
-                                                                title: const Text(
-                                                                    'Lost Reason',
-                                                                    style:
-                                                                    TextStyle(
-                                                                      fontSize:
-                                                                      16,
-                                                                      fontWeight:
-                                                                      FontWeight.w600,
-                                                                      color:
-                                                                      Colors.black,
-                                                                      fontFamily:
-                                                                      'Mulish',
-                                                                    )),
+                                                                title: Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                  children: [
+                                                                    const Text(
+                                                                        'Lost Reason',
+                                                                        style:
+                                                                        TextStyle(
+                                                                          fontSize:
+                                                                          16,
+                                                                          fontWeight:
+                                                                          FontWeight.w600,
+                                                                          color:
+                                                                          Colors.black,
+                                                                          fontFamily:
+                                                                          'Mulish',
+                                                                        )),
+                                                                    IconButton(
+                                                                      icon: SvgPicture.asset("images/cr.svg"),
+                                                                      onPressed: () {
+                                                                        Navigator.pop(context);
+                                                                      },
+                                                                    ),
+                                                                  ],
+                                                                ),
                                                                 content:
                                                                 Container(
                                                                   width: mediaQueryData
@@ -737,7 +749,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                                     Widget>[
                                                                   Padding(
                                                                     padding: const EdgeInsets.only(
-                                                                        left: 10,
+                                                                        left: 20,
                                                                         right: 5),
                                                                     child:
                                                                     Row(
@@ -747,7 +759,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                                           height: 40,
                                                                           decoration: BoxDecoration(
                                                                             borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                            color: Color(0xFFF9246A),
+                                                                            color: Color(0xFF043565),
                                                                           ),
                                                                           child: TextButton(
                                                                               child: const Text(
@@ -769,27 +781,27 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
                                                                               }),
                                                                         ),
-                                                                        SizedBox(
-                                                                          width: 5,
-                                                                        ),
-                                                                        Padding(
-                                                                          padding: const EdgeInsets.only(right: 10),
-                                                                          child: Container(
-                                                                            width: 130,
-                                                                            height: 40,
-                                                                            decoration: BoxDecoration(
-                                                                              borderRadius: BorderRadius.all(Radius.circular(10)),
-                                                                              color: Colors.grey[100],
-                                                                            ),
-                                                                            child: TextButton(
-                                                                              onPressed: () => Navigator.pop(context, 'Cancel'),
-                                                                              child: const Text(
-                                                                                'Cancel',
-                                                                                style: TextStyle(fontFamily: 'Mulish', color: Colors.black),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
+                                                                        // SizedBox(
+                                                                        //   width: 5,
+                                                                        // ),
+                                                                        // Padding(
+                                                                        //   padding: const EdgeInsets.only(right: 10),
+                                                                        //   child: Container(
+                                                                        //     width: 130,
+                                                                        //     height: 40,
+                                                                        //     decoration: BoxDecoration(
+                                                                        //       borderRadius: BorderRadius.all(Radius.circular(10)),
+                                                                        //       color: Colors.grey[100],
+                                                                        //     ),
+                                                                        //     child: TextButton(
+                                                                        //       onPressed: () => Navigator.pop(context, 'Cancel'),
+                                                                        //       child: const Text(
+                                                                        //         'Cancel',
+                                                                        //         style: TextStyle(fontFamily: 'Mulish', color: Colors.black),
+                                                                        //       ),
+                                                                        //     ),
+                                                                        //   ),
+                                                                        // ),
                                                                       ],
                                                                     ),
                                                                   ),
@@ -1345,7 +1357,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                         padding:
                         const EdgeInsets.only(top: 20, left: 25, right: 25),
                         child: Container(
-                          width: mediaQueryData.size.width/1.4,
+                          width: mediaQueryData.size.width/1.52,
                           child: Text(opportunityname!,
                               style: TextStyle(
                                 fontWeight: FontWeight.w400,
@@ -1359,7 +1371,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                           ? opportunityTypeWon == true
                           ? Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 35),
+                            top: 20, left: 5, right: 25),
                         child: Container(
                           width: 50,
                           decoration: BoxDecoration(
@@ -1379,7 +1391,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       )
                           : Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 25),
+                            top: 20, left: 5, right: 25),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -1398,7 +1410,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       )
                           : Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, left: 25, right: 35),
+                            top: 20, left: 5, right: 25),
                         child: Container(
                           width: 50,
                           decoration: BoxDecoration(
@@ -1422,7 +1434,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1459,7 +1471,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1497,7 +1509,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1585,7 +1597,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1673,7 +1685,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1772,7 +1784,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -1825,7 +1837,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
 
@@ -1958,7 +1970,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
                       color: Color(0xFFF4F4F4),
-                      thickness: 2,
+                      thickness: 1.5,
                     ),
                   ),
                   Row(
@@ -2328,7 +2340,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Container(
-                      color: Color(0xFFF6F6F6),
+                      color: Color(0xFFFFFFFF),
                       child: Row(
                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -2340,9 +2352,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:internalVisibility==true? Color(0XFFFA256B):
+                                      color:internalVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2353,7 +2365,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color:internalVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                          color:internalVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: ()  {
                                       setState(() {
@@ -2367,7 +2379,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFFFFFF),
                                     )),
                               ),
                             ),
@@ -2380,9 +2392,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:otherinfoVisibility==true? Color(0XFFFA256B):
+                                      color:otherinfoVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -2393,7 +2405,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color: otherinfoVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                          color: otherinfoVisibility==true? Color(0XFF212121):Color(0xFF212121)),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -2407,7 +2419,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFFFFFF),
                                     )),
                               ),
                             ),
@@ -2422,6 +2434,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                     child: Padding(
                       padding: const EdgeInsets.only(top: 0,bottom: 0),
                       child: Container(
+                        color: Color(0xFFf5f5f5),
                         width:mediaQueryData.size.width ,
                         //height: 40,
                         child: Padding(
@@ -2448,7 +2461,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Padding(
@@ -2489,7 +2502,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -2527,7 +2540,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness:1.5,
                               ),
                             ),
                             Row(
@@ -2565,7 +2578,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness:1.5,
                               ),
                             ),
                             Row(
@@ -2601,7 +2614,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                           ],
@@ -2611,7 +2624,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   ),
 
                   Container(
-                    color: Color(0xFFF6F6F6),
+                    color: Color(0xFFFFFFFF),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -2623,9 +2636,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
-                                    color:followersVisibility==true? Color(0XFFFA256B):
+                                    color:followersVisibility==true? Color(0XFFED2478):
                                     Colors.transparent,// Underline color
-                                    width: 1.0,        // Underline width
+                                    width: 1.5,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2636,7 +2649,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
-                                        color:followersVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                        color:followersVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                   ),
                                   onPressed: () async {
                                     sendMailData = await sendMailsFollowers(
@@ -2652,7 +2665,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
+                                    primary: Color(0xFFFFFFFF),
                                   )),
                             ),
                           ),
@@ -2665,9 +2678,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
-                                    color:lognoteVisibility==true? Color(0XFFFA256B):
+                                    color:lognoteVisibility==true? Color(0XFFED2478):
                                     Colors.transparent,// Underline color
-                                    width: 1.0,        // Underline width
+                                    width: 1.5,        // Underline width
                                   ),
                                 ),
                               ),
@@ -2678,7 +2691,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
-                                        color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                        color:lognoteVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -2691,7 +2704,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
+                                    primary: Color(0xFFFFFFFF),
                                   )),
                             ),
                           ),
@@ -2721,7 +2734,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   ).then((value) => setState(() {}));
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF6F6F6),
+                                  primary: Color(0xFFFFFFFF),
                                 )),
                           ),
                         ),
@@ -3290,7 +3303,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   // code for send message
                   Container(
                     width:mediaQueryData.size.width,
-
+                  color: Color(0xFFf5f5f5),
+                  //  color: Colors.red,
 
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -3298,7 +3312,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                         Visibility(
                           visible: followersVisibility,
                           child: Padding(
-                            padding: const EdgeInsets.only(left:25),
+                            padding: const EdgeInsets.only(left:25,top: 10),
                             child: Container(
                               // color: Colors.red,
                               child: Row(
@@ -3481,7 +3495,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                       decoration: BoxDecoration(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(5)),
-                                          color: Color(0xFFF6F6F6),
+                                          color: Color(0xFFFfffff),
                                           border:
                                           Border.all(color: Color(0xFFEBEBEB))),
                                       child: Row(
@@ -3547,7 +3561,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                               icon: Icon(
                                                 Icons.arrow_outward_rounded,
                                                 size: 18,
-                                                color: Colors.grey[700],
+                                                color: Color(
+                                                    0xFFAFAFAF),
                                               )),
                                         ],
                                       ),
@@ -3634,7 +3649,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 ),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 60),
@@ -3650,14 +3665,24 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   Padding(
                                     padding: const EdgeInsets.only(right: 25,top: 3),
                                     child: SizedBox(
-                                      width: 55,
+                                      width: 270,
                                       height: 30,
                                       child: ElevatedButton(
-                                          child: Center(
-                                              child:SvgPicture.asset("images/sendd.svg")
-
-                                            // ),
+                                          child:  Center(
+                                            child: Text(
+                                              "Send Message",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 12,
+                                                  color: Colors.white),
+                                            ),
                                           ),
+                                          // Center(
+                                          //     child:SvgPicture.asset("images/sendd.svg")
+                                          //
+                                          //   // ),
+                                          // ),
                                           onPressed:  _isSavingData
                                               ? null // Disable the button if saving is in progress
                                               :() async {
@@ -3717,7 +3742,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFFA256A),
+                                            primary: Color(0xFF043565),
                                           )),
                                     ),
                                   ),
@@ -3789,7 +3814,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                       decoration: BoxDecoration(
                                           borderRadius:
                                           BorderRadius.all(Radius.circular(5)),
-                                          color: Color(0xFFF6F6F6),
+                                          color: Color(0xFFFfffff),
                                           border:
                                           Border.all(color: Color(0xFFEBEBEB))),
                                       child: Row(
@@ -3857,7 +3882,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                 icon: Icon(
                                                   Icons.arrow_outward_rounded,
                                                   size: 18,
-                                                  color: Colors.grey[700],
+                                                  color: Color(
+                                                      0xFFAFAFAF),
                                                 )),
                                           ),
                                         ],
@@ -3946,7 +3972,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               ),
 
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 60),
@@ -3962,11 +3988,19 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   Padding(
                                     padding: const EdgeInsets.only(right: 27,top: 3),
                                     child: SizedBox(
-                                      width: 55,
+                                      width: 270,
                                       height: 30,
                                       child: ElevatedButton(
                                           child: Center(
-                                              child:SvgPicture.asset("images/sendd.svg")
+                                              child:
+                                              Text(
+                                                "Send Lognote",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontFamily: 'Mulish',
+                                                    fontSize: 12,
+                                                    color: Colors.white),
+                                              ),
 
                                             // ),
                                           ),
@@ -4029,7 +4063,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                             }
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFFA256A),
+                                            primary: Color(0xFF043565),
                                           )),
                                     ),
                                   ),
@@ -4046,7 +4080,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   Visibility(
                     visible:scheduleLength==0? false: true,
                     child: Container(
-                      color: Color(0xFFF6F6F6),
+                      color: Color(0xFFffffff),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -4140,7 +4174,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   Visibility(
                     visible: scheduleActivityVisibility,
                     child: Container(
-                      color: Colors.white70,
+
+                      color: Color(0xFFf5f5f5),
                       //height: MediaQuery.of(context).size.height/1.8,
 
                       child: scheduleLength == 0
@@ -6753,14 +6788,14 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                         .size
                                         .width,
                                     height: 42,
-                                    color: Color(0xff3D418E),
+                                    color: Color(0xffffffff),
                                     child: Center(
                                         child: Text(entry.key,
                                           style: TextStyle(
                                               fontWeight: FontWeight.w700,
                                               fontSize: 12,
                                               fontFamily: 'Mulish',
-                                              color: Colors.white),
+                                              color: Color(0xFF212121)),
 
                                         )),
                                   ),
@@ -6866,7 +6901,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                             );
 
                                             return Card(
-                                              elevation: 1,
+                                              color: Color(0xFFF5F5F5),
+                                             // elevation: 1,
                                               child: Column(
                                                 // crossAxisAlignment: CrossAxisAlignment.center,
                                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -8924,7 +8960,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
+                              primary: Color(0xFF043565),
                             )),
                       ),
                     ),
@@ -8978,7 +9014,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -9028,7 +9064,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -9082,7 +9118,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -9122,7 +9158,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -9198,7 +9234,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF9246A),
+                      primary: Color(0xFF043565),
                     )),
               ),
               Padding(
@@ -9231,7 +9267,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF9246A),
+                        primary: Color(0xFF043565),
                       )),
                 ),
               ),
@@ -9459,7 +9495,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -9488,7 +9524,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -9758,10 +9794,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                           fontFamily: 'Mulish'),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon:SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -9879,7 +9912,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 3, right: 3),
+                  padding: const EdgeInsets.only(top: 20, left: 0, right: 0),
                   child: Center(
                     child: SizedBox(
                       //width: 340,
@@ -9943,7 +9976,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -10236,7 +10269,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
-                    activeColor: Color(0xFFF9246A),
+                    activeColor: Color(0xFF043565),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -10280,7 +10313,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   padding: const EdgeInsets.only(top: 40),
                   child: Center(
                     child: SizedBox(
-                      width: 316,
+                      width: MediaQuery.of(context).size.width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -10321,7 +10354,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             print("tagattagagaga");
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -10567,10 +10600,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       ),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           templateName = null;
@@ -10968,10 +10998,10 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                  padding: const EdgeInsets.only(top: 20, left: 0, right: 0),
                   child: Center(
                     child: SizedBox(
-                      width: 320,
+                      width: MediaQuery.of(context).size.width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -11030,7 +11060,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),

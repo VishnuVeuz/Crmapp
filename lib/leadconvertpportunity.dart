@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:crm_project/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:search_choices/search_choices.dart';
@@ -75,7 +76,7 @@ class _LeadConvertState extends State<LeadConvert> {
             Builder(builder: (context) {
               return Padding(
                 padding: const EdgeInsets.only(right: 10),
-                child: IconButton(icon: Image.asset("images/cross.png",color: Colors.black,),
+                child: IconButton(icon:SvgPicture.asset("images/cr.svg"),
                   onPressed: () {
                     Navigator.pop(context);
                   },),
@@ -148,9 +149,10 @@ class _LeadConvertState extends State<LeadConvert> {
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 12.7,   fontFamily: 'Mulish'),
+
                                               labelStyle:
                                               TextStyle(
-                                                  color: Color(0xFFFA256B),
+                                                  color: Color(0xFFF9246A),
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 12.7,   fontFamily: 'Mulish'),
                                               tabs: const [
@@ -543,7 +545,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
 
                   RadioListTile(
-                    activeColor:   Color(0xFFFA256B),
+                    activeColor:   Color(0xFF043565),
                     title: Text("Create a new customer",
 
 
@@ -561,7 +563,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                   ),
 
                   RadioListTile(
-                    activeColor:   Color(0xFFFA256B),
+                    activeColor:   Color(0xFF043565),
                     title: Text("Link to an existing customer"
                       ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
                     ),
@@ -579,7 +581,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                   ),
 
                   RadioListTile(
-                    activeColor:   Color(0xFFFA256B),
+                    activeColor:   Color(0xFF043565),
                     title: Text("Do not link to a customer"
                       ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
                     ),
@@ -724,9 +726,9 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
 
                   Padding(
-                    padding: const EdgeInsets.only(top: 93, left: 25),
+                    padding: const EdgeInsets.only(top: 93, left: 25,right: 25),
                     child: SizedBox(
-                      width: 350,
+                      width: MediaQuery.of(context).size.width,
                       height: 43,
                       child: ElevatedButton(
                           child: Center(
@@ -753,7 +755,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           ),
                       ),
                     ),
@@ -1188,10 +1190,10 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 143, left: 20,right: 20),
+                padding: const EdgeInsets.only(top: 143, left: 25,right: 25),
                 child: Center(
                   child: SizedBox(
-                    width: 350,
+                    width: MediaQuery.of(context).size.width,
                     height: 43,
                     child: ElevatedButton(
                         child: Center(
@@ -1239,7 +1241,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
 
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Color(0xFFF9246A),
+                          primary: Color(0xFF043565),
                         )),
                   ),
                 ),

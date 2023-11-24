@@ -253,7 +253,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                   builder: (context) => OpportunityCreation(0)));
           // Add your onPressed code here!
         },
-        backgroundColor: Color(0xFFFA256B),
+        backgroundColor: Color(0xFF043565),
         child: const Icon(Icons.add),
       ),
 
