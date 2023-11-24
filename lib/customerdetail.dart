@@ -1843,7 +1843,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           color: Color(0xFFF5F5F5),
                           //height: 40,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
+                            padding: const EdgeInsets.only(left: 25,right: 25,top: 10,bottom: 10),
                             child: Text(internalnotes!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,

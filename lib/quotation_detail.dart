@@ -3554,7 +3554,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   Visibility(
                     visible:scheduleLength==0? false: true,
                     child: Container(
-                      color: Color(0xFFF6F6F6),
+                      color: Color(0xFFffffff),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -3648,7 +3648,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   Visibility(
                     visible: scheduleActivityVisibility,
                     child: Container(
-                      color: Colors.white70,
+                      color: Color(0xfff5f5f5),
                       //height: MediaQuery.of(context).size.height/1.8,
                       child: scheduleLength == 0
                           ? Container()

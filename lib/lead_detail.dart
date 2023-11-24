@@ -1797,7 +1797,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   alignment: Alignment.topLeft,
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 25, right: 25),
+                                        left: 25, right: 25,top: 10,bottom: 10),
                                     child: Text(internalnotes!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
