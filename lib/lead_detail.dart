@@ -143,7 +143,12 @@ class _LeadDetailState extends State<LeadDetail> {
       otherinfoVisibility = false,
       starImage = false,
       lognoteEdit = false,
+      smartbuttonVisible = true,
       lognoteoptions = true;
+
+  List leadStageTypes = [];
+  int? leadStageId;
+  int? stageColorIndex;
 
   int? scheduleViewIndex;
   int selectedItemIndex = -1;
@@ -1681,6 +1686,113 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                             ],
                           ),
+
+
+
+
+                          Visibility(
+                            visible: smartbuttonVisible,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left:18, right: 20),
+                              child: Container(
+                                height: 50,
+                                // color: Colors.red,
+                                child: ListView.builder(
+                                  // physics: NeverScrollableScrollPhysics(),
+                                  //shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: leadStageTypes.length ?? 0,
+                                  itemBuilder: (context, index) {
+                                    print(index);
+                                    print("final indexxx");
+                                    return Padding(
+                                      padding: const EdgeInsets.only(left:5, top: 10),
+                                      child: Row(
+                                        children: [
+                                          InkWell(
+                                            child: Container(
+                                              // color: Colors.red,
+                                              //width: mediaQueryData.size.width/3,
+                                              width:mediaQueryData.size.width/4.1,
+                                              // height: 50,
+                                              child: Stack(
+                                                children: [
+
+                                                  index == 0 ?
+                                                  stageColorIndex == index ?
+
+                                                  Image.asset(
+                                                      'images/bluebtnfirst.png'):
+                                                  Image.asset(
+                                                      'images/greenbtnfirst.png'):
+
+                                                  stageColorIndex == index ?
+                                                  Image.asset(
+                                                      'images/bluebtn.png'):
+                                                  stageColorIndex! > index?Image.asset(
+                                                      'images/greenbtn.png')
+                                                      : Image.asset(
+                                                      'images/greybtn.png'),
+                                                  Positioned.fill(
+                                                      child: Align(
+                                                          alignment: Alignment.center,
+                                                          child: stageColorIndex ==
+                                                              index || stageColorIndex! >
+                                                              index
+                                                              ? Text(
+                                                            leadStageTypes[
+                                                            index]['name'],
+                                                            style: TextStyle(
+                                                              color: Colors.white,
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                              'Mulish',
+                                                            ),
+                                                          )
+                                                              : Text(
+                                                            leadStageTypes[
+                                                            index]['name'],
+                                                            style: TextStyle(
+                                                              color: Colors.black,
+                                                              fontSize: 12,
+                                                              fontFamily:
+                                                              'Mulish',
+                                                            ),
+                                                          )))
+                                                ],
+                                              ),
+                                            ),
+                                            // onTap: () async {
+                                            //   print(
+                                            //       leadStageTypes[index]['name']);
+                                            //   print(leadStageTypes[index]['id']);
+                                            //   print("print(opportunityStageTypes");
+                                            //   String resmessage =
+                                            //   await StageChangeOpportunity(
+                                            //       opportunityStageTypes[index]
+                                            //       ['id']);
+                                            //   int resmessagevalue =
+                                            //   int.parse(resmessage);
+                                            //   if (resmessagevalue != 0) {
+                                            //     setState(() {
+                                            //       stageColorIndex = index;
+                                            //     });
+                                            //
+                                            //
+                                            //   }
+                                            // },
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+
+
+
 
                           Padding(
                             padding: const EdgeInsets.only(
@@ -10437,6 +10549,24 @@ class _LeadDetailState extends State<LeadDetail> {
               .toString() ??
           "";
       leadType = data['active'] ?? true;
+
+
+      leadType == false
+          ? smartbuttonVisible = false
+          : smartbuttonVisible = true;
+
+
+      leadStageTypes = data['stages_list'] ?? "";
+      leadStageId = data['lead_state'][0]['id'] ?? 0;
+
+      leadStageTypes.asMap().forEach((currentIndex, element) {
+        if (element['id'] == leadStageId) {
+          stageColorIndex = currentIndex;
+          return;
+        }
+      });
+
+
 
       if (data["tag_ids"].length > 0) {
         //tags=snapshot.data![index]["tag_ids"][0]["name"].toString();

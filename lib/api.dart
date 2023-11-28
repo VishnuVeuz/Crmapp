@@ -1085,6 +1085,8 @@ getOpportunityData(int opportunityId, String value) async {
 
   var data;
   String? authresponce="${baseUrl}api/opportunity/${opportunityId}?action=${value}";
+print("${baseUrl}api/opportunity/${opportunityId}?action=${value}");
+print("fsfsdsfds");
 
 
   Response response = await get(
