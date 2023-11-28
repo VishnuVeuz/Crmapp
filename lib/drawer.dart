@@ -60,7 +60,7 @@ class _MainDrawerState extends State<MainDrawer> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            color: Color(0xFF3D418E),
+            color: Color(0xFFAA82E3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -68,7 +68,7 @@ class _MainDrawerState extends State<MainDrawer> {
                   padding: const EdgeInsets.only(top: 40),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-
+                     //color: Color(0xFFAA82E3),
                     //height: 60,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 12),
@@ -86,6 +86,10 @@ class _MainDrawerState extends State<MainDrawer> {
 
                           Container(
 
+                            decoration: BoxDecoration(
+                                //color: Colors.black,
+                                border: Border.all(color: Color(0xFFAA82E3))
+                            ),
                             child: ListView.builder(
                               shrinkWrap: true,
                                physics: ScrollPhysics(),
@@ -159,7 +163,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10),
                             child: Icon(Icons.arrow_forward_ios,
-                                color: Color(0xFF5D5F8F)),
+                                color: Color(0xFFFFFFFF)),
                           ),
                         ],
                       ),
@@ -196,7 +200,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10),
                             child: Icon(Icons.arrow_forward_ios,
-                                color: Color(0xFF5D5F8F)),
+                                color: Color(0xFFFFFFFF)),
                           ),
                         ],
                       ),
@@ -237,7 +241,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10),
                             child: Icon(Icons.arrow_forward_ios,
-                                color: Color(0xFF5D5F8F)),
+                                color: Color(0xFFFFFFFF)),
                           ),
                         ],
                       ),
@@ -274,7 +278,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10),
                             child: Icon(Icons.arrow_forward_ios,
-                                color: Color(0xFF5D5F8F)),
+                                color: Color(0xFFFFFFFF)),
                           ),
                         ],
                       ),
@@ -313,7 +317,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           Padding(
                             padding: const EdgeInsets.only(right: 10),
                             child: Icon(Icons.arrow_forward_ios,
-                                color: Color(0xFF5D5F8F)),
+                                color: Color(0xFFFFFFFF)),
                           ),
                         ],
                       ),

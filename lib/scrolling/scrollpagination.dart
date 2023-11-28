@@ -407,7 +407,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     builder: (context) => LeadCreation(0)));
 
           },
-          backgroundColor: Color(0xFFFA256B),
+          backgroundColor: Color(0xFF043565),
           child: const Icon(Icons.add),
         ),
       ),

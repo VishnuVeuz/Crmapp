@@ -194,7 +194,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                       buttonMargin: const EdgeInsets.fromLTRB(10, 5, 2, 5),
                       contentPadding: EdgeInsets.fromLTRB(30, 0, 30, 0),
                       physics: BouncingScrollPhysics(),
-                       backgroundColor: Colors.pinkAccent,
+                       backgroundColor: Color(0xFF043565),
 
 
                       unselectedBorderColor: Colors.transparent,

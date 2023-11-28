@@ -261,7 +261,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Color(0xFF3D418E),
+        primaryColor: Color(0xFFAA82E3),
       ),
       home: !_isInitialized
           ? Scaffold(
@@ -425,6 +425,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: Container(
                     width: mediaQueryData.size.width,
                     height: mediaQueryData.size.height,
+                    color: Colors.white,
 
                     // height: 500,
                     child: SingleChildScrollView(
@@ -992,7 +993,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
                           Row(
@@ -1002,7 +1003,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 padding: const EdgeInsets.only(
                                     top: 10, left: 24, right: 25),
                                 child: Container(
-                                  width: mediaQueryData.size.width/1.4,
+                                  width: mediaQueryData.size.width/1.52,
+                                  //color: Colors.green,
                                   child: Text(leadname!,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
@@ -1015,7 +1017,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               leadType == true
                                   ? Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 10, left: 24, right: 25),
+                                          top: 10, left: 5, right: 25),
                                       child: Container(
                                         decoration: BoxDecoration(
                                           color: Colors.white,
@@ -1035,7 +1037,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     )
                                   : Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 10, left: 25, right: 35),
+                                          top: 10, left: 5, right: 25),
                                       child: Container(
                                         width: 50,
                                         decoration: BoxDecoration(
@@ -1061,7 +1063,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
                           Row(
@@ -1102,7 +1104,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
                           Row(
@@ -1142,7 +1144,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness:1.5,
                             ),
                           ),
                           Row(
@@ -1249,7 +1251,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
                           Row(
@@ -1356,7 +1358,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness:1.5,
                             ),
                           ),
                           Row(
@@ -1456,7 +1458,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
                           Row(
@@ -1516,7 +1518,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness:1.5,
                             ),
                           ),
 
@@ -1685,12 +1687,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                 top: 0, left: 22, right: 22, bottom: 20),
                             child: Divider(
                               color: Color(0xFFF4F4F4),
-                              thickness: 2,
+                              thickness: 1.5,
                             ),
                           ),
 
                           Container(
-                            color: Color(0xFFF5F5F5),
+                            color: Color(0xFFFfffff),
                             child: Row(
                               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -1704,10 +1706,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                         border: Border(
                                           bottom: BorderSide(
                                             color: internalVisibility == true
-                                                ? Color(0XFFFA256B)
+                                                ? Color(0XFFED2478)
                                                 : Colors
                                                     .transparent, // Underline color
-                                            width: 1.0, // Underline width
+                                            width: 1.5, // Underline width
                                           ),
                                         ),
                                       ),
@@ -1720,7 +1722,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 fontSize: 13,
                                                 color:
                                                     internalVisibility == true
-                                                        ? Color(0XFFFA256B)
+                                                        ? Color(0XFF212121)
                                                         : Color(0xFF212121)),
                                           ),
                                           onPressed: () {
@@ -1730,7 +1732,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             });
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFF6F6F6),
+                                            primary: Color(0xFFFfffff),
                                           )),
                                     ),
                                   ),
@@ -1745,10 +1747,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                         border: Border(
                                           bottom: BorderSide(
                                             color: otherinfoVisibility == true
-                                                ? Color(0XFFFA256B)
+                                                ? Color(0XFFED2478)
                                                 : Colors
                                                     .transparent, // Underline color
-                                            width: 1.0,
+                                            width: 1.5,
 
                                             // Underline width
                                           ),
@@ -1763,7 +1765,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 fontSize: 13,
                                                 color:
                                                     otherinfoVisibility == true
-                                                        ? Color(0XFFFA256B)
+                                                        ? Color(0XFF212121)
                                                         : Color(0xFF212121)),
                                           ),
                                           onPressed: () {
@@ -1773,7 +1775,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             });
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFF6F6F6),
+                                            primary: Color(0xFFFfffff),
                                           )),
                                     ),
                                   ),
@@ -1785,8 +1787,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             visible: internalVisibility,
                             child: Padding(
                               padding:
-                                  const EdgeInsets.only(top: 10, bottom: 10),
+                                  const EdgeInsets.only(top: 0, bottom: 0),
                               child: Container(
+                                color: Color(0xFFf5f5f5),
                                 width: mediaQueryData.size.width,
                                 //height: 40,
                                 // width:400,
@@ -1794,7 +1797,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   alignment: Alignment.topLeft,
                                   child: Padding(
                                     padding: const EdgeInsets.only(
-                                        left: 25, right: 25),
+                                        left: 25, right: 25,top: 10,bottom: 10),
                                     child: Text(internalnotes!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
@@ -1817,7 +1820,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         top: 20, left: 22, right: 22),
                                     child: Divider(
                                       color: Color(0xFFF4F4F4),
-                                      thickness: 2,
+                                      thickness: 1.5,
                                     ),
                                   ),
                                   Row(
@@ -1860,7 +1863,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         top: 0, left: 22, right: 22),
                                     child: Divider(
                                       color: Color(0xFFF4F4F4),
-                                      thickness: 2,
+                                      thickness: 1.5,
                                     ),
                                   ),
                                   Row(
@@ -1903,7 +1906,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         top: 0, left: 22, right: 22),
                                     child: Divider(
                                       color: Color(0xFFF4F4F4),
-                                      thickness: 2,
+                                      thickness: 1.5,
                                     ),
                                   ),
                                   Row(
@@ -1946,7 +1949,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         top: 0, left: 22, right: 22),
                                     child: Divider(
                                       color: Color(0xFFF4F4F4),
-                                      thickness: 2,
+                                      thickness: 1.5,
                                     ),
                                   ),
                                   Row(
@@ -1990,7 +1993,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         bottom: 20),
                                     child: Divider(
                                       color: Color(0xFFF4F4F4),
-                                      thickness: 2,
+                                      thickness: 1.5,
                                     ),
                                   ),
                                 ],
@@ -1998,7 +2001,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             ),
                           ),
                           Container(
-                            color: Color(0xFFF5F5F5),
+                            color: Color(0xFFFfffff),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -2008,13 +2011,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                   child: Center(
                                     child: Container(
                                       decoration: BoxDecoration(
+                                        //color: Color(0xFFFfffff),
                                         border: Border(
                                           bottom: BorderSide(
                                             color: followersVisibility == true
-                                                ? Color(0XFFFA256B)
+                                                ? Color(0XFFED2478)
                                                 : Colors
                                                     .transparent, // Underline color
-                                            width: 1.0, // Underline width
+                                            width: 1.5, // Underline width
                                           ),
                                         ),
                                       ),
@@ -2027,7 +2031,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 fontSize: 13,
                                                 color:
                                                     followersVisibility == true
-                                                        ? Color(0XFFFA256B)
+                                                        ? Color(0XFF212121)
                                                         : Color(0xFF212121)),
                                           ),
                                           onPressed: () async {
@@ -2045,7 +2049,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             });
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFF6F6F6),
+                                            primary: Color(0xFFFfffff),
                                           )),
                                     ),
                                   ),
@@ -2059,10 +2063,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                         border: Border(
                                           bottom: BorderSide(
                                             color: lognoteVisibility == true
-                                                ? Color(0XFFFA256B)
+                                                ? Color(0XFFED2478)
                                                 : Colors
                                                     .transparent, // Underline color
-                                            width: 1.0, // Underline width
+                                            width: 1.5, // Underline width
                                           ),
                                         ),
                                       ),
@@ -2074,7 +2078,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 fontFamily: 'Mulish',
                                                 fontSize: 13,
                                                 color: lognoteVisibility == true
-                                                    ? Color(0XFFFA256B)
+                                                    ? Color(0XFF212121)
                                                     : Color(0xFF212121)),
                                           ),
                                           onPressed: () {
@@ -2088,7 +2092,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             });
                                           },
                                           style: ElevatedButton.styleFrom(
-                                            primary: Color(0xFFF6F6F6),
+                                            primary: Color(0xFFFfffff),
                                           )),
                                     ),
                                   ),
@@ -2119,200 +2123,205 @@ class _LeadDetailState extends State<LeadDetail> {
                                           ).then((value) => setState(() {}));
                                         },
                                         style: ElevatedButton.styleFrom(
-                                          primary: Color(0xFFF6F6F6),
+                                          primary: Color(0xFFFfffff),
                                         )),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 25, right: 20),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      children: [
-                                        InkWell(
-                                          child: Container(
-                                            width: 15,
-                                            child: Image.asset(
-                                              "images/pi.png",
+                          Container(
+                            //color: Colors.red,
+                            color: Color(0xFFFEFEFE),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 0, left: 25, right: 20),
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+
+                                      child: Row(
+                                        children: [
+                                          InkWell(
+                                            child: Container(
+                                              width: 15,
+                                              child: Image.asset(
+                                                "images/pi.png",
+                                              ),
+                                            ),
+                                            onTap: () {
+                                              setState(() {
+                                                attachmentVisibility == true
+                                                    ? attachmentVisibility = false
+                                                    : attachmentVisibility = true;
+                                              });
+                                            },
+                                          ),
+                                          SizedBox(
+                                            width: 1,
+                                          ),
+                                          Container(
+                                            width: 25,
+                                            // color: Colors.green,
+                                            child: Text(
+                                              attachmentCount!,
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Color(0xFF000000)),
                                             ),
                                           ),
-                                          onTap: () {
-                                            setState(() {
-                                              attachmentVisibility == true
-                                                  ? attachmentVisibility = false
-                                                  : attachmentVisibility = true;
-                                            });
-                                          },
-                                        ),
-                                        SizedBox(
-                                          width: 1,
-                                        ),
-                                        Container(
-                                          width: 25,
-                                          // color: Colors.green,
-                                          child: Text(
-                                            attachmentCount!,
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xFF000000)),
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Container(
-                                  child: Row(
-                                      children: [
-                                        followerStatus == false
-                                            ? Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 0),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.check_sharp,
-                                                size: 14,
-                                                color: Colors.green,
-                                              ),
-                                              TextButton(
-                                                  onPressed: () async {
-                                                    String resMessage =
-                                                    await followerFollow(
-                                                        widget.leadId,
-                                                        "lead.lead");
+                                    Container(
+                                    child: Row(
+                                        children: [
+                                          followerStatus == false
+                                              ? Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 0),
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.check_sharp,
+                                                  size: 14,
+                                                  color: Colors.green,
+                                                ),
+                                                TextButton(
+                                                    onPressed: () async {
+                                                      String resMessage =
+                                                      await followerFollow(
+                                                          widget.leadId,
+                                                          "lead.lead");
 
-                                                    if (resMessage ==
-                                                        "success") {
-                                                      setState(() {
-                                                        int followCount;
-                                                        followCount = int.parse(
-                                                            followerCount!);
-                                                        followerStatus = true;
-                                                        followCount =
-                                                            followCount + 1;
-                                                        followerCount =
-                                                            followCount
-                                                                .toString();
-                                                      });
+                                                      if (resMessage ==
+                                                          "success") {
+                                                        setState(() {
+                                                          int followCount;
+                                                          followCount = int.parse(
+                                                              followerCount!);
+                                                          followerStatus = true;
+                                                          followCount =
+                                                              followCount + 1;
+                                                          followerCount =
+                                                              followCount
+                                                                  .toString();
+                                                        });
 
-                                                      // Navigator.push(
-                                                      //     context,
-                                                      //     MaterialPageRoute(
-                                                      //         builder: (context) => LeadDetail(widget.leadId)));
-                                                    }
-                                                  },
-                                                  child: Text(
-                                                    "Follow",
-                                                    style: TextStyle(
-                                                        color: Colors.green,
-                                                        fontFamily: 'Mulish',
-                                                        fontWeight:
-                                                        FontWeight.w600),
-                                                  )),
-                                            ],
+                                                        // Navigator.push(
+                                                        //     context,
+                                                        //     MaterialPageRoute(
+                                                        //         builder: (context) => LeadDetail(widget.leadId)));
+                                                      }
+                                                    },
+                                                    child: Text(
+                                                      "Follow",
+                                                      style: TextStyle(
+                                                          color: Colors.green,
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight:
+                                                          FontWeight.w600),
+                                                    )),
+                                              ],
+                                            ),
+                                          )
+                                              : Padding(
+                                            padding:
+                                            const EdgeInsets.only(left: 0),
+                                            child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.close,
+                                                  size: 14,
+                                                  color: Colors.red,
+                                                ),
+                                                TextButton(
+                                                    onPressed: () async {
+                                                      String resMessage =
+                                                      await followerUnFollow(
+                                                          widget.leadId,
+                                                          "lead.lead");
+
+                                                      if (resMessage ==
+                                                          "success") {
+                                                        setState(() {
+                                                          int followCount;
+                                                          followCount = int.parse(
+                                                              followerCount!);
+                                                          followerStatus = false;
+                                                          followCount =
+                                                              followCount - 1;
+                                                          followerCount =
+                                                              followCount
+                                                                  .toString();
+                                                        });
+                                                        // Navigator.push(
+                                                        //     context,
+                                                        //     MaterialPageRoute(
+                                                        //         builder: (context) => LeadDetail(widget.leadId)));
+                                                      }
+                                                    },
+                                                    child: Text(
+                                                      "Unfollow",
+                                                      style: TextStyle(
+                                                          color: Colors.red,
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight:
+                                                          FontWeight.w600),
+                                                    )),
+                                              ],
+                                            ),
                                           ),
-                                        )
-                                            : Padding(
-                                          padding:
-                                          const EdgeInsets.only(left: 0),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.close,
-                                                size: 14,
-                                                color: Colors.red,
-                                              ),
-                                              TextButton(
-                                                  onPressed: () async {
-                                                    String resMessage =
-                                                    await followerUnFollow(
-                                                        widget.leadId,
-                                                        "lead.lead");
+                                          InkWell(
+                                            child: Container(
+                                                width: 18,
+                                                child: SvgPicture.asset(
+                                                    "images/user.svg")),
+                                            onTap: () async {
+                                              List followers = await getFollowers(
+                                                  widget.leadId, "lead.lead");
 
-                                                    if (resMessage ==
-                                                        "success") {
-                                                      setState(() {
-                                                        int followCount;
-                                                        followCount = int.parse(
-                                                            followerCount!);
-                                                        followerStatus = false;
-                                                        followCount =
-                                                            followCount - 1;
-                                                        followerCount =
-                                                            followCount
-                                                                .toString();
-                                                      });
-                                                      // Navigator.push(
-                                                      //     context,
-                                                      //     MaterialPageRoute(
-                                                      //         builder: (context) => LeadDetail(widget.leadId)));
-                                                    }
-                                                  },
-                                                  child: Text(
-                                                    "Unfollow",
-                                                    style: TextStyle(
-                                                        color: Colors.red,
-                                                        fontFamily: 'Mulish',
-                                                        fontWeight:
-                                                        FontWeight.w600),
-                                                  )),
-                                            ],
+                                              showDialog(
+                                                context: context,
+                                                builder: (BuildContext context) =>
+                                                    _buildFollowPopupDialog(
+                                                        context, followers),
+                                              ).then((value) => setState(() {}));
+                                            },
                                           ),
-                                        ),
-                                        InkWell(
-                                          child: Container(
-                                              width: 18,
-                                              child: SvgPicture.asset(
-                                                  "images/user.svg")),
-                                          onTap: () async {
-                                            List followers = await getFollowers(
-                                                widget.leadId, "lead.lead");
-
-                                            showDialog(
-                                              context: context,
-                                              builder: (BuildContext context) =>
-                                                  _buildFollowPopupDialog(
-                                                      context, followers),
-                                            ).then((value) => setState(() {}));
-                                          },
-                                        ),
-                                        Container(
-                                          width: 25,
-                                          //color: Colors.green,
-                                          child: Text(
-                                            followerCount!,
-                                            style: TextStyle(
-                                                fontSize: 13,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600,
-                                                color: Color(0xFF000000)),
+                                          Container(
+                                            width: 25,
+                                            //color: Colors.green,
+                                            child: Text(
+                                              followerCount!,
+                                              style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Color(0xFF000000)),
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                  ),
-                                  ),
+                                        ],
+                                    ),
+                                    ),
 
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 0, left: 0, right: 0, bottom: 10),
-                            child: Divider(
-                              color: Color(0xFFEBEBEB),
-                              thickness: 2,
-                            ),
-                          ),
+                          // Padding(
+                          //   padding: const EdgeInsets.only(
+                          //       top: 0, left: 0, right: 0, bottom: 10),
+                          //   child: Divider(
+                          //     color: Color(0xFFEBEBEB),
+                          //     thickness: 2,
+                          //   ),
+                          // ),
 
                           // code for attchments
 
@@ -2347,6 +2356,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               return Column(
                                                 children: [
                                                   Container(
+                                                    //color: Color(0xFFEBEBEB),
                                                     width: mediaQueryData
                                                         .size.width,
                                                     // width:400,
@@ -2674,6 +2684,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           InkWell(
                                                                             child:
                                                                                 Container(
+
                                                                               // download6oa (1652:371)
                                                                               margin: EdgeInsets.fromLTRB(0, 0, 0, 2),
                                                                               width: 14,
@@ -2768,14 +2779,14 @@ class _LeadDetailState extends State<LeadDetail> {
 
                             // width:400,
                             //height: MediaQuery.of(context).size.height/6,
-                            //color: Colors.green,
+                            color: Color(0xFFf5f5f5),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Visibility(
                                   visible: followersVisibility,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 25),
+                                    padding: const EdgeInsets.only(left: 25,top: 10),
                                     child: Container(
                                       //color: Colors.red,
                                       child: Row(
@@ -2991,7 +3002,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       BorderRadius.all(
                                                           Radius.circular(5)),
 
-                                                  color: Color(0xFFF6F6F6),
+                                                  color: Color(0xFFFfffff),
                                                   border: Border.all(
                                                     color: Color(0xFFEBEBEB),
                                                   )),
@@ -3068,8 +3079,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                           Icons
                                                               .arrow_outward_rounded,
                                                           size: 18,
-                                                          color:
-                                                              Colors.grey[700],
+                                                          color: Color(0xFFAFAFAF),
                                                         )),
                                                   ),
                                                 ],
@@ -3191,13 +3201,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                               ),
                                             ),
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
                                                 const EdgeInsets.only(left: 60),
                                             child: Container(
+                                              //color: Colors.red,
                                               child: IconButton(
                                                 icon: Image.asset(
                                                     "images/pi.png"),
@@ -3209,22 +3219,24 @@ class _LeadDetailState extends State<LeadDetail> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                right: 27, top: 3),
+                                                right: 25, top: 3),
                                             child: SizedBox(
-                                              width: 55,
+                                           width: 270,
+                                             // width:MediaQuery.of(context).size.width/1.4,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(
-                                                      child: SvgPicture.asset(
-                                                          "images/sendd.svg")
-                                                      // Text(
-                                                      //   "Send",
-                                                      //   style: TextStyle(
-                                                      //       fontWeight: FontWeight.w500,
-                                                      //       fontFamily: 'Mulish',
-                                                      //       fontSize: 10,
-                                                      //       color: Colors.white),
-                                                      // ),
+                                                      child:
+                                                      // SvgPicture.asset(
+                                                      //     "images/sendd.svg")
+                                                      Text(
+                                                        "Send Message",
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontFamily: 'Mulish',
+                                                            fontSize: 12,
+                                                            color: Colors.white),
+                                                      ),
                                                       ),
                                                   onPressed: _isSavingData
                                                       ? null // Disable the button if saving is in progress
@@ -3332,7 +3344,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Color(0xFFFA256A),
+                                                    primary: Color(0xFF043565),
                                                   )),
                                             ),
                                           ),
@@ -3417,7 +3429,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(5)),
-                                                  color: Color(0xFFF6F6F6),
+                                                  color: Color(0xFFFfffff),
                                                   border: Border.all(
                                                     color: Color(0xFFEBEBEB),
                                                   )),
@@ -3495,8 +3507,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                           Icons
                                                               .arrow_outward_rounded,
                                                           size: 18,
-                                                          color:
-                                                              Colors.grey[700],
+                                                          color: Color(
+                                                              0xFFAFAFAF),
                                                         )),
                                                   ),
                                                 ],
@@ -3612,8 +3624,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               ),
                                             ),
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -3632,12 +3643,20 @@ class _LeadDetailState extends State<LeadDetail> {
                                             padding: const EdgeInsets.only(
                                                 right: 25, top: 3),
                                             child: SizedBox(
-                                              width: 55,
+                                              width: 270,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(
-                                                      child: SvgPicture.asset(
-                                                          "images/sendd.svg")
+                                                      child:Text(
+                                                        "Send Lognote",
+                                                        style: TextStyle(
+                                                            fontWeight: FontWeight.w500,
+                                                            fontFamily: 'Mulish',
+                                                            fontSize: 12,
+                                                            color: Colors.white),
+                                                      ),
+                                                      // SvgPicture.asset(
+                                                      //     "images/sendd.svg")
                                                       // Text(
                                                       //   "Send",
                                                       //   style: TextStyle(
@@ -3759,7 +3778,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         },
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Color(0xFFFA256A),
+                                                    primary: Color(0xFF043565),
                                                   )),
                                             ),
                                           ),
@@ -3778,7 +3797,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: Container(
                               // width: 104,
                               // height: 16,
-                              color: Color(0xFFF6F6F6),
+                              color: Color(0xFFFfffff),
 
                               child: Center(
                                 child: Row(
@@ -3879,7 +3898,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           Visibility(
                             visible: scheduleActivityVisibility,
                             child: Container(
-                              //color: Colors.green,
+                              color: Color(0xFFF5F5F5),
                               //height: MediaQuery.of(context).size.height/1.8,
                               child: scheduleLength == 0
                                   ? Container()
@@ -4209,8 +4228,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               0, 0, 0, 6),
                                                       height: 1,
                                                       decoration: BoxDecoration(
-                                                        color:
-                                                            Color(0xffebebeb),
+                                                        color: Color(0xffebebeb),
                                                       ),
                                                     ),
                                                     Container(
@@ -6130,14 +6148,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                             .size
                                             .width,
                                         height: 42,
-                                        color: Color(0xff3D418E),
+                                        color: Color(0xffffffff),
                                         child: Center(
                                             child: Text(entry.key,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w700,
                                                   fontSize: 12,
                                                   fontFamily: 'Mulish',
-                                                  color: Colors.white),
+                                                  color: Color(0xFF212121)),
 
                                             )),
                                       ),
@@ -6243,12 +6261,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 );
 
                                                 return Card(
-                                                  elevation: 1,
+                                                  color: Color(0xFFF5F5F5),
+                                                  //elevation: 1,
                                                   child: Column(
                                                     // crossAxisAlignment: CrossAxisAlignment.center,
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
                                                       Container(
+                                                        //color: Colors.green,
                                                         margin: EdgeInsets.only(top: 10,left: 24,right: 24),
                                                         width:mediaQueryData
                                                             .size
@@ -6296,7 +6316,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             ),
                                                             Expanded(
                                                               child: Container(
-
+                                                                //color: Colors.green,
                                                                 // autogroup8ggpMqS (D1Ah1azZTcaTxt74iV8ggp)
                                                                 padding: EdgeInsets.fromLTRB(
                                                                     19, 2, 2, 2),
@@ -8173,7 +8193,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     }
                                   },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
+                              primary: Color(0xFF043565),
                             )),
                       ),
                     ),
@@ -8229,7 +8249,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         }
                                       },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -8278,7 +8298,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         }
                                       },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -8333,7 +8353,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       }
                                     },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -8372,7 +8392,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       Navigator.pop(context);
                                     },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -8421,10 +8441,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           templateName = null;
@@ -8849,10 +8866,10 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                  padding: const EdgeInsets.only(top: 20, left: 0, right: 0),
                   child: Center(
                     child: SizedBox(
-                      width: 320,
+                      width: MediaQuery.of(context).size.width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -8924,7 +8941,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   print("tagattagagaga");
                                 },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -9095,7 +9112,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
-                    activeColor: Color(0xFFF9246A),
+                    activeColor: Color(0xFF043565),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -9137,10 +9154,10 @@ class _LeadDetailState extends State<LeadDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 40,left: 0,right: 0),
                   child: Center(
                     child: SizedBox(
-                      width: 316,
+                      width:MediaQuery.of(context).size.width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -9183,7 +9200,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   print("tagattagagaga");
                                 },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -9400,10 +9417,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           fontFamily: 'Mulish'),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -9521,7 +9535,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   padding: const EdgeInsets.only(top: 20, left: 2, right: 2),
                   child: Center(
                     child: SizedBox(
-                      width: 326,
+                      width: MediaQuery.of(context).size.width,
+                     // width: 326,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -9574,7 +9589,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   }
                                 },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -9651,7 +9666,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF9246A),
+                      primary: Color(0xFF043565),
                     )),
               ),
               Padding(
@@ -9685,7 +9700,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF9246A),
+                        primary: Color(0xFF043565),
                       )),
                 ),
               ),
@@ -10092,7 +10107,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -10125,7 +10140,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -11036,7 +11051,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                        width: 320,
+                       // width: 320,
+                            width: MediaQuery.of(context).size.width,
                         child: Text(
                           item["display_name"],
                           style: TextStyle(

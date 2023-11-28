@@ -336,7 +336,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   builder: (context) => CustomerCreation(0)));
 
         },
-        backgroundColor: Color(0xFFFA256B),
+        backgroundColor: Color(0xFF043565),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar:MyBottomNavigationBar(3),

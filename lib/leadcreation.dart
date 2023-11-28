@@ -2049,10 +2049,12 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                           },
-                          style: ElevatedButton.styleFrom(
-
-                            primary: Color(0xFFF9246A),
-                          )
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(13), // <-- Radius
+                          ),
+                          primary:  Color(0xFF043565),
+                        ),
                       ),
                     ),
                   ),

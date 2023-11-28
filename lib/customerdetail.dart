@@ -188,7 +188,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
     return MaterialApp(
       theme: ThemeData(
-        primaryColor: Color(0xFF3D418E),
+        primaryColor: Color(0xFFAA82E3),
       ),
 
         home: !_isInitialized ?Scaffold(
@@ -333,6 +333,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
               return Container(
             width: mediaQueryData.size.width,
             height: mediaQueryData.size.height,
+            color: Colors.white,
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(top: 10),
@@ -784,8 +785,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           fontSize: 15,
                           //iconSize: 25,
                           activeBgColors: [
-                            [Color(0xFFF9246A)],
-                            [Color(0xFFF9246A)]
+                            [Color(0xFF043565)],
+                            [Color(0xFF043565)]
                           ],
                           activeFgColor: Colors.white,
                           inactiveBgColor: Colors.grey[200],
@@ -881,7 +882,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -920,7 +921,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -959,7 +960,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -998,7 +999,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -1037,7 +1038,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -1076,7 +1077,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -1115,7 +1116,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -1154,7 +1155,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
                     Row(
@@ -1193,7 +1194,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
 
@@ -1324,7 +1325,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.only(top: 0, left: 22, right: 22),
                       child: Divider(
                         color: Color(0xFFF4F4F4),
-                        thickness: 2,
+                        thickness: 1.5,
                       ),
                     ),
 
@@ -1333,7 +1334,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Container(
                       // width: 450,
                       // height: 39,
-                      color: Color(0xFFF5F5F5),
+                      color: Color(0xFFFfffff),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
@@ -1346,9 +1347,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:contactsVisibility==true? Color(0XFFFA256B):
+                                      color:contactsVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1359,7 +1360,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Mulish',
                                         fontSize: 13,
-                                        color:contactsVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                        color:contactsVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                   ),
                                   onPressed: (){
                                     setState(() {
@@ -1381,9 +1382,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:salesVisibility==true? Color(0XFFFA256B):
+                                      color:salesVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1394,7 +1395,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color:salesVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                          color:salesVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -1404,7 +1405,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFfffff),
                                     )),
                               ),
                             ),
@@ -1418,9 +1419,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:internalVisibility==true? Color(0XFFFA256B):
+                                      color:internalVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1431,7 +1432,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color:internalVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                          color:internalVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -1441,7 +1442,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFfffff),
                                     )),
                               ),
                             ),
@@ -1637,7 +1638,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -1676,7 +1677,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -1715,7 +1716,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -1754,7 +1755,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -1793,7 +1794,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               const EdgeInsets.only(top: 0, left: 22, right: 22),
                               child: Divider(
                                 color: Color(0xFFF4F4F4),
-                                thickness: 2,
+                                thickness: 1.5,
                               ),
                             ),
                             Row(
@@ -1836,12 +1837,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Visibility(
                       visible: internalVisibility,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 10,bottom: 10),
+                        padding: const EdgeInsets.only(top: 0,bottom: 0),
                         child: Container(
                           width:mediaQueryData.size.width ,
+                          color: Color(0xFFF5F5F5),
                           //height: 40,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 25,right: 25),
+                            padding: const EdgeInsets.only(left: 25,right: 25,top: 10,bottom: 10),
                             child: Text(internalnotes!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
@@ -1853,17 +1855,17 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
 
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(top: 0, left: 22, right: 22),
-                      child: Divider(
-                        color: Color(0xFFF4F4F4),
-                        thickness: 2,
-                      ),
-                    ),
+                    // Padding(
+                    //   padding:
+                    //   const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    //   child: Divider(
+                    //     color: Color(0xFFF4F4F4),
+                    //     thickness: 1.5,
+                    //   ),
+                    // ),
 
                     Container(
-                      color: Color(0xFFF6F6F6),
+                      color: Color(0xFFFfffff),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -1875,9 +1877,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:followersVisibility==true? Color(0XFFFA256B):
+                                      color:followersVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1888,7 +1890,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color: followersVisibility==true? Color(0XFFFA256B):Color(0xFF212121)),
+                                          color: followersVisibility==true? Color(0XFF212121):Color(0xFF212121)),
                                     ),
                                     onPressed: () async {
                                       sendMailData = await sendMailsFollowers(
@@ -1904,7 +1906,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFfffff),
                                     )),
                               ),
                             ),
@@ -1917,9 +1919,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                      color:lognoteVisibility==true? Color(0XFFFA256B):
+                                      color:lognoteVisibility==true? Color(0XFFED2478):
                                       Colors.transparent,// Underline color
-                                      width: 1.0,        // Underline width
+                                      width: 1.5,        // Underline width
                                     ),
                                   ),
                                 ),
@@ -1930,7 +1932,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Mulish',
                                           fontSize: 13,
-                                          color:lognoteVisibility==true? Color(0XFFFA256B): Color(0xFF212121)),
+                                          color:lognoteVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
                                       setState(() {
@@ -1943,7 +1945,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       });
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      primary: Color(0xFFF6F6F6),
+                                      primary: Color(0xFFFfffff),
                                     )),
                               ),
                             ),
@@ -1973,7 +1975,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     ).then((value) => setState(() {}));
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFFF6F6F6),
+                                    primary: Color(0xFFFfffff),
                                   )),
                             ),
                           ),
@@ -2548,7 +2550,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     // code for send message
                     Container(
                       width:mediaQueryData.size.width,
-
+                      color: Color(0xFFF5F5F5),
                       //height: MediaQuery.of(context).size.height/6,
                       //color: Colors.green,
                       child: Column(
@@ -2557,7 +2559,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           Visibility(
                             visible: followersVisibility,
                             child: Padding(
-                              padding: const EdgeInsets.only(left:25),
+                              padding: const EdgeInsets.only(left:25,top: 10),
                               child: Container(
                                 //color: Colors.red,
                                 child: Row(
@@ -2744,7 +2746,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(5)),
-                                            color: Color(0xFFF6F6F6),
+                                            color: Color(0xFFFfffff),
                                             border: Border.all(
                                               color: Color(0xFFEBEBEB),
                                             )),
@@ -2815,7 +2817,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   icon: Icon(
                                                     Icons.arrow_outward_rounded,
                                                     size: 18,
-                                                    color: Colors.grey[700],
+                                                    color: Color(
+                                                        0xFFAFAFAF),
                                                   )),
                                             ),
                                           ],
@@ -2907,7 +2910,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(left: 60),
@@ -2924,19 +2927,18 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 27,top: 3),
                                       child: SizedBox(
-                                        width: 55,
+                                        width: 270,
                                         height: 30,
                                         child: ElevatedButton(
                                             child: Center(
-                                                child:SvgPicture.asset("images/sendd.svg")
-                                              // Text(
-                                              //   "Send",
-                                              //   style: TextStyle(
-                                              //       fontWeight: FontWeight.w500,
-                                              //       fontFamily: 'Mulish',
-                                              //       fontSize: 10,
-                                              //       color: Colors.white),
-                                              // ),
+                                                child:Text(
+                                                  "Send Message",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 12,
+                                                      color: Colors.white),
+                                                ),
                                             ),
                                             onPressed: _isSavingData
                                                 ? null // Disable the button if saving is in progress
@@ -3003,7 +3005,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFFFA256A),
+                                              primary: Color(0xFF043565),
                                             )),
                                       ),
                                     ),
@@ -3237,7 +3239,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(left: 60),
@@ -3254,11 +3256,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     Padding(
                                       padding: const EdgeInsets.only(right: 25,top: 3),
                                       child: SizedBox(
-                                        width: 55,
+                                        width: 270,
                                         height: 30,
                                         child: ElevatedButton(
                                             child: Center(
-                                                child:SvgPicture.asset("images/sendd.svg")
+                                                child:Text(
+                                                  "Send Lognote",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontFamily: 'Mulish',
+                                                      fontSize: 12,
+                                                      color: Colors.white),
+                                                ),
+                                                //SvgPicture.asset("images/sendd.svg")
                                               // Text(
                                               //   "Send",
                                               //   style: TextStyle(
@@ -3334,7 +3344,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               }
                                             },
                                             style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFFFA256A),
+                                              primary: Color(0xFF043565),
                                             )),
                                       ),
                                     ),
@@ -3353,7 +3363,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       child: Container(
                         // width: 104,
                         // height: 16,
-                        color: Color(0xFFF6F6F6),
+                        color: Color(0xFFFfffff),
                         child: Center(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -3451,7 +3461,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Visibility(
                       visible: scheduleActivityVisibility,
                       child: Container(
-                        color: Colors.white70,
+                        color: Color(0xfff5f5f5),
                         //height: MediaQuery.of(context).size.height/1.8,
                         child: scheduleLength == 0
                             ? Container()
@@ -6087,14 +6097,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           .size
                                           .width,
                                       height: 42,
-                                      color: Color(0xff3D418E),
+                                      color: Color(0xffffffff),
                                       child: Center(
                                           child: Text(entry.key,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 12,
                                                 fontFamily: 'Mulish',
-                                                color: Colors.white),
+                                                color: Color(0xff212121)),
 
                                           )),
                                     ),
@@ -6200,7 +6210,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               );
 
                                               return Card(
-                                                elevation: 1,
+                                                color: Color(0xfff5f5f5),
+                                               // elevation: 1,
                                                 child: Column(
                                                   // crossAxisAlignment: CrossAxisAlignment.center,
                                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -14152,7 +14163,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               }
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
+                              primary: Color(0xFF043565),
                             )),
                       ),
                     ),
@@ -14206,7 +14217,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -14255,7 +14266,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   }
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xFFF9246A),
+                                  primary: Color(0xFF043565),
                                 )),
                           ),
                         ),
@@ -14309,7 +14320,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -14348,7 +14359,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 Navigator.pop(context);
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -14636,10 +14647,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           templateName = null;
@@ -14745,7 +14753,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: Checkbox(
-                    activeColor: Color(0xFFF9246A),
+                    activeColor: Color(0xFF043565),
                     value: isCheckedEmail,
                     onChanged: (bool? value) {
                       setState(() {
@@ -14790,7 +14798,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding: const EdgeInsets.only(top: 40),
                   child: Center(
                     child: SizedBox(
-                      width: 316,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -14830,7 +14841,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             print("tagattagagaga");
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -14900,7 +14911,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -14930,7 +14941,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Color(0XFFF9246A)),
+                            MaterialStateProperty.all(Color(0XFF043565)),
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
@@ -15159,10 +15170,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           templateName = null;
@@ -15570,10 +15578,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
+                  padding: const EdgeInsets.only(top: 20, left: 0, right: 0),
                   child: Center(
                     child: SizedBox(
-                      width: 320,
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
                       height: 38,
                       child: ElevatedButton(
                           child: Center(
@@ -15641,7 +15652,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             print("tagattagagaga");
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),
@@ -16615,7 +16626,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     selectedValueWidgetFn: (item) {
                       return (Center(
                           child: Container(
-                            width: 320,
+                            //width: 320,
+                            width: MediaQuery.of(context).size.width,
                             child: Text(
                               item["display_name"],
                               style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),

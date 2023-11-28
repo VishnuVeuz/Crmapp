@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       //title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Color(0xFF3D418E),
+          primaryColor: Color(0xFFAA82E3),
 
       ),
       //home:LeadDetail(267),

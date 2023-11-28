@@ -29,6 +29,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+     // fixedColor: Colors.green,
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(color: Colors.pinkAccent),
       selectedLabelStyle: TextStyle(

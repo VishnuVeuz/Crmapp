@@ -76,10 +76,11 @@ class _LeadMainPageState extends State<LeadMainPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 0,right: 0),
                 child: Container(
+                  //color: Colors.green,
                   width: MediaQuery
                       .of(context)
                       .size
-                      .width/4.5,
+                      .width/4.6,
                   child: Text(username,style: TextStyle(
                       fontFamily: 'Mulish',
                       fontWeight: FontWeight.w600,
@@ -97,7 +98,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 radius: 10,
                 child: Icon(
                   Icons.person,
-                  size: 20,
+                  size: 18,
                   color: Colors
                       .white, // Adjust the color of the icon as per your requirements
                 ),
@@ -142,8 +143,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       ]
                   ),
                   Stack(
-                      alignment: Alignment
-                          .center,
+                      alignment: Alignment.center,
                       children: [
                         IconButton(icon: SvgPicture.asset("images/clock2.svg"),
                           onPressed: () {
@@ -363,6 +363,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 0),
                   child: Container(
+                   // color: Colors.red,
                     width: MediaQuery
                         .of(context)
                         .size
@@ -718,7 +719,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       builder: (context) => LeadCreation(0)));
               // Add your onPressed code here!
             },
-            backgroundColor: Color(0xFFFA256B),
+            backgroundColor: Color(0xFF043565),
             child: const Icon(Icons.add),
           ),
         ),

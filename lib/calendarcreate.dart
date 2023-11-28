@@ -540,7 +540,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       Padding(
                                         padding: const EdgeInsets.only(right: 20),
                                         child: Checkbox(
-                                          activeColor: Color(0xFFF9246A),
+                                          activeColor: Color(0xFF043565),
                                           value: isCheckedAllday,
                                           onChanged: (bool? value) {
                                             setState(() {
@@ -1117,9 +1117,13 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       CalencerFullDetail(resmessagevalue)));
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF9246A),
-                      )),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13), // <-- Radius
+                      ),
+                      primary:  Color(0xFF043565),
+                    ),
+                  ),
                 ),
               ),
             ],
