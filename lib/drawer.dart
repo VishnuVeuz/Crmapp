@@ -477,7 +477,7 @@ class _MainDrawerState extends State<MainDrawer> {
   companyData() async {
     String responce = await getUserCompanyData();
     print(responce);
-    print("responce");
+    print("responce12");
 
     List<dynamic> dynamicList = json.decode(responce);
 
@@ -497,6 +497,12 @@ class _MainDrawerState extends State<MainDrawer> {
 
     print(companyList);
     print("kjbjdemo");
+
+    String responce1 = await getSingleSelectedUserCompanyData();
+    globals.selectedCompanyIds = responce1;
+    print(globals.selectedCompanyIds);
+    print("globals.selectedCompanyIds1");
+
     setState(() {
       _isInitialized = true;
     });

@@ -23,7 +23,8 @@ login(String email, password, dbId) async {
       personJwt,
       personMail,
       resMessage,
-      resMessageText;
+      resMessageText,
+      companyId;
   List multiCompany;
 
   try {
@@ -53,12 +54,16 @@ login(String email, password, dbId) async {
 
       multiCompany = data['result']['data']['companies'];
 
+      companyId =data['result']['data']['user_name']['company_id'].length>0? data['result']['data']['user_name']['company_id'][0].toString():"";
+      print(companyId);
+
+
       final jsonListmultiCompany = json.encode(multiCompany);
       print(jsonListmultiCompany);
       print(multiCompany);
       print("dhdhdhdhdhdh");
       addUserStringToSF(personName, personMobile, personMail, personJwt,
-          jsonListmultiCompany);
+          jsonListmultiCompany,companyId);
     }
 
     if (resMessage == "error") {
@@ -841,7 +846,7 @@ print(msg);
   description = "";
   expected_revenue = 0.0;
 
-    );
+
 
 
 }
@@ -935,6 +940,7 @@ editOpportunity(
         'Authorization': 'Bearer $token',
       },
       body: msg,
+    );
 
     print(msg);
 
@@ -1107,7 +1113,7 @@ getOpportunityTypes() async {
   String? authresponce;
 
   Response response = await get(
-    Uri.parse("${baseUrl}api/stages?company_id=${globals.selectedIds}"),
+    Uri.parse("${baseUrl}api/stages?company_id=${globals.selectedCompanyIds}"),
     headers: {
       'Authorization': 'Bearer $token',
     },
@@ -1818,12 +1824,13 @@ getCustomerCompanyData(int customerId) async {
 
 
 addUserStringToSF(String personName, String personMobile, String personMail,
-    String personJwt, String jsonListmultiCompany) async {
+    String personJwt, String jsonListmultiCompany,companyId) async {
   String personNames,
       personMobiles,
       personMails,
       personJwts,
-      jsonListmultiCompanys;
+      jsonListmultiCompanys,
+      initialCompanyId;
   // List multicompanyData;
 
   personNames = personName;
@@ -1831,6 +1838,7 @@ addUserStringToSF(String personName, String personMobile, String personMail,
   personMails = personMail;
   personJwts = personJwt;
   jsonListmultiCompanys = jsonListmultiCompany;
+  initialCompanyId = companyId;
   //multicompanyData = multicompany;
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -1839,6 +1847,8 @@ addUserStringToSF(String personName, String personMobile, String personMail,
   prefs.setString('personMail', personMails);
   prefs.setString('personJwt', personJwts);
   prefs.setString('multiCompany', jsonListmultiCompanys);
+  prefs.setString('initialCompanyId', initialCompanyId);
+
 }
 
 deleteQuotationData(int quotationId) async {
@@ -4148,6 +4158,12 @@ getUserJwt() async {
 getUserCompanyData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? stringValue = prefs.getString('multiCompany');
+  return stringValue;
+}
+
+getSingleSelectedUserCompanyData() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? stringValue = prefs.getString('initialCompanyId');
   return stringValue;
 }
 

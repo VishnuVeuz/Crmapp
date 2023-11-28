@@ -14,6 +14,7 @@ import 'drawer.dart';
 import 'globals.dart';
 import 'notification.dart';
 import 'notificationactivity.dart';
+import 'globals.dart' as globals;
 
 
 class OpportunityMainPage extends StatefulWidget {
@@ -40,6 +41,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    companyData();
     opportunityData();
   }
 
@@ -303,6 +305,44 @@ setState(() {
         ),
       );
     });
+  }
+
+  companyData() async {
+
+    // token = await getUserJwt();
+    // print(token);
+    print("token12121313");
+
+    var notificationMessage  = await getNotificationCount();
+
+    notificationCount = notificationMessage['activity_count'].toString();
+
+    messageCount = notificationMessage['message_count'].toString();
+
+    String responce = await getUserCompanyData();
+    print(responce);
+
+    // List<dynamic> dynamicList = json.decode(responce);
+    List<Map<String, dynamic>> dataList = json.decode(responce).cast<Map<String, dynamic>>();
+
+    globals.selectedIds =  dataList
+        .where((item) => item['selected'] == true)
+        .map<int>((item) => item['id'])
+        .toList();
+
+    print(globals.selectedIds);
+    print("kjbjdemo teststststnk");
+
+    String responce1 = await getSingleSelectedUserCompanyData();
+    globals.selectedCompanyIds = responce1;
+    print(globals.selectedCompanyIds);
+    print("globals.selectedCompanyIds3");
+    //
+
+    setState(() {
+      _isInitialized = true;
+    });
+
   }
 
 

@@ -733,7 +733,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
     token = await getUserJwt();
     print(token);
-    print("token");
+    print("token1212");
 
     var notificationMessage  = await getNotificationCount();
 
@@ -754,6 +754,13 @@ class _LeadMainPageState extends State<LeadMainPage> {
 
     print(globals.selectedIds);
     print("kjbjdemo teststststnk");
+
+    String responce1 = await getSingleSelectedUserCompanyData();
+    globals.selectedCompanyIds = responce1;
+    print(globals.selectedCompanyIds);
+    print("globals.selectedCompanyIds2");
+
+
     setState(() {
       _isInitialized = true;
     });
