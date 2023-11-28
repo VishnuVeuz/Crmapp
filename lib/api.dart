@@ -9,9 +9,11 @@ import 'globals.dart' as globals;
 import 'model/calendarmodel.dart';
  //String baseUrl = "http://10.10.10.123:8030/";
 //server
- String baseUrl = "http://165.22.30.188:8040/";
+ //String baseUrl = "http://165.22.30.188:8040/";
+ //new local sever
+String baseUrl = "http://10.10.10.123:8030/";
 
-//live server bibpin
+//live server bibin
 // String baseUrl = "http://207.154.229.85:8080/";
 
 login(String email, password, dbId) async {
@@ -78,7 +80,7 @@ defaultDropdown(String model) async {
 
   try {
     final msg = jsonEncode({
-      "params": {"model": "lead.lead"}
+      "params": {"model": "crm.lead"}
     });
 
     Response response = await get(
@@ -787,7 +789,7 @@ createOpportunity(
         "crm_lead_line": orderLineProducts
       }
     });
-
+print(msg);
     Response response = await post(
       Uri.parse('${baseUrl}api/opportunity'),
       headers: {
@@ -839,6 +841,7 @@ createOpportunity(
   description = "";
   expected_revenue = 0.0;
 
+    );
 
 
 }
@@ -932,8 +935,8 @@ editOpportunity(
         'Authorization': 'Bearer $token',
       },
       body: msg,
-    );
 
+    print(msg);
 
     if (response.statusCode == 200) {
        data = jsonDecode(response.body.toString());
@@ -1104,7 +1107,7 @@ getOpportunityTypes() async {
   String? authresponce;
 
   Response response = await get(
-    Uri.parse("${baseUrl}api/stages"),
+    Uri.parse("${baseUrl}api/stages?company_id=${globals.selectedIds}"),
     headers: {
       'Authorization': 'Bearer $token',
     },
@@ -1120,7 +1123,7 @@ getOpportunityTypes() async {
     // authresponce = data['result'].toString();
   }
 
-
+print(response);
 
   return data['records'];
 }
@@ -1361,6 +1364,8 @@ getOpportunityProductDefaultData(int opportunityProductId) async {
 
   var data;
   String? authresponce;
+  print("Companyidfnalssss");
+  print("${globals.selectedIds}");
 
   Response response = await get(
     Uri.parse("${baseUrl}api/product/${opportunityProductId}"),

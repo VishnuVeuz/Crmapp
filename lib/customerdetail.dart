@@ -2585,20 +2585,23 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Container(
-                                      //color: Colors.green,
-                                        width:
-                                        mediaQueryData.size.width /
-                                            2,
-                                        child: Text(
-                                          customername!,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            color: Color(0xFF414141),
-                                            fontSize: 10,
-                                            fontFamily: 'Mulish',
-                                          ),
-                                        )),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 25),
+                                      child: Container(
+                                        //color: Colors.green,
+                                          width:
+                                          mediaQueryData.size.width /1.5,
+
+                                          child: Text(
+                                            customername!,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF414141),
+                                              fontSize: 10,
+                                              fontFamily: 'Mulish',
+                                            ),
+                                          )),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -2663,13 +2666,20 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               },
                                             ),
                                           ),
-                                          Text(
-                                            sendMailData[i]['name'],
-                                            style:  TextStyle(
-                                                color: Color(0xFF666666),
-                                                fontSize: 11,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w500),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 25),
+                                            child: Container(
+                                                width:
+                                              mediaQueryData.size.width /1.3,
+                                              child: Text(
+                                                sendMailData[i]['name'],
+                                                style:  TextStyle(
+                                                    color: Color(0xFF666666),
+                                                    fontSize: 11,
+                                                    fontFamily: 'Mulish',
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
                                           )
                                         ],
                                       ),

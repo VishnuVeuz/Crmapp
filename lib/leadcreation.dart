@@ -2073,7 +2073,7 @@ class _LeadCreationState extends State<LeadCreation> {
     try{
 
     token = await getUserJwt();
-    var data =  await defaultDropdown("lead.lead");
+    var data =  await defaultDropdown("crm.lead");
     setState(() {
       print(data);
 

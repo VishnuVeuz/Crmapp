@@ -900,7 +900,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                   await smsDataGet(
                                                                       widget
                                                                           .leadId,
-                                                                      "lead.lead");
+                                                                      "crm.lead");
 
                                                               var name,
                                                                   phone,
@@ -1168,7 +1168,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          width: mediaQueryData.size.width / 3,
+                                          width: mediaQueryData.size.width /2.6,
                                           //width:250,
                                           child: Padding(
                                             padding:
@@ -1186,7 +1186,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         InkWell(
                                           onTap: () async {
                                             var smsResponce = await smsDataGet(
-                                                widget.leadId, "lead.lead");
+                                                widget.leadId, "crm.lead");
 
                                             var name, phone, smsId;
                                             bool smsCondition;
@@ -1275,7 +1275,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          width: mediaQueryData.size.width / 3,
+                                          width: mediaQueryData.size.width / 2.6,
                                           //width:300,
                                           child: Padding(
                                             padding:
@@ -1293,7 +1293,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         InkWell(
                                           onTap: () async {
                                             var smsResponce = await smsDataGet(
-                                                widget.leadId, "lead.lead");
+                                                widget.leadId, "crm.lead");
 
                                             var name, phone, smsId;
                                             bool smsCondition;
@@ -2037,7 +2037,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           onPressed: () async {
                                             sendMailData =
                                                 await sendMailsFollowers(
-                                                    widget.leadId, "lead.lead");
+                                                    widget.leadId, "crm.lead");
 
                                             setState(() {
                                               followersVisibility == true
@@ -2196,7 +2196,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       String resMessage =
                                                       await followerFollow(
                                                           widget.leadId,
-                                                          "lead.lead");
+                                                          "crm.lead");
 
                                                       if (resMessage ==
                                                           "success") {
@@ -2244,7 +2244,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       String resMessage =
                                                       await followerUnFollow(
                                                           widget.leadId,
-                                                          "lead.lead");
+                                                          "crm.lead");
 
                                                       if (resMessage ==
                                                           "success") {
@@ -2283,7 +2283,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     "images/user.svg")),
                                             onTap: () async {
                                               List followers = await getFollowers(
-                                                  widget.leadId, "lead.lead");
+                                                  widget.leadId, "crm.lead");
 
                                               showDialog(
                                                 context: context,
@@ -2334,7 +2334,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 children: [
                                   FutureBuilder(
                                       future: getattchmentData(
-                                          widget.leadId, "lead.lead"),
+                                          widget.leadId, "crm.lead"),
                                       builder:
                                           (context, AsyncSnapshot snapshot) {
                                         if (snapshot.hasError) {}
@@ -2812,20 +2812,23 @@ class _LeadDetailState extends State<LeadDetail> {
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          Container(
-                                              //color: Colors.green,
-                                              width:
-                                                  mediaQueryData.size.width / 2,
-                                              //width:250,
-                                              child: Text(
-                                                leadname!,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Color(0xFF414141),
-                                                  fontSize: 10,
-                                                  fontFamily: 'Mulish',
-                                                ),
-                                              )),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 25),
+                                            child: Container(
+                                                //color: Colors.green,
+                                                width:
+                                                    mediaQueryData.size.width / 1.5,
+                                                //width:250,
+                                                child: Text(
+                                                  leadname!,
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Color(0xFF414141),
+                                                    fontSize: 10,
+                                                    fontFamily: 'Mulish',
+                                                  ),
+                                                )),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -2905,14 +2908,21 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     },
                                                   ),
                                                 ),
-                                                Text(
-                                                  sendMailData[i]['name'],
-                                                  style: TextStyle(
-                                                      color: Color(0xFF666666),
-                                                      fontSize: 11,
-                                                      fontFamily: 'Mulish',
-                                                      fontWeight:
-                                                          FontWeight.w500),
+                                                Padding(
+                                                  padding: const EdgeInsets.only(right: 25),
+                                                  child: Container(
+                                                    width:
+                                                    mediaQueryData.size.width / 1.3,
+                                                    child: Text(
+                                                      sendMailData[i]['name'],
+                                                      style: TextStyle(
+                                                          color: Color(0xFF666666),
+                                                          fontSize: 11,
+                                                          fontFamily: 'Mulish',
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                  ),
                                                 )
                                               ],
                                             ),
@@ -5395,7 +5405,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           //                                                                 //       onTap: (){
                           //                                                                 //         int lodDataId = logDataTitle[indexx][indexs]['id'];
                           //                                                                 //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                          //                                                                 //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                          //                                                                 //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"crm.lead")));
                           //                                                                 //
                           //                                                                 //       },
                           //                                                                 //     ),
@@ -6822,7 +6832,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             //       onTap: (){
                                                                             //         int lodDataId = logDataTitle[indexx][indexs]['id'];
                                                                             //         String logdata = logDataTitle[indexx][indexs]['body'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ') ?? "";
-                                                                            //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"lead.lead")));
+                                                                            //         Navigator.push(context, MaterialPageRoute(builder: (context) => LogNoteEdit(lodDataId, salesperImg!, token!, widget.leadId, logdata,"crm.lead")));
                                                                             //
                                                                             //       },
                                                                             //     ),
@@ -7893,7 +7903,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         int? pageNb) async {
                       Response response = await get(
                         Uri.parse(
-                            "${baseUrl}api/activity_type?res_model=lead.lead&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
+                            "${baseUrl}api/activity_type?res_model=crm.lead&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
                         headers: {
                           'Authorization': 'Bearer $token',
                         },
@@ -8067,7 +8077,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               int? pageNb) async {
                             Response response = await get(
                               Uri.parse(
-                                  "${baseUrl}api/assigned_to?res_model=lead.lead&res_id=${widget.leadId}&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
+                                  "${baseUrl}api/assigned_to?res_model=crm.lead&res_id=${widget.leadId}&page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}"),
 
                               // "${baseUrl}api/products?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}${companyId == null ? "" : "&company_id=$companyId"}"),
                               headers: {
@@ -8184,7 +8194,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
                                                 Calender(
                                                     widget.leadId,
-                                                    "lead.lead",
+                                                    "crm.lead",
                                                     DateTime.now(),
                                                     resmessagevalue,
                                                     [],
@@ -8770,7 +8780,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       print(widget.leadId);
                       print("djbfkjnksdnk");
                       var resultData = await templateSelectionData(
-                          templateId, widget.leadId, "lead.lead");
+                          templateId, widget.leadId, "crm.lead");
 
                       if (resultData != "") {
                         setState(() {
@@ -8832,7 +8842,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         int? pageNb) async {
                       Response response = await get(
                         Uri.parse(
-                            "${baseUrl}api/message_templates?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=lead.lead"),
+                            "${baseUrl}api/message_templates?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=crm.lead"),
                         headers: {
                           'Authorization': 'Bearer $token',
                         },
@@ -9063,7 +9073,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     },
                     networkConfig: NetworkConfig(
                       url:
-                          "${baseUrl}api/recipients?&model=lead.lead&company_ids=${globals.selectedIds}",
+                          "${baseUrl}api/recipients?&model=crm.lead&company_ids=${globals.selectedIds}",
                       method: RequestMethod.get,
                       headers: {
                         'Authorization': 'Bearer $token',
@@ -9746,7 +9756,7 @@ class _LeadDetailState extends State<LeadDetail> {
           title: TextButton(
             onPressed: () async {
               var responce =
-                  await followerDefaultDataGet(widget.leadId, "lead.lead");
+                  await followerDefaultDataGet(widget.leadId, "crm.lead");
 
               int followerId;
               var message;
@@ -9870,7 +9880,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               print(followers[i]['id']);
                               print("ghkjdghjh");
 
-                              // "res_model": "lead.lead",
+                              // "res_model": "crm.lead",
                               //
                               // "res_id": 197,
                               //
@@ -9879,7 +9889,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               String resMessage = await unFollowing(
                                   widget.leadId,
                                   followers[i]['id'],
-                                  "lead.lead");
+                                  "crm.lead");
 
                               if (resMessage == "success") {
                                 Navigator.push(
@@ -9926,7 +9936,7 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   getScheduleDetails() async {
-    var datas = await getScheduleActivityData(widget.leadId, "lead.lead");
+    var datas = await getScheduleActivityData(widget.leadId, "crm.lead");
 
     String scheduleIcpnValue;
 
@@ -9988,7 +9998,7 @@ class _LeadDetailState extends State<LeadDetail> {
           summaryController.text,
           DuedateTime.text,
           commandsController.text,
-          "lead.lead",
+          "crm.lead",
           "");
 
       print(value);
@@ -10008,7 +10018,7 @@ class _LeadDetailState extends State<LeadDetail> {
           summaryController.text,
           DuedateTime.text,
           commandsController.text,
-          "lead.lead",
+          "crm.lead",
           "",
           typeIds);
 
@@ -10029,7 +10039,7 @@ class _LeadDetailState extends State<LeadDetail> {
           summaryController.text,
           DuedateTime.text,
           commandsController.text,
-          "lead.lead",
+          "crm.lead",
           "mark_done");
 
       print(value);
@@ -10049,7 +10059,7 @@ class _LeadDetailState extends State<LeadDetail> {
           summaryController.text,
           DuedateTime.text,
           commandsController.text,
-          "lead.lead",
+          "crm.lead",
           "mark_done",
           typeIds);
 
@@ -10064,7 +10074,7 @@ class _LeadDetailState extends State<LeadDetail> {
   logNoteData(List myData1) async {
     try {
       var value = await logNoteCreate(
-          lognoteController.text, "lead.lead", widget.leadId, myData1);
+          lognoteController.text, "crm.lead", widget.leadId, myData1);
 
       print(value);
       print("valuesss");
@@ -10076,7 +10086,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   logNoteEditData(List myData1, int lognoteId) async {
     try {
-      var value = await EditlogNote(lognoteEditController.text, "lead.lead",
+      var value = await EditlogNote(lognoteEditController.text, "crm.lead",
           widget.leadId, myData1, lognoteId);
       print(value);
       print("valuesss");
@@ -10330,7 +10340,7 @@ class _LeadDetailState extends State<LeadDetail> {
       Uint8List imagebytes = await img!.readAsBytes(); //convert to bytes
       base64string = base64.encode(imagebytes);
       String dataImages =
-          '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"lead.lead","res_id":"${widget.leadId}"}';
+          '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"crm.lead","res_id":"${widget.leadId}"}';
 
       Map<String, dynamic> jsondata = jsonDecode(dataImages);
       myData1.add(jsondata);
@@ -10364,7 +10374,7 @@ class _LeadDetailState extends State<LeadDetail> {
             await xfilePick[i]!.readAsBytes(); //convert to bytes
         base64string = base64.encode(imagebytes);
         String dataImages =
-            '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"lead.lead","res_id":"${widget.leadId}"}';
+            '{"name":"name","type":"binary","datas":"${base64string.toString()}","res_model":"crm.lead","res_id":"${widget.leadId}"}';
 
         Map<String, dynamic> jsondata = jsonDecode(dataImages);
         myData1.add(jsondata);
@@ -10395,7 +10405,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
     messageCount = notificationMessage['message_count'].toString();
 
-    sendMailData = await sendMailsFollowers(widget.leadId, "lead.lead");
+    sendMailData = await sendMailsFollowers(widget.leadId, "crm.lead");
 
     var data = await getLeadData(widget.leadId, "");
     setState(() {
@@ -10444,7 +10454,7 @@ class _LeadDetailState extends State<LeadDetail> {
   defaultScheduleValues() async {
     token = await getUserJwt();
 
-    var data = await defaultScheduleData(widget.leadId, "lead.lead");
+    var data = await defaultScheduleData(widget.leadId, "crm.lead");
     print(data['activity_type_id']);
     print("hgchgvhjb");
     setState(() {
@@ -10497,7 +10507,7 @@ class _LeadDetailState extends State<LeadDetail> {
     recipient!.clear();
     token = await getUserJwt();
     var data =
-        await defaultSendmessageData(widget.leadId, "lead.lead", selectedIds);
+        await defaultSendmessageData(widget.leadId, "crm.lead", selectedIds);
     setState(() {
       print(data);
       print("finalaklcn");
@@ -10525,7 +10535,7 @@ class _LeadDetailState extends State<LeadDetail> {
   }
 
   newTemplate() async {
-    String value = await newTemplateCreate(bodyController.text, "lead.lead",
+    String value = await newTemplateCreate(bodyController.text, "crm.lead",
         subjectController.text, widget.leadId);
 
     print(value);
@@ -10538,7 +10548,7 @@ class _LeadDetailState extends State<LeadDetail> {
     try {
       var value = await sendMessageCreate(
           bodyController.text,
-          "lead.lead",
+          "crm.lead",
           subjectController.text,
           widget.leadId,
           recipient,
@@ -11552,7 +11562,7 @@ class _LeadDetailState extends State<LeadDetail> {
 //
 //   Future fetchPosts(leadid) async {
 //
-//     _posts = await getlogNoteData(leadid, "lead.lead");
+//     _posts = await getlogNoteData(leadid, "crm.lead");
 //     _savefile = -1;
 //
 //     notifyListeners();
@@ -11579,7 +11589,7 @@ class PostProvider extends ChangeNotifier {
   Future fetchPosts(leadid) async {
     print("finaldatta padsss11");
 
-    _posts = await getlogNoteData(leadid, "lead.lead");
+    _posts = await getlogNoteData(leadid, "crm.lead");
     _savefile = -1;
     print(_posts);
     print("finaldatta padsss");

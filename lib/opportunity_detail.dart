@@ -1451,6 +1451,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                       ),
                       Container(
                         width:mediaQueryData.size.width / 2,
+                       // color: Colors.red,
                         child: Padding(
                           padding: const EdgeInsets.only(right: 25),
                           child: Align(
@@ -1533,7 +1534,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             child: Row(
                               children: [
                                 Container(
-                                  width:mediaQueryData.size.width / 3,
+                                  width:mediaQueryData.size.width / 2.6,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 45),
                                     child: Text(
@@ -1621,7 +1622,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             child: Row(
                               children: [
                                 Container(
-                                  width:mediaQueryData.size.width / 3,
+                                  width:mediaQueryData.size.width / 2.6,
+                                  //color: Colors.red,
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 45),
                                     child: Text(
@@ -3338,19 +3340,21 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Container(
-                                    //color: Colors.green,
-                                      width:
-                                      mediaQueryData.size.width / 2,
-                                      child: Text(
-                                        opportunityname!,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          color: Color(0xFF414141),
-                                          fontSize: 10,
-                                          fontFamily: 'Mulish',
-                                        ),
-                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Container(
+                                     // color: Colors.green,
+                                        width: mediaQueryData.size.width / 1.5,
+                                        child: Text(
+                                          opportunityname!,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xFF414141),
+                                            fontSize: 10,
+                                            fontFamily: 'Mulish',
+                                          ),
+                                        )),
+                                  ),
                                 ],
                               ),
                             ),
@@ -3414,13 +3418,20 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                             },
                                           ),
                                         ),
-                                        Text(
-                                          sendMailData[i]['name'],
-                                          style:  TextStyle(
-                                              color: Color(0xFF666666),
-                                              fontSize: 11,
-                                              fontFamily: 'Mulish',
-                                              fontWeight: FontWeight.w500),
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 25),
+                                          child: Container(
+                                            width: mediaQueryData.size.width / 1.3,
+                                           // color: Colors.red,
+                                            child: Text(
+                                              sendMailData[i]['name'],
+                                              style:  TextStyle(
+                                                  color: Color(0xFF666666),
+                                                  fontSize: 11,
+                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
                                         )
                                       ],
                                     ),
