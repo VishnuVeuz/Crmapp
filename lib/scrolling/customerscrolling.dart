@@ -132,7 +132,6 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
           _loading = false;
 
           if (customerModelList.length < _numberOfLeadModelsPerRequest) {
-            // If the result length is less than 10, set page number to 1
             _pageNumber = 1;
           } else {
             // Otherwise, increment the page number
@@ -143,9 +142,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
           }
 
 
-          //_pageNumber = _pageNumber + 1;
-          print(_pageNumber);
-          print("_pageNumber");
+
           _CustomerModel.addAll(customerModelList);
         });
       }
@@ -325,7 +322,6 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
           })
         ],
       ),
-      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body:Container(
 
         child: buildLeadModelsView(),
@@ -338,13 +334,13 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
               context,
               MaterialPageRoute(
                   builder: (context) => CustomerCreation(0)));
-          // Add your onPressed code here!
+
         },
         backgroundColor: Color(0xFFFA256B),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar:MyBottomNavigationBar(3),
-     // bottomNavigationBar: bottomNavigationBar(context),
+
     );
   }
 

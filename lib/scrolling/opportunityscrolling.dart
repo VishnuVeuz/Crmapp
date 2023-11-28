@@ -150,10 +150,9 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
         _loading = false;
 
         if (opportunityModelList.length < _numberOfLeadModelsPerRequest) {
-          // If the result length is less than 10, set page number to 1
           _pageNumber = 1;
         } else {
-          // Otherwise, increment the page number
+
           _pageNumber = _pageNumber + 1;
         }
         if (_pageNumber == 1) {
@@ -251,7 +250,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
               context,
               MaterialPageRoute(
                   builder: (context) => OpportunityCreation(0)));
-          // Add your onPressed code here!
+
         },
         backgroundColor: Color(0xFFFA256B),
         child: const Icon(Icons.add),
@@ -262,16 +261,6 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
   Widget buildLeadModelsView() {
     if (_OpportunityModel.isEmpty) {
-      print(_loading);
-      print("_nodata");
-    //  if(_nodata){
-    //    setState(() {
-    //      _loading=false;
-    //    });
-    //   Center(
-    //       child: Text("No Data Available",style: TextStyle(fontSize: 15),)
-    //   );
-    // }
 
 
       if (_loading) {
@@ -399,8 +388,6 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                 }
 
 
-                // when the user gets to the last item in the list, check whether
-                // there is an error, otherwise, render a progress indicator.
                 if (index == _OpportunityModel.length) {
                   if (_error) {
                     return Center(

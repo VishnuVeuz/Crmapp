@@ -108,7 +108,7 @@ defaultDropdown(String model) async {
     throw Exception(data['message']);
   }
 
-  // return data;
+
 }
 
 defaultDropdownCustomer() async {
@@ -171,7 +171,7 @@ print("finaldd");
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
   print(data);
@@ -205,7 +205,7 @@ try{
     data = jsonDecode(response.body);
     return data;
 
-    // authresponce = data['result'].toString();
+
   }
 } catch (e) {
   print(e.toString());
@@ -312,7 +312,7 @@ try {
   } else {
     data = jsonDecode(response.body);
     return data;
-    // authresponce = data['result'].toString();
+
   }
 }catch (e) {
   print(e.toString());
@@ -382,7 +382,6 @@ createLead(
         "function": function,
         "mobile": mobile,
         "lang_id": lang_id,
-        //"tag_ids":[tag_ids],
         "tag_ids": tag_ids,
         "source_id": source_id,
         "medium_id": medium_id,
@@ -511,7 +510,6 @@ editLead(
         "function": function,
         "mobile": mobile,
         "lang_id": lang_id,
-        //"tag_ids":[],
         "tag_ids": tag_ids,
         "source_id": source_id,
         "medium_id": medium_id,
@@ -663,7 +661,7 @@ lostLead(int id, bool value) async {
     if (response.statusCode == 200) {
        data = jsonDecode(response.body.toString());
 
-      //authresponce = data['result'].toString();
+
 
       resMessage = data['result']['message'];
 
@@ -1139,8 +1137,6 @@ Future<List<dynamic>> getOpportunityTypesData(int type) async {
         'Authorization': 'Bearer $token',
       },
     );
-    //"https://jsonplaceholder.typicode.com/LeadModels?_page=$_pageNumber&_limit=$_numberOfLeadModelsPerRequest"));
-    //List responseList = json.decode(response.body);
     responseList = jsonDecode(response.body);
 
   } catch (e) {
@@ -2482,8 +2478,6 @@ try{
 }
 
 
-
-  // return data;
 }
 
 deleteCalendarData(int calendarId) async {
@@ -2562,7 +2556,7 @@ defaultScheduleData(int id, String value) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -2903,7 +2897,7 @@ getScheduleActivityData(int dataId, String activityModel) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -2929,7 +2923,7 @@ deleteScheduleData(int scheduleId) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -2964,7 +2958,7 @@ editDefaultScheduleData(int dataId) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -3099,46 +3093,7 @@ print('${baseUrl}api/log/${logId}');
 
 
 
-//  getlogNoteData(int dataId, String activityModel) async {
-//   String token = await getUserJwt();
-//
-//
-//   var data;
-//   String? authresponce;
-//   print("${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}");
-//   print("demo data");
-//
-//   try {
-//     Response response = await get(
-//
-//       Uri.parse(
-//           "${baseUrl}api/logs?res_model=${activityModel}&res_id=${dataId}"),
-//       headers: {
-//         'Authorization': 'Bearer $token',
-//       },
-//     ).timeout(const Duration(
-//       seconds: 10,
-//     ));
-//
-//     if (response.statusCode != 200) {
-//       data = jsonDecode(response.body);
-//       throw Exception(data['message']);
-//     }
-//     else {
-//       data = jsonDecode(response.body);
-//       print(data);
-//       print("logdatasss");
-//
-//       // authresponce = data['result'].toString();
-//     }
-//   }catch(e){
-//     print(data['message']);
-//     print("logdatataa");
-//     throw Exception(data['message']);
-//   }
-//
-//   return data;
-// }
+
 
 
 Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, String activityModel) async {
@@ -3174,16 +3129,14 @@ Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, Strin
       final Map<String, List<Map<String, dynamic>>> apiData = {};
 
       decodedData.forEach((key, value) {
-        // Check if the value is a List<dynamic>
+
         if (value is List<dynamic>) {
           // Cast each item in the list to Map<String, dynamic>
           final List<Map<String, dynamic>> dataList = value.cast<Map<String, dynamic>>();
           apiData[key] = dataList;
         } else {
-          // Handle unexpected structure or type
-          print('Unexpected structure or type for key: $key');
-          // You might want to throw an error or handle this accordingly
-        }
+
+          }
       });
 
       return apiData;
@@ -3194,7 +3147,7 @@ Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, Strin
     throw Exception(data['message']);
   }
 
-  //return data;
+
 }
 
 
@@ -3205,7 +3158,7 @@ deleteLogData(int logId) async {
   String token = await getUserJwt();
   var data;
   String? authresponce;
- // print(object)
+
 try{
   Response response = await delete(
     Uri.parse("${baseUrl}api/log/${logId}"),
@@ -3223,7 +3176,7 @@ try{
     data = jsonDecode(response.body);
     return data;
 
-    // authresponce = data['result'].toString();
+
   }
 
 }catch (e) {
@@ -3345,7 +3298,7 @@ deleteLogAttachment(int attachmentId) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -3428,7 +3381,7 @@ getattchmentData(int dataId, String activityModel) async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 
@@ -4057,7 +4010,7 @@ getNotificationActivity() async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
   return data;
@@ -4086,7 +4039,6 @@ getNotificationMessageActivity() async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
   }
 
   return data;
@@ -4113,7 +4065,7 @@ getNotificationCount() async {
   } else {
     data = jsonDecode(response.body);
 
-    // authresponce = data['result'].toString();
+
   }
 
 

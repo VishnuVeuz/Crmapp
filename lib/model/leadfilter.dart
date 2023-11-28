@@ -4,7 +4,7 @@ class LeadFilter {
 
   LeadFilter({required this.leadfilterName});
   factory LeadFilter.fromJson(Map<String, dynamic> json) {
-    // if (json == null) return null;
+
     return LeadFilter(
 
       leadfilterName: json["name"],

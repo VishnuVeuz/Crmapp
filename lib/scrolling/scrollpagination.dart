@@ -186,8 +186,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
             }
 
 
-           // _pageNumber = _pageNumber + 1;
-            //_LeadModels.clear();
+
 
             _LeadModels.addAll(LeadModelList);
 
@@ -305,9 +304,9 @@ class _LeadScrollingState extends State<LeadScrolling> {
               child: Icon(
                 Icons.person,
                 size: 20,
-                // Adjust the size of the icon as per your requirements
+
                 color: Colors
-                    .white, // Adjust the color of the icon as per your requirements
+                    .white,
               ),
 
             ),
@@ -383,24 +382,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                       ]
                   ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 0),
-                //   child: IconButton(icon: SvgPicture.asset("images/searchicon.svg"),
-                //     onPressed: () {
-                //
-                //     },
-                //   ),
-                // ),
-                // IconButton(onPressed:(){
-                //  // buildLeadModelsView();
-                //   // showDialog(
-                //   //   context: context,
-                //   //   builder: (BuildContext context) =>
-                //   //       buildLeadModelsView(),
-                //   // ).then((value) => setState(() {}));
-                // },
-                //     icon:Icon(Icons.filter_alt_outlined,color: Colors.white,)),
-                Padding(
+                 Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: IconButton(icon:SvgPicture.asset("images/drawer.svg"),
                     onPressed: (){
@@ -413,7 +395,6 @@ class _LeadScrollingState extends State<LeadScrolling> {
           })
         ],
       ),
-     // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
 
       floatingActionButton: Padding(
@@ -424,14 +405,14 @@ class _LeadScrollingState extends State<LeadScrolling> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => LeadCreation(0)));
-            // Add your onPressed code here!
+
           },
           backgroundColor: Color(0xFFFA256B),
           child: const Icon(Icons.add),
         ),
       ),
       bottomNavigationBar:MyBottomNavigationBar(1),
-     // bottomNavigationBar: bottomNavigationBar(context),
+
     );
   }
 
@@ -567,7 +548,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
 
 
-             // backgroundColor:  Color(0xFFED2449),
+
             cancelText: Text("Cancel",style: TextStyle(color: Color(0xFF231F20),
                 fontWeight: FontWeight.w700,fontSize: 13.57,
                 fontFamily: 'Mulish'
@@ -618,48 +599,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
           ),
         ),
 
-        // Visibility(
-        //   visible: searchBanner,
-        //   child: Container(
-        //     height: 50,
-        //     //color: Colors.red,
-        //
-        //     child: Row(
-        //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //       children: [
-        //         Padding(
-        //           padding: const EdgeInsets.only(left: 24),
-        //           child: Text("Quotations", style: TextStyle(
-        //               fontFamily: 'Mulish',
-        //               fontWeight: FontWeight.w500,
-        //               fontSize: 20,
-        //               color: Color(0xFF292929),
-        //               decoration: TextDecoration.none),),
-        //         ),
-        //         Padding(
-        //           padding: const EdgeInsets.only(right: 26),
-        //           child: InkWell(
-        //             child: Container(
-        //               width: 18,
-        //               height: 18,
-        //               child: SvgPicture.asset(
-        //                 "images/search.svg",
-        //               ),
-        //             ),
-        //             onTap: (){
-        //               setState(() {
-        //                 searchoption = true;
-        //                 searchBanner = false;
-        //                 searchController.clear();
-        //                 searchText="";
-        //               });
-        //             },
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
+
         Visibility(
           visible: searchoption,
           child: Padding(
@@ -704,14 +644,6 @@ class _LeadScrollingState extends State<LeadScrolling> {
               itemCount: _LeadModels.length + (_isLastPage ? 0 : 1),
 
               itemBuilder: (context, index) {
-                // request more data when the user has reached the trigger point.
-                print(_LeadModels.length + (_isLastPage ? 0 : 1),);
-                print("_isLastPage");
-               print(_LeadModels.length);
-               print(_nextPageTrigger);
-               print(_LeadModels.length - _nextPageTrigger);
-               print(index);
-               print("data checksssss lead");
 
 
     if (searchText.isEmpty) {
@@ -728,8 +660,6 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
 
 
-                // when the user gets to the last item in the list, check whether
-                // there is an error, otherwise, render a progress indicator.
                 if (index == _LeadModels.length) {
                   if (_error) {
                     return Center(

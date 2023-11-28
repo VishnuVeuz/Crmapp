@@ -210,7 +210,6 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
           })
         ],
       ),
-      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -218,7 +217,7 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
               context,
               MaterialPageRoute(
                   builder: (context) => QuotationCreation(0)));
-          // Add your onPressed code here!
+
         },
         backgroundColor: Color(0xFF3D418E),
         child: const Icon(Icons.add),
@@ -250,12 +249,11 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
         itemCount: _QuotationModel.length + (_isLastPage ? 0 : 1),
         itemBuilder: (context, index) {
 
-          // request more data when the user has reached the trigger point.
+
           if (index == _QuotationModel.length - _nextPageTrigger) {
             fetchData();
           }
-          // when the user gets to the last item in the list, check whether
-          // there is an error, otherwise, render a progress indicator.
+
           if (index == _QuotationModel.length) {
             if (_error) {
               return Center(

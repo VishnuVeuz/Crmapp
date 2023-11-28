@@ -152,11 +152,6 @@ else{
             _QuotationModel.clear();
           }
 
-       // _pageNumber = _pageNumber + 1;
-       //
-       //    print(_pageNumber);
-       //    print("_pageNumber");
-       //   // _QuotationModel.clear();
 
           _QuotationModel.addAll(quotationModelList);
         });
@@ -335,7 +330,6 @@ else{
           })
         ],
       ),
-      // appBar: AppBar(title: const Text("Blog App"), centerTitle: true,),
       body: buildLeadModelsView(),
 
       floatingActionButton: FloatingActionButton(
@@ -344,13 +338,13 @@ else{
               context,
               MaterialPageRoute(
                   builder: (context) => QuotationCreation(0)));
-          // Add your onPressed code here!
+
         },
         backgroundColor: Color(0xFFFA256B),
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar:MyBottomNavigationBar(3),
-      //bottomNavigationBar: bottomNavigationBar(context),
+
     );
   }
 
@@ -381,7 +375,7 @@ else{
           visible: searchBanner,
           child: Container(
             height: 50,
-            //color: Colors.red,
+
 
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

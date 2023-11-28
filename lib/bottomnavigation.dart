@@ -36,11 +36,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       unselectedLabelStyle: TextStyle(
           fontSize: 12, fontFamily: 'Mulish', color: Colors.black, fontWeight: FontWeight.w300),
       currentIndex: currentIndex==null?0:currentIndex!,
-      // Set the currentIndex
+
       onTap: (int index) {
         setState(() {
 
-          currentIndex = index;// Update the currentIndex when a tab is tapped
+          currentIndex = index;
         });
 
         if (index == 0) {

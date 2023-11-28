@@ -291,7 +291,7 @@ class SecondRoute extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Icon(Icons.camera),
+
                           Text('Edit',),
                         ],
                       ),
@@ -303,7 +303,6 @@ class SecondRoute extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 20,left: 20),
                   child: ElevatedButton(
-                    //if user click this button. user can upload image from camera
                     onPressed: () async {
 
                       var data =  await deleteCalendarData(appointment!.id);
@@ -333,9 +332,7 @@ class SecondRoute extends StatelessWidget {
               ],
             ),
             const Divider(color: Colors.white,),
-            // Text(
-            //   appointment!.id.toString(),
-            // ),
+
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 20,left: 25),
