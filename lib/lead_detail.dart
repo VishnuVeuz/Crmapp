@@ -8415,7 +8415,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           setState(() {
                                             _isSavingData = false;
                                           });
-
+                                          postProvider?.fetchPosts(widget.leadId);
                                           Navigator.pop(context);
                                         }
                                       },
@@ -8471,6 +8471,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           _isSavingData = false;
                                           typeIds = 0;
                                         });
+                                        postProvider?.fetchPosts(widget.leadId);
                                         //Navigator.pop(context);
                                       }
                                     },

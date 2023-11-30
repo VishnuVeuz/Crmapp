@@ -2805,10 +2805,12 @@ scheduleActivity(int activity_type_id,user_id,res_id,
     );
 
 
+
     if (response.statusCode == 200) {
        data = jsonDecode(response.body.toString());
 
         resMessage = data['result']['message'];
+
 
 
       if (data['result']['message'].toString() == "success") {
