@@ -117,6 +117,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
   int selectedItemIndex = -1;
 
 
+  List quotationStageTypes = [];
+  String? quotationStageId;
+  int? stageColorIndex;
+
   String? scheduleDays,
       scheduleactivityType,
       scheduleSummary,
@@ -788,6 +792,112 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
+                    child: Divider(
+                      color: Color(0xFFF4F4F4),
+                      thickness: 1.5,
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left:18, right: 20),
+                    child: Container(
+                      height: 50,
+                      // color: Colors.red,
+                      child: ListView.builder(
+                        // physics: NeverScrollableScrollPhysics(),
+                        //shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: quotationStageTypes.length ?? 0,
+                        itemBuilder: (context, index) {
+                          print(index);
+                          print("final indexxx");
+                          return Padding(
+                            padding: const EdgeInsets.only(left:5, top: 10),
+                            child: Row(
+                              children: [
+                                InkWell(
+                                  child: Container(
+                                    // color: Colors.red,
+                                    //width: mediaQueryData.size.width/3,
+                                    width:mediaQueryData.size.width/4.1,
+                                    // height: 50,
+                                    child: Stack(
+                                      children: [
+
+                                        index == 0 ?
+                                        stageColorIndex == index ?
+
+                                        Image.asset(
+                                            'images/bluebtnfirst.png'):
+                                        Image.asset(
+                                            'images/greenbtnfirst.png'):
+
+                                        stageColorIndex == index ?
+                                        Image.asset(
+                                            'images/bluebtn.png'):
+                                        stageColorIndex! > index?Image.asset(
+                                            'images/greenbtn.png')
+                                            : Image.asset(
+                                            'images/greybtn.png'),
+                                        Positioned.fill(
+                                            child: Align(
+                                                alignment: Alignment.center,
+                                                child: stageColorIndex ==
+                                                    index || stageColorIndex! >
+                                                    index
+                                                    ? Text(
+                                                  quotationStageTypes[
+                                                  index]['name'],
+                                                  style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 12,
+                                                    fontFamily:
+                                                    'Mulish',
+                                                  ),
+                                                )
+                                                    : Text(
+                                                  quotationStageTypes[
+                                                  index]['name'],
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 12,
+                                                    fontFamily:
+                                                    'Mulish',
+                                                  ),
+                                                )))
+                                      ],
+                                    ),
+                                  ),
+                                //   onTap: () async {
+                                //   print(
+                                //       quotationStageTypes[index]['name']);
+                                //   print(quotationStageTypes[index]['id']);
+                                //   print("print(opportunityStageTypes");
+                                //   String resmessage =
+                                //   await StageChangeLead(
+                                //       leadStageTypes[index]
+                                //       ['id']);
+                                //   int resmessagevalue =
+                                //   int.parse(resmessage);
+                                //   if (resmessagevalue != 0) {
+                                //     setState(() {
+                                //       stageColorIndex = index;
+                                //     });
+                                //
+                                //
+                                //   }
+                                // },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+
                   Padding(
                     padding: const EdgeInsets.only(top: 0, left: 22, right: 22),
                     child: Divider(
@@ -13992,6 +14102,17 @@ class _QuotationDetailState extends State<QuotationDetail> {
       print("initial data");
 
       attachmentCount = (data["message_attachment_count"] ?? "0").toString();
+
+
+    quotationStageTypes = data['state_list'] ?? "";
+      quotationStageId = data['state'][0]['id'] ?? 0;
+
+      quotationStageTypes.asMap().forEach((currentIndex, element) {
+        if (element['id'] == quotationStageId) {
+          stageColorIndex = currentIndex;
+          return;
+        }
+      });
 
       _isInitialized = true;
     });

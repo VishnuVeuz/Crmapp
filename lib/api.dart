@@ -698,6 +698,8 @@ lostLead(int id, bool value) async {
 Future<List<dynamic>> recentLead(String model) async {
   String token = await getUserJwt();
   var responseList;
+  print("${baseUrl}api/leads?count=10&page_no=1&key_word=&company_ids=${globals.selectedIds}&filters=[$model]");
+  print("leaddatadata");
 
   try {
     final response = await get(
