@@ -11,10 +11,13 @@ import 'model/calendarmodel.dart';
 //server
  //String baseUrl = "http://165.22.30.188:8040/";
  //new local sever
-String baseUrl = "http://10.10.10.123:8030/";
+// String baseUrl = "http://10.10.10.123:8030/";
 
 //live server bibin
 // String baseUrl = "http://207.154.229.85:8080/";
+
+// new live srever by afna
+String baseUrl = "http://64.225.99.126:8030/";
 
 login(String email, password, dbId) async {
   String? authresponce,
@@ -713,6 +716,52 @@ Future<List<dynamic>> recentLead(String model) async {
 
   return responseList['records'];
 }
+
+
+leadStageChange(int stateId, leadId) async {
+  String token = await getUserJwt();
+  String? resMessage, resMessageText;
+
+  try {
+    final msg = jsonEncode({
+      "params": {
+        "lead_state": stateId,
+      }
+    });
+
+    Response response = await put(
+      Uri.parse('${baseUrl}api/lead/${leadId}'),
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': 'Bearer $token',
+      },
+      body: msg,
+    );
+
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+
+      resMessage = data['result']['message'];
+
+      if (data['result']['message'].toString() == "success") {
+        resMessageText = data['result']['data']['id'].toString();
+      }
+
+      if (resMessage == "error") {
+        resMessageText = "0";
+      }
+    } else {}
+  } catch (e) {
+    print(e.toString());
+  }
+
+
+  return resMessageText;
+}
+
+
+
 
 //create opportunity
 
@@ -1700,6 +1749,10 @@ getQuotationData(int quotationId, String value) async {
     var data;
     String? authresponce = "${baseUrl}api/quotation/${quotationId}?action=${value}";
 
+
+    print("${baseUrl}api/quotation/${quotationId}?action=${value}");
+
+
     try {
     Response response = await get(
       Uri.parse("${baseUrl}api/quotation/${quotationId}?action=${value}"),
@@ -1820,7 +1873,6 @@ getCustomerCompanyData(int customerId) async {
 
   return data;
 }
-
 
 
 

@@ -1762,25 +1762,25 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 ],
                                               ),
                                             ),
-                                            // onTap: () async {
-                                            //   print(
-                                            //       leadStageTypes[index]['name']);
-                                            //   print(leadStageTypes[index]['id']);
-                                            //   print("print(opportunityStageTypes");
-                                            //   String resmessage =
-                                            //   await StageChangeOpportunity(
-                                            //       opportunityStageTypes[index]
-                                            //       ['id']);
-                                            //   int resmessagevalue =
-                                            //   int.parse(resmessage);
-                                            //   if (resmessagevalue != 0) {
-                                            //     setState(() {
-                                            //       stageColorIndex = index;
-                                            //     });
-                                            //
-                                            //
-                                            //   }
-                                            // },
+                                            onTap: () async {
+                                              print(
+                                                  leadStageTypes[index]['name']);
+                                              print(leadStageTypes[index]['id']);
+                                              print("print(opportunityStageTypes");
+                                              String resmessage =
+                                              await StageChangeLead(
+                                                  leadStageTypes[index]
+                                                  ['id']);
+                                              int resmessagevalue =
+                                              int.parse(resmessage);
+                                              if (resmessagevalue != 0) {
+                                                setState(() {
+                                                  stageColorIndex = index;
+                                                });
+
+
+                                              }
+                                            },
                                           ),
                                         ],
                                       ),
@@ -11671,6 +11671,12 @@ class _LeadDetailState extends State<LeadDetail> {
       }
 
     });
+  }
+
+
+  StageChangeLead(int state) async {
+    String value = await leadStageChange(state, widget.leadId);
+    return value;
   }
 }
 

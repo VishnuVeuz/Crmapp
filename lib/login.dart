@@ -250,8 +250,11 @@ CRM made easy.
 
                                 // live server
                                 // dbId = "FLUTTER__API";
-                                //new local
-                                dbId = "KSA_nov_27";
+                                // new local
+                                // dbId = "KSA_nov_27";
+
+                                // live server db by afna
+                                dbId=  "VEUZ_FLUTTER_TEST";
                                 String logindata = await login(userName,passWord,dbId);
 
 
