@@ -3090,7 +3090,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         decoration: BoxDecoration(
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(5)),
-                                            color: Color(0xFFF6F6F6),
+                                            color: Color(0xFFFfffff),
                                             border: Border.all(
                                               color: Color(0xFFEBEBEB),
                                             )),
@@ -16854,7 +16854,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -16893,7 +16893,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),

@@ -1173,13 +1173,14 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          width: mediaQueryData.size.width /2.6,
+                                          //width: mediaQueryData.size.width /5,
+                                          //color: Colors.red,
                                           //width:250,
                                           child: Padding(
                                             padding:
-                                                const EdgeInsets.only(left: 45),
+                                                const EdgeInsets.only(left: 0),
                                             child: Text(
-                                              phone!,
+                                              phone! ,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
                                                   fontFamily: 'Mulish',
@@ -1280,11 +1281,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          width: mediaQueryData.size.width / 2.6,
+                                         // width: mediaQueryData.size.width / 5,
                                           //width:300,
                                           child: Padding(
                                             padding:
-                                                const EdgeInsets.only(left: 45),
+                                                const EdgeInsets.only(left:0),
                                             child: Text(
                                               mobile!,
                                               style: TextStyle(
@@ -1693,7 +1694,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           Visibility(
                             visible: smartbuttonVisible,
                             child: Padding(
-                              padding: const EdgeInsets.only(left:18, right: 20),
+                              padding: const EdgeInsets.only(left:21, right: 25),
                               child: Container(
                                 height: 50,
                                 // color: Colors.red,
@@ -1744,7 +1745,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             index]['name'],
                                                             style: TextStyle(
                                                               color: Colors.white,
-                                                              fontSize: 12,
+                                                              fontSize: 11,
                                                               fontFamily:
                                                               'Mulish',
                                                             ),
@@ -1754,7 +1755,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             index]['name'],
                                                             style: TextStyle(
                                                               color: Colors.black,
-                                                              fontSize: 12,
+                                                              fontSize: 11,
                                                               fontFamily:
                                                               'Mulish',
                                                             ),
@@ -9820,6 +9821,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           setState(() {
                             Navigator.pop(context);
                           });
+                          //postProvider?.fetchPosts(widget.leadId);
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -11440,7 +11442,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -11476,7 +11478,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),

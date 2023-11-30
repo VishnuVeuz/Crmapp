@@ -3371,7 +3371,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             },
 
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
+                              primary: Color(0xFF043565),
                             )),
                       ),
                       SizedBox(
@@ -3432,7 +3432,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             },
 
                             style: ElevatedButton.styleFrom(
-                              primary: Color(0xFFF9246A),
+                              primary: Color(0xFF043565),
                             )),
                       ),
                     ],
@@ -3451,7 +3451,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Color(0xFFF9246A),fontFamily: 'Mulish'),
+                                color: Color(0xFF212121),fontFamily: 'Mulish'),
                           ),
                           onPressed: () {
 

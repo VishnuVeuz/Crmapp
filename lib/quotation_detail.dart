@@ -801,7 +801,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                   ),
 
                   Padding(
-                    padding: const EdgeInsets.only(left:18, right: 20),
+                    padding: const EdgeInsets.only(left:21, right: 25),
                     child: Container(
                       height: 50,
                       // color: Colors.red,
@@ -852,7 +852,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                   index]['name'],
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    fontSize: 12,
+                                                    fontSize: 11,
                                                     fontFamily:
                                                     'Mulish',
                                                   ),
@@ -862,7 +862,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                                   index]['name'],
                                                   style: TextStyle(
                                                     color: Colors.black,
-                                                    fontSize: 12,
+                                                    fontSize: 11,
                                                     fontFamily:
                                                     'Mulish',
                                                   ),
@@ -3406,6 +3406,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     padding:
                                     const EdgeInsets.only(left: 15, right: 20),
                                     child: Container(
+
                                       width:mediaQueryData.size.width / 1.34,
                                       //height: 46,
                                       decoration: BoxDecoration(
@@ -17152,7 +17153,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -17190,7 +17191,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
 
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),

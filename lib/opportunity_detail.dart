@@ -1534,9 +1534,9 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             child: Row(
                               children: [
                                 Container(
-                                  width:mediaQueryData.size.width / 2.6,
+                                  //width:mediaQueryData.size.width /5,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 45),
+                                    padding: const EdgeInsets.only(left: 0),
                                     child: Text(
                                       phone!,
                                       style: TextStyle(
@@ -1622,10 +1622,10 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                             child: Row(
                               children: [
                                 Container(
-                                  width:mediaQueryData.size.width / 2.6,
+                                  //width:mediaQueryData.size.width /5,
                                   //color: Colors.red,
                                   child: Padding(
-                                    padding: const EdgeInsets.only(left: 45),
+                                    padding: const EdgeInsets.only(left:0),
                                     child: Text(
                                       phone!,
                                       style: TextStyle(
@@ -2011,7 +2011,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                   Visibility(
                     visible: smartbuttonVisible,
                     child: Padding(
-                      padding: const EdgeInsets.only(left:18, right: 20),
+                      padding: const EdgeInsets.only(left:21, right: 25),
                       child: Container(
                         height: 50,
                         // color: Colors.red,
@@ -2062,7 +2062,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                     index]['name'],
                                                     style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 12,
+                                                      fontSize: 11,
                                                       fontFamily:
                                                       'Mulish',
                                                     ),
@@ -2072,7 +2072,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                                     index]['name'],
                                                     style: TextStyle(
                                                       color: Colors.black,
-                                                      fontSize: 12,
+                                                      fontSize: 11,
                                                       fontFamily:
                                                       'Mulish',
                                                     ),
@@ -11820,7 +11820,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -11858,7 +11858,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
 
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
