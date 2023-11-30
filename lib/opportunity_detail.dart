@@ -9070,7 +9070,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
 
                                       _isSavingData=false;
                                     });
-
+                                    postProvider?.fetchPosts(widget.opportunityId);
                                     Navigator.pop(context);
                                   }
                                 },
@@ -9125,6 +9125,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                     _isSavingData=false;
                                     typeIds = 0;
                                   });
+                                  postProvider?.fetchPosts(widget.opportunityId);
                                   //Navigator.pop(context);
                                 }
                               },

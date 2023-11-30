@@ -14625,6 +14625,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                       _isSavingData=false;
                                     });
 
+                                    postProvider?.fetchPosts(widget.quotationId);
                                     Navigator.pop(context);
                                   }
                                 },
@@ -14680,6 +14681,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     _isSavingData=false;
                                     typeIds = 0;
                                   });
+                                  postProvider?.fetchPosts(widget.quotationId);
                                   //Navigator.pop(context);
                                 }
                               },

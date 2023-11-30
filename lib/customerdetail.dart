@@ -14271,7 +14271,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     setState(() {
                                       _isSavingData=false;
                                     });
-
+                                    postProvider?.fetchPosts(widget.customerId);
                                     Navigator.pop(context);
                                   }
                                 },
@@ -14326,6 +14326,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     _isSavingData=false;
                                     typeIds = 0;
                                   });
+                                  postProvider?.fetchPosts(widget.customerId);
                                   //Navigator.pop(context);
                                 }
                               },
