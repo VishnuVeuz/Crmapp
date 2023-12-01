@@ -16,10 +16,11 @@ import 'model/calendarmodel.dart';
 //live server bibin
 // String baseUrl = "http://207.154.229.85:8080/";
 
-// new live srever by afna
-String baseUrl = "http://64.225.99.126:8030/";
 
-login(String email, password, dbId) async {
+// new live srever by afna
+//String baseUrl = "http://64.225.99.126:8030/";
+
+login(String email, password, urlName) async {
   String? authresponce,
       personName,
       personMobile,
@@ -27,15 +28,20 @@ login(String email, password, dbId) async {
       personMail,
       resMessage,
       resMessageText,
-      companyId;
+      companyId,
+      urlString;
   List multiCompany;
+
+  print("urlname");
+  print(urlName);
 
   try {
     final msg = jsonEncode({
-      "params": {"db": dbId, "login": email, "password": password}
+      // "params": {"db": dbId, "login": email, "password": password}
+      "params": {"login": email, "password": password}
     });
     Response response = await post(
-      Uri.parse('${baseUrl}api/generate_token'),
+      Uri.parse('${urlName}api/generate_token'),
       headers: {
         "Content-Type": "application/json",
       },
@@ -54,6 +60,7 @@ login(String email, password, dbId) async {
       personMobile = data['result']['data']['user_name']['mobile'].toString();
       personMail = data['result']['data']['user_name']['email'].toString();
       personJwt = data['result']['data']['Token'].toString();
+      urlString = urlName.toString();
 
       multiCompany = data['result']['data']['companies'];
 
@@ -66,7 +73,7 @@ login(String email, password, dbId) async {
       print(multiCompany);
       print("dhdhdhdhdhdh");
       addUserStringToSF(personName, personMobile, personMail, personJwt,
-          jsonListmultiCompany,companyId);
+          jsonListmultiCompany,companyId,urlString);
     }
 
     if (resMessage == "error") {
@@ -81,6 +88,7 @@ login(String email, password, dbId) async {
 
 defaultDropdown(String model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
   print("${baseUrl}api/default_values?model=${model}");
@@ -123,6 +131,7 @@ defaultDropdown(String model) async {
 
 defaultDropdownCustomer() async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -156,6 +165,7 @@ defaultDropdownCustomer() async {
 
 getLeadData(int leadId, String value) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
   print(leadId);
   print("lead dataaa");
@@ -192,7 +202,7 @@ print("finaldd");
 
 convertleadDataGet(int leadId, String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   print(leadId);
   print("lead dataaa");
 
@@ -234,6 +244,7 @@ try{
 leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
     String action, int? customerId, List leadTableData) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   (action == "create"
       ? customerId = null
       : action == "nothing"
@@ -302,6 +313,7 @@ leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
 
 deleteLeadData(int leadId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try {
@@ -366,6 +378,7 @@ createLead(
 
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
   print("tocken responece");
   String? authresponce, resMessage, resMessageText;
@@ -494,7 +507,7 @@ editLead(
 ) async {
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   String? authresponce, resMessage, resMessageText;
   var data;
@@ -599,6 +612,7 @@ editLeadpriority(
 
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
 
   String? authresponce, resMessage, resMessageText;
@@ -650,6 +664,7 @@ editLeadpriority(
 
 lostLead(int id, bool value) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
   var data;
 
@@ -697,6 +712,7 @@ lostLead(int id, bool value) async {
 
 Future<List<dynamic>> recentLead(String model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
   print("${baseUrl}api/leads?count=10&page_no=1&key_word=&company_ids=${globals.selectedIds}&filters=[$model]");
   print("leaddatadata");
@@ -722,6 +738,7 @@ Future<List<dynamic>> recentLead(String model) async {
 
 leadStageChange(int stateId, leadId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   try {
@@ -802,7 +819,7 @@ createOpportunity(
     List orderLineProducts) async {
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   String? authresponce, resMessage, resMessageText;
   var data;
@@ -942,6 +959,7 @@ editOpportunity(
     List orderLineProducts) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
 
   var data;
@@ -1051,6 +1069,7 @@ editOppertunitypriority(
     ) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
 
   try {
@@ -1102,6 +1121,7 @@ editOppertunitypriority(
 
 deleteOpportunityData(int opportunityId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try{
@@ -1132,6 +1152,7 @@ try{
 
 getOpportunityData(int opportunityId, String value) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
 
   var data;
@@ -1161,7 +1182,7 @@ print("fsfsdsfds");
 
 getOpportunityTypes() async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -1189,6 +1210,7 @@ print(response);
 
 Future<List<dynamic>> getOpportunityTypesData(int type) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
 
   try {
@@ -1211,6 +1233,7 @@ Future<List<dynamic>> getOpportunityTypesData(int type) async {
 
 lostOpportunity(int id, opportunitylostId, String action) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
   var data;
   try {
@@ -1256,6 +1279,7 @@ print(msg);
 
 restoreWonOpportunity(int id, opportunitylostId, String action) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
   var data;
   try {
@@ -1301,6 +1325,7 @@ restoreWonOpportunity(int id, opportunitylostId, String action) async {
 
 archiveOpportunity(int id, opportunitylostId, bool action) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   var data;
@@ -1347,6 +1372,7 @@ archiveOpportunity(int id, opportunitylostId, bool action) async {
 
 opportunityStageChange(int stateId, opportunityId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   try {
@@ -1390,7 +1416,7 @@ opportunityStageChange(int stateId, opportunityId) async {
 
 getOpportunityQuotationData(int opportunityId, String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -1419,7 +1445,7 @@ getOpportunityQuotationData(int opportunityId, String value) async {
 
 getOpportunityProductDefaultData(int opportunityProductId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -1473,6 +1499,7 @@ createQuotation(
     opportunity_id) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
   var data;
 
@@ -1574,6 +1601,7 @@ createQuotationOpp(
     opportunity_id) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String?  resMessage, resMessageText;
   var authresponce;
   var data;
@@ -1676,6 +1704,7 @@ editQuotation(
    ) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
   var data;
   print("hjfgcjsgj");
@@ -1746,7 +1775,7 @@ getQuotationData(int quotationId, String value) async {
 
 
     String token = await getUserJwt();
-
+    String baseUrl= await getUrlString();
 
     var data;
     String? authresponce = "${baseUrl}api/quotation/${quotationId}?action=${value}";
@@ -1786,7 +1815,7 @@ getQuotationData(int quotationId, String value) async {
 
 getProductSum(List orderLineProductsData,int pricelistId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   String? authresponce, resMessage, resMessageText;
  var data;
@@ -1824,7 +1853,7 @@ getProductSum(List orderLineProductsData,int pricelistId) async {
 
 getQuotationCustomerData(int quoatationcustomerId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -1851,7 +1880,7 @@ getQuotationCustomerData(int quoatationcustomerId) async {
 
 getCustomerCompanyData(int customerId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -1880,13 +1909,14 @@ getCustomerCompanyData(int customerId) async {
 
 
 addUserStringToSF(String personName, String personMobile, String personMail,
-    String personJwt, String jsonListmultiCompany,companyId) async {
+    String personJwt, String jsonListmultiCompany,companyId,urlString) async {
   String personNames,
       personMobiles,
       personMails,
       personJwts,
       jsonListmultiCompanys,
-      initialCompanyId;
+      initialCompanyId,
+      baseUrldata;
   // List multicompanyData;
 
   personNames = personName;
@@ -1895,6 +1925,7 @@ addUserStringToSF(String personName, String personMobile, String personMail,
   personJwts = personJwt;
   jsonListmultiCompanys = jsonListmultiCompany;
   initialCompanyId = companyId;
+  baseUrldata = urlString;
   //multicompanyData = multicompany;
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -1904,11 +1935,14 @@ addUserStringToSF(String personName, String personMobile, String personMail,
   prefs.setString('personJwt', personJwts);
   prefs.setString('multiCompany', jsonListmultiCompanys);
   prefs.setString('initialCompanyId', initialCompanyId);
+  prefs.setString('baseurl', baseUrldata);
+
 
 }
 
 deleteQuotationData(int quotationId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try{
@@ -1946,7 +1980,7 @@ schedulecreateCustomer(String company_type, name, email, function,phone,mobile,
 
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   print("tocken responece");
   String? authresponce, resMessage;
       var resMessageText;
@@ -2007,7 +2041,7 @@ createCustomer(String company_type, name, street, street2, city, website, email,
 
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   String? authresponce, resMessage, resMessageText;
   var data;
@@ -2091,7 +2125,7 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
 
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
   var data;
   try {
@@ -2170,7 +2204,7 @@ EditCustomer(String company_type, name, street, street2, city, website, email, f
 
 getCustomerData(int customerId,String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce="${baseUrl}api/contact/${customerId}?action=${value}";
 
@@ -2206,6 +2240,7 @@ try{
 
 deleteCustomerData(int customerId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try{
@@ -2241,6 +2276,7 @@ try{
 
 archiveCustomer(int id, bool value) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
   var data;
   try {
@@ -2286,7 +2322,7 @@ archiveCustomer(int id, bool value) async {
 
 getCustomerDefaultData(int customerId, String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2319,7 +2355,7 @@ getCalenders() async {
   List<Calenders> calendersDetailss = [];
 
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   String url = "${baseUrl}api/calendars";
   final response = await http.get(Uri.parse(url),
@@ -2351,6 +2387,7 @@ createCalendar(int? orgnizerId,partnerName,reminders,tags,
 ) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
   var data;
 
@@ -2420,6 +2457,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
     ) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? authresponce, resMessage, resMessageText;
   var data;
 
@@ -2487,6 +2525,7 @@ editCalendar(int? orgnizerId,partnerName,reminders,tags,
 
 deleteCalendar(int calendarId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try{
@@ -2523,6 +2562,7 @@ try{
 defaultDropdownCalendar() async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 try{
@@ -2553,6 +2593,7 @@ try{
 
 deleteCalendarData(int calendarId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -2579,7 +2620,7 @@ deleteCalendarData(int calendarId) async {
 
 getCalendarData(int calendarId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2608,7 +2649,7 @@ getCalendarData(int calendarId) async {
 
 defaultScheduleData(int id, String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2638,7 +2679,7 @@ defaultScheduleData(int id, String value) async {
 // tag colorss
 colorsData()  async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2668,6 +2709,7 @@ colorsData()  async {
 colorChange(int tagId,colorId,String model) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   try {
@@ -2721,7 +2763,7 @@ colorChange(int tagId,colorId,String model) async {
 
 defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2747,7 +2789,7 @@ defaultSendmessageData(int id, String value,List<int> selectedIds)  async {
 
 sendMailsFollowers(int id, String value) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -2777,6 +2819,7 @@ sendMailsFollowers(int id, String value) async {
 scheduleActivity(int activity_type_id,user_id,res_id,
     String summary,date_deadline,note,res_model,mark_done) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   var data;
@@ -2841,6 +2884,7 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
     String summary,date_deadline,note,res_model,mark_done,
     int scheduleId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   var data;
@@ -2898,6 +2942,7 @@ editScheduleActivity(int activity_type_id,user_id,res_id,
 
 markDoneScheduleActivity(String notes,int scheduleId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -2947,7 +2992,7 @@ markDoneScheduleActivity(String notes,int scheduleId) async {
 
 getScheduleActivityData(int dataId, String activityModel) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce= "${baseUrl}api/activities?res_model=${activityModel}&res_id=${dataId}";
@@ -2979,6 +3024,7 @@ getScheduleActivityData(int dataId, String activityModel) async {
 
 deleteScheduleData(int scheduleId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -3009,7 +3055,7 @@ deleteScheduleData(int scheduleId) async {
 
 editDefaultScheduleData(int dataId) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -3044,6 +3090,7 @@ editDefaultScheduleData(int dataId) async {
 
 logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage;
       var resMessageText;
 
@@ -3106,6 +3153,7 @@ logNoteCreate(String lognotes,logmodel,int resId,List myData1) async {
 
 EditlogNote(String lognotes,logmodel,int resId,List myData1,int logId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   var data;
@@ -3171,7 +3219,7 @@ print('${baseUrl}api/log/${logId}');
 
 Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, String activityModel) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -3229,6 +3277,7 @@ Future<Map<String, List<Map<String, dynamic>>>> getlogNoteData(int dataId, Strin
 deleteLogData(int logId) async {
 
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -3261,6 +3310,8 @@ try{
 
 deleteEmoji(String emoji,int logId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
+
   var data;
 
 
@@ -3301,6 +3352,7 @@ deleteEmoji(String emoji,int logId) async {
 
 logStarChange(int logId, bool value) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
   var data;
   try {
@@ -3354,6 +3406,7 @@ logStarChange(int logId, bool value) async {
 
 deleteLogAttachment(int attachmentId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -3383,6 +3436,7 @@ deleteLogAttachment(int attachmentId) async {
 
 attchmentDataCreate(List myData1) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -3432,7 +3486,7 @@ attchmentDataCreate(List myData1) async {
 
 getattchmentData(int dataId, String activityModel) async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -3464,6 +3518,7 @@ getattchmentData(int dataId, String activityModel) async {
 
  singleQuatationOpprtunity(int opportunity_id) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   int quotationId=0;
   print(token);
 
@@ -3497,6 +3552,7 @@ getattchmentData(int dataId, String activityModel) async {
 
  newTemplateCreate(String lognotes,logmodel,subject ,int resId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   try {
@@ -3548,6 +3604,7 @@ getattchmentData(int dataId, String activityModel) async {
 
  templateSelectionData(int dropdownId,int resId,String model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
 
   try {
@@ -3581,6 +3638,7 @@ getattchmentData(int dataId, String activityModel) async {
 // send msg create
  sendMessageCreate(String lognotes,logmodel,subject ,int resId,partnerId,templateId,List myData1) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage;
   var resMessageText;
 
@@ -3645,6 +3703,7 @@ getattchmentData(int dataId, String activityModel) async {
 
 smsDataGet(int resId,String resmodel) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
 
   try {
@@ -3671,6 +3730,7 @@ smsDataGet(int resId,String resmodel) async {
 
 sendSms(String message,var mobileNumber,int smsId,String numberType) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   final msg;
@@ -3731,6 +3791,7 @@ sendSms(String message,var mobileNumber,int smsId,String numberType) async {
 
 followerDefaultDataGet(int resId,String resmodel) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
   try {
 
@@ -3756,6 +3817,7 @@ followerDefaultDataGet(int resId,String resmodel) async {
 
 getFollowers(int resId,String resmodel) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
 
   try {
@@ -3784,6 +3846,7 @@ getFollowers(int resId,String resmodel) async {
 
 followerSubscription(int followerId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   var responseList;
 
   try {
@@ -3814,6 +3877,7 @@ followerSubscription(int followerId) async {
 
 followerSubscriptionAdding(int followerId,List selectedIds) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -3865,6 +3929,7 @@ followerSubscriptionAdding(int followerId,List selectedIds) async {
 
 unFollowing(int resId,follower_id,String res_model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -3916,6 +3981,7 @@ unFollowing(int resId,follower_id,String res_model) async {
 
 followerUnFollow(int resId,String res_model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -3964,6 +4030,7 @@ followerUnFollow(int resId,String res_model) async {
 
 followerFollow(int resId,String res_model) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -4014,6 +4081,7 @@ followerFollow(int resId,String res_model) async {
 
 followerCreate(String message,int wizardId ,recepient,bool send_mail) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
 
@@ -4065,7 +4133,7 @@ followerCreate(String message,int wizardId ,recepient,bool send_mail) async {
 
 getNotificationActivity() async {
   String token = await getUserJwt();
-
+  String baseUrl= await getUrlString();
   var data;
   String? authresponce;
 
@@ -4094,6 +4162,7 @@ getNotificationActivity() async {
 
 getNotificationMessageActivity() async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -4120,6 +4189,7 @@ getNotificationMessageActivity() async {
 
 getNotificationCount() async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
 
   var data;
   String? authresponce;
@@ -4148,6 +4218,7 @@ getNotificationCount() async {
 
 EmojiReaction(String reaction,int logId) async {
   String token = await getUserJwt();
+  String baseUrl= await getUrlString();
   String? resMessage, resMessageText;
 
   var data;
@@ -4213,6 +4284,11 @@ getUserJwt() async {
   return stringValue;
 }
 
+getUrlString() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? stringValue = prefs.getString('baseurl');
+  return stringValue;
+}
 getUserCompanyData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String? stringValue = prefs.getString('multiCompany');

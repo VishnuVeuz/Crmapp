@@ -62,6 +62,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
 
   Future<void> fetchData(data) async {
     token = await getUserJwt();
+    String baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

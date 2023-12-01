@@ -70,6 +70,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
   Future<void> fetchData(data) async {
     token = await getUserJwt();
+    String baseUrl= await getUrlString();
     String dataa;
 
     print(token);

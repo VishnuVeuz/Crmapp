@@ -67,6 +67,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
     print("fetchData1");
     print(data);
     token = await getUserJwt();
+    String baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

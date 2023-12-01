@@ -59,7 +59,7 @@ class _LeadCreationState extends State<LeadCreation> {
   final _formKey = GlobalKey<FormState>();
 
   late String rtaingValue = "0";
-  String? token;
+  String? token, baseUrl;
 
   bool _isInitialized = false;
   List tags = [];
@@ -2073,6 +2073,7 @@ class _LeadCreationState extends State<LeadCreation> {
     try{
 
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data =  await defaultDropdown("crm.lead");
     setState(() {
       print(data);
@@ -2128,6 +2129,7 @@ class _LeadCreationState extends State<LeadCreation> {
   void getLeadDetails() async{
 
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

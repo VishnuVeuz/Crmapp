@@ -91,7 +91,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
   TextEditingController internalnotesController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  String? token;
+  String? token,baseUrl;
   List tags = [];
   List selctedTag = [];
   List<ValueItem> editTagName = [];
@@ -752,6 +752,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     List<Tuple2<String, String>>? filters,
                                     int? pageNb) async {
                                   token = await getUserJwt();
+                                   baseUrl= await getUrlString();
                                   Response response = await get(
                                     Uri.parse(
                                         "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),
@@ -1477,6 +1478,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   List<Tuple2<String, String>>? filters,
                                   int? pageNb) async {
                                 token = await getUserJwt();
+                                 baseUrl= await getUrlString();
                                 Response response = await get(
                                   Uri.parse(
                                       "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.lang"),
@@ -1579,6 +1581,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   List<Tuple2<String, String>>? filters,
                                   int? pageNb) async {
                                 token = await getUserJwt();
+                                 baseUrl= await getUrlString();
                                 Response response = await get(
                                   Uri.parse(
                                       "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
@@ -3135,6 +3138,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               List<Tuple2<String, String>>? filters,
                               int? pageNb) async {
                             token = await getUserJwt();
+                             baseUrl= await getUrlString();
                             Response response = await get(
                               Uri.parse(
                                   "${baseUrl}api/common_dropdowns?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=res.partner.title"),
@@ -3498,6 +3502,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
 
     messageCount = notificationMessage['message_count'].toString();
     token = await getUserJwt();
+     baseUrl= await getUrlString();
 
     setState(() {
       _isInitialized = true;
@@ -3803,6 +3808,7 @@ try{
 
   void getCustomerDetails() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data = await getCustomerDefaultData(widget.customnerId, "");
     setState(() {
       personImg= (data['image_1920']??"").toString();

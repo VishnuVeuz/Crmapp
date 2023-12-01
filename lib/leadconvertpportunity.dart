@@ -277,7 +277,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
   dynamic salespersonName,salespersonId,salesteamName,customerName,customerId,
       salesteamId,companyId,leadconvertId;
 
-  String? token;
+  String? token, baseUrl;
 
 
   @override
@@ -784,6 +784,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
   void convertLeadData() async{
 
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data =  await convertleadDataGet(widget.leadId,"convert");
     setState(() {
       leadconvertId = data['id']??null;
@@ -838,7 +839,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
   List tabledataId=[];
   late merge_exist_opportunity leadDuplicateId;
 
-  String? token;
+  String? token,  baseUrl;
   bool isLoading = true;
 
 
@@ -1261,6 +1262,8 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
   void convertLeadData() async{
 
     token = await getUserJwt();
+     baseUrl= await getUrlString();
+
     var data =  await convertleadDataGet(widget.leadId,"convert");
     setState(() {
       leadconvertId = data['id']??null;

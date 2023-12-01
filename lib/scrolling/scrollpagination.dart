@@ -94,6 +94,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
     print("lead fetch");
     token = await getUserJwt();
+    String baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

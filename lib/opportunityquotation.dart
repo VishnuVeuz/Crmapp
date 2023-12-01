@@ -78,7 +78,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
       sourceId,
       campaignName,
       campaignId;
-  String? token;
+  String? token,  baseUrl;
   List tags = [];
   List selctedTag = [];
   List<ValueItem> editTagName = [];
@@ -2495,6 +2495,7 @@ Future<void> _selectDate(BuildContext context) async {
 
 void defaultvalues() async {
   token = await getUserJwt();
+   baseUrl= await getUrlString();
   var data = await defaultDropdown("sale.order");
 
   print(data);
@@ -2598,6 +2599,7 @@ void defaultvalues() async {
 
 void getOpportunityDetails() async {
   token = await getUserJwt();
+   baseUrl= await getUrlString();
   var notificationMessage  = await getNotificationCount();
 
   notificationCount = notificationMessage['activity_count'].toString();

@@ -69,7 +69,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
   bool _isInitialized = false;
   int? company_type, meetingCount, opportunityCount;
   bool? customerType;
-  String? radioInput, customerImage, token;
+  String? radioInput, customerImage, token, baseUrl;
   List addNewCustomer = [];
   Map<String, dynamic>? addNewCustomerData;
   List? tagss = [];
@@ -13681,6 +13681,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
   getCustomerDetails() async {
     String tokens = await getUserJwt();
+     baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
@@ -13760,6 +13761,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
   defaultScheduleValues() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
 
     var data = await defaultScheduleData(widget.customerId, "res.partner");
     print(data['activity_type_id']);
@@ -14877,6 +14879,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
     recipient!.clear();
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data = await defaultSendmessageData(
         widget.customerId, "res.partner", selectedIds);
     setState(() {
@@ -16651,6 +16654,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
                       token = await getUserJwt();
+                      baseUrl= await getUrlString();
                       Response response = await get(
                         Uri.parse(
                             "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),

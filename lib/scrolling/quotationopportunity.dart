@@ -51,6 +51,7 @@ class _QuotationScrollingopportunityState extends State<QuotationScrollingopport
 
   Future<void> fetchData() async {
     token = await getUserJwt();
+    String baseUrl= await getUrlString();
     print(token);
     print(_numberOfLeadModelsPerRequest);
     print(_pageNumber);

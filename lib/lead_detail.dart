@@ -249,7 +249,7 @@ class _LeadDetailState extends State<LeadDetail> {
     // });
   }
 
-  String? token;
+  String? token, baseUrl;
 
   String? _taskId;
   String? _localPath;
@@ -10514,6 +10514,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   getLeadDetails() async {
     token = await getUserJwt();
+    baseUrl= await getUrlString();
     var notificationMessage = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
@@ -10586,7 +10587,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
   defaultScheduleValues() async {
     token = await getUserJwt();
-
+     baseUrl= await getUrlString();
     var data = await defaultScheduleData(widget.leadId, "crm.lead");
     print(data['activity_type_id']);
     print("hgchgvhjb");
@@ -10639,6 +10640,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
     recipient!.clear();
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data =
         await defaultSendmessageData(widget.leadId, "crm.lead", selectedIds);
     setState(() {
@@ -11212,6 +11214,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
                       token = await getUserJwt();
+                       baseUrl= await getUrlString();
                       Response response = await get(
                         Uri.parse(
                             "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),

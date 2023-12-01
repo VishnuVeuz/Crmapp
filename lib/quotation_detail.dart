@@ -211,7 +211,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
     FlutterDownloader.registerCallback(downloadCallback);
   }
 
-  String? token;
+  String? token, baseUrl;
   String? _taskId;
   String? _localPath;
 
@@ -14011,6 +14011,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   getQuotationDetails() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();
@@ -15318,6 +15319,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
   defaultScheduleValues() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
 
     var data = await defaultScheduleData(widget.quotationId, "sale.order");
     print(data['activity_type_id']);
@@ -15366,6 +15368,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
 
     recipient!.clear();
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data = await defaultSendmessageData(
         widget.quotationId, "sale.order", selectedIds);
     setState(() {
@@ -16950,6 +16953,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         List<Tuple2<String, String>>? filters,
                         int? pageNb) async {
                       token = await getUserJwt();
+                       baseUrl= await getUrlString();
                       Response response = await get(
                         Uri.parse(
                             "${baseUrl}api/customers?page_no=${pageNb ?? 1}&count=10${keyword == null ? "" : "&filter=$keyword"}&model=partner"),

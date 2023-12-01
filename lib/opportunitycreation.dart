@@ -90,7 +90,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
   Map<String, dynamic>? orderLineProductsData;
 
   late String rtaingValue = "0";
-  String? token;
+  String? token, baseUrl;
   bool _isInitialized = false;
 
   bool _isInitialized1 = false;
@@ -2593,6 +2593,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
     try{
     token = await getUserJwt();
+     baseUrl= await getUrlString();
       var data = await defaultDropdown("crm.lead");
     setState(() {
       print(data);
@@ -2777,6 +2778,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
   void getOpportunityDetails() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var notificationMessage = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

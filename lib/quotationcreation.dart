@@ -87,7 +87,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
       sourceId,
       campaignName,
       campaignId;
-  String? token;
+  String? token, baseUrl;
   List tags = [];
   List selctedTag = [];
   List<ValueItem> editTagName = [];
@@ -2560,6 +2560,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
     try{
 
     token = await getUserJwt();
+     baseUrl= await getUrlString();
    var data = await defaultDropdown("sale.order");
 
     print(data);
@@ -2753,6 +2754,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
   void getQuotationDetails() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var notificationMessage  = await getNotificationCount();
 
     notificationCount = notificationMessage['activity_count'].toString();

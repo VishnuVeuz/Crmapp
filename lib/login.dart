@@ -103,7 +103,7 @@ CRM made easy.
                         ),
                       ),
                       Visibility(
-                        visible: false,
+                        visible: true,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10),
                           child: Row(
@@ -240,9 +240,10 @@ CRM made easy.
                               onPressed: () async {
 
 
-                                String userName,passWord,dbId;
+                                String userName,passWord,dbId,urlName;
                                 userName = emailController.text.toString();
                                 passWord = passwordController.text.toString();
+                                urlName = urlController.text.toString();
                            // dbId = "Flutter_API";
                                // local
 
@@ -255,7 +256,7 @@ CRM made easy.
 
                                 // live server db by afna
                                 dbId=  "VEUZ_FLUTTER_TEST";
-                                String logindata = await login(userName,passWord,dbId);
+                                String logindata = await login(userName,passWord,urlName);
 
 
 

@@ -64,6 +64,7 @@ class _CalendarAddState extends State<CalendarAdd> {
   List selctedPartnerName = [];
   List<ValueItem> editPartnerName = [];
   String? token;
+  String? baseUrl;
   bool isCheckedAllday = false;
   bool durationVisibility = true;
   List tags = [];
@@ -1139,6 +1140,7 @@ class _CalendarAddState extends State<CalendarAdd> {
   void defaultvalues() async{
 try {
   token = await getUserJwt();
+   baseUrl= await getUrlString();
   var data = await defaultDropdownCalendar();
   setState(() {
     print(data);
@@ -1290,6 +1292,7 @@ try {
 
   void getCalendarDetails() async {
     token = await getUserJwt();
+     baseUrl= await getUrlString();
     var data = await getCalendarData(widget.calendarId);
 
     print(data);
