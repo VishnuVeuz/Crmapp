@@ -9781,12 +9781,14 @@ class _LeadDetailState extends State<LeadDetail> {
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
-
+                        postProvider?.fetchPosts(widget.leadId);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
                               _buildOrderPopupDialog(context, 0),
                         ).then((value) => setState(() {}));
+                        //postProvider?.fetchPosts(widget.leadId);
+
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -9821,7 +9823,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           setState(() {
                             Navigator.pop(context);
                           });
-                          //postProvider?.fetchPosts(widget.leadId);
+                          postProvider?.fetchPosts(widget.leadId);
                         }
                       },
                       style: ElevatedButton.styleFrom(

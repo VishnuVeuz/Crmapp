@@ -15777,7 +15777,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
-
+                        postProvider?.fetchPosts(widget.customerId);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
@@ -15816,6 +15816,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           setState(() {
                             Navigator.pop(context);
                           });
+                          postProvider?.fetchPosts(widget.customerId);
                         }
                       },
                       style: ElevatedButton.styleFrom(

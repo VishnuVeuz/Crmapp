@@ -14785,7 +14785,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
-
+                        postProvider?.fetchPosts(widget.quotationId);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
@@ -14823,6 +14823,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           setState(() {
                             Navigator.pop(context);
                           });
+                          postProvider?.fetchPosts(widget.quotationId);
                         }
                       },
                       style: ElevatedButton.styleFrom(

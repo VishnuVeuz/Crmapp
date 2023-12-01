@@ -9238,7 +9238,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                         feedbackController.text = "";
                         Navigator.pop(context);
                         await getScheduleDetails();
-
+                        postProvider?.fetchPosts(widget.opportunityId);
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
@@ -9277,6 +9277,8 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                           setState(() {
                             Navigator.pop(context);
                           });
+                          postProvider?.fetchPosts(widget.opportunityId);
+
                         }
                       },
                       style: ElevatedButton.styleFrom(
