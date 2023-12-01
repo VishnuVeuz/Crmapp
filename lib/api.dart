@@ -48,6 +48,14 @@ login(String email, password, urlName) async {
       body: msg,
     );
 
+
+    if (response.statusCode != 200) {
+print("data11");
+    }
+    else {
+
+      print("data12");
+
     var data = jsonDecode(response.body.toString());
 
     authresponce = data['result'].toString();
@@ -64,7 +72,9 @@ login(String email, password, urlName) async {
 
       multiCompany = data['result']['data']['companies'];
 
-      companyId =data['result']['data']['user_name']['company_id'].length>0? data['result']['data']['user_name']['company_id'][0].toString():"";
+      companyId = data['result']['data']['user_name']['company_id'].length > 0
+          ? data['result']['data']['user_name']['company_id'][0].toString()
+          : "";
       print(companyId);
 
 
@@ -72,14 +82,23 @@ login(String email, password, urlName) async {
       print(jsonListmultiCompany);
       print(multiCompany);
       print("dhdhdhdhdhdh");
-      addUserStringToSF(personName, personMobile, personMail, personJwt,
-          jsonListmultiCompany,companyId,urlString);
+      addUserStringToSF(
+          personName,
+          personMobile,
+          personMail,
+          personJwt,
+          jsonListmultiCompany,
+          companyId,
+          urlString);
     }
 
     if (resMessage == "error") {
       resMessageText = data['result']['data'].toString();
     }
+  }
   } catch (e) {
+    print("data13");
+    resMessageText="error";
     print(e.toString());
   }
 

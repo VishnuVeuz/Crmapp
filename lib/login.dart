@@ -291,7 +291,7 @@ CRM made easy.
                                 }
                                 else{
                                   print("test3");
-                                  const snackBar = SnackBar(  content: Text('Something Went Wrong.'),
+                                  const snackBar = SnackBar(  content: Text('Something Went Wrong Please check the Url.'),
                                     backgroundColor: Colors.blueGrey,);
                                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                 }
