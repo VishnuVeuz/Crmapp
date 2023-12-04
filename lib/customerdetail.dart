@@ -15650,7 +15650,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 attachmentCount = resMessage['data']['att_count'].toString();
                                 logDataHeader.clear();
                                 logDataTitle.clear();
-                                selectedImagesDisplay.clear();
+
+                                if(selectedImagesDisplay!=null) {
+                                  if (selectedImagesDisplay.length > 0) {
+                                    selectedImagesDisplay.clear();
+                                  }
+                                }
+
                                 lognoteController.text = "";
                                 selectedImages.clear();
                                 myData1.clear();
