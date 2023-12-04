@@ -619,6 +619,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         children: [
                                                           InkWell(
                                                             onTap: () async {
+
+                                                              try{
                                                               var data =
                                                                   await getLeadData(
                                                                       widget
@@ -661,6 +663,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 LeadCreation(resmessagevalue)),
                                                                   );
                                                                 }
+                                                              }
+                                                              } catch (e) {
+                                                                errorMethod(e);
                                                               }
                                                             },
                                                             child: SvgPicture

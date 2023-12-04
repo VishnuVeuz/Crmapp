@@ -195,7 +195,7 @@ getLeadData(int leadId, String value) async {
   String dd= "${baseUrl}api/lead/${leadId}?action=${value}";
 print(dd);
 print("finaldd");
-
+try{
   Response response = await get(
     Uri.parse("${baseUrl}api/lead/${leadId}?action=${value}"),
     headers: {
@@ -206,17 +206,23 @@ print("finaldd");
   ));
 
   if (response.statusCode != 200) {
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
     throw Exception("failed to get data from internet");
   } else {
     data = jsonDecode(response.body);
-
+    return data;
 
   }
+} catch (e) {
+print(e.toString());
+throw Exception(data['message']);
+}
 
   print(data);
   print("data");
 
-  return data;
+  //return data;
 }
 
 convertleadDataGet(int leadId, String value) async {
@@ -1179,7 +1185,7 @@ getOpportunityData(int opportunityId, String value) async {
 print("${baseUrl}api/opportunity/${opportunityId}?action=${value}");
 print("fsfsdsfds");
 
-
+try{
   Response response = await get(
     Uri.parse("${baseUrl}api/opportunity/${opportunityId}?action=${value}"),
     headers: {
@@ -1190,13 +1196,19 @@ print("fsfsdsfds");
   ));
 
   if (response.statusCode != 200) {
-    throw Exception("failed to get data from internet");
+    data = jsonDecode(response.body);
+    throw Exception(data['message']);
+    //throw Exception("failed to get data from internet");
   } else {
     data = jsonDecode(response.body);
+    return data;
   }
 
+} catch (e) {
+  print(e.toString());
+  throw Exception(data['message']);
+}
 
-  return data;
 }
 
 getOpportunityTypes() async {
