@@ -6383,6 +6383,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   size: 8,
                                                 );
 
+                                                  print("${  item['image']}?token=${token}");
+                                                  print("imageeeeeeee");
                                                 return Card(
                                                   color: Color(0xFFF5F5F5),
                                                   //elevation: 1,
@@ -6416,7 +6418,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 image: DecorationImage(
                                                                   fit: BoxFit.cover,
                                                                   image: NetworkImage(
-                                                                      "${  item['image']}?token=${token}"),
+                                                                      "${item['image']}?token=${token}"),
                                                                 ),
                                                               ),
                                                               child: Align(
@@ -9048,6 +9050,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           .toString();
                                       logDataHeader.clear();
                                       logDataTitle.clear();
+                                      logDataTitle.clear();
 
                                       if(selectedImagesDisplay!=null) {
                                         if (selectedImagesDisplay.length > 0) {
@@ -9061,6 +9064,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       recipient?.clear();
                                       selctedRecipient.clear();
                                     });
+                                    postProvider?.fetchPosts(widget.leadId);
 
                                     Navigator.pop(context);
                                   }

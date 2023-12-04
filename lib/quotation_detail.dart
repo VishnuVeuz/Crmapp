@@ -15882,6 +15882,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 selctedRecipient.clear();
                               });
 
+                              postProvider?.fetchPosts(widget.quotationId);
                               Navigator.pop(context);
                             }
                             print(recipient);

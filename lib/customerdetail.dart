@@ -15664,7 +15664,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 recipient?.clear();
                                 selctedRecipient.clear();
                               });
-
+                              postProvider?.fetchPosts(widget.customerId);
                               Navigator.pop(context);
                             }
 

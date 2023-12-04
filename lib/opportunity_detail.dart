@@ -11075,6 +11075,7 @@ class _OpportunityDetailState extends State<OpportunityDetail>{
                                 recipient?.clear();
                                 selctedRecipient.clear();
                               });
+                              postProvider?.fetchPosts(widget.opportunityId);
                               Navigator.pop(context);
 
                               print(recipient);
