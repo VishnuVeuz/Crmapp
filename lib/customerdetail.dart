@@ -6239,6 +6239,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                             .start,
 
                                                         children: [
+                                                          // item['image']==""?
                                                           Container(
                                                             // group20507jZA (1636:7)
                                                             padding: EdgeInsets.fromLTRB(
@@ -6273,6 +6274,65 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                               ),
                                                             ),
                                                           ),
+
+                                                          // Stack(
+                                                          //   children: [
+                                                          //     Container(
+                                                          //
+                                                          //       width: 35,
+                                                          //       height:
+                                                          //       35,
+                                                          //       decoration:
+                                                          //       BoxDecoration(
+                                                          //         color: Colors
+                                                          //             .blue, // Replace with your desired background color
+                                                          //         shape: BoxShape
+                                                          //             .circle,
+                                                          //       ),
+                                                          //       child:
+                                                          //       Center(
+                                                          //         child:
+                                                          //         Text(
+                                                          //
+                                                          //           item['create_uid'][1][0],
+                                                          //           style:
+                                                          //           TextStyle(
+                                                          //             color:
+                                                          //             Colors.white,
+                                                          //             fontWeight:
+                                                          //             FontWeight.bold,
+                                                          //             fontSize:
+                                                          //             18,
+                                                          //           ),
+                                                          //         ),
+                                                          //       ),
+                                                          //     ),
+                                                          //     Positioned(
+                                                          //       bottom: 0,
+                                                          //       right: 5,
+                                                          //       child:
+                                                          //       Container(
+                                                          //         width:
+                                                          //         7,
+                                                          //         height:
+                                                          //         7,
+                                                          //         decoration:
+                                                          //         BoxDecoration(
+                                                          //           borderRadius:
+                                                          //           BorderRadius.circular(3),
+                                                          //           border:
+                                                          //           Border.all(color: Color(0xffffffff)),
+                                                          //           color:
+                                                          //           Color(0xff167b33),
+                                                          //         ),
+                                                          //       ),
+                                                          //     ),
+                                                          //   ],
+                                                          // ),
+
+
+
+
                                                           Expanded(
                                                             child: Container(
 

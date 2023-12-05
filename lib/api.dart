@@ -3735,6 +3735,7 @@ smsDataGet(int resId,String resmodel) async {
   String token = await getUserJwt();
   String baseUrl= await getUrlString();
   var responseList;
+  print("${baseUrl}api/sms?res_model=${resmodel}&res_id=${resId}");
 
   try {
 
