@@ -363,7 +363,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: customerName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print("customer");
@@ -486,7 +486,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: titleName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   titleName = value;
@@ -670,7 +670,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   countryName = value;
@@ -781,7 +781,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: stateName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -934,7 +934,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: languageName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1166,7 +1166,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: pricelistName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   pricelistName = value;
@@ -1266,7 +1266,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: campanyName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1378,7 +1378,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: salespersonName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1491,7 +1491,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: salesteamName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1732,7 +1732,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: campaignName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1848,7 +1848,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
 
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1961,7 +1961,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               value: sourceName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -2934,7 +2934,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       value: productTiltleName,
 
                       searchHint: null,
-                      autofocus: false,
+                      autofocus: true,
                       onChanged: (value) async {
                         setState(() {
 
@@ -3069,7 +3069,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                       value: productUomName,
 
                       searchHint: null,
-                      autofocus: false,
+                      autofocus: true,
                       onChanged: (value) {
                         setState(() {
                           print(value['capital']);

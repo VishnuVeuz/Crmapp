@@ -313,7 +313,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: customerName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) async {
                                 setState(() {
                                   print("customer");
@@ -420,7 +420,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: quotationtemplateName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   quotationtemplateName = value;
@@ -544,7 +544,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: pricelistName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   pricelistName = value;
@@ -644,7 +644,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: paymenttermsName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   paymenttermsName = value;
@@ -752,7 +752,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -847,7 +847,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: salesteamName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -947,7 +947,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: companyName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1222,6 +1222,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                                   ),
                                 );
                               }).toList(),
+                              autofocus: true,
                               value: dropdownValue,
                               onChanged: (value) {
                                 setState(() {
@@ -1294,7 +1295,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1402,7 +1403,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
 
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1499,7 +1500,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: mediumName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   mediumName = value;
@@ -1590,7 +1591,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                               value: sourceName,
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   sourceName = value;
@@ -2934,7 +2935,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           value: productTiltleName,
 
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) async {
                             setState(() {
 
@@ -3074,7 +3075,7 @@ class _QuotationCreationState extends State<QuotationCreation> {
                           value: productUomName,
 
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) {
                             setState(() {
                               print(value['capital']);

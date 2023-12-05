@@ -1780,23 +1780,6 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     smartbuttonPosition = index;
                                                   });
 
-                                                  // print(
-                                                  //     leadStageTypes[index]['name']);
-                                                  // print(leadStageTypes[index]['id']);
-                                                  // print("print(opportunityStageTypes");
-                                                  // String resmessage =
-                                                  // await StageChangeLead(
-                                                  //     leadStageTypes[index]
-                                                  //     ['id']);
-                                                  // int resmessagevalue =
-                                                  // int.parse(resmessage);
-                                                  // if (resmessagevalue != 0) {
-                                                  //   setState(() {
-                                                  //     stageColorIndex = index;
-                                                  //   });
-                                                  //
-                                                  //
-                                                  // }
                                                 },
                                               ),
                                             ],
@@ -8014,7 +7997,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     //   ),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -8214,7 +8197,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           //   ),
                           // ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) async {
                             setState(() {
                               print(value['capital']);
@@ -8947,7 +8930,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -11239,7 +11222,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onClear: () {
                       setState(() {
                         //cmpbasedVisible = true;

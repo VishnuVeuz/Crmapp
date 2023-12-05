@@ -13856,7 +13856,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     value: activityTypeName,
 
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -14018,7 +14018,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             ),
                           ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) async {
                             setState(() {
                               print(value['capital']);
@@ -15486,7 +15486,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ),
                     ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -16620,7 +16620,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onClear: () {
                       setState(() {
                         //cmpbasedVisible = true;

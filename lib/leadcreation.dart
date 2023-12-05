@@ -345,7 +345,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 //   style: TextStyle(fontSize: 5, color: Colors.black,fontFamily: 'Mulish'),),
                                 searchHint: null,
 
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
 
                                   setState(() {
@@ -541,7 +541,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -661,7 +661,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: stateName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -827,7 +827,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: languageName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1063,7 +1063,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: campanyName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1184,7 +1184,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: salespersonName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1303,7 +1303,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: salesteamName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1580,7 +1580,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: campaignName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1703,7 +1703,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: mediumName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);
@@ -1822,7 +1822,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                 value: sourceName,
 
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onChanged: (value) {
                                   setState(() {
                                     print(value['capital']);

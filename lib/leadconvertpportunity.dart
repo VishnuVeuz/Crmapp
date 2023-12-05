@@ -330,14 +330,36 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 0, vertical: 0),
                         child: SearchChoices.single(
+
                           //items: items,
+
+                          // fieldPresentationFn: (Widget fieldWidget, {bool? selectionIsValid}) {
+                          //   return Container(
+                          //     padding: const EdgeInsets.all(0),
+                          //     child: InputDecorator(
+                          //       decoration: InputDecoration(
+                          //         enabledBorder:  UnderlineInputBorder(
+                          //           borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
+                          //         ),
+                          //         labelText:'Salesperson',
+                          //         isDense: true,
+                          //         labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                          //         fillColor: Colors.white,
+                          //
+                          //       ),
+                          //       child: fieldWidget,
+                          //     ),
+                          //   );
+                          // },
+
                           value: salespersonName,
                           hint: Text("Salesperson",
                             style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
 
                           underline: SizedBox(),
                           searchHint: null,
-                          autofocus: false,
+
+                          autofocus: true,
                           onChanged: (value) {
                             setState(() {
                               print(value['capital']);
@@ -445,7 +467,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
                           underline: SizedBox(),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) {
                             setState(() {
                               print(value['capital']);
@@ -622,7 +644,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                               style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14),),
 
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value);
@@ -943,7 +965,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                         style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
                       underline: SizedBox(),
                       searchHint: null,
-                      autofocus: false,
+                      autofocus: true,
                       onChanged: (value) {
                         setState(() {
                           print(value['capital']);
@@ -1050,7 +1072,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                         style: TextStyle(fontSize: 12, color: Colors.black ,fontFamily: 'Mulish'),),
                       underline: SizedBox(),
                       searchHint: null,
-                      autofocus: false,
+                      autofocus: true,
                       onChanged: (value) {
                         setState(() {
                           print(value['capital']);

@@ -674,7 +674,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Mulish'),
                                                                                   ),
                                                                                   searchHint: null,
-                                                                                  autofocus: false,
+                                                                                  autofocus: true,
                                                                                   onChanged: (value) {
                                                                                     setState(() {
                                                                                       lostreasonName = value;
@@ -2188,24 +2188,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     smartbuttonSaveVisible = true;
                                                     smartbuttonPosition = index;
                                                   });
-                                                  // print(opportunityStageTypes[index]
-                                                  //     ['name']);
-                                                  // print(opportunityStageTypes[index]
-                                                  //     ['id']);
-                                                  // print(
-                                                  //     "print(opportunityStageTypes");
-                                                  // String resmessage =
-                                                  //     await StageChangeOpportunity(
-                                                  //         opportunityStageTypes[
-                                                  //             index]['id']);
-                                                  // int resmessagevalue =
-                                                  //     int.parse(resmessage);
-                                                  // if (resmessagevalue != 0) {
-                                                  //   setState(() {
-                                                  //     stageColorIndex = index;
-                                                  //   });
-                                                  //
-                                                  // }
+
                                                 },
                                               ),
                                             ],
@@ -8698,7 +8681,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -8893,7 +8876,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           //       color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
                           // ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) async {
                             setState(() {
                               print(value['capital']);
@@ -10971,7 +10954,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       ),
                     ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -11650,7 +11633,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     value: schedulecompanyName,
 
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onClear: () {
                       setState(() {
                         //cmpbasedVisible = true;

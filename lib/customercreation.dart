@@ -710,7 +710,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                                 // ),
                                 searchHint: null,
-                                autofocus: false,
+                                autofocus: true,
                                 onClear: () {
                                   setState(() {
                                     cmpbasedVisible = true;
@@ -889,7 +889,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               // ),
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: cmpbasedVisible
                                   ? (value) {
                                 setState(() {
@@ -1002,7 +1002,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: cmpbasedVisible
                                   ? (value) {
                                 setState(() {
@@ -1159,7 +1159,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               // ),
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: cmpbasedVisible
                                   ? (value) {
                                 setState(() {
@@ -1440,7 +1440,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: cmpbasedVisible
                                   ? (value) {
                                 setState(() {
@@ -1545,7 +1545,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1755,7 +1755,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               // ),
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -1867,7 +1867,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   paymenttermsName = value;
@@ -1966,7 +1966,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                               // ),
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   pricelistName = value;
@@ -2079,7 +2079,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               // ),
 
                               searchHint: null,
-                              autofocus: false,
+                              autofocus: true,
                               onChanged: (value) {
                                 setState(() {
                                   print(value['capital']);
@@ -2838,7 +2838,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           // ),
 
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onTap: cmpbasedVisible ? () {} : null,
                           onChanged: (value) {
                             setState(() {
@@ -2956,7 +2956,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           //   style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                           // ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) {
                             setState(() {
                               print(value['capital']);
@@ -3101,7 +3101,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           //   style: TextStyle(fontSize: 10, color: Colors.black,fontFamily: 'Mulish'),
                           // ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) {
                             setState(() {
                               print(value['capital']);

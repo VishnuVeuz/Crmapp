@@ -289,7 +289,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) async {
                               setState(() {
                                 print("customer");
@@ -400,7 +400,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 quotationtemplateName = value;
@@ -522,7 +522,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 pricelistName = value;
@@ -623,7 +623,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 paymenttermsName = value;
@@ -733,7 +733,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             // ),
 
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value['capital']);
@@ -827,7 +827,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             value: salesteamName,
 
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value['capital']);
@@ -923,7 +923,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value['capital']);
@@ -1274,7 +1274,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             // ),
 
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value['capital']);
@@ -1385,7 +1385,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             // ),
 
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 print(value['capital']);
@@ -1484,7 +1484,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 mediumName = value;
@@ -1577,7 +1577,7 @@ class _OpportunityQuotationState extends State<OpportunityQuotation> {
                             //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                             // ),
                             searchHint: null,
-                            autofocus: false,
+                            autofocus: true,
                             onChanged: (value) {
                               setState(() {
                                 sourceName = value;
@@ -2770,7 +2770,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                     //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -2913,7 +2913,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
                     //   style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) {
                       setState(() {
                         print(value['capital']);

@@ -14189,7 +14189,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     //   ),
                     // ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -14374,7 +14374,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                           //   ),
                           // ),
                           searchHint: null,
-                          autofocus: false,
+                          autofocus: true,
                           onChanged: (value) async {
                             setState(() {
                               print(value['capital']);
@@ -15714,7 +15714,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ),
                     ),
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onChanged: (value) async {
                       setState(() {
                         print(value['capital']);
@@ -16923,7 +16923,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                     value: schedulecompanyName,
 
                     searchHint: null,
-                    autofocus: false,
+                    autofocus: true,
                     onClear: () {
                       setState(() {
                         //cmpbasedVisible = true;

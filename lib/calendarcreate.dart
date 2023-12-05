@@ -593,7 +593,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       // ),
 
                                       searchHint: null,
-                                      autofocus: false,
+                                      autofocus: true,
                                       onChanged: (value) {
                                         setState(() {
                                           print(value);
