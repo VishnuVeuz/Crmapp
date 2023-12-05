@@ -3032,7 +3032,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   salespersonimg != ""
                                       ? Padding(
@@ -3081,9 +3081,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   ),
                                   Padding(
                                     padding:
-                                    const EdgeInsets.only(left: 15, right: 20),
+                                    const EdgeInsets.only(left: 15, right: 24),
                                     child: Container(
-                                      width:mediaQueryData.size.width / 1.33,
+                                      width:mediaQueryData.size.width / 1.3,
                                       //height: 46,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
@@ -3244,7 +3244,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 ),
                               ),
                               Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 60),
@@ -3259,9 +3259,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 27,top: 3),
+                                    padding: const EdgeInsets.only(right: 25,top: 3),
                                     child: SizedBox(
-                                      width: 270,
+                                      //width: 270,
+                                      width:mediaQueryData.size.width / 1.5,
                                       height: 30,
                                       child: ElevatedButton(
                                           child:Center(
@@ -3355,7 +3356,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   salespersonimg != ""
                                       ? Padding(
@@ -3404,10 +3405,10 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   ),
                                   Padding(
                                     padding:
-                                    const EdgeInsets.only(left: 15, right: 20),
+                                    const EdgeInsets.only(left: 15, right: 24),
                                     child: Container(
 
-                                      width:mediaQueryData.size.width / 1.34,
+                                      width:mediaQueryData.size.width / 1.3,
                                       //height: 46,
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.all(
@@ -3568,7 +3569,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                 ),
                               ),
                               Row(
-                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 60),
@@ -3585,7 +3586,9 @@ class _QuotationDetailState extends State<QuotationDetail> {
                                   Padding(
                                     padding: const EdgeInsets.only(right: 25,top: 3),
                                     child: SizedBox(
-                                      width: 270,
+                                     // width: 270,
+                                      width: mediaQueryData.size.width /
+                                          1.5,
                                       height: 30,
                                       child: ElevatedButton(
                                           child: Center(
@@ -16364,10 +16367,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ],
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon:SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {});
 
@@ -16394,7 +16394,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
-                                  activeColor: Color(0xFFF9246A),
+                                  activeColor: Color(0xFF043565),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -16456,7 +16456,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),

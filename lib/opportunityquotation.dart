@@ -3296,7 +3296,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
@@ -3498,7 +3498,7 @@ _buildOrderPopupDialog(BuildContext context,int type, String productType) {
 
                               },
                               style: ElevatedButton.styleFrom(
-                                primary: Color(0xFFF9246A),
+                                primary: Color(0xFF043565),
                               )),
                         ),
                       ),
