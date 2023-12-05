@@ -2229,10 +2229,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           width:mediaQueryData.size.width,
                                           height: 30,
 
-                                          child: Center(child: Text("Mark Stage as Complete",style: TextStyle( fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13.57,
-                                              color: Colors.white),)),
+                                          child:  Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            SvgPicture.asset("images/whitetik.svg"),
+                                            Center(
+                                              child: Text("Mark Stage as Complete",style: TextStyle( fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Mulish',
+                                                  fontSize: 13.57,
+                                                  color: Colors.white),),
+                                            ),
+                                          ],
+                                        ),
                                         ),
                                       ),
                                     ),
