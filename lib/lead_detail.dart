@@ -9142,10 +9142,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ),
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {
                           templateName = null;
@@ -9400,10 +9397,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       ],
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {});
 
@@ -9432,7 +9426,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
-                                  activeColor: Color(0xFFF9246A),
+                                  activeColor: Color(0xFF043565),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -9494,7 +9488,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),

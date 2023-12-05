@@ -16364,10 +16364,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                       ],
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon:SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {});
 
@@ -16394,7 +16391,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
-                                  activeColor: Color(0xFFF9246A),
+                                  activeColor: Color(0xFF043565),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -16456,7 +16453,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),

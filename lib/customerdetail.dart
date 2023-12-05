@@ -15792,7 +15792,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFF9246A),
+                      primary: Color(0xFF043565),
                     )),
               ),
               Padding(
@@ -15826,7 +15826,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFF9246A),
+                        primary: Color(0xFF043565),
                       )),
                 ),
               ),
@@ -15976,10 +15976,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       ],
                     ),
                     IconButton(
-                      icon: Image.asset(
-                        "images/cross.png",
-                        color: Colors.black,
-                      ),
+                      icon: SvgPicture.asset("images/cr.svg"),
                       onPressed: () {
                         setState(() {});
 
@@ -16008,7 +16005,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Checkbox(
-                                  activeColor: Color(0xFFF9246A),
+                                  activeColor: Color(0xFF043565),
                                   value: isCheckedFollowers,
                                   onChanged: (bool? value) {
                                     setState(() {
@@ -16071,7 +16068,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            primary: Color(0xFFF9246A),
+                            primary: Color(0xFF043565),
                           )),
                     ),
                   ),

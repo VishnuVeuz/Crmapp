@@ -1469,7 +1469,6 @@ getOpportunityQuotationData(int opportunityId, String value) async {
     data = jsonDecode(response.body);
   }
 
-
   return data;
 }
 
