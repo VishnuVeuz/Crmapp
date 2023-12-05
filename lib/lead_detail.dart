@@ -1828,10 +1828,21 @@ class _LeadDetailState extends State<LeadDetail> {
                                       child: Padding(
                                         padding: const EdgeInsets.only(left:5, top: 5),
                                         child: Container(
+
+                                          decoration: BoxDecoration(
+                                              color: Color(0xFF9161D4),
+                                              border: Border.all(
+                                                color: Color(0xFF9161D4),
+                                              ),
+                                              borderRadius: BorderRadius.all(Radius.circular(5))
+                                          ),
                                           width:mediaQueryData.size.width,
                                           height: 30,
-                                          color: Colors.red,
-                                          child: Center(child: Text("Mark Stage as Complete")),
+
+                                          child: Center(child: Text("Mark Stage as Complete",style: TextStyle( fontWeight: FontWeight.w400,
+                                            fontFamily: 'Mulish',
+                                            fontSize: 13.57,
+                                          color: Colors.white),)),
                                         ),
                                       ),
                                     ),
