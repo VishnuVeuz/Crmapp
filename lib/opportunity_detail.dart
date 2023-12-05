@@ -129,11 +129,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       internalVisibility = true,
       otherinfoVisibility = false,
       smartbuttonVisible = true,
+      smartbuttonSaveVisible = false,
       starImage = false,
       lognoteoptions = true,
       lognoteVisibility = false,
       recipientsVisibility = false,
       followersVisibility = true;
+
+  int? smartbuttonPosition;
 
   int? scheduleViewIndex;
   int selectedItemIndex = -1;
@@ -2099,118 +2102,148 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: Padding(
                               padding:
                                   const EdgeInsets.only(left: 21, right: 25),
-                              child: Container(
-                                height: 50,
-                                // color: Colors.red,
-                                child: ListView.builder(
-                                  // physics: NeverScrollableScrollPhysics(),
-                                  //shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: opportunityStageTypes.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    print(index);
-                                    print("final indexxx");
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 5, top: 10),
-                                      child: Row(
-                                        children: [
-                                          InkWell(
-                                            child: Container(
-                                              // color: Colors.red,
-                                              //width: mediaQueryData.size.width/3,
-                                              width: mediaQueryData.size.width /
-                                                  4.1,
-                                              // height: 50,
-                                              child: Stack(
-                                                children: [
-                                                  index == 0
-                                                      ? stageColorIndex == index
-                                                          ? Image.asset(
-                                                              'images/bluebtnfirst.png')
-                                                          : Image.asset(
-                                                              'images/greenbtnfirst.png')
-                                                      : stageColorIndex == index
-                                                          ? Image.asset(
-                                                              'images/bluebtn.png')
-                                                          : stageColorIndex! >
-                                                                  index
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    // color: Colors.red,
+                                    child: ListView.builder(
+                                      // physics: NeverScrollableScrollPhysics(),
+                                      //shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: opportunityStageTypes.length ?? 0,
+                                      itemBuilder: (context, index) {
+                                        print(index);
+                                        print("final indexxx");
+                                        return Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 5, top: 10),
+                                          child: Row(
+                                            children: [
+                                              InkWell(
+                                                child: Container(
+                                                  // color: Colors.red,
+                                                  //width: mediaQueryData.size.width/3,
+                                                  width: mediaQueryData.size.width /
+                                                      4.1,
+                                                  // height: 50,
+                                                  child: Stack(
+                                                    children: [
+                                                      index == 0
+                                                          ? stageColorIndex == index
                                                               ? Image.asset(
-                                                                  'images/greenbtn.png')
+                                                                  'images/bluebtnfirst.png')
                                                               : Image.asset(
-                                                                  'images/greybtn.png'),
-                                                  Positioned.fill(
-                                                      child: Align(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          child: stageColorIndex ==
-                                                                      index ||
-                                                                  stageColorIndex! >
+                                                                  'images/greenbtnfirst.png')
+                                                          : stageColorIndex == index
+                                                              ? Image.asset(
+                                                                  'images/bluebtn.png')
+                                                              : stageColorIndex! >
                                                                       index
-                                                              ? Text(
-                                                                  opportunityStageTypes[
-                                                                          index]
-                                                                      ['name'],
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    fontSize:
-                                                                        11,
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                  ),
-                                                                )
-                                                              : Text(
-                                                                  opportunityStageTypes[
-                                                                          index]
-                                                                      ['name'],
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontSize:
-                                                                        11,
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                  ),
-                                                                )))
-                                                ],
+                                                                  ? Image.asset(
+                                                                      'images/greenbtn.png')
+                                                                  : Image.asset(
+                                                                      'images/greybtn.png'),
+                                                      Positioned.fill(
+                                                          child: Align(
+                                                              alignment:
+                                                                  Alignment.center,
+                                                              child: stageColorIndex ==
+                                                                          index ||
+                                                                      stageColorIndex! >
+                                                                          index
+                                                                  ? Text(
+                                                                      opportunityStageTypes[
+                                                                              index]
+                                                                          ['name'],
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            11,
+                                                                        fontFamily:
+                                                                            'Mulish',
+                                                                      ),
+                                                                    )
+                                                                  : Text(
+                                                                      opportunityStageTypes[
+                                                                              index]
+                                                                          ['name'],
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontSize:
+                                                                            11,
+                                                                        fontFamily:
+                                                                            'Mulish',
+                                                                      ),
+                                                                    )))
+                                                    ],
+                                                  ),
+                                                ),
+                                                onTap: () async {
+                                                  setState(() {
+                                                    smartbuttonSaveVisible = true;
+                                                    smartbuttonPosition = index;
+                                                  });
+                                                  // print(opportunityStageTypes[index]
+                                                  //     ['name']);
+                                                  // print(opportunityStageTypes[index]
+                                                  //     ['id']);
+                                                  // print(
+                                                  //     "print(opportunityStageTypes");
+                                                  // String resmessage =
+                                                  //     await StageChangeOpportunity(
+                                                  //         opportunityStageTypes[
+                                                  //             index]['id']);
+                                                  // int resmessagevalue =
+                                                  //     int.parse(resmessage);
+                                                  // if (resmessagevalue != 0) {
+                                                  //   setState(() {
+                                                  //     stageColorIndex = index;
+                                                  //   });
+                                                  //
+                                                  // }
+                                                },
                                               ),
-                                            ),
-                                            onTap: () async {
-                                              print(opportunityStageTypes[index]
-                                                  ['name']);
-                                              print(opportunityStageTypes[index]
-                                                  ['id']);
-                                              print(
-                                                  "print(opportunityStageTypes");
-                                              String resmessage =
-                                                  await StageChangeOpportunity(
-                                                      opportunityStageTypes[
-                                                          index]['id']);
-                                              int resmessagevalue =
-                                                  int.parse(resmessage);
-                                              if (resmessagevalue != 0) {
-                                                setState(() {
-                                                  stageColorIndex = index;
-                                                });
-
-                                                // Navigator.push(
-                                                //   context,
-                                                //   MaterialPageRoute(
-                                                //       builder: (context) =>
-                                                //           OpportunityDetail(
-                                                //               resmessagevalue)),
-                                                // );
-                                              }
-                                            },
+                                            ],
                                           ),
-                                        ],
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  Visibility(
+                                    visible: smartbuttonSaveVisible,
+                                    child: InkWell(
+                                      onTap: () async {
+                                        String resmessage =
+                                        await StageChangeOpportunity(
+                                            opportunityStageTypes[
+                                            smartbuttonPosition!]['id']);
+                                        int resmessagevalue =
+                                        int.parse(resmessage);
+                                        if (resmessagevalue != 0) {
+                                          setState(() {
+                                            stageColorIndex = smartbuttonPosition;
+                                            smartbuttonSaveVisible = false;
+                                          });
+
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left:5, top: 5),
+                                        child: Container(
+                                          width:mediaQueryData.size.width,
+                                          height: 30,
+                                          color: Colors.red,
+                                          child: Center(child: Text("Mark Stage as Complete")),
+                                        ),
                                       ),
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),

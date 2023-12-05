@@ -144,7 +144,10 @@ class _LeadDetailState extends State<LeadDetail> {
       starImage = false,
       lognoteEdit = false,
       smartbuttonVisible = true,
+      smartbuttonSaveVisible = false,
       lognoteoptions = true;
+
+  int? smartbuttonPosition;
 
   List leadStageTypes = [];
   int? leadStageId;
@@ -1700,99 +1703,140 @@ class _LeadDetailState extends State<LeadDetail> {
                             visible: smartbuttonVisible,
                             child: Padding(
                               padding: const EdgeInsets.only(left:21, right: 25),
-                              child: Container(
-                                height: 50,
-                                // color: Colors.red,
-                                child: ListView.builder(
-                                  // physics: NeverScrollableScrollPhysics(),
-                                  //shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemCount: leadStageTypes.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    print(index);
-                                    print("final indexxx");
-                                    return Padding(
-                                      padding: const EdgeInsets.only(left:5, top: 10),
-                                      child: Row(
-                                        children: [
-                                          InkWell(
-                                            child: Container(
-                                              // color: Colors.red,
-                                              //width: mediaQueryData.size.width/3,
-                                              width:mediaQueryData.size.width/4.1,
-                                              // height: 50,
-                                              child: Stack(
-                                                children: [
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: 50,
+                                     // color: Colors.red,
+                                    child: ListView.builder(
+                                      // physics: NeverScrollableScrollPhysics(),
+                                      //shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: leadStageTypes.length ?? 0,
+                                      itemBuilder: (context, index) {
+                                        print(index);
+                                        print("final indexxx");
+                                        return Padding(
+                                          padding: const EdgeInsets.only(left:5, top: 10),
+                                          child: Row(
+                                            children: [
+                                              InkWell(
+                                                child: Container(
+                                                  // color: Colors.red,
+                                                  //width: mediaQueryData.size.width/3,
+                                                  width:mediaQueryData.size.width/4.1,
+                                                  // height: 50,
+                                                  child: Stack(
+                                                    children: [
 
-                                                  index == 0 ?
-                                                  stageColorIndex == index ?
+                                                      index == 0 ?
+                                                      stageColorIndex == index ?
 
-                                                  Image.asset(
-                                                      'images/bluebtnfirst.png'):
-                                                  Image.asset(
-                                                      'images/greenbtnfirst.png'):
+                                                      Image.asset(
+                                                          'images/bluebtnfirst.png'):
+                                                      Image.asset(
+                                                          'images/greenbtnfirst.png'):
 
-                                                  stageColorIndex == index ?
-                                                  Image.asset(
-                                                      'images/bluebtn.png'):
-                                                  stageColorIndex! > index?Image.asset(
-                                                      'images/greenbtn.png')
-                                                      : Image.asset(
-                                                      'images/greybtn.png'),
-                                                  Positioned.fill(
-                                                      child: Align(
-                                                          alignment: Alignment.center,
-                                                          child: stageColorIndex ==
-                                                              index || stageColorIndex! >
-                                                              index
-                                                              ? Text(
-                                                            leadStageTypes[
-                                                            index]['name'],
-                                                            style: TextStyle(
-                                                              color: Colors.white,
-                                                              fontSize: 11,
-                                                              fontFamily:
-                                                              'Mulish',
-                                                            ),
-                                                          )
-                                                              : Text(
-                                                            leadStageTypes[
-                                                            index]['name'],
-                                                            style: TextStyle(
-                                                              color: Colors.black,
-                                                              fontSize: 11,
-                                                              fontFamily:
-                                                              'Mulish',
-                                                            ),
-                                                          )))
-                                                ],
+                                                      stageColorIndex == index ?
+                                                      Image.asset(
+                                                          'images/bluebtn.png'):
+                                                      stageColorIndex! > index?Image.asset(
+                                                          'images/greenbtn.png')
+                                                          : Image.asset(
+                                                          'images/greybtn.png'),
+                                                      Positioned.fill(
+                                                          child: Align(
+                                                              alignment: Alignment.center,
+                                                              child: stageColorIndex ==
+                                                                  index || stageColorIndex! >
+                                                                  index
+                                                                  ? Text(
+                                                                leadStageTypes[
+                                                                index]['name'],
+                                                                style: TextStyle(
+                                                                  color: Colors.white,
+                                                                  fontSize: 11,
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                ),
+                                                              )
+                                                                  : Text(
+                                                                leadStageTypes[
+                                                                index]['name'],
+                                                                style: TextStyle(
+                                                                  color: Colors.black,
+                                                                  fontSize: 11,
+                                                                  fontFamily:
+                                                                  'Mulish',
+                                                                ),
+                                                              )))
+                                                    ],
+                                                  ),
+                                                ),
+                                                onTap: () async {
+
+                                                  setState(() {
+                                                    smartbuttonSaveVisible = true;
+                                                    smartbuttonPosition = index;
+                                                  });
+
+                                                  // print(
+                                                  //     leadStageTypes[index]['name']);
+                                                  // print(leadStageTypes[index]['id']);
+                                                  // print("print(opportunityStageTypes");
+                                                  // String resmessage =
+                                                  // await StageChangeLead(
+                                                  //     leadStageTypes[index]
+                                                  //     ['id']);
+                                                  // int resmessagevalue =
+                                                  // int.parse(resmessage);
+                                                  // if (resmessagevalue != 0) {
+                                                  //   setState(() {
+                                                  //     stageColorIndex = index;
+                                                  //   });
+                                                  //
+                                                  //
+                                                  // }
+                                                },
                                               ),
-                                            ),
-                                            onTap: () async {
-                                              print(
-                                                  leadStageTypes[index]['name']);
-                                              print(leadStageTypes[index]['id']);
-                                              print("print(opportunityStageTypes");
-                                              String resmessage =
-                                              await StageChangeLead(
-                                                  leadStageTypes[index]
-                                                  ['id']);
-                                              int resmessagevalue =
-                                              int.parse(resmessage);
-                                              if (resmessagevalue != 0) {
-                                                setState(() {
-                                                  stageColorIndex = index;
-                                                });
-
-
-                                              }
-                                            },
+                                            ],
                                           ),
-                                        ],
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  Visibility(
+                                    visible: smartbuttonSaveVisible,
+                                    child: InkWell(
+                                      onTap: () async {
+
+                                        String resmessage =
+                                            await StageChangeLead(
+                                            leadStageTypes[smartbuttonPosition!]
+                                            ['id']);
+                                        int resmessagevalue =
+                                        int.parse(resmessage);
+                                        if (resmessagevalue != 0) {
+                                          setState(() {
+                                            stageColorIndex = smartbuttonPosition;
+                                            smartbuttonSaveVisible = false;
+                                          });
+
+
+                                        }
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left:5, top: 5),
+                                        child: Container(
+                                          width:mediaQueryData.size.width,
+                                          height: 30,
+                                          color: Colors.red,
+                                          child: Center(child: Text("Mark Stage as Complete")),
+                                        ),
                                       ),
-                                    );
-                                  },
-                                ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -1802,21 +1846,23 @@ class _LeadDetailState extends State<LeadDetail> {
 
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 0, left: 22, right: 22, bottom: 20),
-                            child: Divider(
-                              color: Color(0xFFF4F4F4),
-                              thickness: 1.5,
-                            ),
+                                top: 1, left: 22, right: 22, bottom: 5),
+                            // child: Divider(
+                            //   color: Color(0xFFF4F4F4),
+                            //
+                            //   thickness: .5,
+                            // ),
                           ),
 
                           Container(
                             color: Color(0xFFFfffff),
+
                             child: Row(
                               //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 5, bottom: 5, left: 17, right: 0),
+                                      top: 0, bottom: 5, left: 17, right: 0),
                                   child: Center(
                                     child: Container(
                                       decoration: BoxDecoration(
