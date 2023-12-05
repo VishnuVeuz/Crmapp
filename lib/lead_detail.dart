@@ -3060,7 +3060,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           salesperImg != ""
                                               ? Padding(
@@ -3118,10 +3118,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 15, right: 25),
+                                                left: 15, right: 24),
                                             child: Container(
                                               width: mediaQueryData.size.width /
-                                                  1.32,
+                                                  1.3,
                                              // color: Colors.red,
                                               //width:250,
                                               //height: 46,
@@ -3129,6 +3129,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(5)),
+                                                  //color: Colors.red,
 
                                                   color: Color(0xFFFfffff),
                                                   border: Border.all(
@@ -3329,7 +3330,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               ),
                                             ),
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -3349,8 +3350,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             padding: const EdgeInsets.only(
                                                 right: 25, top: 3),
                                             child: SizedBox(
-                                           width: 270,
-                                             // width:MediaQuery.of(context).size.width/1.4,
+                                          // width: 270,
+                                              width:MediaQuery.of(context).size.width/1.5,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(
@@ -3488,7 +3489,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           salesperImg != ""
                                               ? Padding(
@@ -3546,10 +3547,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 15, right: 20),
+                                                left: 15, right: 24),
                                             child: Container(
                                               width: mediaQueryData.size.width /
-                                                  1.34,
+                                                  1.3,
 
                                               // width:300,
                                               //height: 46,
@@ -3752,7 +3753,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               ),
                                             ),
                                       Row(
-                                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -3771,7 +3772,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             padding: const EdgeInsets.only(
                                                 right: 25, top: 3),
                                             child: SizedBox(
-                                              width: 270,
+                                             // width: 270,
+                                              width:MediaQuery.of(context).size.width/1.5,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(

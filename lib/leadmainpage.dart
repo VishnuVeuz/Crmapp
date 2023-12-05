@@ -652,7 +652,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                             child: CircleAvatar(
                                                               radius: 12,
                                                               child: Icon(
-                                                                Icons.person,
+                                                                Icons.add_call,
                                                                 size: 20,
                                                                 // Adjust the size of the icon as per your requirements
                                                                 color: Colors

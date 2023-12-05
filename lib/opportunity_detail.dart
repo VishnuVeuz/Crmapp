@@ -3701,7 +3701,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           salesperImg != ""
                                               ? Padding(
@@ -3759,10 +3759,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 15, right: 20),
+                                                left: 15, right: 25),
                                             child: Container(
                                               width: mediaQueryData.size.width /
-                                                  1.34,
+                                                  1.3,
                                               //height: 46,
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -3954,7 +3954,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               ),
                                             ),
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -3973,7 +3973,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             padding: const EdgeInsets.only(
                                                 right: 25, top: 3),
                                             child: SizedBox(
-                                              width: 270,
+                                              //width: 270,
+                                              width:MediaQuery.of(context).size.width/1.5,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(
@@ -4101,7 +4102,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           salesperImg != ""
                                               ? Padding(
@@ -4159,10 +4160,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                left: 15, right: 20),
+                                                left: 15, right: 24),
                                             child: Container(
                                               width: mediaQueryData.size.width /
-                                                  1.33,
+                                                  1.3,
                                               //height: 46,
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -4359,7 +4360,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               ),
                                             ),
                                       Row(
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -4376,9 +4377,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
-                                                right: 27, top: 3),
+                                                right: 25, top: 3),
                                             child: SizedBox(
-                                              width: 270,
+                                              //width: 270,
+                                              width:MediaQuery.of(context).size.width/1.5,
                                               height: 30,
                                               child: ElevatedButton(
                                                   child: Center(
