@@ -459,7 +459,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Navigator.push(
+
+                                        customername == "" ?
+                     convertQuotationError("Cannot convert due to customer missing") :
+
+                                            Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
@@ -12207,6 +12211,27 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
       },
     );
   }
+
+  void convertQuotationError(e) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('${e.toString()}'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   void delayMethod() {
     Future.delayed(Duration(seconds: 1), () {
