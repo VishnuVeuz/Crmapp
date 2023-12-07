@@ -54,8 +54,6 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     _nodata = false;
     _error = false;
     print("sfgdds");
-
-
     print(widget.type);
     print(widget.Id);
     print(widget.similartype);
@@ -279,6 +277,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
         );
       }
 
+
       else if(_error1){
         return Center(
             child: errorDialog1(size: 20)
@@ -331,6 +330,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
             ),
           ),
         ),
+
         Visibility(
           visible: searchoption,
           child: Padding(
@@ -416,6 +416,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
               }),
         ),
+
       ],
     );
   }

@@ -192,44 +192,75 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                 length: opportunityTypes.length,
                 child: Column(
                   children: <Widget>[
-                    ButtonsTabBar(
-                      buttonMargin: const EdgeInsets.fromLTRB(10, 5, 2, 5),
-                      contentPadding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                      physics: BouncingScrollPhysics(),
-                       backgroundColor: Color(0xFF043565),
+                    // ButtonsTabBar(
+                    //   buttonMargin: const EdgeInsets.fromLTRB(10, 5, 2, 5),
+                    //   contentPadding: EdgeInsets.fromLTRB(30, 0, 30, 0),
+                    //   physics: BouncingScrollPhysics(),
+                    //    backgroundColor: Color(0xFF043565),
+                    //
+                    //
+                    //   unselectedBorderColor: Colors.transparent,
+                    //   unselectedBackgroundColor: const Color(0XFFEDF2FF),
+                    //
+                    //
+                    //   unselectedLabelStyle:
+                    //   const TextStyle(color: Color(0XFF3C3F4E)),
+                    //   labelStyle: const TextStyle(
+                    //       fontFamily: 'Mulish',
+                    //       color: Colors.white, fontWeight: FontWeight.normal),
+                    //
+                    //
+                    //
+                    //     onTap: (index){
+                    //      print(opportunityTypes[index]['name']);
+                    //
+                    //       },
+                    //   tabs: List<Widget>.generate(
+                    //     opportunityTypes.length,
+                    //         (int index) {
+                    //       BuildContext context;
+                    //       print(opportunityTypes.length);
+                    //
+                    //       print("tabar name");
+                    //       return Tab(
+                    //         text: opportunityTypes[index]['name'],
+                    //       );
+                    //     },
+                    //   ),
+                    //
+                    //
+                    // ),
 
 
-                      unselectedBorderColor: Colors.transparent,
-                      unselectedBackgroundColor: const Color(0XFFEDF2FF),
+                    Container(
+                      height: 40,
+                      color: Color(0xFFFF5F5F5),
 
-
-                      unselectedLabelStyle:
-                      const TextStyle(color: Color(0XFF3C3F4E)),
-                      labelStyle: const TextStyle(
-                          fontFamily: 'Mulish',
-                          color: Colors.white, fontWeight: FontWeight.normal),
-
-
-
-                        onTap: (index){
-                         print(opportunityTypes[index]['name']);
-
-                          },
-                      tabs: List<Widget>.generate(
-                        opportunityTypes.length,
-                            (int index) {
-                          BuildContext context;
-                          print(opportunityTypes.length);
-
-                          print("tabar name");
-                          return Tab(
-                            text: opportunityTypes[index]['name'],
-                          );
-                        },
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TabBar(
+                              padding: const EdgeInsets.fromLTRB(10, 5, 2, 5),
+                              tabs: List<Widget>.generate(
+                                opportunityTypes.length,
+                                    (int index) {
+                                  return Tab(
+                                    text: opportunityTypes[index]['name'],
+                                  );
+                                },
+                              ),
+                              isScrollable: true,
+                              physics: BouncingScrollPhysics(),
+                              unselectedLabelColor: Colors.black,
+                              labelColor: Colors.red,
+                              indicatorColor: Colors.red,
+                              indicatorWeight: 1.0,
+                            ),
+                          ),
+                        ],
                       ),
-
-
                     ),
+
 
                     Expanded(
                       child: TabBarView(
@@ -238,6 +269,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                       children: List.generate(opportunityTypes.length, (index) =>
 
                           OpportunityScrolling(opportunityTypes[index]['id'],widget.opportunityId,widget.similartype,widget.opportunityFrom,widget.filterItems,widget.fromCustomer),),
+
 
 
 
