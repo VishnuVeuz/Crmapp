@@ -141,13 +141,13 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
           title: Row(
             children: [
               Text(
-                "New",
+                "Create Opportunity",
                 style: TextStyle(
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
                     color: Colors.white,
-                    decoration: TextDecoration.none),
+                    decoration: TextDecoration.none)
               )
             ],
           ),
@@ -272,7 +272,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter the name';
@@ -289,14 +289,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Opportunity Name',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: expectedrevenueController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -307,14 +307,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Expected Revenue',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: probabilityController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -325,7 +325,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Probability',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -351,7 +351,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Customer',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -389,7 +389,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["display_name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -425,7 +425,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -439,7 +439,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: companynameController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -452,7 +452,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Company Name',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
 
@@ -474,7 +474,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Title',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -511,7 +511,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -545,7 +545,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -560,7 +560,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: contactnameController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -571,7 +571,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Contact Name',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -582,14 +582,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: streetController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -600,14 +600,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Street',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: streettwoController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -618,14 +618,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Street2',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: cityController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -636,7 +636,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'City',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           //country
@@ -657,7 +657,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Country',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -695,7 +695,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -740,7 +740,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -769,7 +769,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'State',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -807,7 +807,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -853,7 +853,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -868,7 +868,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               keyboardType: TextInputType.number,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: zipController,
                               maxLength: 6,
                               decoration: const InputDecoration(
@@ -881,7 +881,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Zip',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
 
@@ -889,7 +889,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: websiteController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -900,7 +900,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Website',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
 
@@ -922,7 +922,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Language',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -961,7 +961,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1009,7 +1009,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                               // "${item["capital"]} - ${item["country"]} - ${item["continent"]} - pop.: ${item["population"]}"),
                                             ),
                                           ),
@@ -1024,7 +1024,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               keyboardType: TextInputType.emailAddress,
                               controller: emailController,
                               decoration: const InputDecoration(
@@ -1038,7 +1038,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Email',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
 
@@ -1046,7 +1046,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: jobpositionController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -1057,14 +1057,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Job Position',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: phoneController,
                               keyboardType: TextInputType.phone,
                              // maxLength: 10,
@@ -1078,7 +1078,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Phone',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return null;
@@ -1101,7 +1101,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: mobileController,
                               keyboardType: TextInputType.phone,
                             //  maxLength: 10,
@@ -1115,7 +1115,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   ),
                                   labelText: 'Mobile',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return null;
@@ -1154,7 +1154,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Pricelist',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1191,7 +1191,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1226,7 +1226,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1254,7 +1254,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Company',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1293,7 +1293,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1339,7 +1339,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1365,7 +1365,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Salesperson',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1405,7 +1405,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1450,7 +1450,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1479,7 +1479,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Sales Team',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1518,7 +1518,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1564,7 +1564,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1579,7 +1579,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             child: Text(
                               "Priority",
                               style: TextStyle(
-                                  color: Color(0xFF666666), fontSize: 11,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  color: Color(0xFF666666), fontSize: 11,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                             ),
                           ),
                           Padding(
@@ -1627,7 +1627,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     style: TextStyle(
                                       color: Color(0xFF666666),
                                       fontSize: 12,
-                                      fontFamily: 'Mulish',
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
 
                                     ),
@@ -1720,7 +1720,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Campaign',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1759,7 +1759,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1806,7 +1806,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1835,7 +1835,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Medium',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1875,7 +1875,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -1922,7 +1922,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -1949,7 +1949,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       ),
                                       labelText:'Source',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1988,7 +1988,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                               },
@@ -2034,7 +2034,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -2048,7 +2048,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               controller: refferedbyController,
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
@@ -2061,7 +2061,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   // border: UnderlineInputBorder(),
                                   labelText: 'Reffered by',
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                      color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
 
@@ -2084,7 +2084,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     TextAlignVertical.top,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
-                                      fontFamily: 'Mulish',
+                                      fontFamily: 'Proxima Nova',
                                       fontSize: 11,
                                       color: Color(0xFF000000),
                                     ),
@@ -2103,7 +2103,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                       // border: UnderlineInputBorder(),
                                       labelText: 'Internal Notes',
                                       labelStyle: TextStyle(
-                                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),),
+                                          color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),),
                               ),
                             ),
                           ),
@@ -2229,7 +2229,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                         color: Colors
                                                                             .black,
                                                                         fontFamily:
-                                                                            'Mulish'),
+                                                                            'Proxima Nova'),
                                                                   ),
                                                                 ),
                                                               ),
@@ -2247,12 +2247,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                     style: TextStyle(
                                                                         fontWeight:
                                                                             FontWeight
-                                                                                .w600,
+                                                                                .w500,
                                                                         fontSize: 12,
                                                                         color: Color(
                                                                             0xFF787878),
                                                                         fontFamily:
-                                                                            'Mulish'),
+                                                                            'Proxima Nova'),
                                                                   ),
                                                                 ),
                                                               ),
@@ -2272,12 +2272,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                   style: TextStyle(
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w600,
+                                                                              .w500,
                                                                       fontSize: 12,
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                                 Text(
                                                                   orderLineProductsData![
@@ -2287,12 +2287,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                   style: TextStyle(
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w600,
+                                                                              .w500,
                                                                       fontSize: 12,
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                                 Text(
                                                                   " " +
@@ -2305,12 +2305,12 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                   style: TextStyle(
                                                                       fontWeight:
                                                                           FontWeight
-                                                                              .w600,
+                                                                              .w500,
                                                                       fontSize: 12,
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                               ],
                                                             ),
@@ -2341,7 +2341,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                           color: Color(
                                                                               0xFF787878),
                                                                           fontFamily:
-                                                                              'Mulish'),
+                                                                              'Proxima Nova'),
                                                                     ),
                                                                     Text(
                                                                       orderLineProductsData![
@@ -2356,7 +2356,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                                                           color: Color(
                                                                               0xFF787878),
                                                                           fontFamily:
-                                                                              'Mulish'),
+                                                                              'Proxima Nova'),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -2431,7 +2431,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                             color: Colors.white,
                                             child: Text(
                                               productDatas[index].toString(),
-                                              style: TextStyle(fontFamily: 'Mulish'),
+                                              style: TextStyle(fontFamily: 'Proxima Nova'),
                                             )),
                                       ),
                                     );
@@ -2464,7 +2464,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 15.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                             onPressed: () async {
                               // if(opportunitynameController.text!=""){
@@ -2557,7 +2557,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 15.57,
                                     color: Color(0xFF212121),
-                                    fontFamily: 'Mulish'),
+                                    fontFamily: 'Proxima Nova'),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -2922,7 +2922,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             decoration: InputDecoration(
                               labelText:'Product',
                               isDense: true,
-                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                              labelStyle: TextStyle(
+                                  color: Color(0xFF868686),
+                                  fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w500),
                               fillColor: Colors.white,
 
                             ),
@@ -2962,7 +2966,10 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             item["display_name"],
                             style: TextStyle(
-                                fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                fontSize: 14,
+                                fontFamily: 'Proxima Nova',
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
                           ),
                         )));
                       },
@@ -2996,7 +3003,11 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["display_name"]}",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          fontFamily: 'Proxima Nova',
+                                          fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -3010,7 +3021,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
 
                       focusNode: _textFieldFocusNode,
                       controller: productQuantity,
@@ -3023,14 +3034,14 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           ),
                           labelText: 'Quantity',
                           labelStyle: TextStyle(
-                              color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                     ),
                   ),
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
 
                       controller: productUnitPrice,
                       decoration: const InputDecoration(
@@ -3042,7 +3053,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           ),
                           labelText: 'Unit Price',
                           labelStyle: TextStyle(
-                              color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                     ),
                   ),
                   Padding(
@@ -3057,7 +3068,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             decoration: InputDecoration(
                               labelText:'Uom',
                               isDense: true,
-                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                               fillColor: Colors.white,
 
                             ),
@@ -3096,7 +3107,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                           child: Text(
                             item["name"],
                             style: TextStyle(
-                                fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           ),
                         )));
                       },
@@ -3130,7 +3141,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -3156,7 +3167,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                               style: TextStyle(
                                 color: Color(0xFF666666),
                                 fontSize: 12,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontWeight: FontWeight.w500,
 
                               ),
@@ -3168,7 +3179,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 borderColor: Colors.transparent,
                                 borderWidth: 0,
                                 hintStyle:
-                                    TextStyle(fontSize: 13.6, fontFamily: 'Mulish'),
+                                    TextStyle(fontSize: 13.6, fontFamily: 'Proxima Nova'),
                                 selectedOptions: editProductTaxName
                                     .map((tag) =>
                                         ValueItem(label: tag.label, value: tag.value))
@@ -3245,6 +3256,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: TextFormField(
+                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova'),
                       controller: productDescription,
                       decoration: const InputDecoration(
                           enabledBorder: UnderlineInputBorder(
@@ -3254,10 +3266,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                             borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                           ),
                           labelText: 'Description',
-                          labelStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 13.6,
-                              fontFamily: 'Mulish')),
+                          labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),),
                     ),
                   ),
                   Row(
@@ -3277,7 +3286,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -3402,7 +3411,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -3553,7 +3562,7 @@ class _OpportunityCreationState extends State<OpportunityCreation> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.black),
+                                    color: Colors.black,fontFamily: 'Proxima Nova'),
                               ),
                             ),
                             onPressed: () {

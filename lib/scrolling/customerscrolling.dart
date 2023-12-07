@@ -170,7 +170,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: Colors.black
+                color: Colors.black, fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -182,7 +182,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -199,7 +199,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: Colors.black
+                color: Colors.black, fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -211,7 +211,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -231,8 +231,8 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
             Padding(
               padding: const EdgeInsets.only(left:20 ),
               child: Text("Customers", style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Mulish',
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Proxima Nova',
                   fontSize: 20,
                   color: Colors.white,
                   decoration: TextDecoration.none),),
@@ -379,8 +379,8 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
-                  child: Text("Customers", style: TextStyle(
-                      fontFamily: 'Mulish',
+                  child: Text("Customers", style:TextStyle(
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                       color: Color(0xFF292929),
@@ -425,6 +425,10 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
               },
               decoration: InputDecoration(
                 hintText: 'Search...',
+                hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
                     setState(() {

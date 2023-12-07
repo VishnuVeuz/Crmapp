@@ -216,10 +216,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 width:150,
                 child: Text(
                   customername!,
-                  style: TextStyle(
-                      fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                  style:  TextStyle(
+                      fontFamily: 'Proxima Nova',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
                       color: Colors.white,
                       decoration: TextDecoration.none),
                 ),
@@ -363,9 +363,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               padding: const EdgeInsets.only(top: 5),
                               child: Text("Create",
                                   style: TextStyle(
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -391,9 +391,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               padding: const EdgeInsets.only(top: 5),
                               child: Text("Edit",
                                   style: TextStyle(
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -430,9 +430,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               padding: const EdgeInsets.only(top: 5),
                               child: Text("Delete",
                                   style: TextStyle(
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -448,7 +448,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     context: context,
                                     builder: (BuildContext context) {
                                       return SizedBox(
-                                        height: 70,
+                                        height: 80,
                                         child: Padding(
                                           padding: const EdgeInsets.only(
                                               top: 10, bottom: 10),
@@ -504,10 +504,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   Padding(
                                                     padding: const EdgeInsets.only(top: 5),
                                                     child: Text("Duplicate",
-                                                        style: TextStyle(
-                                                          fontFamily: 'Mulish',
+                                                        style:TextStyle(
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 12,
+                                                          fontSize: 15,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -542,9 +542,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     padding: const EdgeInsets.only(top: 5),
                                                     child: Text("Archive",
                                                         style: TextStyle(
-                                                          fontFamily: 'Mulish',
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 12,
+                                                          fontSize: 15,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -578,9 +578,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     padding: const EdgeInsets.only(top: 5),
                                                     child: Text("Unarchive",
                                                         style: TextStyle(
-                                                          fontFamily: 'Mulish',
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 12,
+                                                          fontSize: 15,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -602,9 +602,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               padding: const EdgeInsets.only(top: 5),
                               child: Text("More",
                                   style: TextStyle(
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -651,9 +651,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       child: Text(
                                         "Meeting",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 13,
+                                            fontWeight: FontWeight.w500,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 14,
                                             color: Color(0xFF212121)),
                                       )),
                                   Center(
@@ -699,9 +699,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         child: Text(
                                           "Opportunity",
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'Proxima Nova',
+                                              fontSize: 14,
                                               color: Color(0xFF212121)),
                                         )),
                                     Center(
@@ -759,7 +759,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontSize: 10,
                                           color: Colors.white,
-                                          fontFamily: 'Mulish',
+                                          fontFamily: 'Proxima Nova',
                                           fontWeight: FontWeight.w400
                                       ),
                                     )),
@@ -797,7 +797,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 13,
-                                fontFamily: 'Mulish'),
+                                fontFamily: 'Proxima Nova'),
                           ],
 
 
@@ -865,10 +865,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           //color: Colors.red,
                           child: Center(
                             child: Text(customername!,
-                                style: TextStyle(
+                                style:TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 16,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 18,
                                   color: Colors.black,
                                 )),
                           ),
@@ -893,8 +893,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Tax ID",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -907,9 +907,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 taxid!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -932,8 +932,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Job Position",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -944,11 +944,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               alignment: Alignment.centerRight,
                               child: Text(
                                 jobposition!,
-                                style: TextStyle(
+                                style:TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -971,8 +971,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Mobile",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -985,9 +985,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 mobile!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1010,8 +1010,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Customer Rank",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1024,9 +1024,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 customerrank!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1049,8 +1049,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Supplier Rank",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1063,9 +1063,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 supplierrank!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1088,8 +1088,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Email",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1102,9 +1102,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 email!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1127,8 +1127,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Website",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1141,9 +1141,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 website!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1166,8 +1166,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Title",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1180,9 +1180,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 title!,
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
-                                    fontFamily: 'Mulish',
-                                    fontSize: 12,
-                                    color: Color(0xFF000000)),
+                                    fontFamily: 'Proxima Nova',
+                                    fontSize: 13,
+                                    color: Color(0xFF000000))
                               ),
                             ),
                           ),
@@ -1207,8 +1207,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           child: Text("Tags",
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF666666))),
                         ),
                         Padding(
@@ -1269,7 +1269,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                    tagss![index]["name"].toString(),
                                                   style: TextStyle(
                                                     color: Colors.white,
-                                                    fontFamily: 'Mulish',
+                                                    fontFamily: 'Proxima Nova',
                                                     fontWeight: FontWeight.w500,
                                                     fontSize:9.5,
                                                   ),
@@ -1358,8 +1358,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Contacts &\n Addresses",
                                     style:TextStyle(
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 15,
                                         color:contactsVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                   ),
                                   onPressed: (){
@@ -1393,8 +1393,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       "Sale & Purchase",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 13,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 15,
                                           color:salesVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1430,8 +1430,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       "Internal Notes",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 13,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 15,
                                           color:internalVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1649,8 +1649,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Text("Salesperson",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1663,9 +1663,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         salesperson!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF000000)),
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000))
                                       ),
                                     ),
                                   ),
@@ -1688,8 +1688,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Text("Payment Terms",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1702,9 +1702,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         paymentterms!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF000000)),
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000))
                                       ),
                                     ),
                                   ),
@@ -1727,8 +1727,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Text("Fiscal Position",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1741,9 +1741,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fiscalposition!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF000000)),
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000))
                                       ),
                                     ),
                                   ),
@@ -1766,8 +1766,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Text("Reference",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1780,8 +1780,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         reference!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -1803,10 +1803,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 25, top: 0),
                                   child: Text("Company",
-                                      style: TextStyle(
+                                      style:TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1819,8 +1819,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         company!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -1888,8 +1888,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       "Send Message",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 13,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 15,
                                           color: followersVisibility==true? Color(0XFF212121):Color(0xFF212121)),
                                     ),
                                     onPressed: () async {
@@ -1930,8 +1930,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       "Log note",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 13,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 15,
                                           color:lognoteVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1959,8 +1959,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     "Schedule Activity",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 15,
                                         color: Color(0xFF212121)),
                                   ),
                                   onPressed: () async {
@@ -2019,10 +2019,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         // color: Colors.green,
                                         child: Text(
                                           attachmentCount!,
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            fontFamily: 'Mulish',
-                                          ),
+                                          style:TextStyle(
+                                              fontSize: 14,
+                                              fontFamily: 'Proxima Nova',
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xFF000000)),
                                         ),
                                       ),
                                     ],
@@ -2068,11 +2069,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                               }
                                             },
                                             child: Text(
-                                              "Follow",
+                                              "Following",
                                               style: TextStyle(
-                                                color: Colors.green,
-                                                fontFamily: 'Mulish',
-                                              ),
+                                                  color: Color(0xFF20745A),
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight:
+                                                  FontWeight.w500,
+                                                  fontSize: 13),
                                             )),
                                       ],
                                     ),
@@ -2111,9 +2114,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             },
                                             child: Text(
                                               "Unfollow",
-                                              style: TextStyle(
-                                                color: Colors.red,
-                                                fontFamily: 'Mulish',
+                                              style:  TextStyle(
+                                                  color: Colors.red,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight:
+                                                  FontWeight.w500,
+                                                  fontSize: 13
                                               ),
                                             )),
                                       ],
@@ -2144,9 +2150,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Text(
                                       followerCount!,
                                       style: TextStyle(
-                                        fontSize: 13,
-                                        fontFamily: 'Mulish',
-                                      ),
+                                          fontSize: 14,
+                                          fontFamily: 'Proxima Nova',
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xFF000000)),
                                     ),
                                   ),
                                 ],
@@ -2374,11 +2381,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               width: mediaQueryData.size.width/2,
                                                                               child: Text(
                                                                                 attachmentFileDisplay[index]["name"],
-                                                                                style: TextStyle (
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 12,
-                                                                                  fontWeight: FontWeight.w600,
-                                                                                  color: Color(0xff202020),
+                                                                                style: TextStyle(
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 13,
+                                                                                  fontWeight: FontWeight.w500,
+                                                                                  color: Color(0xff212121),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -2400,11 +2407,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 "XML":attachmentFileDisplay[index]["mimetype"] == "application/zip"?
                                                                                 "ZIP":"",
 
-                                                                                style: TextStyle (
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 9,
+                                                                                style:TextStyle(
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 9.5,
                                                                                   fontWeight: FontWeight.w500,
-
                                                                                   color: Color(0xff666666),
                                                                                 ),
                                                                               ),
@@ -2536,7 +2542,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   "Select Attachments",
                                   style: TextStyle(
                                     color: Colors.black,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                   ),
                                 )),
                           ],
@@ -2566,20 +2572,20 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   children: [
                                     Text(
                                       "To:",
-                                      style: TextStyle(
+                                      style:  TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xFF666666),
-                                        fontSize: 10,
-                                        fontFamily: 'Mulish',
+                                        fontSize: 11,
+                                        fontFamily: 'Proxima Nova',
                                       ),
                                     ),
                                     Text(
                                       " Followers of",
-                                      style: TextStyle(
+                                      style:TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xFF666666),
-                                        fontSize: 10,
-                                        fontFamily: 'Mulish',
+                                        fontSize: 11,
+                                        fontFamily: 'Proxima Nova',
                                       ),
                                     ),
                                     SizedBox(
@@ -2595,10 +2601,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           child: Text(
                                             customername!,
                                             style: TextStyle(
-                                              fontWeight: FontWeight.w500,
+                                              fontWeight: FontWeight.w600,
                                               color: Color(0xFF414141),
-                                              fontSize: 10,
-                                              fontFamily: 'Mulish',
+                                              fontSize: 11,
+                                              fontFamily: 'Proxima Nova',
                                             ),
                                           )),
                                     ),
@@ -2675,9 +2681,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 sendMailData[i]['name'],
                                                 style:  TextStyle(
                                                     color: Color(0xFF666666),
-                                                    fontSize: 11,
-                                                    fontFamily: 'Mulish',
-                                                    fontWeight: FontWeight.w500),
+                                                    fontSize: 11.5,
+                                                    fontFamily: 'Proxima Nova',
+                                                    fontWeight:
+                                                    FontWeight.w600),
                                               ),
                                             ),
                                           )
@@ -2776,10 +2783,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     textAlignVertical:
                                                     TextAlignVertical.top,
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontFamily: 'Mulish',
+                                                      fontWeight:
+                                                      FontWeight.w400,
+                                                      fontFamily:
+                                                      'Proxima Nova',
                                                       fontSize: 11,
-                                                      color: Color(0xFF000000),
+                                                      color: Color(
+                                                          0xFF000000),
                                                     ),
                                                     //expands: true,
                                                     maxLines: null,
@@ -2788,16 +2798,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         border: InputBorder.none,
                                                         hintText:
                                                         "Send a message to followers",
-                                                        hintStyle:  TextStyle(
+                                                        hintStyle: TextStyle(
                                                           //fontFamily: "inter",
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .w400,
-                                                            fontFamily:
-                                                            'Mulish',
-                                                            fontSize: 11,
-                                                            color: Color(
-                                                                0xFFAFAFAF)))),
+                                                            fontWeight: FontWeight.w400,
+                                                            fontFamily: 'Proxima Nova',
+                                                            fontSize: 13,
+                                                            color: Color(0xFFAFAFAF)))),
                                               ),
                                             ),
                                             Padding(
@@ -2945,8 +2951,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   "Send Message",
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500,
-                                                      fontFamily: 'Mulish',
-                                                      fontSize: 12,
+                                                      fontFamily: 'Proxima Nova',
+                                                      fontSize: 14,
                                                       color: Colors.white),
                                                 ),
                                             ),
@@ -3111,10 +3117,14 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                     textAlignVertical:
                                                     TextAlignVertical.top,
                                                     style: TextStyle(
-                                                      fontWeight: FontWeight.w400,
-                                                      fontFamily: 'Mulish',
+                                                      fontWeight:
+                                                      FontWeight
+                                                          .w400,
+                                                      fontFamily:
+                                                      'Proxima Nova',
                                                       fontSize: 11,
-                                                      color: Color(0xFF000000),
+                                                      color: Color(
+                                                          0xFF000000),
                                                     ),
                                                     //expands: true,
                                                     maxLines: null,
@@ -3123,16 +3133,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         border: InputBorder.none,
                                                         hintText:
                                                         "Log an internal note",
-                                                        hintStyle:  TextStyle(
+                                                        hintStyle: TextStyle(
                                                           //fontFamily: "inter",
-                                                            fontWeight:
-                                                            FontWeight
-                                                                .w400,
-                                                            fontFamily:
-                                                            'Mulish',
-                                                            fontSize: 12,
-                                                            color: Color(
-                                                                0xFFAFAFAF)))),
+                                                            fontWeight: FontWeight.w400,
+                                                            fontFamily: 'Proxima Nova',
+                                                            fontSize: 14,
+                                                            color: Color(0xFFAFAFAF)))),
                                               ),
                                             ),
                                             Padding(
@@ -3273,10 +3279,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             child: Center(
                                                 child:Text(
                                                   "Send Lognote",
-                                                  style: TextStyle(
+                                                  style:  TextStyle(
                                                       fontWeight: FontWeight.w500,
-                                                      fontFamily: 'Mulish',
-                                                      fontSize: 12,
+                                                      fontFamily: 'Proxima Nova',
+                                                      fontSize: 14,
                                                       color: Colors.white),
                                                 ),
                                                 //SvgPicture.asset("images/sendd.svg")
@@ -3395,11 +3401,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 ),
                                 label: Text(
                                   'Planned Activities',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: Color(0xFF000000),
-                                    fontWeight: FontWeight.w600,
-                                    fontFamily: 'Mulish',
+                                  style:  TextStyle(
+                                    fontSize: 17,
+                                    color: Color(0xFF212121),
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'Proxima Nova',
                                   ),
                                 ),
                               ),
@@ -3414,10 +3420,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Center(
                                       child: Text(
                                         scheduleOverdue.toString(),
-                                        style: TextStyle(
+                                        style:TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             color: Colors.white),
                                       )),
                                 ),
@@ -3436,9 +3442,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
-                                            //fontWeight: FontWeight.bold,
-                                            fontFamily: 'Mulish',
-                                            color: Colors.black),
+                                            fontFamily: 'Proxima Nova',
+                                            color: Colors.white),
                                       )),
                                 ),
                               ),
@@ -3453,10 +3458,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   child: Center(
                                       child: Text(
                                         schedulePlanned.toString(),
-                                        style: TextStyle(
+                                        style:TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             color: Colors.white),
                                       )),
                                 ),
@@ -3662,12 +3667,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     ['user_id'][1]
                                                                         .toString() ??
                                                                         "",
-                                                                    style: TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 11,
-                                                                      fontWeight: FontWeight.w600,
-                                                                      // height: 1.255*ffem/fem,
-                                                                      color: Color(0xff202020),
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
+                                                                      fontSize: 13,
+                                                                      fontWeight: FontWeight.w400,
+                                                                      color: Color(0xff388E3C),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -3686,11 +3690,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         ' ')
                                                                         .toString() ??
                                                                         "",
-                                                                    style: TextStyle (
-                                                                      fontFamily: 'Mulish',
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
                                                                       fontSize: 10,
                                                                       fontWeight: FontWeight.w500,
-                                                                      //height: 1.255*ffem/fem,
                                                                       color: Color(0xff666666),
                                                                     ),
                                                                   ),
@@ -3721,9 +3724,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         .toString() ??
                                                                         "",
                                                                     style: TextStyle (
-                                                                        fontFamily: 'Mulish',
-                                                                        fontSize: 11,
-                                                                        fontWeight: FontWeight.w600,
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontSize: 12,
+                                                                        fontWeight: FontWeight.w500,
                                                                         // height: 1.255*ffem/fem,
                                                                         color: Color(int.parse(
                                                                             scheduleData[
@@ -3747,11 +3750,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         .toString() ??
                                                                         "",
                                                                     textAlign: TextAlign.right,
-                                                                    style:  TextStyle (
-                                                                      fontFamily:  'Mulish',
-                                                                      fontSize: 11,
-                                                                      fontWeight: FontWeight.w600,
-                                                                      //  height: 1.255*ffem/fem,
+                                                                    style:   TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
+                                                                      fontSize: 12,
+                                                                      fontWeight: FontWeight.w500,
                                                                       color: Color(0xff202020),
                                                                     ),
                                                                   ),
@@ -3847,12 +3849,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                       'buttons'][0]
                                                                           .toString() ??
                                                                           "",
-                                                                      style: TextStyle (
-                                                                        fontFamily: 'Mulish',
-                                                                        fontSize: 11,
+                                                                      style: TextStyle(
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontSize: 11.2,
                                                                         fontWeight: FontWeight.w500,
-                                                                        // height: 1.255*ffem/fem,
-                                                                        color: Color(0xff707070),
+                                                                        color: Color(0xff717171),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -3920,12 +3921,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     'buttons'][1]
                                                                         .toString() ??
                                                                         "",
-                                                                    style:  TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 11,
+                                                                    style:  TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
+                                                                      fontSize: 11.2,
                                                                       fontWeight: FontWeight.w500,
                                                                       // height: 1.255*ffem/fem,
-                                                                      color: Color(0xff707070),
+                                                                      color: Color(0xff717171),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -4080,12 +4081,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                     'buttons'][1]
                                                                         .toString() ??
                                                                         "",
-                                                                    style:  TextStyle (
-                                                                      fontFamily: 'Mulish',
-                                                                      fontSize: 11,
+                                                                    style: TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
+                                                                      fontSize: 11.2,
                                                                       fontWeight: FontWeight.w500,
                                                                       // height: 1.255*ffem/fem,
-                                                                      color: Color(0xff707070),
+                                                                      color: Color(0xff717171),
                                                                     ),
                                                                   ),
                                                                 ],
@@ -4147,12 +4148,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                       'buttons'][2]
                                                                           .toString() ??
                                                                           "",
-                                                                      style:  TextStyle (
-                                                                        fontFamily: 'Mulish',
-                                                                        fontSize: 11,
+                                                                      style:   TextStyle(
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontSize: 11.2,
                                                                         fontWeight: FontWeight.w500,
                                                                         //height: 1.255*ffem/fem,
-                                                                        color: Color(0xff707070),
+                                                                        color: Color(0xff717171),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -4208,10 +4209,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "Activity type",
                                                                         style: TextStyle(
                                                                           fontSize: 11,
-                                                                          fontFamily: 'Mulish',
+                                                                          fontFamily: 'Proxima Nova',
                                                                           color: Color(0xFF666666),
-                                                                          fontWeight:
-                                                                          FontWeight.w500,
+                                                                          fontWeight: FontWeight.w500,
                                                                         ),
                                                                       ),
                                                                       SizedBox(
@@ -4223,9 +4223,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         'activity_type_id'][1],
                                                                         style: TextStyle(
                                                                           fontSize: 11,
-                                                                          fontFamily: 'Mulish',
+                                                                          fontFamily: 'Proxima Nova',
                                                                           color: Color(0xFF666666),
-                                                                          fontWeight: FontWeight.w500,),
+                                                                          fontWeight: FontWeight.w500,
+                                                                        ),
                                                                       ),
                                                                       SizedBox(
                                                                         height: 3,
@@ -4234,10 +4235,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "Created",
                                                                         style: TextStyle(
                                                                           fontSize: 11,
-                                                                          fontFamily: 'Mulish',
+                                                                          fontFamily: 'Proxima Nova',
                                                                           color: Color(0xFF666666),
-                                                                          fontWeight:
-                                                                          FontWeight.w500,
+                                                                          fontWeight: FontWeight.w500,
                                                                         ),
                                                                       ),
                                                                       SizedBox(
@@ -4253,13 +4253,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                             'create_date']
                                                                                 .toString() ??
                                                                                 "",
-                                                                            style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                fontWeight: FontWeight.w500,
-                                                                                fontFamily:
-                                                                                'Mulish',
-                                                                                color:
-                                                                                Color(0xFF666666)),
+                                                                            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),
                                                                           ),
                                                                           SizedBox(
                                                                             width: 5,
@@ -4290,11 +4284,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 "",
                                                                             style: TextStyle(
                                                                               fontSize: 11,
-                                                                              fontFamily:
-                                                                              'Mulish',
-                                                                              color:Color(0xFF666666),
-                                                                              fontWeight:
-                                                                              FontWeight.w500,
+                                                                              fontFamily: 'Proxima Nova',
+                                                                              color: Color(0xFF666666),
+                                                                              fontWeight: FontWeight.w500,
                                                                             ),
                                                                           ),
                                                                         ],
@@ -4306,11 +4298,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "Assigned to",
                                                                         style: TextStyle(
                                                                           fontSize: 11,
-
-                                                                          fontFamily: 'Mulish',
+                                                                          fontFamily: 'Proxima Nova',
                                                                           color: Color(0xFF666666),
-                                                                          fontWeight:
-                                                                          FontWeight.w500,
+                                                                          fontWeight: FontWeight.w500,
                                                                         ),
                                                                       ),
                                                                       SizedBox(
@@ -4342,13 +4332,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                             'user_id'][1]
                                                                                 .toString() ??
                                                                                 "",
-                                                                            style: TextStyle(
-                                                                                fontSize: 11,
-                                                                                fontFamily:
-                                                                                'Mulish',
-                                                                                fontWeight: FontWeight.w500,
-                                                                                color:
-                                                                                Color(0xFF666666)),
+                                                                            style: TextStyle(fontSize: 11, fontFamily: 'Proxima Nova', fontWeight: FontWeight.w500, color: Color(0xFF666666)),
+
                                                                           ),
                                                                         ],
                                                                       ),
@@ -4357,11 +4342,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                       ),
                                                                       Text(
                                                                         "Due on",
-                                                                        style: TextStyle(
-                                                                          fontSize: 11,
-                                                                          color: Color(0xFF666666),
-                                                                          fontWeight:
-                                                                          FontWeight.w500,
+                                                                        style:  TextStyle(
+                                                                            fontSize: 11,
+                                                                            color: Color(0xFF666666),
+                                                                            fontWeight: FontWeight.w500,
+                                                                            fontFamily: 'Proxima Nova'
                                                                         ),
                                                                       ),
                                                                       SizedBox(
@@ -4373,11 +4358,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         'date_deadline']
                                                                             .toString() ??
                                                                             "",
-                                                                        style: TextStyle(
-                                                                            fontSize: 11,
-                                                                            fontWeight:FontWeight.w500,
-                                                                            fontFamily: 'Mulish',
-                                                                            color: Color(0xFF666666)),
+                                                                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),
+
                                                                       ),
                                                                       SizedBox(
                                                                         height: 3,
@@ -6112,10 +6094,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       child: Center(
                                           child: Text(entry.key,
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 12,
-                                                fontFamily: 'Mulish',
-                                                color: Color(0xff212121)),
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 14,
+                                                fontFamily: 'Proxima Nova',
+                                                color: Color(0xFF212121)),
 
                                           )),
                                     ),
@@ -6365,11 +6347,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 0, 0, 0, 2),
                                                                             child: RichText(
                                                                               text: TextSpan(
-                                                                                style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 12,
+                                                                                style:TextStyle(
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 13,
                                                                                   fontWeight: FontWeight
-                                                                                      .w700,
+                                                                                      .w500,
                                                                                   height: 0,
                                                                                   color: Color(
                                                                                       0xff000000),
@@ -6377,21 +6359,21 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 children: [
                                                                                   TextSpan(
                                                                                     text:   item['create_uid'][1],
-                                                                                    style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
+                                                                                    style:  TextStyle(
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 12,
                                                                                       fontWeight: FontWeight
-                                                                                          .w500,
+                                                                                          .w600,
                                                                                       height: 1,
                                                                                       color: Color(
-                                                                                          0xff000000),
+                                                                                          0xff212121),
 
                                                                                     ),
                                                                                   ),
                                                                                   TextSpan(
                                                                                     text: ' -',
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       fontSize: 11,
                                                                                       fontWeight: FontWeight
                                                                                           .w500,
@@ -6403,7 +6385,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                   TextSpan(
                                                                                     text: ' ',
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       fontSize: 11,
                                                                                       fontWeight: FontWeight
                                                                                           .w500,
@@ -6415,8 +6397,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                   TextSpan(
                                                                                     text:   item["period"],
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 9,
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 9.5,
                                                                                       fontWeight: FontWeight
                                                                                           .w500,
                                                                                       height: 1.5,
@@ -6443,10 +6425,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               //     .toString() ??
                                                                               //     "",
                                                                               style: TextStyle(
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 9,
+                                                                                fontFamily: 'Proxima Nova',
+                                                                                fontSize: 9.5,
                                                                                 fontWeight: FontWeight
-                                                                                    .w600,
+                                                                                    .w500,
                                                                                 // height: 1.5,
                                                                                 color: Color(
                                                                                     0xff787878),
@@ -6944,10 +6926,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               style: TextStyle(
                                                                                 fontWeight: FontWeight
                                                                                     .w400,
-                                                                                fontFamily: 'Mulish',
+                                                                                fontFamily: 'Proxima Nova',
                                                                                 fontSize: 11,
                                                                                 color: Color(
-                                                                                    0xFF000000),
+                                                                                    0xFF787878),
                                                                               ),
 
 
@@ -6966,13 +6948,13 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                       .none,
                                                                                   hintText:
                                                                                   "Send a message to followers",
-                                                                                  hintStyle: TextStyle(
+                                                                                  hintStyle:  TextStyle(
                                                                                     //fontFamily: "inter",
                                                                                       fontWeight:
                                                                                       FontWeight
                                                                                           .w400,
                                                                                       fontFamily:
-                                                                                      'Mulish',
+                                                                                      'Proxima Nova',
                                                                                       fontSize: 11,
                                                                                       color: Color(
                                                                                           0xFFAFAFAF)))),
@@ -7112,8 +7094,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                               padding: const EdgeInsets.only(left:75),
                                                               child: Row(
                                                                 children: [
-                                                                  Text("escape to",style: TextStyle(color: Colors.grey),),
-                                                                  InkWell(child: Container(child: Text("  cancel  ")),
+                                                                  Text("escape to" ,style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova'),),
+                                                                  InkWell(child: Container(child: Text("  cancel  ",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'))),
                                                                     onTap: (){
                                                                       selectedItemIndex = -1;
                                                                       lognoteEditController.text= "";
@@ -7124,8 +7106,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                   ),
                                                                   //TextButton(onPressed:(){}, child: Text("cancel")),
                                                                   Text(","),
-                                                                  Text("  enter to",style: TextStyle(color: Colors.grey),),
-                                                                  InkWell(child: Container(child: Text("  save")),
+                                                                  Text("  enter to",style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova')),
+                                                                  InkWell(child: Container(child: Text("  save",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'))),
                                                                       // onTap:_isSavingData
                                                                       //     ? null
                                                                       onTap :()async{
@@ -7454,12 +7436,12 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                                 child: Text(
                                                                                                   logattachmentFileDisplay[index]["name"],
                                                                                                   style: TextStyle(
-                                                                                                    fontFamily: 'Mulish',
-                                                                                                    fontSize: 12,
+                                                                                                    fontFamily: 'Proxima Nova',
+                                                                                                    fontSize: 13,
                                                                                                     fontWeight: FontWeight
-                                                                                                        .w600,
+                                                                                                        .w500,
                                                                                                     color: Color(
-                                                                                                        0xff202020),
+                                                                                                        0xff212121),
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
@@ -13903,7 +13885,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             ),
                             labelText:'Activity Type',
                             isDense: true,
-                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            labelStyle: TextStyle(
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
+                                fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
 
                           ),
@@ -13970,8 +13956,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text(
                           item["name"],
                           style: TextStyle(
-                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 14,
+                              fontFamily: 'Proxima Nova',
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                         ),
                       )));
                     },
@@ -14005,7 +13993,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                        child: Text("${item["name"]}",style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 14,
+                                            fontFamily: 'Proxima Nova',
+                                            fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -14019,9 +14011,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(
-                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                    ),
+                    style:TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -14033,8 +14027,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                        )),
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w400)),
                   ),
                 ),
                 Visibility(
@@ -14050,17 +14046,21 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               _selectDate(context);
                             },
                             child: TextField(
-                                style: TextStyle(
-                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                                ),
+                                style:  TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Proxima Nova',
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                        color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                                    ))),
+                                        color: Color(0xFF868686),
+                                        fontSize: 14,
+                                        fontFamily: 'Proxima Nova',
+                                        fontWeight: FontWeight.w500))),
                           ),
                         ),
                       ),
@@ -14074,8 +14074,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           hint: Text(
                             "Assigned To",
                             style: TextStyle(
-                                color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                            ),
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
+                                fontWeight: FontWeight.w500),
                           ),
                           searchHint: null,
                           autofocus: true,
@@ -14105,9 +14107,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       .width,
                               child: Text(
                                 item["name"],
-                                style: TextStyle(
-                                    fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                                ),
+                                style:  TextStyle(
+                                    fontSize: 14,
+                                    fontFamily: 'Proxima Nova',
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500),
                               ),
                             )));
                           },
@@ -14145,7 +14149,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           child: Card(
                                             child: Padding(
                                               padding: const EdgeInsets.all(0),
-                                              child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                              child: Text("${item["name"]}",style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500)),
                                             ),
                                           ),
                                         ))
@@ -14160,8 +14168,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             horizontal: 15, vertical: 0),
                         child: TextFormField(
                           style: TextStyle(
-                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 14,
+                              fontFamily: 'Proxima Nova',
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -14174,8 +14184,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                  color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500
-                              )),
+                                  color: Color(0xFF868686),
+                                  fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w500)),
                         ),
                       ),
                     ],
@@ -14197,7 +14209,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 14.57,
                                     color: Colors.white,
-                                    fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova',),
                               ),
                             ),
                             onPressed:  _isSavingData
@@ -14261,7 +14273,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova',),
                                   ),
                                 ),
                                 onPressed:  _isSavingData
@@ -14312,7 +14324,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova',),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -14364,7 +14376,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                    fontFamily: 'Proxima Nova',),
                                 ),
                               ),
                               onPressed:_isSavingData
@@ -14416,7 +14428,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                    fontFamily: 'Proxima Nova',),
                                 ),
                               ),
                               onPressed: _isSavingData
@@ -14565,8 +14577,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
-                      fontFamily: 'Mulish',
-                    ),
+                      fontFamily: 'Proxima Nova',
+                    )
                   )),
             ),
           ),
@@ -14629,7 +14641,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Text(followers[i]['name'],
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 12,
                                 color: Color(0xFF666666)))),
                     Row(
@@ -14714,10 +14726,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     Text(
                       "Invite Follower",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -14739,10 +14751,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 Text(
                   "Recipients",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color:  Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -14758,7 +14770,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     hintStyle: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w600,
                     ),
                     selectedOptions: editRecipientName
@@ -14814,11 +14826,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                 ),
                 Text(
                   "Send Email",
-                  style: TextStyle(
-                    color: Colors.grey,
+                  style:  TextStyle(
+                    color: Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -14853,13 +14865,19 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         expands: true,
                         maxLines: null,
                         controller: bodyController,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w500,
+                        ),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
                           hintStyle: TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -14885,7 +14903,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed:_isSavingData
@@ -14974,10 +14992,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             title: Text('Please choose media to select',
-                style: TextStyle(
+                style:  TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Mulish',
-                    fontSize: 14,
+                    fontFamily: 'Proxima Nova',
+                    fontSize: 15,
                     color: Color(0xFF212121))),
             content: Container(
               height: MediaQuery.of(context).size.height / 6,
@@ -14990,7 +15008,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontSize: 14,
                             color: Color(0xFF212121)))),
                     //if user click this button, user can upload image from gallery
@@ -15007,7 +15025,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         Text('From Gallery',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 14,
                                 color: Colors.white)),
                       ],
@@ -15241,7 +15259,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -15275,8 +15293,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     "Recipients",
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 13,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -15292,8 +15310,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     "Followers of the document and",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 15,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -15310,7 +15328,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Add contacts to notify...',
-                      hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                      hintStyle: TextStyle(fontFamily: 'Proxima Nova', fontSize: 13),
                       selectedOptions: editRecipientName
                           .map((recipient) => ValueItem(
                               label: recipient.label, value: recipient.value))
@@ -15368,10 +15386,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                   child: TextFormField(
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                       color: Colors.black,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                     ),
                     controller: subjectController,
                     decoration: const InputDecoration(
@@ -15385,10 +15403,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
                         labelStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                          fontFamily: 'Mulish',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF868686),
+                          fontFamily: 'Proxima Nova',
                         )),
                   ),
                 ),
@@ -15414,7 +15432,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                       controller: bodyController,
                     ),
@@ -15442,7 +15460,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.grey[700],
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                           ),
                         ),
                       ],
@@ -15539,10 +15557,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                     hint: Text(
                       "Use template",
                       style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     searchHint: null,
@@ -15605,9 +15623,9 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           item["name"],
                           style: TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                           ),
                         ),
                       )));
@@ -15669,7 +15687,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed:_isSavingData
@@ -15750,7 +15768,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       child: Text(
                         "Save As New Template",
                         style: TextStyle(
-                            color: Colors.black, fontFamily: 'Mulish'),
+                            color: Colors.black, fontFamily: 'Proxima Nova'),
                       )),
                 )
               ],
@@ -15832,7 +15850,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             fontWeight: FontWeight.w700,
                             fontSize: 10,
                             color: Colors.white,
-                            fontFamily: 'Mulish'),
+                            fontFamily: 'Proxima Nova'),
                       ),
                     ),
                     onPressed: () async {
@@ -15869,7 +15887,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.white,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () async {
@@ -15904,7 +15922,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.black,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () {
@@ -16018,8 +16036,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         Text(
                           "Edit Subscription of",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -16029,8 +16047,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         Text(
                           " Follower name",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -16079,7 +16097,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               ),
                               Text(followerSub[i]["name"],
                                   style: TextStyle(
-                                      fontFamily: 'Mulish', fontSize: 12)),
+                                      fontFamily: 'Proxima Nova', fontSize: 13),),
                             ],
                           ),
                         ],
@@ -16101,7 +16119,8 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: () async {
@@ -16597,7 +16616,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Individual",
-                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                          style: TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "person",
                         groupValue: radioInput1,
@@ -16614,7 +16633,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Company",
-                          style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                          style: TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "company",
                         groupValue: radioInput1,
@@ -16636,7 +16655,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding:
                   const EdgeInsets.symmetric(horizontal:15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style:TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendnameController,
                     decoration: const InputDecoration(
@@ -16650,7 +16673,10 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Padding(
@@ -16665,7 +16691,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           decoration: InputDecoration(
                             labelText:'Company Name',
                             isDense: true,
-                            labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                            labelStyle: TextStyle(
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
+                                fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
 
                           ),
@@ -16709,7 +16739,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                             width: MediaQuery.of(context).size.width,
                             child: Text(
                               item["display_name"],
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontFamily: 'Proxima Nova',
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
                             ),
                           )));
                     },
@@ -16745,7 +16779,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                         child: Card(
                           child: Padding(
                             padding: const EdgeInsets.all(0),
-                            child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                            child: Text("${item["display_name"]}",style:  TextStyle(
+                                color: Colors.black,
+                                fontSize: 14,
+                                fontFamily: 'Proxima Nova',
+                                fontWeight: FontWeight.w500)),
                           ),
                         ),
                       ))
@@ -16759,7 +16797,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     controller: sendjobController,
                     decoration: const InputDecoration(
                         enabledBorder:  UnderlineInputBorder(
@@ -16770,14 +16812,22 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
                         labelText: 'Job Position',
-                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                        labelStyle: TextStyle(
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500)
                     ),
                   ),),
                 Padding(
                   padding:
                   const EdgeInsets.symmetric(horizontal:15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendemailController,
                     decoration: const InputDecoration(
@@ -16790,8 +16840,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                         // border: UnderlineInputBorder(),
                         labelText: 'Email',
-                        labelStyle: TextStyle(
-                            color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        labelStyle:  TextStyle(
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500)),
                   ),
                 ),
 
@@ -16799,7 +16852,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendphoneController,
@@ -16813,7 +16870,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
 
                         labelText: 'Phone',
-                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                        labelStyle: TextStyle(
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500)
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -16838,7 +16899,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendmobileController,
@@ -16851,7 +16916,11 @@ class _CustomerDetailState extends State<CustomerDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
                         labelText: 'Mobile',
-                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                        labelStyle: TextStyle(
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500)
                     ),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -16890,7 +16959,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: ()async{
@@ -16945,7 +17014,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed:(){

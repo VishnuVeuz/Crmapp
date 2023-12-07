@@ -70,9 +70,9 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 5),
                 child: Text("Opportunity", style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Mulish',
-                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Proxima Nova',
+                    fontSize: 20,
                     color: Colors.white,
                     decoration: TextDecoration.none),),
               )
@@ -206,7 +206,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                       unselectedLabelStyle:
                       const TextStyle(color: Color(0XFF3C3F4E)),
                       labelStyle: const TextStyle(
-                          fontFamily: 'Mulish',
+                          fontFamily: 'Proxima Nova',
                           color: Colors.white, fontWeight: FontWeight.normal),
 
 
@@ -283,7 +283,7 @@ setState(() {
                  //color: Colors.red,
                 child: Center(
                   child: Text(
-                    "Lost",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Mulish',),
+                    "Lost",style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600,   fontFamily: 'Proxima Nova',fontSize: 24),
         ),
                 ),
               ),

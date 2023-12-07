@@ -66,8 +66,8 @@ class _LeadConvertState extends State<LeadConvert> {
           title: Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text("Convert to opportunity",
-              style: TextStyle(fontSize: 19, color: Colors.black,
-                fontFamily: 'Mulish',fontWeight: FontWeight.w600),),
+              style: TextStyle(fontSize: 20, color: Colors.black,
+                fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600),),
           ),
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
@@ -148,15 +148,16 @@ class _LeadConvertState extends State<LeadConvert> {
                                               unselectedLabelStyle: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 12.7,   fontFamily: 'Mulish'),
+                                                  fontSize: 14.7,   fontFamily: 'Proxima Nova'),
 
                                               labelStyle:
                                               TextStyle(
                                                   color: Color(0xFFF9246A),
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 12.7,   fontFamily: 'Mulish'),
+                                                fontSize: 14.7,   fontFamily: 'Proxima Nova'),
                                               tabs: const [
                                                 Tab(text: "Convert to opportunity",),
+
                                                 Tab(
                                                   text: "Merge with existing opportunity",),
                                                 //Tab( text: "Schedule Activity",),
@@ -311,7 +312,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 0,left: 25),
-                    child: Text("Assign this opportunity to",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),),
+                    child: Text("Assign this opportunity to",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Proxima Nova',fontSize: 16),),
                   ),
 
 
@@ -354,7 +355,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
                           value: salespersonName,
                           hint: Text("Salesperson",
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
 
                           underline: SizedBox(),
                           searchHint: null,
@@ -380,7 +381,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                                 child: Container(
                                   width: 300,
                                   child: Text(item["name"], style: TextStyle(
-                                      fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                      fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                                 )));
                           },
                           futureSearchFn: (String? keyword, String? orderBy,
@@ -463,7 +464,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                           //items: items,
                           value: salesteamName,
                           hint: Text("Sales Team",
-                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                            style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
 
                           underline: SizedBox(),
                           searchHint: null,
@@ -488,7 +489,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                                 child: Container(
                                   width: 300,
                                   child: Text(item["name"], style: TextStyle(
-                                      fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                      fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                                 )));
                           },
                           futureSearchFn: (String? keyword, String? orderBy,
@@ -562,7 +563,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
                   Padding(
                     padding: const EdgeInsets.only(top: 10,left: 25),
-                    child: Text("Customer",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),),
+                    child: Text("Customer",style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Proxima Nova',fontSize: 16),),
                   ),
 
 
@@ -571,7 +572,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                     title: Text("Create a new customer",
 
 
-                      style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),),
+                      style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Proxima Nova',fontSize: 14),),
                     value: "create",
                     groupValue: conversioActions,
                     onChanged: (value){
@@ -587,7 +588,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                   RadioListTile(
                     activeColor:   Color(0xFF043565),
                     title: Text("Link to an existing customer"
-                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
+                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Proxima Nova',fontSize: 14),
                     ),
                     value: "exist",
                     groupValue: conversioActions,
@@ -605,7 +606,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                   RadioListTile(
                     activeColor:   Color(0xFF043565),
                     title: Text("Do not link to a customer"
-                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Mulish',fontSize: 14),
+                      ,style: TextStyle(fontWeight: FontWeight.w500,fontFamily: 'Proxima Nova',fontSize: 14),
                     ),
                     value: "nothing",
                     groupValue: conversioActions,
@@ -641,7 +642,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
 
                             value: customerName,
                             hint: Text("Customer",
-                              style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 14),),
+                              style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Proxima Nova',fontSize: 14),),
 
                             searchHint: null,
                             autofocus: true,
@@ -665,7 +666,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                                   child: Container(
                                     width: 300,
                                     child: Text(item["display_name"], style: TextStyle(
-                                        fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                        fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                                   )));
                             },
                             futureSearchFn: (String? keyword, String? orderBy,
@@ -759,7 +760,7 @@ class _ConvertToOpportunityState extends State<ConvertToOpportunity> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: () async {
@@ -942,7 +943,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                 padding: const EdgeInsets.only(top: 15, left: 20),
                 child: Text(
                   "Assign this opportunity to",
-                  style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Mulish',fontSize: 16),
+                  style: TextStyle(fontWeight: FontWeight.w600,fontFamily: 'Proxima Nova',fontSize: 16),
                 ),
               ),
               Padding(
@@ -962,7 +963,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
 
                       value: salespersonName,
                       hint: Text("Salesperson",
-                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                        style: TextStyle(fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                       underline: SizedBox(),
                       searchHint: null,
                       autofocus: true,
@@ -986,7 +987,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                             child: Container(
                               width: 300,
                               child: Text(item["name"], style: TextStyle(
-                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                  fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                             )));
                       },
                       futureSearchFn: (String? keyword, String? orderBy,
@@ -1069,7 +1070,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                       //items: items,
                       value: salesteamName,
                       hint: Text("Sales Team",
-                        style: TextStyle(fontSize: 12, color: Colors.black ,fontFamily: 'Mulish'),),
+                        style: TextStyle(fontSize: 12, color: Colors.black ,fontFamily: 'Proxima Nova'),),
                       underline: SizedBox(),
                       searchHint: null,
                       autofocus: true,
@@ -1093,7 +1094,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                             child: Container(
                               width: 300,
                               child: Text(item["name"], style: TextStyle(
-                                  fontSize: 12, color: Colors.black,fontFamily: 'Mulish'),),
+                                  fontSize: 12, color: Colors.black,fontFamily: 'Proxima Nova'),),
                             )));
                       },
                       futureSearchFn: (String? keyword, String? orderBy,
@@ -1184,18 +1185,18 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                         dataRowHeight: 60,
                         columns: [
                           DataColumn(
-                              label: Container(width: 75, child: Text('Created on',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600),))),
+                              label: Container(width: 75, child: Text('Created on',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600),))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Opportunity',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
-                          DataColumn(label: Container(width: 80, child: Text('Type',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                              label: Container(width: 80, child: Text('Opportunity',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Type',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 90, child: Text('Contact name',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
-                          DataColumn(label: Container(width: 80, child: Text('Email',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
-                          DataColumn(label: Container(width: 80, child: Text('Stage',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                              label: Container(width: 90, child: Text('Contact name',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Email',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
+                          DataColumn(label: Container(width: 80, child: Text('Stage',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 90, child: Text('Sales person',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                              label: Container(width: 90, child: Text('Sales person',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
                           DataColumn(
-                              label: Container(width: 80, child: Text('Sales team',style: TextStyle(fontFamily: 'Mulish',fontWeight: FontWeight.w600)))),
+                              label: Container(width: 80, child: Text('Sales team',style: TextStyle(fontFamily: 'Proxima Nova',fontWeight: FontWeight.w600)))),
                           DataColumn(label: Text("")),
                         ],
                         rows: List.generate(
@@ -1225,7 +1226,7 @@ class _MergeOpportunityState extends State<MergeOpportunity> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Colors.white,fontFamily: 'Mulish'),
+                                color: Colors.white,fontFamily: 'Proxima Nova '),
                           ),
                         ),
                         onPressed: () async {

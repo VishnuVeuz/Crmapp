@@ -190,7 +190,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: Colors.black
+                color: Colors.black, fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -202,7 +202,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -220,7 +220,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: Colors.black
+                color: Colors.black, fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -232,7 +232,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -301,7 +301,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                 Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text("Opportunity", style: TextStyle(
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
                       color: Color(0xFF292929),
@@ -346,6 +346,10 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
               },
               decoration: InputDecoration(
                 hintText: 'Search...',
+                hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
                     setState(() {

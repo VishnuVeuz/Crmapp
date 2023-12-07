@@ -33,9 +33,9 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
       type: BottomNavigationBarType.fixed,
       selectedIconTheme: IconThemeData(color: Colors.pinkAccent),
       selectedLabelStyle: TextStyle(
-          fontSize: 12, fontFamily: 'Mulish', color: Color(0xFFF9246A), fontWeight: FontWeight.w300),
+          fontSize: 12, fontFamily: 'Proxima Nova', color: Color(0xFFF9246A), fontWeight: FontWeight.w300),
       unselectedLabelStyle: TextStyle(
-          fontSize: 12, fontFamily: 'Mulish', color: Colors.black, fontWeight: FontWeight.w300),
+          fontSize: 14, fontFamily: 'Proxima Nova', color: Colors.black, fontWeight: FontWeight.w300),
       currentIndex: currentIndex==null?0:currentIndex!,
 
       onTap: (int index) {

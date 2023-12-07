@@ -288,9 +288,9 @@ class _LeadScrollingState extends State<LeadScrolling> {
                     .size
                     .width/4.5,
                 child: Text(username,style: TextStyle(
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
                     color: Colors.white,
                     decoration: TextDecoration.none),),
               ),
@@ -468,9 +468,9 @@ class _LeadScrollingState extends State<LeadScrolling> {
                       padding: const EdgeInsets.only(top: 5),
                       child: Text("Filter",
                           style: TextStyle(
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w400,
-                            fontSize: 12,
+                            fontSize: 16,
                             color: Color(0xFF212121),
                           )),
                     )
@@ -499,9 +499,9 @@ class _LeadScrollingState extends State<LeadScrolling> {
                         padding: const EdgeInsets.only(top: 5),
                         child: Text("Search",
                             style: TextStyle(
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                              fontSize: 16,
                               color: Color(0xFF212121),
                             )),
                       )
@@ -526,14 +526,14 @@ class _LeadScrollingState extends State<LeadScrolling> {
               maxChildSize: 0.95,
 
               title: Text("Leads Category",style:
-              TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Mulish',),),
+              TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Proxima Nova',),),
 
 
 
               buttonText: Text("Lead Filter",
 
                 style:
-              TextStyle(fontWeight: FontWeight.w500,fontSize: 14, fontFamily: 'Mulish',color: Colors.black),),
+              TextStyle(fontWeight: FontWeight.w500,fontSize: 16, fontFamily: 'Proxima Nova',color: Colors.black),),
               buttonIcon:
               Icon(
               //  Icons.arrow_drop_down_rounded,
@@ -551,12 +551,12 @@ class _LeadScrollingState extends State<LeadScrolling> {
 
 
             cancelText: Text("Cancel",style: TextStyle(color: Color(0xFF231F20),
-                fontWeight: FontWeight.w700,fontSize: 13.57,
-                fontFamily: 'Mulish'
+                fontWeight: FontWeight.w700,fontSize: 17.57,
+                fontFamily: 'Proxima Nova'
             ),),
               confirmText: Text("Ok",style: TextStyle(color: Color(0xFF231F20),
-              fontWeight: FontWeight.w700,fontSize: 13.57,
-                  fontFamily: 'Mulish'
+              fontWeight: FontWeight.w700,fontSize: 17.57,
+                  fontFamily: 'Proxima Nova'
               ),),
 
               onConfirm: (values) async{
@@ -616,6 +616,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
               },
               decoration: InputDecoration(
                 hintText: 'Search...',
+                hintStyle: TextStyle(fontWeight: FontWeight.w500,fontSize: 16, fontFamily: 'Proxima Nova',color: Colors.black),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
                     setState(() {

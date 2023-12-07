@@ -105,10 +105,10 @@ class _LeadCreationState extends State<LeadCreation> {
           elevation: 0,
           title: Row(
             children: [
-              Text("New", style: TextStyle(
-                  fontFamily: 'Mulish',
-                  fontWeight: FontWeight.w700,
-                  fontSize: 15,
+              Text("Create Leads", style: TextStyle(
+                  fontFamily: 'Proxima Nova',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20,
                   color: Colors.white,
                   decoration: TextDecoration.none),)
             ],
@@ -262,7 +262,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   return null;
                                 },
                                 controller: leadnameController,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Color(0xFF1E1E1E),fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Color(0xFF1E1E1E),fontWeight: FontWeight.w500),
                                 decoration: const InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(color: Color(0xFFAFAFAF),width:0.5),
@@ -272,14 +272,14 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Lead Name',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: probabilityController,
                                 decoration: const InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
@@ -289,7 +289,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                       borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
                                     labelText: 'Probability',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -297,7 +297,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: companynameController,
                                 decoration: const InputDecoration(
                                     enabledBorder: UnderlineInputBorder(
@@ -308,7 +308,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Company Name',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -331,7 +331,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Title',
                                         isDense: true,
-                                          labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                          labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                          fillColor: Colors.white,
 
                                       ),
@@ -371,7 +371,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -412,7 +412,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                "${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600),),
+                                                "${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),),
 
                                           ),
                                         ),
@@ -430,7 +430,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: contactnameController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -441,7 +441,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Contact Name',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             Padding(
@@ -450,14 +450,14 @@ class _LeadCreationState extends State<LeadCreation> {
                               child: Text(
                                 "Address", style: TextStyle(fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),),
                             ),
 
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: streetController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -468,14 +468,14 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Street',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: streettwoController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -486,14 +486,14 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Street2',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: cityController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -504,7 +504,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'City',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             //country
@@ -526,7 +526,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Country',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -566,7 +566,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -620,7 +620,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                           ),
                                         ),
                                       ))
@@ -649,7 +649,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'State',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -686,7 +686,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -741,7 +741,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
 
                                           ),
                                         ),
@@ -759,7 +759,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
                                 keyboardType: TextInputType.number,
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: zipController,
                                 maxLength: 6,
                                 decoration: const InputDecoration(
@@ -772,7 +772,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Zip',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -781,7 +781,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: websiteController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -792,7 +792,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Website',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -815,7 +815,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Language',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -852,7 +852,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -906,7 +906,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                             // "${item["capital"]} - ${item["country"]} - ${item["continent"]} - pop.: ${item["population"]}"),
                                           ),
                                         ),
@@ -923,7 +923,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: emailController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -934,7 +934,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                                     // border: UnderlineInputBorder(),
                                     labelText: 'Email',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -942,7 +942,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: jobpositionController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -953,14 +953,14 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Job Position',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
                             Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 keyboardType: TextInputType.phone,
                                // maxLength: 10,
                                 controller: phoneController,
@@ -974,7 +974,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
 
                                     labelText: 'Phone',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -999,7 +999,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 keyboardType: TextInputType.phone,
                                // maxLength: 10,
                                 controller: mobileController,
@@ -1012,7 +1012,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                       borderSide: BorderSide(color: Color(0xFFAFAFAF)),),
 
                                     labelText: 'Mobile',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                                 validator: (value) {
                                   if (value!.isEmpty) {
@@ -1051,7 +1051,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Company',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1089,7 +1089,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .width,
                                         //color: Colors.red,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1144,7 +1144,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                           ),
                                         ),
                                       ))
@@ -1172,7 +1172,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Salesperson',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1209,7 +1209,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1261,7 +1261,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                           ),
                                         ),
                                       ))
@@ -1291,7 +1291,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Sales Team',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1328,7 +1328,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1385,7 +1385,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
 
                                           ),
                                         ),
@@ -1400,7 +1400,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.only(left: 25, top: 10),
                               child: Text(
 
-                                "Priority", style: TextStyle(color: Color(0xFF666666), fontSize: 11,fontFamily: 'Mulish',fontWeight: FontWeight.w500),),
+                                "Priority", style: TextStyle(color: Color(0xFF666666), fontSize: 11,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),),
                             ),
                             Padding(
                                 padding: const EdgeInsets.only(left: 20, top: 10),
@@ -1446,7 +1446,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                       style: TextStyle(
                                         color: Color(0xFF666666),
                                         fontSize: 12,
-                                        fontFamily: 'Mulish',
+                                        fontFamily: 'Proxima Nova',
                                         fontWeight: FontWeight.w500,
 
                                       ),
@@ -1473,7 +1473,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         borderWidth: 0,
 
 
-                                        hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        hintStyle: TextStyle(color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         selectedOptions: editTagName
                                             .map((tag) => ValueItem( label: tag.label,value: tag.value))
                                             .toList(),
@@ -1568,7 +1568,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Campaign',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1606,7 +1606,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
 
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1660,7 +1660,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
 
                                           ),
                                         ),
@@ -1691,7 +1691,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Medium',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1728,7 +1728,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1782,7 +1782,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                           ),
                                         ),
                                       ))
@@ -1810,7 +1810,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                         ),
                                         labelText:'Source',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -1847,7 +1847,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                             .size
                                             .width,
                                         child: Text(item["name"], style: TextStyle(
-                                            fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),),
+                                            fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),),
                                       )));
                                 },
                                 futureSearchFn: (String? keyword, String? orderBy,
@@ -1901,7 +1901,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(0),
                                             child: Text(
-                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                " ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
 
                                           ),
                                         ),
@@ -1918,7 +1918,7 @@ class _LeadCreationState extends State<LeadCreation> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 25, vertical: 0),
                               child: TextFormField(
-                                style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                 controller: refferedbyController,
                                 decoration: const InputDecoration(
                                     enabledBorder:  UnderlineInputBorder(
@@ -1929,7 +1929,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                                     // border: UnderlineInputBorder(),
                                     labelText: 'Reffered by',
-                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                    labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                                 ),
                               ),),
 
@@ -1952,7 +1952,7 @@ class _LeadCreationState extends State<LeadCreation> {
                                       textAlignVertical:
                                       TextAlignVertical.top,
                                       style: TextStyle(
-                                          fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
+                                          fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500
                                       ),
 
 
@@ -1969,7 +1969,7 @@ class _LeadCreationState extends State<LeadCreation> {
 
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Internal Notes',
-                                labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                             ),
 
 
@@ -2005,7 +2005,7 @@ class _LeadCreationState extends State<LeadCreation> {
                           child: Text("Save", style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 14.57,
-                              color: Colors.white,fontFamily: 'Mulish'),),
+                              color: Colors.white,fontFamily: 'Proxima Nova'),),
 
                           onPressed: () async {
 

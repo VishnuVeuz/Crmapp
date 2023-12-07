@@ -309,15 +309,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Mulish
+    - family: Proxima Nova
       fonts:
-        - asset: assets/fonts/Mulish-Regular.ttf
-        - asset: assets/fonts/Mulish-Bold.ttf
-        - asset: assets/fonts/Mulish-ExtraBold.ttf
-        - asset: assets/fonts/Mulish-ExtraLight.ttf
-        - asset: assets/fonts/Mulish-Light.ttf
-        - asset: assets/fonts/Mulish-Medium.ttf
-        - asset: assets/fonts/Mulish-SemiBold.ttf
+        - asset: assets/fonts/Proxima Nova Bold.ttf
+        - asset: assets/fonts/Proxima Nova Extrabold.ttf
+        - asset: assets/fonts/Proxima Nova Light.ttf
+        - asset: assets/fonts/Proxima Nova Regular.ttf
+        - asset: assets/fonts/Proxima Nova Semibold.ttf
+        - asset: assets/fonts/Proxima-Nova-Medium.ttf
+
+
 #          style: italic
 #    - family: Mulish
 #      fonts:

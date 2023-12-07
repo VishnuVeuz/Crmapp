@@ -195,7 +195,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                                         fontWeight:
                                         FontWeight
                                             .w400,
-                                        fontFamily: 'Mulish',
+                                        fontFamily: 'Proxima Nova',
                                         fontSize: 10,
                                         color: Colors.grey))),
                           ),
@@ -285,7 +285,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                             fontWeight: FontWeight
                                 .w700,
                             fontSize: 11,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             color: Colors.white),
                       ),
                     ),
@@ -368,7 +368,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
           return AlertDialog(
             shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            title: Text('Please choose media to select',style: TextStyle(fontFamily: 'Mulish'),),
+            title: Text('Please choose media to select',style: TextStyle(fontFamily: 'Proxima Nova'),),
             content: Container(
               height: MediaQuery.of(context).size.height / 6,
               child: Column(
@@ -382,7 +382,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                     child: Row(
                       children: [
                         Icon(Icons.image),
-                        Text('From Gallery',style: TextStyle(fontFamily: 'Mulish'),),
+                        Text('From Gallery',style: TextStyle(fontFamily: 'Proxima Nova'),),
                       ],
                     ),
                       style: ElevatedButton.styleFrom(
@@ -400,7 +400,7 @@ class _LogNoteEditState extends State<LogNoteEdit> {
                     child: Row(
                       children: [
                         Icon(Icons.camera),
-                        Text('From Camera',style: TextStyle(fontFamily: 'Mulish'),),
+                        Text('From Camera',style: TextStyle(fontFamily: 'Proxima Nova'),),
                       ],
                     ),
                     style: ElevatedButton.styleFrom(

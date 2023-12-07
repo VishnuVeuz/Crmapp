@@ -144,13 +144,13 @@ class _CustomerCreationState extends State<CustomerCreation> {
           title: Row(
             children: [
               Text(
-                "New",
+                "Create Customer",
                 style: TextStyle(
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w700,
-                    fontSize: 15,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 18,
                     color: Colors.white,
-                    decoration: TextDecoration.none),
+                    decoration: TextDecoration.none)
               )
             ],
           ),
@@ -275,7 +275,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     RadioListTile(
                                       title: Text(
                                         "Individual",
-                                        style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                        style: TextStyle(fontSize: 12,fontFamily: 'Proxima Nova'),
                                       ),
                                       value: "person",
                                       groupValue: radioInput,
@@ -293,7 +293,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     RadioListTile(
                                       title: Text(
                                         "Company",
-                                        style: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                        style: TextStyle(fontSize: 12,fontFamily: 'Proxima Nova'),
                                       ),
                                       value: "company",
                                       groupValue: radioInput,
@@ -664,7 +664,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 return null;
                               },
                               controller: customerController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -674,7 +674,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Customer Name',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Visibility(
@@ -695,7 +695,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                         ),
                                         labelText:'Company Name',
                                         isDense: true,
-                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                        labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         fillColor: Colors.white,
 
                                       ),
@@ -742,7 +742,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                             .width,
                                         child: Text(
                                           item["display_name"],
-                                          style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                          style: TextStyle( fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                         ),
                                       )));
                                 },
@@ -778,7 +778,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     child: Card(
                                       child: Padding(
                                         padding: const EdgeInsets.all(0),
-                                        child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                        child: Text("${item["display_name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -797,7 +797,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -806,7 +806,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             child: TextFormField(
                               enabled: cmpbasedVisible,
                               controller: streetController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -816,7 +816,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Street',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -825,7 +825,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             child: TextFormField(
                               enabled: cmpbasedVisible,
                               controller: streettwoController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -835,7 +835,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Street2',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -844,7 +844,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             child: TextFormField(
                               enabled: cmpbasedVisible,
                               controller: cityController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -854,7 +854,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'City',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -873,7 +873,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Country',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -917,7 +917,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -962,7 +962,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -987,7 +987,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'State',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1029,7 +1029,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle( fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1075,7 +1075,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1092,7 +1092,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               keyboardType: TextInputType.number,
                               enabled: cmpbasedVisible,
                               controller: zipController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               maxLength: 6,
                               decoration: const InputDecoration(
                                   counterText: "",
@@ -1104,7 +1104,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Zip',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1113,7 +1113,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             child: TextFormField(
                               enabled: cmpbasedVisible,
                               controller: taxidController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1123,7 +1123,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Tax ID',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1142,7 +1142,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Company',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1187,7 +1187,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1233,7 +1233,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1248,7 +1248,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: jobpositionController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1258,7 +1258,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Job Position',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1268,7 +1268,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               keyboardType: TextInputType.phone,
                               maxLength: 10,
                               controller: phoneController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   counterText: "",
                                   enabledBorder: UnderlineInputBorder(
@@ -1279,7 +1279,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Phone',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return null;
@@ -1306,7 +1306,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               keyboardType: TextInputType.phone,
                               //maxLength: 10,
                               controller: mobileController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   counterText: "",
                                   enabledBorder: UnderlineInputBorder(
@@ -1317,7 +1317,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Mobile',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return null;
@@ -1341,7 +1341,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: customerrankController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1351,7 +1351,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Customer Rank',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1359,7 +1359,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: supplierrankController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1369,7 +1369,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Supplier Rank',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1377,7 +1377,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: emailController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1387,7 +1387,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Email',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1395,7 +1395,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: websiteController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -1405,7 +1405,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Website',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           Padding(
@@ -1424,7 +1424,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Language',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1468,7 +1468,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1504,7 +1504,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1530,7 +1530,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Title',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1571,7 +1571,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1607,7 +1607,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1634,7 +1634,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     style: TextStyle(
                                       color: Color(0xFF666666),
                                       fontSize: 12,
-                                      fontFamily: 'Mulish',
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
 
                                     ),
@@ -1651,7 +1651,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       backgroundColor: Colors.grey[50],
                                       borderWidth: 0,
 
-                                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Mulish'),
+                                      hintStyle: TextStyle(fontSize: 12,fontFamily: 'Proxima Nova'),
                                       selectedOptions: editTagName
                                           .map((tag) =>
                                           ValueItem(label: tag.label, value: tag.value))
@@ -1720,7 +1720,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -1739,7 +1739,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Salesperson',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1781,7 +1781,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1826,7 +1826,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1852,7 +1852,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Payment Terms',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1891,7 +1891,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -1925,7 +1925,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -1951,7 +1951,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Pricelist',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -1990,7 +1990,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -2026,7 +2026,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -2044,7 +2044,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -2063,7 +2063,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       ),
                                       labelText:'Fiscal Position',
                                       isDense: true,
-                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                      labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                       fillColor: Colors.white,
 
                                     ),
@@ -2105,7 +2105,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                           .width,
                                       child: Text(
                                         item["name"],
-                                        style: TextStyle( fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle( fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       ),
                                     )));
                               },
@@ -2141,7 +2141,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -2159,7 +2159,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Color(0xFF000000),fontFamily: 'Mulish'),
+                                  color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -2167,7 +2167,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             const EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                             child: TextFormField(
                               controller: referenceController,
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                               decoration: const InputDecoration(
                                   enabledBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -2177,7 +2177,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText: 'Reference',
                                   labelStyle:
-                                  TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                  TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                             ),
                           ),
                           // Padding(
@@ -2204,7 +2204,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                     textAlignVertical:
                                     TextAlignVertical.top,
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500
                                     ),
 
 
@@ -2221,7 +2221,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                       // border: UnderlineInputBorder(),
                                       labelText: 'Internal Notes',
                                       labelStyle: TextStyle(
-                                          color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),),
+                                          color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),),
                               ),
                             ),
                           ),
@@ -2365,7 +2365,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                                       fontWeight:
                                                                       FontWeight.w600,
                                                                       fontSize: 14,
-                                                                      color: Colors.black,  fontFamily: 'Mulish'),
+                                                                      color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                                 ),
                                                               ),
                                                             ),
@@ -2402,7 +2402,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                             style: TextStyle(
                                                                 fontWeight: FontWeight.w400,
                                                                 fontSize: 12,
-                                                                color: Colors.black,  fontFamily: 'Mulish'),
+                                                                color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                           ),
                                                         ),
                                                         Row(
@@ -2417,7 +2417,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                                     fontWeight:
                                                                     FontWeight.w400,
                                                                     fontSize: 12,
-                                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                                                    color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                               ),
                                                             ),
                                                             Padding(
@@ -2430,7 +2430,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                                     fontWeight:
                                                                     FontWeight.w400,
                                                                     fontSize: 12,
-                                                                    color: Colors.black,  fontFamily: 'Mulish'),
+                                                                    color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                               ),
                                                             ),
                                                           ],
@@ -2443,7 +2443,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                             style: TextStyle(
                                                                 fontWeight: FontWeight.w400,
                                                                 fontSize: 12,
-                                                                color: Colors.black,  fontFamily: 'Mulish'),
+                                                                color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                           ),
                                                         ),
                                                         Padding(
@@ -2454,7 +2454,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                                             style: TextStyle(
                                                                 fontWeight: FontWeight.w400,
                                                                 fontSize: 12,
-                                                                color: Colors.black,  fontFamily: 'Mulish'),
+                                                                color: Colors.black,  fontFamily: 'Proxima Nova'),
                                                           ),
                                                         ),
                                                       ],
@@ -2492,7 +2492,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,fontFamily: 'Proxima Nova'),
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate() && customerController.text.trim().isNotEmpty) {
@@ -2550,7 +2550,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Color(0xFF212121),fontFamily: 'Mulish'),
+                                    color: Color(0xFF212121),fontFamily: 'Proxima Nova'),
                               ),
                               onPressed: () {
                                 showDialog(
@@ -2597,7 +2597,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           RadioListTile(
                             title: Text(
                               "Contact",
-                              style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                              style: TextStyle(fontSize: 15,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w600),
                             ),
                             value: "contact",
                             groupValue: alertradioSelect,
@@ -2658,7 +2658,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 RadioListTile(
                   title: Text(
                     "Other Address",
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 15,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w600),
                   ),
                   value: "other",
                   groupValue: alertradioSelect,
@@ -2685,7 +2685,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                 RadioListTile(
                   title: Text(
                     "Private Address",
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 15,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w600),
                   ),
                   value: "private",
                   groupValue: alertradioSelect,
@@ -2714,7 +2714,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertCompanyNameController,
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -2724,7 +2724,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Contact Name',
                         labelStyle:
-                        TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Visibility(
@@ -2740,7 +2740,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xFF000000),fontFamily: 'Mulish'),
+                              color: Color(0xFF000000),fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       Padding(
@@ -2748,7 +2748,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertStreetController,
-                          style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2760,7 +2760,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Street',
                               labelStyle:
-                              TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                         ),
                       ),
                       Padding(
@@ -2768,7 +2768,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertStreetTwoController,
-                          style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2780,7 +2780,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Street2',
                               labelStyle:
-                              TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                         ),
                       ),
                       Padding(
@@ -2788,7 +2788,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 10, vertical: 0),
                         child: TextFormField(
                           controller: alertCityController,
-                          style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -2800,7 +2800,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'City',
                               labelStyle:
-                              TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                         ),
                       ),
                       //country
@@ -2821,7 +2821,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText:'Country',
                                   isDense: true,
-                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                   fillColor: Colors.white,
 
                                 ),
@@ -2866,7 +2866,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                           },
@@ -2913,7 +2913,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -2941,7 +2941,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText:'State',
                                   isDense: true,
-                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                   fillColor: Colors.white,
 
                                 ),
@@ -2982,7 +2982,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                           },
@@ -3030,7 +3030,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -3047,7 +3047,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                           keyboardType: TextInputType.number,
                           controller: alertZipController,
                           maxLength: 6,
-                          style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           decoration: const InputDecoration(
                               counterText: "",
                               enabledBorder: UnderlineInputBorder(
@@ -3060,7 +3060,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Zip',
                               labelStyle:
-                              TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                         ),
                       ),
                     ],
@@ -3086,7 +3086,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   ),
                                   labelText:'Title',
                                   isDense: true,
-                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                  labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                   fillColor: Colors.white,
 
                                 ),
@@ -3128,7 +3128,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Text(
                                     item["name"],
                                     style: TextStyle(
-                                        fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                   ),
                                 )));
                           },
@@ -3166,7 +3166,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                                   child: Card(
                                     child: Padding(
                                       padding: const EdgeInsets.all(0),
-                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                      child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ))
@@ -3181,7 +3181,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             horizontal: 10, vertical: 5),
                         child: TextFormField(
                           controller: alertJobController,
-                          style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                          style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
                                 borderSide:
@@ -3193,7 +3193,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               ),
                               labelText: 'Job Position',
                               labelStyle:
-                              TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                              TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                         ),
                       ),
                     ],
@@ -3204,7 +3204,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertEmailController,
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -3214,7 +3214,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Email',
                         labelStyle:
-                        TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Padding(
@@ -3222,7 +3222,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertPhoneController,
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                    // maxLength: 10,
                     decoration: const InputDecoration(
@@ -3235,7 +3235,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Phone',
                         labelStyle:
-                        TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return null;
@@ -3261,7 +3261,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                     keyboardType: TextInputType.phone,
                    // maxLength: 10,
                     controller: alertMobileController,
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                     decoration: const InputDecoration(
                         counterText: "",
                         enabledBorder: UnderlineInputBorder(
@@ -3272,7 +3272,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Mobile',
                         labelStyle:
-                        TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
 
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -3298,7 +3298,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                   const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                   child: TextFormField(
                     controller: alertNotesController,
-                    style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0xFFAFAFAF),width: 0.5),
@@ -3308,7 +3308,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                         ),
                         labelText: 'Internal Notes',
                         labelStyle:
-                        TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                        TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                   ),
                 ),
 
@@ -3327,7 +3327,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,fontFamily: 'Proxima Nova'),
                             ),
                             onPressed:_isSavingData
                                 ? null // Disable the button if saving is in progress
@@ -3387,7 +3387,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white,fontFamily: 'Mulish'),
+                                  color: Colors.white,fontFamily: 'Proxima Nova'),
                             ),
                             onPressed: _isSavingData
                                 ? null // Disable the button if saving is in progress
@@ -3455,7 +3455,7 @@ class _CustomerCreationState extends State<CustomerCreation> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 13.57,
-                                color: Color(0xFF212121),fontFamily: 'Mulish'),
+                                color: Color(0xFF212121),fontFamily: 'Proxima Nova'),
                           ),
                           onPressed: () {
 

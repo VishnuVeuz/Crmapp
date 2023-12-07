@@ -109,11 +109,11 @@ class _CalendarAddState extends State<CalendarAdd> {
           title: Row(
             children: [
               Text(
-                "Calendar",
+                "Calendar Create",
                 style: TextStyle(
                     fontWeight: FontWeight.w700,
-                    fontSize: 15,
-                    fontFamily: 'Mulish',
+                    fontSize: 18,
+                    fontFamily: 'Proxima Nova',
                     color: Colors.white,
                     decoration: TextDecoration.none),
               )
@@ -249,7 +249,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                               }
                               return null;
                             },
-                            style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Color(0xFF1E1E1E),fontWeight: FontWeight.w600),
+                            style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Color(0xFF1E1E1E),fontWeight: FontWeight.w500),
                             controller: meetingsubjectController,
                             decoration: const InputDecoration(
                                 enabledBorder:  UnderlineInputBorder(
@@ -261,7 +261,7 @@ class _CalendarAddState extends State<CalendarAdd> {
 
                                 // border: UnderlineInputBorder(),
                                 labelText: 'Meeting Subject',
-                                labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)
+                                labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)
                             ),
                           ),
                         ),
@@ -279,7 +279,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                   style: TextStyle(
                                     color: Color(0xFF666666),
                                     fontSize: 11,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w500,
 
                                   ),
@@ -366,7 +366,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 13.57,
-                                            color: Colors.black,fontFamily: 'Mulish'),
+                                            color: Colors.black,fontFamily: 'Proxima Nova'),
                                       ),
                                       onPressed: () {
                                         setState(() {
@@ -397,7 +397,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 13.57,
-                                            color: Colors.black,fontFamily: 'Mulish'),
+                                            color: Colors.black,fontFamily: 'Proxima Nova'),
                                       ),
                                       onPressed: () {
                                         setState(() {
@@ -432,7 +432,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     child: Text(
                                       "Starting at",
                                       style: TextStyle(
-                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                   InkWell(
@@ -441,7 +441,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       padding: const EdgeInsets.only(
                                           top: 0, left: 25, right: 25),
                                       child: TextFormField(
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
 
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
@@ -456,7 +456,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           hintText: "choose date & time",
                                             hintStyle: TextStyle(
                                               //fontFamily: "inter",
-                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500)                                        ),
+                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)                                        ),
                                       ),
                                     ),
 
@@ -469,7 +469,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     child: Text(
                                       "Stopping at",
                                       style: TextStyle(
-                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                          color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                     ),
                                   ),
                                   InkWell(
@@ -478,7 +478,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       padding: const EdgeInsets.only(
                                           top: 0, left: 25, right: 25),
                                       child: TextFormField(
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
 
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
@@ -493,7 +493,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           hintText: "choose date & time",
                                             hintStyle: TextStyle(
                                               //fontFamily: "inter",
-                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500)                                         ),
+                                                color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)                                         ),
                                       ),
                                     ),
 
@@ -508,7 +508,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                       const EdgeInsets.symmetric(
                                           horizontal: 25, vertical: 0),
                                       child: TextFormField(
-                                        style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                        style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                         controller: meeting_duration,
                                         decoration: const InputDecoration(
                                             enabledBorder:  UnderlineInputBorder(
@@ -522,7 +522,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                             // border: UnderlineInputBorder(),
                                             labelText: 'Duration',
                                             labelStyle:
-                                            TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                            TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ),
@@ -535,7 +535,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                         child: Text(
                                           "All day",
                                           style: TextStyle(
-                                              color: Color(0xFF666666), fontSize: 12,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                              color: Color(0xFF666666), fontSize: 12,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                         ),
                                       ),
                                       Padding(
@@ -575,7 +575,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                               ),
                                               labelText:'Organizer',
                                               isDense: true,
-                                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500),
+                                              labelStyle: TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500),
                                               fillColor: Colors.white,
 
                                             ),
@@ -621,7 +621,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                               child: Text(
                                                 item["name"],
                                                    style: TextStyle(
-                                              fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600)
+                                              fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500)
                                               ),
                                             )));
                                       },
@@ -662,7 +662,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                               child: Card(
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(0),
-                                                  child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w600)),
+                                                  child: Text(" ${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                                 ),
                                               ),
                                             ))
@@ -689,7 +689,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                             style: TextStyle(
                                               color: Color(0xFF666666),
                                               fontSize: 12,
-                                              fontFamily: 'Mulish',
+                                              fontFamily: 'Proxima Nova',
                                               fontWeight: FontWeight.w500,
 
                                             ),
@@ -768,7 +768,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       controller: locationController,
                                       decoration: const InputDecoration(
                                           enabledBorder:  UnderlineInputBorder(
@@ -782,7 +782,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Location',
                                           labelStyle:
-                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                   Padding(
@@ -790,7 +790,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       controller: meetingurlController,
                                       decoration: const InputDecoration(
                                           enabledBorder:  UnderlineInputBorder(
@@ -804,7 +804,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Meeting URL',
                                           labelStyle:
-                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                   SizedBox(
@@ -825,7 +825,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                             style: TextStyle(
                                               color: Color(0xFF666666),
                                               fontSize: 12,
-                                              fontFamily: 'Mulish',
+                                              fontFamily: 'Proxima Nova',
                                               fontWeight: FontWeight.w500,
 
                                             ),
@@ -904,7 +904,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                     const EdgeInsets.symmetric(
                                         horizontal: 25, vertical: 0),
                                     child: TextFormField(
-                                      style: TextStyle(fontSize: 14,fontFamily: 'Mulish',color: Colors.black,fontWeight: FontWeight.w600),
+                                      style: TextStyle(fontSize: 14,fontFamily: 'Proxima Nova',color: Colors.black,fontWeight: FontWeight.w500),
                                       controller: meeting_discription,
                                       decoration: const InputDecoration(
                                           enabledBorder: UnderlineInputBorder(
@@ -919,7 +919,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           // border: UnderlineInputBorder(),
                                           labelText: 'Description',
                                           labelStyle:
-                                          TextStyle(color: Color(0xFF666666), fontSize: 14,fontFamily: 'Mulish',fontWeight: FontWeight.w500)),
+                                          TextStyle(color: Color(0xFF666666), fontSize: 15,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                     ),
                                   ),
                                 ],
@@ -950,7 +950,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           decoration: InputDecoration(
                                             labelText:'Privacy',
                                             isDense: true,
-                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Proxima Nova'),
                                             fillColor: Colors.white,
 
                                           ),
@@ -974,7 +974,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           value,
                                           style: TextStyle(fontWeight: FontWeight.w400,
                                               fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish'),
+                                              color: Colors.black,fontFamily: 'Proxima Nova'),
                                         ),
                                       );
                                     }).toList(),
@@ -1001,7 +1001,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           decoration: InputDecoration(
                                             labelText:'Show as',
                                             isDense: true,
-                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Mulish'),
+                                            labelStyle: TextStyle(color: Colors.black, fontSize: 12,fontFamily: 'Proxima Nova'),
                                             fillColor: Colors.white,
 
                                           ),
@@ -1025,7 +1025,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                                           value,
                                           style:TextStyle(fontWeight: FontWeight.w400,
                                               fontSize: 12,
-                                              color: Colors.black,fontFamily: 'Mulish'),
+                                              color: Colors.black,fontFamily: 'Proxima Nova'),
                                         ),
                                       );
                                     }).toList(),
@@ -1066,7 +1066,7 @@ class _CalendarAddState extends State<CalendarAdd> {
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 13.57,
-                            color: Colors.white,fontFamily: 'Mulish'),
+                            color: Colors.white,fontFamily: 'Proxima Nova'),
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate() && meetingsubjectController.text.trim().isNotEmpty) {

@@ -73,9 +73,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                 child: Text(
                   meetingsub!,
                   style: TextStyle(
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Colors.white,
                       decoration: TextDecoration.none)
                 ),
@@ -231,10 +231,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
-                            child: Text("Create",style: TextStyle(
-                              fontFamily: 'Mulish',
+                            child: Text("Create",style:TextStyle(
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                              fontSize: 15,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -264,9 +264,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: Text("Edit",style: TextStyle(
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                              fontSize: 15,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -309,10 +309,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
-                            child: Text("Delete",style: TextStyle(
-                              fontFamily: 'Mulish',
+                            child: Text("Delete",style:TextStyle(
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                              fontSize: 15,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -337,8 +337,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         child: Text("Meeting subject",
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
+                                fontFamily: 'Proxima Nova',
+                                fontSize: 13,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -355,8 +355,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               meetingsub!,
                               style:  TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF000000)),
                             ),
                           ),
@@ -384,8 +384,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                         child: Text("Partner Name",
                             style:  TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontFamily: 'Mulish',
-                                fontSize: 12,
+                                fontFamily: 'Proxima Nova',
+                                fontSize: 13,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -402,8 +402,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               partnername!,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'Mulish',
-                                  fontSize: 12,
+                                  fontFamily: 'Proxima Nova',
+                                  fontSize: 13,
                                   color: Color(0xFF000000)),
                             ),
                           ),
@@ -443,7 +443,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.black,fontFamily: 'Mulish'),
+                                    color: Colors.black,fontFamily: 'Proxima Nova'),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -474,7 +474,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
-                                    color: Colors.black,fontFamily: 'Mulish'),
+                                    color: Colors.black,fontFamily: 'Proxima Nova'),
                               ),
                               onPressed: () {
                                 setState(() {
@@ -521,8 +521,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Start at",
                                       style:  TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -539,8 +539,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         startdate!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -568,8 +568,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Stop at",
                                       style:TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -586,8 +586,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         stopdate!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -615,8 +615,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Duration",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -633,8 +633,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         duration!,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -662,8 +662,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Organizer",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -680,8 +680,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       organizer!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -708,8 +708,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Reminder",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Padding(
@@ -749,8 +749,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                                   reminder![index]["name"].toString(),
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w400,
-                                                      fontFamily: 'Mulish',
-                                                      fontSize: 12,
+                                                      fontFamily: 'Proxima Nova',
+                                                      fontSize: 13,
                                                       color: Color(0xFF000000)),
                                                 ),
                                               ),
@@ -783,8 +783,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Location",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -800,10 +800,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         location!,
                                         style:  TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF212121)),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000)),
                                       ),
                                     ),
                                   ),
@@ -830,8 +830,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Meeting URL",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -847,11 +847,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         meetingurl!,
                                         style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color((0xFF212121)),
-                                      ),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000)),
                                   ),
                                     ),
                                 ),
@@ -877,8 +876,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 child: Text("Tags",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Padding(
@@ -940,9 +939,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                                         tags![index]["name"].toString(),
                                                         style: TextStyle(
                                                           color: Colors.white,
-                                                          fontFamily: 'Mulish',
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w500,
-                                                          fontSize: 10,
+                                                          fontSize: 9.5,
                                                         ),
                                                       ),
                                                     ),
@@ -1010,8 +1009,8 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                   child: Text("Description",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1027,10 +1026,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       child: Text(
                                         description!,
                                         style:  TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF212121)),
+                                            fontWeight: FontWeight.w400,
+                                            fontFamily: 'Proxima Nova',
+                                            fontSize: 13,
+                                            color: Color(0xFF000000)),
                                       ),
                                     ),
                                   ),
@@ -1070,9 +1069,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Privacy",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1090,10 +1089,10 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       StringUtils.capitalize(privacy!),
 
                                       style:TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
+                                          color: Color(0xFF000000)),
                                     ),
                                   ),
                                 ),
@@ -1119,9 +1118,9 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Show as",
                                     style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1136,11 +1135,11 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     alignment: Alignment.centerRight,
                                     child: Text(
                                       StringUtils.capitalize(showas!),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
-                                          color: Color(0xFF212121)),
+                                      style:TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
+                                          color: Color(0xFF000000)),
                                     ),
                                   ),
                                 ),

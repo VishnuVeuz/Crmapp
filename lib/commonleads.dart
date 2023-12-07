@@ -63,11 +63,11 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                           padding: const EdgeInsets.only(left: 20,top: 5),
                           child: Text(widget.name,
                             style: TextStyle(
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 // wordSpacing: 5,
                                 fontWeight: FontWeight
-                                    .w600,
-                                fontSize: 14,
+                                    .w500,
+                                fontSize: 17,
                                 color: Colors.black),
                           ),
                         ),
@@ -77,10 +77,10 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                             padding: const EdgeInsets.only(top: 5,left: 20),
                             child: Text(widget.contactname,
                               style:TextStyle(
-                                  fontFamily: 'Mulish',
+                                  fontFamily: 'Proxima Nova',
                                   fontWeight: FontWeight
-                                      .w600,
-                                  fontSize: 12,
+                                      .w500,
+                                  fontSize: 14,
                                   color: Color(0xFF787878)),
                             ),
                           ),
@@ -108,18 +108,23 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding:
-                                    const EdgeInsets.only(right: 8.0, top: 4),
+                                    const EdgeInsets.only(right: 8.0, top: 0),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
 
                                       child: Row(
                                         children: [
                                           Container(
-                                            height: 5,
-                                            width: 5,
-                                          color:  Color(int.parse(widget.tags![index]["color"])),
+                                            height: 8,
+                                            width: 8,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color:  Color(int.parse(widget.tags![index]["color"])),),
+
+                                            // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
 
                                           ),
+
                                           SizedBox(width: 4,),
 
                                           Center(
@@ -128,9 +133,9 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                               widget.tags![index]["name"].toString(),
                                               style: TextStyle(
                                                   color: Color(0xFF787878),
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 12),
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14),
                                             ),
                                           ),
                                         ],

@@ -180,7 +180,8 @@ else{
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
-                color: Colors.black
+                color: Colors.black,
+                fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -192,7 +193,7 @@ else{
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -210,6 +211,7 @@ else{
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Colors.black
+                , fontFamily: 'Proxima Nova'
             ),
           ),
           const SizedBox(height: 10,),
@@ -221,7 +223,7 @@ else{
                   fetchData("");
                 });
               },
-              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red),)),
+              child: const Text("Retry", style: TextStyle(fontSize: 18, color: Colors.red, fontFamily: 'Proxima Nova'),)),
         ],
       ),
     );
@@ -239,10 +241,10 @@ else{
         title: Row(
           children: [
             Text("Quotations", style: TextStyle(
-                fontFamily: 'Mulish',
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                color: Color(0xFFFFFFFF),
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Proxima Nova',
+                fontSize: 20,
+                color: Colors.white,
                 decoration: TextDecoration.none),)
           ],
         ),
@@ -384,11 +386,11 @@ else{
                 Padding(
                   padding: const EdgeInsets.only(left: 24),
                   child: Text("Quotations", style: TextStyle(
-            fontFamily: 'Mulish',
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                  color: Color(0xFF292929),
-          decoration: TextDecoration.none),),
+                      fontFamily: 'Proxima Nova',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Color(0xFF292929),
+                      decoration: TextDecoration.none),),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 26),
@@ -429,6 +431,10 @@ else{
               },
               decoration: InputDecoration(
                 hintText: 'Search...',
+                hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
                     setState(() {

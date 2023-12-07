@@ -259,7 +259,7 @@ class _NotificationsState extends State<Notifications> {
                                             .width / 3.5,
 
                                         child: Text(notificationMessageData[i]["name"],
-                                        style: TextStyle(fontFamily: 'Mulish',
+                                        style: TextStyle(fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w700,
                                             fontSize: 13,
                                             decoration: TextDecoration.none
@@ -280,7 +280,7 @@ class _NotificationsState extends State<Notifications> {
                                           child: Text(notificationMessageData[i]["period"],
                                             style: TextStyle(
                                                 color: Colors.grey[800],
-                                                fontFamily: 'Mulish',
+                                                fontFamily: 'Proxima Nova',
                                                 fontWeight: FontWeight.w700,
                                                 fontSize: 12,
                                                 decoration: TextDecoration.none
@@ -300,9 +300,9 @@ class _NotificationsState extends State<Notifications> {
 
                                     child: Text(notificationMessageData[i]["body"],
                                       style: TextStyle(color: Colors.grey,
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 11,
+                                          fontFamily: 'Proxima Nova',
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12,
                                           decoration: TextDecoration.none
 
                                       ),)),

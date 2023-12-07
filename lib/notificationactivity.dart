@@ -252,7 +252,7 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 20,top: 10),
-                                child: Text(notificationData[i]["name"]),
+                                child: Text(notificationData[i]["name"],style: TextStyle(fontFamily: 'Proxima Nova'),),
                               ),
                               // IconButton(
                               //
@@ -275,11 +275,11 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                       Text(notificationData[i]["overdue_count"]
                                           .toString(),
                                         style: TextStyle(color: notificationData[i]["overdue_count"]!=0?Colors.green
-                                            :Colors.grey),),
+                                            :Colors.grey,fontFamily: 'Proxima Nova'),),
                                       SizedBox(width: 5,),
                                       Text("Late",
                                         style: TextStyle(color: notificationData[i]["overdue_count"]!=0?Colors.green
-                                            :Colors.grey),),
+                                            :Colors.grey,fontFamily: 'Proxima Nova'),),
                                     ],
                                   ),
                                 ),
@@ -341,11 +341,11 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                       Text(notificationData[i]["today_count"]
                                           .toString(),
                                           style: TextStyle(color: notificationData[i]["today_count"]!=0?Colors.green
-                                              :Colors.grey)),
+                                              :Colors.grey,fontFamily: 'Proxima Nova')),
                                       SizedBox(width: 5,),
                                       Text("Today",
                                           style: TextStyle(color: notificationData[i]["today_count"]!=0?Colors.green
-                                              :Colors.grey)),
+                                              :Colors.grey,fontFamily: 'Proxima Nova')),
                                     ],
                                   ),
                                 ),
@@ -405,11 +405,11 @@ class _ActivitiesNotificationState extends State<ActivitiesNotification> {
                                       Text(notificationData[i]["planned_count"]
                                           .toString(),
                                           style: TextStyle(color: notificationData[i]["planned_count"]!=0?Colors.green
-                                              :Colors.grey)),
+                                              :Colors.grey,fontFamily: 'Proxima Nova')),
                                       SizedBox(width: 5,),
                                       Text("Future",
                                           style: TextStyle(color: notificationData[i]["planned_count"]!=0?Colors.green
-                                              :Colors.grey)),
+                                              :Colors.grey,fontFamily: 'Proxima Nova')),
                                     ],
                                   ),
                                 ),

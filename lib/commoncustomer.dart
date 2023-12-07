@@ -141,8 +141,8 @@ class _CustomerListState extends State<CustomerList> {
                                   width:MediaQuery.of(context).size.width/1.6,
                                   child: Text(widget.name,
                                     style: TextStyle(
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w700,
+                                        fontFamily: 'Proxima Nova',
+                                        fontWeight: FontWeight.w500,
                                         fontSize: 14,
                                         color: Colors.black),
                                   ),
@@ -157,8 +157,8 @@ class _CustomerListState extends State<CustomerList> {
                                     //color: Colors.red,
                                     child: Text(widget.jobposition,
                                       style: TextStyle(
-                                          fontFamily: 'Mulish',
-                                          fontWeight: FontWeight.w600,
+                                          fontFamily: 'Proxima Nova',
+                                          fontWeight: FontWeight.w500,
                                           fontSize: 12,
                                           color: Color(0xFF787878)),
                                     ),
@@ -177,8 +177,8 @@ class _CustomerListState extends State<CustomerList> {
                                         visible:widget.state == ""?false:true ,
                                         child: Text(widget.state,
                                           style: TextStyle(
-                                              fontFamily: 'Mulish',
-                                              fontWeight: FontWeight.w600,
+                                              fontFamily: 'Proxima Nova',
+                                              fontWeight: FontWeight.w500,
                                               fontSize: 12,
                                               color: Color(0xFF787878)),
                                         ),
@@ -188,8 +188,8 @@ class _CustomerListState extends State<CustomerList> {
                                         visible:widget.country ==""?false:true ,
                                         child: Text(widget.country,
                                           style:  TextStyle(
-                                              fontFamily: 'Mulish',
-                                              fontWeight: FontWeight.w600,
+                                              fontFamily: 'Proxima Nova',
+                                              fontWeight: FontWeight.w500,
                                               fontSize: 12,
                                               color: Color(0xFF787878)),
                                         ),
@@ -206,7 +206,7 @@ class _CustomerListState extends State<CustomerList> {
                                     width:MediaQuery.of(context).size.width/1.6,
                                     child: Text(widget.email,
                                       style: TextStyle(
-                                          fontFamily: 'Mulish',
+                                          fontFamily: 'Proxima Nova',
                                           fontWeight: FontWeight.w500,
                                           fontSize: 12,
                                           color: Color(0xFF575757)),
@@ -236,7 +236,7 @@ class _CustomerListState extends State<CustomerList> {
                                                   style: TextStyle(
 
                                                       fontWeight: FontWeight.w600,
-                                                      fontFamily: 'Mulish',
+                                                      fontFamily: 'Proxima Nova',
                                                       fontSize: 10.26,
                                                       color: Color(0xFF000000)),
                                                 ),
@@ -262,7 +262,7 @@ class _CustomerListState extends State<CustomerList> {
                                                 child: Text(
                                                   widget.opportunitycount,
                                                   style: TextStyle(
-                                                      fontFamily: 'Mulish',
+                                                      fontFamily: 'Proxima Nova',
                                                       fontWeight: FontWeight.w600,
                                                       fontSize: 10.26,
                                                       color: Color(0xFF000000)),

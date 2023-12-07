@@ -259,9 +259,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: Text(
                         opportunityname!,
                         style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
                             color: Colors.white,
                             decoration: TextDecoration.none),
                       ),
@@ -418,9 +418,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Create",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -446,10 +446,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                     Padding(
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Edit",
-                                          style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                          style:TextStyle(
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -477,9 +477,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Convert",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -493,7 +493,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return SizedBox(
-                                                height: 70,
+                                                height: 80,
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.only(
@@ -553,15 +553,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             child: Text(
                                                                 "Delete",
                                                                 style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  fontSize: 12,
-                                                                  color: Color(
-                                                                      0xFF212121),
+                                                                TextStyle(
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontSize: 15,
+                                                                  color: Color(0xFF212121),
                                                                 )),
                                                           )
                                                         ],
@@ -619,15 +615,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             child: Text(
                                                                 "Duplicate",
                                                                 style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  fontSize: 12,
-                                                                  color: Color(
-                                                                      0xFF212121),
+                                                                TextStyle(
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontSize: 15,
+                                                                  color: Color(0xFF212121),
                                                                 )),
                                                           )
                                                         ],
@@ -649,10 +641,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 children: [
                                                                                   const Text('Lost Reason',
                                                                                       style: TextStyle(
-                                                                                        fontSize: 16,
+                                                                                        fontSize: 18,
                                                                                         fontWeight: FontWeight.w600,
                                                                                         color: Colors.black,
-                                                                                        fontFamily: 'Mulish',
+                                                                                        fontFamily: 'Proxima Nova',
                                                                                       )),
                                                                                   IconButton(
                                                                                     icon: SvgPicture.asset("images/cr.svg"),
@@ -671,7 +663,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   value: lostreasonName,
                                                                                   hint: Text(
                                                                                     "Lost Reason",
-                                                                                    style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Mulish'),
+                                                                                    style: TextStyle(fontSize: 14, color: Colors.black, fontFamily: 'Proxima Nova'),
                                                                                   ),
                                                                                   searchHint: null,
                                                                                   autofocus: true,
@@ -692,7 +684,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       width: 300,
                                                                                       child: Text(
                                                                                         item["name"],
-                                                                                        style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Mulish'),
+                                                                                        style: TextStyle(fontSize: 12, color: Colors.black, fontFamily: 'Proxima Nova'),
                                                                                       ),
                                                                                     )));
                                                                                   },
@@ -723,7 +715,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                 child: Card(
                                                                                                   child: Padding(
                                                                                                     padding: const EdgeInsets.all(0),
-                                                                                                    child: Text("${item["name"]}"),
+                                                                                                    child: Text("${item["name"]}",style: TextStyle(color: Colors.black, fontSize: 14,fontFamily: 'Proxima Nova',fontWeight: FontWeight.w500)),
                                                                                                   ),
                                                                                                 ),
                                                                                               ),
@@ -748,7 +740,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                         child: TextButton(
                                                                                             child: const Text(
                                                                                               'Submit',
-                                                                                              style: TextStyle(fontFamily: 'Mulish', color: Colors.white),
+                                                                                              style: TextStyle(fontFamily: 'Proxima Nova', color: Colors.white,fontWeight: FontWeight.w600),
                                                                                             ),
                                                                                             onPressed: () async {
                                                                                               //Navigator.pop(context);
@@ -807,15 +799,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   child: Text(
                                                                       "Lost",
                                                                       style:
-                                                                          TextStyle(
-                                                                        fontFamily:
-                                                                            'Mulish',
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: Color(
-                                                                            0xFF212121),
+                                                                      TextStyle(
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontWeight: FontWeight.w400,
+                                                                        fontSize: 15,
+                                                                        color: Color(0xFF212121),
                                                                       )),
                                                                 )
                                                               ],
@@ -858,15 +846,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   child: Text(
                                                                       "Restore",
                                                                       style:
-                                                                          TextStyle(
-                                                                        fontFamily:
-                                                                            'Mulish',
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: Color(
-                                                                            0xFF212121),
+                                                                      TextStyle(
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontWeight: FontWeight.w400,
+                                                                        fontSize: 15,
+                                                                        color: Color(0xFF212121),
                                                                       )),
                                                                 )
                                                               ],
@@ -911,16 +895,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       top: 5),
                                                               child: Text("Won",
                                                                   style:
-                                                                      TextStyle(
-                                                                    fontFamily:
-                                                                        'Mulish',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontSize:
-                                                                        12,
-                                                                    color: Color(
-                                                                        0xFF212121),
+                                                                  TextStyle(
+                                                                    fontFamily: 'Proxima Nova',
+                                                                    fontWeight: FontWeight.w400,
+                                                                    fontSize: 15,
+                                                                    color: Color(0xFF212121),
                                                                   )),
                                                             )
                                                           ],
@@ -965,15 +944,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   child: Text(
                                                                       "Archive",
                                                                       style:
-                                                                          TextStyle(
-                                                                        fontFamily:
-                                                                            'Mulish',
-                                                                        fontWeight:
-                                                                            FontWeight.w400,
-                                                                        fontSize:
-                                                                            12,
-                                                                        color: Color(
-                                                                            0xFF212121),
+                                                                      TextStyle(
+                                                                        fontFamily: 'Proxima Nova',
+                                                                        fontWeight: FontWeight.w400,
+                                                                        fontSize: 15,
+                                                                        color: Color(0xFF212121),
                                                                       )),
                                                                 )
                                                               ],
@@ -1016,16 +991,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                   child: Text(
                                                                     "Unarchive",
                                                                     style:
-                                                                        TextStyle(
-                                                                      fontFamily:
-                                                                          'Mulish',
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w400,
-                                                                      fontSize:
-                                                                          12,
-                                                                      color: Color(
-                                                                          0xFF212121),
+                                                                    TextStyle(
+                                                                      fontFamily: 'Proxima Nova',
+                                                                      fontWeight: FontWeight.w400,
+                                                                      fontSize: 15,
+                                                                      color: Color(0xFF212121),
                                                                     ),
                                                                   ),
                                                                 ),
@@ -1087,15 +1057,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             child: Text(
                                                                 "Send SMS",
                                                                 style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'Mulish',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  fontSize: 12,
-                                                                  color: Color(
-                                                                      0xFF212121),
+                                                                TextStyle(
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontWeight: FontWeight.w400,
+                                                                  fontSize: 15,
+                                                                  color: Color(0xFF212121),
                                                                 )),
                                                           )
                                                         ],
@@ -1116,9 +1082,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("More",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -1175,9 +1141,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 child: Text(
                                               "Meeting",
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 14,
                                                   color: Color(0xFF212121)),
                                             )),
                                           ),
@@ -1189,7 +1155,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               meeting_count.toString(),
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 13,
+                                                  fontSize: 14,
                                                   color: Color(0xFFED2449)),
                                             ),
                                           )),
@@ -1258,9 +1224,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               child: Text(
                                             "Quotations",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontWeight: FontWeight.w500,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 14,
                                                 color: Color(0xFF212121)),
                                           )),
                                           Center(
@@ -1271,7 +1237,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               quotation_count.toString(),
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 13,
+                                                  fontSize: 14,
                                                   color: Color(0xFFED2449)),
                                             ),
                                           )),
@@ -1343,9 +1309,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 child: Text(
                                               "Similar Opportunity",
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 14,
                                                   color: Color(0xFF212121)),
                                             )),
                                             Center(
@@ -1357,7 +1323,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 similar_opportunity.toString(),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
-                                                    fontSize: 13,
+                                                    fontSize: 14,
                                                     color: Color(0xFFED2449)),
                                               ),
                                             )),
@@ -1395,10 +1361,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Container(
                                   width: mediaQueryData.size.width / 1.52,
                                   child: Text(opportunityname!,
-                                      style: TextStyle(
+                                      style:TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 17,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 18,
                                         color: Colors.black,
                                       )),
                                 ),
@@ -1419,9 +1385,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 child: Text(
                                               "Won",
                                               style: TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 15,
                                                 color: Colors.white,
-                                                fontFamily: 'Mulish',
+                                                fontFamily: 'Proxima Nova',
                                               ),
                                             )),
                                           ),
@@ -1438,10 +1404,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             child: Center(
                                                 child: Text(
                                               "",
-                                              style: TextStyle(
+                                              style:TextStyle(
                                                 fontSize: 20,
                                                 color: Colors.white,
-                                                fontFamily: 'Mulish',
+                                                fontFamily: 'Proxima Nova',
                                               ),
                                             )),
                                           ),
@@ -1460,9 +1426,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             child: Text(
                                           "Lost",
                                           style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 15,
                                             color: Colors.white,
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                           ),
                                         )),
                                       ),
@@ -1485,8 +1451,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Customer",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1500,8 +1466,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       customername!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -1523,10 +1489,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Email",
-                                    style: TextStyle(
+                                    style:TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1539,8 +1505,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       email!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -1564,8 +1530,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Phone",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Visibility(
@@ -1585,8 +1551,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               phone!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -1633,12 +1599,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   child: Text(
                                                     "SMS",
                                                     style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 12,
-                                                        color:
-                                                            Color(0xFF000000)),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Proxima Nova',
+                                                        fontSize: 13,
+                                                        color: Color(0xFF000000)),
                                                   ),
                                                 )
                                               ],
@@ -1668,8 +1632,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Mobile",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Visibility(
@@ -1690,8 +1654,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               phone!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -1738,12 +1702,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                   child: Text(
                                                     "SMS",
                                                     style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 12,
-                                                        color:
-                                                            Color(0xFF000000)),
+                                                        fontWeight: FontWeight.w400,
+                                                        fontFamily: 'Proxima Nova',
+                                                        fontSize: 13,
+                                                        color: Color(0xFF000000)),
                                                   ),
                                                 )
                                               ],
@@ -1773,8 +1735,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Salesperson",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Row(
@@ -1846,8 +1808,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           salesperson!,
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
+                                              fontFamily: 'Proxima Nova',
+                                              fontSize: 13,
                                               color: Color(0xFF000000)),
                                         ),
                                       ),
@@ -1871,10 +1833,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 25),
                                 child: Text("Priority",
-                                    style: TextStyle(
+                                    style:TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1930,8 +1892,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Tags",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Padding(
@@ -2004,11 +1966,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                         tags![index]["name"]
                                                             .toString(),
                                                         style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontFamily: 'Mulish',
+                                                          color:
+                                                          Colors.white,
+                                                          fontFamily:
+                                                          'Proxima Nova',
                                                           fontWeight:
-                                                              FontWeight.w500,
-                                                          fontSize: 9.5,
+                                                          FontWeight
+                                                              .w500,
+                                                          fontSize: 9.2,
                                                         ),
                                                       ),
                                                     ),
@@ -2073,8 +2038,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 child: Text("Company",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -2087,8 +2052,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       company!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -2156,28 +2121,22 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       opportunityStageTypes[
                                                                               index]
                                                                           ['name'],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .white,
-                                                                        fontSize:
-                                                                            11,
+                                                                      style: TextStyle(
+                                                                        color: Colors.white,
+                                                                        fontSize: 11.5,
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                        'Proxima Nova',
                                                                       ),
                                                                     )
                                                                   : Text(
                                                                       opportunityStageTypes[
                                                                               index]
                                                                           ['name'],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: Colors
-                                                                            .black,
-                                                                        fontSize:
-                                                                            11,
+                                                                      style:TextStyle(
+                                                                        color: Colors.black,
+                                                                        fontSize: 11.5,
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                        'Proxima Nova',
                                                                       ),
                                                                     )))
                                                     ],
@@ -2234,9 +2193,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           children: [
                                             SvgPicture.asset("images/whitetik.svg"),
                                             Center(
-                                              child: Text("Mark Stage as Complete",style: TextStyle( fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 13.57,
+                                              child: Text("Mark Stage as Complete",style:  TextStyle( fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 15,
                                                   color: Colors.white),),
                                             ),
                                           ],
@@ -2259,12 +2218,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     left: 25, top: 13, bottom: 10),
-                                child: Text("Optional Products",
+                                child: Text(" Products",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 13,
-                                        color: Color(0xFF212121))),
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 15,
+                                        color: Color(0xFF000000))),
                               ),
                             ),
                           ),
@@ -2338,7 +2297,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                             FontWeight
                                                                                 .w600,
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                            'Proxima Nova',
                                                                         fontSize:
                                                                             14,
                                                                         color: Colors
@@ -2366,7 +2325,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                               ),
                                                             ],
@@ -2393,7 +2352,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                                 Text(
                                                                   orderLineProductsData![
@@ -2409,7 +2368,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                                 Text(
                                                                   " " + orderLineProductsData!["product_uom"]['name'].toString() ??
@@ -2423,7 +2382,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                       color: Color(
                                                                           0xFF787878),
                                                                       fontFamily:
-                                                                          'Mulish'),
+                                                                          'Proxima Nova'),
                                                                 ),
                                                               ],
                                                             ),
@@ -2457,7 +2416,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           color: Color(
                                                                               0xFF787878),
                                                                           fontFamily:
-                                                                              'Mulish'),
+                                                                              'Proxima Nova'),
                                                                     ),
                                                                     Text(
                                                                       orderLineProductsData!['price_unit']
@@ -2471,7 +2430,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                           color: Color(
                                                                               0xFF787878),
                                                                           fontFamily:
-                                                                              'Mulish'),
+                                                                              'Proxima Nova'),
                                                                     ),
                                                                   ],
                                                                 ),
@@ -2517,8 +2476,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               "Internal Notes",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 13,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 15,
                                                   color:
                                                       internalVisibility == true
                                                           ? Color(0XFF212121)
@@ -2564,8 +2523,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               "Other Information",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 13,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 15,
                                                   color: otherinfoVisibility ==
                                                           true
                                                       ? Color(0XFF212121)
@@ -2607,8 +2566,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       left: 25, right: 25, top: 10, bottom: 10),
                                   child: Text(internalnotes!,
                                       style: TextStyle(
-                                          fontWeight: FontWeight.w500,
-                                          fontFamily: 'Mulish',
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Proxima Nova',
                                           fontSize: 13,
                                           color: Color(0xFF787878))),
                                 ),
@@ -2643,8 +2602,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             child: Text("Created by",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
+                                                    fontFamily: 'Proxima Nova',
+                                                    fontSize: 13,
                                                     color: Color(0xFF666666))),
                                           ),
                                           Container(
@@ -2659,10 +2618,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 child: Text(
                                                   createdby!,
                                                   style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontFamily: 'Mulish',
-                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Proxima Nova',
+                                                      fontSize: 13,
                                                       color: Color(0xFF000000)),
                                                 ),
                                               ),
@@ -2689,8 +2647,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           child: Text("Created on",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF666666))),
                                         ),
                                         Container(
@@ -2705,8 +2663,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 createdon!,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
+                                                    fontFamily: 'Proxima Nova',
+                                                    fontSize: 13,
                                                     color: Color(0xFF000000)),
                                               ),
                                             ),
@@ -2730,10 +2688,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           padding:
                                               const EdgeInsets.only(left: 25),
                                           child: Text("Last Updated by",
-                                              style: TextStyle(
+                                              style:TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF666666))),
                                         ),
                                         Container(
@@ -2748,8 +2706,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 lastupdateby!,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
+                                                    fontFamily: 'Proxima Nova',
+                                                    fontSize: 13,
                                                     color: Color(0xFF000000)),
                                               ),
                                             ),
@@ -2775,8 +2733,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           child: Text("Last Updated on",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF666666))),
                                         ),
                                         Container(
@@ -2788,13 +2746,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             child: Align(
                                               alignment: Alignment.centerRight,
                                               child: Text(lastupdateon!,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      fontFamily: 'Mulish',
-                                                      fontSize: 12,
-                                                      color:
-                                                          Color(0xFF000000))),
+                                                  style:TextStyle(
+                                                      fontWeight: FontWeight.w400,
+                                                      fontFamily: 'Proxima Nova',
+                                                      fontSize: 13,
+                                                      color: Color(0xFF000000)),),
                                             ),
                                           ),
                                         ),
@@ -2840,8 +2796,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             "Send Message",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 15,
                                                 color:
                                                     followersVisibility == true
                                                         ? Color(0XFF212121)
@@ -2886,11 +2842,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       ),
                                       child: TextButton(
                                           child: Text(
-                                            "Log note",
+                                            "Log Note",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 15,
                                                 color: lognoteVisibility == true
                                                     ? Color(0XFF212121)
                                                     : Color(0xFF212121)),
@@ -2920,8 +2876,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           "Schedule Activity",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
+                                              fontFamily: 'Proxima Nova',
+                                              fontSize: 15,
                                               color: Color(0xFF212121)),
                                         ),
                                         onPressed: () async {
@@ -2980,10 +2936,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           // color: Colors.green,
                                           child: Text(
                                             attachmentCount!,
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontFamily: 'Mulish',
-                                            ),
+                                            style:TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xFF000000)),
                                           ),
                                         ),
                                       ],
@@ -3035,12 +2992,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           }
                                                         },
                                                         child: Text(
-                                                          "Follow",
+                                                          "Following",
                                                           style: TextStyle(
-                                                              color:
-                                                                  Colors.green,
-                                                              fontFamily:
-                                                                  'Mulish'),
+                                                              color: Color(0xFF20745A),
+                                                              fontFamily: 'Proxima Nova',
+                                                              fontWeight:
+                                                              FontWeight.w500,
+                                                              fontSize: 13),
                                                         )),
                                                   ],
                                                 ),
@@ -3090,8 +3048,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           "Unfollow",
                                                           style: TextStyle(
                                                               color: Colors.red,
-                                                              fontFamily:
-                                                                  'Mulish'),
+                                                              fontFamily: 'Proxima Nova',
+                                                              fontWeight:
+                                                              FontWeight.w500,
+                                                              fontSize: 13
+                                                          ),
                                                         )),
                                                   ],
                                                 ),
@@ -3119,10 +3080,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           //color: Colors.green,
                                           child: Text(
                                             followerCount!,
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontFamily: 'Mulish',
-                                            ),
+                                            style:TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xFF000000)),
                                           ),
                                         ),
                                       ],
@@ -3409,10 +3371,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       child: Text(
                                                                                         attachmentFileDisplay[index]["name"],
                                                                                         style: TextStyle(
-                                                                                          fontFamily: 'Mulish',
-                                                                                          fontSize: 12,
-                                                                                          fontWeight: FontWeight.w600,
-                                                                                          color: Color(0xff202020),
+                                                                                          fontFamily: 'Proxima Nova',
+                                                                                          fontSize: 13,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                          color: Color(0xff212121),
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -3438,8 +3400,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                             ? "ZIP"
                                                                                                             : "",
                                                                                         style: TextStyle(
-                                                                                          fontFamily: 'Mulish',
-                                                                                          fontSize: 9,
+                                                                                          fontFamily: 'Proxima Nova',
+                                                                                          fontSize: 9.5,
                                                                                           fontWeight: FontWeight.w500,
                                                                                           color: Color(0xff666666),
                                                                                         ),
@@ -3555,8 +3517,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       child: Text(
                                         "Select Attachments",
                                         style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'Mulish'),
+                                          color: Colors.black,
+                                          fontFamily: 'Proxima Nova',
+                                        ),
                                       )),
                                 ],
                               ),
@@ -3587,8 +3550,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF666666),
-                                              fontSize: 10,
-                                              fontFamily: 'Mulish',
+                                              fontSize: 11,
+                                              fontFamily: 'Proxima Nova',
                                             ),
                                           ),
                                           Text(
@@ -3596,8 +3559,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF666666),
-                                              fontSize: 10,
-                                              fontFamily: 'Mulish',
+                                              fontSize: 11,
+                                              fontFamily: 'Proxima Nova',
                                             ),
                                           ),
                                           SizedBox(
@@ -3614,10 +3577,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                 child: Text(
                                                   opportunityname!,
                                                   style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
+                                                    fontWeight: FontWeight.w600,
                                                     color: Color(0xFF414141),
-                                                    fontSize: 10,
-                                                    fontFamily: 'Mulish',
+                                                    fontSize: 11,
+                                                    fontFamily: 'Proxima Nova',
                                                   ),
                                                 )),
                                           ),
@@ -3708,13 +3671,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     // color: Colors.red,
                                                     child: Text(
                                                       sendMailData[i]['name'],
-                                                      style: TextStyle(
-                                                          color:
-                                                              Color(0xFF666666),
-                                                          fontSize: 11,
-                                                          fontFamily: 'Mulish',
+                                                      style:  TextStyle(
+                                                          color: Color(0xFF666666),
+                                                          fontSize: 11.5,
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight:
-                                                              FontWeight.w500),
+                                                          FontWeight.w600),
                                                     ),
                                                   ),
                                                 )
@@ -3830,7 +3792,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                             fontWeight:
                                                                 FontWeight.w400,
                                                             fontFamily:
-                                                                'Mulish',
+                                                                'Proxima Nova',
                                                             fontSize: 11,
                                                             color: Color(
                                                                 0xFF000000),
@@ -3843,10 +3805,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               border: InputBorder.none,
                                                               hintText: "Send a message to followers",
                                                               hintStyle: TextStyle(
-                                                                  //fontFamily: "inter",
+                                                                //fontFamily: "inter",
                                                                   fontWeight: FontWeight.w400,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize: 11,
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontSize: 13,
                                                                   color: Color(0xFFAFAFAF)))),
                                                     ),
                                                   ),
@@ -4016,10 +3978,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     child: Text(
                                                       "Send Message",
                                                       style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w500,
+                                                          fontFamily: 'Proxima Nova',
+                                                          fontSize: 14,
                                                           color: Colors.white),
                                                     ),
                                                   ),
@@ -4227,11 +4188,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                           textAlignVertical:
                                                               TextAlignVertical
                                                                   .top,
-                                                          style: TextStyle(
+                                                          style:  TextStyle(
                                                             fontWeight:
-                                                                FontWeight.w400,
+                                                            FontWeight
+                                                                .w400,
                                                             fontFamily:
-                                                                'Mulish',
+                                                            'Proxima Nova',
                                                             fontSize: 11,
                                                             color: Color(
                                                                 0xFF000000),
@@ -4244,10 +4206,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                               border: InputBorder.none,
                                                               hintText: "Log an internal note",
                                                               hintStyle: TextStyle(
-                                                                  //fontFamily: "inter",
+                                                                //fontFamily: "inter",
                                                                   fontWeight: FontWeight.w400,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize: 11,
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontSize: 14,
                                                                   color: Color(0xFFAFAFAF)))),
                                                     ),
                                                   ),
@@ -4422,10 +4384,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                     child: Text(
                                                       "Send Lognote",
                                                       style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontFamily: 'Mulish',
-                                                          fontSize: 12,
+                                                          fontWeight: FontWeight.w500,
+                                                          fontFamily: 'Proxima Nova',
+                                                          fontSize: 14,
                                                           color: Colors.white),
                                                     ),
 
@@ -4565,10 +4526,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       label: Text(
                                         'Planned Activities',
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          color: Color(0xFF000000),
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
+                                          fontSize: 17,
+                                          color: Color(0xFF212121),
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Proxima Nova',
                                         ),
                                       ),
                                     ),
@@ -4586,6 +4547,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.white),
                                         )),
                                       ),
@@ -4604,6 +4566,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.black),
                                         )),
                                       ),
@@ -4622,6 +4585,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.white),
                                         )),
                                       ),
@@ -4860,12 +4824,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                             child:
                                                                                 Text(
                                                                               scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                                              style: TextStyle(
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 11,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                // height: 1.255*ffem/fem,
-                                                                                color: Color(0xff202020),
+                                                                              style:  TextStyle(
+                                                                                fontFamily: 'Proxima Nova',
+                                                                                fontSize: 13,
+                                                                                fontWeight: FontWeight.w400,
+                                                                                color: Color(0xff388E3C),
                                                                               ),
                                                                             ),
                                                                           ),
@@ -4882,10 +4845,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 Text(
                                                                               scheduleData['records'][index]['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ').toString() ?? "",
                                                                               style: TextStyle(
-                                                                                fontFamily: 'Mulish',
+                                                                                fontFamily: 'Proxima Nova',
                                                                                 fontSize: 10,
                                                                                 fontWeight: FontWeight.w500,
-                                                                                //height: 1.255*ffem/fem,
                                                                                 color: Color(0xff666666),
                                                                               ),
                                                                             ),
@@ -4921,9 +4883,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 Text(
                                                                               scheduleData['records'][index]['delay_label'].toString() ?? "",
                                                                               style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 11,
-                                                                                  fontWeight: FontWeight.w600,
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 12,
+                                                                                  fontWeight: FontWeight.w500,
                                                                                   // height: 1.255*ffem/fem,
                                                                                   color: Color(int.parse(scheduleData['records'][index]['label_color']))),
                                                                             ),
@@ -4941,11 +4903,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                 Text(
                                                                               scheduleData['records'][index]['activity_type_id'][1].toString() ?? "",
                                                                               textAlign: TextAlign.right,
-                                                                              style: TextStyle(
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 11,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                //  height: 1.255*ffem/fem,
+                                                                              style:  TextStyle(
+                                                                                fontFamily: 'Proxima Nova',
+                                                                                fontSize: 12,
+                                                                                fontWeight: FontWeight.w500,
                                                                                 color: Color(0xff202020),
                                                                               ),
                                                                             ),
@@ -5037,12 +4998,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                                                                               child: Text(
                                                                                 scheduleData['records'][index]['buttons'][0].toString() ?? "",
-                                                                                style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 11,
+                                                                                style:  TextStyle(
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 11.2,
                                                                                   fontWeight: FontWeight.w500,
-                                                                                  // height: 1.255*ffem/fem,
-                                                                                  color: Color(0xff707070),
+                                                                                  color: Color(0xff717171),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -5091,11 +5051,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   ),
                                                                                   Text(
                                                                                     scheduleData['records'][index]['buttons'][1].toString() ?? "",
-                                                                                    style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
+                                                                                    style:TextStyle(
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 11.2,
                                                                                       fontWeight: FontWeight.w500,
-                                                                                      color: Color(0xff707070),
+                                                                                      // height: 1.255*ffem/fem,
+                                                                                      color: Color(0xff717171),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -5180,11 +5141,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   Text(
                                                                                     scheduleData['records'][index]['buttons'][1].toString() ?? "",
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 11.2,
                                                                                       fontWeight: FontWeight.w500,
                                                                                       // height: 1.255*ffem/fem,
-                                                                                      color: Color(0xff707070),
+                                                                                      color: Color(0xff717171),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -5248,11 +5209,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               child: Text(
                                                                                 scheduleData['records'][index]['buttons'][2].toString() ?? "",
                                                                                 style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 11.2,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   //height: 1.255*ffem/fem,
-                                                                                  color: Color(0xff707070),
+                                                                                  color: Color(0xff717171),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -5317,7 +5278,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     "Activity type",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -5329,7 +5290,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     scheduleData['records'][index]['activity_type_id'][1],
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -5339,9 +5300,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   ),
                                                                                   Text(
                                                                                     "Created",
-                                                                                    style: TextStyle(
+                                                                                    style:  TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -5353,8 +5314,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     children: [
                                                                                       Text(
                                                                                         scheduleData['records'][index]['create_date'].toString() ?? "",
-                                                                                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Mulish', color: Color(0xFF666666)),
-                                                                                      ),
+                                                                                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),                                                                                      ),
                                                                                       SizedBox(
                                                                                         width: 5,
                                                                                       ),
@@ -5374,7 +5334,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                         scheduleData['records'][index]['create_uid'][1].toString() ?? "",
                                                                                         style: TextStyle(
                                                                                           fontSize: 11,
-                                                                                          fontFamily: 'Mulish',
+                                                                                          fontFamily: 'Proxima Nova',
                                                                                           color: Color(0xFF666666),
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -5388,7 +5348,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     "Assigned to",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -5412,7 +5372,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       ),
                                                                                       Text(
                                                                                         scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                                                        style: TextStyle(fontSize: 11, fontFamily: 'Mulish', fontWeight: FontWeight.w500, color: Color(0xFF666666)),
+                                                                                        style: TextStyle(fontSize: 11, fontFamily: 'Proxima Nova', fontWeight: FontWeight.w500, color: Color(0xFF666666)),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -5421,10 +5381,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   ),
                                                                                   Text(
                                                                                     "Due on",
-                                                                                    style: TextStyle(
-                                                                                      fontSize: 11,
-                                                                                      color: Color(0xFF666666),
-                                                                                      fontWeight: FontWeight.w500,
+                                                                                    style:  TextStyle(
+                                                                                        fontSize: 11,
+                                                                                        color: Color(0xFF666666),
+                                                                                        fontWeight: FontWeight.w500,
+                                                                                        fontFamily: 'Proxima Nova'
                                                                                     ),
                                                                                   ),
                                                                                   SizedBox(
@@ -5432,7 +5393,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   ),
                                                                                   Text(
                                                                                     scheduleData['records'][index]['date_deadline'].toString() ?? "",
-                                                                                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Mulish', color: Color(0xFF666666)),
+                                                                                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),
                                                                                   ),
                                                                                   SizedBox(
                                                                                     height: 3,
@@ -7156,10 +7117,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                               child: Center(
                                                   child: Text(
                                                 entry.key,
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 12,
-                                                    fontFamily: 'Mulish',
+                                                style:  TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 14,
+                                                    fontFamily: 'Proxima Nova',
                                                     color: Color(0xFF212121)),
                                               )),
                                             ),
@@ -7442,51 +7403,62 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                   child: RichText(
                                                                                     text: TextSpan(
                                                                                       style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 12,
-                                                                                        fontWeight: FontWeight.w700,
+                                                                                        fontFamily: 'Proxima Nova',
+                                                                                        fontSize: 13,
+                                                                                        fontWeight: FontWeight
+                                                                                            .w500,
                                                                                         height: 0,
-                                                                                        color: Color(0xff000000),
+                                                                                        color: Color(
+                                                                                            0xff000000),
                                                                                       ),
                                                                                       children: [
                                                                                         TextSpan(
                                                                                           text: item['create_uid'][1],
                                                                                           style: TextStyle(
-                                                                                            fontFamily: 'Mulish',
-                                                                                            fontSize: 11,
-                                                                                            fontWeight: FontWeight.w500,
+                                                                                            fontFamily: 'Proxima Nova',
+                                                                                            fontSize: 12,
+                                                                                            fontWeight: FontWeight
+                                                                                                .w600,
                                                                                             height: 1,
-                                                                                            color: Color(0xff000000),
+                                                                                            color: Color(
+                                                                                                0xff212121),
+
                                                                                           ),
                                                                                         ),
                                                                                         TextSpan(
                                                                                           text: ' -',
-                                                                                          style: TextStyle(
-                                                                                            fontFamily: 'Mulish',
+                                                                                          style:TextStyle(
+                                                                                            fontFamily: 'Proxima Nova',
                                                                                             fontSize: 11,
-                                                                                            fontWeight: FontWeight.w500,
+                                                                                            fontWeight: FontWeight
+                                                                                                .w500,
                                                                                             height: 1,
-                                                                                            color: Color(0xffa29d9d),
+                                                                                            color: Color(
+                                                                                                0xffa29d9d),
                                                                                           ),
                                                                                         ),
                                                                                         TextSpan(
                                                                                           text: ' ',
                                                                                           style: TextStyle(
-                                                                                            fontFamily: 'Mulish',
+                                                                                            fontFamily: 'Proxima Nova',
                                                                                             fontSize: 11,
-                                                                                            fontWeight: FontWeight.w500,
+                                                                                            fontWeight: FontWeight
+                                                                                                .w500,
                                                                                             height: 1,
-                                                                                            color: Color(0xff000000),
+                                                                                            color: Color(
+                                                                                                0xff000000),
                                                                                           ),
                                                                                         ),
                                                                                         TextSpan(
                                                                                           text: item["period"],
                                                                                           style: TextStyle(
-                                                                                            fontFamily: 'Mulish',
-                                                                                            fontSize: 9,
-                                                                                            fontWeight: FontWeight.w500,
+                                                                                            fontFamily: 'Proxima Nova',
+                                                                                            fontSize: 9.5,
+                                                                                            fontWeight: FontWeight
+                                                                                                .w500,
                                                                                             height: 1.5,
-                                                                                            color: Color(0xff948e8e),
+                                                                                            color: Color(
+                                                                                                0xff948e8e),
                                                                                           ),
                                                                                         ),
                                                                                       ],
@@ -7503,11 +7475,13 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                     //     .toString() ??
                                                                                     //     "",
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 9,
-                                                                                      fontWeight: FontWeight.w600,
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 9.5,
+                                                                                      fontWeight: FontWeight
+                                                                                          .w500,
                                                                                       // height: 1.5,
-                                                                                      color: Color(0xff787878),
+                                                                                      color: Color(
+                                                                                          0xff787878),
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -7924,10 +7898,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                       child: TextField(
                                                                                           textAlignVertical: TextAlignVertical.top,
                                                                                           style: TextStyle(
-                                                                                            fontWeight: FontWeight.w400,
-                                                                                            fontFamily: 'Mulish',
+                                                                                            fontWeight: FontWeight
+                                                                                                .w400,
+                                                                                            fontFamily: 'Proxima Nova',
                                                                                             fontSize: 11,
-                                                                                            color: Color(0xFF000000),
+                                                                                            color: Color(
+                                                                                                0xFF787878),
                                                                                           ),
                                                                                           maxLines: null,
 
@@ -7940,11 +7916,15 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                               border: InputBorder.none,
                                                                                               hintText: "Send a message to followers",
                                                                                               hintStyle: TextStyle(
-                                                                                                  //fontFamily: "inter",
-                                                                                                  fontWeight: FontWeight.w400,
-                                                                                                  fontFamily: 'Mulish',
+                                                                                                //fontFamily: "inter",
+                                                                                                  fontWeight:
+                                                                                                  FontWeight
+                                                                                                      .w400,
+                                                                                                  fontFamily:
+                                                                                                  'Proxima Nova',
                                                                                                   fontSize: 11,
-                                                                                                  color: Color(0xFFAFAFAF)))),
+                                                                                                  color: Color(
+                                                                                                      0xFFAFAFAF)))),
                                                                                     ),
                                                                                   ),
                                                                                 ),
@@ -8037,10 +8017,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                             children: [
                                                                               Text(
                                                                                 "escape to",
-                                                                                style: TextStyle(color: Colors.grey),
+                                                                              style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova'),
                                                                               ),
                                                                               InkWell(
-                                                                                child: Container(child: Text("  cancel  ")),
+                                                                                child: Container(child: Text("  cancel  ",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'),)),
                                                                                 onTap: () {
                                                                                   selectedItemIndex = -1;
                                                                                   lognoteEditController.text = "";
@@ -8053,10 +8033,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                               Text(","),
                                                                               Text(
                                                                                 "  enter to",
-                                                                                style: TextStyle(color: Colors.grey),
+                                                                                style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova'),
                                                                               ),
                                                                               InkWell(
-                                                                                  child: Container(child: Text("  save")),
+                                                                                  child: Container(child: Text("  save",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'),)),
                                                                                   // onTap:_isSavingData
                                                                                   //     ? null
                                                                                   onTap: () async {
@@ -8307,10 +8287,12 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                               child: Text(
                                                                                                                 logattachmentFileDisplay[index]["name"],
                                                                                                                 style: TextStyle(
-                                                                                                                  fontFamily: 'Mulish',
-                                                                                                                  fontSize: 12,
-                                                                                                                  fontWeight: FontWeight.w600,
-                                                                                                                  color: Color(0xff202020),
+                                                                                                                  fontFamily: 'Proxima Nova',
+                                                                                                                  fontSize: 13,
+                                                                                                                  fontWeight: FontWeight
+                                                                                                                      .w500,
+                                                                                                                  color: Color(
+                                                                                                                      0xff212121),
                                                                                                                 ),
                                                                                                               ),
                                                                                                             ),
@@ -8336,11 +8318,14 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                                                                                                                 : logattachmentFileDisplay[index]["mimetype"] == "application/zip"
                                                                                                                                     ? "ZIP"
                                                                                                                                     : "",
-                                                                                                                style: TextStyle(
-                                                                                                                  fontFamily: 'Mulish',
-                                                                                                                  fontSize: 9,
-                                                                                                                  fontWeight: FontWeight.w500,
-                                                                                                                  color: Color(0xff666666),
+                                                                                                                style:  TextStyle(
+                                                                                                                  fontFamily: 'Proxima Nova',
+                                                                                                                  fontSize: 9.5,
+                                                                                                                  fontWeight: FontWeight
+                                                                                                                      .w500,
+
+                                                                                                                  color: Color(
+                                                                                                                      0xff666666),
                                                                                                                 ),
                                                                                                               ),
                                                                                                             ),
@@ -8730,9 +8715,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             labelText: 'Activity Type',
                             isDense: true,
                             labelStyle: TextStyle(
-                                color: Color(0xFF666666),
-                                fontSize: 14,
-                                fontFamily: 'Mulish',
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
                                 fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
                           ),
@@ -8801,9 +8786,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           item["name"],
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                         ),
                       )));
                     },
@@ -8841,8 +8826,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600)),
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -8858,9 +8843,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -8871,10 +8856,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
-                            fontWeight: FontWeight.w500)),
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w400)),
                   ),
                 ),
                 Visibility(
@@ -8892,18 +8877,18 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: TextField(
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.w500),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                        color: Color(0xFF666666),
+                                        color: Color(0xFF868686),
                                         fontSize: 14,
-                                        fontFamily: 'Mulish',
+                                        fontFamily: 'Proxima Nova',
                                         fontWeight: FontWeight.w500))),
                           ),
                         ),
@@ -8925,9 +8910,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   labelText: 'Assigned To',
                                   isDense: true,
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666),
-                                      fontSize: 14,
-                                      fontFamily: 'Mulish',
+                                      color: Color(0xFF868686),
+                                      fontSize: 15,
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500),
                                   fillColor: Colors.white,
                                 ),
@@ -8970,9 +8955,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                 item["name"],
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.w500),
                               ),
                             )));
                           },
@@ -9011,11 +8996,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(0),
                                           child: Text("${item["name"]}",
-                                              style: TextStyle(
+                                              style:  TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight: FontWeight.w600)),
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500)),
                                         ),
                                       ),
                                     ))
@@ -9031,9 +9016,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         child: TextFormField(
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -9046,9 +9031,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontSize: 14,
-                                  fontFamily: 'Mulish',
+                                  color: Color(0xFF868686),
+                                  fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
                                   fontWeight: FontWeight.w500)),
                         ),
                       ),
@@ -9067,11 +9052,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             child: Center(
                               child: Text(
                                 "Open Calendar",
-                                style: TextStyle(
+                                style:  TextStyle(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
                                     color: Colors.white,
-                                    fontFamily: 'Mulish'),
+                                    fontFamily: 'Proxima Nova'),
                               ),
                             ),
                             onPressed: _isSavingData
@@ -9134,7 +9119,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -9186,7 +9171,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -9239,7 +9224,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: _isSavingData
@@ -9293,7 +9278,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: _isSavingData
@@ -9333,10 +9318,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
         title: const Text(
           'Mark Done',
           style: TextStyle(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: Colors.black,
-              fontFamily: 'Mulish'),
+              fontFamily: 'Proxima Nova')
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         content: Container(
@@ -9348,7 +9333,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 //border: OutlineInputBorder(),
                 hintText: 'Write Feedback',
                 hintStyle: TextStyle(
-                    fontSize: 12, color: Colors.black, fontFamily: 'Mulish')),
+                    fontSize: 12, color: Colors.black, fontFamily: 'Proxima Nova')),
           ),
         ),
         actions: <Widget>[
@@ -9365,7 +9350,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             fontWeight: FontWeight.w700,
                             fontSize: 10,
                             color: Colors.white,
-                            fontFamily: 'Mulish'),
+                            fontFamily: 'Proxima Nova'),
                       ),
                     ),
                     onPressed: () async {
@@ -9402,7 +9387,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.white,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () async {
@@ -9437,7 +9422,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.black,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () {
@@ -9638,9 +9623,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
             title: Text('Please choose media to select',
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Mulish',
-                    fontSize: 14,
-                    color: Colors.black)),
+                    fontFamily: 'Proxima Nova',
+                    fontSize: 15,
+                    color: Color(0xFF212121))),
             content: Container(
               height: MediaQuery.of(context).size.height / 6,
               child: Column(
@@ -9652,7 +9637,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontSize: 14,
                             color: Color(0xFF212121)))),
                     onPressed: () {
@@ -9670,7 +9655,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Text('From Gallery',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 14,
                                 color: Colors.white)),
                       ],
@@ -9936,10 +9921,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     Text(
                       "Send SMS Text Messages",
                       style: TextStyle(
-                          fontSize: 19,
+                          fontSize: 20,
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
-                          fontFamily: 'Mulish'),
+                          fontFamily: 'Proxima Nova'),
                     ),
                     IconButton(
                       icon: SvgPicture.asset("images/cr.svg"),
@@ -9954,7 +9939,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     child: Center(
                         child: Text(
                       "Invalid phone number",
-                      style: TextStyle(color: Colors.red, fontSize: 12),
+                      style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 12,
+                          fontFamily: 'Proxima Nova'),
                     ))),
                 SizedBox(
                   height: 5,
@@ -9963,8 +9951,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   "Recipients",
                   style: TextStyle(
                       color: Color(0xFF212121),
-                      fontSize: 14,
-                      fontFamily: 'Mulish'),
+                      fontSize: 15,
+                      fontFamily: 'Proxima Nova'),
                 ),
                 SizedBox(
                   height: 0,
@@ -9973,10 +9961,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(
-                        color: Color(0xFF212121),
-                        fontSize: 12,
-                        fontFamily: 'Mulish'),
+                    style: TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                     controller: nameController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -9989,9 +9974,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                            color: Color(0xFF212121),
-                            fontSize: 12,
-                            fontFamily: 'Mulish')),
+                            color: Color(0xFF666666),
+                            fontSize: 14,
+                            fontFamily: 'Proxima Nova')),
                   ),
                 ),
                 SizedBox(
@@ -10001,10 +9986,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(
-                        color: Color(0xFF212121),
-                        fontSize: 12,
-                        fontFamily: 'Mulish'),
+                    style:TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                     controller: phonenumberController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -10014,10 +9996,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           borderSide: BorderSide(color: Color(0xFFAFAFAF)),
                         ),
                         labelText: 'Phone Number',
-                        labelStyle: TextStyle(
-                            color: Color(0xFF212121),
-                            fontSize: 12,
-                            fontFamily: 'Mulish')),
+                        labelStyle:TextStyle(
+                            color:  Color(0xFF666666),
+                            fontSize: 14,
+                            fontFamily: 'Proxima Nova')),
                   ),
                 ),
                 SizedBox(
@@ -10032,10 +10014,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: TextFormField(
-                        style: TextStyle(
-                            color: Color(0xFF212121),
-                            fontSize: 12,
-                            fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                         controller: subject2Controller,
                         decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -10046,7 +10025,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                             ),
                             labelText: 'Subject',
                             labelStyle:
-                                TextStyle(color: Colors.black, fontSize: 10)),
+                            TextStyle(
+                                color:  Color(0xFF666666),
+                                fontSize: 14,
+                                fontFamily: 'Proxima Nova')),
                       ),
                     ),
                   ),
@@ -10067,8 +10049,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               "Send SMS",
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.white),
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -10168,8 +10151,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Mulish',
-                      ))),
+                        fontFamily: 'Proxima Nova',
+                      ),)),
             ),
           ),
           content: Container(
@@ -10219,7 +10202,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         width: MediaQuery.of(context).size.width / 3.5,
                         child: Text(
                           followers[i]['name'],
-                          style: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'Proxima Nova',
+                              fontSize: 12,
+                              color: Color(0xFF666666))
                         )),
                     Row(
                       children: [
@@ -10290,10 +10277,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     Text(
                       "Invite Follower",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -10314,11 +10301,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 ),
                 Text(
                   "Recipients",
-                  style: TextStyle(
-                    color: Colors.grey,
+                  style:  TextStyle(
+                    color:  Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -10329,10 +10316,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: MultiSelectDropDown.network(
                     hint: 'Add contacts to notify...',
-                    hintStyle: TextStyle(
+                    hintStyle:TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w600,
                     ),
                     selectedOptions: editRecipientName
@@ -10389,10 +10376,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                 Text(
                   "Send Email",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -10424,13 +10411,19 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         expands: true,
                         maxLines: null,
                         controller: bodyController,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: 'Proxima Nova',
+                          fontWeight: FontWeight.w500,
+                        ),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
-                          hintStyle: TextStyle(
+                          hintStyle:TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -10452,7 +10445,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -10522,8 +10515,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Text(
                           "Edit Subscription of",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -10533,8 +10526,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         Text(
                           " Follower name",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -10583,7 +10576,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                               Text(
                                 followerSub[i]["name"],
                                 style: TextStyle(
-                                    fontFamily: 'Mulish', fontSize: 12),
+                                    fontFamily: 'Proxima Nova', fontSize: 13),
                               ),
                             ],
                           ),
@@ -10606,7 +10599,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: () async {
@@ -10716,11 +10709,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   children: [
                     Text(
                       "Odoo",
-                      style: TextStyle(
+                      style:  TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -10752,10 +10745,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   visible: recipientsVisibility,
                   child: Text(
                     "Recipients",
-                    style: TextStyle(
+                    style:TextStyle(
                       color: Colors.grey,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 13,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -10771,8 +10764,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     "Followers of the document and",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 15,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -10789,7 +10782,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Add contacts to notify...',
-                      hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                      hintStyle: TextStyle(fontFamily: 'Proxima Nova', fontSize: 13),
                       selectedOptions: editRecipientName
                           .map((recipient) => ValueItem(
                               label: recipient.label, value: recipient.value))
@@ -10847,10 +10840,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                   child: TextFormField(
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                       color: Colors.black,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                     ),
                     controller: subjectController,
                     decoration: const InputDecoration(
@@ -10864,10 +10857,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
                         labelStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                          fontFamily: 'Mulish',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF868686),
+                          fontFamily: 'Proxima Nova',
                         )),
                   ),
                 ),
@@ -10889,7 +10882,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                   ),
@@ -10915,7 +10908,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           style: TextStyle(
                               color: Colors.grey[700],
                               fontSize: 12,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ],
                     ),
@@ -11015,10 +11008,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                     hint: Text(
                       "Use template",
                       style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     searchHint: null,
@@ -11078,11 +11071,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         width: 300,
                         child: Text(
                           item["name"],
-                          style: TextStyle(
+                          style:TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                           ),
                         ),
                       )));
@@ -11137,10 +11130,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           child: Center(
                             child: Text(
                               "Send",
-                              style: TextStyle(
+                              style:TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -11219,7 +11213,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: Text(
                         "Save As New Template",
                         style: TextStyle(
-                            color: Colors.black, fontFamily: 'Mulish'),
+                            color: Colors.black, fontFamily: 'Proxima Nova'),
                       )),
                 )
               ],
@@ -11612,7 +11606,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Individual",
-                          style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                          style: TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "person",
                         groupValue: radioInput,
@@ -11629,7 +11623,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Company",
-                          style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                          style:TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "company",
                         groupValue: radioInput,
@@ -11652,9 +11646,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendnameController,
                     decoration: const InputDecoration(
@@ -11667,9 +11661,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11686,10 +11680,10 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           decoration: InputDecoration(
                             labelText: 'Company Name',
                             isDense: true,
-                            labelStyle: TextStyle(
-                                color: Color(0xFF666666),
-                                fontSize: 14,
-                                fontFamily: 'Mulish',
+                            labelStyle:  TextStyle(
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
                                 fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
                           ),
@@ -11729,9 +11723,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                           item["display_name"],
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                         ),
                       )));
                     },
@@ -11771,8 +11765,8 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600)),
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -11788,9 +11782,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     controller: sendjobController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -11802,9 +11796,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Job Position',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11814,9 +11808,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendemailController,
                     decoration: const InputDecoration(
@@ -11831,9 +11825,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Email',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11841,11 +11835,11 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(
+                    style:  TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendphoneController,
@@ -11860,9 +11854,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Phone',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -11887,9 +11881,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendmobileController,
@@ -11904,9 +11898,9 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                         ),
                         labelText: 'Mobile',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -11942,7 +11936,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: () async {
@@ -11994,7 +11988,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: () {

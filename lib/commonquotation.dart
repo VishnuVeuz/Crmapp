@@ -50,8 +50,8 @@ class QuotationList extends StatelessWidget {
 
                             child: Text(name,
                               style: TextStyle(
-                                  fontFamily: 'Mulish',
-                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w500,
 
                                   fontSize: 14,
                                   color: Color(0xFF000000)),
@@ -62,8 +62,8 @@ class QuotationList extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 2,right: 25),
                           child: Text(amount.toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 14,
                                 color: Color(0xFF000000)),
                           ),
@@ -84,8 +84,8 @@ class QuotationList extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 20,top: 0,bottom: 0),
                                   child: Text(quotationname,
                                     style: TextStyle(
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Proxima Nova',
+                                        fontWeight: FontWeight.w500,
                                         fontSize: 12,
                                         color: Color(0xFF787878)),
                                   ),
@@ -94,8 +94,8 @@ class QuotationList extends StatelessWidget {
                                   padding: const EdgeInsets.only(left: 5,top:0,bottom:0),
                                   child: Text(date,
                                     style:TextStyle(
-                                        fontFamily: 'Mulish',
-                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Proxima Nova',
+                                        fontWeight: FontWeight.w500,
                                         fontSize: 12,
                                         color: Color(0xFF787878)),
                                   ),
@@ -122,7 +122,7 @@ class QuotationList extends StatelessWidget {
                               child: Center(
                                 child: Text(state,
                                   style: TextStyle(
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w600,
                                     fontSize:12.16,
                                     color: Color(0xFFFFFFFF),

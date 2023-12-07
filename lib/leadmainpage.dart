@@ -82,9 +82,9 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       .size
                       .width/4.6,
                   child: Text(username,style: TextStyle(
-                      fontFamily: 'Mulish',
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontFamily: 'Proxima Nova',
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
                       color: Colors.white,
                       decoration: TextDecoration.none),),
                 ),
@@ -217,10 +217,10 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 24, top: 5, right: 25),
                         child: Text("Leads",
-                          style: TextStyle(fontSize: 18,
+                          style: TextStyle(fontSize: 22,
                                //letterSpacing: .5,
 
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w600,
 
                               color: Color(0xFF101010)),
@@ -254,8 +254,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   onPressed: () {},
                                 ),
                                 Text("My Leads",
-                                  style: TextStyle(fontSize: 14,
-                                      fontFamily: 'Mulish',
+                                  style: TextStyle(fontSize: 18,
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xFF414141)),
 
@@ -306,8 +306,8 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   onPressed: () {},
                                 ),
                                 Text("All Lists",
-                                  style: TextStyle(fontSize: 14,
-                                      fontFamily: 'Mulish',
+                                  style: TextStyle(fontSize: 18,
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xFF414141)),
 
@@ -350,10 +350,10 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       padding: const EdgeInsets.only(left: 24, top: 10, right: 25),
                       child: Text("Recent Leads",
 
-                        style: TextStyle(fontSize: 17,
+                        style: TextStyle(fontSize: 22,
                             wordSpacing: 4,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'Mulish',
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Proxima Nova',
                             color: Color(0xFF101010)),
 
                       ),
@@ -416,7 +416,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                               print(snapshot.data?.length);
 
                           return    snapshot.data?.length == 0 ?  Center(child: Text("No data found", style: TextStyle(
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight
                                   .w600,
                               fontSize: 14,
@@ -465,11 +465,11 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                             .data![index]["name"] ??
                                                             "",
                                                         style: TextStyle(
-                                                            fontFamily: 'Mulish',
+                                                            fontFamily: 'Proxima Nova',
                                                            // wordSpacing: 5,
                                                             fontWeight: FontWeight
-                                                                .w600,
-                                                            fontSize: 14,
+                                                                .w500,
+                                                            fontSize: 17,
                                                             color: Colors.black),
                                                       ),
                                                     ),
@@ -482,10 +482,10 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                             .data![index]["contact_name"] ??
                                                             "",
                                                           style: TextStyle(
-                                                              fontFamily: 'Mulish',
+                                                              fontFamily: 'Proxima Nova',
                                                               fontWeight: FontWeight
-                                                                  .w600,
-                                                              fontSize: 12,
+                                                                  .w500,
+                                                              fontSize: 14,
                                                               color: Color(0xFF787878)),
                                                         ),
 
@@ -511,16 +511,19 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                             itemBuilder: (BuildContext context, int index) {
                                                               return Padding(
                                                                 padding:
-                                                                const EdgeInsets.only(right: 8.0, top: 4),
+                                                                const EdgeInsets.only(right: 8.0, top: 0),
                                                                 child: SingleChildScrollView(
                                                                   scrollDirection: Axis.horizontal,
 
                                                                   child: Row(
                                                                     children: [
                                                                       Container(
-                                                                        height: 5,
-                                                                        width: 5,
-                                                                        color:  Color(int.parse(tags![index]["color"])),
+                                                                        height: 8,
+                                                                        width: 8,
+                                                                        decoration: BoxDecoration(
+                                                                            shape: BoxShape.circle,
+                                                                          color:  Color(int.parse(tags![index]["color"])),),
+
                                                                         // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
 
                                                                       ),
@@ -532,9 +535,9 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                                           tags![index]["name"].toString(),
                                                                           style: TextStyle(
                                                                               color: Color(0xFF787878),
-                                                                              fontFamily: 'Mulish',
-                                                                              fontWeight: FontWeight.w600,
-                                                                              fontSize: 12),
+                                                                              fontFamily: 'Proxima Nova',
+                                                                              fontWeight: FontWeight.w500,
+                                                                              fontSize: 14),
                                                                         ),
                                                                       ),
                                                                     ],

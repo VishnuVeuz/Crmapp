@@ -57,7 +57,7 @@ class Calender extends StatelessWidget {
               child: Text(
                 "Calendar",
                 style: TextStyle(
-                    fontFamily: 'Mulish',
+                    fontFamily: 'Proxima Nova',
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
                     color: Colors.white,
@@ -157,7 +157,7 @@ class Calender extends StatelessWidget {
                         //   ),
                         // ),
 
-                        child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Mulish',),),
+                        child: Text("Add",style: TextStyle(color: Colors.white,fontFamily: 'Proxima Nova',),),
 
                       ),
                     ),
@@ -187,9 +187,9 @@ class Calender extends StatelessWidget {
 
 
                                     unselectedBackgroundColor: Colors.white,
-                                    unselectedLabelStyle: TextStyle(color: Color(0xFF017E82),fontFamily: 'Mulish'),
+                                    unselectedLabelStyle: TextStyle(color: Color(0xFF017E82),fontFamily: 'Proxima Nova'),
                                     labelStyle:
-                                    TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,fontFamily: 'Mulish'),
+                                    TextStyle(color: Colors.black, fontWeight: FontWeight.w700,fontSize: 13,fontFamily: 'Proxima Nova'),
                                     tabs: const [
                                       Tab(text: "DAY"),
                                       Tab(text: "WEEK",),

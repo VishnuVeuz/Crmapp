@@ -293,9 +293,9 @@ class _LeadDetailState extends State<LeadDetail> {
                       child: Text(
                         leadname!,
                         style: TextStyle(
-                            fontFamily: 'Mulish',
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
                             color: Colors.white,
                             decoration: TextDecoration.none),
                       ),
@@ -475,9 +475,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Create",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -504,9 +504,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Edit",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -533,9 +533,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("Convert",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -549,7 +549,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                             context: context,
                                             builder: (BuildContext context) {
                                               return SizedBox(
-                                                height: 70,
+                                                height: 80,
                                                 child: Padding(
                                                   padding:
                                                       const EdgeInsets.only(
@@ -607,11 +607,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
-                                                                      'Mulish',
+                                                                      'Proxima Nova',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
-                                                                  fontSize: 12,
+                                                                  fontSize: 15,
                                                                   color: Color(
                                                                       0xFF212121),
                                                                 )),
@@ -688,11 +688,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
-                                                                      'Mulish',
+                                                                      'Proxima Nova',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
-                                                                  fontSize: 12,
+                                                                  fontSize: 15,
                                                                   color: Color(
                                                                       0xFF212121),
                                                                 )),
@@ -740,11 +740,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                            'Proxima Nova',
                                                                         fontWeight:
                                                                             FontWeight.w400,
                                                                         fontSize:
-                                                                            12,
+                                                                            15,
                                                                         color: Color(
                                                                             0xFF212121),
                                                                       )),
@@ -791,11 +791,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                            'Proxima Nova',
                                                                         fontWeight:
                                                                             FontWeight.w400,
                                                                         fontSize:
-                                                                            12,
+                                                                            15,
                                                                         color: Color(
                                                                             0xFF212121),
                                                                       )),
@@ -843,11 +843,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                            'Proxima Nova',
                                                                         fontWeight:
                                                                             FontWeight.w400,
                                                                         fontSize:
-                                                                            12,
+                                                                            15,
                                                                         color: Color(
                                                                             0xFF212121),
                                                                       )),
@@ -894,11 +894,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                       style:
                                                                           TextStyle(
                                                                         fontFamily:
-                                                                            'Mulish',
+                                                                            'Proxima Nova',
                                                                         fontWeight:
                                                                             FontWeight.w400,
                                                                         fontSize:
-                                                                            12,
+                                                                            15,
                                                                         color: Color(
                                                                             0xFF212121),
                                                                       )),
@@ -963,11 +963,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
-                                                                      'Mulish',
+                                                                      'Proxima Nova',
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,
-                                                                  fontSize: 12,
+                                                                  fontSize: 15,
                                                                   color: Color(
                                                                       0xFF212121),
                                                                 )),
@@ -990,9 +990,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                       padding: const EdgeInsets.only(top: 5),
                                       child: Text("More",
                                           style: TextStyle(
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 12,
+                                            fontSize: 15,
                                             color: Color(0xFF212121),
                                           )),
                                     )
@@ -1021,8 +1021,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                   child: Text(leadname!,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 17,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 18,
                                         color: Colors.black,
                                       )),
                                 ),
@@ -1043,7 +1043,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           style: TextStyle(
                                             fontSize: 20,
                                             color: Colors.white,
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                           ),
                                         )),
                                       ),
@@ -1064,7 +1064,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           style: TextStyle(
                                             fontSize: 15,
                                             color: Colors.white,
-                                            fontFamily: 'Mulish',
+                                            fontFamily: 'Proxima Nova',
                                           ),
                                         )),
                                       ),
@@ -1087,8 +1087,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Company",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1103,8 +1103,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                       company!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -1128,8 +1128,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Email",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1143,8 +1143,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                       email!,
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
-                                          fontFamily: 'Mulish',
-                                          fontSize: 12,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -1168,8 +1168,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Phone",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Visibility(
@@ -1191,8 +1191,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               phone! ,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -1243,8 +1243,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 12,
+                                                        fontFamily: 'Proxima Nova',
+                                                        fontSize: 13,
                                                         color:
                                                             Color(0xFF000000)),
                                                   ),
@@ -1276,8 +1276,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Mobile",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Visibility(
@@ -1298,8 +1298,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               mobile!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -1350,8 +1350,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w400,
-                                                        fontFamily: 'Mulish',
-                                                        fontSize: 12,
+                                                        fontFamily: 'Proxima Nova',
+                                                        fontSize: 13,
                                                         color:
                                                             Color(0xFF000000)),
                                                   ),
@@ -1383,8 +1383,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Salesperson",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Row(
@@ -1456,8 +1456,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                           salesperson!,
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 12,
+                                              fontFamily: 'Proxima Nova',
+                                              fontSize: 13,
                                               color: Color(0xFF000000)),
                                         ),
                                       ),
@@ -1483,8 +1483,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Priority",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1545,8 +1545,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                 child: Text("Tags",
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
-                                        fontFamily: 'Mulish',
-                                        fontSize: 12,
+                                        fontFamily: 'Proxima Nova',
+                                        fontSize: 13,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1640,11 +1640,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               color:
                                                                   Colors.white,
                                                               fontFamily:
-                                                                  'Mulish',
+                                                                  'Proxima Nova',
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w500,
-                                                              fontSize: 9.5,
+                                                              fontSize: 9.2,
                                                             ),
                                                           ),
                                                         ),
@@ -1755,9 +1755,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 index]['name'],
                                                                 style: TextStyle(
                                                                   color: Colors.white,
-                                                                  fontSize: 11,
+                                                                  fontSize: 11.5,
                                                                   fontFamily:
-                                                                  'Mulish',
+                                                                  'Proxima Nova',
                                                                 ),
                                                               )
                                                                   : Text(
@@ -1765,9 +1765,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 index]['name'],
                                                                 style: TextStyle(
                                                                   color: Colors.black,
-                                                                  fontSize: 11,
+                                                                  fontSize: 11.5,
                                                                   fontFamily:
-                                                                  'Mulish',
+                                                                  'Proxima Nova',
                                                                 ),
                                                               )))
                                                     ],
@@ -1826,9 +1826,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               SvgPicture.asset("images/whitetik.svg"),
+                                              SizedBox(width: 5,),
                                               Text("Mark Stage as Complete",style: TextStyle( fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13.57,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 15,
                                               color: Colors.white),),
                                             ],
                                           ),
@@ -1882,8 +1883,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             "Internal Notes",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 15,
                                                 color:
                                                     internalVisibility == true
                                                         ? Color(0XFF212121)
@@ -1925,8 +1926,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             "Other Information",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 15,
                                                 color:
                                                     otherinfoVisibility == true
                                                         ? Color(0XFF212121)
@@ -1957,18 +1958,15 @@ class _LeadDetailState extends State<LeadDetail> {
                                 width: mediaQueryData.size.width,
                                 //height: 40,
                                 // width:400,
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 25, right: 25,top: 10,bottom: 10),
-                                    child: Text(internalnotes!,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'Mulish',
-                                            fontSize: 12,
-                                            color: Color(0xFF787878))),
-                                  ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 25, right: 25,top: 10,bottom: 10),
+                                  child: Text(internalnotes!,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Proxima Nova',
+                                          fontSize: 13,
+                                          color: Color(0xFF787878))),
                                 ),
                               ),
                             ),
@@ -1997,8 +1995,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                         child: Text("Created by",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 13,
                                                 color: Color(0xFF666666))),
                                       ),
                                       Container(
@@ -2013,8 +2011,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               createdby!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -2040,8 +2038,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                         child: Text("Created on",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 13,
                                                 color: Color(0xFF666666))),
                                       ),
                                       Container(
@@ -2056,8 +2054,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               createdon!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -2083,8 +2081,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                         child: Text("Last Updated by",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 13,
                                                 color: Color(0xFF666666))),
                                       ),
                                       Container(
@@ -2099,8 +2097,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               lastupdateby!,
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w400,
-                                                  fontFamily: 'Mulish',
-                                                  fontSize: 12,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontSize: 13,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -2126,8 +2124,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                         child: Text("Last Updated on",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 12,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 13,
                                                 color: Color(0xFF666666))),
                                       ),
                                       Container(
@@ -2141,8 +2139,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             child: Text(lastupdateon!,
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w400,
-                                                    fontFamily: 'Mulish',
-                                                    fontSize: 12,
+                                                    fontFamily: 'Proxima Nova',
+                                                    fontSize: 13,
                                                     color: Color(0xFF000000))),
                                           ),
                                         ),
@@ -2191,8 +2189,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             "Send Message",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 14,
                                                 color:
                                                     followersVisibility == true
                                                         ? Color(0XFF212121)
@@ -2236,11 +2234,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                       ),
                                       child: TextButton(
                                           child: Text(
-                                            "Log note",
+                                            "Log Note",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'Mulish',
-                                                fontSize: 13,
+                                                fontFamily: 'Proxima Nova',
+                                                fontSize: 14,
                                                 color: lognoteVisibility == true
                                                     ? Color(0XFF212121)
                                                     : Color(0xFF212121)),
@@ -2270,8 +2268,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                           "Schedule Activity",
                                           style: TextStyle(
                                               fontWeight: FontWeight.w500,
-                                              fontFamily: 'Mulish',
-                                              fontSize: 13,
+                                              fontFamily: 'Proxima Nova',
+                                              fontSize: 14,
                                               color: Color(0xFF212121)),
                                         ),
                                         onPressed: () async {
@@ -2332,9 +2330,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                             child: Text(
                                               attachmentCount!,
                                               style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -2383,12 +2381,13 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       }
                                                     },
                                                     child: Text(
-                                                      "Follow",
+                                                      "Following",
                                                       style: TextStyle(
-                                                          color: Colors.green,
-                                                          fontFamily: 'Mulish',
+                                                          color: Color(0xFF20745A),
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight:
-                                                          FontWeight.w600),
+                                                          FontWeight.w500,
+                                                          fontSize: 13),
                                                     )),
                                               ],
                                             ),
@@ -2433,9 +2432,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       "Unfollow",
                                                       style: TextStyle(
                                                           color: Colors.red,
-                                                          fontFamily: 'Mulish',
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight:
-                                                          FontWeight.w600),
+                                                          FontWeight.w500,
+                                                          fontSize: 13
+                                                      ),
                                                     )),
                                               ],
                                             ),
@@ -2463,9 +2464,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                             child: Text(
                                               followerCount!,
                                               style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500,
                                                   color: Color(0xFF000000)),
                                             ),
                                           ),
@@ -2756,7 +2757,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           ),
                                                                           Container(
                                                                             width:
-                                                                                mediaQueryData.size.width / 2,
+                                                                                mediaQueryData.size.width / 2.1,
                                                                             // width:250,
                                                                             //height: double.infinity,
                                                                             child:
@@ -2773,10 +2774,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                       child: Text(
                                                                                         attachmentFileDisplay[index]["name"],
                                                                                         style: TextStyle(
-                                                                                          fontFamily: 'Mulish',
-                                                                                          fontSize: 12,
-                                                                                          fontWeight: FontWeight.w600,
-                                                                                          color: Color(0xff202020),
+                                                                                          fontFamily: 'Proxima Nova',
+                                                                                          fontSize: 13,
+                                                                                          fontWeight: FontWeight.w500,
+                                                                                          color: Color(0xff212121),
                                                                                         ),
                                                                                       ),
                                                                                     ),
@@ -2803,8 +2804,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                             ? "ZIP"
                                                                                                             : "",
                                                                                         style: TextStyle(
-                                                                                          fontFamily: 'Mulish',
-                                                                                          fontSize: 9,
+                                                                                          fontFamily: 'Proxima Nova',
+                                                                                          fontSize: 9.5,
                                                                                           fontWeight: FontWeight.w500,
                                                                                           color: Color(0xff666666),
                                                                                         ),
@@ -2926,7 +2927,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         "Select Attachments",
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontFamily: 'Mulish',
+                                          fontFamily: 'Proxima Nova',
                                         ),
                                       )),
                                 ],
@@ -2960,8 +2961,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF666666),
-                                              fontSize: 10,
-                                              fontFamily: 'Mulish',
+                                              fontSize: 11,
+                                              fontFamily: 'Proxima Nova',
                                             ),
                                           ),
                                           Text(
@@ -2969,8 +2970,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF666666),
-                                              fontSize: 10,
-                                              fontFamily: 'Mulish',
+                                              fontSize: 11,
+                                              fontFamily: 'Proxima Nova',
                                             ),
                                           ),
                                           SizedBox(
@@ -2986,10 +2987,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                 child: Text(
                                                   leadname!,
                                                   style: TextStyle(
-                                                    fontWeight: FontWeight.w500,
+                                                    fontWeight: FontWeight.w600,
                                                     color: Color(0xFF414141),
-                                                    fontSize: 10,
-                                                    fontFamily: 'Mulish',
+                                                    fontSize: 11,
+                                                    fontFamily: 'Proxima Nova',
                                                   ),
                                                 )),
                                           ),
@@ -3081,10 +3082,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                       sendMailData[i]['name'],
                                                       style: TextStyle(
                                                           color: Color(0xFF666666),
-                                                          fontSize: 11,
-                                                          fontFamily: 'Mulish',
+                                                          fontSize: 11.5,
+                                                          fontFamily: 'Proxima Nova',
                                                           fontWeight:
-                                                              FontWeight.w500),
+                                                              FontWeight.w600),
                                                     ),
                                                   ),
                                                 )
@@ -3205,7 +3206,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 FontWeight
                                                                     .w400,
                                                             fontFamily:
-                                                                'Mulish',
+                                                                'Proxima Nova',
                                                             fontSize: 11,
                                                             color: Color(
                                                                 0xFF000000),
@@ -3219,8 +3220,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               hintStyle: TextStyle(
                                                                   //fontFamily: "inter",
                                                                   fontWeight: FontWeight.w400,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize: 11,
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontSize: 13,
                                                                   color: Color(0xFFAFAFAF)))),
                                                     ),
                                                   ),
@@ -3408,8 +3409,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         "Send Message",
                                                         style: TextStyle(
                                                             fontWeight: FontWeight.w500,
-                                                            fontFamily: 'Mulish',
-                                                            fontSize: 12,
+                                                            fontFamily: 'Proxima Nova',
+                                                            fontSize: 14,
                                                             color: Colors.white),
                                                       ),
                                                       ),
@@ -3632,7 +3633,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 FontWeight
                                                                     .w400,
                                                             fontFamily:
-                                                                'Mulish',
+                                                                'Proxima Nova',
                                                             fontSize: 11,
                                                             color: Color(
                                                                 0xFF000000),
@@ -3647,8 +3648,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                               hintStyle: TextStyle(
                                                                   //fontFamily: "inter",
                                                                   fontWeight: FontWeight.w400,
-                                                                  fontFamily: 'Mulish',
-                                                                  fontSize: 12,
+                                                                  fontFamily: 'Proxima Nova',
+                                                                  fontSize: 14,
                                                                   color: Color(0xFFAFAFAF)))),
                                                     ),
                                                   ),
@@ -3827,8 +3828,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                         "Send Lognote",
                                                         style: TextStyle(
                                                             fontWeight: FontWeight.w500,
-                                                            fontFamily: 'Mulish',
-                                                            fontSize: 12,
+                                                            fontFamily: 'Proxima Nova',
+                                                            fontSize: 14,
                                                             color: Colors.white),
                                                       ),
                                                       // SvgPicture.asset(
@@ -3998,10 +3999,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                       label: Text(
                                         'Planned Activities',
                                         style: TextStyle(
-                                          fontSize: 15,
-                                          color: Color(0xFF000000),
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: 'Mulish',
+                                          fontSize: 17,
+                                          color: Color(0xFF212121),
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Proxima Nova',
                                         ),
                                       ),
                                     ),
@@ -4019,7 +4020,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
-                                              fontFamily: 'Mulish',
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.white),
                                         )),
                                       ),
@@ -4039,7 +4040,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
                                               //fontWeight: FontWeight.bold,
-                                              fontFamily: 'Mulish',
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.black),
                                         )),
                                       ),
@@ -4058,7 +4059,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                           style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.bold,
-                                              fontFamily: 'Mulish',
+                                              fontFamily: 'Proxima Nova',
                                               color: Colors.white),
                                         )),
                                       ),
@@ -4306,17 +4307,17 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 Text(
                                                                               scheduleData['records'][index]['user_id'][1].toString() ?? "",
                                                                               style: TextStyle(
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 11,
-                                                                                fontWeight: FontWeight.w600,
-                                                                                color: Color(0xff202020),
+                                                                                fontFamily: 'Proxima Nova',
+                                                                                fontSize: 13,
+                                                                                fontWeight: FontWeight.w400,
+                                                                                color: Color(0xff388E3C),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                         Positioned(
                                                                           left:
-                                                                              2,
+                                                                              0,
                                                                           top:
                                                                               15,
                                                                           child:
@@ -4325,7 +4326,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 Text(
                                                                               scheduleData['records'][index]['note'].replaceAll(RegExp(r'<[^>]*>|&[^;]+;'), ' ').toString() ?? "",
                                                                               style: TextStyle(
-                                                                                fontFamily: 'Mulish',
+                                                                                fontFamily: 'Proxima Nova',
                                                                                 fontSize: 10,
                                                                                 fontWeight: FontWeight.w500,
                                                                                 color: Color(0xff666666),
@@ -4364,7 +4365,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                             child:
                                                                                 Text(
                                                                               scheduleData['records'][index]['delay_label'].toString() ?? "",
-                                                                              style: TextStyle(fontFamily: 'Mulish', fontSize: 11, fontWeight: FontWeight.w600, color: Color(int.parse(scheduleData['records'][index]['label_color']))),
+                                                                              style: TextStyle(fontFamily: 'Proxima Nova', fontSize: 12, fontWeight: FontWeight.w500, color: Color(int.parse(scheduleData['records'][index]['label_color']))),
                                                                             ),
                                                                           ),
                                                                         ),
@@ -4380,9 +4381,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               scheduleData['records'][index]['activity_type_id'][1].toString() ?? "",
                                                                               textAlign: TextAlign.right,
                                                                               style: TextStyle(
-                                                                                fontFamily: 'Mulish',
-                                                                                fontSize: 11,
-                                                                                fontWeight: FontWeight.w600,
+                                                                                fontFamily: 'Proxima Nova',
+                                                                                fontSize: 12,
+                                                                                fontWeight: FontWeight.w500,
                                                                                 color: Color(0xff202020),
                                                                               ),
                                                                             ),
@@ -4474,10 +4475,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               child: Text(
                                                                                 scheduleData['records'][index]['buttons'][0].toString() ?? "",
                                                                                 style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 11.2,
                                                                                   fontWeight: FontWeight.w500,
-                                                                                  color: Color(0xff707070),
+                                                                                  color: Color(0xff717171),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -4527,11 +4528,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   Text(
                                                                                     scheduleData['records'][index]['buttons'][1].toString() ?? "",
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 11.2,
                                                                                       fontWeight: FontWeight.w500,
                                                                                       // height: 1.255*ffem/fem,
-                                                                                      color: Color(0xff707070),
+                                                                                      color: Color(0xff717171),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -4617,11 +4618,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   Text(
                                                                                     scheduleData['records'][index]['buttons'][1].toString() ?? "",
                                                                                     style: TextStyle(
-                                                                                      fontFamily: 'Mulish',
-                                                                                      fontSize: 11,
+                                                                                      fontFamily: 'Proxima Nova',
+                                                                                      fontSize: 11.2,
                                                                                       fontWeight: FontWeight.w500,
                                                                                       // height: 1.255*ffem/fem,
-                                                                                      color: Color(0xff707070),
+                                                                                      color: Color(0xff717171),
                                                                                     ),
                                                                                   ),
                                                                                 ],
@@ -4685,11 +4686,11 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               child: Text(
                                                                                 scheduleData['records'][index]['buttons'][2].toString() ?? "",
                                                                                 style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 11,
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 11.2,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   //height: 1.255*ffem/fem,
-                                                                                  color: Color(0xff707070),
+                                                                                  color: Color(0xff717171),
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -4753,7 +4754,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     "Activity type",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -4765,7 +4766,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     scheduleData['records'][index]['activity_type_id'][1],
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -4777,7 +4778,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     "Created",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -4789,7 +4790,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     children: [
                                                                                       Text(
                                                                                         scheduleData['records'][index]['create_date'].toString() ?? "",
-                                                                                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Mulish', color: Color(0xFF666666)),
+                                                                                        style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),
                                                                                       ),
                                                                                       SizedBox(
                                                                                         width: 5,
@@ -4810,7 +4811,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                         scheduleData['records'][index]['create_uid'][1].toString() ?? "",
                                                                                         style: TextStyle(
                                                                                           fontSize: 11,
-                                                                                          fontFamily: 'Mulish',
+                                                                                          fontFamily: 'Proxima Nova',
                                                                                           color: Color(0xFF666666),
                                                                                           fontWeight: FontWeight.w500,
                                                                                         ),
@@ -4824,7 +4825,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     "Assigned to",
                                                                                     style: TextStyle(
                                                                                       fontSize: 11,
-                                                                                      fontFamily: 'Mulish',
+                                                                                      fontFamily: 'Proxima Nova',
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
                                                                                     ),
@@ -4848,7 +4849,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                       ),
                                                                                       Text(
                                                                                         scheduleData['records'][index]['user_id'][1].toString() ?? "",
-                                                                                        style: TextStyle(fontSize: 11, fontFamily: 'Mulish', fontWeight: FontWeight.w500, color: Color(0xFF666666)),
+                                                                                        style: TextStyle(fontSize: 11, fontFamily: 'Proxima Nova', fontWeight: FontWeight.w500, color: Color(0xFF666666)),
                                                                                       ),
                                                                                     ],
                                                                                   ),
@@ -4861,6 +4862,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                       fontSize: 11,
                                                                                       color: Color(0xFF666666),
                                                                                       fontWeight: FontWeight.w500,
+                                                                                      fontFamily: 'Proxima Nova'
                                                                                     ),
                                                                                   ),
                                                                                   SizedBox(
@@ -4868,7 +4870,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                   ),
                                                                                   Text(
                                                                                     scheduleData['records'][index]['date_deadline'].toString() ?? "",
-                                                                                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Mulish', color: Color(0xFF666666)),
+                                                                                    style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500, fontFamily: 'Proxima Nova', color: Color(0xFF666666)),
                                                                                   ),
                                                                                   SizedBox(
                                                                                     height: 3,
@@ -6328,9 +6330,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                         child: Center(
                                             child: Text(entry.key,
                                               style: TextStyle(
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 12,
-                                                  fontFamily: 'Mulish',
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 14,
+                                                  fontFamily: 'Proxima Nova',
                                                   color: Color(0xFF212121)),
 
                                             )),
@@ -6525,10 +6527,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                               child: RichText(
                                                                                 text: TextSpan(
                                                                                   style: TextStyle(
-                                                                                    fontFamily: 'Mulish',
-                                                                                    fontSize: 12,
+                                                                                    fontFamily: 'Proxima Nova',
+                                                                                    fontSize: 13,
                                                                                     fontWeight: FontWeight
-                                                                                        .w700,
+                                                                                        .w500,
                                                                                     height: 0,
                                                                                     color: Color(
                                                                                         0xff000000),
@@ -6537,20 +6539,20 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     TextSpan(
                                                                                       text:   item['create_uid'][1],
                                                                                       style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 11,
+                                                                                        fontFamily: 'Proxima Nova',
+                                                                                        fontSize: 12,
                                                                                         fontWeight: FontWeight
-                                                                                            .w500,
+                                                                                            .w600,
                                                                                         height: 1,
                                                                                         color: Color(
-                                                                                            0xff000000),
+                                                                                            0xff212121),
 
                                                                                       ),
                                                                                     ),
                                                                                     TextSpan(
                                                                                       text: ' -',
                                                                                       style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
+                                                                                        fontFamily: 'Proxima Nova',
                                                                                         fontSize: 11,
                                                                                         fontWeight: FontWeight
                                                                                             .w500,
@@ -6562,7 +6564,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     TextSpan(
                                                                                       text: ' ',
                                                                                       style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
+                                                                                        fontFamily: 'Proxima Nova',
                                                                                         fontSize: 11,
                                                                                         fontWeight: FontWeight
                                                                                             .w500,
@@ -6574,8 +6576,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                     TextSpan(
                                                                                       text:   item["period"],
                                                                                       style: TextStyle(
-                                                                                        fontFamily: 'Mulish',
-                                                                                        fontSize: 9,
+                                                                                        fontFamily: 'Proxima Nova',
+                                                                                        fontSize: 9.5,
                                                                                         fontWeight: FontWeight
                                                                                             .w500,
                                                                                         height: 1.5,
@@ -6602,10 +6604,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 //     .toString() ??
                                                                                 //     "",
                                                                                 style: TextStyle(
-                                                                                  fontFamily: 'Mulish',
-                                                                                  fontSize: 9,
+                                                                                  fontFamily: 'Proxima Nova',
+                                                                                  fontSize: 9.5,
                                                                                   fontWeight: FontWeight
-                                                                                      .w600,
+                                                                                      .w500,
                                                                                   // height: 1.5,
                                                                                   color: Color(
                                                                                       0xff787878),
@@ -7103,10 +7105,10 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                 style: TextStyle(
                                                                                   fontWeight: FontWeight
                                                                                       .w400,
-                                                                                  fontFamily: 'Mulish',
+                                                                                  fontFamily: 'Proxima Nova',
                                                                                   fontSize: 11,
                                                                                   color: Color(
-                                                                                      0xFF000000),
+                                                                                      0xFF787878),
                                                                                 ),
 
 
@@ -7131,7 +7133,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                         FontWeight
                                                                                             .w400,
                                                                                         fontFamily:
-                                                                                        'Mulish',
+                                                                                        'Proxima Nova',
                                                                                         fontSize: 11,
                                                                                         color: Color(
                                                                                             0xFFAFAFAF)))),
@@ -7271,8 +7273,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                 padding: const EdgeInsets.only(left:75),
                                                                 child: Row(
                                                                   children: [
-                                                                    Text("escape to",style: TextStyle(color: Colors.grey),),
-                                                                    InkWell(child: Container(child: Text("  cancel  ")),
+                                                                    Text("escape to",style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova'),),
+                                                                    InkWell(child: Container(child: Text("  cancel  ",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'),)),
                                                                       onTap: (){
                                                                         selectedItemIndex = -1;
                                                                         lognoteEditController.text= "";
@@ -7283,8 +7285,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                     ),
                                                                     //TextButton(onPressed:(){}, child: Text("cancel")),
                                                                     Text(","),
-                                                                    Text("  enter to",style: TextStyle(color: Colors.grey),),
-                                                                    InkWell(child: Container(child: Text("  save")),
+                                                                    Text("  enter to",style: TextStyle(color: Colors.grey,fontFamily: 'Proxima Nova'),),
+                                                                    InkWell(child: Container(child: Text("  save",style: TextStyle(color: Color(0xff212121),fontFamily: 'Proxima Nova'),)),
                                                                         // onTap:_isSavingData
                                                                         //     ? null
                                                                         onTap :()async{
@@ -7375,7 +7377,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                             Column(
                                                               children: [
                                                                 Container(
-                                                                  // color: Colors.red,
+                                                                  //color: Colors.red,
                                                                   width:mediaQueryData
                                                                       .size
                                                                       .width,
@@ -7530,7 +7532,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                           Container(
                                                                             margin: EdgeInsets
                                                                                 .fromLTRB(
-                                                                                10, 0, 0, 2),
+                                                                                10, 0, 0, 0),
                                                                             // group20585QEc (1652:502)
                                                                             width: double.infinity,
                                                                             child: Column(
@@ -7613,12 +7615,12 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                   child: Text(
                                                                                                     logattachmentFileDisplay[index]["name"],
                                                                                                     style: TextStyle(
-                                                                                                      fontFamily: 'Mulish',
-                                                                                                      fontSize: 12,
+                                                                                                      fontFamily: 'Proxima Nova',
+                                                                                                      fontSize: 13,
                                                                                                       fontWeight: FontWeight
-                                                                                                          .w600,
+                                                                                                          .w500,
                                                                                                       color: Color(
-                                                                                                          0xff202020),
+                                                                                                          0xff212121),
                                                                                                     ),
                                                                                                   ),
                                                                                                 ),
@@ -7656,8 +7658,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                                                                                         : "",
 
                                                                                                     style: TextStyle(
-                                                                                                      fontFamily: 'Mulish',
-                                                                                                      fontSize: 9,
+                                                                                                      fontFamily: 'Proxima Nova',
+                                                                                                      fontSize: 9.5,
                                                                                                       fontWeight: FontWeight
                                                                                                           .w500,
 
@@ -7984,9 +7986,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             labelText: 'Activity Type',
                             isDense: true,
                             labelStyle: TextStyle(
-                                color: Color(0xFF666666),
-                                fontSize: 14,
-                                fontFamily: 'Mulish',
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
                                 fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
                           ),
@@ -8058,9 +8060,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           item["name"],
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                         ),
                       )));
                     },
@@ -8098,8 +8100,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600)),
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -8115,9 +8117,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     controller: summaryController,
                     decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -8129,10 +8131,10 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Summary',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
-                            fontWeight: FontWeight.w500)),
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
+                            fontWeight: FontWeight.w400)),
                   ),
                 ),
                 Visibility(
@@ -8150,18 +8152,18 @@ class _LeadDetailState extends State<LeadDetail> {
                             child: TextField(
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.w500),
                                 enabled: false,
                                 controller: DuedateTime,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none,
                                     hintText: "Due Date",
                                     hintStyle: TextStyle(
-                                        color: Color(0xFF666666),
+                                        color: Color(0xFF868686),
                                         fontSize: 14,
-                                        fontFamily: 'Mulish',
+                                        fontFamily: 'Proxima Nova',
                                         fontWeight: FontWeight.w500))),
                           ),
                         ),
@@ -8183,9 +8185,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                   labelText: 'Assigned To',
                                   isDense: true,
                                   labelStyle: TextStyle(
-                                      color: Color(0xFF666666),
-                                      fontSize: 14,
-                                      fontFamily: 'Mulish',
+                                      color: Color(0xFF868686),
+                                      fontSize: 15,
+                                      fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500),
                                   fillColor: Colors.white,
                                 ),
@@ -8232,9 +8234,9 @@ class _LeadDetailState extends State<LeadDetail> {
                                 item["name"],
                                 style: TextStyle(
                                     fontSize: 14,
-                                    fontFamily: 'Mulish',
+                                    fontFamily: 'Proxima Nova',
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.w500),
                               ),
                             )));
                           },
@@ -8276,8 +8278,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 14,
-                                                  fontFamily: 'Mulish',
-                                                  fontWeight: FontWeight.w600)),
+                                                  fontFamily: 'Proxima Nova',
+                                                  fontWeight: FontWeight.w500)),
                                         ),
                                       ),
                                     ))
@@ -8293,9 +8295,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: TextFormField(
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                           controller: commandsController,
                           decoration: const InputDecoration(
                               enabledBorder: UnderlineInputBorder(
@@ -8308,9 +8310,9 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               labelText: 'Commands',
                               labelStyle: TextStyle(
-                                  color: Color(0xFF666666),
-                                  fontSize: 14,
-                                  fontFamily: 'Mulish',
+                                  color: Color(0xFF868686),
+                                  fontSize: 15,
+                                  fontFamily: 'Proxima Nova',
                                   fontWeight: FontWeight.w500)),
                         ),
                       ),
@@ -8333,7 +8335,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.57,
                                     color: Colors.white,
-                                    fontFamily: 'Mulish'),
+                                    fontFamily: 'Proxima Nova'),
                               ),
                             ),
                             onPressed: _isSavingData
@@ -8396,7 +8398,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -8449,7 +8451,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.57,
                                         color: Colors.white,
-                                        fontFamily: 'Mulish'),
+                                        fontFamily: 'Proxima Nova'),
                                   ),
                                 ),
                                 onPressed: _isSavingData
@@ -8501,7 +8503,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: _isSavingData
@@ -8554,7 +8556,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: _isSavingData
@@ -8616,7 +8618,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -8651,8 +8653,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     "Recipients",
                     style: TextStyle(
                       color: Colors.grey,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 13,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -8668,8 +8670,8 @@ class _LeadDetailState extends State<LeadDetail> {
                     "Followers of the document and",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontSize: 15,
+                      fontFamily: 'Proxima Nova',
                     ),
                   ),
                 ),
@@ -8686,7 +8688,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                     child: MultiSelectDropDown.network(
                       hint: 'Add contacts to notify...',
-                      hintStyle: TextStyle(fontFamily: 'Mulish', fontSize: 12),
+                      hintStyle: TextStyle(fontFamily: 'Proxima Nova', fontSize: 13),
                       selectedOptions: editRecipientName
                           .map((recipient) => ValueItem(
                               label: recipient.label, value: recipient.value))
@@ -8719,6 +8721,7 @@ class _LeadDetailState extends State<LeadDetail> {
                           final item = e as Map<String, dynamic>;
                           return ValueItem(
                             label: item['display_name'],
+
                             value: item['id'].toString(),
                           );
                         }).toList();
@@ -8744,10 +8747,10 @@ class _LeadDetailState extends State<LeadDetail> {
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
                   child: TextFormField(
                     style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                       color: Colors.black,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                     ),
                     controller: subjectController,
                     decoration: const InputDecoration(
@@ -8761,10 +8764,10 @@ class _LeadDetailState extends State<LeadDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Subject',
                         labelStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                          fontFamily: 'Mulish',
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF868686),
+                          fontFamily: 'Proxima Nova',
                         )),
                   ),
                 ),
@@ -8794,7 +8797,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                       controller: bodyController,
                     ),
@@ -8822,7 +8825,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.grey[700],
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                           ),
                         ),
                       ],
@@ -8929,10 +8932,10 @@ class _LeadDetailState extends State<LeadDetail> {
                     hint: Text(
                       "Use template",
                       style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     searchHint: null,
@@ -8997,9 +9000,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           item["name"],
                           style: TextStyle(
                             fontSize: 12,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                           ),
                         ),
                       )));
@@ -9058,7 +9061,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -9143,7 +9146,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       child: Text(
                         "Save As New Template",
                         style: TextStyle(
-                            color: Colors.black, fontFamily: 'Mulish'),
+                            color: Colors.black, fontFamily: 'Proxima Nova'),
                       )),
                 )
               ],
@@ -9183,10 +9186,10 @@ class _LeadDetailState extends State<LeadDetail> {
                     Text(
                       "Invite Follower",
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                       ),
                     ),
                     IconButton(
@@ -9208,10 +9211,10 @@ class _LeadDetailState extends State<LeadDetail> {
                 Text(
                   "Recipients",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color:  Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -9225,7 +9228,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     hintStyle: TextStyle(
                       color: Colors.grey,
                       fontSize: 12,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w600,
                     ),
                     selectedOptions: editRecipientName
@@ -9282,10 +9285,10 @@ class _LeadDetailState extends State<LeadDetail> {
                 Text(
                   "Send Email",
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: Color(0xFF868686),
                     fontSize: 12,
-                    fontFamily: 'Mulish',
-                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Proxima Nova',
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
                 SizedBox(
@@ -9321,13 +9324,19 @@ class _LeadDetailState extends State<LeadDetail> {
                         expands: true,
                         maxLines: null,
                         controller: bodyController,
+                        style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: 'Proxima Nova',
+                        fontWeight: FontWeight.w500,
+                      ),
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Message',
                           hintStyle: TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -9349,7 +9358,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
                                   color: Colors.white,
-                                  fontFamily: 'Mulish'),
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -9426,8 +9435,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         Text(
                           "Edit Subscription of",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -9437,8 +9446,8 @@ class _LeadDetailState extends State<LeadDetail> {
                         Text(
                           " Follower name",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Mulish',
+                              fontSize: 17,
+                              fontFamily: 'Proxima Nova',
                               color: Color(0xFF212121),
                               fontWeight: FontWeight.w600),
                         ),
@@ -9487,7 +9496,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               ),
                               Text(followerSub[i]["name"],
                                   style: TextStyle(
-                                      fontFamily: 'Mulish', fontSize: 12)),
+                                      fontFamily: 'Proxima Nova', fontSize: 13)),
                             ],
                           ),
                         ],
@@ -9508,7 +9517,8 @@ class _LeadDetailState extends State<LeadDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   fontSize: 13.57,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                              fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: () async {
@@ -9590,10 +9600,10 @@ class _LeadDetailState extends State<LeadDetail> {
                     Text(
                       "Send SMS Text Messages",
                       style: TextStyle(
-                          fontSize: 19,
+                          fontSize: 20,
                           fontWeight: FontWeight.w600,
                           color: Colors.black,
-                          fontFamily: 'Mulish'),
+                          fontFamily: 'Proxima Nova'),
                     ),
                     IconButton(
                       icon: SvgPicture.asset("images/cr.svg"),
@@ -9611,7 +9621,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       style: TextStyle(
                           color: Colors.red,
                           fontSize: 12,
-                          fontFamily: 'Mulish'),
+                          fontFamily: 'Proxima Nova'),
                     ))),
                 SizedBox(
                   height: 5,
@@ -9620,8 +9630,8 @@ class _LeadDetailState extends State<LeadDetail> {
                   "Recipients",
                   style: TextStyle(
                       color: Color(0xFF212121),
-                      fontSize: 14,
-                      fontFamily: 'Mulish'),
+                      fontSize: 15,
+                      fontFamily: 'Proxima Nova'),
                 ),
                 SizedBox(
                   height: 0,
@@ -9631,7 +9641,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                    style: TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                     controller: nameController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -9644,9 +9654,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontFamily: 'Mulish')),
+                            color: Color(0xFF666666),
+                            fontSize: 14,
+                            fontFamily: 'Proxima Nova')),
                   ),
                 ),
                 SizedBox(
@@ -9656,7 +9666,7 @@ class _LeadDetailState extends State<LeadDetail> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                    style: TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                     controller: phonenumberController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -9669,9 +9679,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Phone Number',
                         labelStyle: TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                            fontFamily: 'Mulish')),
+                            color:  Color(0xFF666666),
+                            fontSize: 14,
+                            fontFamily: 'Proxima Nova')),
                   ),
                 ),
                 SizedBox(
@@ -9686,7 +9696,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: TextFormField(
-                        style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                        style: TextStyle(fontSize: 12, fontFamily: 'Proxima Nova'),
                         controller: subject2Controller,
                         decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
@@ -9699,9 +9709,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             // border: UnderlineInputBorder(),
                             labelText: 'Subject',
                             labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12,
-                                fontFamily: 'Mulish')),
+                                color:  Color(0xFF666666),
+                                fontSize: 14,
+                                fontFamily: 'Proxima Nova')),
                       ),
                     ),
                   ),
@@ -9723,8 +9733,9 @@ class _LeadDetailState extends State<LeadDetail> {
                               "Send SMS",
                               style: TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 13.57,
-                                  color: Colors.white),
+                                  fontSize: 15,
+                                  color: Colors.white,
+                              fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           onPressed: _isSavingData
@@ -9791,10 +9802,10 @@ class _LeadDetailState extends State<LeadDetail> {
       return AlertDialog(
         title: const Text('Mark Done',
             style: TextStyle(
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
-                fontFamily: 'Mulish')),
+                fontFamily: 'Proxima Nova')),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         content: Container(
           height: 60,
@@ -9806,7 +9817,7 @@ class _LeadDetailState extends State<LeadDetail> {
                 //border: OutlineInputBorder(),
                 hintText: 'Write Feedback',
                 hintStyle: TextStyle(
-                    fontSize: 12, color: Colors.black, fontFamily: 'Mulish')),
+                    fontSize: 12, color: Colors.black, fontFamily: 'Proxima Nova')),
           ),
         ),
         actions: <Widget>[
@@ -9824,7 +9835,7 @@ class _LeadDetailState extends State<LeadDetail> {
                             fontWeight: FontWeight.w700,
                             fontSize: 10,
                             color: Colors.white,
-                            fontFamily: 'Mulish'),
+                            fontFamily: 'Proxima Nova'),
                       ),
                     ),
                     onPressed: () async {
@@ -9864,7 +9875,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.white,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () async {
@@ -9900,7 +9911,7 @@ class _LeadDetailState extends State<LeadDetail> {
                               fontWeight: FontWeight.w700,
                               fontSize: 10,
                               color: Colors.black,
-                              fontFamily: 'Mulish'),
+                              fontFamily: 'Proxima Nova'),
                         ),
                       ),
                       onPressed: () {
@@ -9959,7 +9970,7 @@ class _LeadDetailState extends State<LeadDetail> {
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
-                      fontFamily: 'Mulish',
+                      fontFamily: 'Proxima Nova',
                     ),
                   )),
             ),
@@ -10026,7 +10037,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         child: Text(followers[i]['name'],
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 12,
                                 color: Color(0xFF666666)))),
                     Row(
@@ -10278,8 +10289,8 @@ class _LeadDetailState extends State<LeadDetail> {
             title: Text('Please choose media to select',
                 style: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontFamily: 'Mulish',
-                    fontSize: 14,
+                    fontFamily: 'Proxima Nova',
+                    fontSize: 15,
                     color: Color(0xFF212121))),
             content: Container(
               height: MediaQuery.of(context).size.height / 6,
@@ -10293,7 +10304,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         // padding: MaterialStateProperty.all(EdgeInsets.all(50)),
                         textStyle: MaterialStateProperty.all(TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'Mulish',
+                            fontFamily: 'Proxima Nova',
                             fontSize: 14,
                             color: Color(0xFF212121)))),
 
@@ -10313,7 +10324,7 @@ class _LeadDetailState extends State<LeadDetail> {
                         Text('From Gallery',
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'Mulish',
+                                fontFamily: 'Proxima Nova',
                                 fontSize: 14,
                                 color: Colors.white)),
                       ],
@@ -11134,7 +11145,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Individual",
-                          style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                          style: TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "person",
                         groupValue: radioInput,
@@ -11151,7 +11162,7 @@ class _LeadDetailState extends State<LeadDetail> {
                       child: RadioListTile(
                         title: Text(
                           "Company",
-                          style: TextStyle(fontSize: 12, fontFamily: 'Mulish'),
+                          style: TextStyle(fontSize: 12.5, fontFamily: 'Proxima Nova'),
                         ),
                         value: "company",
                         groupValue: radioInput,
@@ -11174,9 +11185,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendnameController,
                     decoration: const InputDecoration(
@@ -11191,9 +11202,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Name',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11211,9 +11222,9 @@ class _LeadDetailState extends State<LeadDetail> {
                             labelText: 'Company Name',
                             isDense: true,
                             labelStyle: TextStyle(
-                                color: Color(0xFF666666),
-                                fontSize: 14,
-                                fontFamily: 'Mulish',
+                                color: Color(0xFF868686),
+                                fontSize: 15,
+                                fontFamily: 'Proxima Nova',
                                 fontWeight: FontWeight.w500),
                             fillColor: Colors.white,
                           ),
@@ -11259,9 +11270,9 @@ class _LeadDetailState extends State<LeadDetail> {
                           item["display_name"],
                           style: TextStyle(
                               fontSize: 14,
-                              fontFamily: 'Mulish',
+                              fontFamily: 'Proxima Nova',
                               color: Colors.black,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.w500),
                         ),
                       )));
                     },
@@ -11301,8 +11312,8 @@ class _LeadDetailState extends State<LeadDetail> {
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontSize: 14,
-                                                fontFamily: 'Mulish',
-                                                fontWeight: FontWeight.w600)),
+                                                fontFamily: 'Proxima Nova',
+                                                fontWeight: FontWeight.w500)),
                                       ),
                                     ),
                                   ))
@@ -11318,9 +11329,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     controller: sendjobController,
                     decoration: const InputDecoration(
                         enabledBorder: UnderlineInputBorder(
@@ -11332,9 +11343,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Job Position',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11344,9 +11355,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.emailAddress,
                     controller: sendemailController,
                     decoration: const InputDecoration(
@@ -11361,9 +11372,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         // border: UnderlineInputBorder(),
                         labelText: 'Email',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
@@ -11373,9 +11384,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendphoneController,
@@ -11390,9 +11401,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Phone',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -11417,9 +11428,9 @@ class _LeadDetailState extends State<LeadDetail> {
                   child: TextFormField(
                     style: TextStyle(
                         fontSize: 14,
-                        fontFamily: 'Mulish',
+                        fontFamily: 'Proxima Nova',
                         color: Colors.black,
-                        fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w500),
                     keyboardType: TextInputType.phone,
                     // maxLength: 10,
                     controller: sendmobileController,
@@ -11434,9 +11445,9 @@ class _LeadDetailState extends State<LeadDetail> {
                         ),
                         labelText: 'Mobile',
                         labelStyle: TextStyle(
-                            color: Color(0xFF666666),
-                            fontSize: 14,
-                            fontFamily: 'Mulish',
+                            color: Color(0xFF868686),
+                            fontSize: 15,
+                            fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w500)),
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -11472,7 +11483,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: () async {
@@ -11524,7 +11535,7 @@ class _LeadDetailState extends State<LeadDetail> {
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.57,
                                       color: Colors.white,
-                                      fontFamily: 'Mulish'),
+                                      fontFamily: 'Proxima Nova'),
                                 ),
                               ),
                               onPressed: () {

@@ -80,7 +80,8 @@ class _MainDrawerState extends State<MainDrawer> {
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 18.84,
-                              color: Colors.white),
+                              color: Colors.white,
+                          fontFamily: 'Proxima Nova'),
                         ),
                         children: <Widget>[
 
@@ -108,7 +109,8 @@ class _MainDrawerState extends State<MainDrawer> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 15,
-                                          color: Colors.white),
+                                          color: Colors.white,
+                                      fontFamily: 'Proxima Nova'),
                                     ),
                                   ),
                                   value: companyList![index].selected,
@@ -157,7 +159,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18.84,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                              fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -194,7 +197,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18.84,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -235,7 +239,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18.84,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -272,7 +277,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18.84,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -311,7 +317,8 @@ class _MainDrawerState extends State<MainDrawer> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 18.84,
-                                  color: Colors.white),
+                                  color: Colors.white,
+                                  fontFamily: 'Proxima Nova'),
                             ),
                           ),
                           Padding(
@@ -349,7 +356,8 @@ class _MainDrawerState extends State<MainDrawer> {
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18.84,
-                            color: Colors.white),
+                            color: Colors.white,
+                            fontFamily: 'Proxima Nova'),
                       ),
                       children: <Widget>[
 
@@ -369,7 +377,8 @@ class _MainDrawerState extends State<MainDrawer> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 15,
-                                          color: Colors.white),
+                                          color: Colors.white,
+                                          fontFamily: 'Proxima Nova'),
                                     ),
                                   ),
                                 ),
@@ -403,7 +412,8 @@ class _MainDrawerState extends State<MainDrawer> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           fontSize: 15,
-                                          color: Colors.white),
+                                          color: Colors.white,
+                                          fontFamily: 'Proxima Nova'),
                                     ),
                                   ),
                                 ),
@@ -443,7 +453,8 @@ class _MainDrawerState extends State<MainDrawer> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 18.84,
-                                color: Colors.white),
+                                color: Colors.white,
+                                fontFamily: 'Proxima Nova'),
                           ),
                         ],
                       ),

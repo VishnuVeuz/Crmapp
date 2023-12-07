@@ -57,9 +57,9 @@ CRM made easy.
                           '',
                       maxLines: 2,
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 25,
-                        fontFamily: 'Mulish',
+                        fontWeight: FontWeight.w600,
+                        fontSize: 27,
+                        fontFamily: 'Proxima Nova',
                         color: Colors.white,
                       ),
                     ),
@@ -96,8 +96,8 @@ CRM made easy.
                             "Log in",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 20.15,
-                                fontFamily: 'Mulish',
+                                fontSize: 22.15,
+                                fontFamily: 'Proxima Nova',
                                 color: Color(0xFF000000)),
                           ),
                         ),
@@ -122,10 +122,10 @@ CRM made easy.
 
                                         hintText: 'Yourcompany.odoo.com',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontFamily: 'Mulish',
+                                            color: Color(0xFFAFAFAF),
+                                            fontFamily: 'Proxima Nova',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: 15)),
+                                            fontSize: 17)),
                                   ),
                                 ),
                               ),
@@ -163,10 +163,10 @@ CRM made easy.
 
                                       hintText: 'Your email address',
                                       hintStyle: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: 'Mulish',
+                                          color: Color(0xFFAFAFAF),
+                                          fontFamily: 'Proxima Nova',
                                           fontWeight: FontWeight.w400,
-                                          fontSize: 15)),
+                                          fontSize: 17)),
                                 ),
                               ),
                             ),
@@ -201,10 +201,10 @@ CRM made easy.
                                       border: InputBorder.none,
                                       hintText: 'Password',
                                       hintStyle: TextStyle(
-                                          color: Colors.grey,
-                                          fontFamily: 'Mulish',
+                                          color: Color(0xFFAFAFAF),
+                                          fontFamily: 'Proxima Nova',
                                           fontWeight: FontWeight.w400,
-                                          fontSize: 15)),
+                                          fontSize: 17)),
                                 ),
                               ),
                             ),
@@ -235,7 +235,7 @@ CRM made easy.
                                 "SUBMIT",
 
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w700, fontFamily: 'Mulish', fontSize: 15.57),
+                                    fontWeight: FontWeight.w700, fontFamily: 'Proxima Nova', fontSize: 15.57),
                               ),
                               onPressed: () async {
 
