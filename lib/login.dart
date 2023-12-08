@@ -43,9 +43,9 @@ class _LoginPageState extends State<LoginPage> {
 
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 62, left: 0,right: 30),
+                  padding: const EdgeInsets.only(top: 62, left:44,right: 30),
                   child: SizedBox(
-                    width: 261,
+                    width: MediaQuery.of(context).size.width,
                     height: 70,
                     child: Text(
                       '''For your customers.

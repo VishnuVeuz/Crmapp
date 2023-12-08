@@ -234,7 +234,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             child: Text("Create",style:TextStyle(
                               fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 15,
+                              fontSize: 12,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -266,7 +266,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             child: Text("Edit",style: TextStyle(
                               fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 15,
+                              fontSize: 12,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -312,7 +312,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             child: Text("Delete",style:TextStyle(
                               fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 15,
+                              fontSize: 12,
                               color: Color(0xFF212121),
                             )),
                           )
@@ -338,7 +338,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             style: TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Proxima Nova',
-                                fontSize: 13,
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -356,7 +356,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               style:  TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF000000)),
                             ),
                           ),
@@ -385,7 +385,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                             style:  TextStyle(
                                 fontWeight: FontWeight.w400,
                                 fontFamily: 'Proxima Nova',
-                                fontSize: 13,
+                                fontSize: 12,
                                 color: Color(0xFF666666))),
                       ),
                       Container(
@@ -403,7 +403,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF000000)),
                             ),
                           ),
@@ -522,7 +522,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style:  TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -540,7 +540,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -569,7 +569,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style:TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -587,7 +587,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -616,7 +616,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -634,7 +634,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -663,7 +663,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -681,7 +681,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -709,7 +709,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Padding(
@@ -750,7 +750,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w400,
                                                       fontFamily: 'Proxima Nova',
-                                                      fontSize: 13,
+                                                      fontSize: 12,
                                                       color: Color(0xFF000000)),
                                                 ),
                                               ),
@@ -784,7 +784,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -802,7 +802,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style:  TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -831,7 +831,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -849,7 +849,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                   ),
                                     ),
@@ -877,7 +877,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Padding(
@@ -1010,7 +1010,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1028,7 +1028,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                         style:  TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -1071,7 +1071,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1091,7 +1091,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style:TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),
@@ -1120,7 +1120,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 13,
+                                        fontSize: 12,
                                         color: Color(0xFF666666))),
                               ),
                               Container(
@@ -1138,7 +1138,7 @@ class _CalencerFullDetailState extends State<CalencerFullDetail> {
                                       style:TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF000000)),
                                     ),
                                   ),

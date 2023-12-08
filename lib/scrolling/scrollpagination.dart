@@ -290,7 +290,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                 child: Text(username,style: TextStyle(
                     fontFamily: 'Proxima Nova',
                     fontWeight: FontWeight.w500,
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Colors.white,
                     decoration: TextDecoration.none),),
               ),
@@ -470,7 +470,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                           style: TextStyle(
                             fontFamily: 'Proxima Nova',
                             fontWeight: FontWeight.w400,
-                            fontSize: 16,
+                            fontSize: 12,
                             color: Color(0xFF212121),
                           )),
                     )
@@ -501,7 +501,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
                             style: TextStyle(
                               fontFamily: 'Proxima Nova',
                               fontWeight: FontWeight.w400,
-                              fontSize: 16,
+                              fontSize: 12,
                               color: Color(0xFF212121),
                             )),
                       )
@@ -526,7 +526,7 @@ class _LeadScrollingState extends State<LeadScrolling> {
               maxChildSize: 0.95,
 
               title: Text("Leads Category",style:
-              TextStyle(fontWeight: FontWeight.w600,fontSize: 17, fontFamily: 'Proxima Nova',),),
+              TextStyle(fontWeight: FontWeight.w600,fontSize: 16, fontFamily: 'Proxima Nova',),),
 
 
 

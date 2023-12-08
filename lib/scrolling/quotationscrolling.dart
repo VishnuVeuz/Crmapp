@@ -7,6 +7,7 @@ import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../notificationactivity.dart';
 import '../commonquotation.dart';
@@ -46,6 +47,8 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
 
   TextEditingController searchController = TextEditingController();
 
+  String username="";
+
   @override
   void initState() {
     super.initState();
@@ -57,6 +60,7 @@ class _QuotationScrollingState extends State<QuotationScrolling> {
     print("sfgdds");
     //  quotationType = widget.type;
     fetchData("");
+    profilePreference();
   }
 
 
@@ -240,13 +244,35 @@ else{
         elevation: 0,
         title: Row(
           children: [
-            Text("Quotations", style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Proxima Nova',
-                fontSize: 20,
-                color: Colors.white,
-                decoration: TextDecoration.none),)
+            Container(
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width/4.5,
+              child: Text(username, style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Proxima Nova',
+                  fontSize: 18,
+                  color: Colors.white,
+                  decoration: TextDecoration.none),),
+            )
           ],
+        ),
+        leading: Builder(
+          builder: (context)=>Padding(
+            padding: const EdgeInsets.only(left:23),
+            child: CircleAvatar(
+              radius: 10,
+              child: Icon(
+                Icons.person,
+                size: 20,
+
+                color: Colors
+                    .white,
+              ),
+
+            ),
+          ),
         ),
 
         automaticallyImplyLeading: false,
@@ -433,7 +459,7 @@ else{
                 hintText: 'Search...',
                 hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
@@ -507,13 +533,24 @@ else{
     );
   }
 
+  profilePreference() async{
+    username = await getStringValuesSF() as String;
 
+  }
 
   void loadMoreData() {
     if (!isSearching) {
       fetchData("");
     }
   }
+}
+Future getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  String? stringValue = prefs.getString('personName')??"";
+  print(stringValue);
+  print("Stringvalueeeee");
+  return stringValue;
 }
 
 

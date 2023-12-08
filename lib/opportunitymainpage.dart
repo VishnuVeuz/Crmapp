@@ -6,6 +6,7 @@ import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 import 'api.dart';
@@ -36,6 +37,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
   bool _isInitialized = false;
   List opportunityTypes=[];
   int? opportunityTypesId;
+  String username="";
 
  @override
   void initState() {
@@ -43,6 +45,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
     super.initState();
     companyData();
     opportunityData();
+    profilePreference();
   }
 
   @override
@@ -68,15 +71,36 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
           title: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: Text("Opportunity", style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'Proxima Nova',
-                    fontSize: 20,
-                    color: Colors.white,
-                    decoration: TextDecoration.none),),
+                padding: const EdgeInsets.only(left: 0),
+                child: Container(
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width/4.6,
+                  child: Text(username, style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'Proxima Nova',
+                      fontSize: 20,
+                      color: Colors.white,
+                      decoration: TextDecoration.none),),
+                ),
               )
             ],
+          ),
+          leading: Builder(
+            builder: (context)=>Padding(
+              padding: const EdgeInsets.only(left:23),
+              child: CircleAvatar(
+                radius: 10,
+                child: Icon(
+                  Icons.person,
+                  size: 18,
+                  color: Colors
+                      .white, // Adjust the color of the icon as per your requirements
+                ),
+
+              ),
+            ),
           ),
           // leading: Builder(
           //   builder: (context) =>
@@ -233,7 +257,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
 
 
                     Container(
-                      height: 40,
+                      height: 50,
                       color: Color(0xFFFF5F5F5),
 
                       child: Row(
@@ -246,14 +270,25 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
                                     (int index) {
                                   return Tab(
                                     text: opportunityTypes[index]['name'],
+
                                   );
                                 },
                               ),
                               isScrollable: true,
                               physics: BouncingScrollPhysics(),
-                              unselectedLabelColor: Colors.black,
-                              labelColor: Colors.red,
-                              indicatorColor: Colors.red,
+                              unselectedLabelColor:Color(0xFF212121),
+                              unselectedLabelStyle: TextStyle(
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13,
+                                  color: Color(0xFF212121),),
+                              labelColor: Color(0xFFFA256B),
+                              labelStyle:  TextStyle(
+                                  fontFamily: 'Proxima Nova',
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 13,
+                                  color: Color(0xFFFA256B)),
+                              indicatorColor: Color(0xFFFA256B),
                               indicatorWeight: 1.0,
                             ),
                           ),
@@ -286,6 +321,10 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
         bottomNavigationBar:MyBottomNavigationBar(2),
       );
     }
+  }
+  profilePreference() async{
+    username = await getStringValuesSF() as String;
+
   }
 
 
@@ -381,4 +420,12 @@ setState(() {
   }
 
 
+}
+Future getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  String? stringValue = prefs.getString('personName')??"";
+  print(stringValue);
+  print("Stringvalueeeee");
+  return stringValue;
 }

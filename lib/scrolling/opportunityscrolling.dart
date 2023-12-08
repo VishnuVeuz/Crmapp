@@ -303,7 +303,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                   child: Text("Opportunity", style: TextStyle(
                       fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Color(0xFF292929),
                       decoration: TextDecoration.none),),
                 ),
@@ -349,7 +349,7 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
                 hintText: 'Search...',
                 hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){

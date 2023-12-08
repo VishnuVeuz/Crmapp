@@ -84,7 +84,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                   child: Text(username,style: TextStyle(
                       fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Colors.white,
                       decoration: TextDecoration.none),),
                 ),
@@ -93,7 +93,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
           ),
           leading: Builder(
             builder: (context)=>Padding(
-              padding: const EdgeInsets.only(left:20),
+              padding: const EdgeInsets.only(left:23),
               child: CircleAvatar(
                 radius: 10,
                 child: Icon(
@@ -217,7 +217,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       Padding(
                         padding: const EdgeInsets.only(left: 24, top: 5, right: 25),
                         child: Text("Leads",
-                          style: TextStyle(fontSize: 22,
+                          style: TextStyle(fontSize: 18,
                                //letterSpacing: .5,
 
                               fontFamily: 'Proxima Nova',
@@ -254,7 +254,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   onPressed: () {},
                                 ),
                                 Text("My Leads",
-                                  style: TextStyle(fontSize: 18,
+                                  style: TextStyle(fontSize: 14,
                                       fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xFF414141)),
@@ -306,7 +306,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                   onPressed: () {},
                                 ),
                                 Text("All Lists",
-                                  style: TextStyle(fontSize: 18,
+                                  style: TextStyle(fontSize: 14,
                                       fontFamily: 'Proxima Nova',
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xFF414141)),
@@ -350,7 +350,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                       padding: const EdgeInsets.only(left: 24, top: 10, right: 25),
                       child: Text("Recent Leads",
 
-                        style: TextStyle(fontSize: 22,
+                        style: TextStyle(fontSize: 17,
                             wordSpacing: 4,
                             fontWeight: FontWeight.w600,
                             fontFamily: 'Proxima Nova',
@@ -469,7 +469,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                            // wordSpacing: 5,
                                                             fontWeight: FontWeight
                                                                 .w500,
-                                                            fontSize: 17,
+                                                            fontSize: 14,
                                                             color: Colors.black),
                                                       ),
                                                     ),
@@ -485,7 +485,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                               fontFamily: 'Proxima Nova',
                                                               fontWeight: FontWeight
                                                                   .w500,
-                                                              fontSize: 14,
+                                                              fontSize: 12,
                                                               color: Color(0xFF787878)),
                                                         ),
 
@@ -537,7 +537,7 @@ class _LeadMainPageState extends State<LeadMainPage> {
                                                                               color: Color(0xFF787878),
                                                                               fontFamily: 'Proxima Nova',
                                                                               fontWeight: FontWeight.w500,
-                                                                              fontSize: 14),
+                                                                              fontSize: 12),
                                                                         ),
                                                                       ),
                                                                     ],

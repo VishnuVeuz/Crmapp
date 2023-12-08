@@ -79,7 +79,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           'Select Company',
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              fontSize: 18.84,
+                              fontSize: 17,
                               color: Colors.white,
                           fontFamily: 'Proxima Nova'),
                         ),
@@ -158,7 +158,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               "Leads",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.84,
+                                  fontSize: 17,
                                   color: Colors.white,
                               fontFamily: 'Proxima Nova'),
                             ),
@@ -196,7 +196,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               "Opportunity",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.84,
+                                  fontSize: 17,
                                   color: Colors.white,
                                   fontFamily: 'Proxima Nova'),
                             ),
@@ -238,7 +238,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               "Quotations",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.84,
+                                  fontSize: 17,
                                   color: Colors.white,
                                   fontFamily: 'Proxima Nova'),
                             ),
@@ -276,7 +276,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               "Customers",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.84,
+                                  fontSize: 17,
                                   color: Colors.white,
                                   fontFamily: 'Proxima Nova'),
                             ),
@@ -316,7 +316,7 @@ class _MainDrawerState extends State<MainDrawer> {
                               "Calender",
                               style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 18.84,
+                                  fontSize: 17,
                                   color: Colors.white,
                                   fontFamily: 'Proxima Nova'),
                             ),
@@ -355,7 +355,7 @@ class _MainDrawerState extends State<MainDrawer> {
                         'Activities',
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 18.84,
+                            fontSize: 17,
                             color: Colors.white,
                             fontFamily: 'Proxima Nova'),
                       ),
@@ -452,7 +452,7 @@ class _MainDrawerState extends State<MainDrawer> {
                             "Logout",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
-                                fontSize: 18.84,
+                                fontSize: 17,
                                 color: Colors.white,
                                 fontFamily: 'Proxima Nova'),
                           ),

@@ -365,7 +365,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   style: TextStyle(
                                     fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -393,7 +393,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   style: TextStyle(
                                     fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -432,7 +432,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   style: TextStyle(
                                     fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -507,7 +507,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         style:TextStyle(
                                                           fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 15,
+                                                          fontSize: 14,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -544,7 +544,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         style: TextStyle(
                                                           fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 15,
+                                                          fontSize: 14,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -580,7 +580,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                         style: TextStyle(
                                                           fontFamily: 'Proxima Nova',
                                                           fontWeight: FontWeight.w400,
-                                                          fontSize: 15,
+                                                          fontSize: 14,
                                                           color: Color(0xFF212121),
                                                         )),
                                                   )
@@ -604,7 +604,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   style: TextStyle(
                                     fontFamily: 'Proxima Nova',
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 15,
+                                    fontSize: 14,
                                     color: Color(0xFF212121),
                                   )),
                             )
@@ -653,7 +653,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             color: Color(0xFF212121)),
                                       )),
                                   Center(
@@ -663,7 +663,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           meetingCount.toString(),
                                           style: TextStyle(
                                               fontWeight: FontWeight.w400,
-                                              fontSize: 13,
+                                              fontSize: 12,
                                               color: Color(0xFFED2449)),
                                         ),
                                       )),
@@ -701,7 +701,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               fontFamily: 'Proxima Nova',
-                                              fontSize: 14,
+                                              fontSize: 12,
                                               color: Color(0xFF212121)),
                                         )),
                                     Center(
@@ -711,7 +711,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             opportunityCount.toString(),
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w400,
-                                                fontSize: 13,
+                                                fontSize: 12,
                                                 color: Color(0xFFED2449)),
                                           ),
                                         )),
@@ -868,7 +868,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style:TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.black,
                                 )),
                           ),
@@ -894,7 +894,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -908,7 +908,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -933,7 +933,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -947,7 +947,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style:TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -972,7 +972,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -986,7 +986,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1011,7 +1011,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1025,7 +1025,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1050,7 +1050,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1064,7 +1064,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1089,7 +1089,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1103,7 +1103,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1128,7 +1128,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1142,7 +1142,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1167,7 +1167,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Container(
@@ -1181,7 +1181,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: 'Proxima Nova',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: Color(0xFF000000))
                               ),
                             ),
@@ -1208,7 +1208,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   fontFamily: 'Proxima Nova',
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   color: Color(0xFF666666))),
                         ),
                         Padding(
@@ -1359,7 +1359,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     style:TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 15,
+                                        fontSize: 13,
                                         color:contactsVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                   ),
                                   onPressed: (){
@@ -1394,7 +1394,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 15,
+                                          fontSize: 13,
                                           color:salesVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1431,7 +1431,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 15,
+                                          fontSize: 13,
                                           color:internalVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1650,7 +1650,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1664,7 +1664,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000))
                                       ),
                                     ),
@@ -1689,7 +1689,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1703,7 +1703,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000))
                                       ),
                                     ),
@@ -1728,7 +1728,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1742,7 +1742,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000))
                                       ),
                                     ),
@@ -1767,7 +1767,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1781,7 +1781,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -1806,7 +1806,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style:TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 13,
+                                          fontSize: 12,
                                           color: Color(0xFF666666))),
                                 ),
                                 Container(
@@ -1820,7 +1820,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontFamily: 'Proxima Nova',
-                                            fontSize: 13,
+                                            fontSize: 12,
                                             color: Color(0xFF000000)),
                                       ),
                                     ),
@@ -1889,7 +1889,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                           color: followersVisibility==true? Color(0XFF212121):Color(0xFF212121)),
                                     ),
                                     onPressed: () async {
@@ -1931,7 +1931,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontFamily: 'Proxima Nova',
-                                          fontSize: 15,
+                                          fontSize: 12,
                                           color:lognoteVisibility==true? Color(0XFF212121): Color(0xFF212121)),
                                     ),
                                     onPressed: () {
@@ -1960,7 +1960,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontFamily: 'Proxima Nova',
-                                        fontSize: 15,
+                                        fontSize: 12,
                                         color: Color(0xFF212121)),
                                   ),
                                   onPressed: () async {
@@ -2020,7 +2020,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                         child: Text(
                                           attachmentCount!,
                                           style:TextStyle(
-                                              fontSize: 14,
+                                              fontSize: 12,
                                               fontFamily: 'Proxima Nova',
                                               fontWeight: FontWeight.w500,
                                               color: Color(0xFF000000)),
@@ -2075,7 +2075,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   fontFamily: 'Proxima Nova',
                                                   fontWeight:
                                                   FontWeight.w500,
-                                                  fontSize: 13),
+                                                  fontSize: 12),
                                             )),
                                       ],
                                     ),
@@ -2119,7 +2119,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   fontFamily: 'Proxima Nova',
                                                   fontWeight:
                                                   FontWeight.w500,
-                                                  fontSize: 13
+                                                  fontSize: 12
                                               ),
                                             )),
                                       ],
@@ -2150,7 +2150,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                     child: Text(
                                       followerCount!,
                                       style: TextStyle(
-                                          fontSize: 14,
+                                          fontSize: 12,
                                           fontFamily: 'Proxima Nova',
                                           fontWeight: FontWeight.w500,
                                           color: Color(0xFF000000)),
@@ -2383,7 +2383,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                 attachmentFileDisplay[index]["name"],
                                                                                 style: TextStyle(
                                                                                   fontFamily: 'Proxima Nova',
-                                                                                  fontSize: 13,
+                                                                                  fontSize: 12,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   color: Color(0xff212121),
                                                                                 ),
@@ -2409,7 +2409,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
 
                                                                                 style:TextStyle(
                                                                                   fontFamily: 'Proxima Nova',
-                                                                                  fontSize: 9.5,
+                                                                                  fontSize: 9,
                                                                                   fontWeight: FontWeight.w500,
                                                                                   color: Color(0xff666666),
                                                                                 ),
@@ -2543,6 +2543,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontFamily: 'Proxima Nova',
+                                    fontSize: 12
                                   ),
                                 )),
                           ],
@@ -2575,7 +2576,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style:  TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xFF666666),
-                                        fontSize: 11,
+                                        fontSize: 10.5,
                                         fontFamily: 'Proxima Nova',
                                       ),
                                     ),
@@ -2584,7 +2585,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                       style:TextStyle(
                                         fontWeight: FontWeight.w500,
                                         color: Color(0xFF666666),
-                                        fontSize: 11,
+                                        fontSize: 10.5,
                                         fontFamily: 'Proxima Nova',
                                       ),
                                     ),
@@ -2603,7 +2604,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w600,
                                               color: Color(0xFF414141),
-                                              fontSize: 11,
+                                              fontSize: 10.5,
                                               fontFamily: 'Proxima Nova',
                                             ),
                                           )),
@@ -2681,7 +2682,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                 sendMailData[i]['name'],
                                                 style:  TextStyle(
                                                     color: Color(0xFF666666),
-                                                    fontSize: 11.5,
+                                                    fontSize: 11,
                                                     fontFamily: 'Proxima Nova',
                                                     fontWeight:
                                                     FontWeight.w600),
@@ -2802,7 +2803,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                           //fontFamily: "inter",
                                                             fontWeight: FontWeight.w400,
                                                             fontFamily: 'Proxima Nova',
-                                                            fontSize: 13,
+                                                            fontSize: 12,
                                                             color: Color(0xFFAFAFAF)))),
                                               ),
                                             ),
@@ -2952,7 +2953,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500,
                                                       fontFamily: 'Proxima Nova',
-                                                      fontSize: 14,
+                                                      fontSize: 12,
                                                       color: Colors.white),
                                                 ),
                                             ),
@@ -3137,7 +3138,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                           //fontFamily: "inter",
                                                             fontWeight: FontWeight.w400,
                                                             fontFamily: 'Proxima Nova',
-                                                            fontSize: 14,
+                                                            fontSize: 12,
                                                             color: Color(0xFFAFAFAF)))),
                                               ),
                                             ),
@@ -3282,7 +3283,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                   style:  TextStyle(
                                                       fontWeight: FontWeight.w500,
                                                       fontFamily: 'Proxima Nova',
-                                                      fontSize: 14,
+                                                      fontSize: 12,
                                                       color: Colors.white),
                                                 ),
                                                 //SvgPicture.asset("images/sendd.svg")
@@ -3402,7 +3403,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                 label: Text(
                                   'Planned Activities',
                                   style:  TextStyle(
-                                    fontSize: 17,
+                                    fontSize: 15,
                                     color: Color(0xFF212121),
                                     fontWeight: FontWeight.w500,
                                     fontFamily: 'Proxima Nova',
@@ -3669,7 +3670,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "",
                                                                     style: TextStyle(
                                                                       fontFamily: 'Proxima Nova',
-                                                                      fontSize: 13,
+                                                                      fontSize: 12,
                                                                       fontWeight: FontWeight.w400,
                                                                       color: Color(0xff388E3C),
                                                                     ),
@@ -3851,7 +3852,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           "",
                                                                       style: TextStyle(
                                                                         fontFamily: 'Proxima Nova',
-                                                                        fontSize: 11.2,
+                                                                        fontSize: 10,
                                                                         fontWeight: FontWeight.w500,
                                                                         color: Color(0xff717171),
                                                                       ),
@@ -3923,7 +3924,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "",
                                                                     style:  TextStyle(
                                                                       fontFamily: 'Proxima Nova',
-                                                                      fontSize: 11.2,
+                                                                      fontSize: 10,
                                                                       fontWeight: FontWeight.w500,
                                                                       // height: 1.255*ffem/fem,
                                                                       color: Color(0xff717171),
@@ -4083,7 +4084,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                         "",
                                                                     style: TextStyle(
                                                                       fontFamily: 'Proxima Nova',
-                                                                      fontSize: 11.2,
+                                                                      fontSize: 10,
                                                                       fontWeight: FontWeight.w500,
                                                                       // height: 1.255*ffem/fem,
                                                                       color: Color(0xff717171),
@@ -4150,7 +4151,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                           "",
                                                                       style:   TextStyle(
                                                                         fontFamily: 'Proxima Nova',
-                                                                        fontSize: 11.2,
+                                                                        fontSize: 10,
                                                                         fontWeight: FontWeight.w500,
                                                                         //height: 1.255*ffem/fem,
                                                                         color: Color(0xff717171),
@@ -6095,7 +6096,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                           child: Text(entry.key,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                fontSize: 14,
+                                                fontSize: 13,
                                                 fontFamily: 'Proxima Nova',
                                                 color: Color(0xFF212121)),
 
@@ -6349,7 +6350,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               text: TextSpan(
                                                                                 style:TextStyle(
                                                                                   fontFamily: 'Proxima Nova',
-                                                                                  fontSize: 13,
+                                                                                  fontSize: 12,
                                                                                   fontWeight: FontWeight
                                                                                       .w500,
                                                                                   height: 0,
@@ -6398,7 +6399,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                                     text:   item["period"],
                                                                                     style: TextStyle(
                                                                                       fontFamily: 'Proxima Nova',
-                                                                                      fontSize: 9.5,
+                                                                                      fontSize: 10,
                                                                                       fontWeight: FontWeight
                                                                                           .w500,
                                                                                       height: 1.5,
@@ -6426,7 +6427,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
                                                                               //     "",
                                                                               style: TextStyle(
                                                                                 fontFamily: 'Proxima Nova',
-                                                                                fontSize: 9.5,
+                                                                                fontSize: 10,
                                                                                 fontWeight: FontWeight
                                                                                     .w500,
                                                                                 // height: 1.5,

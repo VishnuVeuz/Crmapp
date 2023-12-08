@@ -67,7 +67,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                 // wordSpacing: 5,
                                 fontWeight: FontWeight
                                     .w500,
-                                fontSize: 17,
+                                fontSize: 14,
                                 color: Colors.black),
                           ),
                         ),
@@ -80,7 +80,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                   fontFamily: 'Proxima Nova',
                                   fontWeight: FontWeight
                                       .w500,
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   color: Color(0xFF787878)),
                             ),
                           ),
@@ -135,7 +135,7 @@ class _LeadListviewCommonState extends State<LeadListviewCommon> {
                                                   color: Color(0xFF787878),
                                                   fontFamily: 'Proxima Nova',
                                                   fontWeight: FontWeight.w500,
-                                                  fontSize: 14),
+                                                  fontSize: 12),
                                             ),
                                           ),
                                         ],

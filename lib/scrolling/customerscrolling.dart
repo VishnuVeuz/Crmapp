@@ -5,6 +5,7 @@ import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../bottomnavigation.dart';
 import '../notificationactivity.dart';
 import '../commoncustomer.dart';
@@ -45,6 +46,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
   bool searchBanner = true,searchoption= false;
 
   TextEditingController searchController = TextEditingController();
+  String username="";
 
   @override
   void initState() {
@@ -57,6 +59,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
     print("sfgdds");
     //  quotationType = widget.type;
     fetchData("");
+    profilePreference();
   }
 
 
@@ -229,15 +232,36 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
         title: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left:20 ),
-              child: Text("Customers", style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'Proxima Nova',
-                  fontSize: 20,
-                  color: Colors.white,
-                  decoration: TextDecoration.none),),
+              padding: const EdgeInsets.only(left:0 ),
+              child: Container(
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width/4.6,
+                child: Text(username, style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Proxima Nova',
+                    fontSize: 18,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),),
+              ),
             )
           ],
+        ),
+        leading: Builder(
+          builder: (context)=>Padding(
+            padding: const EdgeInsets.only(left:23),
+            child: CircleAvatar(
+              radius: 10,
+              child: Icon(
+                Icons.person,
+                size: 18,
+                color: Colors
+                    .white, // Adjust the color of the icon as per your requirements
+              ),
+
+            ),
+          ),
         ),
 
         automaticallyImplyLeading: false,
@@ -382,7 +406,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                   child: Text("Customers", style:TextStyle(
                       fontFamily: 'Proxima Nova',
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: 18,
                       color: Color(0xFF292929),
                       decoration: TextDecoration.none),),
                 ),
@@ -427,7 +451,7 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
                 hintText: 'Search...',
                 hintStyle: TextStyle(  fontFamily: 'Proxima Nova',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 14,
                   color: Color(0xFF212121),),
                 prefixIcon:IconButton(icon: Icon(Icons.arrow_back_ios,),
                   onPressed: (){
@@ -501,6 +525,10 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
       ],
     );
   }
+  profilePreference() async{
+    username = await getStringValuesSF() as String;
+
+  }
 
   void loadMoreData() {
     if (!isSearching) {
@@ -509,5 +537,13 @@ class _CustomerScrollingState extends State<CustomerScrolling> {
   }
 
 
+}
+Future getStringValuesSF() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  //Return String
+  String? stringValue = prefs.getString('personName')??"";
+  print(stringValue);
+  print("Stringvalueeeee");
+  return stringValue;
 }
 
