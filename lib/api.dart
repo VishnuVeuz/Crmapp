@@ -320,7 +320,7 @@ leadconvertion(int id, String modeltype, int salespersonId, int salesTeamId,
       resMessage = data['result']['message'];
 
       if (data['result']['message'].toString() == "success") {
-        print("121212121212");
+          print("121212121212");
         resMessageText = data['result']['data']['id'].toString();
       }
 
@@ -1451,8 +1451,8 @@ getOpportunityQuotationData(int opportunityId, String value) async {
 
   var data;
   String? authresponce;
-
-
+print("${baseUrl}api/opportunity/${opportunityId}/quotation");
+print("datadata");
   Response response = await get(
 
     Uri.parse("${baseUrl}api/opportunity/${opportunityId}/quotation"),
@@ -1784,6 +1784,7 @@ editQuotation(
       resMessage = data['result']['message'];
       if (data['result']['message'].toString() == "success") {
         resMessageText = data['result']['data']['id'].toString();
+
         return resMessageText;
       }
 
