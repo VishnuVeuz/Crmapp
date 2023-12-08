@@ -21,6 +21,7 @@ class OpportunityScrolling extends StatefulWidget {
   String fromCustomer;
 
 
+
   OpportunityScrolling(this.type,this.Id,this.similartype,this.quotationFrom,this.filterItems,this.fromCustomer);
 
   @override
