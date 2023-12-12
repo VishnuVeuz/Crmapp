@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:app_settings/app_settings.dart';
 import 'package:crm_project/notification.dart';
 import 'package:crm_project/scrolling/scrollpagination.dart';
 import 'package:flutter/foundation.dart';
@@ -227,6 +228,8 @@ class _LeadDetailState extends State<LeadDetail> {
   FocusNode _focusNode = FocusNode();
   bool shouldFocus = false;
 
+  bool settingsPageOpened = false;
+
   void focusEditText() {
     setState(() {
       shouldFocus = true;
@@ -243,6 +246,7 @@ class _LeadDetailState extends State<LeadDetail> {
     getLeadDetails();
 
     // requestPermission();
+
     requestNotificationPermissions();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
@@ -11004,10 +11008,17 @@ class _LeadDetailState extends State<LeadDetail> {
     }
   }
 
+  // setting page change
+
   Future<void> requestNotificationPermissions() async {
     final PermissionStatus status = await Permission.notification.request();
-    if (status.isGranted) {
+
+    print(status);
+    print("statusstatus");
+
+        if (status.isGranted) {
       print("finaldata11");
+      settingsPageOpened = false;
       // Notification permissions granted
     } else if (status.isDenied) {
       // Notification permissions denied
@@ -11017,12 +11028,19 @@ class _LeadDetailState extends State<LeadDetail> {
     } else if (status.isPermanentlyDenied) {
       print("finaldata13");
       // Notification permissions permanently denied, open app settings
-      await openAppSettings();
+     await openAppSettings();
+
     }
+    print(status);
+    print("statusstatus1");
   }
 
+
+
+
   Future<void> _initDownloadPath() async {
-    final directory = await getExternalStorageDirectory();
+    final directory =Platform.isAndroid? await getExternalStorageDirectory()
+    :  await getApplicationSupportDirectory();
     // _localPath = "${directory!.path} + '/Download'";
 
     _localPath = "${directory!.path}";

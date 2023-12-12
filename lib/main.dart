@@ -19,6 +19,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
   await FlutterDownloader.initialize( // Initialize flutter_downloader
   );
+
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
     runApp(

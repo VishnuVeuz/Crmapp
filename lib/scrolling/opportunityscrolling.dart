@@ -22,6 +22,7 @@ class OpportunityScrolling extends StatefulWidget {
 
 
 
+
   OpportunityScrolling(this.type,this.Id,this.similartype,this.quotationFrom,this.filterItems,this.fromCustomer);
 
   @override
@@ -63,7 +64,8 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
 
     print("sfgdds11");
     opportunityType = widget.type;
-    fetchData("");
+     fetchData("");
+
   }
 
 
@@ -243,6 +245,8 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     return Scaffold(
 
       body: buildLeadModelsView(),
+
+
 
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -430,6 +434,14 @@ class _OpportunityScrollingState extends State<OpportunityScrolling> {
     if (!isSearching) {
       fetchData("");
     }
+  }
+
+  method5(value){
+    setState(() {
+      searchText = value;
+      _pageNumber = 1;
+      fetchData("");
+    });
   }
 
 

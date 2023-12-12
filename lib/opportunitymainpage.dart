@@ -214,46 +214,10 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
              child:
               DefaultTabController(
                 length: opportunityTypes.length,
+
                 child: Column(
                   children: <Widget>[
-                    // ButtonsTabBar(
-                    //   buttonMargin: const EdgeInsets.fromLTRB(10, 5, 2, 5),
-                    //   contentPadding: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                    //   physics: BouncingScrollPhysics(),
-                    //    backgroundColor: Color(0xFF043565),
-                    //
-                    //
-                    //   unselectedBorderColor: Colors.transparent,
-                    //   unselectedBackgroundColor: const Color(0XFFEDF2FF),
-                    //
-                    //
-                    //   unselectedLabelStyle:
-                    //   const TextStyle(color: Color(0XFF3C3F4E)),
-                    //   labelStyle: const TextStyle(
-                    //       fontFamily: 'Proxima Nova',
-                    //       color: Colors.white, fontWeight: FontWeight.normal),
-                    //
-                    //
-                    //
-                    //     onTap: (index){
-                    //      print(opportunityTypes[index]['name']);
-                    //
-                    //       },
-                    //   tabs: List<Widget>.generate(
-                    //     opportunityTypes.length,
-                    //         (int index) {
-                    //       BuildContext context;
-                    //       print(opportunityTypes.length);
-                    //
-                    //       print("tabar name");
-                    //       return Tab(
-                    //         text: opportunityTypes[index]['name'],
-                    //       );
-                    //     },
-                    //   ),
-                    //
-                    //
-                    // ),
+
 
 
                     Container(
@@ -321,6 +285,7 @@ class _OpportunityMainPageState extends State<OpportunityMainPage> {
         bottomNavigationBar:MyBottomNavigationBar(2),
       );
     }
+
   }
   profilePreference() async{
     username = await getStringValuesSF() as String;
