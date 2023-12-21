@@ -216,7 +216,7 @@ class _OpportunityDetailState extends State<OpportunityDetail> {
     print(widget.opportunityId);
     print("leadId");
     getOpportunityDetails();
-    requestNotificationPermissions();
+    Platform.isAndroid? requestNotificationPermissions():null;
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
   }

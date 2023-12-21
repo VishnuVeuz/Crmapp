@@ -247,7 +247,7 @@ class _LeadDetailState extends State<LeadDetail> {
 
     // requestPermission();
 
-    requestNotificationPermissions();
+    Platform.isAndroid? requestNotificationPermissions():null;
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
 

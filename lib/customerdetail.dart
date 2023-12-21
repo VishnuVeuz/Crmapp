@@ -171,7 +171,7 @@ class _CustomerDetailState extends State<CustomerDetail> {
     // TODO: implement initState
     super.initState();
     getCustomerDetails();
-    requestNotificationPermissions();
+    Platform.isAndroid? requestNotificationPermissions():null;
     // requestPermission();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);

@@ -205,7 +205,7 @@ class _QuotationDetailState extends State<QuotationDetail> {
     // TODO: implement initState
     super.initState();
     getQuotationDetails();
-    requestNotificationPermissions();
+    Platform.isAndroid? requestNotificationPermissions():null;
     // requestPermission();
     _initDownloadPath();
     FlutterDownloader.registerCallback(downloadCallback);
